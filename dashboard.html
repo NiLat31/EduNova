@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>EduNova | Learning</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: "DM Sans", sans-serif;
+
+            background: #f7f6f2;
+
+            color: #111;
+
+            min-height: 100vh;
+
+        }
+
+
+        /* =========================
+           NAV
+        ========================== */
+
+        nav {
+
+            height: 80px;
+
+            padding: 0 7%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background: rgba(247,246,242,.96);
+
+            border-bottom: 1px solid #ddd;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+        }
+
+
+        .logo {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 29px;
+
+            font-weight: 700;
+
+        }
+
+
+        .logo span {
+
+            color: #e52b20;
+
+        }
+
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+        }
+
+
+        .nav-user {
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+        }
+
+
+        .logout {
+
+            border: 1px solid #111;
+
+            background: transparent;
+
+            padding: 10px 17px;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        .logout:hover {
+
+            background: #111;
+
+            color: white;
+
+        }
+
+
+
+        /* =========================
+           MAIN
+        ========================== */
+
+        main {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 100px 7% 120px;
+
+        }
+
+
+        .welcome-label {
+
+            color: #e52b20;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .welcome {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(55px, 8vw, 95px);
+
+            line-height: .95;
+
+            letter-spacing: -4px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .welcome span {
+
+            color: #e52b20;
+
+        }
+
+
+        .intro {
+
+            max-width: 650px;
+
+            color: #666;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+
+            margin-bottom: 80px;
+
+        }
+
+
+
+        /* =========================
+           CHAPTER TITLE
+        ========================== */
+
+        .chapter-label {
+
+            color: #777;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .chapter-heading {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 45px;
+
+            margin-bottom: 35px;
+
+        }
+
+
+
+        /* =========================
+           CHAPTERS
+        ========================== */
+
+        .chapters {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+
+        }
+
+
+        .chapter {
+
+            background: white;
+
+            border: 1px solid #ddd;
+
+            padding: 32px;
+
+            min-height: 270px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            transition: .3s ease;
+
+        }
+
+
+        .chapter:hover {
+
+            transform: translateY(-6px);
+
+            border-color: #111;
+
+            box-shadow: 0 15px 35px rgba(0,0,0,.08);
+
+        }
+
+
+        .number {
+
+            color: #e52b20;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .chapter h2 {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 29px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .chapter p {
+
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .start {
+
+            margin-top: auto;
+
+            width: fit-content;
+
+            background: #111;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 11px 17px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .start:hover {
+
+            background: #e52b20;
+
+        }
+
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+
+            background: #111;
+
+            color: white;
+
+            padding: 35px 7%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .footer-logo {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 25px;
+
+        }
+
+
+        .footer-logo span {
+
+            color: #e52b20;
+
+        }
+
+
+        footer p {
+
+            color: #777;
+
+            font-size: 11px;
+
+        }
+
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 850px) {
+
+            .chapters {
+
+                grid-template-columns: repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+
+                padding: 0 5%;
+
+            }
+
+
+            .nav-user {
+
+                display: none;
+
+            }
+
+
+            main {
+
+                padding: 70px 5% 90px;
+
+            }
+
+
+            .welcome {
+
+                font-size: 55px;
+
+                letter-spacing: -2px;
+
+            }
+
+
+            .chapter-heading {
+
+                font-size: 35px;
+
+            }
+
+
+            .chapters {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            footer {
+
+                flex-direction: column;
+
+                gap: 15px;
+
+                text-align: center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     NAVIGATION
+====================================== -->
+
+<nav>
+
+    <div class="logo">
+        Edu<span>Nova</span>
+    </div>
+
+
+    <div class="nav-right">
+
+        <div
+            class="nav-user"
+            id="navUser"
+        >
+            Student
+        </div>
+
+
+        <button
+            class="logout"
+            onclick="logout()"
+        >
+            LOG OUT
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================
+     DASHBOARD
+====================================== -->
+
+<main>
+
+
+    <div class="welcome-label">
+        YOUR EDUNOVA CLASSROOM
+    </div>
+
+
+    <h1 class="welcome">
+        Hi <span id="username">Student</span>.
+    </h1>
+
+
+    <p class="intro">
+
+        Welcome to your EduNova learning space.
+        Your mathematical journey starts here.
+        Choose a chapter below to explore the world
+        of Grade 12 Advanced Mathematics.
+
+    </p>
+
+
+
+    <div class="chapter-label">
+        GRADE 12 • ADVANCED MATHEMATICS
+    </div>
+
+
+    <h2 class="chapter-heading">
+        Your Chapters
+    </h2>
+
+
+
+    <div class="chapters">
+
+
+        <!-- CHAPTER 01 -->
+
+        <div class="chapter">
+
+            <div class="number">
+                CHAPTER 01
+            </div>
+
+            <h2>
+                Algebra
+            </h2>
+
+            <p>
+                Expressions, equations, sequences and
+                the structures behind algebraic thinking.
+            </p>
+
+            <a
+                href="#"
+                class="start"
+            >
+                START CHAPTER →
+            </a>
+
+        </div>
+
+
+
+        <!-- CHAPTER 02 -->
+
+        <div class="chapter">
+
+            <div class="number">
+                CHAPTER 02
+            </div>
+
+            <h2>
+                Functions
+            </h2>
+
+            <p>
+                Explore functions, transformations,
+                graphs and mathematical relationships.
+            </p>
+
+            <a
+                href="#"
+                class="start"
+            >
+                START CHAPTER →
+            </a>
+
+        </div>
+
+
+
+        <!-- CHAPTER 03 -->
+
+        <div class="chapter">
+
+            <div class="number">
+                CHAPTER 03
+            </div>
+
+            <h2>
+                Trigonometry
+            </h2>
+
+            <p>
+                Discover identities, equations and
+                the geometry behind trigonometry.
+            </p>
+
+            <a
+                href="#"
+                class="start"
+            >
+                START CHAPTER →
+            </a>
+
+        </div>
+
+
+
+        <!-- CHAPTER 04 -->
+
+        <div class="chapter">
+
+            <div class="number">
+                CHAPTER 04
+            </div>
+
+            <h2>
+                Calculus
+            </h2>
+
+            <p>
+                Understand derivatives, integrals,
+                rates of change and continuous quantities.
+            </p>
+
+            <a
+                href="#"
+                class="start"
+            >
+                START CHAPTER →
+            </a>
+
+        </div>
+
+
+
+        <!-- CHAPTER 05 -->
+
+        <div class="chapter">
+
+            <div class="number">
+                CHAPTER 05
+            </div>
+
+            <h2>
+                Complex Numbers
+            </h2>
+
+            <p>
+                Enter the complex plane and discover
+                a wider perspective on numbers.
+            </p>
+
+            <a
+                href="#"
+                class="start"
+            >
+                START CHAPTER →
+            </a>
+
+        </div>
+
+
+
+        <!-- CHAPTER 06 -->
+
+        <div class="chapter">
+
+            <div class="number">
+                CHAPTER 06
+            </div>
+
+            <h2>
+                Probability
+            </h2>
+
+            <p>
+                Explore uncertainty, patterns and
+                mathematical models of random events.
+            </p>
+
+            <a
+                href="#"
+                class="start"
+            >
+                START CHAPTER →
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================
+     FOOTER
+====================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        Edu<span>Nova</span>
+    </div>
+
+    <p>
+        © 2026 EduNova. Mathematics, reimagined.
+    </p>
+
+</footer>
+
+
+
+<script>
+
+
+    /* =================================
+       GET SIGNED-IN USER
+    ================================= */
+
+    const username =
+        localStorage.getItem("eduNovaUsername");
+
+
+    /*
+     * If someone tries to open
+     * dashboard.html without logging in,
+     * send them back home.
+     */
+
+    if (!username) {
+
+        window.location.href = "index.html";
+
+    }
+
+
+    else {
+
+        document
+            .getElementById("username")
+            .textContent = username;
+
+
+        document
+            .getElementById("navUser")
+            .textContent = username;
+
+    }
+
+
+
+    /* =================================
+       LOG OUT
+    ================================= */
+
+    function logout() {
+
+        localStorage.removeItem(
+            "eduNovaUsername"
+        );
+
+        localStorage.removeItem(
+            "eduNovaEmail"
+        );
+
+
+        window.location.href =
+            "index.html";
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
