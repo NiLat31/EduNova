@@ -1154,6 +1154,33 @@
 
         }
 
+
+
+        /* AUTHENTICATION */
+        .auth-actions { display:flex; align-items:center; gap:10px; }
+        .auth-button { border:1px solid #111; background:transparent; color:#111; padding:10px 16px; border-radius:3px; font-family:"DM Sans",sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; cursor:pointer; transition:.3s; }
+        .auth-button:hover { background:#111; color:white; }
+        .auth-button.signup { background:#e52b20; border-color:#e52b20; color:white; }
+        .auth-button.signup:hover { background:#111; border-color:#111; }
+        .auth-modal { position:fixed; inset:0; background:rgba(17,17,17,.72); backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); display:flex; align-items:center; justify-content:center; padding:24px; opacity:0; visibility:hidden; pointer-events:none; transition:.25s ease; z-index:10000; }
+        .auth-modal.active { opacity:1; visibility:visible; pointer-events:auto; }
+        .auth-box { width:min(430px,100%); background:#f7f6f2; padding:42px; border:1px solid #deddd9; box-shadow:0 25px 70px rgba(0,0,0,.25); transform:translateY(18px); transition:.25s ease; position:relative; }
+        .auth-modal.active .auth-box { transform:translateY(0); }
+        .auth-close { position:absolute; top:15px; right:17px; width:34px; height:34px; border:none; background:transparent; color:#555; font-size:25px; line-height:1; cursor:pointer; transition:.2s; }
+        .auth-close:hover { color:#e52b20; transform:rotate(90deg); }
+        .auth-box .section-label { margin-bottom:10px; }
+        .auth-box h2 { font-family:"Playfair Display",serif; font-size:42px; letter-spacing:-1.5px; margin-bottom:8px; }
+        .auth-subtitle { color:#777; font-size:13px; line-height:1.6; margin-bottom:28px; }
+        .auth-form { display:flex; flex-direction:column; gap:15px; }
+        .auth-form label { font-size:10px; font-weight:700; letter-spacing:1.5px; color:#333; margin-bottom:-8px; }
+        .auth-form input { width:100%; padding:14px 15px; border:1px solid #d4d3cf; background:white; color:#111; font-family:"DM Sans",sans-serif; font-size:13px; outline:none; transition:.2s; }
+        .auth-form input:focus { border-color:#111; box-shadow:0 0 0 2px rgba(229,43,32,.08); }
+        .auth-submit { margin-top:7px; width:100%; padding:15px 20px; border:none; border-radius:3px; background:#111; color:white; font-family:"DM Sans",sans-serif; font-size:12px; font-weight:700; letter-spacing:1.5px; cursor:pointer; transition:.3s; }
+        .auth-submit:hover { background:#e52b20; transform:translateY(-2px); }
+        .auth-message { min-height:18px; color:#e52b20; font-size:12px; line-height:1.5; margin-top:4px; }
+        @media (max-width:1000px) { .auth-actions { gap:7px; } }
+        @media (max-width:760px) { .auth-actions { justify-content:center; flex-wrap:wrap; } .auth-box { padding:35px 25px; } .auth-box h2 { font-size:36px; } }
+
     </style>
 </head>
 
@@ -1222,34 +1249,60 @@
                 </a>
             </li>
 
+            <li class="auth-actions">
+                <button class="auth-button" onclick="openAuth('login')">LOG IN</button>
+                <button class="auth-button signup" onclick="openAuth('signup')">SIGN UP</button>
+            </li>
+
         </ul>
-
-        <div class="auth-buttons" id="authButtons">
-
-            <button class="auth-button" onclick="openLogin()">
-                LOG IN
-            </button>
-
-            <button class="auth-button signup" onclick="openSignup()">
-                SIGN UP
-            </button>
-
-        </div>
-
-        <div class="logged-user" id="loggedUser">
-
-            <span id="navUsername"></span>
-
-            <button class="logout-button" onclick="logoutUser()">
-                LOG OUT
-            </button>
-
-        </div>
 
     </nav>
 
 
     <!-- =========================================
+         LOGIN / SIGN UP MODALS
+    ========================================= -->
+
+    <div class="auth-modal" id="loginModal" onclick="closeAuthOnBackdrop(event, 'loginModal')">
+        <div class="auth-box">
+            <button class="auth-close" onclick="closeAuth('login')" aria-label="Close">×</button>
+            <div class="section-label">EDUNOVA ACCOUNT</div>
+            <h2>Welcome back.</h2>
+            <p class="auth-subtitle">Log in to continue your mathematics journey.</p>
+            <form class="auth-form" onsubmit="loginUser(event)">
+                <label for="loginUsername">USERNAME</label>
+                <input id="loginUsername" type="text" autocomplete="username" required>
+                <label for="loginPassword">PASSWORD</label>
+                <input id="loginPassword" type="password" autocomplete="current-password" required>
+                <div class="auth-message" id="loginMessage"></div>
+                <button class="auth-submit" type="submit">LOG IN →</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="auth-modal" id="signupModal" onclick="closeAuthOnBackdrop(event, 'signupModal')">
+        <div class="auth-box">
+            <button class="auth-close" onclick="closeAuth('signup')" aria-label="Close">×</button>
+            <div class="section-label">JOIN EDUNOVA</div>
+            <h2>Create your account.</h2>
+            <p class="auth-subtitle">Create an account and start learning with EduNova.</p>
+            <form class="auth-form" onsubmit="signupUser(event)">
+                <label for="signupUsername">USERNAME</label>
+                <input id="signupUsername" type="text" autocomplete="username" required>
+                <label for="signupEmail">EMAIL</label>
+                <input id="signupEmail" type="email" autocomplete="email" required>
+                <label for="signupPassword">PASSWORD</label>
+                <input id="signupPassword" type="password" autocomplete="new-password" required>
+                <label for="signupConfirm">CONFIRM PASSWORD</label>
+                <input id="signupConfirm" type="password" autocomplete="new-password" required>
+                <div class="auth-message" id="signupMessage"></div>
+                <button class="auth-submit" type="submit">CREATE ACCOUNT →</button>
+            </form>
+        </div>
+    </div>
+
+
+        <!-- =========================================
          HERO
     ========================================= -->
 
@@ -1719,415 +1772,75 @@
     </footer>
 
 
-
-    <!-- =========================================
-         AUTHENTICATION MODAL
-    ========================================= -->
-
-    <div class="auth-modal" id="authModal">
-
-        <div class="auth-box">
-
-            <button class="auth-close" onclick="closeAuth()">
-                ×
-            </button>
-
-            <div id="loginForm">
-
-                <div class="auth-label">
-                    WELCOME BACK
-                </div>
-
-                <h2 class="auth-title">
-                    Log in.
-                </h2>
-
-                <div class="auth-form">
-
-                    <input
-                        type="text"
-                        id="loginUsername"
-                        placeholder="Username"
-                    >
-
-                    <input
-                        type="password"
-                        id="loginPassword"
-                        placeholder="Password"
-                    >
-
-                    <button
-                        class="auth-submit"
-                        onclick="loginUser()"
-                    >
-                        LOG IN →
-                    </button>
-
-                </div>
-
-                <div class="auth-switch">
-                    Don't have an account?
-                    <button onclick="showSignup()">
-                        Sign Up
-                    </button>
-                </div>
-
-            </div>
-
-
-            <div id="signupForm" style="display:none;">
-
-                <div class="auth-label">
-                    JOIN EDUNOVA
-                </div>
-
-                <h2 class="auth-title">
-                    Sign up.
-                </h2>
-
-                <div class="auth-form">
-
-                    <input
-                        type="text"
-                        id="signupUsername"
-                        placeholder="Choose a username"
-                    >
-
-                    <input
-                        type="email"
-                        id="signupEmail"
-                        placeholder="Email address"
-                    >
-
-                    <input
-                        type="password"
-                        id="signupPassword"
-                        placeholder="Password"
-                    >
-
-                    <input
-                        type="password"
-                        id="signupConfirm"
-                        placeholder="Confirm password"
-                    >
-
-                    <button
-                        class="auth-submit"
-                        onclick="signupUser()"
-                    >
-                        CREATE ACCOUNT →
-                    </button>
-
-                </div>
-
-                <div class="auth-switch">
-                    Already have an account?
-                    <button onclick="showLogin()">
-                        Log In
-                    </button>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
     <!-- =========================================
          JAVASCRIPT
     ========================================= -->
 
     <script>
 
-        /* =========================================
-           AUTH MODAL
-        ========================================= */
-
-        function openLogin() {
-
-            document
-                .getElementById("authModal")
-                .classList.add("active");
-
-            showLogin();
-
-        }
-
-
-        function openSignup() {
-
-            document
-                .getElementById("authModal")
-                .classList.add("active");
-
-            showSignup();
-
-        }
-
-
-        function closeAuth() {
-
-            document
-                .getElementById("authModal")
-                .classList.remove("active");
-
-        }
-
-
-        function showLogin() {
-
-            document.getElementById("loginForm").style.display = "block";
-
-            document.getElementById("signupForm").style.display = "none";
-
-        }
-
-
-        function showSignup() {
-
-            document.getElementById("loginForm").style.display = "none";
-
-            document.getElementById("signupForm").style.display = "block";
-
-        }
-
-
-        /* =========================================
-           SIGN UP
-        ========================================= */
-
-        function signupUser() {
-
-            const username =
-                document.getElementById("signupUsername").value.trim();
-
-            const email =
-                document.getElementById("signupEmail").value.trim();
-
-            const password =
-                document.getElementById("signupPassword").value;
-
-            const confirm =
-                document.getElementById("signupConfirm").value;
-
-
-            if (
-                username === "" ||
-                email === "" ||
-                password === "" ||
-                confirm === ""
-            ) {
-
-                alert("Please fill in all fields.");
-
-                return;
-
-            }
-
-
-            if (password.length < 6) {
-
-                alert("Password must be at least 6 characters.");
-
-                return;
-
-            }
-
-
-            if (password !== confirm) {
-
-                alert("Passwords do not match.");
-
-                return;
-
-            }
-
-
-            const existing =
-                localStorage.getItem("eduNovaUser_" + email);
-
-
-            if (existing) {
-
-                alert("An account with this email already exists.");
-
-                return;
-
-            }
-
-
-            const user = {
-
-                username: username,
-                email: email,
-                password: password
-
-            };
-
-
-            localStorage.setItem(
-                "eduNovaUser_" + email,
-                JSON.stringify(user)
-            );
-
-
-            localStorage.setItem(
-                "eduNovaUsername",
-                username
-            );
-
-            localStorage.setItem(
-                "eduNovaEmail",
-                email
-            );
-
-
-            window.location.href = "dashboard.html";
-
-        }
-
-
-        /* =========================================
-           LOG IN
-        ========================================= */
-
-        function loginUser() {
-
-            const username =
-                document.getElementById("loginUsername").value.trim();
-
-            const password =
-                document.getElementById("loginPassword").value;
-
-
-            if (
-                username === "" ||
-                password === ""
-            ) {
-
-                alert("Please enter your username and password.");
-
-                return;
-
-            }
-
-
-            let foundUser = null;
-
-
-            for (
-                let i = 0;
-                i < localStorage.length;
-                i++
-            ) {
-
-                const key =
-                    localStorage.key(i);
-
-
-                if (
-                    key &&
-                    key.startsWith("eduNovaUser_")
-                ) {
-
-                    const savedUser =
-                        JSON.parse(
-                            localStorage.getItem(key)
-                        );
-
-
-                    if (
-                        savedUser.username.toLowerCase() ===
-                        username.toLowerCase()
-                        &&
-                        savedUser.password === password
-                    ) {
-
-                        foundUser = savedUser;
-
-                        break;
-
-                    }
-
-                }
-
-            }
-
-
-            if (!foundUser) {
-
-                alert("Incorrect username or password.");
-
-                return;
-
-            }
-
-
-            localStorage.setItem(
-                "eduNovaUsername",
-                foundUser.username
-            );
-
-            localStorage.setItem(
-                "eduNovaEmail",
-                foundUser.email
-            );
-
-
-            window.location.href = "dashboard.html";
-
-        }
-
-
-        /* =========================================
-           LOG OUT
-        ========================================= */
-
-        function logoutUser() {
-
-            localStorage.removeItem("eduNovaUsername");
-
-            localStorage.removeItem("eduNovaEmail");
-
-            document.getElementById("authButtons").style.display = "flex";
-
-            document.getElementById("loggedUser").style.display = "none";
-
-        }
-
-
-        /* =========================================
-           SHOW CURRENT USER ON HOME PAGE
-        ========================================= */
-
-        const currentUser =
-            localStorage.getItem("eduNovaUsername");
-
-
-        if (currentUser) {
-
-            document.getElementById("authButtons").style.display = "none";
-
-            document.getElementById("loggedUser").style.display = "flex";
-
-            document.getElementById("navUsername").textContent =
-                "Hi, " + currentUser;
-
-        }
-
-
-        /* =========================================
-           BOOK NOTIFICATION
-        ========================================= */
-
         function notifyMe() {
-
-            alert(
-                "EduNova Book notifications are coming soon! 📖"
-            );
-
+            alert("EduNova Book notifications are coming soon! 📖");
         }
+
+        function openAuth(type) {
+            closeAuth('login');
+            closeAuth('signup');
+            const modal = document.getElementById(type + 'Modal');
+            const message = document.getElementById(type + 'Message');
+            if (message) message.textContent = '';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            const firstInput = modal.querySelector('input');
+            if (firstInput) setTimeout(() => firstInput.focus(), 120);
+        }
+
+        function closeAuth(type) {
+            const modal = document.getElementById(type + 'Modal');
+            if (modal) modal.classList.remove('active');
+            if (!document.querySelector('.auth-modal.active')) document.body.style.overflow = '';
+        }
+
+        function closeAuthOnBackdrop(event, modalId) {
+            if (event.target.id === modalId) closeAuth(modalId.replace('Modal', ''));
+        }
+
+        function getStoredAccount() {
+            return JSON.parse(localStorage.getItem('eduNovaAccount') || 'null');
+        }
+
+        function signupUser(event) {
+            event.preventDefault();
+            const username = document.getElementById('signupUsername').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const confirm = document.getElementById('signupConfirm').value;
+            const message = document.getElementById('signupMessage');
+            if (password !== confirm) { message.textContent = 'Passwords do not match.'; return; }
+            if (password.length < 6) { message.textContent = 'Password must be at least 6 characters.'; return; }
+            const existing = getStoredAccount();
+            if (existing && existing.username.toLowerCase() === username.toLowerCase()) { message.textContent = 'That username is already registered.'; return; }
+            localStorage.setItem('eduNovaAccount', JSON.stringify({ username, email, password }));
+            localStorage.setItem('eduNovaUsername', username);
+            localStorage.setItem('eduNovaEmail', email);
+            window.location.href = 'dashboard.html';
+        }
+
+        function loginUser(event) {
+            event.preventDefault();
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const message = document.getElementById('loginMessage');
+            const account = getStoredAccount();
+            if (!account) { message.textContent = 'No account found. Please create an account first.'; return; }
+            if (account.username !== username || account.password !== password) { message.textContent = 'Incorrect username or password.'; return; }
+            localStorage.setItem('eduNovaUsername', account.username);
+            localStorage.setItem('eduNovaEmail', account.email);
+            window.location.href = 'dashboard.html';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') { closeAuth('login'); closeAuth('signup'); }
+        });
 
     </script>
 
