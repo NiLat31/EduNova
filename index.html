@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>EduNova | Grade 12 Advanced Mathematics</title>
+    <title>EduNova | Advanced Mathematics</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
 
@@ -27,13 +32,11 @@
             font-family: "DM Sans", sans-serif;
             background: #f7f6f2;
             color: #111;
-            overflow-x: hidden;
         }
 
-
-        /* =========================================
+        /* =========================
            INTRO ANIMATION
-        ========================================= */
+        ========================== */
 
         .intro-screen {
             position: fixed;
@@ -46,20 +49,20 @@
             align-items: center;
             justify-content: center;
 
-            animation: introLeave 1.2s cubic-bezier(.77,0,.18,1) forwards;
-            animation-delay: 2.6s;
+            animation: introLeave 1s ease forwards;
+            animation-delay: 2.3s;
         }
 
         .intro-content {
             text-align: center;
-            animation: introAppear 1.2s ease forwards;
+            animation: introContent 1.2s ease;
         }
 
         .intro-logo {
             font-family: "Playfair Display", serif;
-            font-size: clamp(58px, 9vw, 100px);
+            font-size: clamp(55px, 10vw, 110px);
             font-weight: 700;
-            letter-spacing: -5px;
+            letter-spacing: -4px;
         }
 
         .intro-logo span {
@@ -67,54 +70,23 @@
         }
 
         .intro-line {
+            width: 80px;
             height: 3px;
-            width: 0;
             background: #e52b20;
-            margin: 22px auto;
-            animation: lineGrow 0.8s ease forwards;
-            animation-delay: 0.6s;
+            margin: 25px auto;
         }
 
         .intro-subtitle {
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 4px;
             color: #aaa;
-            opacity: 0;
-            animation: subtitleAppear 0.8s ease forwards;
-            animation-delay: 1s;
         }
 
-        @keyframes introAppear {
+        @keyframes introContent {
 
             from {
                 opacity: 0;
-                transform: translateY(35px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-        }
-
-        @keyframes lineGrow {
-
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 90px;
-            }
-
-        }
-
-        @keyframes subtitleAppear {
-
-            from {
-                opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(25px);
             }
 
             to {
@@ -128,38 +100,37 @@
 
             to {
                 transform: translateY(-100%);
-                visibility: hidden;
             }
 
         }
 
 
-        /* =========================================
+        /* =========================
            NAVIGATION
-        ========================================= */
+        ========================== */
 
         nav {
-            height: 82px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            height: 80px;
+
+            padding: 0 7%;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            padding: 0 7%;
+            background: rgba(247,246,242,0.95);
+            backdrop-filter: blur(10px);
 
-            background: #f7f6f2;
-
-            border-bottom: 1px solid #deddd9;
-
-            position: sticky;
-            top: 0;
-
-            z-index: 100;
+            border-bottom: 1px solid #ddd;
         }
 
         .logo {
             font-family: "Playfair Display", serif;
-            font-size: 28px;
+            font-size: 29px;
             font-weight: 700;
             letter-spacing: -1px;
         }
@@ -168,63 +139,46 @@
             color: #e52b20;
         }
 
-        nav ul {
+        .nav-links {
             display: flex;
             align-items: center;
-            gap: 25px;
-            list-style: none;
+            gap: 28px;
         }
 
-        nav a {
-            color: #111;
+        .nav-links a {
             text-decoration: none;
-            font-size: 13px;
+            color: #111;
+            font-size: 12px;
             font-weight: 600;
-            transition: 0.3s;
         }
 
-        nav a:hover {
+        .nav-links a:hover {
             color: #e52b20;
         }
 
-        .nav-button {
-            background: #111;
-            color: white !important;
-
-            padding: 12px 20px;
-
-            border-radius: 3px;
-        }
-
-        .nav-button:hover {
-            background: #e52b20;
-        }
-
-
-        /* =========================================
-           AUTH BUTTONS
-        ========================================= */
-
         .auth-buttons {
             display: flex;
-            align-items: center;
-            gap: 9px;
+            gap: 10px;
         }
 
-        .auth-button {
-            padding: 10px 15px;
-            border-radius: 3px;
-            font-family: "DM Sans", sans-serif;
+        .login-button,
+        .signup-button {
+            padding: 10px 17px;
+            font-family: inherit;
             font-size: 11px;
             font-weight: 700;
             cursor: pointer;
-            transition: 0.3s;
+            border: 1px solid #111;
         }
 
         .login-button {
             background: transparent;
             color: #111;
-            border: 1px solid #111;
+        }
+
+        .signup-button {
+            background: #111;
+            color: white;
         }
 
         .login-button:hover {
@@ -232,245 +186,15 @@
             color: white;
         }
 
-        .signup-button {
-            background: #e52b20;
-            color: white;
-            border: 1px solid #e52b20;
-        }
-
         .signup-button:hover {
-            background: #111;
-            border-color: #111;
-            transform: translateY(-2px);
-        }
-
-        .user-area {
-            display: none;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .user-name {
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .logout-button {
-            background: #111;
-            color: white;
-            border: none;
-            padding: 10px 14px;
-            border-radius: 3px;
-            font-family: "DM Sans", sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .logout-button:hover {
             background: #e52b20;
+            border-color: #e52b20;
         }
 
 
-        /* =========================================
-           AUTH MODAL
-        ========================================= */
-
-        .auth-overlay {
-            position: fixed;
-            inset: 0;
-
-            background: rgba(17,17,17,0.75);
-            backdrop-filter: blur(5px);
-
-            z-index: 5000;
-
-            display: none;
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 20px;
-        }
-
-        .auth-overlay.active {
-            display: flex;
-        }
-
-        .auth-modal {
-            width: min(440px, 100%);
-
-            background: #f7f6f2;
-
-            padding: 42px;
-
-            position: relative;
-
-            box-shadow: 0 25px 70px rgba(0,0,0,0.3);
-
-            animation: authAppear 0.3s ease;
-        }
-
-        @keyframes authAppear {
-
-            from {
-                opacity: 0;
-                transform: translateY(20px) scale(.98);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-
-        }
-
-        .auth-close {
-            position: absolute;
-
-            top: 14px;
-            right: 18px;
-
-            border: none;
-            background: transparent;
-
-            font-size: 27px;
-
-            color: #555;
-
-            cursor: pointer;
-        }
-
-        .auth-close:hover {
-            color: #e52b20;
-        }
-
-        .auth-modal h2 {
-            font-family: "Playfair Display", serif;
-
-            font-size: 42px;
-
-            line-height: 1.05;
-
-            margin-bottom: 12px;
-        }
-
-        .auth-subtitle {
-            color: #777;
-
-            font-size: 13px;
-
-            line-height: 1.6;
-
-            margin-bottom: 25px;
-        }
-
-        .auth-form {
-            display: flex;
-            flex-direction: column;
-
-            gap: 12px;
-        }
-
-        .auth-form label {
-            font-size: 10px;
-
-            font-weight: 700;
-
-            letter-spacing: 1.5px;
-        }
-
-        .auth-form input {
-            width: 100%;
-
-            padding: 14px;
-
-            border: 1px solid #d5d4d0;
-
-            background: white;
-
-            color: #111;
-
-            outline: none;
-
-            font-family: "DM Sans", sans-serif;
-
-            font-size: 13px;
-        }
-
-        .auth-form input:focus {
-            border-color: #111;
-        }
-
-        .auth-submit {
-            margin-top: 8px;
-
-            padding: 15px;
-
-            background: #e52b20;
-
-            color: white;
-
-            border: none;
-
-            border-radius: 3px;
-
-            font-family: "DM Sans", sans-serif;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-            cursor: pointer;
-
-            transition: 0.3s;
-        }
-
-        .auth-submit:hover {
-            background: #111;
-
-            transform: translateY(-2px);
-        }
-
-        .auth-switch {
-            margin-top: 20px;
-
-            text-align: center;
-
-            color: #777;
-
-            font-size: 12px;
-        }
-
-        .auth-switch button {
-            border: none;
-
-            background: transparent;
-
-            color: #e52b20;
-
-            font-family: "DM Sans", sans-serif;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            cursor: pointer;
-        }
-
-        .auth-message {
-            min-height: 18px;
-
-            font-size: 12px;
-
-            line-height: 1.5;
-        }
-
-
-        /* =========================================
+        /* =========================
            HERO
-        ========================================= */
+        ========================== */
 
         .hero {
             min-height: 88vh;
@@ -481,40 +205,29 @@
             align-items: center;
 
             position: relative;
-
             overflow: hidden;
         }
 
         .hero-content {
-            max-width: 720px;
-
+            max-width: 760px;
             position: relative;
-
             z-index: 2;
         }
 
         .eyebrow {
             color: #e52b20;
-
-            font-size: 12px;
-
+            font-size: 11px;
             font-weight: 700;
-
             letter-spacing: 3px;
-
-            margin-bottom: 24px;
+            margin-bottom: 25px;
         }
 
         .hero h1 {
             font-family: "Playfair Display", serif;
-
-            font-size: clamp(58px, 7.5vw, 105px);
-
-            line-height: 0.96;
-
+            font-size: clamp(65px, 9vw, 120px);
+            line-height: .9;
             letter-spacing: -5px;
-
-            margin-bottom: 32px;
+            margin-bottom: 35px;
         }
 
         .hero h1 span {
@@ -522,159 +235,82 @@
         }
 
         .hero p {
-            max-width: 580px;
-
-            color: #5e5e5e;
-
-            font-size: 17px;
-
+            color: #666;
+            font-size: 16px;
             line-height: 1.8;
-
+            max-width: 600px;
             margin-bottom: 35px;
         }
 
         .hero-buttons {
             display: flex;
-
-            gap: 14px;
-
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .primary-button,
         .secondary-button {
-            display: inline-block;
-
-            padding: 15px 25px;
-
-            border-radius: 3px;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
+            padding: 15px 22px;
             text-decoration: none;
-
-            transition: 0.3s;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .primary-button {
-            background: #e52b20;
-
-            color: white;
-        }
-
-        .primary-button:hover {
             background: #111;
-
-            transform: translateY(-3px);
+            color: white;
         }
 
         .secondary-button {
             border: 1px solid #111;
-
             color: #111;
+        }
+
+        .primary-button:hover {
+            background: #e52b20;
         }
 
         .secondary-button:hover {
             background: #111;
-
             color: white;
         }
 
-
-        /* =========================================
-           MATHEMATICAL DECORATION
-        ========================================= */
-
         .math-decoration {
             position: absolute;
+            right: 8%;
+            top: 25%;
 
-            right: 5%;
+            width: 300px;
+            height: 300px;
 
-            top: 18%;
-
-            width: 390px;
-
-            height: 390px;
-
-            border: 1px solid #d9d8d4;
-
+            border: 1px solid #ddd;
             border-radius: 50%;
-
-            opacity: 0.85;
         }
 
         .math-decoration::before {
             content: "∫";
-
             position: absolute;
-
             font-family: "Playfair Display", serif;
-
-            font-size: 140px;
-
+            font-size: 170px;
             color: #e52b20;
-
-            top: 75px;
-
-            left: 125px;
+            left: 100px;
+            top: 45px;
         }
 
         .math-decoration::after {
             content: "x² + y² = r²";
-
             position: absolute;
-
+            bottom: -45px;
+            right: 20px;
             font-family: "Playfair Display", serif;
-
-            font-size: 20px;
-
-            color: #333;
-
-            bottom: 58px;
-
-            left: 80px;
-        }
-
-        .orbit {
-            position: absolute;
-
-            width: 460px;
-
-            height: 165px;
-
-            border: 1px solid #ccc;
-
-            border-radius: 50%;
-
-            transform: rotate(-25deg);
-
-            top: 105px;
-
-            right: -35px;
-        }
-
-        .dot {
-            position: absolute;
-
-            width: 12px;
-
-            height: 12px;
-
-            background: #e52b20;
-
-            border-radius: 50%;
-
-            top: 45px;
-
-            right: 125px;
+            font-size: 17px;
         }
 
 
-        /* =========================================
-           GENERAL
-        ========================================= */
+        /* =========================
+           SECTION
+        ========================== */
 
         section {
             padding: 110px 7%;
@@ -682,529 +318,306 @@
 
         .section-label {
             color: #e52b20;
-
-            font-size: 11px;
-
+            font-size: 10px;
             font-weight: 700;
-
             letter-spacing: 3px;
-
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
 
         .section-title {
             font-family: "Playfair Display", serif;
-
-            font-size: clamp(42px, 5vw, 68px);
-
-            line-height: 1.03;
-
-            letter-spacing: -2.5px;
+            font-size: clamp(40px, 5vw, 65px);
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 50px;
         }
 
 
-        /* =========================================
+        /* =========================
            CURRICULUM
-        ========================================= */
+        ========================== */
 
-        .topics-section {
-            background: white;
+        .curriculum {
+            background: #111;
+            color: white;
         }
 
-        .topics-header {
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: flex-end;
-
-            gap: 50px;
-
-            margin-bottom: 60px;
+        .curriculum .section-title {
+            color: white;
         }
 
-        .topics-header p {
-            max-width: 420px;
-
-            color: #666;
-
-            font-size: 15px;
-
-            line-height: 1.8;
-        }
-
-        .topics-grid {
+        .curriculum-grid {
             display: grid;
-
             grid-template-columns: repeat(3, 1fr);
-
-            border-top: 1px solid #ddd;
-
-            border-left: 1px solid #ddd;
+            gap: 18px;
         }
 
-        .topic-card {
-            min-height: 285px;
-
-            padding: 35px;
-
-            border-right: 1px solid #ddd;
-
-            border-bottom: 1px solid #ddd;
-
-            position: relative;
-
-            background: white;
-
-            transition: 0.35s ease;
+        .curriculum-card {
+            border: 1px solid #333;
+            padding: 30px;
+            min-height: 250px;
 
             display: flex;
-
             flex-direction: column;
+
+            transition: .3s ease;
         }
 
-        .topic-card:hover {
-            background: #f7f6f2;
-
-            transform: translateY(-5px);
+        .curriculum-card:hover {
+            transform: translateY(-6px);
+            border-color: #e52b20;
         }
 
-        .topic-number {
+        .chapter-number {
             color: #e52b20;
-
-            font-size: 12px;
-
+            font-size: 10px;
             font-weight: 700;
-
-            letter-spacing: 1px;
-
-            margin-bottom: 30px;
+            letter-spacing: 2px;
+            margin-bottom: 28px;
         }
 
-        .topic-card h3 {
+        .curriculum-card h3 {
             font-family: "Playfair Display", serif;
-
-            font-size: 30px;
-
-            margin-bottom: 14px;
+            font-size: 28px;
+            margin-bottom: 12px;
         }
 
-        .topic-card p {
-            color: #666;
-
-            font-size: 14px;
-
+        .curriculum-card p {
+            color: #999;
+            font-size: 13px;
             line-height: 1.7;
-
             margin-bottom: 25px;
         }
 
-        .chapter-link {
+        .chapter-button {
             margin-top: auto;
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
 
             width: fit-content;
 
-            padding: 10px 13px;
+            border: 1px solid #555;
 
-            border: 1px solid #d6d6d6;
-
-            background: #f7f6f2;
-
-            color: #111;
-
-            font-size: 10px;
-
-            font-weight: 700;
-
-            letter-spacing: 1.5px;
-
-            text-decoration: none;
-
-            transition: 0.3s;
-        }
-
-        .chapter-link span {
-            color: #e52b20;
-
-            font-size: 14px;
-        }
-
-        .chapter-link:hover {
-            background: #111;
+            padding: 10px 15px;
 
             color: white;
+            text-decoration: none;
 
-            border-color: #111;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .chapter-button:hover {
+            background: #e52b20;
+            border-color: #e52b20;
         }
 
 
-        /* =========================================
+        /* =========================
            BOOK
-        ========================================= */
+        ========================== */
 
         .book-section {
-            background: #f7f6f2;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
-            gap: 38px;
+            gap: 40px;
 
-            max-width: 1200px;
+            max-width: 1100px;
 
-            margin: 0 auto;
-
-            padding-left: 5%;
-
-            padding-right: 5%;
+            margin: auto;
         }
 
         .book-image {
             flex: 0 0 390px;
-
             display: flex;
-
             justify-content: flex-end;
-
-            align-items: center;
         }
 
         .book-image img {
             width: 350px;
-
             max-width: 100%;
-
             height: auto;
-
             display: block;
-
-            box-shadow: 0 25px 45px rgba(0,0,0,0.17);
-
-            transition: 0.4s ease;
-        }
-
-        .book-image img:hover {
-            transform: translateY(-8px) rotate(-1deg);
         }
 
         .book-content {
-            flex: 0 1 500px;
+            flex: 0 1 520px;
         }
 
         .book-content .section-title {
             margin-bottom: 25px;
         }
 
-        .book-content > p {
+        .book-description {
             color: #666;
-
             font-size: 15px;
-
             line-height: 1.8;
-
-            max-width: 490px;
-
             margin-bottom: 25px;
         }
 
-        .coming-soon-box {
-            background: white;
-
-            border: 1px solid #deddd9;
-
-            padding: 18px 20px;
-
-            display: flex;
-
+        .coming-soon {
+            display: inline-flex;
             align-items: center;
+            gap: 10px;
 
-            gap: 13px;
+            background: white;
+            border: 1px solid #ddd;
 
-            width: fit-content;
+            padding: 13px 18px;
 
-            margin-bottom: 28px;
-
-            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
-        }
-
-        .coming-dot {
-            width: 9px;
-
-            height: 9px;
-
-            flex-shrink: 0;
-
-            background: #e52b20;
-
-            border-radius: 50%;
-
-            animation: comingPulse 1.5s infinite;
-        }
-
-        .coming-soon-box strong {
-            color: #111;
-
-            font-size: 11px;
-
-            letter-spacing: 2px;
-        }
-
-        @keyframes comingPulse {
-
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            50% {
-                transform: scale(1.5);
-                opacity: 0.5;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-        }
-
-        .book-details {
-            border-left: 3px solid #e52b20;
-
-            padding-left: 18px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 5px;
-        }
-
-        .book-details strong {
-            font-size: 16px;
-        }
-
-        .book-details span {
-            color: #777;
-
-            font-size: 12px;
-        }
-
-        .notify-button {
-            margin-top: 27px;
-
-            padding: 14px 21px;
-
-            background: #111;
-
-            color: white;
-
-            border: none;
-
-            border-radius: 3px;
-
-            font-family: "DM Sans", sans-serif;
-
-            font-size: 13px;
-
+            font-size: 10px;
             font-weight: 700;
-
-            cursor: pointer;
-
-            transition: 0.3s;
-        }
-
-        .notify-button:hover {
-            background: #e52b20;
-
-            transform: translateY(-3px);
-        }
-
-
-        /* =========================================
-           LEARNING
-        ========================================= */
-
-        .learning-section {
-            background: white;
-        }
-
-        .learning-layout {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 90px;
-
-            align-items: center;
-        }
-
-        .learning-text p {
-            max-width: 530px;
-
-            margin-top: 28px;
-
-            color: #666;
-
-            line-height: 1.8;
-
-            font-size: 15px;
-        }
-
-        .equation-box {
-            background: #111;
-
-            color: white;
-
-            padding: 75px 40px;
-
-            position: relative;
-
-            overflow: hidden;
-        }
-
-        .equation {
-            font-family: "Playfair Display", serif;
-
-            font-size: clamp(28px, 4vw, 50px);
-
-            text-align: center;
-
-            position: relative;
-
-            z-index: 2;
-        }
-
-        .equation-small {
-            color: #999;
-
-            font-size: 12px;
-
-            text-align: center;
-
-            margin-top: 25px;
-
-            position: relative;
-
-            z-index: 2;
-        }
-
-        .equation-box::before {
-            content: "∑";
-
-            position: absolute;
-
-            font-family: "Playfair Display", serif;
-
-            font-size: 260px;
-
-            color: #202020;
-
-            right: -35px;
-
-            top: -90px;
-        }
-
-
-        /* =========================================
-           AUTHOR
-        ========================================= */
-
-        .author-section {
-            background: #e52b20;
-
-            color: white;
-        }
-
-        .author-layout {
-            display: grid;
-
-            grid-template-columns: 0.9fr 1.1fr;
-
-            gap: 85px;
-
-            align-items: center;
-        }
-
-        .author-section .section-label {
-            color: white;
-
-            opacity: 0.75;
-        }
-
-        .author-section .section-title {
-            color: white;
-        }
-
-        .author-text p {
-            color: rgba(255,255,255,0.88);
-
-            font-size: 15px;
-
-            line-height: 1.8;
+            letter-spacing: 2px;
 
             margin-bottom: 20px;
         }
 
+        .pulse {
+            width: 7px;
+            height: 7px;
+            background: #e52b20;
+            border-radius: 50%;
+        }
+
+        .book-details {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            color: #777;
+            font-size: 12px;
+        }
+
+        .book-details strong {
+            color: #111;
+            font-size: 14px;
+        }
+
+        .notify-button {
+            margin-top: 25px;
+
+            background: #111;
+            color: white;
+
+            border: none;
+
+            padding: 14px 20px;
+
+            font-family: inherit;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+
+            cursor: pointer;
+        }
+
+        .notify-button:hover {
+            background: #e52b20;
+        }
+
+
+        /* =========================
+           LEARNING
+        ========================== */
+
+        .learning {
+            background: #eee;
+        }
+
+        .learning-content {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .learning-content p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .equation-box {
+            background: white;
+            border: 1px solid #ddd;
+
+            padding: 35px;
+
+            margin-top: 40px;
+
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+        }
+
+
+        /* =========================
+           AUTHOR
+        ========================== */
+
+        .author {
+            background: #e52b20;
+            color: white;
+
+            text-align: center;
+        }
+
+        .author .section-label {
+            color: white;
+        }
+
+        .author h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(40px, 5vw, 65px);
+            margin-bottom: 25px;
+        }
+
+        .author p {
+            max-width: 700px;
+            margin: auto;
+
+            font-size: 15px;
+            line-height: 1.8;
+
+            color: rgba(255,255,255,.9);
+        }
+
         .author-name {
-            border-top: 1px solid rgba(255,255,255,0.35);
-
-            padding-top: 25px;
-
-            margin-top: 30px;
+            margin-top: 35px;
 
             display: flex;
-
             flex-direction: column;
-
-            gap: 6px;
+            gap: 7px;
         }
 
         .author-name strong {
             font-family: "Playfair Display", serif;
-
-            font-size: 27px;
+            font-size: 25px;
         }
 
         .author-name span {
-            font-size: 12px;
-
-            opacity: 0.8;
+            font-size: 10px;
+            letter-spacing: 2px;
+            opacity: .85;
         }
 
 
-        /* =========================================
+        /* =========================
            FOOTER
-        ========================================= */
+        ========================== */
 
         footer {
             background: #111;
-
             color: white;
 
-            padding: 45px 7%;
+            padding: 35px 7%;
 
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
         }
 
         .footer-logo {
             font-family: "Playfair Display", serif;
-
             font-size: 25px;
         }
 
@@ -1213,631 +626,508 @@
         }
 
         footer p {
-            color: #888;
-
+            color: #777;
             font-size: 11px;
         }
 
 
-        /* =========================================
-           TABLET
-        ========================================= */
+        /* =========================
+           AUTH MODAL
+        ========================== */
 
-        @media (max-width: 1000px) {
+        .modal {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0,0,0,.65);
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            z-index: 5000;
+
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 420px;
+
+            background: #f7f6f2;
+
+            padding: 40px;
+
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+
+            border: none;
+            background: none;
+
+            font-size: 24px;
+
+            cursor: pointer;
+        }
+
+        .modal-label {
+            color: #e52b20;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .modal-title {
+            font-family: "Playfair Display", serif;
+            font-size: 40px;
+            margin-bottom: 30px;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .auth-form input {
+            padding: 14px;
+
+            border: 1px solid #ccc;
+
+            background: white;
+
+            font-family: inherit;
+            font-size: 13px;
+
+            outline: none;
+        }
+
+        .auth-form input:focus {
+            border-color: #111;
+        }
+
+        .auth-submit {
+            margin-top: 8px;
+
+            padding: 14px;
+
+            background: #111;
+            color: white;
+
+            border: none;
+
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+
+            cursor: pointer;
+        }
+
+        .auth-submit:hover {
+            background: #e52b20;
+        }
+
+        .switch-auth {
+            margin-top: 20px;
+
+            text-align: center;
+
+            color: #777;
+
+            font-size: 12px;
+        }
+
+        .switch-auth button {
+            border: none;
+            background: none;
+
+            color: #e52b20;
+
+            font-family: inherit;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .math-decoration {
+                opacity: .15;
+                right: -100px;
+            }
+
+            .curriculum-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .book-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .book-image {
+                flex: none;
+                justify-content: center;
+            }
+
+            .book-content {
+                flex: none;
+            }
+
+        }
+
+        @media (max-width: 600px) {
 
             nav {
                 padding: 0 5%;
             }
 
-            nav ul {
-                gap: 13px;
+            .logo {
+                font-size: 24px;
+            }
+
+            .auth-buttons {
+                gap: 5px;
+            }
+
+            .login-button,
+            .signup-button {
+                padding: 8px 10px;
+                font-size: 9px;
             }
 
             .hero {
-                padding-left: 5%;
-                padding-right: 5%;
-            }
-
-            .math-decoration {
-                right: -120px;
-                opacity: 0.3;
-            }
-
-            section {
-                padding-left: 5%;
-                padding-right: 5%;
-            }
-
-            .topics-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .book-section {
-                gap: 25px;
-            }
-
-            .book-image {
-                flex-basis: 340px;
-            }
-
-            .book-image img {
-                width: 300px;
-            }
-
-        }
-
-
-        /* =========================================
-           MOBILE
-        ========================================= */
-
-        @media (max-width: 760px) {
-
-            nav {
-                height: auto;
-
-                padding: 18px 5%;
-
-                flex-direction: column;
-
-                gap: 18px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-
-                justify-content: center;
-
-                gap: 12px 15px;
-            }
-
-            .hero {
-                min-height: 80vh;
-
-                padding-top: 70px;
-
-                padding-bottom: 70px;
+                padding: 80px 5%;
             }
 
             .hero h1 {
+                font-size: 60px;
                 letter-spacing: -3px;
             }
 
-            .math-decoration {
-                display: none;
-            }
-
             section {
-                padding-top: 80px;
-
-                padding-bottom: 80px;
+                padding: 80px 5%;
             }
 
-            .topics-header {
-                flex-direction: column;
-
-                align-items: flex-start;
-
-                gap: 20px;
-            }
-
-            .topics-grid {
+            .curriculum-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .book-section {
-                flex-direction: column;
-
-                gap: 40px;
-
-                text-align: center;
-
-                padding-left: 6%;
-
-                padding-right: 6%;
-            }
-
-            .book-image {
-                flex: none;
-
-                width: 100%;
-
-                justify-content: center;
             }
 
             .book-image img {
-                width: min(330px, 85vw);
-            }
-
-            .book-content {
-                flex: none;
-
-                width: 100%;
-            }
-
-            .book-content > p {
-                margin-left: auto;
-
-                margin-right: auto;
-            }
-
-            .coming-soon-box {
-                margin-left: auto;
-
-                margin-right: auto;
-            }
-
-            .book-details {
-                text-align: left;
-
-                max-width: 430px;
-
-                margin: 0 auto;
-            }
-
-            .learning-layout {
-                grid-template-columns: 1fr;
-
-                gap: 45px;
-            }
-
-            .author-layout {
-                grid-template-columns: 1fr;
-
-                gap: 45px;
+                width: 280px;
             }
 
             footer {
                 flex-direction: column;
-
                 gap: 15px;
-
                 text-align: center;
             }
 
-            .auth-modal {
-                padding: 35px 25px;
-            }
-
-            .auth-modal h2 {
-                font-size: 36px;
-            }
-
-        }
-
-
-        /* =========================================
-           SMALL PHONES
-        ========================================= */
-
-        @media (max-width: 480px) {
-
-            .intro-logo {
-                font-size: 55px;
-            }
-
-            .intro-subtitle {
-                font-size: 9px;
-
-                letter-spacing: 2px;
-            }
-
-            .hero h1 {
-                font-size: 54px;
-            }
-
-            .hero p {
-                font-size: 15px;
-            }
-
-            .book-image img {
-                width: min(290px, 82vw);
-            }
-
-            .topic-card {
-                min-height: 260px;
-
-                padding: 28px;
+            .modal-box {
+                padding: 30px 25px;
             }
 
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-    <!-- =========================================
-         INTRO
-    ========================================= -->
+<!-- =====================================
+     INTRO
+====================================== -->
 
-    <div class="intro-screen">
+<div class="intro-screen">
 
-        <div class="intro-content">
+    <div class="intro-content">
 
-            <div class="intro-logo">
-                Edu<span>Nova</span>
-            </div>
+        <div class="intro-logo">
+            Edu<span>Nova</span>
+        </div>
 
-            <div class="intro-line"></div>
+        <div class="intro-line"></div>
 
-            <div class="intro-subtitle">
-                ADVANCED MATHEMATICS • 2026
-            </div>
+        <div class="intro-subtitle">
+            ADVANCED MATHEMATICS • 2026
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     NAVIGATION
+====================================== -->
+
+<nav>
+
+    <div class="logo">
+        Edu<span>Nova</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#home">HOME</a>
+        <a href="#curriculum">MATHEMATICS</a>
+        <a href="#book">BOOK</a>
+        <a href="#learning">LEARNING</a>
+        <a href="#author">ABOUT</a>
+
+    </div>
+
+    <div class="auth-buttons">
+
+        <button
+            class="login-button"
+            onclick="openLogin()"
+        >
+            LOG IN
+        </button>
+
+        <button
+            class="signup-button"
+            onclick="openSignup()"
+        >
+            SIGN UP
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================
+     HERO
+====================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            GRADE 12 • ADVANCED MATHEMATICS
+        </div>
+
+        <h1>
+            Mathematics,<br>
+            <span>reimagined.</span>
+        </h1>
+
+        <p>
+            EduNova is a new approach to advanced mathematics,
+            designed to make difficult ideas clearer, more engaging
+            and more meaningful.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#curriculum"
+                class="primary-button"
+            >
+                EXPLORE CURRICULUM →
+            </a>
+
+            <a
+                href="#book"
+                class="secondary-button"
+            >
+                DISCOVER THE BOOK
+            </a>
 
         </div>
 
     </div>
 
+    <div class="math-decoration"></div>
 
-    <!-- =========================================
-         NAVIGATION
-    ========================================= -->
-
-    <nav>
-
-        <div class="logo">
-            Edu<span>Nova</span>
-        </div>
-
-        <ul>
-
-            <li>
-                <a href="#home">Home</a>
-            </li>
-
-            <li>
-                <a href="#mathematics">Mathematics</a>
-            </li>
-
-            <li>
-                <a href="#book">Book</a>
-            </li>
-
-            <li>
-                <a href="#learning">Learning</a>
-            </li>
-
-            <li>
-                <a href="#author">Author</a>
-            </li>
-
-            <!-- AUTH BUTTONS -->
-
-            <li class="auth-buttons" id="authButtons">
-
-                <button
-                    class="auth-button login-button"
-                    onclick="openAuth('login')"
-                >
-                    Log In
-                </button>
-
-                <button
-                    class="auth-button signup-button"
-                    onclick="openAuth('signup')"
-                >
-                    Sign Up
-                </button>
-
-            </li>
+</section>
 
 
-            <!-- LOGGED IN -->
 
-            <li
-                class="user-area"
-                id="userArea"
-            >
+<!-- =====================================
+     CURRICULUM
+====================================== -->
 
-                <span
-                    class="user-name"
-                    id="userName"
-                ></span>
+<section
+    class="curriculum"
+    id="curriculum"
+>
 
-                <button
-                    class="logout-button"
-                    onclick="logoutUser()"
-                >
-                    Log Out
-                </button>
+    <div class="section-label">
+        THE CURRICULUM
+    </div>
 
-            </li>
+    <h2 class="section-title">
+        Six chapters.<br>
+        One mathematical journey.
+    </h2>
 
 
-            <li>
-
-                <a
-                    href="#start"
-                    class="nav-button"
-                >
-                    Start Learning
-                </a>
-
-            </li>
-
-        </ul>
-
-    </nav>
+    <div class="curriculum-grid">
 
 
-    <!-- =========================================
-         HERO
-    ========================================= -->
+        <div class="curriculum-card">
 
-    <section
-        class="hero"
-        id="home"
-    >
-
-        <div class="hero-content">
-
-            <div class="eyebrow">
-                GRADE 12 • ADVANCED MATHEMATICS
+            <div class="chapter-number">
+                CHAPTER 01
             </div>
 
-            <h1>
-                Mathematics,<br>
-                <span>reimagined.</span>
-            </h1>
+            <h3>Algebra</h3>
 
             <p>
-                A new way to explore advanced mathematics.
-                Built to help students understand the ideas behind
-                the formulas, not simply memorize them.
+                Expressions, equations, sequences and
+                the structures behind algebraic thinking.
             </p>
 
-            <div class="hero-buttons">
-
-                <a
-                    href="#mathematics"
-                    class="primary-button"
-                >
-                    Explore Mathematics
-                </a>
-
-                <a
-                    href="#book"
-                    class="secondary-button"
-                >
-                    Discover the Book
-                </a>
-
-            </div>
+            <a href="#" class="chapter-button">
+                ABOUT THE CHAPTER →
+            </a>
 
         </div>
 
 
-        <div class="math-decoration">
+        <div class="curriculum-card">
 
-            <div class="orbit"></div>
-
-            <div class="dot"></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================================
-         CURRICULUM
-    ========================================= -->
-
-    <section
-        class="topics-section"
-        id="mathematics"
-    >
-
-        <div class="topics-header">
-
-            <div>
-
-                <div class="section-label">
-                    THE CURRICULUM
-                </div>
-
-                <h2 class="section-title">
-                    Think beyond<br>
-                    the formula.
-                </h2>
-
+            <div class="chapter-number">
+                CHAPTER 02
             </div>
+
+            <h3>Functions</h3>
 
             <p>
-                Explore the major ideas of Grade 12 Advanced Mathematics
-                through clear explanations, logical reasoning and
-                meaningful problem solving.
+                Understand functions, transformations,
+                graphs and mathematical relationships.
             </p>
 
-        </div>
-
-
-        <div class="topics-grid">
-
-
-            <!-- ALGEBRA -->
-
-            <div class="topic-card">
-
-                <div class="topic-number">
-                    CHAPTER 01
-                </div>
-
-                <h3>
-                    Algebra
-                </h3>
-
-                <p>
-                    Expressions, equations, sequences and the structures
-                    that make algebra work.
-                </p>
-
-                <a
-                    href="#learning"
-                    class="chapter-link"
-                >
-                    ABOUT THE CHAPTER
-                    <span>→</span>
-                </a>
-
-            </div>
-
-
-            <!-- FUNCTIONS -->
-
-            <div class="topic-card">
-
-                <div class="topic-number">
-                    CHAPTER 02
-                </div>
-
-                <h3>
-                    Functions
-                </h3>
-
-                <p>
-                    Discover how functions behave, transform and connect
-                    different mathematical ideas.
-                </p>
-
-                <a
-                    href="#learning"
-                    class="chapter-link"
-                >
-                    ABOUT THE CHAPTER
-                    <span>→</span>
-                </a>
-
-            </div>
-
-
-            <!-- TRIGONOMETRY -->
-
-            <div class="topic-card">
-
-                <div class="topic-number">
-                    CHAPTER 03
-                </div>
-
-                <h3>
-                    Trigonometry
-                </h3>
-
-                <p>
-                    Explore identities, equations and the geometry hidden
-                    inside trigonometric relationships.
-                </p>
-
-                <a
-                    href="#learning"
-                    class="chapter-link"
-                >
-                    ABOUT THE CHAPTER
-                    <span>→</span>
-                </a>
-
-            </div>
-
-
-            <!-- CALCULUS -->
-
-            <div class="topic-card">
-
-                <div class="topic-number">
-                    CHAPTER 04
-                </div>
-
-                <h3>
-                    Calculus
-                </h3>
-
-                <p>
-                    Understand change, rates, derivatives, integrals
-                    and the mathematics of continuous quantities.
-                </p>
-
-                <a
-                    href="#learning"
-                    class="chapter-link"
-                >
-                    ABOUT THE CHAPTER
-                    <span>→</span>
-                </a>
-
-            </div>
-
-
-            <!-- COMPLEX NUMBERS -->
-
-            <div class="topic-card">
-
-                <div class="topic-number">
-                    CHAPTER 05
-                </div>
-
-                <h3>
-                    Complex Numbers
-                </h3>
-
-                <p>
-                    Enter the complex plane and discover a broader
-                    perspective on numbers and equations.
-                </p>
-
-                <a
-                    href="#learning"
-                    class="chapter-link"
-                >
-                    ABOUT THE CHAPTER
-                    <span>→</span>
-                </a>
-
-            </div>
-
-
-            <!-- PROBABILITY -->
-
-            <div class="topic-card">
-
-                <div class="topic-number">
-                    CHAPTER 06
-                </div>
-
-                <h3>
-                    Probability
-                </h3>
-
-                <p>
-                    Learn how mathematics describes uncertainty,
-                    patterns and the behavior of random events.
-                </p>
-
-                <a
-                    href="#learning"
-                    class="chapter-link"
-                >
-                    ABOUT THE CHAPTER
-                    <span>→</span>
-                </a>
-
-            </div>
-
+            <a href="#" class="chapter-button">
+                ABOUT THE CHAPTER →
+            </a>
 
         </div>
 
-    </section>
+
+        <div class="curriculum-card">
+
+            <div class="chapter-number">
+                CHAPTER 03
+            </div>
+
+            <h3>Trigonometry</h3>
+
+            <p>
+                Explore identities, equations and the
+                geometry hidden within trigonometry.
+            </p>
+
+            <a href="#" class="chapter-button">
+                ABOUT THE CHAPTER →
+            </a>
+
+        </div>
 
 
-    <!-- =========================================
-         BOOK
-    ========================================= -->
+        <div class="curriculum-card">
 
-    <section
-        class="book-section"
-        id="book"
-    >
+            <div class="chapter-number">
+                CHAPTER 04
+            </div>
+
+            <h3>Calculus</h3>
+
+            <p>
+                Discover derivatives, integrals and
+                the mathematics of continuous change.
+            </p>
+
+            <a href="#" class="chapter-button">
+                ABOUT THE CHAPTER →
+            </a>
+
+        </div>
+
+
+        <div class="curriculum-card">
+
+            <div class="chapter-number">
+                CHAPTER 05
+            </div>
+
+            <h3>Complex Numbers</h3>
+
+            <p>
+                Enter the complex plane and discover
+                a wider world of mathematical numbers.
+            </p>
+
+            <a href="#" class="chapter-button">
+                ABOUT THE CHAPTER →
+            </a>
+
+        </div>
+
+
+        <div class="curriculum-card">
+
+            <div class="chapter-number">
+                CHAPTER 06
+            </div>
+
+            <h3>Probability</h3>
+
+            <p>
+                Explore uncertainty, patterns and
+                mathematical models of random events.
+            </p>
+
+            <a href="#" class="chapter-button">
+                ABOUT THE CHAPTER →
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     BOOK
+====================================== -->
+
+<section id="book">
+
+    <div class="book-section">
+
 
         <div class="book-image">
 
@@ -1860,21 +1150,19 @@
                 is coming.
             </h2>
 
-            <p>
-                The first EduNova Mathematics textbook is currently
-                in development. Designed for Grade 12 Advanced Mathematics,
-                it aims to bring together rigorous mathematics, clear
-                explanations and a genuine love for the subject.
+            <p class="book-description">
+                The first EduNova Mathematics textbook is
+                currently being developed. It will bring
+                Grade 12 Advanced Mathematics together in
+                one carefully designed learning experience.
             </p>
 
 
-            <div class="coming-soon-box">
+            <div class="coming-soon">
 
-                <span class="coming-dot"></span>
+                <span class="pulse"></span>
 
-                <strong>
-                    COMING SOON
-                </strong>
+                COMING SOON
 
             </div>
 
@@ -1900,291 +1188,251 @@
                 class="notify-button"
                 onclick="notifyMe()"
             >
-                🔔 Notify Me When It's Released
+                🔔 NOTIFY ME WHEN IT'S RELEASED
             </button>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =========================================
-         LEARNING
-    ========================================= -->
 
-    <section
-        class="learning-section"
-        id="learning"
-    >
+<!-- =====================================
+     LEARNING
+====================================== -->
 
-        <div class="learning-layout">
+<section
+    class="learning"
+    id="learning"
+>
 
-            <div class="learning-text">
+    <div class="learning-content">
 
-                <div class="section-label">
-                    THE EDUNOVA METHOD
-                </div>
-
-                <h2 class="section-title">
-                    Don't just<br>
-                    memorize.<br>
-                    Understand.
-                </h2>
-
-                <p>
-                    Mathematics becomes much more powerful when you
-                    understand why something works. EduNova focuses on
-                    reasoning, connections and the ideas behind the
-                    mathematics.
-                </p>
-
-            </div>
-
-
-            <div class="equation-box">
-
-                <div class="equation">
-                    f(x) = x² + 2x + 1
-                </div>
-
-                <div class="equation-small">
-                    Every formula has a story.
-                </div>
-
-            </div>
-
+        <div class="section-label">
+            THE EDUNOVA METHOD
         </div>
 
-    </section>
-
-
-    <!-- =========================================
-         AUTHOR
-    ========================================= -->
-
-    <section
-        class="author-section"
-        id="author"
-    >
-
-        <div class="author-layout">
-
-
-            <div>
-
-                <div class="section-label">
-                    THE CREATOR
-                </div>
-
-                <h2 class="section-title">
-                    Mathematics,<br>
-                    with passion.
-                </h2>
-
-            </div>
-
-
-            <div class="author-text">
-
-                <p>
-                    Nihad Latreche is an Algerian mathematics enthusiast
-                    with a deep passion for exploring the beauty, logic
-                    and creativity behind mathematics.
-                </p>
-
-                <p>
-                    EduNova was born from a simple vision: to make
-                    advanced mathematics clearer, more engaging and
-                    more meaningful for students.
-                </p>
-
-                <p>
-                    Through EduNova, Nihad aims to create educational
-                    resources that encourage curiosity, logical thinking
-                    and a genuine understanding of mathematical ideas.
-                </p>
-
-                <p>
-                    The journey begins with Grade 12 Advanced Mathematics,
-                    with the ambition of growing EduNova into a broader
-                    mathematical learning platform.
-                </p>
-
-
-                <div class="author-name">
-
-                    <strong>
-                        Nihad Latreche
-                    </strong>
-
-                    <span>
-                        Algerian Mathematics Enthusiast • Founder & Author of EduNova
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================================
-         FOOTER
-    ========================================= -->
-
-    <footer id="start">
-
-        <div class="footer-logo">
-            Edu<span>Nova</span>
-        </div>
+        <h2 class="section-title">
+            Don't just memorize.<br>
+            Understand.
+        </h2>
 
         <p>
-            © 2026 EduNova. Mathematics, reimagined.
+            Mathematics becomes much more powerful when you
+            understand why something works instead of simply
+            remembering how to do it.
         </p>
 
-    </footer>
+        <div class="equation-box">
+            f(x) = x² + 2x + 1
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- =========================================
-         LOGIN / SIGN UP MODAL
-    ========================================= -->
 
-    <div
-        class="auth-overlay"
-        id="authOverlay"
-        onclick="closeAuthOutside(event)"
-    >
+<!-- =====================================
+     AUTHOR
+====================================== -->
 
-        <div class="auth-modal">
+<section
+    class="author"
+    id="author"
+>
 
-            <button
-                class="auth-close"
-                onclick="closeAuth()"
-            >
-                ×
-            </button>
+    <div class="section-label">
+        ABOUT THE AUTHOR
+    </div>
+
+    <h2>
+        Mathematics with purpose.
+    </h2>
+
+    <p>
+        Nihad Latreche is an Algerian mathematics passionate
+        person with a deep interest in exploring the beauty,
+        logic and creativity behind mathematics.
+
+        <br><br>
+
+        EduNova was created from a simple vision:
+        to make advanced mathematics clearer, more engaging
+        and more meaningful for students.
+
+        <br><br>
+
+        The journey begins with Grade 12 Advanced Mathematics,
+        with the ambition of growing EduNova into a broader
+        mathematical learning platform.
+    </p>
 
 
-            <div class="section-label">
-                EDUNOVA ACCOUNT
+    <div class="author-name">
+
+        <strong>
+            Nihad Latreche
+        </strong>
+
+        <span>
+            ALGERIAN MATHEMATICS ENTHUSIAST • FOUNDER & AUTHOR OF EDUNOVA
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     FOOTER
+====================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        Edu<span>Nova</span>
+    </div>
+
+    <p>
+        © 2026 EduNova. Mathematics, reimagined.
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================
+     AUTH MODAL
+====================================== -->
+
+<div
+    class="modal"
+    id="authModal"
+>
+
+    <div class="modal-box">
+
+        <button
+            class="close-modal"
+            onclick="closeModal()"
+        >
+            ×
+        </button>
+
+
+        <!-- LOGIN -->
+
+        <div id="loginForm">
+
+            <div class="modal-label">
+                WELCOME BACK
             </div>
 
-
-            <h2 id="authTitle">
-                Welcome back.
+            <h2 class="modal-title">
+                Log in.
             </h2>
 
 
-            <p
-                class="auth-subtitle"
-                id="authSubtitle"
-            >
-                Log in to your EduNova account and continue your
-                mathematical journey.
-            </p>
-
-
-            <form
-                class="auth-form"
-                id="authForm"
-                onsubmit="handleAuth(event)"
-            >
-
-
-                <div
-                    id="nameField"
-                    style="display:none;"
-                >
-
-                    <label for="authName">
-                        NAME
-                    </label>
-
-                    <input
-                        id="authName"
-                        type="text"
-                        autocomplete="name"
-                        placeholder="Your name"
-                    >
-
-                </div>
-
-
-                <label for="authEmail">
-                    EMAIL
-                </label>
+            <div class="auth-form">
 
                 <input
-                    id="authEmail"
-                    type="email"
-                    autocomplete="email"
-                    placeholder="you@example.com"
-                    required
+                    type="text"
+                    id="loginUsername"
+                    placeholder="Username"
                 >
 
-
-                <label for="authPassword">
-                    PASSWORD
-                </label>
-
                 <input
-                    id="authPassword"
                     type="password"
-                    autocomplete="current-password"
-                    placeholder="Enter your password"
-                    required
+                    id="loginPassword"
+                    placeholder="Password"
                 >
-
-
-                <div
-                    id="confirmField"
-                    style="display:none;"
-                >
-
-                    <label for="authConfirm">
-                        CONFIRM PASSWORD
-                    </label>
-
-                    <input
-                        id="authConfirm"
-                        type="password"
-                        autocomplete="new-password"
-                        placeholder="Enter your password again"
-                    >
-
-                </div>
-
-
-                <div
-                    class="auth-message"
-                    id="authMessage"
-                ></div>
-
 
                 <button
                     class="auth-submit"
-                    id="authSubmit"
-                    type="submit"
+                    onclick="loginUser()"
                 >
-                    Log In
+                    LOG IN →
                 </button>
 
-            </form>
+            </div>
 
 
-            <div class="auth-switch">
+            <div class="switch-auth">
 
-                <span id="authSwitchText">
-                    Don't have an account?
-                </span>
+                Don't have an account?
+
+                <button onclick="showSignup()">
+                    Sign Up
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SIGN UP -->
+
+        <div
+            id="signupForm"
+            style="display:none;"
+        >
+
+            <div class="modal-label">
+                JOIN EDUNOVA
+            </div>
+
+            <h2 class="modal-title">
+                Sign up.
+            </h2>
+
+
+            <div class="auth-form">
+
+                <input
+                    type="text"
+                    id="signupUsername"
+                    placeholder="Choose a username"
+                >
+
+                <input
+                    type="email"
+                    id="signupEmail"
+                    placeholder="Email address"
+                >
+
+                <input
+                    type="password"
+                    id="signupPassword"
+                    placeholder="Password"
+                >
+
+                <input
+                    type="password"
+                    id="signupConfirm"
+                    placeholder="Confirm password"
+                >
 
                 <button
-                    id="authSwitchButton"
-                    onclick="switchAuth()"
+                    class="auth-submit"
+                    onclick="signupUser()"
                 >
-                    Sign Up
+                    CREATE ACCOUNT →
+                </button>
+
+            </div>
+
+
+            <div class="switch-auth">
+
+                Already have an account?
+
+                <button onclick="showLogin()">
+                    Log In
                 </button>
 
             </div>
@@ -2193,542 +1441,313 @@
 
     </div>
 
-
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================= -->
-
-    <script>
-
-        /* BOOK NOTIFICATION */
-
-        function notifyMe() {
-
-            alert(
-                "EduNova Book notifications are coming soon! 📖"
-            );
-
-        }
+</div>
 
 
-        /* AUTHENTICATION */
 
-        let authMode = "login";
+<script>
 
 
-        function openAuth(mode) {
+    /* =================================
+       MODAL CONTROLS
+    ================================= */
 
-            authMode = mode;
+    function openLogin() {
 
-            updateAuthModal();
+        document
+            .getElementById("authModal")
+            .classList.add("active");
 
+        showLogin();
+
+    }
+
+
+    function openSignup() {
+
+        document
+            .getElementById("authModal")
+            .classList.add("active");
+
+        showSignup();
+
+    }
+
+
+    function closeModal() {
+
+        document
+            .getElementById("authModal")
+            .classList.remove("active");
+
+    }
+
+
+    function showLogin() {
+
+        document.getElementById("loginForm").style.display = "block";
+
+        document.getElementById("signupForm").style.display = "none";
+
+    }
+
+
+    function showSignup() {
+
+        document.getElementById("loginForm").style.display = "none";
+
+        document.getElementById("signupForm").style.display = "block";
+
+    }
+
+
+
+    /* =================================
+       SIGN UP
+    ================================= */
+
+    function signupUser() {
+
+        const username =
             document
-                .getElementById("authOverlay")
-                .classList
-                .add("active");
+                .getElementById("signupUsername")
+                .value
+                .trim();
 
-            document.body.style.overflow = "hidden";
-
-            setTimeout(function() {
-
-                document
-                    .getElementById("authEmail")
-                    .focus();
-
-            }, 100);
-
-        }
-
-
-        function closeAuth() {
-
+        const email =
             document
-                .getElementById("authOverlay")
-                .classList
-                .remove("active");
+                .getElementById("signupEmail")
+                .value
+                .trim();
 
-            document.body.style.overflow = "";
-
+        const password =
             document
-                .getElementById("authForm")
-                .reset();
+                .getElementById("signupPassword")
+                .value;
 
+        const confirm =
             document
-                .getElementById("authMessage")
-                .textContent = "";
-
-        }
-
-
-        function closeAuthOutside(event) {
-
-            if (
-                event.target ===
-                document.getElementById("authOverlay")
-            ) {
-
-                closeAuth();
-
-            }
-
-        }
-
-
-        function switchAuth() {
-
-            authMode =
-                authMode === "login"
-                    ? "signup"
-                    : "login";
-
-            updateAuthModal();
-
-            document
-                .getElementById("authForm")
-                .reset();
-
-            document
-                .getElementById("authMessage")
-                .textContent = "";
-
-        }
-
-
-        function updateAuthModal() {
-
-            const signup =
-                authMode === "signup";
-
-
-            document
-                .getElementById("authTitle")
-                .textContent =
-                    signup
-                        ? "Create your account."
-                        : "Welcome back.";
-
-
-            document
-                .getElementById("authSubtitle")
-                .textContent =
-                    signup
-                        ? "Create an EduNova account and get ready for a smarter way to learn mathematics."
-                        : "Log in to your EduNova account and continue your mathematical journey.";
-
-
-            document
-                .getElementById("authSubmit")
-                .textContent =
-                    signup
-                        ? "Create Account"
-                        : "Log In";
-
-
-            document
-                .getElementById("nameField")
-                .style.display =
-                    signup
-                        ? "block"
-                        : "none";
-
-
-            document
-                .getElementById("confirmField")
-                .style.display =
-                    signup
-                        ? "block"
-                        : "none";
-
-
-            document
-                .getElementById("authSwitchText")
-                .textContent =
-                    signup
-                        ? "Already have an account?"
-                        : "Don't have an account?";
-
-
-            document
-                .getElementById("authSwitchButton")
-                .textContent =
-                    signup
-                        ? "Log In"
-                        : "Sign Up";
-
-
-            document
-                .getElementById("authPassword")
-                .autocomplete =
-                    signup
-                        ? "new-password"
-                        : "current-password";
-
-        }
-
-
-        function getAccounts() {
-
-            try {
-
-                return JSON.parse(
-                    localStorage.getItem("edunovaAccounts")
-                ) || [];
-
-            }
-
-            catch (error) {
-
-                return [];
-
-            }
-
-        }
-
-
-        function saveAccounts(accounts) {
-
-            localStorage.setItem(
-                "edunovaAccounts",
-                JSON.stringify(accounts)
-            );
-
-        }
-
-
-        function handleAuth(event) {
-
-            event.preventDefault();
-
-
-            const email =
-                document
-                    .getElementById("authEmail")
-                    .value
-                    .trim()
-                    .toLowerCase();
-
-
-            const password =
-                document
-                    .getElementById("authPassword")
-                    .value;
-
-
-            if (authMode === "signup") {
-
-                const name =
-                    document
-                        .getElementById("authName")
-                        .value
-                        .trim();
-
-
-                const confirm =
-                    document
-                        .getElementById("authConfirm")
-                        .value;
-
-
-                if (!name) {
-
-                    showAuthMessage(
-                        "Please enter your name.",
-                        true
-                    );
-
-                    return;
-
-                }
-
-
-                if (password.length < 6) {
-
-                    showAuthMessage(
-                        "Password must be at least 6 characters.",
-                        true
-                    );
-
-                    return;
-
-                }
-
-
-                if (password !== confirm) {
-
-                    showAuthMessage(
-                        "The passwords do not match.",
-                        true
-                    );
-
-                    return;
-
-                }
-
-
-                const accounts =
-                    getAccounts();
-
-
-                if (
-                    accounts.some(
-                        account =>
-                            account.email === email
-                    )
-                ) {
-
-                    showAuthMessage(
-                        "An account with this email already exists.",
-                        true
-                    );
-
-                    return;
-
-                }
-
-
-                /*
-                    DEMO ACCOUNT SYSTEM
-
-                    This stores the test account
-                    in this browser only.
-
-                    A real public authentication
-                    system will be connected later.
-                */
-
-                accounts.push({
-
-                    name: name,
-
-                    email: email,
-
-                    password: password
-
-                });
-
-
-                saveAccounts(accounts);
-
-
-                localStorage.setItem(
-                    "edunovaLoggedIn",
-                    JSON.stringify({
-
-                        name: name,
-
-                        email: email
-
-                    })
-                );
-
-
-                closeAuth();
-
-                updateUserArea();
-
-
-                alert(
-                    "Welcome to EduNova, " +
-                    name +
-                    "! 🎓"
-                );
-
-
-                return;
-
-            }
-
-
-            /* LOGIN */
-
-            const accounts =
-                getAccounts();
-
-
-            const account =
-                accounts.find(
-                    item =>
-                        item.email === email &&
-                        item.password === password
-                );
-
-
-            if (!account) {
-
-                showAuthMessage(
-                    "Email or password is incorrect.",
-                    true
-                );
-
-                return;
-
-            }
-
-
-            localStorage.setItem(
-                "edunovaLoggedIn",
-                JSON.stringify({
-
-                    name: account.name,
-
-                    email: account.email
-
-                })
-            );
-
-
-            closeAuth();
-
-            updateUserArea();
-
-
-            alert(
-                "Welcome back, " +
-                account.name +
-                "! 📚"
-            );
-
-        }
-
-
-        function showAuthMessage(
-            text,
-            error
+                .getElementById("signupConfirm")
+                .value;
+
+
+        if (
+            username === "" ||
+            email === "" ||
+            password === "" ||
+            confirm === ""
         ) {
 
-            const message =
-                document.getElementById(
-                    "authMessage"
-                );
+            alert("Please fill in all fields.");
 
-
-            message.textContent =
-                text;
-
-
-            message.style.color =
-                error
-                    ? "#e52b20"
-                    : "#227a3b";
+            return;
 
         }
 
 
-        function updateUserArea() {
+        if (password.length < 6) {
 
-            const authButtons =
-                document.getElementById(
-                    "authButtons"
-                );
+            alert("Password must be at least 6 characters.");
 
-
-            const userArea =
-                document.getElementById(
-                    "userArea"
-                );
-
-
-            const userName =
-                document.getElementById(
-                    "userName"
-                );
-
-
-            let loggedIn = null;
-
-
-            try {
-
-                loggedIn =
-                    JSON.parse(
-                        localStorage.getItem(
-                            "edunovaLoggedIn"
-                        )
-                    );
-
-            }
-
-            catch (error) {
-
-                loggedIn = null;
-
-            }
-
-
-            if (loggedIn) {
-
-                authButtons.style.display =
-                    "none";
-
-
-                userArea.style.display =
-                    "flex";
-
-
-                userName.textContent =
-                    "Hi, " +
-                    loggedIn.name;
-
-            }
-
-            else {
-
-                authButtons.style.display =
-                    "flex";
-
-
-                userArea.style.display =
-                    "none";
-
-
-                userName.textContent =
-                    "";
-
-            }
+            return;
 
         }
 
 
-        function logoutUser() {
+        if (password !== confirm) {
 
-            localStorage.removeItem(
-                "edunovaLoggedIn"
-            );
+            alert("Passwords do not match.");
 
-
-            updateUserArea();
-
-
-            alert(
-                "You have been logged out of EduNova."
-            );
+            return;
 
         }
 
 
-        /* ESCAPE CLOSES MODAL */
+        const existingUser =
+            localStorage.getItem("eduNovaUser_" + email);
 
-        document.addEventListener(
-            "keydown",
-            function(event) {
 
-                if (
-                    event.key === "Escape"
-                ) {
+        if (existingUser) {
 
-                    closeAuth();
+            alert("An account with this email already exists.");
 
-                }
+            return;
 
-            }
+        }
+
+
+        const user = {
+
+            username: username,
+
+            email: email,
+
+            password: password
+
+        };
+
+
+        localStorage.setItem(
+            "eduNovaUser_" + email,
+            JSON.stringify(user)
         );
 
 
-        /* CHECK LOGIN ON PAGE LOAD */
+        /* Automatically sign them in */
 
-        updateUserArea();
+        localStorage.setItem(
+            "eduNovaUsername",
+            username
+        );
 
-    </script>
+        localStorage.setItem(
+            "eduNovaEmail",
+            email
+        );
+
+
+        alert(
+            "Welcome to EduNova, " +
+            username +
+            "! 🎓"
+        );
+
+
+        window.location.href = "dashboard.html";
+
+    }
+
+
+
+    /* =================================
+       LOG IN
+    ================================= */
+
+    function loginUser() {
+
+        const username =
+            document
+                .getElementById("loginUsername")
+                .value
+                .trim();
+
+        const password =
+            document
+                .getElementById("loginPassword")
+                .value;
+
+
+        if (
+            username === "" ||
+            password === ""
+        ) {
+
+            alert("Please enter your username and password.");
+
+            return;
+
+        }
+
+
+        /*
+         * Search through stored accounts.
+         */
+
+        let foundUser = null;
+
+
+        for (
+            let i = 0;
+            i < localStorage.length;
+            i++
+        ) {
+
+            const key =
+                localStorage.key(i);
+
+
+            if (
+                key &&
+                key.startsWith("eduNovaUser_")
+            ) {
+
+                const savedUser =
+                    JSON.parse(
+                        localStorage.getItem(key)
+                    );
+
+
+                if (
+                    savedUser.username.toLowerCase()
+                    === username.toLowerCase()
+                    &&
+                    savedUser.password === password
+                ) {
+
+                    foundUser = savedUser;
+
+                    break;
+
+                }
+
+            }
+
+        }
+
+
+        if (!foundUser) {
+
+            alert(
+                "Incorrect username or password."
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * Save the signed-in user.
+         */
+
+        localStorage.setItem(
+            "eduNovaUsername",
+            foundUser.username
+        );
+
+        localStorage.setItem(
+            "eduNovaEmail",
+            foundUser.email
+        );
+
+
+        /*
+         * MOVE TO DASHBOARD
+         */
+
+        window.location.href =
+            "dashboard.html";
+
+    }
+
+
+
+    /* =================================
+       NOTIFY BUTTON
+    ================================= */
+
+    function notifyMe() {
+
+        alert(
+            "EduNova book notifications are coming soon! 📖"
+        );
+
+    }
+
+
+</script>
+
 
 </body>
+
 </html>
