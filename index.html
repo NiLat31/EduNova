@@ -307,7 +307,102 @@
       font-size: 48px;
       color: #eeeeee;
     }
+    /* BOOK */
 
+    .book-section {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 90px;
+      align-items: center;
+      background: #fafafa;
+    }
+
+    .book-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .book-image img {
+      width: min(330px, 85%);
+      border-radius: 5px;
+      box-shadow:
+        0 25px 50px rgba(0,0,0,0.18),
+        0 5px 15px rgba(0,0,0,0.08);
+      transition: 0.4s ease;
+    }
+
+    .book-image img:hover {
+      transform: translateY(-10px) rotate(-1deg);
+      box-shadow:
+        0 35px 65px rgba(0,0,0,0.22),
+        0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .book-content {
+      max-width: 650px;
+    }
+
+    .book-content p {
+      color: #666;
+      line-height: 1.8;
+      font-size: 17px;
+      margin-bottom: 30px;
+    }
+
+    .coming-soon {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 15px;
+      border: 1px solid #e52b20;
+      border-radius: 50px;
+      color: #e52b20;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-bottom: 30px;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e52b20;
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(229,43,32,0.4);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(229,43,32,0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(229,43,32,0);
+      }
+    }
+
+    .book-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-top: 22px;
+      border-top: 1px solid #ddd;
+    }
+
+    .book-details strong {
+      font-family: "Playfair Display", serif;
+      font-size: 23px;
+    }
+
+    .book-details span {
+      color: #777;
+      font-size: 14px;
+    }
     /* LEARNING */
 
     .learning {
@@ -424,7 +519,19 @@
     /* MOBILE */
 
     @media (max-width: 900px) {
+      .book-section {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+      }
 
+      .book-content {
+        margin: auto;
+      }
+
+      .book-details {
+        text-align: left;
+      }
       .nav-links {
         display: none;
       }
@@ -503,7 +610,8 @@
     <div class="nav-links">
       <a href="#home">Home</a>
       <a href="#topics">Mathematics</a>
-      <a href="#learning">Learning</a>
+      <a href="#book">Book</a>
+<a href="#learning">Learning</a>
       <a href="#about">About</a>
       <a href="#topics" class="nav-button">Start Learning</a>
     </div>
@@ -638,7 +746,46 @@
 
 
   <!-- LEARNING -->
+  <!-- BOOK -->
 
+  <section class="book-section" id="book">
+
+    <div class="book-image">
+      <img src="edunova-book-cover.png" alt="EduNova Mathematics Grade 12 book cover">
+    </div>
+
+    <div class="book-content">
+
+      <div class="section-label">
+        THE EDUNOVA SERIES
+      </div>
+
+      <h2 class="section-title">
+        Something new<br>
+        is coming.
+      </h2>
+
+      <p>
+        The first EduNova Mathematics textbook is currently
+        in development. Designed for Grade 12 Advanced Mathematics,
+        it will bring together clear explanations, challenging
+        problems and a deeper understanding of mathematics.
+      </p>
+
+      <div class="coming-soon">
+        <span class="pulse"></span>
+        COMING SOON
+      </div>
+
+      <div class="book-details">
+        <strong>EduNova Mathematics</strong>
+        <span>Grade 12 • Advanced Mathematics</span>
+        <span>First Edition</span>
+      </div>
+
+    </div>
+
+  </section>
   <section class="learning" id="learning">
 
     <div class="learning-grid">
