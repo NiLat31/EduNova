@@ -171,7 +171,7 @@
         nav ul {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
             list-style: none;
         }
 
@@ -202,6 +202,273 @@
 
 
         /* =========================================
+           AUTH BUTTONS
+        ========================================= */
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .auth-button {
+            padding: 10px 15px;
+            border-radius: 3px;
+            font-family: "DM Sans", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-button {
+            background: transparent;
+            color: #111;
+            border: 1px solid #111;
+        }
+
+        .login-button:hover {
+            background: #111;
+            color: white;
+        }
+
+        .signup-button {
+            background: #e52b20;
+            color: white;
+            border: 1px solid #e52b20;
+        }
+
+        .signup-button:hover {
+            background: #111;
+            border-color: #111;
+            transform: translateY(-2px);
+        }
+
+        .user-area {
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-name {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .logout-button {
+            background: #111;
+            color: white;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 3px;
+            font-family: "DM Sans", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .logout-button:hover {
+            background: #e52b20;
+        }
+
+
+        /* =========================================
+           AUTH MODAL
+        ========================================= */
+
+        .auth-overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(17,17,17,0.75);
+            backdrop-filter: blur(5px);
+
+            z-index: 5000;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .auth-overlay.active {
+            display: flex;
+        }
+
+        .auth-modal {
+            width: min(440px, 100%);
+
+            background: #f7f6f2;
+
+            padding: 42px;
+
+            position: relative;
+
+            box-shadow: 0 25px 70px rgba(0,0,0,0.3);
+
+            animation: authAppear 0.3s ease;
+        }
+
+        @keyframes authAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+        .auth-close {
+            position: absolute;
+
+            top: 14px;
+            right: 18px;
+
+            border: none;
+            background: transparent;
+
+            font-size: 27px;
+
+            color: #555;
+
+            cursor: pointer;
+        }
+
+        .auth-close:hover {
+            color: #e52b20;
+        }
+
+        .auth-modal h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 42px;
+
+            line-height: 1.05;
+
+            margin-bottom: 12px;
+        }
+
+        .auth-subtitle {
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .auth-form label {
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+        }
+
+        .auth-form input {
+            width: 100%;
+
+            padding: 14px;
+
+            border: 1px solid #d5d4d0;
+
+            background: white;
+
+            color: #111;
+
+            outline: none;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 13px;
+        }
+
+        .auth-form input:focus {
+            border-color: #111;
+        }
+
+        .auth-submit {
+            margin-top: 8px;
+
+            padding: 15px;
+
+            background: #e52b20;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 3px;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .auth-submit:hover {
+            background: #111;
+
+            transform: translateY(-2px);
+        }
+
+        .auth-switch {
+            margin-top: 20px;
+
+            text-align: center;
+
+            color: #777;
+
+            font-size: 12px;
+        }
+
+        .auth-switch button {
+            border: none;
+
+            background: transparent;
+
+            color: #e52b20;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .auth-message {
+            min-height: 18px;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================
            HERO
         ========================================= */
 
@@ -220,7 +487,9 @@
 
         .hero-content {
             max-width: 720px;
+
             position: relative;
+
             z-index: 2;
         }
 
@@ -228,6 +497,7 @@
             color: #e52b20;
 
             font-size: 12px;
+
             font-weight: 700;
 
             letter-spacing: 3px;
@@ -265,7 +535,9 @@
 
         .hero-buttons {
             display: flex;
+
             gap: 14px;
+
             flex-wrap: wrap;
         }
 
@@ -278,6 +550,7 @@
             border-radius: 3px;
 
             font-size: 13px;
+
             font-weight: 700;
 
             text-decoration: none;
@@ -287,34 +560,42 @@
 
         .primary-button {
             background: #e52b20;
+
             color: white;
         }
 
         .primary-button:hover {
             background: #111;
+
             transform: translateY(-3px);
         }
 
         .secondary-button {
             border: 1px solid #111;
+
             color: #111;
         }
 
         .secondary-button:hover {
             background: #111;
+
             color: white;
         }
 
 
-        /* Mathematical decoration */
+        /* =========================================
+           MATHEMATICAL DECORATION
+        ========================================= */
 
         .math-decoration {
             position: absolute;
 
             right: 5%;
+
             top: 18%;
 
             width: 390px;
+
             height: 390px;
 
             border: 1px solid #d9d8d4;
@@ -336,6 +617,7 @@
             color: #e52b20;
 
             top: 75px;
+
             left: 125px;
         }
 
@@ -351,6 +633,7 @@
             color: #333;
 
             bottom: 58px;
+
             left: 80px;
         }
 
@@ -358,6 +641,7 @@
             position: absolute;
 
             width: 460px;
+
             height: 165px;
 
             border: 1px solid #ccc;
@@ -367,6 +651,7 @@
             transform: rotate(-25deg);
 
             top: 105px;
+
             right: -35px;
         }
 
@@ -374,6 +659,7 @@
             position: absolute;
 
             width: 12px;
+
             height: 12px;
 
             background: #e52b20;
@@ -381,6 +667,7 @@
             border-radius: 50%;
 
             top: 45px;
+
             right: 125px;
         }
 
@@ -452,6 +739,7 @@
             grid-template-columns: repeat(3, 1fr);
 
             border-top: 1px solid #ddd;
+
             border-left: 1px solid #ddd;
         }
 
@@ -461,6 +749,7 @@
             padding: 35px;
 
             border-right: 1px solid #ddd;
+
             border-bottom: 1px solid #ddd;
 
             position: relative;
@@ -470,6 +759,7 @@
             transition: 0.35s ease;
 
             display: flex;
+
             flex-direction: column;
         }
 
@@ -508,8 +798,6 @@
 
             margin-bottom: 25px;
         }
-
-        /* The old chapter sign */
 
         .chapter-link {
             margin-top: auto;
@@ -551,6 +839,7 @@
 
         .chapter-link:hover {
             background: #111;
+
             color: white;
 
             border-color: #111;
@@ -558,7 +847,7 @@
 
 
         /* =========================================
-           BOOK SECTION
+           BOOK
         ========================================= */
 
         .book-section {
@@ -577,6 +866,7 @@
             margin: 0 auto;
 
             padding-left: 5%;
+
             padding-right: 5%;
         }
 
@@ -599,8 +889,7 @@
 
             display: block;
 
-            box-shadow:
-                0 25px 45px rgba(0,0,0,0.17);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.17);
 
             transition: 0.4s ease;
         }
@@ -629,9 +918,6 @@
             margin-bottom: 25px;
         }
 
-
-        /* WHITE COMING SOON BOX */
-
         .coming-soon-box {
             background: white;
 
@@ -654,6 +940,7 @@
 
         .coming-dot {
             width: 9px;
+
             height: 9px;
 
             flex-shrink: 0;
@@ -943,7 +1230,7 @@
             }
 
             nav ul {
-                gap: 16px;
+                gap: 13px;
             }
 
             .hero {
@@ -1001,13 +1288,14 @@
 
                 justify-content: center;
 
-                gap: 12px 18px;
+                gap: 12px 15px;
             }
 
             .hero {
                 min-height: 80vh;
 
                 padding-top: 70px;
+
                 padding-bottom: 70px;
             }
 
@@ -1021,6 +1309,7 @@
 
             section {
                 padding-top: 80px;
+
                 padding-bottom: 80px;
             }
 
@@ -1036,9 +1325,6 @@
                 grid-template-columns: 1fr;
             }
 
-
-            /* BOOK MOBILE */
-
             .book-section {
                 flex-direction: column;
 
@@ -1047,6 +1333,7 @@
                 text-align: center;
 
                 padding-left: 6%;
+
                 padding-right: 6%;
             }
 
@@ -1070,11 +1357,13 @@
 
             .book-content > p {
                 margin-left: auto;
+
                 margin-right: auto;
             }
 
             .coming-soon-box {
                 margin-left: auto;
+
                 margin-right: auto;
             }
 
@@ -1086,17 +1375,11 @@
                 margin: 0 auto;
             }
 
-
-            /* LEARNING */
-
             .learning-layout {
                 grid-template-columns: 1fr;
 
                 gap: 45px;
             }
-
-
-            /* AUTHOR */
 
             .author-layout {
                 grid-template-columns: 1fr;
@@ -1104,15 +1387,20 @@
                 gap: 45px;
             }
 
-
-            /* FOOTER */
-
             footer {
                 flex-direction: column;
 
                 gap: 15px;
 
                 text-align: center;
+            }
+
+            .auth-modal {
+                padding: 35px 25px;
+            }
+
+            .auth-modal h2 {
+                font-size: 36px;
             }
 
         }
@@ -1216,10 +1504,58 @@
                 <a href="#author">Author</a>
             </li>
 
+            <!-- AUTH BUTTONS -->
+
+            <li class="auth-buttons" id="authButtons">
+
+                <button
+                    class="auth-button login-button"
+                    onclick="openAuth('login')"
+                >
+                    Log In
+                </button>
+
+                <button
+                    class="auth-button signup-button"
+                    onclick="openAuth('signup')"
+                >
+                    Sign Up
+                </button>
+
+            </li>
+
+
+            <!-- LOGGED IN -->
+
+            <li
+                class="user-area"
+                id="userArea"
+            >
+
+                <span
+                    class="user-name"
+                    id="userName"
+                ></span>
+
+                <button
+                    class="logout-button"
+                    onclick="logoutUser()"
+                >
+                    Log Out
+                </button>
+
+            </li>
+
+
             <li>
-                <a href="#start" class="nav-button">
+
+                <a
+                    href="#start"
+                    class="nav-button"
+                >
                     Start Learning
                 </a>
+
             </li>
 
         </ul>
@@ -1231,7 +1567,10 @@
          HERO
     ========================================= -->
 
-    <section class="hero" id="home">
+    <section
+        class="hero"
+        id="home"
+    >
 
         <div class="hero-content">
 
@@ -1335,7 +1674,10 @@
                     that make algebra work.
                 </p>
 
-                <a href="#learning" class="chapter-link">
+                <a
+                    href="#learning"
+                    class="chapter-link"
+                >
                     ABOUT THE CHAPTER
                     <span>→</span>
                 </a>
@@ -1360,7 +1702,10 @@
                     different mathematical ideas.
                 </p>
 
-                <a href="#learning" class="chapter-link">
+                <a
+                    href="#learning"
+                    class="chapter-link"
+                >
                     ABOUT THE CHAPTER
                     <span>→</span>
                 </a>
@@ -1385,7 +1730,10 @@
                     inside trigonometric relationships.
                 </p>
 
-                <a href="#learning" class="chapter-link">
+                <a
+                    href="#learning"
+                    class="chapter-link"
+                >
                     ABOUT THE CHAPTER
                     <span>→</span>
                 </a>
@@ -1410,7 +1758,10 @@
                     and the mathematics of continuous quantities.
                 </p>
 
-                <a href="#learning" class="chapter-link">
+                <a
+                    href="#learning"
+                    class="chapter-link"
+                >
                     ABOUT THE CHAPTER
                     <span>→</span>
                 </a>
@@ -1435,7 +1786,10 @@
                     perspective on numbers and equations.
                 </p>
 
-                <a href="#learning" class="chapter-link">
+                <a
+                    href="#learning"
+                    class="chapter-link"
+                >
                     ABOUT THE CHAPTER
                     <span>→</span>
                 </a>
@@ -1460,7 +1814,10 @@
                     patterns and the behavior of random events.
                 </p>
 
-                <a href="#learning" class="chapter-link">
+                <a
+                    href="#learning"
+                    class="chapter-link"
+                >
                     ABOUT THE CHAPTER
                     <span>→</span>
                 </a>
@@ -1482,9 +1839,6 @@
         id="book"
     >
 
-
-        <!-- BOOK COVER -->
-
         <div class="book-image">
 
             <img
@@ -1494,8 +1848,6 @@
 
         </div>
 
-
-        <!-- BOOK INFORMATION -->
 
         <div class="book-content">
 
@@ -1515,8 +1867,6 @@
                 explanations and a genuine love for the subject.
             </p>
 
-
-            <!-- WHITE COMING SOON BOX -->
 
             <div class="coming-soon-box">
 
@@ -1698,10 +2048,159 @@
 
 
     <!-- =========================================
+         LOGIN / SIGN UP MODAL
+    ========================================= -->
+
+    <div
+        class="auth-overlay"
+        id="authOverlay"
+        onclick="closeAuthOutside(event)"
+    >
+
+        <div class="auth-modal">
+
+            <button
+                class="auth-close"
+                onclick="closeAuth()"
+            >
+                ×
+            </button>
+
+
+            <div class="section-label">
+                EDUNOVA ACCOUNT
+            </div>
+
+
+            <h2 id="authTitle">
+                Welcome back.
+            </h2>
+
+
+            <p
+                class="auth-subtitle"
+                id="authSubtitle"
+            >
+                Log in to your EduNova account and continue your
+                mathematical journey.
+            </p>
+
+
+            <form
+                class="auth-form"
+                id="authForm"
+                onsubmit="handleAuth(event)"
+            >
+
+
+                <div
+                    id="nameField"
+                    style="display:none;"
+                >
+
+                    <label for="authName">
+                        NAME
+                    </label>
+
+                    <input
+                        id="authName"
+                        type="text"
+                        autocomplete="name"
+                        placeholder="Your name"
+                    >
+
+                </div>
+
+
+                <label for="authEmail">
+                    EMAIL
+                </label>
+
+                <input
+                    id="authEmail"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="you@example.com"
+                    required
+                >
+
+
+                <label for="authPassword">
+                    PASSWORD
+                </label>
+
+                <input
+                    id="authPassword"
+                    type="password"
+                    autocomplete="current-password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <div
+                    id="confirmField"
+                    style="display:none;"
+                >
+
+                    <label for="authConfirm">
+                        CONFIRM PASSWORD
+                    </label>
+
+                    <input
+                        id="authConfirm"
+                        type="password"
+                        autocomplete="new-password"
+                        placeholder="Enter your password again"
+                    >
+
+                </div>
+
+
+                <div
+                    class="auth-message"
+                    id="authMessage"
+                ></div>
+
+
+                <button
+                    class="auth-submit"
+                    id="authSubmit"
+                    type="submit"
+                >
+                    Log In
+                </button>
+
+            </form>
+
+
+            <div class="auth-switch">
+
+                <span id="authSwitchText">
+                    Don't have an account?
+                </span>
+
+                <button
+                    id="authSwitchButton"
+                    onclick="switchAuth()"
+                >
+                    Sign Up
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
          JAVASCRIPT
     ========================================= -->
 
     <script>
+
+        /* BOOK NOTIFICATION */
 
         function notifyMe() {
 
@@ -1711,8 +2210,525 @@
 
         }
 
-    </script>
 
+        /* AUTHENTICATION */
+
+        let authMode = "login";
+
+
+        function openAuth(mode) {
+
+            authMode = mode;
+
+            updateAuthModal();
+
+            document
+                .getElementById("authOverlay")
+                .classList
+                .add("active");
+
+            document.body.style.overflow = "hidden";
+
+            setTimeout(function() {
+
+                document
+                    .getElementById("authEmail")
+                    .focus();
+
+            }, 100);
+
+        }
+
+
+        function closeAuth() {
+
+            document
+                .getElementById("authOverlay")
+                .classList
+                .remove("active");
+
+            document.body.style.overflow = "";
+
+            document
+                .getElementById("authForm")
+                .reset();
+
+            document
+                .getElementById("authMessage")
+                .textContent = "";
+
+        }
+
+
+        function closeAuthOutside(event) {
+
+            if (
+                event.target ===
+                document.getElementById("authOverlay")
+            ) {
+
+                closeAuth();
+
+            }
+
+        }
+
+
+        function switchAuth() {
+
+            authMode =
+                authMode === "login"
+                    ? "signup"
+                    : "login";
+
+            updateAuthModal();
+
+            document
+                .getElementById("authForm")
+                .reset();
+
+            document
+                .getElementById("authMessage")
+                .textContent = "";
+
+        }
+
+
+        function updateAuthModal() {
+
+            const signup =
+                authMode === "signup";
+
+
+            document
+                .getElementById("authTitle")
+                .textContent =
+                    signup
+                        ? "Create your account."
+                        : "Welcome back.";
+
+
+            document
+                .getElementById("authSubtitle")
+                .textContent =
+                    signup
+                        ? "Create an EduNova account and get ready for a smarter way to learn mathematics."
+                        : "Log in to your EduNova account and continue your mathematical journey.";
+
+
+            document
+                .getElementById("authSubmit")
+                .textContent =
+                    signup
+                        ? "Create Account"
+                        : "Log In";
+
+
+            document
+                .getElementById("nameField")
+                .style.display =
+                    signup
+                        ? "block"
+                        : "none";
+
+
+            document
+                .getElementById("confirmField")
+                .style.display =
+                    signup
+                        ? "block"
+                        : "none";
+
+
+            document
+                .getElementById("authSwitchText")
+                .textContent =
+                    signup
+                        ? "Already have an account?"
+                        : "Don't have an account?";
+
+
+            document
+                .getElementById("authSwitchButton")
+                .textContent =
+                    signup
+                        ? "Log In"
+                        : "Sign Up";
+
+
+            document
+                .getElementById("authPassword")
+                .autocomplete =
+                    signup
+                        ? "new-password"
+                        : "current-password";
+
+        }
+
+
+        function getAccounts() {
+
+            try {
+
+                return JSON.parse(
+                    localStorage.getItem("edunovaAccounts")
+                ) || [];
+
+            }
+
+            catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        function saveAccounts(accounts) {
+
+            localStorage.setItem(
+                "edunovaAccounts",
+                JSON.stringify(accounts)
+            );
+
+        }
+
+
+        function handleAuth(event) {
+
+            event.preventDefault();
+
+
+            const email =
+                document
+                    .getElementById("authEmail")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            const password =
+                document
+                    .getElementById("authPassword")
+                    .value;
+
+
+            if (authMode === "signup") {
+
+                const name =
+                    document
+                        .getElementById("authName")
+                        .value
+                        .trim();
+
+
+                const confirm =
+                    document
+                        .getElementById("authConfirm")
+                        .value;
+
+
+                if (!name) {
+
+                    showAuthMessage(
+                        "Please enter your name.",
+                        true
+                    );
+
+                    return;
+
+                }
+
+
+                if (password.length < 6) {
+
+                    showAuthMessage(
+                        "Password must be at least 6 characters.",
+                        true
+                    );
+
+                    return;
+
+                }
+
+
+                if (password !== confirm) {
+
+                    showAuthMessage(
+                        "The passwords do not match.",
+                        true
+                    );
+
+                    return;
+
+                }
+
+
+                const accounts =
+                    getAccounts();
+
+
+                if (
+                    accounts.some(
+                        account =>
+                            account.email === email
+                    )
+                ) {
+
+                    showAuthMessage(
+                        "An account with this email already exists.",
+                        true
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                    DEMO ACCOUNT SYSTEM
+
+                    This stores the test account
+                    in this browser only.
+
+                    A real public authentication
+                    system will be connected later.
+                */
+
+                accounts.push({
+
+                    name: name,
+
+                    email: email,
+
+                    password: password
+
+                });
+
+
+                saveAccounts(accounts);
+
+
+                localStorage.setItem(
+                    "edunovaLoggedIn",
+                    JSON.stringify({
+
+                        name: name,
+
+                        email: email
+
+                    })
+                );
+
+
+                closeAuth();
+
+                updateUserArea();
+
+
+                alert(
+                    "Welcome to EduNova, " +
+                    name +
+                    "! 🎓"
+                );
+
+
+                return;
+
+            }
+
+
+            /* LOGIN */
+
+            const accounts =
+                getAccounts();
+
+
+            const account =
+                accounts.find(
+                    item =>
+                        item.email === email &&
+                        item.password === password
+                );
+
+
+            if (!account) {
+
+                showAuthMessage(
+                    "Email or password is incorrect.",
+                    true
+                );
+
+                return;
+
+            }
+
+
+            localStorage.setItem(
+                "edunovaLoggedIn",
+                JSON.stringify({
+
+                    name: account.name,
+
+                    email: account.email
+
+                })
+            );
+
+
+            closeAuth();
+
+            updateUserArea();
+
+
+            alert(
+                "Welcome back, " +
+                account.name +
+                "! 📚"
+            );
+
+        }
+
+
+        function showAuthMessage(
+            text,
+            error
+        ) {
+
+            const message =
+                document.getElementById(
+                    "authMessage"
+                );
+
+
+            message.textContent =
+                text;
+
+
+            message.style.color =
+                error
+                    ? "#e52b20"
+                    : "#227a3b";
+
+        }
+
+
+        function updateUserArea() {
+
+            const authButtons =
+                document.getElementById(
+                    "authButtons"
+                );
+
+
+            const userArea =
+                document.getElementById(
+                    "userArea"
+                );
+
+
+            const userName =
+                document.getElementById(
+                    "userName"
+                );
+
+
+            let loggedIn = null;
+
+
+            try {
+
+                loggedIn =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "edunovaLoggedIn"
+                        )
+                    );
+
+            }
+
+            catch (error) {
+
+                loggedIn = null;
+
+            }
+
+
+            if (loggedIn) {
+
+                authButtons.style.display =
+                    "none";
+
+
+                userArea.style.display =
+                    "flex";
+
+
+                userName.textContent =
+                    "Hi, " +
+                    loggedIn.name;
+
+            }
+
+            else {
+
+                authButtons.style.display =
+                    "flex";
+
+
+                userArea.style.display =
+                    "none";
+
+
+                userName.textContent =
+                    "";
+
+            }
+
+        }
+
+
+        function logoutUser() {
+
+            localStorage.removeItem(
+                "edunovaLoggedIn"
+            );
+
+
+            updateUserArea();
+
+
+            alert(
+                "You have been logged out of EduNova."
+            );
+
+        }
+
+
+        /* ESCAPE CLOSES MODAL */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeAuth();
+
+                }
+
+            }
+        );
+
+
+        /* CHECK LOGIN ON PAGE LOAD */
+
+        updateUserArea();
+
+    </script>
 
 </body>
 </html>
