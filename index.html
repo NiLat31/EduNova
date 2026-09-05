@@ -4,195 +4,488 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>EduNova | Advanced Mathematics</title>
+  <title>EduNova | Grade 12 Advanced Mathematics</title>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f7f8fc;
-      color: #182033;
+    html {
+      scroll-behavior: smooth;
     }
 
-    header {
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: #fafafa;
+      color: #171717;
+      overflow-x: hidden;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      height: 78px;
+      padding: 0 7%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 22px 7%;
-      background: white;
-      border-bottom: 1px solid #e8eaf0;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid #eeeeee;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -1px;
+      font-size: 29px;
+      font-weight: 700;
+      letter-spacing: -1.5px;
     }
 
-    .logo span {
-      font-weight: 400;
+    .logo .edu {
+      color: #151515;
     }
 
-    nav a {
+    .logo .nova {
+      color: #e52b20;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
       text-decoration: none;
-      color: #555d70;
-      margin-left: 28px;
-      font-size: 15px;
+      color: #555;
+      font-size: 14px;
+      font-weight: 500;
+      transition: 0.2s;
     }
 
-    nav a:hover {
-      color: #182033;
+    .nav-links a:hover {
+      color: #e52b20;
     }
+
+    .nav-button {
+      background: #e52b20;
+      color: white !important;
+      padding: 11px 19px;
+      border-radius: 8px;
+    }
+
+    /* HERO */
 
     .hero {
-      min-height: 78vh;
+      min-height: calc(100vh - 78px);
+      padding: 80px 7%;
       display: flex;
       align-items: center;
-      padding: 80px 7%;
-      background:
-        radial-gradient(circle at 85% 20%, #dfe7ff 0, transparent 30%),
-        radial-gradient(circle at 15% 80%, #e9e2ff 0, transparent 30%),
-        #f7f8fc;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
     }
 
     .hero-content {
-      max-width: 760px;
+      width: 58%;
+      position: relative;
+      z-index: 2;
     }
 
-    .tag {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 30px;
-      background: white;
-      border: 1px solid #e2e5ee;
+    .eyebrow {
+      color: #e52b20;
       font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
       margin-bottom: 25px;
     }
 
-    h1 {
-      font-size: clamp(50px, 8vw, 90px);
-      line-height: 0.95;
-      letter-spacing: -5px;
-      margin-bottom: 25px;
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(55px, 7vw, 92px);
+      line-height: 0.98;
+      letter-spacing: -4px;
+      margin-bottom: 30px;
     }
 
-    h1 span {
-      color: #5967d9;
+    .hero h1 span {
+      color: #e52b20;
     }
 
-    .hero p {
-      font-size: 20px;
-      line-height: 1.6;
-      color: #646c7e;
-      max-width: 650px;
-      margin-bottom: 35px;
+    .hero-description {
+      color: #626262;
+      font-size: 19px;
+      line-height: 1.7;
+      max-width: 610px;
+      margin-bottom: 38px;
     }
 
-    .button {
-      display: inline-block;
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .primary-button,
+    .secondary-button {
       padding: 15px 24px;
-      background: #182033;
-      color: white;
-      border-radius: 10px;
+      border-radius: 9px;
       text-decoration: none;
       font-weight: 600;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    section {
-      padding: 90px 7%;
-    }
-
-    .section-title {
-      font-size: 42px;
-      margin-bottom: 12px;
-      letter-spacing: -2px;
-    }
-
-    .section-subtitle {
-      color: #6b7280;
-      font-size: 17px;
-      margin-bottom: 45px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      border: 1px solid #e7e9ef;
+      font-size: 14px;
       transition: 0.25s;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(20, 30, 60, 0.08);
-    }
-
-    .card-number {
-      font-size: 14px;
-      color: #5967d9;
-      font-weight: bold;
-      margin-bottom: 35px;
-    }
-
-    .card h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #707789;
-      line-height: 1.6;
-    }
-
-    .about {
-      background: #182033;
+    .primary-button {
+      background: #e52b20;
       color: white;
     }
 
-    .about p {
-      max-width: 750px;
-      color: #c8cddd;
-      font-size: 18px;
-      line-height: 1.8;
+    .primary-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(229,43,32,0.22);
     }
+
+    .secondary-button {
+      color: #222;
+      border: 1px solid #dddddd;
+      background: white;
+    }
+
+    .secondary-button:hover {
+      border-color: #e52b20;
+      color: #e52b20;
+    }
+
+    /* MATHEMATICAL DECORATION */
+
+    .math-art {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      border: 1px solid #dddddd;
+    }
+
+    .math-art::before {
+      content: "∫";
+      position: absolute;
+      font-family: "Playfair Display", serif;
+      font-size: 190px;
+      color: #e52b20;
+      left: 105px;
+      top: 80px;
+      opacity: 0.9;
+    }
+
+    .math-art::after {
+      content: "f(x) = x² + 2x + 1";
+      position: absolute;
+      bottom: 42px;
+      left: 80px;
+      font-family: Georgia, serif;
+      font-size: 17px;
+      color: #555;
+      transform: rotate(-8deg);
+    }
+
+    .orbit {
+      position: absolute;
+      width: 500px;
+      height: 170px;
+      border: 1px solid #e52b20;
+      border-radius: 50%;
+      transform: rotate(-28deg);
+      top: 120px;
+      left: -40px;
+      opacity: 0.45;
+    }
+
+    .dot {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #e52b20;
+      top: 70px;
+      right: 45px;
+    }
+
+    /* SECTION */
+
+    section {
+      padding: 110px 7%;
+    }
+
+    .section-label {
+      color: #e52b20;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 52px;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .section-intro {
+      color: #6a6a6a;
+      max-width: 650px;
+      line-height: 1.7;
+      margin-bottom: 55px;
+    }
+
+    /* TOPICS */
+
+    .topics {
+      background: #f5f5f5;
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .topic {
+      background: white;
+      min-height: 260px;
+      padding: 30px;
+      border: 1px solid #e8e8e8;
+      border-radius: 14px;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .topic:hover {
+      transform: translateY(-7px);
+      border-color: #e52b20;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.07);
+    }
+
+    .topic-number {
+      color: #e52b20;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 55px;
+    }
+
+    .topic h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .topic p {
+      color: #707070;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .topic-symbol {
+      position: absolute;
+      right: 22px;
+      top: 18px;
+      font-family: Georgia, serif;
+      font-size: 48px;
+      color: #eeeeee;
+    }
+
+    /* LEARNING */
+
+    .learning {
+      background: white;
+    }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .learning-text p {
+      color: #656565;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .learning-list {
+      list-style: none;
+    }
+
+    .learning-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid #eeeeee;
+      font-weight: 600;
+    }
+
+    .learning-list span {
+      color: #e52b20;
+      margin-right: 12px;
+    }
+
+    .equation-box {
+      min-height: 400px;
+      border-radius: 18px;
+      background: #171717;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .equation {
+      font-family: Georgia, serif;
+      font-size: 34px;
+      text-align: center;
+      line-height: 1.7;
+      position: relative;
+      z-index: 2;
+    }
+
+    .equation small {
+      display: block;
+      font-family: "DM Sans", sans-serif;
+      color: #aaaaaa;
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-top: 25px;
+    }
+
+    .equation-circle {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border: 1px solid #444;
+      border-radius: 50%;
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: #e52b20;
+      color: white;
+      text-align: center;
+    }
+
+    .about .section-label {
+      color: white;
+    }
+
+    .about .section-title {
+      max-width: 800px;
+      margin: auto auto 25px;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: auto;
+      color: #ffe7e5;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    /* FOOTER */
 
     footer {
-      text-align: center;
-      padding: 30px;
-      background: #111827;
-      color: #8d95a7;
-      font-size: 14px;
+      padding: 35px 7%;
+      background: #121212;
+      color: #888;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
     }
 
-    @media (max-width: 700px) {
-      nav {
+    footer strong {
+      color: white;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
         display: none;
       }
 
-      h1 {
+      .hero {
+        min-height: auto;
+        padding-top: 80px;
+        padding-bottom: 100px;
+      }
+
+      .hero-content {
+        width: 100%;
+      }
+
+      .math-art {
+        opacity: 0.12;
+        right: -180px;
+      }
+
+      .topic-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .learning-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .hero,
+      section {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      .hero h1 {
+        font-size: 54px;
         letter-spacing: -3px;
       }
 
-      .hero {
-        min-height: 70vh;
+      .section-title {
+        font-size: 40px;
+      }
+
+      .topic-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .equation {
+        font-size: 25px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
       }
     }
   </style>
@@ -200,130 +493,239 @@
 
 <body>
 
-  <header>
-    <div class="logo">Edu<span>Nova</span></div>
+  <!-- NAVIGATION -->
 
-    <nav>
+  <nav>
+    <div class="logo">
+      <span class="edu">Edu</span><span class="nova">Nova</span>
+    </div>
+
+    <div class="nav-links">
       <a href="#home">Home</a>
-      <a href="#course">Course</a>
+      <a href="#topics">Mathematics</a>
+      <a href="#learning">Learning</a>
       <a href="#about">About</a>
-    </nav>
-  </header>
+      <a href="#topics" class="nav-button">Start Learning</a>
+    </div>
+  </nav>
 
 
-  <main>
+  <!-- HERO -->
 
-    <section class="hero" id="home">
-      <div class="hero-content">
+  <section class="hero" id="home">
 
-        <div class="tag">GRADE 12 • ADVANCED MATHEMATICS</div>
+    <div class="hero-content">
 
-        <h1>
-          Mathematics,<br>
-          <span>reimagined.</span>
-        </h1>
+      <div class="eyebrow">
+        GRADE 12 • ADVANCED MATHEMATICS
+      </div>
 
-        <p>
-          Welcome to EduNova, a modern learning platform designed
-          to make advanced mathematics clearer, deeper, and more
-          engaging.
-        </p>
+      <h1>
+        Mathematics,<br>
+        <span>reimagined.</span>
+      </h1>
 
-        <a href="#course" class="button">
-          Explore the course →
+      <p class="hero-description">
+        EduNova is a modern mathematics education series designed
+        to help Grade 12 students understand the ideas behind the
+        equations, develop mathematical intuition, and solve with confidence.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#topics" class="primary-button">
+          Explore Mathematics →
         </a>
 
-      </div>
-    </section>
-
-
-    <section id="course">
-
-      <h2 class="section-title">Explore Mathematics</h2>
-
-      <p class="section-subtitle">
-        Build understanding. Develop confidence. Master the mathematics.
-      </p>
-
-      <div class="cards">
-
-        <div class="card">
-          <div class="card-number">01</div>
-          <h3>Calculus</h3>
-          <p>
-            Differentiation, integration, functions,
-            limits and applications.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-number">02</div>
-          <h3>Trigonometry</h3>
-          <p>
-            Identities, equations, graphs and
-            advanced trigonometric applications.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-number">03</div>
-          <h3>Algebra</h3>
-          <p>
-            Algebraic techniques, equations,
-            sequences and mathematical reasoning.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-number">04</div>
-          <h3>Complex Numbers</h3>
-          <p>
-            Explore the fascinating world beyond
-            the real number system.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-number">05</div>
-          <h3>Probability</h3>
-          <p>
-            Understand uncertainty through probability,
-            distributions and statistical thinking.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-number">06</div>
-          <h3>Geometry</h3>
-          <p>
-            Discover relationships between shapes,
-            coordinates, angles and mathematical space.
-          </p>
-        </div>
-
+        <a href="#about" class="secondary-button">
+          Discover EduNova
+        </a>
       </div>
 
-    </section>
+    </div>
+
+    <div class="math-art">
+      <div class="orbit"></div>
+      <div class="dot"></div>
+    </div>
+
+  </section>
 
 
-    <section class="about" id="about">
+  <!-- TOPICS -->
 
-      <h2 class="section-title">What is EduNova?</h2>
+  <section class="topics" id="topics">
 
-      <p>
-        EduNova is an educational series dedicated to Advanced
-        Mathematics for Grade 12 students. It combines rigorous
-        mathematical ideas with clear explanations, examples,
-        practice and exploration.
-      </p>
+    <div class="section-label">
+      THE CURRICULUM
+    </div>
 
-    </section>
+    <h2 class="section-title">
+      Explore the language<br>of mathematics.
+    </h2>
 
-  </main>
+    <p class="section-intro">
+      EduNova will bring together the major ideas of advanced
+      mathematics in a structured learning journey, from algebraic
+      foundations to the powerful world of calculus.
+    </p>
 
+
+    <div class="topic-grid">
+
+      <div class="topic">
+        <div class="topic-number">01</div>
+        <div class="topic-symbol">x</div>
+        <h3>Algebra</h3>
+        <p>
+          Equations, sequences, algebraic techniques and
+          mathematical reasoning.
+        </p>
+      </div>
+
+      <div class="topic">
+        <div class="topic-number">02</div>
+        <div class="topic-symbol">f</div>
+        <h3>Functions</h3>
+        <p>
+          Explore relationships, transformations, graphs
+          and the behavior of functions.
+        </p>
+      </div>
+
+      <div class="topic">
+        <div class="topic-number">03</div>
+        <div class="topic-symbol">θ</div>
+        <h3>Trigonometry</h3>
+        <p>
+          Identities, equations, graphs and applications
+          of trigonometric functions.
+        </p>
+      </div>
+
+      <div class="topic">
+        <div class="topic-number">04</div>
+        <div class="topic-symbol">∫</div>
+        <h3>Calculus</h3>
+        <p>
+          Discover differentiation, integration, limits
+          and the mathematics of change.
+        </p>
+      </div>
+
+      <div class="topic">
+        <div class="topic-number">05</div>
+        <div class="topic-symbol">i</div>
+        <h3>Complex Numbers</h3>
+        <p>
+          Extend the number system and explore mathematics
+          beyond the real numbers.
+        </p>
+      </div>
+
+      <div class="topic">
+        <div class="topic-number">06</div>
+        <div class="topic-symbol">P</div>
+        <h3>Probability</h3>
+        <p>
+          Analyze uncertainty, distributions and
+          mathematical patterns in data.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LEARNING -->
+
+  <section class="learning" id="learning">
+
+    <div class="learning-grid">
+
+      <div class="learning-text">
+
+        <div class="section-label">
+          THE EDUNOVA METHOD
+        </div>
+
+        <h2 class="section-title">
+          Don't just memorize.<br>
+          Understand.
+        </h2>
+
+        <p>
+          Mathematics becomes much more powerful when you understand
+          why a method works instead of simply remembering a formula.
+        </p>
+
+        <p>
+          EduNova is designed around that idea. Each concept will
+          connect explanation, examples, practice and mathematical
+          exploration.
+        </p>
+
+        <ul class="learning-list">
+          <li><span>01</span> Understand the concept</li>
+          <li><span>02</span> Study worked examples</li>
+          <li><span>03</span> Practice strategically</li>
+          <li><span>04</span> Challenge your thinking</li>
+        </ul>
+
+      </div>
+
+
+      <div class="equation-box">
+
+        <div class="equation-circle"></div>
+
+        <div class="equation">
+          lim&nbsp; f(x)
+          <br>
+          x → a
+          <small>MATHEMATICS BEGINS WITH CURIOSITY</small>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+
+    <div class="section-label">
+      ABOUT EDUNOVA
+    </div>
+
+    <h2 class="section-title">
+      A new way to experience<br>advanced mathematics.
+    </h2>
+
+    <p>
+      EduNova Mathematics is an educational series focused on
+      Grade 12 Advanced Mathematics. The vision is simple:
+      make rigorous mathematics clear, engaging and meaningful.
+      The textbook series and digital platform will grow together
+      into a complete mathematical learning experience.
+    </p>
+
+  </section>
+
+
+  <!-- FOOTER -->
 
   <footer>
-    © 2026 EduNova • Advanced Mathematics
+    <div>
+      <strong>EduNova Mathematics</strong>
+    </div>
+
+    <div>
+      Grade 12 • Advanced Mathematics • 2026
+    </div>
   </footer>
 
 </body>
