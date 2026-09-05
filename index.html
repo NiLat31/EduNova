@@ -25,14 +25,15 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            background: #f8f7f4;
+            background: #f7f6f2;
             color: #111;
             overflow-x: hidden;
         }
 
-        /* =========================
+
+        /* =========================================
            INTRO ANIMATION
-        ========================= */
+        ========================================= */
 
         .intro-screen {
             position: fixed;
@@ -40,78 +41,125 @@
             background: #111;
             color: white;
             z-index: 9999;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: introExit 1.2s ease forwards;
-            animation-delay: 2.2s;
+
+            animation: introLeave 1.2s cubic-bezier(.77,0,.18,1) forwards;
+            animation-delay: 2.6s;
         }
 
         .intro-content {
             text-align: center;
-            animation: introContent 1.5s ease;
+            animation: introAppear 1.2s ease forwards;
         }
 
         .intro-logo {
             font-family: "Playfair Display", serif;
-            font-size: 72px;
+            font-size: clamp(58px, 9vw, 100px);
             font-weight: 700;
-            letter-spacing: -3px;
+            letter-spacing: -5px;
+        }
+
+        .intro-logo span {
+            color: #e52b20;
         }
 
         .intro-line {
-            width: 80px;
-            height: 4px;
+            height: 3px;
+            width: 0;
             background: #e52b20;
             margin: 22px auto;
+            animation: lineGrow 0.8s ease forwards;
+            animation-delay: 0.6s;
         }
 
         .intro-subtitle {
-            font-size: 13px;
+            font-size: 12px;
             letter-spacing: 4px;
-            text-transform: uppercase;
-            color: #bbb;
+            color: #aaa;
+            opacity: 0;
+            animation: subtitleAppear 0.8s ease forwards;
+            animation-delay: 1s;
         }
 
-        @keyframes introContent {
+        @keyframes introAppear {
+
             from {
                 opacity: 0;
-                transform: translateY(25px);
+                transform: translateY(35px);
             }
 
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
-        @keyframes introExit {
+        @keyframes lineGrow {
+
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 90px;
+            }
+
+        }
+
+        @keyframes subtitleAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        @keyframes introLeave {
+
             to {
                 transform: translateY(-100%);
                 visibility: hidden;
             }
+
         }
 
-        /* =========================
+
+        /* =========================================
            NAVIGATION
-        ========================= */
+        ========================================= */
 
         nav {
-            height: 80px;
+            height: 82px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             padding: 0 7%;
-            background: #f8f7f4;
-            border-bottom: 1px solid #ddd;
+
+            background: #f7f6f2;
+
+            border-bottom: 1px solid #deddd9;
+
             position: sticky;
             top: 0;
+
             z-index: 100;
         }
 
         .logo {
             font-family: "Playfair Display", serif;
-            font-size: 27px;
+            font-size: 28px;
             font-weight: 700;
             letter-spacing: -1px;
         }
@@ -122,14 +170,15 @@
 
         nav ul {
             display: flex;
-            gap: 32px;
+            align-items: center;
+            gap: 30px;
             list-style: none;
         }
 
         nav a {
             color: #111;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             transition: 0.3s;
         }
@@ -141,48 +190,61 @@
         .nav-button {
             background: #111;
             color: white !important;
+
             padding: 12px 20px;
-            border-radius: 4px;
+
+            border-radius: 3px;
         }
 
         .nav-button:hover {
             background: #e52b20;
         }
 
-        /* =========================
+
+        /* =========================================
            HERO
-        ========================= */
+        ========================================= */
 
         .hero {
             min-height: 88vh;
+
             padding: 100px 7%;
+
             display: flex;
             align-items: center;
-            justify-content: space-between;
+
             position: relative;
+
             overflow: hidden;
         }
 
         .hero-content {
-            max-width: 680px;
+            max-width: 720px;
             position: relative;
             z-index: 2;
         }
 
         .eyebrow {
             color: #e52b20;
-            font-size: 13px;
+
+            font-size: 12px;
             font-weight: 700;
+
             letter-spacing: 3px;
+
             margin-bottom: 24px;
         }
 
         .hero h1 {
             font-family: "Playfair Display", serif;
-            font-size: clamp(55px, 7vw, 100px);
-            line-height: 0.98;
+
+            font-size: clamp(58px, 7.5vw, 105px);
+
+            line-height: 0.96;
+
             letter-spacing: -5px;
-            margin-bottom: 30px;
+
+            margin-bottom: 32px;
         }
 
         .hero h1 span {
@@ -190,28 +252,37 @@
         }
 
         .hero p {
-            max-width: 570px;
-            font-size: 18px;
+            max-width: 580px;
+
+            color: #5e5e5e;
+
+            font-size: 17px;
+
             line-height: 1.8;
-            color: #555;
+
             margin-bottom: 35px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 15px;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
         .primary-button,
         .secondary-button {
-            text-decoration: none;
-            padding: 15px 25px;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 14px;
-            transition: 0.3s;
             display: inline-block;
+
+            padding: 15px 25px;
+
+            border-radius: 3px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            text-decoration: none;
+
+            transition: 0.3s;
         }
 
         .primary-button {
@@ -221,7 +292,7 @@
 
         .primary-button:hover {
             background: #111;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         .secondary-button {
@@ -234,63 +305,89 @@
             color: white;
         }
 
+
         /* Mathematical decoration */
 
         .math-decoration {
             position: absolute;
-            right: 7%;
+
+            right: 5%;
             top: 18%;
-            width: 360px;
-            height: 360px;
-            border: 1px solid #ddd;
+
+            width: 390px;
+            height: 390px;
+
+            border: 1px solid #d9d8d4;
+
             border-radius: 50%;
-            opacity: 0.8;
+
+            opacity: 0.85;
         }
 
         .math-decoration::before {
             content: "∫";
+
             position: absolute;
+
             font-family: "Playfair Display", serif;
-            font-size: 130px;
+
+            font-size: 140px;
+
             color: #e52b20;
+
             top: 75px;
-            left: 115px;
+            left: 125px;
         }
 
         .math-decoration::after {
             content: "x² + y² = r²";
+
             position: absolute;
+
             font-family: "Playfair Display", serif;
+
             font-size: 20px;
+
             color: #333;
-            bottom: 55px;
-            left: 65px;
+
+            bottom: 58px;
+            left: 80px;
         }
 
         .orbit {
             position: absolute;
-            width: 430px;
-            height: 160px;
+
+            width: 460px;
+            height: 165px;
+
             border: 1px solid #ccc;
+
             border-radius: 50%;
+
             transform: rotate(-25deg);
-            top: 100px;
-            right: -30px;
+
+            top: 105px;
+            right: -35px;
         }
 
         .dot {
             position: absolute;
+
             width: 12px;
             height: 12px;
+
             background: #e52b20;
+
             border-radius: 50%;
+
             top: 45px;
-            right: 120px;
+            right: 125px;
         }
 
-        /* =========================
-           GENERAL SECTIONS
-        ========================= */
+
+        /* =========================================
+           GENERAL
+        ========================================= */
 
         section {
             padding: 110px 7%;
@@ -298,22 +395,30 @@
 
         .section-label {
             color: #e52b20;
-            font-size: 12px;
+
+            font-size: 11px;
+
             font-weight: 700;
+
             letter-spacing: 3px;
-            margin-bottom: 15px;
+
+            margin-bottom: 16px;
         }
 
         .section-title {
             font-family: "Playfair Display", serif;
-            font-size: clamp(40px, 5vw, 65px);
-            line-height: 1.05;
-            letter-spacing: -2px;
+
+            font-size: clamp(42px, 5vw, 68px);
+
+            line-height: 1.03;
+
+            letter-spacing: -2.5px;
         }
 
-        /* =========================
-           TOPICS
-        ========================= */
+
+        /* =========================================
+           CURRICULUM
+        ========================================= */
 
         .topics-section {
             background: white;
@@ -321,72 +426,155 @@
 
         .topics-header {
             display: flex;
+
             justify-content: space-between;
-            align-items: end;
-            margin-bottom: 55px;
+
+            align-items: flex-end;
+
+            gap: 50px;
+
+            margin-bottom: 60px;
         }
 
         .topics-header p {
-            max-width: 400px;
+            max-width: 420px;
+
             color: #666;
-            line-height: 1.7;
+
+            font-size: 15px;
+
+            line-height: 1.8;
         }
 
         .topics-grid {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             border-top: 1px solid #ddd;
             border-left: 1px solid #ddd;
         }
 
         .topic-card {
-            padding: 40px;
+            min-height: 285px;
+
+            padding: 35px;
+
             border-right: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
-            transition: 0.3s;
+
+            position: relative;
+
+            background: white;
+
+            transition: 0.35s ease;
+
+            display: flex;
+            flex-direction: column;
         }
 
         .topic-card:hover {
-            background: #f8f7f4;
-            transform: translateY(-4px);
+            background: #f7f6f2;
+
+            transform: translateY(-5px);
         }
 
         .topic-number {
             color: #e52b20;
-            font-size: 13px;
+
+            font-size: 12px;
+
             font-weight: 700;
+
+            letter-spacing: 1px;
+
             margin-bottom: 30px;
         }
 
         .topic-card h3 {
             font-family: "Playfair Display", serif;
-            font-size: 28px;
-            margin-bottom: 12px;
+
+            font-size: 30px;
+
+            margin-bottom: 14px;
         }
 
         .topic-card p {
             color: #666;
+
+            font-size: 14px;
+
             line-height: 1.7;
+
+            margin-bottom: 25px;
+        }
+
+        /* The old chapter sign */
+
+        .chapter-link {
+            margin-top: auto;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            width: fit-content;
+
+            padding: 10px 13px;
+
+            border: 1px solid #d6d6d6;
+
+            background: #f7f6f2;
+
+            color: #111;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .chapter-link span {
+            color: #e52b20;
+
             font-size: 14px;
         }
 
-        /* =========================
+        .chapter-link:hover {
+            background: #111;
+            color: white;
+
+            border-color: #111;
+        }
+
+
+        /* =========================================
            BOOK SECTION
-        ========================= */
+        ========================================= */
 
         .book-section {
-            background: #f8f7f4;
+            background: #f7f6f2;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
-            /* Keeps everything together */
-            max-width: 1150px;
-            margin: 0 auto;
+            gap: 38px;
 
-            /* Small controlled gap */
-            gap: 35px;
+            max-width: 1200px;
+
+            margin: 0 auto;
 
             padding-left: 5%;
             padding-right: 5%;
@@ -394,21 +582,27 @@
 
         .book-image {
             flex: 0 0 390px;
+
             display: flex;
+
             justify-content: flex-end;
+
             align-items: center;
         }
 
         .book-image img {
             width: 350px;
+
             max-width: 100%;
+
             height: auto;
+
             display: block;
 
-            /* Subtle professional shadow */
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.16);
+            box-shadow:
+                0 25px 45px rgba(0,0,0,0.17);
 
-            transition: transform 0.4s ease;
+            transition: 0.4s ease;
         }
 
         .book-image img:hover {
@@ -417,7 +611,6 @@
 
         .book-content {
             flex: 0 1 500px;
-            padding: 10px 0;
         }
 
         .book-content .section-title {
@@ -426,32 +619,62 @@
 
         .book-content > p {
             color: #666;
+
+            font-size: 15px;
+
             line-height: 1.8;
-            font-size: 16px;
-            max-width: 500px;
-            margin-bottom: 28px;
+
+            max-width: 490px;
+
+            margin-bottom: 25px;
         }
 
-        .coming-soon {
-            display: inline-flex;
+
+        /* WHITE COMING SOON BOX */
+
+        .coming-soon-box {
+            background: white;
+
+            border: 1px solid #deddd9;
+
+            padding: 18px 20px;
+
+            display: flex;
+
             align-items: center;
-            gap: 10px;
-            color: #e52b20;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
+
+            gap: 13px;
+
+            width: fit-content;
+
             margin-bottom: 28px;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
         }
 
-        .pulse {
+        .coming-dot {
             width: 9px;
             height: 9px;
+
+            flex-shrink: 0;
+
             background: #e52b20;
+
             border-radius: 50%;
-            animation: pulse 1.5s infinite;
+
+            animation: comingPulse 1.5s infinite;
         }
 
-        @keyframes pulse {
+        .coming-soon-box strong {
+            color: #111;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+        }
+
+        @keyframes comingPulse {
+
             0% {
                 transform: scale(1);
                 opacity: 1;
@@ -466,47 +689,65 @@
                 transform: scale(1);
                 opacity: 1;
             }
+
         }
 
         .book-details {
             border-left: 3px solid #e52b20;
-            padding-left: 20px;
+
+            padding-left: 18px;
+
             display: flex;
+
             flex-direction: column;
-            gap: 6px;
+
+            gap: 5px;
         }
 
         .book-details strong {
-            font-size: 17px;
+            font-size: 16px;
         }
 
         .book-details span {
             color: #777;
-            font-size: 13px;
+
+            font-size: 12px;
         }
 
         .notify-button {
-            margin-top: 28px;
+            margin-top: 27px;
+
+            padding: 14px 21px;
+
             background: #111;
+
             color: white;
+
             border: none;
-            padding: 15px 23px;
-            border-radius: 4px;
+
+            border-radius: 3px;
+
             font-family: "DM Sans", sans-serif;
-            font-size: 14px;
+
+            font-size: 13px;
+
             font-weight: 700;
+
             cursor: pointer;
+
             transition: 0.3s;
         }
 
         .notify-button:hover {
             background: #e52b20;
-            transform: translateY(-2px);
+
+            transform: translateY(-3px);
         }
 
-        /* =========================
-           LEARNING SECTION
-        ========================= */
+
+        /* =========================================
+           LEARNING
+        ========================================= */
 
         .learning-section {
             background: white;
@@ -514,71 +755,104 @@
 
         .learning-layout {
             display: grid;
+
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+
+            gap: 90px;
+
             align-items: center;
         }
 
         .learning-text p {
-            margin-top: 25px;
+            max-width: 530px;
+
+            margin-top: 28px;
+
             color: #666;
+
             line-height: 1.8;
-            max-width: 520px;
+
+            font-size: 15px;
         }
 
         .equation-box {
             background: #111;
+
             color: white;
-            padding: 70px 45px;
+
+            padding: 75px 40px;
+
             position: relative;
+
             overflow: hidden;
         }
 
         .equation {
             font-family: "Playfair Display", serif;
-            font-size: clamp(28px, 4vw, 48px);
+
+            font-size: clamp(28px, 4vw, 50px);
+
             text-align: center;
+
             position: relative;
+
             z-index: 2;
         }
 
         .equation-small {
+            color: #999;
+
+            font-size: 12px;
+
             text-align: center;
-            color: #aaa;
-            font-size: 13px;
+
             margin-top: 25px;
+
             position: relative;
+
             z-index: 2;
         }
 
         .equation-box::before {
             content: "∑";
+
             position: absolute;
+
             font-family: "Playfair Display", serif;
-            font-size: 250px;
-            color: #222;
-            right: -30px;
-            top: -80px;
+
+            font-size: 260px;
+
+            color: #202020;
+
+            right: -35px;
+
+            top: -90px;
         }
 
-        /* =========================
-           AUTHOR SECTION
-        ========================= */
+
+        /* =========================================
+           AUTHOR
+        ========================================= */
 
         .author-section {
             background: #e52b20;
+
             color: white;
         }
 
         .author-layout {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 80px;
+
+            grid-template-columns: 0.9fr 1.1fr;
+
+            gap: 85px;
+
             align-items: center;
         }
 
         .author-section .section-label {
             color: white;
+
             opacity: 0.75;
         }
 
@@ -587,127 +861,154 @@
         }
 
         .author-text p {
-            color: rgba(255, 255, 255, 0.88);
+            color: rgba(255,255,255,0.88);
+
+            font-size: 15px;
+
             line-height: 1.8;
+
             margin-bottom: 20px;
-            font-size: 16px;
         }
 
         .author-name {
-            margin-top: 35px;
+            border-top: 1px solid rgba(255,255,255,0.35);
+
             padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.35);
+
+            margin-top: 30px;
+
             display: flex;
+
             flex-direction: column;
+
             gap: 6px;
         }
 
         .author-name strong {
             font-family: "Playfair Display", serif;
-            font-size: 26px;
+
+            font-size: 27px;
         }
 
         .author-name span {
-            font-size: 13px;
+            font-size: 12px;
+
             opacity: 0.8;
         }
 
-        /* =========================
+
+        /* =========================================
            FOOTER
-        ========================= */
+        ========================================= */
 
         footer {
             background: #111;
+
             color: white;
+
             padding: 45px 7%;
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
         }
 
-        footer .footer-logo {
+        .footer-logo {
             font-family: "Playfair Display", serif;
+
             font-size: 25px;
         }
 
-        footer .footer-logo span {
+        .footer-logo span {
             color: #e52b20;
         }
 
         footer p {
             color: #888;
-            font-size: 12px;
+
+            font-size: 11px;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
 
-        @media (max-width: 950px) {
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 1000px) {
 
             nav {
                 padding: 0 5%;
             }
 
             nav ul {
-                gap: 15px;
+                gap: 16px;
             }
 
             .hero {
-                padding: 80px 5%;
+                padding-left: 5%;
+                padding-right: 5%;
             }
 
             .math-decoration {
-                opacity: 0.25;
-                right: -100px;
+                right: -120px;
+                opacity: 0.3;
             }
 
             section {
-                padding: 85px 5%;
+                padding-left: 5%;
+                padding-right: 5%;
             }
 
             .topics-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            /* BOOK */
-
             .book-section {
                 gap: 25px;
             }
 
             .book-image {
-                flex: 0 0 330px;
+                flex-basis: 340px;
             }
 
             .book-image img {
                 width: 300px;
             }
 
-            /* OTHER SECTIONS */
-
-            .learning-layout,
-            .author-layout {
-                gap: 45px;
-            }
         }
 
-        @media (max-width: 750px) {
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 760px) {
 
             nav {
                 height: auto;
-                padding: 20px 5%;
+
+                padding: 18px 5%;
+
                 flex-direction: column;
+
                 gap: 18px;
             }
 
             nav ul {
                 flex-wrap: wrap;
+
                 justify-content: center;
+
+                gap: 12px 18px;
             }
 
             .hero {
                 min-height: 80vh;
+
+                padding-top: 70px;
+                padding-bottom: 70px;
             }
 
             .hero h1 {
@@ -718,9 +1019,16 @@
                 display: none;
             }
 
+            section {
+                padding-top: 80px;
+                padding-bottom: 80px;
+            }
+
             .topics-header {
                 flex-direction: column;
+
                 align-items: flex-start;
+
                 gap: 20px;
             }
 
@@ -728,19 +1036,25 @@
                 grid-template-columns: 1fr;
             }
 
+
             /* BOOK MOBILE */
 
             .book-section {
                 flex-direction: column;
-                gap: 45px;
+
+                gap: 40px;
+
                 text-align: center;
+
                 padding-left: 6%;
                 padding-right: 6%;
             }
 
             .book-image {
                 flex: none;
+
                 width: 100%;
+
                 justify-content: center;
             }
 
@@ -750,6 +1064,7 @@
 
             .book-content {
                 flex: none;
+
                 width: 100%;
             }
 
@@ -758,79 +1073,110 @@
                 margin-right: auto;
             }
 
+            .coming-soon-box {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
             .book-details {
                 text-align: left;
-                max-width: 450px;
+
+                max-width: 430px;
+
                 margin: 0 auto;
             }
 
-            /* OTHER SECTIONS */
 
-            .learning-layout,
+            /* LEARNING */
+
+            .learning-layout {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+
+            /* AUTHOR */
+
             .author-layout {
                 grid-template-columns: 1fr;
+
+                gap: 45px;
             }
+
+
+            /* FOOTER */
 
             footer {
                 flex-direction: column;
+
                 gap: 15px;
+
                 text-align: center;
             }
+
         }
 
-        @media (max-width: 500px) {
+
+        /* =========================================
+           SMALL PHONES
+        ========================================= */
+
+        @media (max-width: 480px) {
 
             .intro-logo {
-                font-size: 52px;
+                font-size: 55px;
             }
 
             .intro-subtitle {
-                font-size: 10px;
+                font-size: 9px;
+
                 letter-spacing: 2px;
             }
 
-            .hero {
-                padding-top: 65px;
+            .hero h1 {
+                font-size: 54px;
             }
 
             .hero p {
-                font-size: 16px;
-            }
-
-            .book-section {
-                gap: 35px;
+                font-size: 15px;
             }
 
             .book-image img {
                 width: min(290px, 82vw);
             }
 
-            .equation-box {
-                padding: 50px 20px;
+            .topic-card {
+                min-height: 260px;
+
+                padding: 28px;
             }
+
         }
 
     </style>
 </head>
 
+
 <body>
 
-    <!-- =========================
+
+    <!-- =========================================
          INTRO
-    ========================= -->
+    ========================================= -->
 
     <div class="intro-screen">
 
         <div class="intro-content">
 
             <div class="intro-logo">
-                Edu<span style="color:#e52b20;">Nova</span>
+                Edu<span>Nova</span>
             </div>
 
             <div class="intro-line"></div>
 
             <div class="intro-subtitle">
-                Advanced Mathematics • 2026
+                ADVANCED MATHEMATICS • 2026
             </div>
 
         </div>
@@ -838,9 +1184,9 @@
     </div>
 
 
-    <!-- =========================
+    <!-- =========================================
          NAVIGATION
-    ========================= -->
+    ========================================= -->
 
     <nav>
 
@@ -871,7 +1217,9 @@
             </li>
 
             <li>
-                <a href="#start" class="nav-button">Start Learning</a>
+                <a href="#start" class="nav-button">
+                    Start Learning
+                </a>
             </li>
 
         </ul>
@@ -879,9 +1227,9 @@
     </nav>
 
 
-    <!-- =========================
+    <!-- =========================================
          HERO
-    ========================= -->
+    ========================================= -->
 
     <section class="hero" id="home">
 
@@ -904,11 +1252,17 @@
 
             <div class="hero-buttons">
 
-                <a href="#mathematics" class="primary-button">
+                <a
+                    href="#mathematics"
+                    class="primary-button"
+                >
                     Explore Mathematics
                 </a>
 
-                <a href="#book" class="secondary-button">
+                <a
+                    href="#book"
+                    class="secondary-button"
+                >
                     Discover the Book
                 </a>
 
@@ -918,18 +1272,24 @@
 
 
         <div class="math-decoration">
+
             <div class="orbit"></div>
+
             <div class="dot"></div>
+
         </div>
 
     </section>
 
 
-    <!-- =========================
-         MATHEMATICS TOPICS
-    ========================= -->
+    <!-- =========================================
+         CURRICULUM
+    ========================================= -->
 
-    <section class="topics-section" id="mathematics">
+    <section
+        class="topics-section"
+        id="mathematics"
+    >
 
         <div class="topics-header">
 
@@ -957,113 +1317,173 @@
 
         <div class="topics-grid">
 
+
+            <!-- ALGEBRA -->
+
             <div class="topic-card">
 
                 <div class="topic-number">
-                    01
+                    CHAPTER 01
                 </div>
 
-                <h3>Algebra</h3>
+                <h3>
+                    Algebra
+                </h3>
 
                 <p>
                     Expressions, equations, sequences and the structures
                     that make algebra work.
                 </p>
 
+                <a href="#learning" class="chapter-link">
+                    ABOUT THE CHAPTER
+                    <span>→</span>
+                </a>
+
             </div>
 
+
+            <!-- FUNCTIONS -->
 
             <div class="topic-card">
 
                 <div class="topic-number">
-                    02
+                    CHAPTER 02
                 </div>
 
-                <h3>Functions</h3>
+                <h3>
+                    Functions
+                </h3>
 
                 <p>
                     Discover how functions behave, transform and connect
                     different mathematical ideas.
                 </p>
 
+                <a href="#learning" class="chapter-link">
+                    ABOUT THE CHAPTER
+                    <span>→</span>
+                </a>
+
             </div>
 
+
+            <!-- TRIGONOMETRY -->
 
             <div class="topic-card">
 
                 <div class="topic-number">
-                    03
+                    CHAPTER 03
                 </div>
 
-                <h3>Trigonometry</h3>
+                <h3>
+                    Trigonometry
+                </h3>
 
                 <p>
                     Explore identities, equations and the geometry hidden
                     inside trigonometric relationships.
                 </p>
 
+                <a href="#learning" class="chapter-link">
+                    ABOUT THE CHAPTER
+                    <span>→</span>
+                </a>
+
             </div>
 
+
+            <!-- CALCULUS -->
 
             <div class="topic-card">
 
                 <div class="topic-number">
-                    04
+                    CHAPTER 04
                 </div>
 
-                <h3>Calculus</h3>
+                <h3>
+                    Calculus
+                </h3>
 
                 <p>
                     Understand change, rates, derivatives, integrals
                     and the mathematics of continuous quantities.
                 </p>
 
+                <a href="#learning" class="chapter-link">
+                    ABOUT THE CHAPTER
+                    <span>→</span>
+                </a>
+
             </div>
 
+
+            <!-- COMPLEX NUMBERS -->
 
             <div class="topic-card">
 
                 <div class="topic-number">
-                    05
+                    CHAPTER 05
                 </div>
 
-                <h3>Complex Numbers</h3>
+                <h3>
+                    Complex Numbers
+                </h3>
 
                 <p>
                     Enter the complex plane and discover a broader
                     perspective on numbers and equations.
                 </p>
 
+                <a href="#learning" class="chapter-link">
+                    ABOUT THE CHAPTER
+                    <span>→</span>
+                </a>
+
             </div>
 
+
+            <!-- PROBABILITY -->
 
             <div class="topic-card">
 
                 <div class="topic-number">
-                    06
+                    CHAPTER 06
                 </div>
 
-                <h3>Probability</h3>
+                <h3>
+                    Probability
+                </h3>
 
                 <p>
                     Learn how mathematics describes uncertainty,
                     patterns and the behavior of random events.
                 </p>
 
+                <a href="#learning" class="chapter-link">
+                    ABOUT THE CHAPTER
+                    <span>→</span>
+                </a>
+
             </div>
+
 
         </div>
 
     </section>
 
 
-    <!-- =========================
+    <!-- =========================================
          BOOK
-    ========================= -->
+    ========================================= -->
 
-    <section class="book-section" id="book">
+    <section
+        class="book-section"
+        id="book"
+    >
 
-        <!-- COVER -->
+
+        <!-- BOOK COVER -->
 
         <div class="book-image">
 
@@ -1075,7 +1495,7 @@
         </div>
 
 
-        <!-- WRITING -->
+        <!-- BOOK INFORMATION -->
 
         <div class="book-content">
 
@@ -1095,11 +1515,16 @@
                 explanations and a genuine love for the subject.
             </p>
 
-            <div class="coming-soon">
 
-                <span class="pulse"></span>
+            <!-- WHITE COMING SOON BOX -->
 
-                COMING SOON
+            <div class="coming-soon-box">
+
+                <span class="coming-dot"></span>
+
+                <strong>
+                    COMING SOON
+                </strong>
 
             </div>
 
@@ -1133,11 +1558,14 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =========================================
          LEARNING
-    ========================= -->
+    ========================================= -->
 
-    <section class="learning-section" id="learning">
+    <section
+        class="learning-section"
+        id="learning"
+    >
 
         <div class="learning-layout">
 
@@ -1180,13 +1608,17 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =========================================
          AUTHOR
-    ========================= -->
+    ========================================= -->
 
-    <section class="author-section" id="author">
+    <section
+        class="author-section"
+        id="author"
+    >
 
         <div class="author-layout">
+
 
             <div>
 
@@ -1248,9 +1680,9 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =========================================
          FOOTER
-    ========================= -->
+    ========================================= -->
 
     <footer id="start">
 
@@ -1265,9 +1697,9 @@
     </footer>
 
 
-    <!-- =========================
+    <!-- =========================================
          JAVASCRIPT
-    ========================= -->
+    ========================================= -->
 
     <script>
 
@@ -1280,6 +1712,7 @@
         }
 
     </script>
+
 
 </body>
 </html>
