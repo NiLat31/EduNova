@@ -5,10 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>EduNova | Grade 12 Advanced Mathematics</title>
+/* INTRO ANIMATION */
 
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  background: #171717;
+  color: white;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: introExit 1s cubic-bezier(0.77, 0, 0.18, 1) 2.4s forwards;
+}
+
+.intro-content {
+  text-align: center;
+  animation: introContent 1s ease forwards;
+}
+
+.intro-logo {
+  font-family: "Playfair Display", serif;
+  font-size: 68px;
+  letter-spacing: -3px;
+  margin-bottom: 18px;
+}
+
+.intro-logo span {
+  color: white;
+}
+
+.intro-logo strong {
+  color: #e52b20;
+}
+
+.intro-line {
+  width: 0;
+  height: 2px;
+  background: #e52b20;
+  margin: auto;
+  animation: introLine 1.2s ease 0.4s forwards;
+}
+
+.intro-content p {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #999;
+  margin-top: 18px;
+  opacity: 0;
+  animation: introText 0.8s ease 0.8s forwards;
+}
+
+@keyframes introLine {
+  to {
+    width: 180px;
+  }
+}
+
+@keyframes introText {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes introContent {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introExit {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+}
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+.notify-button {
+  border: none;
+  background: #171717;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 9px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+  margin-bottom: 30px;
+}
 
+.notify-button:hover {
+  background: #e52b20;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(229,43,32,0.2);
+}
     * {
       margin: 0;
       padding: 0;
@@ -518,7 +620,22 @@
 
     /* MOBILE */
 
-    @media (max-width: 900px) {
+    @media (max-width: 900px)
+    .author-grid {
+  grid-template-columns: 1fr;
+  gap: 50px;
+  text-align: center;
+}
+
+.author-content {
+  margin: auto;
+}
+
+.author-mark {
+  width: 210px;
+  height: 210px;
+  font-size: 110px;
+}{
       .book-section {
         grid-template-columns: 1fr;
         gap: 50px;
@@ -599,6 +716,22 @@
 </head>
 
 <body>
+
+<body>
+
+  <!-- INTRO ANIMATION -->
+
+  <div class="intro-screen">
+    <div class="intro-content">
+      <div class="intro-logo">
+        <span>Edu</span><strong>Nova</strong>
+      </div>
+
+      <div class="intro-line"></div>
+
+      <p>ADVANCED MATHEMATICS • 2026</p>
+    </div>
+  </div>
 
   <!-- NAVIGATION -->
 
@@ -776,7 +909,9 @@
         <span class="pulse"></span>
         COMING SOON
       </div>
-
+<button class="notify-button" onclick="notifyMe()">
+  🔔 Notify Me When It’s Released
+</button>
       <div class="book-details">
         <strong>EduNova Mathematics</strong>
         <span>Grade 12 • Advanced Mathematics</span>
@@ -839,7 +974,109 @@
 
   </section>
 
+  <!-- AUTHOR -->
 
+  <section class="author" id="author">
+
+    <div class="section-label">
+      THE CREATOR
+    </div>
+
+    <div class="author-grid">
+
+      <div class="author-mark">
+        ∑
+      </div>
+
+      <div class="author-content">
+
+        <h2 class="section-title">
+          Mathematics,<br>
+          <span>with purpose.</span>
+        </h2>
+
+        <p>
+          EduNova was created by a mathematics enthusiast with a
+          passion for making advanced mathematics clearer, deeper
+          and more enjoyable to learn.
+        </p>
+
+        <p>
+          The goal is simple: create resources that go beyond
+          memorizing formulas and encourage students to understand,
+          explore and think mathematically.
+        </p>
+
+        <div class="author-name">
+          <strong>EduNova</strong>
+          <span>Founder & Author</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  /* AUTHOR */
+
+.author {
+  background: #f5f5f5;
+}
+
+.author-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 90px;
+  align-items: center;
+}
+
+.author-mark {
+  width: 280px;
+  height: 280px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Playfair Display", serif;
+  font-size: 150px;
+  color: #e52b20;
+  margin: auto;
+}
+
+.author-content {
+  max-width: 650px;
+}
+
+.author-content .section-title span {
+  color: #e52b20;
+}
+
+.author-content p {
+  color: #666;
+  line-height: 1.8;
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+
+.author-name {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid #ddd;
+}
+
+.author-name strong {
+  font-family: "Playfair Display", serif;
+  font-size: 23px;
+}
+
+.author-name span {
+  color: #777;
+  font-size: 14px;
+  margin-top: 5px;
+}
   <!-- ABOUT -->
 
   <section class="about" id="about">
