@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EduNova | Advanced Mathematics</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f8fc;
+      color: #182033;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 7%;
+      background: white;
+      border-bottom: 1px solid #e8eaf0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      font-weight: 400;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #555d70;
+      margin-left: 28px;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: #182033;
+    }
+
+    .hero {
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 7%;
+      background:
+        radial-gradient(circle at 85% 20%, #dfe7ff 0, transparent 30%),
+        radial-gradient(circle at 15% 80%, #e9e2ff 0, transparent 30%),
+        #f7f8fc;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 30px;
+      background: white;
+      border: 1px solid #e2e5ee;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(50px, 8vw, 90px);
+      line-height: 0.95;
+      letter-spacing: -5px;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      color: #5967d9;
+    }
+
+    .hero p {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #646c7e;
+      max-width: 650px;
+      margin-bottom: 35px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 24px;
+      background: #182033;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 90px 7%;
+    }
+
+    .section-title {
+      font-size: 42px;
+      margin-bottom: 12px;
+      letter-spacing: -2px;
+    }
+
+    .section-subtitle {
+      color: #6b7280;
+      font-size: 17px;
+      margin-bottom: 45px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      border: 1px solid #e7e9ef;
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(20, 30, 60, 0.08);
+    }
+
+    .card-number {
+      font-size: 14px;
+      color: #5967d9;
+      font-weight: bold;
+      margin-bottom: 35px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #707789;
+      line-height: 1.6;
+    }
+
+    .about {
+      background: #182033;
+      color: white;
+    }
+
+    .about p {
+      max-width: 750px;
+      color: #c8cddd;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111827;
+      color: #8d95a7;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        display: none;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      .hero {
+        min-height: 70vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Edu<span>Nova</span></div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#course">Course</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+
+        <div class="tag">GRADE 12 • ADVANCED MATHEMATICS</div>
+
+        <h1>
+          Mathematics,<br>
+          <span>reimagined.</span>
+        </h1>
+
+        <p>
+          Welcome to EduNova, a modern learning platform designed
+          to make advanced mathematics clearer, deeper, and more
+          engaging.
+        </p>
+
+        <a href="#course" class="button">
+          Explore the course →
+        </a>
+
+      </div>
+    </section>
+
+
+    <section id="course">
+
+      <h2 class="section-title">Explore Mathematics</h2>
+
+      <p class="section-subtitle">
+        Build understanding. Develop confidence. Master the mathematics.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-number">01</div>
+          <h3>Calculus</h3>
+          <p>
+            Differentiation, integration, functions,
+            limits and applications.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">02</div>
+          <h3>Trigonometry</h3>
+          <p>
+            Identities, equations, graphs and
+            advanced trigonometric applications.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">03</div>
+          <h3>Algebra</h3>
+          <p>
+            Algebraic techniques, equations,
+            sequences and mathematical reasoning.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">04</div>
+          <h3>Complex Numbers</h3>
+          <p>
+            Explore the fascinating world beyond
+            the real number system.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">05</div>
+          <h3>Probability</h3>
+          <p>
+            Understand uncertainty through probability,
+            distributions and statistical thinking.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">06</div>
+          <h3>Geometry</h3>
+          <p>
+            Discover relationships between shapes,
+            coordinates, angles and mathematical space.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="about" id="about">
+
+      <h2 class="section-title">What is EduNova?</h2>
+
+      <p>
+        EduNova is an educational series dedicated to Advanced
+        Mathematics for Grade 12 students. It combines rigorous
+        mathematical ideas with clear explanations, examples,
+        practice and exploration.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2026 EduNova • Advanced Mathematics
+  </footer>
+
+</body>
+</html>
