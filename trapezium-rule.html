@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,387 +8,261 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    font-family:"DM Sans",sans-serif;
-    background:#f7f6f2;
-    color:#111;
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #f7f7f5;
+    color: #111;
+    line-height: 1.8;
 }
 
-
-/* NAVIGATION */
-
-nav{
-    height:82px;
-    padding:0 7%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    border-bottom:1px solid #ddd;
-    background:#f7f6f2;
+nav {
+    height: 80px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
 }
 
-.logo{
-    font-family:"Playfair Display",serif;
-    font-size:28px;
-    font-weight:700;
+.logo {
+    font-size: 25px;
+    font-weight: 700;
 }
 
-.logo span{
-    color:#e52b20;
+.logo span {
+    color: #e52b20;
 }
 
-.nav{
-    display:flex;
-    gap:10px;
-    align-items:center;
+.nav-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
 }
 
-.nav a{
-    text-decoration:none;
-    color:#111;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:1px;
-    padding:11px 15px;
+.nav-links a {
+    text-decoration: none;
+    color: #111;
+    font-size: 14px;
+    font-weight: 600;
 }
 
-.nav a:hover{
-    color:#e52b20;
+.logout {
+    border: 1px solid #111;
+    padding: 10px 18px;
 }
 
-.logout{
-    border:0;
-    background:#111;
-    color:#fff;
-    padding:11px 17px;
-    font:700 10px "DM Sans";
-    cursor:pointer;
+.hero {
+    background: #111;
+    color: white;
+    padding: 90px 8%;
 }
 
-.logout:hover{
-    background:#e52b20;
+.hero small {
+    color: #e52b20;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
-
-/* HERO */
-
-.hero{
-    background:#111;
-    color:#fff;
-    padding:75px 7% 70px;
-    position:relative;
-    overflow:hidden;
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(45px, 6vw, 80px);
+    line-height: 1.05;
+    margin-top: 20px;
 }
 
-.hero:after{
-    content:"∫";
-    position:absolute;
-    right:7%;
-    top:-85px;
-    font:300 330px "Playfair Display";
-    color:#202020;
+.hero p {
+    max-width: 700px;
+    color: #ccc;
+    font-size: 19px;
+    margin-top: 25px;
 }
 
-.label{
-    color:#e52b20;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:3px;
-    margin-bottom:18px;
-    position:relative;
-    z-index:2;
+.container {
+    width: min(1000px, 88%);
+    margin: auto;
 }
 
-.hero h1{
-    font:600 clamp(45px,6vw,76px)/1.02 "Playfair Display";
-    letter-spacing:-3px;
-    position:relative;
-    z-index:2;
+.lesson {
+    padding: 80px 0;
 }
 
-.hero p{
-    max-width:680px;
-    color:#aaa;
-    margin-top:22px;
-    font-size:15px;
-    line-height:1.8;
-    position:relative;
-    z-index:2;
+.section {
+    margin-bottom: 75px;
 }
 
-
-/* MAIN LESSON */
-
-main{
-    max-width:1050px;
-    margin:0 auto;
-    padding:80px 7% 110px;
+.section h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+    margin-bottom: 25px;
 }
 
-.lesson-section{
-    margin-bottom:70px;
+.section h3 {
+    font-size: 23px;
+    margin: 35px 0 15px;
 }
 
-.lesson-section h2{
-    font:600 clamp(32px,4vw,48px)/1.1 "Playfair Display";
-    letter-spacing:-1.5px;
-    margin-bottom:25px;
+.section p {
+    font-size: 19px;
+    color: #333;
+    margin-bottom: 20px;
+    max-width: 900px;
 }
 
-.lesson-section h3{
-    font:600 26px/1.2 "Playfair Display";
-    margin:35px 0 15px;
+.math-box {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 35px;
+    margin: 30px 0;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.04);
 }
 
-.lesson-section p{
-    color:#444;
-    font-size:15px;
-    line-height:1.95;
-    margin-bottom:18px;
+.math-box .small {
+    font-size: 20px;
 }
 
-
-/* FORMULA */
-
-.formula{
-    background:#fff;
-    border:1px solid #ddd;
-    padding:28px;
-    margin:30px 0;
-    text-align:center;
-    font-family:"Playfair Display",serif;
-    font-size:25px;
+.fraction {
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 1.1;
+    margin: 0 6px;
 }
 
-
-/* GRAPH */
-
-.graph-box{
-    background:#fff;
-    border:1px solid #ddd;
-    padding:25px;
-    margin:35px 0;
+.fraction .top {
+    border-bottom: 2px solid #111;
+    padding: 0 8px 4px;
 }
 
-.graph-box img{
-    display:block;
-    width:100%;
-    max-width:1000px;
-    height:auto;
-    margin:0 auto;
+.fraction .bottom {
+    padding-top: 4px;
 }
 
-.graph-caption{
-    text-align:center;
-    color:#777;
-    font-size:12px;
-    margin-top:15px;
+.note {
+    border-left: 5px solid #e52b20;
+    background: white;
+    padding: 25px 30px;
+    margin: 30px 0;
 }
 
-
-/* IMPORTANT IDEA */
-
-.idea{
-    background:#111;
-    color:#fff;
-    padding:35px;
-    margin:35px 0;
+.note strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
 }
 
-.idea .label{
-    margin-bottom:12px;
+.graph-container {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 30px;
+    margin-top: 35px;
+    overflow-x: auto;
 }
 
-.idea p{
-    color:#ddd;
-    margin:0;
+.graph-container svg {
+    display: block;
+    width: 100%;
+    min-width: 750px;
+    height: auto;
 }
 
-
-/* STEPS */
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-    margin-top:30px;
+.graph-button {
+    display: block;
+    margin: 30px auto 5px;
+    padding: 15px 25px;
+    background: #e52b20;
+    color: white;
+    border: none;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: .5px;
 }
 
-.step{
-    background:#fff;
-    border:1px solid #ddd;
-    padding:28px;
+.graph-button:hover {
+    transform: translateY(-2px);
 }
 
-.step-number{
-    color:#e52b20;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:2px;
-    margin-bottom:15px;
+#approximation {
+    opacity: 0;
+    transition: opacity 1s ease;
 }
 
-.step h3{
-    margin:0 0 12px;
-    font-size:23px;
+.next {
+    background: #111;
+    color: white;
+    padding: 55px;
+    text-align: center;
 }
 
-.step p{
-    margin:0;
-    font-size:13px;
+.next h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 36px;
+    margin-bottom: 12px;
 }
 
-
-/* NAVIGATION BETWEEN TOPICS */
-
-.lesson-navigation{
-    border-top:1px solid #ddd;
-    padding-top:35px;
-    margin-top:80px;
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
+.next p {
+    color: #ccc;
 }
 
-.lesson-navigation a{
-    text-decoration:none;
-    background:#111;
-    color:#fff;
-    padding:13px 20px;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:1px;
+footer {
+    background: #111;
+    color: #777;
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid #333;
 }
 
-.lesson-navigation a:hover{
-    background:#e52b20;
-}
+@media (max-width: 700px) {
 
-
-/* FOOTER */
-
-footer{
-    background:#111;
-    color:#fff;
-    padding:40px 7%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.footer-logo{
-    font:600 24px "Playfair Display";
-}
-
-.footer-logo span{
-    color:#e52b20;
-}
-
-footer p{
-    color:#888;
-    font-size:11px;
-}
-
-
-/* MOBILE */
-
-@media(max-width:800px){
-
-    nav{
-        height:auto;
-        padding:18px 5%;
-        gap:15px;
+    nav {
+        padding: 0 5%;
     }
 
-    .nav{
-        gap:2px;
+    .nav-links {
+        gap: 10px;
     }
 
-    .nav a{
-        padding:9px 7px;
-        font-size:9px;
+    .nav-links a:not(.logout) {
+        display: none;
     }
 
-    .hero{
-        padding:65px 5% 55px;
+    .lesson {
+        padding: 55px 0;
     }
 
-    main{
-        padding:65px 5% 85px;
+    .section h2 {
+        font-size: 31px;
     }
 
-    .graph-box{
-        padding:10px;
+    .section p {
+        font-size: 17px;
     }
 
-    .steps{
-        grid-template-columns:1fr;
+    .math-box {
+        font-size: 22px;
+        padding: 25px 15px;
     }
-
-    .lesson-navigation{
-        flex-direction:column;
-    }
-
-    footer{
-        flex-direction:column;
-        gap:15px;
-        text-align:center;
-    }
-
-}
-.graph-title{
-    text-align:center;
-    font-family:"Playfair Display",serif;
-    font-size:24px;
-    margin-bottom:15px;
 }
 
-#trapeziumGraph{
-    display:block;
-    width:100%;
-    height:auto;
-}
-
-.animate-button{
-    display:block;
-    margin:20px auto 0;
-    border:0;
-    background:#111;
-    color:#fff;
-    padding:13px 20px;
-    font:700 10px "DM Sans";
-    letter-spacing:1px;
-    cursor:pointer;
-}
-
-.animate-button:hover{
-    background:#e52b20;
-}
-
-#approximation{
-    transition:opacity .8s ease;
-}
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- NAVIGATION -->
 
 <nav>
 
@@ -398,750 +270,415 @@ footer p{
         Edu<span>Nova</span>
     </div>
 
-    <div class="nav">
-
-        <a href="dashboard.html">
-            ← DASHBOARD
-        </a>
-
-        <a href="integration.html">
-            INTEGRATION
-        </a>
-
-        <button class="logout" onclick="logout()">
-            LOG OUT
-        </button>
-
+    <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="integration.html">Integration</a>
+        <a href="#" class="logout" onclick="logout()">LOG OUT</a>
     </div>
 
 </nav>
 
 
+<section class="hero">
 
-<!-- HERO -->
+    <small>CHAPTER 05 • INTEGRATION • TOPIC 01</small>
 
-<header class="hero">
-
-    <div class="label">
-        CHAPTER 05 • INTEGRATION • TOPIC 01
-    </div>
-
-    <h1>
-        Trapezium Rule.
-    </h1>
+    <h1>Trapezium Rule.</h1>
 
     <p>
-        Learn how to estimate the area under a curve by
-        dividing the region into equal intervals and
-        replacing sections of the curve with straight lines.
+        Estimating the area under a curve by replacing sections of the curve
+        with straight-line approximations.
     </p>
 
-</header>
+</section>
 
 
+<main class="lesson">
 
-<!-- LESSON -->
-
-<main>
-
-
-    <!-- INTRODUCTION -->
-
-    <section class="lesson-section">
-
-        <div class="label">
-            INTRODUCTION
-        </div>
-
-        <h2>
-            Why do we estimate?
-        </h2>
-
-        <p>
-            One of the uses of integration is to find the area
-            under a curve. However, in some cases, finding the
-            exact area using integration may not be possible or
-            may be difficult to evaluate directly. In such
-            situations, we can use an estimation method to
-            approximate the area.
-        </p>
-
-        <p>
-            One of the methods used to estimate the area under
-            a curve is the <strong>Trapezium Rule</strong>.
-        </p>
-
-    </section>
+<div class="container">
 
 
+<!-- INTRODUCTION -->
 
-    <!-- ESTIMATING AREA -->
+<section class="section">
 
-    <section class="lesson-section">
+    <h2>Introduction</h2>
 
-        <div class="label">
-            ESTIMATING THE AREA
-        </div>
+    <p>
+        One of the uses of integration is to find the area under a curve.
+        However, in some cases, finding the exact area using integration may
+        not be possible or may be difficult to evaluate directly.
+        In such situations, we can use an estimation method to approximate
+        the area.
+    </p>
 
-        <h2>
-            Dividing the interval
-        </h2>
+    <p>
+        One of the methods used to estimate the area under a curve is the
+        <strong>Trapezium Rule.</strong>
+    </p>
 
-        <p>
-            Consider the curve \(y=f(x)\), and suppose that we
-            want to find the area between the curve and the
-            \(x\)-axis from \(x=a\) to \(x=b\).
-        </p>
-
-        <p>
-            To estimate this area, we divide the interval from
-            \(a\) to \(b\) into \(n\) equal intervals.
-        </p>
+</section>
 
 
-        <div class="graph-box">
+<!-- ESTIMATING AREA -->
 
-    <div class="graph-title">
-        Dividing the interval into equal parts
+<section class="section">
+
+    <h2>Estimating the Area</h2>
+
+    <p>
+        Consider the curve
+        <strong>y = f(x)</strong>,
+        and suppose that we want to find the area between the curve and the
+        x-axis from
+        <strong>x = a</strong>
+        to
+        <strong>x = b</strong>.
+    </p>
+
+    <p>
+        To estimate this area, we divide the interval from
+        <strong>a</strong>
+        to
+        <strong>b</strong>
+        into <strong>n equal intervals</strong>.
+    </p>
+
+    <p>
+        Let the width of each interval be <strong>h</strong>.
+        Since the total width of the interval is
+        <strong>b − a</strong>,
+        and it has been divided into <strong>n</strong> equal parts:
+    </p>
+
+    <div class="math-box">
+
+        h =
+        
+        <span class="fraction">
+            <span class="top">b − a</span>
+            <span class="bottom">n</span>
+        </span>
+
     </div>
 
-    <svg
-        id="trapeziumGraph"
-        viewBox="0 0 1000 520"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-label="Animated Trapezium Rule graph"
-    >
+    <p>
+        We can therefore mark the x-coordinates as:
+    </p>
 
-        <!-- AXES -->
+    <div class="math-box">
 
-        <line x1="90" y1="440" x2="930" y2="440"
-              stroke="#111" stroke-width="2"/>
+        x₀ = a &nbsp;&nbsp;&nbsp;
+        x₁ &nbsp;&nbsp;&nbsp;
+        x₂ &nbsp;&nbsp;&nbsp;
+        x₃ &nbsp;&nbsp;&nbsp; ... &nbsp;&nbsp;&nbsp;
+        xₙ = b
 
-        <line x1="90" y1="440" x2="90" y2="65"
-              stroke="#111" stroke-width="2"/>
-
-
-        <!-- AXIS ARROWS -->
-
-        <polygon points="930,440 918,434 918,446"
-                 fill="#111"/>
-
-        <polygon points="90,65 84,77 96,77"
-                 fill="#111"/>
-
-
-        <!-- AXIS LABELS -->
-
-        <text x="940" y="446"
-              font-family="DM Sans"
-              font-size="18">
-            x
-        </text>
-
-        <text x="78" y="58"
-              font-family="DM Sans"
-              font-size="18">
-            y
-        </text>
-
-
-        <!-- CURVE -->
-
-        <path
-            d="M 90 385
-               C 180 360, 210 275, 300 285
-               C 390 295, 430 175, 520 185
-               C 610 195, 650 110, 735 140
-               C 820 170, 850 120, 930 95"
-            fill="none"
-            stroke="#111"
-            stroke-width="4"
-            stroke-linecap="round"
-        />
-
-
-        <!-- X POINTS -->
-
-        <line x1="90" y1="440" x2="90" y2="385"
-              stroke="#aaa" stroke-width="1"/>
-
-        <line x1="230" y1="440" x2="230" y2="285"
-              stroke="#aaa" stroke-width="1"/>
-
-        <line x1="370" y1="440" x2="370" y2="270"
-              stroke="#aaa" stroke-width="1"/>
-
-        <line x1="510" y1="440" x2="510" y2="185"
-              stroke="#aaa" stroke-width="1"/>
-
-        <line x1="650" y1="440" x2="650" y2="150"
-              stroke="#aaa" stroke-width="1"/>
-
-        <line x1="790" y1="440" x2="790" y2="145"
-              stroke="#aaa" stroke-width="1"/>
-
-        <line x1="930" y1="440" x2="930" y2="95"
-              stroke="#aaa" stroke-width="1"/>
-
-
-        <!-- POINTS -->
-
-        <circle cx="90" cy="385" r="6" fill="#e52b20"/>
-        <circle cx="230" cy="285" r="6" fill="#e52b20"/>
-        <circle cx="370" cy="270" r="6" fill="#e52b20"/>
-        <circle cx="510" cy="185" r="6" fill="#e52b20"/>
-        <circle cx="650" cy="150" r="6" fill="#e52b20"/>
-        <circle cx="790" cy="145" r="6" fill="#e52b20"/>
-        <circle cx="930" cy="95" r="6" fill="#e52b20"/>
-
-
-        <!-- Y LABELS -->
-
-        <text x="68" y="380"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="end">
-            y₀
-        </text>
-
-        <text x="210" y="280"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="end">
-            y₁
-        </text>
-
-        <text x="350" y="265"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="end">
-            y₂
-        </text>
-
-        <text x="490" y="180"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="end">
-            y₃
-        </text>
-
-        <text x="630" y="145"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="end">
-            y₄
-        </text>
-
-        <text x="770" y="140"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="end">
-            y₅
-        </text>
-
-        <text x="950" y="90"
-              font-family="DM Sans"
-              font-size="16">
-            y₆
-        </text>
-
-
-        <!-- X LABELS -->
-
-        <text x="90" y="470"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="middle">
-            x₀ = a
-        </text>
-
-        <text x="230" y="470"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="middle">
-            x₁
-        </text>
-
-        <text x="370" y="470"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="middle">
-            x₂
-        </text>
-
-        <text x="510" y="470"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="middle">
-            x₃
-        </text>
-
-        <text x="650" y="470"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="middle">
-            x₄
-        </text>
-
-        <text x="790" y="470"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="middle">
-            x₅
-        </text>
-
-        <text x="930" y="470"
-              font-family="DM Sans"
-              font-size="16"
-              text-anchor="middle">
-            x₆ = b
-        </text>
-
-
-        <!-- h MARKERS -->
-
-        <g class="h-marker">
-
-            <line x1="90" y1="415"
-                  x2="230" y2="415"
-                  stroke="#e52b20"
-                  stroke-width="2"/>
-
-            <line x1="90" y1="408"
-                  x2="90" y2="422"
-                  stroke="#e52b20"
-                  stroke-width="2"/>
-
-            <line x1="230" y1="408"
-                  x2="230" y2="422"
-                  stroke="#e52b20"
-                  stroke-width="2"/>
-
-            <text x="160" y="405"
-                  text-anchor="middle"
-                  font-family="DM Sans"
-                  font-size="17"
-                  font-weight="700"
-                  fill="#e52b20">
-                h
-            </text>
-
-        </g>
-
-
-        <g class="h-marker">
-
-            <line x1="230" y1="395"
-                  x2="370" y2="395"
-                  stroke="#e52b20"
-                  stroke-width="2"/>
-
-            <line x1="230" y1="388"
-                  x2="230" y2="402"
-                  stroke="#e52b20"
-                  stroke-width="2"/>
-
-            <line x1="370" y1="388"
-                  x2="370" y2="402"
-                  stroke="#e52b20"
-                  stroke-width="2"/>
-
-            <text x="300" y="385"
-                  text-anchor="middle"
-                  font-family="DM Sans"
-                  font-size="17"
-                  font-weight="700"
-                  fill="#e52b20">
-                h
-            </text>
-
-        </g>
-
-
-        <g class="h-marker">
-
-            <line x1="370" y1="375"
-                  x2="510" y2="375"
-                  stroke="#e52b20"
-                  stroke-width="2"/>
-
-            <line x1="370" y1="368"
-                  x2="370" y2="382"
-                  stroke="#e52b20"
-                  stroke-width="2"/>
-
-            <line x1="510" y1="368"
-                  x2="510" y2="382"
-                  stroke="#e52b20"
-                  stroke-width="2"/>
-
-            <text x="440" y="365"
-                  text-anchor="middle"
-                  font-family="DM Sans"
-                  font-size="17"
-                  font-weight="700"
-                  fill="#e52b20">
-                h
-            </text>
-
-        </g>
-
-
-        <!-- STRAIGHT-LINE APPROXIMATION -->
-
-        <g id="approximation"
-           opacity="0">
-
-            <line x1="90" y1="385"
-                  x2="230" y2="285"
-                  stroke="#e52b20"
-                  stroke-width="4"/>
-
-            <line x1="230" y1="285"
-                  x2="370" y2="270"
-                  stroke="#e52b20"
-                  stroke-width="4"/>
-
-            <line x1="370" y1="270"
-                  x2="510" y2="185"
-                  stroke="#e52b20"
-                  stroke-width="4"/>
-
-            <line x1="510" y1="185"
-                  x2="650" y2="150"
-                  stroke="#e52b20"
-                  stroke-width="4"/>
-
-            <line x1="650" y1="150"
-                  x2="790" y2="145"
-                  stroke="#e52b20"
-                  stroke-width="4"/>
-
-            <line x1="790" y1="145"
-                  x2="930" y2="95"
-                  stroke="#e52b20"
-                  stroke-width="4"/>
-
-        </g>
-
-
-    </svg>
-
-
-    <button
-        class="animate-button"
-        onclick="showApproximation()">
-        SHOW STRAIGHT-LINE APPROXIMATION →
-    </button>
-
-
-    <div class="graph-caption">
-        The straight lines approximate the curve between consecutive points.
     </div>
+
+    <p>
+        Because the intervals are equal, the distance between every two
+        consecutive x-coordinates is the same and is equal to
+        <strong>h</strong>.
+    </p>
+
+</section>
+
+
+<!-- GRAPH -->
+
+<section class="section">
+
+    <h2>The Curve and the Intervals</h2>
+
+    <p>
+        At each of these x-coordinates, we can find the corresponding point
+        on the curve. Let the corresponding y-coordinates be
+        <strong>y₀, y₁, y₂, ... , yₙ</strong>,
+        where:
+    </p>
+
+    <div class="math-box">
+
+        yᵢ = f(xᵢ)
+
+    </div>
+
+    <p>
+        Therefore, each point on the curve can be written in the form
+        <strong>(xᵢ, yᵢ)</strong>.
+    </p>
+
+
+    <div class="graph-container">
+
+        <svg viewBox="0 0 1000 560">
+
+            <!-- AXES -->
+
+            <line x1="80" y1="470" x2="930" y2="470"
+                  stroke="#111" stroke-width="3"/>
+
+            <line x1="80" y1="500" x2="80" y2="70"
+                  stroke="#111" stroke-width="3"/>
+
+
+            <!-- AXIS LABELS -->
+
+            <text x="935" y="490"
+                  font-size="22"
+                  font-weight="700">x</text>
+
+            <text x="55" y="65"
+                  font-size="22"
+                  font-weight="700">y</text>
+
+
+            <!-- CURVE -->
+
+            <path d="
+                M 100 430
+                C 190 350, 260 250, 350 220
+                C 450 185, 520 170, 610 190
+                C 720 215, 800 290, 900 380"
+                fill="none"
+                stroke="#111"
+                stroke-width="5"/>
+
+
+            <!-- VERTICAL LINES -->
+
+            <line x1="100" y1="430" x2="100" y2="470"
+                  stroke="#aaa" stroke-width="2"/>
+
+            <line x1="300" y1="240" x2="300" y2="470"
+                  stroke="#aaa" stroke-width="2"/>
+
+            <line x1="500" y1="175" x2="500" y2="470"
+                  stroke="#aaa" stroke-width="2"/>
+
+            <line x1="700" y1="225" x2="700" y2="470"
+                  stroke="#aaa" stroke-width="2"/>
+
+            <line x1="900" y1="380" x2="900" y2="470"
+                  stroke="#aaa" stroke-width="2"/>
+
+
+            <!-- POINTS -->
+
+            <circle cx="100" cy="430" r="7" fill="#e52b20"/>
+            <circle cx="300" cy="240" r="7" fill="#e52b20"/>
+            <circle cx="500" cy="175" r="7" fill="#e52b20"/>
+            <circle cx="700" cy="225" r="7" fill="#e52b20"/>
+            <circle cx="900" cy="380" r="7" fill="#e52b20"/>
+
+
+            <!-- Y LABELS -->
+
+            <text x="45" y="438" font-size="19">y₀</text>
+            <text x="245" y="248" font-size="19">y₁</text>
+            <text x="445" y="183" font-size="19">y₂</text>
+            <text x="645" y="233" font-size="19">y₃</text>
+            <text x="845" y="388" font-size="19">y₄</text>
+
+
+            <!-- X LABELS -->
+
+            <text x="90" y="505" font-size="19">x₀</text>
+            <text x="290" y="505" font-size="19">x₁</text>
+            <text x="490" y="505" font-size="19">x₂</text>
+            <text x="690" y="505" font-size="19">x₃</text>
+            <text x="890" y="505" font-size="19">x₄</text>
+
+
+            <!-- h LABELS -->
+
+            <text x="190" y="455"
+                  font-size="20"
+                  font-weight="700">h</text>
+
+            <text x="390" y="455"
+                  font-size="20"
+                  font-weight="700">h</text>
+
+            <text x="590" y="455"
+                  font-size="20"
+                  font-weight="700">h</text>
+
+
+            <!-- APPROXIMATION -->
+
+            <g id="approximation">
+
+                <line x1="100" y1="430"
+                      x2="300" y2="240"
+                      stroke="#e52b20"
+                      stroke-width="4"/>
+
+                <line x1="300" y1="240"
+                      x2="500" y2="175"
+                      stroke="#e52b20"
+                      stroke-width="4"/>
+
+                <line x1="500" y1="175"
+                      x2="700" y2="225"
+                      stroke="#e52b20"
+                      stroke-width="4"/>
+
+                <line x1="700" y1="225"
+                      x2="900" y2="380"
+                      stroke="#e52b20"
+                      stroke-width="4"/>
+
+            </g>
+
+        </svg>
+
+        <button class="graph-button" onclick="showApproximation()">
+            SHOW STRAIGHT-LINE APPROXIMATION →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- REPLACING CURVE -->
+
+<section class="section">
+
+    <h2>Replacing the Curve</h2>
+
+    <p>
+        The curve between two consecutive points is not a straight line.
+        Therefore, finding the exact area of each small section may still
+        be difficult.
+    </p>
+
+    <p>
+        Instead, we approximate each small section of the curve by drawing
+        a straight line between two consecutive points.
+    </p>
+
+    <p>
+        For example, consider the two consecutive points
+        <strong>(x₀, y₀)</strong>
+        and
+        <strong>(x₁, y₁)</strong>.
+    </p>
+
+    <p>
+        We draw a straight line joining these two points. Together with
+        the x-axis and the two vertical lines at x₀ and x₁, this forms
+        a <strong>trapezium</strong>.
+    </p>
+
+    <p>
+        The parallel sides of this trapezium have lengths
+        <strong>y₀</strong>
+        and
+        <strong>y₁</strong>,
+        while its width is
+        <strong>h</strong>.
+    </p>
+
+</section>
+
+
+<!-- SERIES -->
+
+<section class="section">
+
+    <h2>A Series of Trapezia</h2>
+
+    <p>
+        We can repeat the same process between every pair of consecutive
+        points.
+    </p>
+
+    <p>
+        Therefore, the region under the curve is replaced by a series
+        of trapezia.
+    </p>
+
+    <p>
+        The total area of these trapezia gives us an estimate of the
+        area under the original curve.
+    </p>
+
+</section>
+
+
+<!-- WHY APPROXIMATION -->
+
+<section class="section">
+
+    <h2>Why Is It an Approximation?</h2>
+
+    <p>
+        The straight lines do not follow the curve exactly. Therefore,
+        there will usually be a difference between the actual area under
+        the curve and the area of the trapezia.
+    </p>
+
+    <p>
+        However, as we increase the number of intervals, each interval
+        becomes narrower. The straight-line approximations then follow
+        the curve more closely, making the estimated area closer to the
+        actual area.
+    </p>
+
+    <div class="note">
+
+        <strong>The main idea</strong>
+
+        Divide the interval into equal parts, replace each section of
+        the curve with a straight line, calculate the area of each
+        resulting trapezium, and add them together.
+
+    </div>
+
+</section>
+
+
+<!-- NEXT -->
+
+<section class="next">
+
+    <h2>Next: The Trapezium Rule Formula</h2>
+
+    <p>
+        We can now use the area formula for a trapezium to develop
+        the Trapezium Rule.
+    </p>
+
+</section>
 
 </div>
-
-        <p>
-            Let the width of each interval be \(h\). Since the
-            total width of the interval is \(b-a\), and it has
-            been divided into \(n\) equal parts,
-        </p>
-
-
-        <div class="formula">
-
-            \(h=\frac{b-a}{n}\)
-
-        </div>
-
-
-        <p>
-            We can therefore mark the \(x\)-coordinates as
-        </p>
-
-
-        <div class="formula">
-
-            \(x_0=a,\quad x_1,\quad x_2,\quad x_3,\quad
-            \ldots,\quad x_{n-1},\quad x_n=b\)
-
-        </div>
-
-
-        <p>
-            Because the intervals are equal, the distance between
-            every two consecutive \(x\)-coordinates is the same
-            and is equal to \(h\).
-        </p>
-
-    </section>
-
-
-
-    <!-- Y COORDINATES -->
-
-    <section class="lesson-section">
-
-        <div class="label">
-            CORRESPONDING VALUES
-        </div>
-
-        <h2>
-            Finding the \(y\)-coordinates
-        </h2>
-
-        <p>
-            At each of these \(x\)-coordinates, we can find the
-            corresponding point on the curve.
-        </p>
-
-        <p>
-            Let the corresponding \(y\)-coordinates be
-        </p>
-
-
-        <div class="formula">
-
-            \(y_0,\quad y_1,\quad y_2,\quad y_3,\quad
-            \ldots,\quad y_{n-1},\quad y_n\)
-
-        </div>
-
-
-        <p>
-            where
-        </p>
-
-
-        <div class="formula">
-
-            \(y_i=f(x_i)\)
-
-        </div>
-
-
-        <p>
-            Therefore, each point on the curve can be written
-            in the form \((x_i,y_i)\).
-        </p>
-
-    </section>
-
-
-
-    <!-- STRAIGHT LINE APPROXIMATION -->
-
-    <section class="lesson-section">
-
-        <div class="label">
-            THE APPROXIMATION
-        </div>
-
-        <h2>
-            Replacing the curve
-        </h2>
-
-        <p>
-            The curve between two consecutive points is not a
-            straight line. Therefore, finding the exact area of
-            each small section may still be difficult.
-        </p>
-
-        <p>
-            Instead, we approximate each small section of the
-            curve by drawing a straight line between two
-            consecutive points.
-        </p>
-
-
-        <div class="idea">
-
-            <div class="label">
-                KEY IDEA
-            </div>
-
-            <p>
-                The curved sections are replaced by straight-line
-                segments joining consecutive points on the curve.
-            </p>
-
-        </div>
-
-
-        <p>
-            For example, consider the two consecutive points
-        </p>
-
-
-        <div class="formula">
-
-            \((x_0,y_0)\quad\text{and}\quad(x_1,y_1)\)
-
-        </div>
-
-
-        <p>
-            We draw a straight line joining these two points.
-            Together with the \(x\)-axis and the two vertical
-            lines at \(x_0\) and \(x_1\), this forms a trapezium.
-        </p>
-
-        <p>
-            The parallel sides of this trapezium have lengths
-            \(y_0\) and \(y_1\), while its width is \(h\).
-        </p>
-
-
-        <div class="formula">
-
-            \(\text{Area of trapezium}
-            =\frac{1}{2}(y_0+y_1)h\)
-
-        </div>
-
-
-        <p>
-            We can repeat the same process between every pair of
-            consecutive points.
-        </p>
-
-        <p>
-            Therefore, the region under the curve is replaced by
-            a series of trapezia.
-        </p>
-
-    </section>
-
-
-
-    <!-- WHY APPROXIMATION -->
-
-    <section class="lesson-section">
-
-        <div class="label">
-            UNDERSTANDING THE METHOD
-        </div>
-
-        <h2>
-            Why is it an approximation?
-        </h2>
-
-        <p>
-            The straight lines do not follow the curve exactly.
-            Therefore, there will usually be a difference between
-            the actual area under the curve and the area of the
-            trapezia.
-        </p>
-
-        <p>
-            However, as we increase the number of intervals, each
-            interval becomes narrower. The straight-line
-            approximations then follow the curve more closely,
-            making the estimated area closer to the actual area.
-        </p>
-
-
-        <div class="idea">
-
-            <div class="label">
-                REMEMBER
-            </div>
-
-            <p>
-                More intervals generally mean narrower trapezia
-                and a closer approximation to the actual area.
-            </p>
-
-        </div>
-
-
-        <p>
-            This is the main idea behind the Trapezium Rule:
-            divide the interval into equal parts, replace each
-            section of the curve with a straight line, calculate
-            the area of each resulting trapezium, and add them
-            together.
-        </p>
-
-    </section>
-
-
-
-    <!-- NEXT PART -->
-
-    <section class="lesson-section">
-
-        <div class="label">
-            NEXT
-        </div>
-
-        <h2>
-            Building the formula.
-        </h2>
-
-        <p>
-            We now have everything we need to derive the
-            Trapezium Rule. In the next section, we will find
-            the area of each trapezium and combine the areas to
-            obtain the general formula.
-        </p>
-
-    </section>
-
-
-
-    <!-- NAVIGATION -->
-
-    <div class="lesson-navigation">
-
-        <a href="integration.html">
-            ← ALL INTEGRATION TOPICS
-        </a>
-
-        <a href="integration.html">
-            NEXT TOPIC →
-        </a>
-
-    </div>
-
 
 </main>
 
 
-
-<!-- FOOTER -->
-
 <footer>
-
-    <div class="footer-logo">
-        Edu<span>Nova</span>
-    </div>
-
-    <p>
-        © 2026 EduNova. Mathematics, reimagined.
-    </p>
-
+    EduNova • Advanced Mathematics • 2026
 </footer>
-
 
 
 <script>
 
 const username = localStorage.getItem("eduNovaUsername");
 
-if(!username){
-    window.location.href="index.html";
+if (!username) {
+    location.href = "index.html";
 }
 
-function logout(){
-
+function logout() {
     localStorage.removeItem("eduNovaUsername");
     localStorage.removeItem("eduNovaEmail");
-
-    window.location.href="index.html";
-
+    location.href = "index.html";
 }
-function showApproximation(){
+
+function showApproximation() {
 
     const approximation =
         document.getElementById("approximation");
@@ -1149,9 +686,8 @@ function showApproximation(){
     approximation.style.opacity = "1";
 
 }
+
 </script>
 
-
 </body>
-
 </html>
