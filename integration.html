@@ -979,49 +979,56 @@ footer p{
 
 <script>
 
-/* CHECK LOGIN */
-
 const username = localStorage.getItem("eduNovaUsername");
 
-if(!username){
-    location.href = "index.html";
+if (!username) {
+    window.location.href = "index.html";
 }
 
 
-/* OPEN LESSON */
+/* OPEN TOPIC */
 
-function openLesson(number){
+function openLesson(number) {
 
-    closeLessons();
+    const lessons = document.querySelectorAll(".lesson");
 
-    const lesson = document.getElementById("lesson" + number);
+    lessons.forEach(function(lesson) {
+        lesson.classList.remove("active");
+    });
 
-    if(lesson){
+    const selectedLesson = document.getElementById("lesson" + number);
 
-        lesson.classList.add("active");
+    if (selectedLesson) {
 
-        setTimeout(function(){
+        selectedLesson.classList.add("active");
 
-            lesson.scrollIntoView({
-                behavior:"smooth",
-                block:"start"
+        setTimeout(function() {
+
+            selectedLesson.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
             });
 
-        },50);
+        }, 100);
 
     }
 
 }
 
 
-/* CLOSE LESSONS */
+/* CLOSE TOPIC */
 
-function closeLessons(){
+function closeLessons() {
 
     const lessons = document.querySelectorAll(".lesson");
 
-    lessons.forEach(function(lesson){
+    lessons.forEach(function(lesson) {
         lesson.classList.remove("active");
+    });
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
 
 }
@@ -1029,17 +1036,13 @@ function closeLessons(){
 
 /* LOG OUT */
 
-function logout(){
+function logout() {
 
     localStorage.removeItem("eduNovaUsername");
     localStorage.removeItem("eduNovaEmail");
 
-    location.href = "index.html";
+    window.location.href = "index.html";
 
 }
 
 </script>
-
-
-</body>
-</html>
