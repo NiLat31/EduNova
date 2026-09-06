@@ -316,19 +316,36 @@
             vertical-align: middle;
         }
 
-      .limits {
-    display: inline-flex;
-    flex-direction: column;
-    vertical-align: middle;
-    line-height: 1.1;
-    font-size: 16px;
-    margin-left: 2px;
-    margin-right: 8px;
+ .integral-with-limits {
+    display: inline-block;
     position: relative;
-    top: -8px;
+    width: 52px;
+    height: 65px;
+    vertical-align: middle;
 }
 
+.integral-symbol {
+    position: absolute;
+    left: 8px;
+    top: 5px;
+    font-family: "Times New Roman", serif;
+    font-size: 50px;
+    line-height: 1;
+}
 
+.upper-limit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 16px;
+}
+
+.lower-limit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 16px;
+}
         /* =========================================
            NOTES
         ========================================= */
@@ -1638,16 +1655,17 @@
             </div>
 
 
-            <!-- INTEGRAL -->
+         <div class="math-box">
 
-            <h3>
-                5. Connecting the Area to Integration
-            </h3>
+    <span class="integral-with-limits">
+        <span class="upper-limit">b</span>
+        <span class="integral-symbol">∫</span>
+        <span class="lower-limit">a</span>
+    </span>
 
-            <p>
-                The exact area under a curve from x = a to x = b is
-                represented by the definite integral:
-            </p>
+    f(x) dx
+
+</div>
 
             <div class="math-box">
 
@@ -1754,24 +1772,23 @@
                     Example
                 </div>
 
-                <p>
-                    Use the Trapezium Rule with four equal intervals
-                    to estimate a definite integral, given the
-                    following y-values:
-                </p>
+            <p>
+    Use the Trapezium Rule with four equal intervals
+    to estimate the definite integral
+</p>
 
-                <div class="math-box">
+<div class="math-box">
+    <span class="integral-with-limits">
+        <span class="upper-limit">4</span>
+        <span class="integral-symbol">∫</span>
+        <span class="lower-limit">0</span>
+    </span>
+    f(x) dx
+</div>
 
-                    y₀ = 2,
-                    &nbsp;
-                    y₁ = 3,
-                    &nbsp;
-                    y₂ = 5,
-                    &nbsp;
-                    y₃ = 4,
-                    &nbsp;
-                    y₄ = 7
-
+<p>
+    given the following y-values:
+</p>
                 </div>
 
 
@@ -1800,10 +1817,9 @@
                         Step 2: Find h
                     </div>
 
-                    <p>
-                        Suppose the interval is from x = 0 to x = 4.
-                        Therefore:
-                    </p>
+                   <p>
+    From the definite integral, the limits are:
+</p>
 
                     <div class="math-box">
 
@@ -2045,12 +2061,11 @@
 
                 <div class="formula">
 
-                    <span class="integral">∫</span>
-
-                    <span class="limits">
-                        <span>b</span>
-                        <span>a</span>
-                    </span>
+                 <span class="integral-with-limits">
+    <span class="upper-limit">b</span>
+    <span class="integral-symbol">∫</span>
+    <span class="lower-limit">a</span>
+</span>
 
                     f(x) dx
 
