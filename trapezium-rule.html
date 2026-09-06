@@ -1,1276 +1,1942 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EduNova | Trapezium Rule</title>
+    <title>EduNova | Trapezium Rule</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-<style>
+    <style>
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+        /* =========================
+           RESET
+        ========================= */
 
-body {
-    font-family: "DM Sans", sans-serif;
-    background: #f7f7f5;
-    color: #111;
-    line-height: 1.8;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-nav {
-    height: 80px;
-    background: white;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 7%;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.logo {
-    font-size: 25px;
-    font-weight: 700;
-}
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #f7f7f7;
+            color: #111;
+            line-height: 1.7;
+        }
 
-.logo span {
-    color: #e52b20;
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-.nav-links {
-    display: flex;
-    gap: 25px;
-    align-items: center;
-}
 
-.nav-links a {
-    text-decoration: none;
-    color: #111;
-    font-size: 14px;
-    font-weight: 600;
-}
+        /* =========================
+           NAVIGATION
+        ========================= */
 
-.logout {
-    border: 1px solid #111;
-    padding: 10px 18px;
-}
+        nav {
+            height: 78px;
+            background: #111;
+            color: white;
 
-.hero {
-    background: #111;
-    color: white;
-    padding: 90px 8%;
-}
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-.hero small {
-    color: #e52b20;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
+            padding: 0 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.hero h1 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(45px, 6vw, 80px);
-    line-height: 1.05;
-    margin-top: 20px;
-}
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
 
-.hero p {
-    max-width: 700px;
-    color: #ccc;
-    font-size: 19px;
-    margin-top: 25px;
-}
+        .logo span {
+            color: #e00000;
+        }
 
-.container {
-    width: min(1000px, 88%);
-    margin: auto;
-}
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
 
-.lesson {
-    padding: 80px 0;
-}
+        .nav-links a {
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
 
-.section {
-    margin-bottom: 75px;
-}
+        .nav-links a:hover {
+            color: #ff3333;
+        }
 
-.section h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 38px;
-    margin-bottom: 25px;
-}
 
-.section h3 {
-    font-size: 23px;
-    margin: 35px 0 15px;
-}
+        /* =========================
+           HERO
+        ========================= */
 
-.section p {
-    font-size: 19px;
-    color: #333;
-    margin-bottom: 20px;
-    max-width: 900px;
-}
+        .hero {
+            min-height: 430px;
+            background: #111;
+            color: white;
 
-.math-box {
-    background: white;
-    border: 1px solid #ddd;
-    padding: 35px;
-    margin: 30px 0;
-    text-align: center;
-    font-size: 28px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.04);
-}
+            display: flex;
+            align-items: center;
 
-.math-box .small {
-    font-size: 20px;
-}
+            padding: 80px 7%;
+            position: relative;
+            overflow: hidden;
+        }
 
-.fraction {
-    display: inline-flex;
-    flex-direction: column;
-    vertical-align: middle;
-    text-align: center;
-    line-height: 1.1;
-    margin: 0 6px;
-}
+        .hero::before {
+            content: "";
+            position: absolute;
 
-.fraction .top {
-    border-bottom: 2px solid #111;
-    padding: 0 8px 4px;
-}
+            width: 420px;
+            height: 420px;
 
-.fraction .bottom {
-    padding-top: 4px;
-}
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50%;
 
-.note {
-    border-left: 5px solid #e52b20;
-    background: white;
-    padding: 25px 30px;
-    margin: 30px 0;
-}
+            right: -100px;
+            top: -130px;
+        }
 
-.note strong {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 18px;
-}
+        .hero::after {
+            content: "";
+            position: absolute;
 
-.graph-container {
-    background: white;
-    border: 1px solid #ddd;
-    padding: 30px;
-    margin-top: 35px;
-    overflow-x: auto;
-}
+            width: 260px;
+            height: 260px;
 
-.graph-container svg {
-    display: block;
-    width: 100%;
-    min-width: 750px;
-    height: auto;
-}
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 50%;
 
-.graph-button {
-    display: block;
-    margin: 30px auto 5px;
-    padding: 15px 25px;
-    background: #e52b20;
-    color: white;
-    border: none;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    letter-spacing: .5px;
-}
+            right: 50px;
+            bottom: -150px;
+        }
 
-.graph-button:hover {
-    transform: translateY(-2px);
-}
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+        }
 
-#approximation {
-    opacity: 0;
-    transition: opacity 1s ease;
-}
+        .chapter-label {
+            color: #ff3333;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
 
-.next {
-    background: #111;
-    color: white;
-    padding: 55px;
-    text-align: center;
-}
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
 
-.next h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 36px;
-    margin-bottom: 12px;
-}
+        .hero p {
+            max-width: 720px;
+            color: #d7d7d7;
+            font-size: 19px;
+        }
 
-.next p {
-    color: #ccc;
-}
 
-footer {
-    background: #111;
-    color: #777;
-    text-align: center;
-    padding: 30px;
-    border-top: 1px solid #333;
-}
+        /* =========================
+           MAIN
+        ========================= */
 
-@media (max-width: 700px) {
+        main {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 85px 30px;
+        }
 
-    nav {
-        padding: 0 5%;
-    }
+        .section {
+            margin-bottom: 90px;
+        }
 
-    .nav-links {
-        gap: 10px;
-    }
+        .section h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
 
-    .nav-links a:not(.logout) {
-        display: none;
-    }
+        .section h3 {
+            font-size: 25px;
+            margin-top: 45px;
+            margin-bottom: 18px;
+        }
 
-    .lesson {
-        padding: 55px 0;
-    }
+        .section p {
+            max-width: 920px;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-    .section h2 {
-        font-size: 31px;
-    }
 
-    .section p {
-        font-size: 17px;
-    }
+        /* =========================
+           INTRO CARD
+        ========================= */
 
-    .math-box {
-        font-size: 22px;
-        padding: 25px 15px;
-    }
-}
+        .intro-card {
+            background: white;
+            border-left: 5px solid #e00000;
+            padding: 30px 35px;
+            margin: 35px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
 
-</style>
+        .intro-card p {
+            margin-bottom: 0;
+        }
+
+
+        /* =========================
+           MATH BOXES
+        ========================= */
+
+        .math-box {
+            background: white;
+            border: 1px solid #dedede;
+
+            padding: 32px;
+            margin: 28px 0;
+
+            text-align: center;
+
+            font-size: 28px;
+            line-height: 1.8;
+
+            overflow-x: auto;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+        }
+
+        .math-box.final {
+            border: 2px solid #111;
+            background: #fff;
+            font-size: 31px;
+        }
+
+        .math-line {
+            margin: 8px 0;
+        }
+
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 1.1;
+            margin: 0 7px;
+        }
+
+        .fraction .top {
+            border-bottom: 2px solid #111;
+            padding: 0 8px 4px;
+        }
+
+        .fraction .bottom {
+            padding: 4px 8px 0;
+        }
+
+        .integral {
+            font-size: 48px;
+            vertical-align: middle;
+            font-family: "Times New Roman", serif;
+        }
+
+        .limits {
+            font-size: 16px;
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            line-height: 0.9;
+            margin-left: -8px;
+            margin-right: 8px;
+        }
+
+        .approx {
+            font-size: 30px;
+        }
+
+
+        /* =========================
+           NOTES
+        ========================= */
+
+        .note {
+            background: #111;
+            color: white;
+
+            padding: 28px 32px;
+            margin: 30px 0;
+
+            border-radius: 3px;
+        }
+
+        .note strong {
+            color: #ff3333;
+            display: block;
+            margin-bottom: 7px;
+            font-size: 18px;
+        }
+
+        .tip {
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+
+        .tip strong {
+            display: block;
+            margin-bottom: 7px;
+        }
+
+
+        /* =========================
+           GRAPH
+        ========================= */
+
+        .graph-container {
+            background: white;
+            border: 1px solid #ddd;
+
+            padding: 25px;
+            margin: 35px 0;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .graph-container svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .graph-button {
+            display: block;
+
+            margin: 25px auto 0;
+
+            padding: 14px 25px;
+
+            border: none;
+            background: #111;
+            color: white;
+
+            font-family: "DM Sans", sans-serif;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .graph-button:hover {
+            background: #e00000;
+        }
+
+        #approximation {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+
+        /* =========================
+           WORKED EXAMPLE
+        ========================= */
+
+        .example {
+            background: white;
+            border: 1px solid #ddd;
+
+            padding: 35px;
+
+            margin-top: 35px;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .example-title {
+            color: #e00000;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            margin-bottom: 15px;
+        }
+
+        .step {
+            border-top: 1px solid #e5e5e5;
+            padding: 22px 0;
+        }
+
+        .step:first-of-type {
+            border-top: none;
+        }
+
+        .step-number {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           MISTAKES
+        ========================= */
+
+        .mistakes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+
+            margin-top: 30px;
+        }
+
+        .mistake {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 25px;
+        }
+
+        .mistake h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           FINAL FORMULA
+        ========================= */
+
+        .formula-card {
+            background: #111;
+            color: white;
+
+            padding: 50px 35px;
+
+            text-align: center;
+
+            margin-top: 40px;
+        }
+
+        .formula-card h3 {
+            margin: 0 0 25px;
+            color: #ff3333;
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .formula-card .formula {
+            font-size: 32px;
+            overflow-x: auto;
+            padding: 10px;
+        }
+
+        .formula-card .fraction .top {
+            border-color: white;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111;
+            color: white;
+
+            padding: 45px 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 65px 6%;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            main {
+                padding: 65px 20px;
+            }
+
+            .section h2 {
+                font-size: 34px;
+            }
+
+            .section p {
+                font-size: 17px;
+            }
+
+            .math-box {
+                font-size: 23px;
+                padding: 24px 15px;
+            }
+
+            .math-box.final {
+                font-size: 24px;
+            }
+
+            .mistakes {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<nav>
 
-    <div class="logo">
-        Edu<span>Nova</span>
-    </div>
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
 
-    <div class="nav-links">
-        <a href="dashboard.html">Dashboard</a>
-        <a href="integration.html">Integration</a>
-        <a href="#" class="logout" onclick="logout()">LOG OUT</a>
-    </div>
+    <nav>
 
-</nav>
+        <a href="index.html" class="logo">
+            Edu<span>Nova</span>
+        </a>
 
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="integration.html">INTEGRATION</a>
+        </div>
 
-<section class="hero">
+    </nav>
 
-    <small>CHAPTER 05 • INTEGRATION • TOPIC 01</small>
 
-    <h1>Trapezium Rule.</h1>
 
-    <p>
-        Estimating the area under a curve by replacing sections of the curve
-        with straight-line approximations.
-    </p>
+    <!-- =========================
+         HERO
+    ========================= -->
 
-</section>
+    <header class="hero">
 
+        <div class="hero-content">
 
-<main class="lesson">
+            <div class="chapter-label">
+                Integration • Topic 01
+            </div>
 
-<div class="container">
+            <h1>
+                The Trapezium Rule
+            </h1>
 
+            <p>
+                Learn how the area under a curve can be estimated by
+                dividing the interval into equal parts and replacing
+                sections of the curve with trapezia.
+            </p>
 
-<!-- INTRODUCTION -->
+        </div>
 
-<section class="section">
+    </header>
 
-    <h2>Introduction</h2>
 
-    <p>
-        One of the uses of integration is to find the area under a curve.
-        However, in some cases, finding the exact area using integration may
-        not be possible or may be difficult to evaluate directly.
-        In such situations, we can use an estimation method to approximate
-        the area.
-    </p>
 
-    <p>
-        One of the methods used to estimate the area under a curve is the
-        <strong>Trapezium Rule.</strong>
-    </p>
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
 
-</section>
+    <main>
 
 
-<!-- ESTIMATING AREA -->
+        <!-- =========================
+             1. INTRODUCTION
+        ========================= -->
 
-<section class="section">
+        <section class="section">
 
-    <h2>Estimating the Area</h2>
+            <h2>
+                Introduction
+            </h2>
 
-    <p>
-        Consider the curve
-        <strong>y = f(x)</strong>,
-        and suppose that we want to find the area between the curve and the
-        x-axis from
-        <strong>x = a</strong>
-        to
-        <strong>x = b</strong>.
-    </p>
+            <p>
+                Definite integration allows us to find the exact area
+                between a curve and the x-axis. However, sometimes the
+                function is difficult to integrate exactly, or we may
+                only have a set of values rather than an equation.
+            </p>
 
-    <p>
-        To estimate this area, we divide the interval from
-        <strong>a</strong>
-        to
-        <strong>b</strong>
-        into <strong>n equal intervals</strong>.
-    </p>
+            <p>
+                In these situations, we can estimate the area using the
+                <strong>Trapezium Rule</strong>.
+            </p>
 
-    <p>
-        Let the width of each interval be <strong>h</strong>.
-        Since the total width of the interval is
-        <strong>b − a</strong>,
-        and it has been divided into <strong>n</strong> equal parts:
-    </p>
+            <div class="intro-card">
 
-    <div class="math-box">
+                <p>
+                    The main idea is simple: divide the interval into
+                    equal sections, replace each part of the curve with
+                    a straight line, calculate the resulting trapezium
+                    areas, and add them together.
+                </p>
 
-        h =
-        
-        <span class="fraction">
-            <span class="top">b − a</span>
-            <span class="bottom">n</span>
-        </span>
+            </div>
 
-    </div>
+        </section>
 
-    <p>
-        We can therefore mark the x-coordinates as:
-    </p>
 
-    <div class="math-box">
 
-        x₀ = a &nbsp;&nbsp;&nbsp;
-        x₁ &nbsp;&nbsp;&nbsp;
-        x₂ &nbsp;&nbsp;&nbsp;
-        x₃ &nbsp;&nbsp;&nbsp; ... &nbsp;&nbsp;&nbsp;
-        xₙ = b
+        <!-- =========================
+             2. ESTIMATING AREA
+        ========================= -->
 
-    </div>
+        <section class="section">
 
-    <p>
-        Because the intervals are equal, the distance between every two
-        consecutive x-coordinates is the same and is equal to
-        <strong>h</strong>.
-    </p>
+            <h2>
+                Estimating the Area
+            </h2>
 
-</section>
+            <p>
+                Consider the area under a curve between
+                <strong>x = a</strong> and <strong>x = b</strong>.
+            </p>
 
+            <p>
+                If the curve is not a simple shape, finding its exact
+                area may require integration.
+            </p>
 
-<!-- GRAPH -->
+            <p>
+                Instead, we can divide the region into smaller pieces.
+                If the pieces are sufficiently narrow, the curved
+                boundary can be approximated by straight lines.
+            </p>
 
-<section class="section">
+            <div class="note">
 
-    <h2>The Curve and the Intervals</h2>
+                <strong>Key idea</strong>
 
-    <p>
-        At each of these x-coordinates, we can find the corresponding point
-        on the curve. Let the corresponding y-coordinates be
-        <strong>y₀, y₁, y₂, ... , yₙ</strong>,
-        where:
-    </p>
+                A collection of trapezia can be used to approximate
+                the area under a curve.
 
-    <div class="math-box">
+            </div>
 
-        yᵢ = f(xᵢ)
+        </section>
 
-    </div>
 
-    <p>
-        Therefore, each point on the curve can be written in the form
-        <strong>(xᵢ, yᵢ)</strong>.
-    </p>
 
+        <!-- =========================
+             3. CURVE AND INTERVALS
+        ========================= -->
 
-    <div class="graph-container">
+        <section class="section">
 
-        <svg viewBox="0 0 1000 560">
+            <h2>
+                The Curve and the Intervals
+            </h2>
 
-            <!-- AXES -->
+            <p>
+                Suppose the interval from <strong>a</strong> to
+                <strong>b</strong> is divided into equal intervals.
+            </p>
 
-            <line x1="80" y1="470" x2="930" y2="470"
-                  stroke="#111" stroke-width="3"/>
+            <p>
+                Let the width of every interval be <strong>h</strong>.
+            </p>
 
-            <line x1="80" y1="500" x2="80" y2="70"
-                  stroke="#111" stroke-width="3"/>
+            <p>
+                The points on the curve can then be labelled:
+            </p>
 
+            <div class="math-box">
 
-            <!-- AXIS LABELS -->
+                x₀, x₁, x₂, x₃, ... , xₙ
 
-            <text x="935" y="490"
-                  font-size="22"
-                  font-weight="700">x</text>
+            </div>
 
-            <text x="55" y="65"
-                  font-size="22"
-                  font-weight="700">y</text>
+            <p>
+                Their corresponding y-values are:
+            </p>
 
+            <div class="math-box">
 
-            <!-- CURVE -->
+                y₀, y₁, y₂, y₃, ... , yₙ
 
-            <path d="
-                M 100 430
-                C 190 350, 260 250, 350 220
-                C 450 185, 520 170, 610 190
-                C 720 215, 800 290, 900 380"
-                fill="none"
-                stroke="#111"
-                stroke-width="5"/>
+            </div>
 
 
-            <!-- VERTICAL LINES -->
+            <div class="graph-container">
 
-            <line x1="100" y1="430" x2="100" y2="470"
-                  stroke="#aaa" stroke-width="2"/>
+                <svg viewBox="0 0 900 430">
 
-            <line x1="300" y1="240" x2="300" y2="470"
-                  stroke="#aaa" stroke-width="2"/>
+                    <!-- AXES -->
 
-            <line x1="500" y1="175" x2="500" y2="470"
-                  stroke="#aaa" stroke-width="2"/>
+                    <line
+                        x1="70"
+                        y1="360"
+                        x2="840"
+                        y2="360"
+                        stroke="#111"
+                        stroke-width="3"
+                    />
 
-            <line x1="700" y1="225" x2="700" y2="470"
-                  stroke="#aaa" stroke-width="2"/>
+                    <line
+                        x1="70"
+                        y1="360"
+                        x2="70"
+                        y2="45"
+                        stroke="#111"
+                        stroke-width="3"
+                    />
 
-            <line x1="900" y1="380" x2="900" y2="470"
-                  stroke="#aaa" stroke-width="2"/>
 
+                    <!-- CURVE -->
 
-            <!-- POINTS -->
+                    <path
+                        d="
+                        M 90 325
+                        C 170 300,
+                          210 190,
+                          290 170
+                        C 390 145,
+                          440 260,
+                          530 205
+                        C 620 150,
+                          680 105,
+                          810 80
+                        "
+                        fill="none"
+                        stroke="#111"
+                        stroke-width="5"
+                    />
 
-            <circle cx="100" cy="430" r="7" fill="#e52b20"/>
-            <circle cx="300" cy="240" r="7" fill="#e52b20"/>
-            <circle cx="500" cy="175" r="7" fill="#e52b20"/>
-            <circle cx="700" cy="225" r="7" fill="#e52b20"/>
-            <circle cx="900" cy="380" r="7" fill="#e52b20"/>
 
+                    <!-- VERTICAL INTERVAL LINES -->
 
-            <!-- Y LABELS -->
+                    <line x1="90" y1="325" x2="90" y2="360"
+                        stroke="#777" stroke-width="2"/>
 
-            <text x="45" y="438" font-size="19">y₀</text>
-            <text x="245" y="248" font-size="19">y₁</text>
-            <text x="445" y="183" font-size="19">y₂</text>
-            <text x="645" y="233" font-size="19">y₃</text>
-            <text x="845" y="388" font-size="19">y₄</text>
+                    <line x1="210" y1="205" x2="210" y2="360"
+                        stroke="#777" stroke-width="2"/>
 
+                    <line x1="330" y1="165" x2="330" y2="360"
+                        stroke="#777" stroke-width="2"/>
 
-            <!-- X LABELS -->
+                    <line x1="450" y1="245" x2="450" y2="360"
+                        stroke="#777" stroke-width="2"/>
 
-            <text x="90" y="505" font-size="19">x₀</text>
-            <text x="290" y="505" font-size="19">x₁</text>
-            <text x="490" y="505" font-size="19">x₂</text>
-            <text x="690" y="505" font-size="19">x₃</text>
-            <text x="890" y="505" font-size="19">x₄</text>
+                    <line x1="570" y1="185" x2="570" y2="360"
+                        stroke="#777" stroke-width="2"/>
 
+                    <line x1="690" y1="110" x2="690" y2="360"
+                        stroke="#777" stroke-width="2"/>
 
-            <!-- h LABELS -->
 
-            <text x="190" y="455"
-                  font-size="20"
-                  font-weight="700">h</text>
+                    <!-- POINTS -->
 
-            <text x="390" y="455"
-                  font-size="20"
-                  font-weight="700">h</text>
+                    <circle cx="90" cy="325" r="6" fill="#e00000"/>
+                    <circle cx="210" cy="205" r="6" fill="#e00000"/>
+                    <circle cx="330" cy="165" r="6" fill="#e00000"/>
+                    <circle cx="450" cy="245" r="6" fill="#e00000"/>
+                    <circle cx="570" cy="185" r="6" fill="#e00000"/>
+                    <circle cx="690" cy="110" r="6" fill="#e00000"/>
 
-            <text x="590" y="455"
-                  font-size="20"
-                  font-weight="700">h</text>
+
+                    <!-- LABELS -->
+
+                    <text x="82" y="390" font-size="20">x₀</text>
+                    <text x="202" y="390" font-size="20">x₁</text>
+                    <text x="322" y="390" font-size="20">x₂</text>
+                    <text x="442" y="390" font-size="20">x₃</text>
+                    <text x="562" y="390" font-size="20">x₄</text>
+                    <text x="682" y="390" font-size="20">x₅</text>
+
+
+                    <!-- H LABELS -->
+
+                    <text x="140" y="350" font-size="18">h</text>
+                    <text x="260" y="350" font-size="18">h</text>
+                    <text x="380" y="350" font-size="18">h</text>
+                    <text x="500" y="350" font-size="18">h</text>
+                    <text x="620" y="350" font-size="18">h</text>
+
+                    <text x="850" y="370" font-size="22">x</text>
+                    <text x="55" y="40" font-size="22">y</text>
+
+                </svg>
+
+
+                <button
+                    class="graph-button"
+                    onclick="showApproximation()"
+                >
+                    SHOW STRAIGHT-LINE APPROXIMATION →
+                </button>
+
+            </div>
 
 
             <!-- APPROXIMATION -->
 
-            <g id="approximation">
+            <div class="graph-container" id="approximation">
 
-                <line x1="100" y1="430"
-                      x2="300" y2="240"
-                      stroke="#e52b20"
-                      stroke-width="4"/>
+                <svg viewBox="0 0 900 430">
 
-                <line x1="300" y1="240"
-                      x2="500" y2="175"
-                      stroke="#e52b20"
-                      stroke-width="4"/>
+                    <line
+                        x1="70"
+                        y1="360"
+                        x2="840"
+                        y2="360"
+                        stroke="#111"
+                        stroke-width="3"
+                    />
 
-                <line x1="500" y1="175"
-                      x2="700" y2="225"
-                      stroke="#e52b20"
-                      stroke-width="4"/>
+                    <line
+                        x1="70"
+                        y1="360"
+                        x2="70"
+                        y2="45"
+                        stroke="#111"
+                        stroke-width="3"
+                    />
 
-                <line x1="700" y1="225"
-                      x2="900" y2="380"
-                      stroke="#e52b20"
-                      stroke-width="4"/>
 
-            </g>
+                    <!-- APPROXIMATING STRAIGHT LINES -->
 
-        </svg>
+                    <polyline
+                        points="
+                        90,325
+                        210,205
+                        330,165
+                        450,245
+                        570,185
+                        690,110
+                        "
+                        fill="none"
+                        stroke="#e00000"
+                        stroke-width="5"
+                    />
 
-        <button class="graph-button" onclick="showApproximation()">
-            SHOW STRAIGHT-LINE APPROXIMATION →
-        </button>
 
-    </div>
+                    <!-- VERTICALS -->
 
-</section>
+                    <line x1="90" y1="325" x2="90" y2="360"
+                        stroke="#777" stroke-width="2"/>
 
+                    <line x1="210" y1="205" x2="210" y2="360"
+                        stroke="#777" stroke-width="2"/>
 
-<!-- REPLACING CURVE -->
+                    <line x1="330" y1="165" x2="330" y2="360"
+                        stroke="#777" stroke-width="2"/>
 
-<section class="section">
+                    <line x1="450" y1="245" x2="450" y2="360"
+                        stroke="#777" stroke-width="2"/>
 
-    <h2>Replacing the Curve</h2>
+                    <line x1="570" y1="185" x2="570" y2="360"
+                        stroke="#777" stroke-width="2"/>
 
-    <p>
-        The curve between two consecutive points is not a straight line.
-        Therefore, finding the exact area of each small section may still
-        be difficult.
-    </p>
+                    <line x1="690" y1="110" x2="690" y2="360"
+                        stroke="#777" stroke-width="2"/>
 
-    <p>
-        Instead, we approximate each small section of the curve by drawing
-        a straight line between two consecutive points.
-    </p>
 
-    <p>
-        For example, consider the two consecutive points
-        <strong>(x₀, y₀)</strong>
-        and
-        <strong>(x₁, y₁)</strong>.
-    </p>
+                    <!-- POINTS -->
 
-    <p>
-        We draw a straight line joining these two points. Together with
-        the x-axis and the two vertical lines at x₀ and x₁, this forms
-        a <strong>trapezium</strong>.
-    </p>
+                    <circle cx="90" cy="325" r="6" fill="#e00000"/>
+                    <circle cx="210" cy="205" r="6" fill="#e00000"/>
+                    <circle cx="330" cy="165" r="6" fill="#e00000"/>
+                    <circle cx="450" cy="245" r="6" fill="#e00000"/>
+                    <circle cx="570" cy="185" r="6" fill="#e00000"/>
+                    <circle cx="690" cy="110" r="6" fill="#e00000"/>
 
-    <p>
-        The parallel sides of this trapezium have lengths
-        <strong>y₀</strong>
-        and
-        <strong>y₁</strong>,
-        while its width is
-        <strong>h</strong>.
-    </p>
+                </svg>
 
-</section>
+                <p style="text-align:center; margin:0;">
+                    The red straight-line segments form the
+                    trapezium approximation.
+                </p>
 
+            </div>
 
-<!-- SERIES -->
+        </section>
 
-<section class="section">
 
-    <h2>A Series of Trapezia</h2>
 
-    <p>
-        We can repeat the same process between every pair of consecutive
-        points.
-    </p>
+        <!-- =========================
+             4. REPLACING THE CURVE
+        ========================= -->
 
-    <p>
-        Therefore, the region under the curve is replaced by a series
-        of trapezia.
-    </p>
+        <section class="section">
 
-    <p>
-        The total area of these trapezia gives us an estimate of the
-        area under the original curve.
-    </p>
+            <h2>
+                Replacing the Curve
+            </h2>
 
-</section>
+            <p>
+                Between two consecutive points,
+                <strong>(x₀, y₀)</strong> and
+                <strong>(x₁, y₁)</strong>, the curve is replaced by
+                a straight line.
+            </p>
 
+            <p>
+                This creates a trapezium whose parallel sides have
+                lengths <strong>y₀</strong> and <strong>y₁</strong>.
+            </p>
 
-<!-- WHY APPROXIMATION -->
+            <p>
+                The perpendicular distance between these parallel
+                sides is the interval width <strong>h</strong>.
+            </p>
 
-<section class="section">
+            <div class="math-box">
 
-    <h2>Why Is It an Approximation?</h2>
-<!-- SERIES -->
-<section class="section">
-    ...
-</section>
+                Area of trapezium =
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">2</span>
+                </span>
+                ×
+                (sum of parallel sides)
+                ×
+                (perpendicular distance)
 
+            </div>
 
-<!-- WHY APPROXIMATION -->
-<section class="section">
-    ...
-</section>
+        </section>
 
 
-<!-- DERIVING THE FORMULA -->
-<section class="section">
-    ...
-</section>
 
+        <!-- =========================
+             5. SERIES OF TRAPEZIA
+        ========================= -->
 
-</div>
-</main>
-    <p>
-        The straight lines do not follow the curve exactly. Therefore,
-        there will usually be a difference between the actual area under
-        the curve and the area of the trapezia.
-    </p>
+        <section class="section">
 
-    <p>
-        However, as we increase the number of intervals, each interval
-        becomes narrower. The straight-line approximations then follow
-        the curve more closely, making the estimated area closer to the
-        actual area.
-    </p>
+            <h2>
+                A Series of Trapezia
+            </h2>
 
-    <div class="note">
+            <p>
+                Instead of using just one trapezium, we can divide the
+                whole interval into several equal sections.
+            </p>
 
-        <strong>The main idea</strong>
+            <p>
+                Each section produces one trapezium. The total
+                estimated area is found by adding all of their areas.
+            </p>
 
-        Divide the interval into equal parts, replace each section of
-        the curve with a straight line, calculate the area of each
-        resulting trapezium, and add them together.
+            <div class="math-box">
 
-    </div>
+                Total area ≈
+                Area₁ + Area₂ + Area₃ + ... + Areaₙ
 
-</section>
+            </div>
 
+            <div class="note">
 
-<!-- DERIVING THE FORMULA -->
+                <strong>Important observation</strong>
 
-<section class="section">
+                When neighbouring trapezia are joined, the interior
+                y-values belong to two trapezia. This is why the
+                interior values are multiplied by 2 in the final formula.
 
-    <h2>Deriving the Trapezium Rule</h2>
+            </div>
 
-    <p>
-        We can now derive the Trapezium Rule by adding the areas of
-        the trapezia one at a time.
-    </p>
+        </section>
 
-    <!-- ONE TRAPEZIUM -->
 
-    <h3>1. One Trapezium</h3>
 
-    <p>
-        Consider the first trapezium, formed between the points
-        <strong>(x₀, y₀)</strong> and <strong>(x₁, y₁)</strong>.
-    </p>
+        <!-- =========================
+             6. WHY APPROXIMATION
+        ========================= -->
 
-    <p>
-        Its parallel sides have lengths <strong>y₀</strong> and
-        <strong>y₁</strong>, while its perpendicular distance is
-        <strong>h</strong>.
-    </p>
+        <section class="section">
 
-    <p>
-        Recall that the area of a trapezium is:
-    </p>
+            <h2>
+                Why Is It an Approximation?
+            </h2>
 
-    <div class="math-box">
+            <p>
+                The original boundary is curved, while the Trapezium
+                Rule replaces sections of that curve with straight
+                lines.
+            </p>
 
-        Area =
-        <span class="fraction">
-            <span class="top">1</span>
-            <span class="bottom">2</span>
-        </span>
-        ×
-        (sum of parallel sides)
-        ×
-        (perpendicular distance)
+            <p>
+                Therefore, the trapezia do not usually have exactly
+                the same area as the region under the curve.
+            </p>
 
-    </div>
+            <p>
+                However, if we increase the number of intervals, each
+                interval becomes narrower.
+            </p>
 
-    <p>
-        Therefore, the area of the first trapezium is:
-    </p>
+            <p>
+                The straight-line segments then follow the curve more
+                closely, making the estimated area closer to the exact
+                area.
+            </p>
 
-    <div class="math-box">
+            <div class="note">
 
-        A₁ =
-        <span class="fraction">
-            <span class="top">1</span>
-            <span class="bottom">2</span>
-        </span>
-        ×
-        (y₀ + y₁)
-        ×
-        h
+                <strong>The main idea</strong>
 
-    </div>
+                More intervals → narrower trapezia → closer
+                approximation.
 
-    <p>
-        Hence:
-    </p>
+            </div>
 
-    <div class="math-box">
+        </section>
 
-        <strong>
-            A₁ =
-            <span class="fraction">
-                <span class="top">h</span>
-                <span class="bottom">2</span>
-            </span>
-            (y₀ + y₁)
-        </strong>
 
-    </div>
 
-    <!-- TWO TRAPEZIA -->
+        <!-- =========================
+             7. DERIVING THE FORMULA
+        ========================= -->
 
-    <h3>2. Two Trapezia</h3>
+        <section class="section">
 
-    <p>
-        Now consider the second trapezium, formed between
-        <strong>(x₁, y₁)</strong> and <strong>(x₂, y₂)</strong>.
-    </p>
+            <h2>
+                Deriving the Trapezium Rule
+            </h2>
 
-    <p>
-        Its parallel sides are <strong>y₁</strong> and
-        <strong>y₂</strong>, and its width is again <strong>h</strong>.
-    </p>
+            <p>
+                We can now derive the Trapezium Rule by adding the
+                areas of the trapezia one at a time.
+            </p>
 
-    <p>
-        Therefore:
-    </p>
 
-    <div class="math-box">
 
-        A₂ =
-        <span class="fraction">
-            <span class="top">h</span>
-            <span class="bottom">2</span>
-        </span>
-        (y₁ + y₂)
+            <!-- ONE TRAPEZIUM -->
 
-    </div>
+            <h3>
+                1. One Trapezium
+            </h3>
 
-    <p>
-        The total estimated area of the first two trapezia is:
-    </p>
+            <p>
+                Consider the first trapezium, formed between the points
+                <strong>(x₀, y₀)</strong> and
+                <strong>(x₁, y₁)</strong>.
+            </p>
 
-    <div class="math-box">
+            <p>
+                Its parallel sides have lengths <strong>y₀</strong>
+                and <strong>y₁</strong>, while its perpendicular
+                distance is <strong>h</strong>.
+            </p>
 
-        A ≈ A₁ + A₂
+            <p>
+                Recall that the area of a trapezium is:
+            </p>
 
-    </div>
+            <div class="math-box">
 
-    <p>
-        Substitute the expressions for <strong>A₁</strong> and
-        <strong>A₂</strong>:
-    </p>
+                Area =
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">2</span>
+                </span>
+                ×
+                (sum of parallel sides)
+                ×
+                (perpendicular distance)
 
-    <div class="math-box">
+            </div>
 
-        A ≈
-        <span class="fraction">
-            <span class="top">h</span>
-            <span class="bottom">2</span>
-        </span>
-        (y₀ + y₁)
-        +
-        <span class="fraction">
-            <span class="top">h</span>
-            <span class="bottom">2</span>
-        </span>
-        (y₁ + y₂)
+            <p>
+                Therefore:
+            </p>
 
-    </div>
+            <div class="math-box">
 
-    <p>
-        Since <strong>h/2</strong> is a common factor, take it
-        outside the brackets:
-    </p>
+                A₁ =
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">2</span>
+                </span>
+                ×
+                (y₀ + y₁)
+                × h
 
-    <div class="math-box">
+            </div>
 
-        A ≈
-        <span class="fraction">
-            <span class="top">h</span>
-            <span class="bottom">2</span>
-        </span>
-        [(y₀ + y₁) + (y₁ + y₂)]
+            <p>
+                Rearranging the factors gives:
+            </p>
 
-    </div>
+            <div class="math-box">
 
-    <p>
-        Expand the brackets:
-    </p>
+                <strong>
+                    A₁ =
+                    <span class="fraction">
+                        <span class="top">h</span>
+                        <span class="bottom">2</span>
+                    </span>
+                    (y₀ + y₁)
+                </strong>
 
-    <div class="math-box">
+            </div>
 
-        A ≈
-        <span class="fraction">
-            <span class="top">h</span>
-            <span class="bottom">2</span>
-        </span>
-        [y₀ + y₁ + y₁ + y₂]
 
-    </div>
 
-    <p>
-        The two <strong>y₁</strong> terms are like terms, so combine
-        them:
-    </p>
+            <!-- TWO TRAPEZIA -->
 
-    <div class="math-box">
+            <h3>
+                2. Two Trapezia
+            </h3>
 
-        <strong>
-            A ≈
-            <span class="fraction">
-                <span class="top">h</span>
-                <span class="bottom">2</span>
-            </span>
-            (y₀ + 2y₁ + y₂)
-        </strong>
+            <p>
+                Now consider the second trapezium, formed between
+                <strong>(x₁, y₁)</strong> and
+                <strong>(x₂, y₂)</strong>.
+            </p>
 
-    </div>
+            <p>
+                Its parallel sides are <strong>y₁</strong> and
+                <strong>y₂</strong>, and its width is again
+                <strong>h</strong>.
+            </p>
 
-    <div class="note">
+            <div class="math-box">
 
-        <strong>Notice the pattern</strong>
+                A₂ =
+                <span class="fraction">
+                    <span class="top">h</span>
+                    <span class="bottom">2</span>
+                </span>
+                (y₁ + y₂)
 
-        The first and last y-values appear once, while the value
-        in the middle appears twice.
+            </div>
 
-    </div>
+            <p>
+                The total estimated area of the first two trapezia is:
+            </p>
 
-    <!-- THREE TRAPEZIA -->
+            <div class="math-box">
 
-    <h3>3. Three Trapezia</h3>
+                A ≈ A₁ + A₂
 
-    <p>
-        Now add a third trapezium, between
-        <strong>(x₂, y₂)</strong> and <strong>(x₃, y₃)</strong>.
-    </p>
+            </div>
 
-    <p>
-        Its area is:
-    </p>
+            <p>
+                Substitute the expressions for <strong>A₁</strong>
+                and <strong>A₂</strong>:
+            </p>
 
-    <div class="math-box">
+            <div class="math-box">
 
-        A₃ =
-        <span class="fraction">
-            <span class="top">h</span>
-            <span class="bottom">2</span>
-        </span>
-        (y₂ + y₃)
+                A ≈
+                <span class="fraction">
+                    <span class="top">h</span>
+                    <span class="bottom">2</span>
+                </span>
+                (y₀ + y₁)
+                +
+                <span class="fraction">
+                    <span class="top">h</span>
+                    <span class="bottom">2</span>
+                </span>
+                (y₁ + y₂)
 
-    </div>
+            </div>
 
-    <p>
-        The total estimated area is now:
-    </p>
+            <p>
+                Both terms contain the common factor
+                <strong>h/2</strong>.
+            </p>
 
-    <div class="math-box">
+            <p>
+                Therefore, factor <strong>h/2</strong> out:
+            </p>
 
-        A ≈
-        <span class="fraction">
-            <span class="top">h</span>
-            <span class="bottom">2</span>
-        </span>
-        (y₀ + 2y₁ + y₂)
-        +
-        <span class="fraction">
-            <span class="top">h</span>
-            <span class="bottom">2</span>
-        </span>
-        (y₂ + y₃)
+            <div class="math-box">
 
-    </div>
+                A ≈
+                <span class="fraction">
+                    <span class="top">h</span>
+                    <span class="bottom">2</span>
+                </span>
+                [(y₀ + y₁) + (y₁ + y₂)]
 
-    <p>
-        Take the common factor <strong>h/2</strong> outside:
-    </p>
+            </div>
 
-    <div class="math-box">
+            <p>
+                Expand the brackets:
+            </p>
 
-        A ≈
-        <span class="fraction">
-            <span class="top">h</span>
-            <span class="bottom">2</span>
-        </span>
-        [y₀ + 2y₁ + y₂ + y₂ + y₃]
+            <div class="math-box">
 
-    </div>
+                A ≈
+                <span class="fraction">
+                    <span class="top">h</span>
+                    <span class="bottom">2</span>
+                </span>
+                [y₀ + y₁ + y₁ + y₂]
 
-    <p>
-        The two <strong>y₂</strong> terms are like terms, so combine
-        them:
-    </p>
+            </div>
 
-    <div class="math-box">
+            <p>
+                There are two <strong>y₁</strong> terms:
+            </p>
 
-        <strong>
-            A ≈
-            <span class="fraction">
-                <span class="top">h</span>
-                <span class="bottom">2</span>
-            </span>
-            (y₀ + 2y₁ + 2y₂ + y₃)
-        </strong>
+            <div class="math-box">
 
-    </div>
+                y₁ + y₁ = 2y₁
 
-    <div class="note">
+            </div>
 
-        <strong>The pattern is now clear</strong>
+            <p>
+                Therefore:
+            </p>
 
-        The first value, y₀, appears once.
-        The interior values, y₁ and y₂, appear twice.
-        The final value, y₃, appears once.
+            <div class="math-box final">
 
-    </div>
+                <strong>
+                    A ≈
+                    <span class="fraction">
+                        <span class="top">h</span>
+                        <span class="bottom">2</span>
+                    </span>
+                    (y₀ + 2y₁ + y₂)
+                </strong>
 
-    <!-- GENERAL CASE -->
+            </div>
 
-    <h3>4. Extending to n Trapezia</h3>
+            <div class="note">
 
-    <p>
-        If we continue adding trapezia until we reach
-        <strong>xₙ = b</strong>, there will be <strong>n</strong>
-        trapezia.
-    </p>
+                <strong>Notice the pattern</strong>
 
-    <p>
-        The first and last y-values occur only once, while every
-        y-value between them occurs twice.
-    </p>
+                The first and last y-values appear once,
+                while the middle y-value appears twice.
 
-    <p>
-        Therefore, the total estimated area follows the pattern:
-    </p>
+            </div>
 
-    <div class="math-box">
 
-        A ≈
-        <span class="fraction">
-            <span class="top">h</span>
-            <span class="bottom">2</span>
-        </span>
-        [y₀ + 2y₁ + 2y₂ + ... + 2yₙ₋₁ + yₙ]
 
-    </div>
+            <!-- THREE TRAPEZIA -->
 
-    <p>
-        We can factor the intermediate terms together:
-    </p>
+            <h3>
+                3. Three Trapezia
+            </h3>
 
-    <div class="math-box">
+            <p>
+                Now add a third trapezium between
+                <strong>(x₂, y₂)</strong> and
+                <strong>(x₃, y₃)</strong>.
+            </p>
 
-        <strong>
-            A ≈
-            <span class="fraction">
-                <span class="top">h</span>
-                <span class="bottom">2</span>
-            </span>
-            [y₀ + yₙ + 2(y₁ + y₂ + ... + yₙ₋₁)]
-        </strong>
+            <p>
+                Its area is:
+            </p>
 
-    </div>
+            <div class="math-box">
 
-    <!-- CONNECTION TO INTEGRATION -->
+                A₃ =
+                <span class="fraction">
+                    <span class="top">h</span>
+                    <span class="bottom">2</span>
+                </span>
+                (y₂ + y₃)
 
-    <h3>5. Connecting the Area to Integration</h3>
+            </div>
 
-    <p>
-        The area under the curve from <strong>x = a</strong> to
-        <strong>x = b</strong> is represented by the definite integral:
-    </p>
+            <p>
+                From the previous result, the area of the first two
+                trapezia is:
+            </p>
 
-    <div class="math-box">
+            <div class="math-box">
 
-        ∫ f(x) dx
+                A₁ + A₂ =
+                <span class="fraction">
+                    <span class="top">h</span>
+                    <span class="bottom">2</span>
+                </span>
+                (y₀ + 2y₁ + y₂)
 
-    </div>
+            </div>
 
-    <p>
-        More precisely:
-    </p>
+            <p>
+                Therefore:
+            </p>
 
-    <div class="math-box">
+            <div class="math-box">
 
-        ∫<span class="small">a to b</span> f(x) dx
+                A ≈
+                <span class="fraction">
+                    <span class="top">h</span>
+                    <span class="bottom">2</span>
+                </span>
+                (y₀ + 2y₁ + y₂)
+                +
+                <span class="fraction">
+                    <span class="top">h</span>
+                    <span class="bottom">2</span>
+                </span>
+                (y₂ + y₃)
 
-    </div>
+            </div>
 
-    <p>
-        Since the trapezia provide an approximation rather than the
-        exact area, we use the approximation symbol <strong>≈</strong>.
-    </p>
+            <p>
+                Factor out the common factor <strong>h/2</strong>:
+            </p>
 
-    <p>
-        Therefore, the Trapezium Rule is:
-    </p>
+            <div class="math-box">
 
-    <div class="math-box">
+                A ≈
+                <span class="fraction">
+                    <span class="top">h</span>
+                    <span class="bottom">2</span>
+                </span>
+                [y₀ + 2y₁ + y₂ + y₂ + y₃]
 
-        <strong>
-            ∫<span class="small">a to b</span> f(x) dx
-            ≈
-            <span class="fraction">
-                <span class="top">h</span>
-                <span class="bottom">2</span>
-            </span>
-            [y₀ + yₙ + 2(y₁ + y₂ + ... + yₙ₋₁)]
-        </strong>
+            </div>
 
-    </div>
+            <p>
+                The two <strong>y₂</strong> terms combine:
+            </p>
 
-    <!-- WIDTH -->
+            <div class="math-box">
 
-    <h3>6. Finding h</h3>
+                y₂ + y₂ = 2y₂
 
-    <p>
-        The width of the entire interval from <strong>a</strong> to
-        <strong>b</strong> is:
-    </p>
+            </div>
 
-    <div class="math-box">
+            <p>
+                Therefore:
+            </p>
 
-        b − a
+            <div class="math-box final">
 
-    </div>
+                <strong>
+                    A ≈
+                    <span class="fraction">
+                        <span class="top">h</span>
+                        <span class="bottom">2</span>
+                    </span>
+                    (y₀ + 2y₁ + 2y₂ + y₃)
+                </strong>
 
-    <p>
-        This interval is divided into <strong>n equal intervals</strong>.
-        Therefore, the width of each interval is:
-    </p>
+            </div>
 
-    <div class="math-box">
 
-        <strong>
-            h =
-            <span class="fraction">
-                <span class="top">b − a</span>
-                <span class="bottom">n</span>
-            </span>
-        </strong>
 
-    </div>
+            <!-- GENERAL CASE -->
 
-    <div class="note">
+            <h3>
+                4. Extending to n Trapezia
+            </h3>
 
-        <strong>Final Trapezium Rule</strong>
+            <p>
+                If we continue adding trapezia until we reach
+                <strong>xₙ = b</strong>, there will be
+                <strong>n</strong> trapezia.
+            </p>
 
-        Divide the interval into n equal parts, calculate
-        h = (b − a)/n, find the corresponding y-values, add the
-        first and last y-values once, add all the intermediate
-        y-values twice, and finally multiply by h/2.
+            <p>
+                The first and last y-values occur only once.
+                Every y-value between them occurs twice because each
+                interior point belongs to two neighbouring trapezia.
+            </p>
 
-    </div>
+            <p>
+                Therefore, the total estimated area is:
+            </p>
 
-</section>
+            <div class="math-box">
 
+                A ≈
+                <span class="fraction">
+                    <span class="top">h</span>
+                    <span class="bottom">2</span>
+                </span>
+                [y₀ + 2y₁ + 2y₂ + ... + 2yₙ₋₁ + yₙ]
 
-<h3>Area of One Trapezium</h3>
+            </div>
 
-<p>
-    The area of a trapezium is given by:
-</p>
+            <p>
+                We can group all the interior terms together:
+            </p>
 
-<div class="math-box">
+            <div class="math-box">
 
-    A =
-    <span class="fraction">
-        <span class="top">1</span>
-        <span class="bottom">2</span>
-    </span>
-    ×
-    (sum of parallel sides)
-    ×
-    (perpendicular distance)
+                A ≈
+                <span class="fraction">
+                    <span class="top">h</span>
+                    <span class="bottom">2</span>
+                </span>
+                [y₀ + yₙ + 2(y₁ + y₂ + ... + yₙ₋₁)]
 
-</div>
+            </div>
 
-<p>
-    For the first trapezium, the parallel sides have lengths
-    <strong>y₀</strong> and <strong>y₁</strong>, and the width
-    is <strong>h</strong>.
-</p>
 
-<div class="math-box">
 
-    A₁ =
-    <span class="fraction">
-        <span class="top">1</span>
-        <span class="bottom">2</span>
-    </span>
-    h(y₀ + y₁)
+            <!-- CONNECTION TO INTEGRATION -->
 
-</div>
+            <h3>
+                5. Connecting the Area to Integration
+            </h3>
 
+            <p>
+                The exact area under a curve from
+                <strong>x = a</strong> to <strong>x = b</strong>
+                is represented by the definite integral:
+            </p>
 
-<h3>Adding the Trapezia</h3>
+            <div class="math-box">
 
-<p>
-    The second trapezium has parallel sides
-    <strong>y₁</strong> and <strong>y₂</strong>.
-    Therefore:
-</p>
+                <span class="integral">∫</span>
+                <span class="limits">
+                    <span>b</span>
+                    <span>a</span>
+                </span>
+                f(x) dx
 
-<div class="math-box">
+            </div>
 
-    A₂ =
-    <span class="fraction">
-        <span class="top">1</span>
-        <span class="bottom">2</span>
-    </span>
-    h(y₁ + y₂)
+            <p>
+                The Trapezium Rule does not normally give the exact
+                area. It gives an estimate.
+            </p>
 
-</div>
+            <p>
+                Therefore, we use the approximation symbol
+                <strong>≈</strong>.
+            </p>
 
-<p>
-    If we have two trapezia, the total estimated area is:
-</p>
+            <p>
+                Substituting the trapezium expression gives:
+            </p>
 
-<div class="math-box">
+            <div class="math-box final">
 
-    A ≈
-    <span class="fraction">
-        <span class="top">h</span>
-        <span class="bottom">2</span>
-    </span>
-    (y₀ + y₁)
-    +
-    <span class="fraction">
-        <span class="top">h</span>
-        <span class="bottom">2</span>
-    </span>
-    (y₁ + y₂)
+                <strong>
 
-</div>
+                    <span class="integral">∫</span>
+                    <span class="limits">
+                        <span>b</span>
+                        <span>a</span>
+                    </span>
+                    f(x) dx
 
-<p>
-    Taking the common factor
-    <strong>h/2</strong> outside:
-</p>
+                    ≈
 
-<div class="math-box">
+                    <span class="fraction">
+                        <span class="top">h</span>
+                        <span class="bottom">2</span>
+                    </span>
 
-    A ≈
-    <span class="fraction">
-        <span class="top">h</span>
-        <span class="bottom">2</span>
-    </span>
-    (y₀ + 2y₁ + y₂)
+                    [y₀ + yₙ + 2(y₁ + y₂ + ... + yₙ₋₁)]
 
-</div>
+                </strong>
 
-<div class="note">
+            </div>
 
-    <strong>Notice the pattern</strong>
 
-    The first and last y-values appear once, while the values
-    between them appear twice.
 
-</div>
+            <!-- FINDING H -->
 
+            <h3>
+                6. Finding h
+            </h3>
 
-<h3>For n Trapezia</h3>
+            <p>
+                The complete interval extends from <strong>a</strong>
+                to <strong>b</strong>.
+            </p>
 
-<p>
-    If the interval from <strong>a</strong> to <strong>b</strong>
-    is divided into <strong>n</strong> equal intervals, there will
-    be <strong>n</strong> trapezia.
-</p>
+            <p>
+                Therefore, its total width is:
+            </p>
 
-<p>
-    Adding all of their areas gives the Trapezium Rule:
-</p>
+            <div class="math-box">
 
-<div class="math-box">
+                b − a
 
-    <strong>
-        ∫
-        <span class="small">a to b</span>
-        f(x) dx
-        ≈
-        <span class="fraction">
-            <span class="top">h</span>
-            <span class="bottom">2</span>
-        </span>
-        [
-        y₀ + yₙ
-        +
-        2(y₁ + y₂ + ... + yₙ₋₁)
-        ]
-    </strong>
+            </div>
 
-</div>
+            <p>
+                This entire interval is divided into
+                <strong>n equal intervals</strong>.
+            </p>
 
-<div class="note">
+            <p>
+                Therefore, each interval has width:
+            </p>
 
-    <strong>The Trapezium Rule</strong>
+            <div class="math-box final">
 
-    Add the first and last y-values once, add all the
-    intermediate y-values twice, then multiply the entire
-    result by h/2.
+                <strong>
 
-</div>
-```
+                    h =
+                    <span class="fraction">
+                        <span class="top">b − a</span>
+                        <span class="bottom">n</span>
+                    </span>
 
-</section>
+                </strong>
 
+            </div>
 
-</div>
+            <p>
+                This value of <strong>h</strong> can then be substituted
+                into the Trapezium Rule.
+            </p>
 
-</main>
+        </section>
 
 
-<footer>
-    EduNova • Advanced Mathematics • 2026
-</footer>
 
+        <!-- =========================
+             8. WORKED EXAMPLE
+        ========================= -->
 
-<script>
+        <section class="section">
 
-const username = localStorage.getItem("eduNovaUsername");
+            <h2>
+                Worked Example
+            </h2>
 
-if (!username) {
-    location.href = "index.html";
-}
+            <div class="example">
 
-function logout() {
-    localStorage.removeItem("eduNovaUsername");
-    localStorage.removeItem("eduNovaEmail");
-    location.href = "index.html";
-}
+                <div class="example-title">
+                    Example
+                </div>
 
-function showApproximation() {
+                <p>
+                    Use the Trapezium Rule with four equal intervals to
+                    estimate:
+                </p>
 
-    const approximation =
-        document.getElementById("approximation");
+                <div class="math-box">
 
-    approximation.style.opacity = "1";
+                    <span class="integral">∫</span>
+                    <span class="limits">
+                        <span>4</span>
+                        <span>0</span>
+                    </span>
+                    f(x) dx
 
-}
+                </div>
 
-</script>
+                <p>
+                    Suppose the corresponding values of
+                    <strong>f(x)</strong> are:
+                </p>
+
+                <div class="math-box">
+
+                    y₀ = 2,
+                    &nbsp;
+                    y₁ = 3,
+                    &nbsp;
+                    y₂ = 5,
+                    &nbsp;
+                    y₃ = 4,
+                    &nbsp;
+                    y₄ = 7
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        Step 1: Find n
+                    </div>
+
+                    <p>
+                        There are four equal intervals, so:
+                    </p>
+
+                    <div class="math-box">
+
+                        n = 4
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        Step 2: Find h
+                    </div>
+
+                    <p>
+                        Use:
+                    </p>
+
+                    <div class="math-box">
+
+                        h =
+                        <span class="fraction">
+                            <span class="top">b − a</span>
+                            <span class="bottom">n</span>
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Substitute:
+                    </p>
+
+                    <div class="math-box">
+
+                        h =
+                        <span class="fraction">
+                            <span class="top">4 − 0</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                    </div>
+
+                    <div class="math-box">
+
+                        h =
+                        <span class="fraction">
+                            <span class="top">4</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                    </div>
+
+                    <div class="math-box">
+
+                        <strong>h = 1</strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        Step 3: Write the Trapezium Rule
+                    </div>
+
+                    <div class="math-box">
+
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">h</span>
+                            <span class="bottom">2</span>
+                        </span>
+                        [y₀ + y₄ + 2(y₁ + y₂ + y₃)]
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        Step 4: Substitute the values
+                    </div>
+
+                    <div class="math-box">
+
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+                        [2 + 7 + 2(3 + 5 + 4)]
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        Step 5: Simplify inside the brackets
+                    </div>
+
+                    <div class="math-box">
+
+                        3 + 5 + 4 = 12
+
+                    </div>
+
+                    <div class="math-box">
+
+                        2(12) = 24
+
+                    </div>
+
+                    <div class="math-box">
+
+                        2 + 7 + 24 = 33
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        Step 6: Final calculation
+                    </div>
+
+                    <div class="math-box">
+
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+                        × 33
+
+                    </div>
+
+                    <div class="math-box final">
+
+                        <strong>
+                            A ≈ 16.5
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             9. COMMON MISTAKES
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Common Mistakes
+            </h2>
+
+            <div class="mistakes">
+
+                <div class="mistake">
+
+                    <h4>
+                        01. Forgetting to find h
+                    </h4>
+
+                    <p>
+                        Always calculate
+                        <strong>h = (b − a)/n</strong>
+                        before using the formula.
+                    </p>
+
+                </div>
+
+
+                <div class="mistake">
+
+                    <h4>
+                        02. Doubling the wrong terms
+                    </h4>
+
+                    <p>
+                        Only the interior y-values are multiplied by 2.
+                        The first and last values are used once.
+                    </p>
+
+                </div>
+
+
+                <div class="mistake">
+
+                    <h4>
+                        03. Using n + 1 as the number of intervals
+                    </h4>
+
+                    <p>
+                        If there are n intervals, there are n + 1
+                        points.
+                    </p>
+
+                </div>
+
+
+                <div class="mistake">
+
+                    <h4>
+                        04. Using = instead of ≈
+                    </h4>
+
+                    <p>
+                        The Trapezium Rule normally produces an
+                        approximation, so use ≈.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             10. FINAL FORMULA
+        ========================= -->
+
+        <section class="section">
+
+            <div class="formula-card">
+
+                <h3>
+                    The Trapezium Rule
+                </h3>
+
+                <div class="formula">
+
+                    <span class="integral">∫</span>
+                    <span class="limits">
+                        <span>b</span>
+                        <span>a</span>
+                    </span>
+                    f(x) dx
+
+                    ≈
+
+                    <span class="fraction">
+                        <span class="top">h</span>
+                        <span class="bottom">2</span>
+                    </span>
+
+                    [y₀ + yₙ + 2(y₁ + y₂ + ... + yₙ₋₁)]
+
+                </div>
+
+                <p style="color:#aaa; margin:25px auto 0; max-width:750px;">
+                    where
+                    <strong style="color:white;">
+                        h = (b − a)/n
+                    </strong>
+                    and n is the number of equal intervals.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div>
+
+            <div class="logo">
+                Edu<span>Nova</span>
+            </div>
+
+            <p>
+                Mathematics made clear.
+            </p>
+
+        </div>
+
+        <p>
+            © 2026 EduNova. All rights reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function showApproximation() {
+
+            const approximation =
+                document.getElementById("approximation");
+
+            approximation.style.opacity = "1";
+
+        }
+
+    </script>
+
 
 </body>
 </html>
