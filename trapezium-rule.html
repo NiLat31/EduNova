@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,13 +10,18 @@
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
 
     <style>
 
-        /* =========================
+        /* =========================================
            RESET
-        ========================= */
+        ========================================= */
 
         * {
             margin: 0;
@@ -40,9 +46,9 @@
         }
 
 
-        /* =========================
+        /* =========================================
            NAVIGATION
-        ========================= */
+        ========================================= */
 
         nav {
             height: 78px;
@@ -54,8 +60,10 @@
             justify-content: space-between;
 
             padding: 0 7%;
+
             position: sticky;
             top: 0;
+
             z-index: 1000;
         }
 
@@ -79,21 +87,22 @@
         .nav-links a {
             color: white;
             font-size: 15px;
-            font-weight: 500;
+            font-weight: 600;
             transition: 0.3s;
         }
 
         .nav-links a:hover {
-            color: #ff3333;
+            color: #e00000;
         }
 
 
-        /* =========================
+        /* =========================================
            HERO
-        ========================= */
+        ========================================= */
 
         .hero {
             min-height: 430px;
+
             background: #111;
             color: white;
 
@@ -101,18 +110,21 @@
             align-items: center;
 
             padding: 80px 7%;
+
             position: relative;
             overflow: hidden;
         }
 
         .hero::before {
             content: "";
+
             position: absolute;
 
-            width: 420px;
-            height: 420px;
+            width: 430px;
+            height: 430px;
 
             border: 1px solid rgba(255,255,255,0.12);
+
             border-radius: 50%;
 
             right: -100px;
@@ -121,54 +133,67 @@
 
         .hero::after {
             content: "";
+
             position: absolute;
 
-            width: 260px;
-            height: 260px;
+            width: 280px;
+            height: 280px;
 
             border: 1px solid rgba(255,255,255,0.08);
+
             border-radius: 50%;
 
-            right: 50px;
-            bottom: -150px;
+            right: 100px;
+            bottom: -170px;
         }
 
         .hero-content {
+            max-width: 850px;
+
             position: relative;
             z-index: 2;
-            max-width: 850px;
         }
 
         .chapter-label {
-            color: #ff3333;
+            color: #e00000;
+
             font-size: 14px;
             font-weight: 700;
+
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 15px;
+
+            margin-bottom: 18px;
         }
 
         .hero h1 {
             font-family: "Playfair Display", serif;
+
             font-size: clamp(48px, 7vw, 82px);
+
             line-height: 1.05;
+
             margin-bottom: 25px;
         }
 
         .hero p {
             max-width: 720px;
-            color: #d7d7d7;
+
+            color: #d5d5d5;
+
             font-size: 19px;
         }
 
 
-        /* =========================
+        /* =========================================
            MAIN
-        ========================= */
+        ========================================= */
 
         main {
             max-width: 1150px;
+
             margin: 0 auto;
+
             padding: 85px 30px;
         }
 
@@ -178,34 +203,45 @@
 
         .section h2 {
             font-family: "Playfair Display", serif;
+
             font-size: 42px;
+
             line-height: 1.2;
+
             margin-bottom: 25px;
         }
 
         .section h3 {
             font-size: 25px;
+
             margin-top: 45px;
             margin-bottom: 18px;
         }
 
         .section p {
             max-width: 920px;
+
             font-size: 18px;
+
             color: #333;
+
             margin-bottom: 20px;
         }
 
 
-        /* =========================
-           INTRO CARD
-        ========================= */
+        /* =========================================
+           INTRODUCTION CARD
+        ========================================= */
 
         .intro-card {
             background: white;
+
             border-left: 5px solid #e00000;
+
             padding: 30px 35px;
+
             margin: 35px 0;
+
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
@@ -214,20 +250,23 @@
         }
 
 
-        /* =========================
-           MATH BOXES
-        ========================= */
+        /* =========================================
+           MATH BOX
+        ========================================= */
 
         .math-box {
             background: white;
+
             border: 1px solid #dedede;
 
             padding: 32px;
+
             margin: 28px 0;
 
             text-align: center;
 
             font-size: 28px;
+
             line-height: 1.8;
 
             overflow-x: auto;
@@ -237,7 +276,7 @@
 
         .math-box.final {
             border: 2px solid #111;
-            background: #fff;
+
             font-size: 31px;
         }
 
@@ -247,15 +286,21 @@
 
         .fraction {
             display: inline-flex;
+
             flex-direction: column;
+
             vertical-align: middle;
+
             text-align: center;
+
             line-height: 1.1;
+
             margin: 0 7px;
         }
 
         .fraction .top {
             border-bottom: 2px solid #111;
+
             padding: 0 8px 4px;
         }
 
@@ -264,70 +309,83 @@
         }
 
         .integral {
-            font-size: 48px;
-            vertical-align: middle;
             font-family: "Times New Roman", serif;
+
+            font-size: 48px;
+
+            vertical-align: middle;
         }
 
         .limits {
-            font-size: 16px;
             display: inline-flex;
+
             flex-direction: column;
+
             vertical-align: middle;
+
             line-height: 0.9;
+
+            font-size: 16px;
+
             margin-left: -8px;
             margin-right: 8px;
         }
 
-        .approx {
-            font-size: 30px;
-        }
 
-
-        /* =========================
+        /* =========================================
            NOTES
-        ========================= */
+        ========================================= */
 
         .note {
             background: #111;
+
             color: white;
 
             padding: 28px 32px;
+
             margin: 30px 0;
 
             border-radius: 3px;
         }
 
         .note strong {
-            color: #ff3333;
             display: block;
-            margin-bottom: 7px;
+
+            color: #e00000;
+
             font-size: 18px;
+
+            margin-bottom: 7px;
         }
 
         .tip {
             background: #f0f0f0;
+
             border: 1px solid #ddd;
 
             padding: 25px 30px;
+
             margin: 30px 0;
         }
 
         .tip strong {
             display: block;
+
             margin-bottom: 7px;
         }
 
 
-        /* =========================
+        /* =========================================
            GRAPH
-        ========================= */
+        ========================================= */
 
         .graph-container {
             background: white;
+
             border: 1px solid #ddd;
 
             padding: 25px;
+
             margin: 35px 0;
 
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -347,11 +405,16 @@
             padding: 14px 25px;
 
             border: none;
+
             background: #111;
+
             color: white;
 
             font-family: "DM Sans", sans-serif;
+
             font-weight: 700;
+
+            letter-spacing: 0.3px;
 
             cursor: pointer;
 
@@ -362,18 +425,24 @@
             background: #e00000;
         }
 
-        #approximation {
-            opacity: 0;
-            transition: opacity 0.8s ease;
+        /*
+           The approximation starts hidden.
+           JavaScript will animate it.
+        */
+
+        #approximationLine {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
         }
 
 
-        /* =========================
+        /* =========================================
            WORKED EXAMPLE
-        ========================= */
+        ========================================= */
 
         .example {
             background: white;
+
             border: 1px solid #ddd;
 
             padding: 35px;
@@ -385,9 +454,13 @@
 
         .example-title {
             color: #e00000;
+
             font-weight: 700;
+
             font-size: 15px;
+
             letter-spacing: 2px;
+
             text-transform: uppercase;
 
             margin-bottom: 15px;
@@ -395,6 +468,7 @@
 
         .step {
             border-top: 1px solid #e5e5e5;
+
             padding: 22px 0;
         }
 
@@ -404,17 +478,20 @@
 
         .step-number {
             font-weight: 700;
+
             margin-bottom: 8px;
         }
 
 
-        /* =========================
-           MISTAKES
-        ========================= */
+        /* =========================================
+           COMMON MISTAKES
+        ========================================= */
 
         .mistakes {
             display: grid;
+
             grid-template-columns: repeat(2, 1fr);
+
             gap: 20px;
 
             margin-top: 30px;
@@ -422,22 +499,26 @@
 
         .mistake {
             background: white;
+
             border: 1px solid #ddd;
+
             padding: 25px;
         }
 
         .mistake h4 {
-            margin-bottom: 10px;
             font-size: 18px;
+
+            margin-bottom: 10px;
         }
 
 
-        /* =========================
+        /* =========================================
            FINAL FORMULA
-        ========================= */
+        ========================================= */
 
         .formula-card {
             background: #111;
+
             color: white;
 
             padding: 50px 35px;
@@ -448,16 +529,22 @@
         }
 
         .formula-card h3 {
-            margin: 0 0 25px;
-            color: #ff3333;
+            color: #e00000;
+
             font-size: 18px;
+
             letter-spacing: 2px;
+
             text-transform: uppercase;
+
+            margin: 0 0 25px;
         }
 
-        .formula-card .formula {
+        .formula {
             font-size: 32px;
+
             overflow-x: auto;
+
             padding: 10px;
         }
 
@@ -466,18 +553,21 @@
         }
 
 
-        /* =========================
+        /* =========================================
            FOOTER
-        ========================= */
+        ========================================= */
 
         footer {
             background: #111;
+
             color: white;
 
             padding: 45px 7%;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
             gap: 25px;
@@ -485,13 +575,14 @@
 
         footer p {
             color: #aaa;
+
             font-size: 14px;
         }
 
 
-        /* =========================
+        /* =========================================
            MOBILE
-        ========================= */
+        ========================================= */
 
         @media (max-width: 750px) {
 
@@ -529,6 +620,7 @@
 
             .math-box {
                 font-size: 23px;
+
                 padding: 24px 15px;
             }
 
@@ -542,20 +634,22 @@
 
             footer {
                 flex-direction: column;
+
                 align-items: flex-start;
             }
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-    <!-- =========================
+    <!-- =========================================
          NAVIGATION
-    ========================= -->
+    ========================================= -->
 
     <nav>
 
@@ -564,17 +658,24 @@
         </a>
 
         <div class="nav-links">
-            <a href="index.html">HOME</a>
-            <a href="integration.html">INTEGRATION</a>
+
+            <a href="index.html">
+                HOME
+            </a>
+
+            <a href="integration.html">
+                INTEGRATION
+            </a>
+
         </div>
 
     </nav>
 
 
 
-    <!-- =========================
+    <!-- =========================================
          HERO
-    ========================= -->
+    ========================================= -->
 
     <header class="hero">
 
@@ -591,7 +692,7 @@
             <p>
                 Learn how the area under a curve can be estimated by
                 dividing the interval into equal parts and replacing
-                sections of the curve with trapezia.
+                sections of the curve with straight lines.
             </p>
 
         </div>
@@ -600,16 +701,16 @@
 
 
 
-    <!-- =========================
+    <!-- =========================================
          MAIN CONTENT
-    ========================= -->
+    ========================================= -->
 
     <main>
 
 
-        <!-- =========================
-             1. INTRODUCTION
-        ========================= -->
+        <!-- =====================================
+             INTRODUCTION
+        ===================================== -->
 
         <section class="section">
 
@@ -619,22 +720,23 @@
 
             <p>
                 Definite integration allows us to find the exact area
-                between a curve and the x-axis. However, sometimes the
+                between a curve and the x-axis. However, sometimes a
                 function is difficult to integrate exactly, or we may
-                only have a set of values rather than an equation.
+                only have a collection of values rather than an
+                equation.
             </p>
 
             <p>
-                In these situations, we can estimate the area using the
-                <strong>Trapezium Rule</strong>.
+                In these situations, we can estimate the area using
+                the <strong>Trapezium Rule</strong>.
             </p>
 
             <div class="intro-card">
 
                 <p>
-                    The main idea is simple: divide the interval into
-                    equal sections, replace each part of the curve with
-                    a straight line, calculate the resulting trapezium
+                    The main idea is to divide the interval into equal
+                    sections, replace each curved section with a
+                    straight line, calculate the resulting trapezium
                     areas, and add them together.
                 </p>
 
@@ -644,9 +746,9 @@
 
 
 
-        <!-- =========================
-             2. ESTIMATING AREA
-        ========================= -->
+        <!-- =====================================
+             ESTIMATING AREA
+        ===================================== -->
 
         <section class="section">
 
@@ -660,19 +762,21 @@
             </p>
 
             <p>
-                If the curve is not a simple shape, finding its exact
-                area may require integration.
+                If the curve is not a simple geometric shape, finding
+                its exact area may require integration.
             </p>
 
             <p>
-                Instead, we can divide the region into smaller pieces.
-                If the pieces are sufficiently narrow, the curved
+                Instead, we divide the region into smaller pieces.
+                When the pieces are sufficiently narrow, the curved
                 boundary can be approximated by straight lines.
             </p>
 
             <div class="note">
 
-                <strong>Key idea</strong>
+                <strong>
+                    Key idea
+                </strong>
 
                 A collection of trapezia can be used to approximate
                 the area under a curve.
@@ -683,9 +787,9 @@
 
 
 
-        <!-- =========================
-             3. CURVE AND INTERVALS
-        ========================= -->
+        <!-- =====================================
+             CURVE AND INTERVALS
+        ===================================== -->
 
         <section class="section">
 
@@ -699,7 +803,8 @@
             </p>
 
             <p>
-                Let the width of every interval be <strong>h</strong>.
+                Let the width of every interval be
+                <strong>h</strong>.
             </p>
 
             <p>
@@ -723,9 +828,15 @@
             </div>
 
 
+
+            <!-- =================================
+                 ANIMATED GRAPH
+            ================================= -->
+
             <div class="graph-container">
 
                 <svg viewBox="0 0 900 430">
+
 
                     <!-- AXES -->
 
@@ -748,170 +859,250 @@
                     />
 
 
-                    <!-- CURVE -->
+                    <!-- AXIS LABELS -->
+
+                    <text
+                        x="850"
+                        y="370"
+                        font-size="22"
+                    >
+                        x
+                    </text>
+
+                    <text
+                        x="55"
+                        y="40"
+                        font-size="22"
+                    >
+                        y
+                    </text>
+
+
+                    <!-- ORIGINAL CURVE -->
 
                     <path
                         d="
-                        M 90 325
-                        C 170 300,
-                          210 190,
-                          290 170
-                        C 390 145,
-                          440 260,
-                          530 205
-                        C 620 150,
-                          680 105,
-                          810 80
+                            M 90 325
+                            C 150 290,
+                              190 220,
+                              210 205
+
+                            C 260 170,
+                              300 145,
+                              330 165
+
+                            C 385 200,
+                              410 260,
+                              450 245
+
+                            C 500 225,
+                              535 190,
+                              570 185
+
+                            C 620 175,
+                              650 120,
+                              690 110
                         "
+
                         fill="none"
+
                         stroke="#111"
+
                         stroke-width="5"
+
+                        stroke-linecap="round"
                     />
 
 
                     <!-- VERTICAL INTERVAL LINES -->
 
-                    <line x1="90" y1="325" x2="90" y2="360"
-                        stroke="#777" stroke-width="2"/>
+                    <line
+                        x1="90"
+                        y1="325"
+                        x2="90"
+                        y2="360"
+                        stroke="#aaa"
+                        stroke-width="2"
+                    />
 
-                    <line x1="210" y1="205" x2="210" y2="360"
-                        stroke="#777" stroke-width="2"/>
+                    <line
+                        x1="210"
+                        y1="205"
+                        x2="210"
+                        y2="360"
+                        stroke="#aaa"
+                        stroke-width="2"
+                    />
 
-                    <line x1="330" y1="165" x2="330" y2="360"
-                        stroke="#777" stroke-width="2"/>
+                    <line
+                        x1="330"
+                        y1="165"
+                        x2="330"
+                        y2="360"
+                        stroke="#aaa"
+                        stroke-width="2"
+                    />
 
-                    <line x1="450" y1="245" x2="450" y2="360"
-                        stroke="#777" stroke-width="2"/>
+                    <line
+                        x1="450"
+                        y1="245"
+                        x2="450"
+                        y2="360"
+                        stroke="#aaa"
+                        stroke-width="2"
+                    />
 
-                    <line x1="570" y1="185" x2="570" y2="360"
-                        stroke="#777" stroke-width="2"/>
+                    <line
+                        x1="570"
+                        y1="185"
+                        x2="570"
+                        y2="360"
+                        stroke="#aaa"
+                        stroke-width="2"
+                    />
 
-                    <line x1="690" y1="110" x2="690" y2="360"
-                        stroke="#777" stroke-width="2"/>
-
-
-                    <!-- POINTS -->
-
-                    <circle cx="90" cy="325" r="6" fill="#e00000"/>
-                    <circle cx="210" cy="205" r="6" fill="#e00000"/>
-                    <circle cx="330" cy="165" r="6" fill="#e00000"/>
-                    <circle cx="450" cy="245" r="6" fill="#e00000"/>
-                    <circle cx="570" cy="185" r="6" fill="#e00000"/>
-                    <circle cx="690" cy="110" r="6" fill="#e00000"/>
-
-
-                    <!-- LABELS -->
-
-                    <text x="82" y="390" font-size="20">x₀</text>
-                    <text x="202" y="390" font-size="20">x₁</text>
-                    <text x="322" y="390" font-size="20">x₂</text>
-                    <text x="442" y="390" font-size="20">x₃</text>
-                    <text x="562" y="390" font-size="20">x₄</text>
-                    <text x="682" y="390" font-size="20">x₅</text>
+                    <line
+                        x1="690"
+                        y1="110"
+                        x2="690"
+                        y2="360"
+                        stroke="#aaa"
+                        stroke-width="2"
+                    />
 
 
-                    <!-- H LABELS -->
+                    <!-- SIMPLE RED POINTS -->
 
-                    <text x="140" y="350" font-size="18">h</text>
-                    <text x="260" y="350" font-size="18">h</text>
-                    <text x="380" y="350" font-size="18">h</text>
-                    <text x="500" y="350" font-size="18">h</text>
-                    <text x="620" y="350" font-size="18">h</text>
+                    <circle
+                        cx="90"
+                        cy="325"
+                        r="7"
+                        fill="#e00000"
+                    />
 
-                    <text x="850" y="370" font-size="22">x</text>
-                    <text x="55" y="40" font-size="22">y</text>
+                    <circle
+                        cx="210"
+                        cy="205"
+                        r="7"
+                        fill="#e00000"
+                    />
+
+                    <circle
+                        cx="330"
+                        cy="165"
+                        r="7"
+                        fill="#e00000"
+                    />
+
+                    <circle
+                        cx="450"
+                        cy="245"
+                        r="7"
+                        fill="#e00000"
+                    />
+
+                    <circle
+                        cx="570"
+                        cy="185"
+                        r="7"
+                        fill="#e00000"
+                    />
+
+                    <circle
+                        cx="690"
+                        cy="110"
+                        r="7"
+                        fill="#e00000"
+                    />
+
+
+                    <!-- POINT LABELS -->
+
+                    <text x="80" y="395" font-size="20">
+                        x₀
+                    </text>
+
+                    <text x="200" y="395" font-size="20">
+                        x₁
+                    </text>
+
+                    <text x="320" y="395" font-size="20">
+                        x₂
+                    </text>
+
+                    <text x="440" y="395" font-size="20">
+                        x₃
+                    </text>
+
+                    <text x="560" y="395" font-size="20">
+                        x₄
+                    </text>
+
+                    <text x="680" y="395" font-size="20">
+                        x₅
+                    </text>
+
+
+                    <!-- h LABELS -->
+
+                    <text x="145" y="350" font-size="18">
+                        h
+                    </text>
+
+                    <text x="265" y="350" font-size="18">
+                        h
+                    </text>
+
+                    <text x="385" y="350" font-size="18">
+                        h
+                    </text>
+
+                    <text x="505" y="350" font-size="18">
+                        h
+                    </text>
+
+                    <text x="625" y="350" font-size="18">
+                        h
+                    </text>
+
+
+                    <!-- =================================
+                         ANIMATED APPROXIMATION
+                    ================================= -->
+
+                    <polyline
+                        id="approximationLine"
+
+                        points="
+                            90,325
+                            210,205
+                            330,165
+                            450,245
+                            570,185
+                            690,110
+                        "
+
+                        fill="none"
+
+                        stroke="#e00000"
+
+                        stroke-width="4"
+
+                        stroke-linecap="round"
+
+                        stroke-linejoin="round"
+                    />
 
                 </svg>
 
 
                 <button
                     class="graph-button"
-                    onclick="showApproximation()"
+                    id="approximationButton"
+                    onclick="animateApproximation()"
                 >
                     SHOW STRAIGHT-LINE APPROXIMATION →
                 </button>
-
-            </div>
-
-
-            <!-- APPROXIMATION -->
-
-            <div class="graph-container" id="approximation">
-
-                <svg viewBox="0 0 900 430">
-
-                    <line
-                        x1="70"
-                        y1="360"
-                        x2="840"
-                        y2="360"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
-
-                    <line
-                        x1="70"
-                        y1="360"
-                        x2="70"
-                        y2="45"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
-
-
-                    <!-- APPROXIMATING STRAIGHT LINES -->
-
-                    <polyline
-                        points="
-                        90,325
-                        210,205
-                        330,165
-                        450,245
-                        570,185
-                        690,110
-                        "
-                        fill="none"
-                        stroke="#e00000"
-                        stroke-width="5"
-                    />
-
-
-                    <!-- VERTICALS -->
-
-                    <line x1="90" y1="325" x2="90" y2="360"
-                        stroke="#777" stroke-width="2"/>
-
-                    <line x1="210" y1="205" x2="210" y2="360"
-                        stroke="#777" stroke-width="2"/>
-
-                    <line x1="330" y1="165" x2="330" y2="360"
-                        stroke="#777" stroke-width="2"/>
-
-                    <line x1="450" y1="245" x2="450" y2="360"
-                        stroke="#777" stroke-width="2"/>
-
-                    <line x1="570" y1="185" x2="570" y2="360"
-                        stroke="#777" stroke-width="2"/>
-
-                    <line x1="690" y1="110" x2="690" y2="360"
-                        stroke="#777" stroke-width="2"/>
-
-
-                    <!-- POINTS -->
-
-                    <circle cx="90" cy="325" r="6" fill="#e00000"/>
-                    <circle cx="210" cy="205" r="6" fill="#e00000"/>
-                    <circle cx="330" cy="165" r="6" fill="#e00000"/>
-                    <circle cx="450" cy="245" r="6" fill="#e00000"/>
-                    <circle cx="570" cy="185" r="6" fill="#e00000"/>
-                    <circle cx="690" cy="110" r="6" fill="#e00000"/>
-
-                </svg>
-
-                <p style="text-align:center; margin:0;">
-                    The red straight-line segments form the
-                    trapezium approximation.
-                </p>
 
             </div>
 
@@ -919,9 +1110,9 @@
 
 
 
-        <!-- =========================
-             4. REPLACING THE CURVE
-        ========================= -->
+        <!-- =====================================
+             REPLACING THE CURVE
+        ===================================== -->
 
         <section class="section">
 
@@ -949,13 +1140,18 @@
             <div class="math-box">
 
                 Area of trapezium =
+
                 <span class="fraction">
                     <span class="top">1</span>
                     <span class="bottom">2</span>
                 </span>
+
                 ×
+
                 (sum of parallel sides)
+
                 ×
+
                 (perpendicular distance)
 
             </div>
@@ -964,9 +1160,9 @@
 
 
 
-        <!-- =========================
-             5. SERIES OF TRAPEZIA
-        ========================= -->
+        <!-- =====================================
+             SERIES OF TRAPEZIA
+        ===================================== -->
 
         <section class="section">
 
@@ -975,29 +1171,34 @@
             </h2>
 
             <p>
-                Instead of using just one trapezium, we can divide the
+                Instead of using one trapezium, we can divide the
                 whole interval into several equal sections.
             </p>
 
             <p>
                 Each section produces one trapezium. The total
-                estimated area is found by adding all of their areas.
+                estimated area is found by adding the areas of all
+                the trapezia.
             </p>
 
             <div class="math-box">
 
                 Total area ≈
+
                 Area₁ + Area₂ + Area₃ + ... + Areaₙ
 
             </div>
 
             <div class="note">
 
-                <strong>Important observation</strong>
+                <strong>
+                    Important observation
+                </strong>
 
-                When neighbouring trapezia are joined, the interior
-                y-values belong to two trapezia. This is why the
-                interior values are multiplied by 2 in the final formula.
+                When neighbouring trapezia are joined, each interior
+                y-value belongs to two trapezia. This is why the
+                interior values are multiplied by 2 in the final
+                formula.
 
             </div>
 
@@ -1005,9 +1206,9 @@
 
 
 
-        <!-- =========================
-             6. WHY APPROXIMATION
-        ========================= -->
+        <!-- =====================================
+             WHY APPROXIMATION
+        ===================================== -->
 
         <section class="section">
 
@@ -1017,7 +1218,7 @@
 
             <p>
                 The original boundary is curved, while the Trapezium
-                Rule replaces sections of that curve with straight
+                Rule replaces sections of the curve with straight
                 lines.
             </p>
 
@@ -1027,8 +1228,8 @@
             </p>
 
             <p>
-                However, if we increase the number of intervals, each
-                interval becomes narrower.
+                However, if we increase the number of intervals,
+                each interval becomes narrower.
             </p>
 
             <p>
@@ -1039,7 +1240,9 @@
 
             <div class="note">
 
-                <strong>The main idea</strong>
+                <strong>
+                    The main idea
+                </strong>
 
                 More intervals → narrower trapezia → closer
                 approximation.
@@ -1050,9 +1253,9 @@
 
 
 
-        <!-- =========================
-             7. DERIVING THE FORMULA
-        ========================= -->
+        <!-- =====================================
+             DERIVATION
+        ===================================== -->
 
         <section class="section">
 
@@ -1061,10 +1264,9 @@
             </h2>
 
             <p>
-                We can now derive the Trapezium Rule by adding the
-                areas of the trapezia one at a time.
+                We can derive the Trapezium Rule by adding the areas
+                of the trapezia one at a time.
             </p>
-
 
 
             <!-- ONE TRAPEZIUM -->
@@ -1074,15 +1276,15 @@
             </h3>
 
             <p>
-                Consider the first trapezium, formed between the points
-                <strong>(x₀, y₀)</strong> and
+                Consider the first trapezium, formed between the
+                points <strong>(x₀, y₀)</strong> and
                 <strong>(x₁, y₁)</strong>.
             </p>
 
             <p>
-                Its parallel sides have lengths <strong>y₀</strong>
-                and <strong>y₁</strong>, while its perpendicular
-                distance is <strong>h</strong>.
+                Its parallel sides have lengths
+                <strong>y₀</strong> and <strong>y₁</strong>, while
+                its perpendicular distance is <strong>h</strong>.
             </p>
 
             <p>
@@ -1092,13 +1294,18 @@
             <div class="math-box">
 
                 Area =
+
                 <span class="fraction">
                     <span class="top">1</span>
                     <span class="bottom">2</span>
                 </span>
+
                 ×
+
                 (sum of parallel sides)
+
                 ×
+
                 (perpendicular distance)
 
             </div>
@@ -1110,33 +1317,40 @@
             <div class="math-box">
 
                 A₁ =
+
                 <span class="fraction">
                     <span class="top">1</span>
                     <span class="bottom">2</span>
                 </span>
+
                 ×
+
                 (y₀ + y₁)
+
                 × h
 
             </div>
 
             <p>
-                Rearranging the factors gives:
+                Rearranging the factors:
             </p>
 
-            <div class="math-box">
+            <div class="math-box final">
 
                 <strong>
+
                     A₁ =
+
                     <span class="fraction">
                         <span class="top">h</span>
                         <span class="bottom">2</span>
                     </span>
+
                     (y₀ + y₁)
+
                 </strong>
 
             </div>
-
 
 
             <!-- TWO TRAPEZIA -->
@@ -1151,19 +1365,15 @@
                 <strong>(x₂, y₂)</strong>.
             </p>
 
-            <p>
-                Its parallel sides are <strong>y₁</strong> and
-                <strong>y₂</strong>, and its width is again
-                <strong>h</strong>.
-            </p>
-
             <div class="math-box">
 
                 A₂ =
+
                 <span class="fraction">
                     <span class="top">h</span>
                     <span class="bottom">2</span>
                 </span>
+
                 (y₁ + y₂)
 
             </div>
@@ -1179,43 +1389,44 @@
             </div>
 
             <p>
-                Substitute the expressions for <strong>A₁</strong>
-                and <strong>A₂</strong>:
+                Substitute the expressions for A₁ and A₂:
             </p>
 
             <div class="math-box">
 
                 A ≈
+
                 <span class="fraction">
                     <span class="top">h</span>
                     <span class="bottom">2</span>
                 </span>
+
                 (y₀ + y₁)
+
                 +
+
                 <span class="fraction">
                     <span class="top">h</span>
                     <span class="bottom">2</span>
                 </span>
+
                 (y₁ + y₂)
 
             </div>
 
             <p>
-                Both terms contain the common factor
-                <strong>h/2</strong>.
-            </p>
-
-            <p>
-                Therefore, factor <strong>h/2</strong> out:
+                Factor out the common factor h/2:
             </p>
 
             <div class="math-box">
 
                 A ≈
+
                 <span class="fraction">
                     <span class="top">h</span>
                     <span class="bottom">2</span>
                 </span>
+
                 [(y₀ + y₁) + (y₁ + y₂)]
 
             </div>
@@ -1227,16 +1438,18 @@
             <div class="math-box">
 
                 A ≈
+
                 <span class="fraction">
                     <span class="top">h</span>
                     <span class="bottom">2</span>
                 </span>
+
                 [y₀ + y₁ + y₁ + y₂]
 
             </div>
 
             <p>
-                There are two <strong>y₁</strong> terms:
+                Combine the two y₁ terms:
             </p>
 
             <div class="math-box">
@@ -1245,32 +1458,22 @@
 
             </div>
 
-            <p>
-                Therefore:
-            </p>
-
             <div class="math-box final">
 
                 <strong>
+
                     A ≈
+
                     <span class="fraction">
                         <span class="top">h</span>
                         <span class="bottom">2</span>
                     </span>
+
                     (y₀ + 2y₁ + y₂)
+
                 </strong>
 
             </div>
-
-            <div class="note">
-
-                <strong>Notice the pattern</strong>
-
-                The first and last y-values appear once,
-                while the middle y-value appears twice.
-
-            </div>
-
 
 
             <!-- THREE TRAPEZIA -->
@@ -1280,7 +1483,7 @@
             </h3>
 
             <p>
-                Now add a third trapezium between
+                Add a third trapezium between
                 <strong>(x₂, y₂)</strong> and
                 <strong>(x₃, y₃)</strong>.
             </p>
@@ -1292,27 +1495,13 @@
             <div class="math-box">
 
                 A₃ =
+
                 <span class="fraction">
                     <span class="top">h</span>
                     <span class="bottom">2</span>
                 </span>
+
                 (y₂ + y₃)
-
-            </div>
-
-            <p>
-                From the previous result, the area of the first two
-                trapezia is:
-            </p>
-
-            <div class="math-box">
-
-                A₁ + A₂ =
-                <span class="fraction">
-                    <span class="top">h</span>
-                    <span class="bottom">2</span>
-                </span>
-                (y₀ + 2y₁ + y₂)
 
             </div>
 
@@ -1323,37 +1512,44 @@
             <div class="math-box">
 
                 A ≈
+
                 <span class="fraction">
                     <span class="top">h</span>
                     <span class="bottom">2</span>
                 </span>
+
                 (y₀ + 2y₁ + y₂)
+
                 +
+
                 <span class="fraction">
                     <span class="top">h</span>
                     <span class="bottom">2</span>
                 </span>
+
                 (y₂ + y₃)
 
             </div>
 
             <p>
-                Factor out the common factor <strong>h/2</strong>:
+                Factor out h/2:
             </p>
 
             <div class="math-box">
 
                 A ≈
+
                 <span class="fraction">
                     <span class="top">h</span>
                     <span class="bottom">2</span>
                 </span>
+
                 [y₀ + 2y₁ + y₂ + y₂ + y₃]
 
             </div>
 
             <p>
-                The two <strong>y₂</strong> terms combine:
+                Combine the two y₂ terms:
             </p>
 
             <div class="math-box">
@@ -1362,23 +1558,22 @@
 
             </div>
 
-            <p>
-                Therefore:
-            </p>
-
             <div class="math-box final">
 
                 <strong>
+
                     A ≈
+
                     <span class="fraction">
                         <span class="top">h</span>
                         <span class="bottom">2</span>
                     </span>
+
                     (y₀ + 2y₁ + 2y₂ + y₃)
+
                 </strong>
 
             </div>
-
 
 
             <!-- GENERAL CASE -->
@@ -1394,78 +1589,69 @@
             </p>
 
             <p>
-                The first and last y-values occur only once.
-                Every y-value between them occurs twice because each
+                The first and last y-values occur once.
+                Every interior y-value occurs twice because each
                 interior point belongs to two neighbouring trapezia.
-            </p>
-
-            <p>
-                Therefore, the total estimated area is:
             </p>
 
             <div class="math-box">
 
                 A ≈
+
                 <span class="fraction">
                     <span class="top">h</span>
                     <span class="bottom">2</span>
                 </span>
+
                 [y₀ + 2y₁ + 2y₂ + ... + 2yₙ₋₁ + yₙ]
 
             </div>
 
             <p>
-                We can group all the interior terms together:
+                Grouping the interior terms:
             </p>
 
             <div class="math-box">
 
                 A ≈
+
                 <span class="fraction">
                     <span class="top">h</span>
                     <span class="bottom">2</span>
                 </span>
+
                 [y₀ + yₙ + 2(y₁ + y₂ + ... + yₙ₋₁)]
 
             </div>
 
 
-
-            <!-- CONNECTION TO INTEGRATION -->
+            <!-- INTEGRAL -->
 
             <h3>
                 5. Connecting the Area to Integration
             </h3>
 
             <p>
-                The exact area under a curve from
-                <strong>x = a</strong> to <strong>x = b</strong>
-                is represented by the definite integral:
+                The exact area under a curve from x = a to x = b is
+                represented by the definite integral:
             </p>
 
             <div class="math-box">
 
                 <span class="integral">∫</span>
+
                 <span class="limits">
                     <span>b</span>
                     <span>a</span>
                 </span>
+
                 f(x) dx
 
             </div>
 
             <p>
-                The Trapezium Rule does not normally give the exact
-                area. It gives an estimate.
-            </p>
-
-            <p>
-                Therefore, we use the approximation symbol
-                <strong>≈</strong>.
-            </p>
-
-            <p>
-                Substituting the trapezium expression gives:
+                Since the Trapezium Rule normally gives an estimate,
+                we use the approximation symbol ≈.
             </p>
 
             <div class="math-box final">
@@ -1473,10 +1659,12 @@
                 <strong>
 
                     <span class="integral">∫</span>
+
                     <span class="limits">
                         <span>b</span>
                         <span>a</span>
                     </span>
+
                     f(x) dx
 
                     ≈
@@ -1493,20 +1681,14 @@
             </div>
 
 
-
-            <!-- FINDING H -->
+            <!-- FINDING h -->
 
             <h3>
                 6. Finding h
             </h3>
 
             <p>
-                The complete interval extends from <strong>a</strong>
-                to <strong>b</strong>.
-            </p>
-
-            <p>
-                Therefore, its total width is:
+                The total width of the interval from a to b is:
             </p>
 
             <div class="math-box">
@@ -1516,12 +1698,12 @@
             </div>
 
             <p>
-                This entire interval is divided into
-                <strong>n equal intervals</strong>.
+                This entire interval is divided into n equal
+                intervals.
             </p>
 
             <p>
-                Therefore, each interval has width:
+                Therefore, the width of each interval is:
             </p>
 
             <div class="math-box final">
@@ -1529,6 +1711,7 @@
                 <strong>
 
                     h =
+
                     <span class="fraction">
                         <span class="top">b − a</span>
                         <span class="bottom">n</span>
@@ -1538,18 +1721,13 @@
 
             </div>
 
-            <p>
-                This value of <strong>h</strong> can then be substituted
-                into the Trapezium Rule.
-            </p>
-
         </section>
 
 
 
-        <!-- =========================
-             8. WORKED EXAMPLE
-        ========================= -->
+        <!-- =====================================
+             WORKED EXAMPLE
+        ===================================== -->
 
         <section class="section">
 
@@ -1564,24 +1742,9 @@
                 </div>
 
                 <p>
-                    Use the Trapezium Rule with four equal intervals to
-                    estimate:
-                </p>
-
-                <div class="math-box">
-
-                    <span class="integral">∫</span>
-                    <span class="limits">
-                        <span>4</span>
-                        <span>0</span>
-                    </span>
-                    f(x) dx
-
-                </div>
-
-                <p>
-                    Suppose the corresponding values of
-                    <strong>f(x)</strong> are:
+                    Use the Trapezium Rule with four equal intervals
+                    to estimate a definite integral, given the
+                    following y-values:
                 </p>
 
                 <div class="math-box">
@@ -1606,7 +1769,7 @@
                     </div>
 
                     <p>
-                        There are four equal intervals, so:
+                        There are four equal intervals:
                     </p>
 
                     <div class="math-box">
@@ -1625,12 +1788,14 @@
                     </div>
 
                     <p>
-                        Use:
+                        Suppose the interval is from x = 0 to x = 4.
+                        Therefore:
                     </p>
 
                     <div class="math-box">
 
                         h =
+
                         <span class="fraction">
                             <span class="top">b − a</span>
                             <span class="bottom">n</span>
@@ -1638,13 +1803,10 @@
 
                     </div>
 
-                    <p>
-                        Substitute:
-                    </p>
-
                     <div class="math-box">
 
                         h =
+
                         <span class="fraction">
                             <span class="top">4 − 0</span>
                             <span class="bottom">4</span>
@@ -1655,6 +1817,7 @@
                     <div class="math-box">
 
                         h =
+
                         <span class="fraction">
                             <span class="top">4</span>
                             <span class="bottom">4</span>
@@ -1662,9 +1825,11 @@
 
                     </div>
 
-                    <div class="math-box">
+                    <div class="math-box final">
 
-                        <strong>h = 1</strong>
+                        <strong>
+                            h = 1
+                        </strong>
 
                     </div>
 
@@ -1674,16 +1839,18 @@
                 <div class="step">
 
                     <div class="step-number">
-                        Step 3: Write the Trapezium Rule
+                        Step 3: Write the formula
                     </div>
 
                     <div class="math-box">
 
                         A ≈
+
                         <span class="fraction">
                             <span class="top">h</span>
                             <span class="bottom">2</span>
                         </span>
+
                         [y₀ + y₄ + 2(y₁ + y₂ + y₃)]
 
                     </div>
@@ -1694,16 +1861,18 @@
                 <div class="step">
 
                     <div class="step-number">
-                        Step 4: Substitute the values
+                        Step 4: Substitute
                     </div>
 
                     <div class="math-box">
 
                         A ≈
+
                         <span class="fraction">
                             <span class="top">1</span>
                             <span class="bottom">2</span>
                         </span>
+
                         [2 + 7 + 2(3 + 5 + 4)]
 
                     </div>
@@ -1714,7 +1883,7 @@
                 <div class="step">
 
                     <div class="step-number">
-                        Step 5: Simplify inside the brackets
+                        Step 5: Simplify
                     </div>
 
                     <div class="math-box">
@@ -1741,16 +1910,18 @@
                 <div class="step">
 
                     <div class="step-number">
-                        Step 6: Final calculation
+                        Step 6: Final answer
                     </div>
 
                     <div class="math-box">
 
                         A ≈
+
                         <span class="fraction">
                             <span class="top">1</span>
                             <span class="bottom">2</span>
                         </span>
+
                         × 33
 
                     </div>
@@ -1771,9 +1942,9 @@
 
 
 
-        <!-- =========================
-             9. COMMON MISTAKES
-        ========================= -->
+        <!-- =====================================
+             COMMON MISTAKES
+        ===================================== -->
 
         <section class="section">
 
@@ -1782,6 +1953,7 @@
             </h2>
 
             <div class="mistakes">
+
 
                 <div class="mistake">
 
@@ -1792,7 +1964,7 @@
                     <p>
                         Always calculate
                         <strong>h = (b − a)/n</strong>
-                        before using the formula.
+                        before applying the formula.
                     </p>
 
                 </div>
@@ -1805,8 +1977,8 @@
                     </h4>
 
                     <p>
-                        Only the interior y-values are multiplied by 2.
-                        The first and last values are used once.
+                        Only the interior y-values are multiplied by
+                        2. The first and last values are used once.
                     </p>
 
                 </div>
@@ -1815,7 +1987,7 @@
                 <div class="mistake">
 
                     <h4>
-                        03. Using n + 1 as the number of intervals
+                        03. Confusing points and intervals
                     </h4>
 
                     <p>
@@ -1839,15 +2011,16 @@
 
                 </div>
 
+
             </div>
 
         </section>
 
 
 
-        <!-- =========================
-             10. FINAL FORMULA
-        ========================= -->
+        <!-- =====================================
+             FINAL FORMULA
+        ===================================== -->
 
         <section class="section">
 
@@ -1860,28 +2033,45 @@
                 <div class="formula">
 
                     <span class="integral">∫</span>
+
                     <span class="limits">
                         <span>b</span>
                         <span>a</span>
                     </span>
+
                     f(x) dx
 
                     ≈
 
                     <span class="fraction">
-                        <span class="top">h</span>
-                        <span class="bottom">2</span>
+
+                        <span class="top">
+                            h
+                        </span>
+
+                        <span class="bottom">
+                            2
+                        </span>
+
                     </span>
 
                     [y₀ + yₙ + 2(y₁ + y₂ + ... + yₙ₋₁)]
 
                 </div>
 
-                <p style="color:#aaa; margin:25px auto 0; max-width:750px;">
+                <p
+                    style="
+                        color:#aaa;
+                        margin:25px auto 0;
+                        max-width:750px;
+                    "
+                >
                     where
+
                     <strong style="color:white;">
                         h = (b − a)/n
                     </strong>
+
                     and n is the number of equal intervals.
                 </p>
 
@@ -1894,9 +2084,9 @@
 
 
 
-    <!-- =========================
+    <!-- =========================================
          FOOTER
-    ========================= -->
+    ========================================= -->
 
     <footer>
 
@@ -1920,18 +2110,56 @@
 
 
 
-    <!-- =========================
+    <!-- =========================================
          JAVASCRIPT
-    ========================= -->
+    ========================================= -->
 
     <script>
 
-        function showApproximation() {
+        function animateApproximation() {
 
-            const approximation =
-                document.getElementById("approximation");
+            const line =
+                document.getElementById("approximationLine");
 
-            approximation.style.opacity = "1";
+            const button =
+                document.getElementById("approximationButton");
+
+
+            /*
+                Reset the line first.
+                This allows the animation to work again
+                if the button is clicked more than once.
+            */
+
+            line.style.transition = "none";
+
+            line.style.strokeDashoffset = "1000";
+
+
+            /*
+                Force the browser to recognize the reset
+                before starting the animation.
+            */
+
+            void line.offsetWidth;
+
+
+            /*
+                Draw the approximation from left to right.
+            */
+
+            line.style.transition =
+                "stroke-dashoffset 2.8s ease";
+
+            line.style.strokeDashoffset = "0";
+
+
+            /*
+                Change the button after it is clicked.
+            */
+
+            button.innerHTML =
+                "APPROXIMATION SHOWN ✓";
 
         }
 
