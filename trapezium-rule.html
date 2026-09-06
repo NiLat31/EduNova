@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduNova | Trapezium Rule</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:#f7f6f2;
+    color:#111;
+}
+
+
+/* NAVIGATION */
+
+nav{
+    height:82px;
+    padding:0 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #ddd;
+    background:#f7f6f2;
+}
+
+.logo{
+    font-family:"Playfair Display",serif;
+    font-size:28px;
+    font-weight:700;
+}
+
+.logo span{
+    color:#e52b20;
+}
+
+.nav{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.nav a{
+    text-decoration:none;
+    color:#111;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+    padding:11px 15px;
+}
+
+.nav a:hover{
+    color:#e52b20;
+}
+
+.logout{
+    border:0;
+    background:#111;
+    color:#fff;
+    padding:11px 17px;
+    font:700 10px "DM Sans";
+    cursor:pointer;
+}
+
+.logout:hover{
+    background:#e52b20;
+}
+
+
+/* HERO */
+
+.hero{
+    background:#111;
+    color:#fff;
+    padding:75px 7% 70px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"∫";
+    position:absolute;
+    right:7%;
+    top:-85px;
+    font:300 330px "Playfair Display";
+    color:#202020;
+}
+
+.label{
+    color:#e52b20;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:3px;
+    margin-bottom:18px;
+    position:relative;
+    z-index:2;
+}
+
+.hero h1{
+    font:600 clamp(45px,6vw,76px)/1.02 "Playfair Display";
+    letter-spacing:-3px;
+    position:relative;
+    z-index:2;
+}
+
+.hero p{
+    max-width:680px;
+    color:#aaa;
+    margin-top:22px;
+    font-size:15px;
+    line-height:1.8;
+    position:relative;
+    z-index:2;
+}
+
+
+/* MAIN LESSON */
+
+main{
+    max-width:1050px;
+    margin:0 auto;
+    padding:80px 7% 110px;
+}
+
+.lesson-section{
+    margin-bottom:70px;
+}
+
+.lesson-section h2{
+    font:600 clamp(32px,4vw,48px)/1.1 "Playfair Display";
+    letter-spacing:-1.5px;
+    margin-bottom:25px;
+}
+
+.lesson-section h3{
+    font:600 26px/1.2 "Playfair Display";
+    margin:35px 0 15px;
+}
+
+.lesson-section p{
+    color:#444;
+    font-size:15px;
+    line-height:1.95;
+    margin-bottom:18px;
+}
+
+
+/* FORMULA */
+
+.formula{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:28px;
+    margin:30px 0;
+    text-align:center;
+    font-family:"Playfair Display",serif;
+    font-size:25px;
+}
+
+
+/* GRAPH */
+
+.graph-box{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:25px;
+    margin:35px 0;
+}
+
+.graph-box img{
+    display:block;
+    width:100%;
+    max-width:1000px;
+    height:auto;
+    margin:0 auto;
+}
+
+.graph-caption{
+    text-align:center;
+    color:#777;
+    font-size:12px;
+    margin-top:15px;
+}
+
+
+/* IMPORTANT IDEA */
+
+.idea{
+    background:#111;
+    color:#fff;
+    padding:35px;
+    margin:35px 0;
+}
+
+.idea .label{
+    margin-bottom:12px;
+}
+
+.idea p{
+    color:#ddd;
+    margin:0;
+}
+
+
+/* STEPS */
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-top:30px;
+}
+
+.step{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:28px;
+}
+
+.step-number{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.step h3{
+    margin:0 0 12px;
+    font-size:23px;
+}
+
+.step p{
+    margin:0;
+    font-size:13px;
+}
+
+
+/* NAVIGATION BETWEEN TOPICS */
+
+.lesson-navigation{
+    border-top:1px solid #ddd;
+    padding-top:35px;
+    margin-top:80px;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.lesson-navigation a{
+    text-decoration:none;
+    background:#111;
+    color:#fff;
+    padding:13px 20px;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.lesson-navigation a:hover{
+    background:#e52b20;
+}
+
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:#fff;
+    padding:40px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.footer-logo{
+    font:600 24px "Playfair Display";
+}
+
+.footer-logo span{
+    color:#e52b20;
+}
+
+footer p{
+    color:#888;
+    font-size:11px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    nav{
+        height:auto;
+        padding:18px 5%;
+        gap:15px;
+    }
+
+    .nav{
+        gap:2px;
+    }
+
+    .nav a{
+        padding:9px 7px;
+        font-size:9px;
+    }
+
+    .hero{
+        padding:65px 5% 55px;
+    }
+
+    main{
+        padding:65px 5% 85px;
+    }
+
+    .graph-box{
+        padding:10px;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .lesson-navigation{
+        flex-direction:column;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="logo">
+        Edu<span>Nova</span>
+    </div>
+
+    <div class="nav">
+
+        <a href="dashboard.html">
+            ← DASHBOARD
+        </a>
+
+        <a href="integration.html">
+            INTEGRATION
+        </a>
+
+        <button class="logout" onclick="logout()">
+            LOG OUT
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="label">
+        CHAPTER 05 • INTEGRATION • TOPIC 01
+    </div>
+
+    <h1>
+        Trapezium Rule.
+    </h1>
+
+    <p>
+        Learn how to estimate the area under a curve by
+        dividing the region into equal intervals and
+        replacing sections of the curve with straight lines.
+    </p>
+
+</header>
+
+
+
+<!-- LESSON -->
+
+<main>
+
+
+    <!-- INTRODUCTION -->
+
+    <section class="lesson-section">
+
+        <div class="label">
+            INTRODUCTION
+        </div>
+
+        <h2>
+            Why do we estimate?
+        </h2>
+
+        <p>
+            One of the uses of integration is to find the area
+            under a curve. However, in some cases, finding the
+            exact area using integration may not be possible or
+            may be difficult to evaluate directly. In such
+            situations, we can use an estimation method to
+            approximate the area.
+        </p>
+
+        <p>
+            One of the methods used to estimate the area under
+            a curve is the <strong>Trapezium Rule</strong>.
+        </p>
+
+    </section>
+
+
+
+    <!-- ESTIMATING AREA -->
+
+    <section class="lesson-section">
+
+        <div class="label">
+            ESTIMATING THE AREA
+        </div>
+
+        <h2>
+            Dividing the interval
+        </h2>
+
+        <p>
+            Consider the curve \(y=f(x)\), and suppose that we
+            want to find the area between the curve and the
+            \(x\)-axis from \(x=a\) to \(x=b\).
+        </p>
+
+        <p>
+            To estimate this area, we divide the interval from
+            \(a\) to \(b\) into \(n\) equal intervals.
+        </p>
+
+
+        <div class="graph-box">
+
+            <img
+                src="trapezium-graph.png"
+                alt="Graph showing the Trapezium Rule with equal intervals"
+            >
+
+            <div class="graph-caption">
+                Dividing the interval from \(a\) to \(b\) into equal intervals.
+            </div>
+
+        </div>
+
+
+        <p>
+            Let the width of each interval be \(h\). Since the
+            total width of the interval is \(b-a\), and it has
+            been divided into \(n\) equal parts,
+        </p>
+
+
+        <div class="formula">
+
+            \(h=\frac{b-a}{n}\)
+
+        </div>
+
+
+        <p>
+            We can therefore mark the \(x\)-coordinates as
+        </p>
+
+
+        <div class="formula">
+
+            \(x_0=a,\quad x_1,\quad x_2,\quad x_3,\quad
+            \ldots,\quad x_{n-1},\quad x_n=b\)
+
+        </div>
+
+
+        <p>
+            Because the intervals are equal, the distance between
+            every two consecutive \(x\)-coordinates is the same
+            and is equal to \(h\).
+        </p>
+
+    </section>
+
+
+
+    <!-- Y COORDINATES -->
+
+    <section class="lesson-section">
+
+        <div class="label">
+            CORRESPONDING VALUES
+        </div>
+
+        <h2>
+            Finding the \(y\)-coordinates
+        </h2>
+
+        <p>
+            At each of these \(x\)-coordinates, we can find the
+            corresponding point on the curve.
+        </p>
+
+        <p>
+            Let the corresponding \(y\)-coordinates be
+        </p>
+
+
+        <div class="formula">
+
+            \(y_0,\quad y_1,\quad y_2,\quad y_3,\quad
+            \ldots,\quad y_{n-1},\quad y_n\)
+
+        </div>
+
+
+        <p>
+            where
+        </p>
+
+
+        <div class="formula">
+
+            \(y_i=f(x_i)\)
+
+        </div>
+
+
+        <p>
+            Therefore, each point on the curve can be written
+            in the form \((x_i,y_i)\).
+        </p>
+
+    </section>
+
+
+
+    <!-- STRAIGHT LINE APPROXIMATION -->
+
+    <section class="lesson-section">
+
+        <div class="label">
+            THE APPROXIMATION
+        </div>
+
+        <h2>
+            Replacing the curve
+        </h2>
+
+        <p>
+            The curve between two consecutive points is not a
+            straight line. Therefore, finding the exact area of
+            each small section may still be difficult.
+        </p>
+
+        <p>
+            Instead, we approximate each small section of the
+            curve by drawing a straight line between two
+            consecutive points.
+        </p>
+
+
+        <div class="idea">
+
+            <div class="label">
+                KEY IDEA
+            </div>
+
+            <p>
+                The curved sections are replaced by straight-line
+                segments joining consecutive points on the curve.
+            </p>
+
+        </div>
+
+
+        <p>
+            For example, consider the two consecutive points
+        </p>
+
+
+        <div class="formula">
+
+            \((x_0,y_0)\quad\text{and}\quad(x_1,y_1)\)
+
+        </div>
+
+
+        <p>
+            We draw a straight line joining these two points.
+            Together with the \(x\)-axis and the two vertical
+            lines at \(x_0\) and \(x_1\), this forms a trapezium.
+        </p>
+
+        <p>
+            The parallel sides of this trapezium have lengths
+            \(y_0\) and \(y_1\), while its width is \(h\).
+        </p>
+
+
+        <div class="formula">
+
+            \(\text{Area of trapezium}
+            =\frac{1}{2}(y_0+y_1)h\)
+
+        </div>
+
+
+        <p>
+            We can repeat the same process between every pair of
+            consecutive points.
+        </p>
+
+        <p>
+            Therefore, the region under the curve is replaced by
+            a series of trapezia.
+        </p>
+
+    </section>
+
+
+
+    <!-- WHY APPROXIMATION -->
+
+    <section class="lesson-section">
+
+        <div class="label">
+            UNDERSTANDING THE METHOD
+        </div>
+
+        <h2>
+            Why is it an approximation?
+        </h2>
+
+        <p>
+            The straight lines do not follow the curve exactly.
+            Therefore, there will usually be a difference between
+            the actual area under the curve and the area of the
+            trapezia.
+        </p>
+
+        <p>
+            However, as we increase the number of intervals, each
+            interval becomes narrower. The straight-line
+            approximations then follow the curve more closely,
+            making the estimated area closer to the actual area.
+        </p>
+
+
+        <div class="idea">
+
+            <div class="label">
+                REMEMBER
+            </div>
+
+            <p>
+                More intervals generally mean narrower trapezia
+                and a closer approximation to the actual area.
+            </p>
+
+        </div>
+
+
+        <p>
+            This is the main idea behind the Trapezium Rule:
+            divide the interval into equal parts, replace each
+            section of the curve with a straight line, calculate
+            the area of each resulting trapezium, and add them
+            together.
+        </p>
+
+    </section>
+
+
+
+    <!-- NEXT PART -->
+
+    <section class="lesson-section">
+
+        <div class="label">
+            NEXT
+        </div>
+
+        <h2>
+            Building the formula.
+        </h2>
+
+        <p>
+            We now have everything we need to derive the
+            Trapezium Rule. In the next section, we will find
+            the area of each trapezium and combine the areas to
+            obtain the general formula.
+        </p>
+
+    </section>
+
+
+
+    <!-- NAVIGATION -->
+
+    <div class="lesson-navigation">
+
+        <a href="integration.html">
+            ← ALL INTEGRATION TOPICS
+        </a>
+
+        <a href="integration.html">
+            NEXT TOPIC →
+        </a>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-logo">
+        Edu<span>Nova</span>
+    </div>
+
+    <p>
+        © 2026 EduNova. Mathematics, reimagined.
+    </p>
+
+</footer>
+
+
+
+<script>
+
+const username = localStorage.getItem("eduNovaUsername");
+
+if(!username){
+    window.location.href="index.html";
+}
+
+function logout(){
+
+    localStorage.removeItem("eduNovaUsername");
+    localStorage.removeItem("eduNovaEmail");
+
+    window.location.href="index.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
