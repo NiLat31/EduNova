@@ -614,7 +614,26 @@ footer {
 <section class="section">
 
     <h2>Why Is It an Approximation?</h2>
+<!-- SERIES -->
+<section class="section">
+    ...
+</section>
 
+
+<!-- WHY APPROXIMATION -->
+<section class="section">
+    ...
+</section>
+
+
+<!-- DERIVING THE FORMULA -->
+<section class="section">
+    ...
+</section>
+
+
+</div>
+</main>
     <p>
         The straight lines do not follow the curve exactly. Therefore,
         there will usually be a difference between the actual area under
@@ -641,23 +660,431 @@ footer {
 </section>
 
 
-<!-- NEXT -->
+<!-- DERIVING THE FORMULA -->
 
 <section class="section">
 
-```
-<h2>The Trapezium Rule Formula</h2>
+    <h2>Deriving the Trapezium Rule</h2>
 
-<p>
-    We now have the basic idea behind the Trapezium Rule.
-    Each section of the curve is replaced by a trapezium,
-    and the areas of all the trapezia are added together.
-</p>
+    <p>
+        We can now derive the Trapezium Rule by adding the areas of
+        the trapezia one at a time.
+    </p>
 
-<p>
-    To develop the formula, we first need to recall the area
-    of a trapezium.
-</p>
+    <!-- ONE TRAPEZIUM -->
+
+    <h3>1. One Trapezium</h3>
+
+    <p>
+        Consider the first trapezium, formed between the points
+        <strong>(x₀, y₀)</strong> and <strong>(x₁, y₁)</strong>.
+    </p>
+
+    <p>
+        Its parallel sides have lengths <strong>y₀</strong> and
+        <strong>y₁</strong>, while its perpendicular distance is
+        <strong>h</strong>.
+    </p>
+
+    <p>
+        Recall that the area of a trapezium is:
+    </p>
+
+    <div class="math-box">
+
+        Area =
+        <span class="fraction">
+            <span class="top">1</span>
+            <span class="bottom">2</span>
+        </span>
+        ×
+        (sum of parallel sides)
+        ×
+        (perpendicular distance)
+
+    </div>
+
+    <p>
+        Therefore, the area of the first trapezium is:
+    </p>
+
+    <div class="math-box">
+
+        A₁ =
+        <span class="fraction">
+            <span class="top">1</span>
+            <span class="bottom">2</span>
+        </span>
+        ×
+        (y₀ + y₁)
+        ×
+        h
+
+    </div>
+
+    <p>
+        Hence:
+    </p>
+
+    <div class="math-box">
+
+        <strong>
+            A₁ =
+            <span class="fraction">
+                <span class="top">h</span>
+                <span class="bottom">2</span>
+            </span>
+            (y₀ + y₁)
+        </strong>
+
+    </div>
+
+    <!-- TWO TRAPEZIA -->
+
+    <h3>2. Two Trapezia</h3>
+
+    <p>
+        Now consider the second trapezium, formed between
+        <strong>(x₁, y₁)</strong> and <strong>(x₂, y₂)</strong>.
+    </p>
+
+    <p>
+        Its parallel sides are <strong>y₁</strong> and
+        <strong>y₂</strong>, and its width is again <strong>h</strong>.
+    </p>
+
+    <p>
+        Therefore:
+    </p>
+
+    <div class="math-box">
+
+        A₂ =
+        <span class="fraction">
+            <span class="top">h</span>
+            <span class="bottom">2</span>
+        </span>
+        (y₁ + y₂)
+
+    </div>
+
+    <p>
+        The total estimated area of the first two trapezia is:
+    </p>
+
+    <div class="math-box">
+
+        A ≈ A₁ + A₂
+
+    </div>
+
+    <p>
+        Substitute the expressions for <strong>A₁</strong> and
+        <strong>A₂</strong>:
+    </p>
+
+    <div class="math-box">
+
+        A ≈
+        <span class="fraction">
+            <span class="top">h</span>
+            <span class="bottom">2</span>
+        </span>
+        (y₀ + y₁)
+        +
+        <span class="fraction">
+            <span class="top">h</span>
+            <span class="bottom">2</span>
+        </span>
+        (y₁ + y₂)
+
+    </div>
+
+    <p>
+        Since <strong>h/2</strong> is a common factor, take it
+        outside the brackets:
+    </p>
+
+    <div class="math-box">
+
+        A ≈
+        <span class="fraction">
+            <span class="top">h</span>
+            <span class="bottom">2</span>
+        </span>
+        [(y₀ + y₁) + (y₁ + y₂)]
+
+    </div>
+
+    <p>
+        Expand the brackets:
+    </p>
+
+    <div class="math-box">
+
+        A ≈
+        <span class="fraction">
+            <span class="top">h</span>
+            <span class="bottom">2</span>
+        </span>
+        [y₀ + y₁ + y₁ + y₂]
+
+    </div>
+
+    <p>
+        The two <strong>y₁</strong> terms are like terms, so combine
+        them:
+    </p>
+
+    <div class="math-box">
+
+        <strong>
+            A ≈
+            <span class="fraction">
+                <span class="top">h</span>
+                <span class="bottom">2</span>
+            </span>
+            (y₀ + 2y₁ + y₂)
+        </strong>
+
+    </div>
+
+    <div class="note">
+
+        <strong>Notice the pattern</strong>
+
+        The first and last y-values appear once, while the value
+        in the middle appears twice.
+
+    </div>
+
+    <!-- THREE TRAPEZIA -->
+
+    <h3>3. Three Trapezia</h3>
+
+    <p>
+        Now add a third trapezium, between
+        <strong>(x₂, y₂)</strong> and <strong>(x₃, y₃)</strong>.
+    </p>
+
+    <p>
+        Its area is:
+    </p>
+
+    <div class="math-box">
+
+        A₃ =
+        <span class="fraction">
+            <span class="top">h</span>
+            <span class="bottom">2</span>
+        </span>
+        (y₂ + y₃)
+
+    </div>
+
+    <p>
+        The total estimated area is now:
+    </p>
+
+    <div class="math-box">
+
+        A ≈
+        <span class="fraction">
+            <span class="top">h</span>
+            <span class="bottom">2</span>
+        </span>
+        (y₀ + 2y₁ + y₂)
+        +
+        <span class="fraction">
+            <span class="top">h</span>
+            <span class="bottom">2</span>
+        </span>
+        (y₂ + y₃)
+
+    </div>
+
+    <p>
+        Take the common factor <strong>h/2</strong> outside:
+    </p>
+
+    <div class="math-box">
+
+        A ≈
+        <span class="fraction">
+            <span class="top">h</span>
+            <span class="bottom">2</span>
+        </span>
+        [y₀ + 2y₁ + y₂ + y₂ + y₃]
+
+    </div>
+
+    <p>
+        The two <strong>y₂</strong> terms are like terms, so combine
+        them:
+    </p>
+
+    <div class="math-box">
+
+        <strong>
+            A ≈
+            <span class="fraction">
+                <span class="top">h</span>
+                <span class="bottom">2</span>
+            </span>
+            (y₀ + 2y₁ + 2y₂ + y₃)
+        </strong>
+
+    </div>
+
+    <div class="note">
+
+        <strong>The pattern is now clear</strong>
+
+        The first value, y₀, appears once.
+        The interior values, y₁ and y₂, appear twice.
+        The final value, y₃, appears once.
+
+    </div>
+
+    <!-- GENERAL CASE -->
+
+    <h3>4. Extending to n Trapezia</h3>
+
+    <p>
+        If we continue adding trapezia until we reach
+        <strong>xₙ = b</strong>, there will be <strong>n</strong>
+        trapezia.
+    </p>
+
+    <p>
+        The first and last y-values occur only once, while every
+        y-value between them occurs twice.
+    </p>
+
+    <p>
+        Therefore, the total estimated area follows the pattern:
+    </p>
+
+    <div class="math-box">
+
+        A ≈
+        <span class="fraction">
+            <span class="top">h</span>
+            <span class="bottom">2</span>
+        </span>
+        [y₀ + 2y₁ + 2y₂ + ... + 2yₙ₋₁ + yₙ]
+
+    </div>
+
+    <p>
+        We can factor the intermediate terms together:
+    </p>
+
+    <div class="math-box">
+
+        <strong>
+            A ≈
+            <span class="fraction">
+                <span class="top">h</span>
+                <span class="bottom">2</span>
+            </span>
+            [y₀ + yₙ + 2(y₁ + y₂ + ... + yₙ₋₁)]
+        </strong>
+
+    </div>
+
+    <!-- CONNECTION TO INTEGRATION -->
+
+    <h3>5. Connecting the Area to Integration</h3>
+
+    <p>
+        The area under the curve from <strong>x = a</strong> to
+        <strong>x = b</strong> is represented by the definite integral:
+    </p>
+
+    <div class="math-box">
+
+        ∫ f(x) dx
+
+    </div>
+
+    <p>
+        More precisely:
+    </p>
+
+    <div class="math-box">
+
+        ∫<span class="small">a to b</span> f(x) dx
+
+    </div>
+
+    <p>
+        Since the trapezia provide an approximation rather than the
+        exact area, we use the approximation symbol <strong>≈</strong>.
+    </p>
+
+    <p>
+        Therefore, the Trapezium Rule is:
+    </p>
+
+    <div class="math-box">
+
+        <strong>
+            ∫<span class="small">a to b</span> f(x) dx
+            ≈
+            <span class="fraction">
+                <span class="top">h</span>
+                <span class="bottom">2</span>
+            </span>
+            [y₀ + yₙ + 2(y₁ + y₂ + ... + yₙ₋₁)]
+        </strong>
+
+    </div>
+
+    <!-- WIDTH -->
+
+    <h3>6. Finding h</h3>
+
+    <p>
+        The width of the entire interval from <strong>a</strong> to
+        <strong>b</strong> is:
+    </p>
+
+    <div class="math-box">
+
+        b − a
+
+    </div>
+
+    <p>
+        This interval is divided into <strong>n equal intervals</strong>.
+        Therefore, the width of each interval is:
+    </p>
+
+    <div class="math-box">
+
+        <strong>
+            h =
+            <span class="fraction">
+                <span class="top">b − a</span>
+                <span class="bottom">n</span>
+            </span>
+        </strong>
+
+    </div>
+
+    <div class="note">
+
+        <strong>Final Trapezium Rule</strong>
+
+        Divide the interval into n equal parts, calculate
+        h = (b − a)/n, find the corresponding y-values, add the
+        first and last y-values once, add all the intermediate
+        y-values twice, and finally multiply by h/2.
+
+    </div>
+
+</section>
 
 
 <h3>Area of One Trapezium</h3>
