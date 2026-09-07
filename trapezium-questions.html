@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Trapezium Rule • Practice Questions | EduNova</title>
+    <title>EduNova | Trapezium Rule Questions</title>
+
+    <!-- GOOGLE FONTS -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
 
+        /* =========================================
+           RESET
+        ========================================= */
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -26,28 +41,45 @@
             line-height: 1.7;
         }
 
-        /* =========================
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================================
            NAVIGATION
-        ========================= */
+        ========================================= */
 
         nav {
-            height: 75px;
-            background: white;
-            border-bottom: 1px solid #ddd;
+            height: 78px;
+
+            background: #111;
+            color: white;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
             padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
         }
 
         .logo {
             font-family: "Playfair Display", serif;
-            font-size: 25px;
+
+            font-size: 28px;
             font-weight: 700;
-            color: #111;
-            text-decoration: none;
+
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #e00000;
         }
 
         .nav-links {
@@ -56,112 +88,177 @@
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: #111;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.7px;
-            transition: 0.25s;
+            color: white;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            transition: 0.3s;
         }
 
         .nav-links a:hover {
             color: #e00000;
         }
 
-        /* =========================
+
+        /* =========================================
            HERO
-        ========================= */
+        ========================================= */
 
         .hero {
-            background: white;
-            padding: 90px 8% 75px;
-            border-bottom: 1px solid #ddd;
+            background: #111;
+
+            color: white;
+
+            padding: 85px 7%;
+
+            position: relative;
+            overflow: hidden;
         }
 
-        .eyebrow {
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            border-radius: 50%;
+
+            right: -100px;
+            top: -150px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-label {
             color: #e00000;
-            font-size: 13px;
+
+            font-size: 14px;
             font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 18px;
+
+            letter-spacing: 3px;
+
             text-transform: uppercase;
+
+            margin-bottom: 18px;
         }
 
         .hero h1 {
             font-family: "Playfair Display", serif;
-            font-size: clamp(45px, 6vw, 72px);
+
+            font-size: clamp(45px, 7vw, 75px);
+
             line-height: 1.05;
-            margin-bottom: 25px;
+
+            margin-bottom: 20px;
         }
 
         .hero p {
-            max-width: 720px;
-            color: #555;
-            font-size: 18px;
+            color: #d5d5d5;
+
+            font-size: 19px;
+
+            max-width: 700px;
         }
 
-        /* =========================
+
+        /* =========================================
            MAIN
-        ========================= */
+        ========================================= */
 
         main {
-            width: min(1100px, 90%);
+            max-width: 1100px;
+
             margin: 0 auto;
-            padding: 65px 0 90px;
+
+            padding: 75px 30px;
         }
 
-        /* =========================
+
+        /* =========================================
            KEEP IN MIND
-        ========================= */
+        ========================================= */
 
-        .keep-box {
-            background: #111;
-            color: white;
-            padding: 40px;
+        .keep-in-mind {
+            background: white;
+
+            border-left: 5px solid #e00000;
+
+            padding: 35px;
+
             margin-bottom: 55px;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        .keep-box h2 {
+        .keep-in-mind h2 {
             font-family: "Playfair Display", serif;
-            font-size: 32px;
-            margin-bottom: 25px;
+
+            font-size: 36px;
+
+            margin-bottom: 20px;
         }
 
-        .keep-box ul {
-            padding-left: 25px;
-        }
+        .keep-in-mind h3 {
+            font-size: 21px;
 
-        .keep-box li {
+            margin-top: 28px;
             margin-bottom: 10px;
         }
 
-        .keep-box strong {
-            color: #fff;
+        .keep-in-mind p {
+            color: #333;
+
+            font-size: 17px;
+
+            margin-bottom: 15px;
         }
 
-        .estimate-box {
-            margin-top: 28px;
-            padding: 22px 25px;
-            border-left: 4px solid #e00000;
-            background: #1c1c1c;
+        .keep-in-mind ul {
+            margin-left: 25px;
         }
 
-        .estimate-box p {
-            margin-bottom: 8px;
+        .keep-in-mind li {
+            margin-bottom: 7px;
         }
 
-        .estimate-box p:last-child {
-            margin-bottom: 0;
+        .important {
+            background: #111;
+
+            color: white;
+
+            padding: 20px 25px;
+
+            margin-top: 25px;
         }
 
-        /* =========================
+        .important strong {
+            color: #e00000;
+        }
+
+
+        /* =========================================
            QUESTION NAVIGATION
-        ========================= */
+        ========================================= */
 
-        .question-selector {
+        .question-navigation {
             display: flex;
+
             flex-wrap: wrap;
-            gap: 10px;
+
+            justify-content: center;
+
+            gap: 12px;
+
             margin-bottom: 35px;
         }
 
@@ -169,159 +266,240 @@
             width: 48px;
             height: 48px;
 
-            border: 1px solid #ccc;
+            border: 2px solid #111;
+
             background: white;
 
+            color: #111;
+
             font-family: "DM Sans", sans-serif;
-            font-size: 15px;
+
+            font-size: 16px;
             font-weight: 700;
 
             cursor: pointer;
+
             transition: 0.25s;
         }
 
         .question-number:hover {
-            border-color: #111;
+            background: #111;
+            color: white;
         }
 
         .question-number.active {
-            background: #111;
+            background: #e00000;
+            border-color: #e00000;
             color: white;
-            border-color: #111;
         }
 
-        /* =========================
+
+        /* =========================================
            QUESTION CARD
-        ========================= */
+        ========================================= */
 
         .question-card {
             display: none;
+
             background: white;
+
             border: 1px solid #ddd;
-            padding: 45px;
-            margin-bottom: 30px;
-            scroll-margin-top: 30px;
+
+            padding: 40px;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+            animation: fadeIn 0.3s ease;
         }
 
         .question-card.active {
             display: block;
         }
 
-        .question-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
+        @keyframes fadeIn {
 
-            margin-bottom: 30px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid #ddd;
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
         }
 
-        .question-header h2 {
-            font-family: "Playfair Display", serif;
-            font-size: 31px;
+        .question-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+
+            border-bottom: 1px solid #e5e5e5;
+
+            padding-bottom: 18px;
+        }
+
+        .question-label {
+            color: #e00000;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
         }
 
         .marks {
-            background: #111;
-            color: white;
-            padding: 7px 14px;
-            font-size: 12px;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
+
+            font-size: 15px;
         }
 
         .question-text {
-            font-size: 17px;
-            margin-bottom: 28px;
+            font-size: 19px;
+
+            margin-bottom: 25px;
         }
 
-        .question-text p {
-            margin-bottom: 15px;
-        }
 
-        /* =========================
-           TABLES
-        ========================= */
+        /* =========================================
+           MATH
+        ========================================= */
 
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0 30px;
-            font-size: 16px;
-        }
+        .math-box {
+            background: #f8f8f8;
 
-        .data-table th,
-        .data-table td {
-            border: 1px solid #ccc;
-            padding: 13px 15px;
+            border: 1px solid #ddd;
+
+            padding: 25px;
+
+            margin: 22px 0;
+
             text-align: center;
+
+            font-size: 24px;
+
+            overflow-x: auto;
         }
 
-        .data-table th {
-            background: #111;
-            color: white;
-            font-weight: 700;
+        .fraction {
+            display: inline-flex;
+
+            flex-direction: column;
+
+            vertical-align: middle;
+
+            text-align: center;
+
+            line-height: 1.1;
+
+            margin: 0 6px;
         }
 
-        .missing {
-            color: #e00000;
-            font-weight: 700;
+        .fraction .top {
+            border-bottom: 2px solid #111;
+
+            padding: 0 7px 4px;
         }
 
-        /* =========================
-           FORMULA
-        ========================= */
+        .fraction .bottom {
+            padding: 4px 7px 0;
+        }
 
-        .formula {
-            background: #f5f5f5;
-            border-left: 4px solid #e00000;
 
-            padding: 22px 25px;
+        /* =========================================
+           TABLE
+        ========================================= */
+
+        .question-table {
+            width: 100%;
+
+            border-collapse: collapse;
+
             margin: 25px 0;
 
-            font-family: "Times New Roman", serif;
-            font-size: 21px;
-            text-align: center;
+            background: white;
         }
 
-        /* =========================
-           ANSWER BUTTON
-        ========================= */
+        .question-table th,
+        .question-table td {
+            border: 1px solid #bbb;
 
-        .answer-button {
-            border: none;
+            padding: 13px;
+
+            text-align: center;
+
+            font-size: 17px;
+        }
+
+        .question-table th {
             background: #111;
+
             color: white;
 
-            padding: 15px 25px;
+            font-weight: 700;
+        }
+
+        .blank {
+            color: #999;
+        }
+
+
+        /* =========================================
+           SHOW ANSWER BUTTON
+        ========================================= */
+
+        .answer-button {
+            display: block;
+
+            margin: 30px auto 0;
+
+            padding: 15px 28px;
+
+            border: none;
+
+            background: #111;
+
+            color: white;
 
             font-family: "DM Sans", sans-serif;
-            font-size: 13px;
+
+            font-size: 15px;
+
             font-weight: 700;
-            letter-spacing: 0.6px;
+
+            letter-spacing: 0.5px;
 
             cursor: pointer;
-            transition: 0.25s;
+
+            transition: 0.3s;
         }
 
         .answer-button:hover {
             background: #e00000;
         }
 
-        /* =========================
+
+        /* =========================================
            ANSWER
-        ========================= */
+        ========================================= */
 
         .answer {
             display: none;
 
             margin-top: 35px;
-            padding-top: 35px;
 
-            border-top: 1px solid #ddd;
+            border-top: 2px solid #111;
+
+            padding-top: 30px;
         }
 
         .answer.show {
@@ -330,92 +508,82 @@
 
         .answer-title {
             color: #e00000;
-            font-size: 12px;
+
+            font-size: 15px;
             font-weight: 700;
+
             letter-spacing: 2px;
+
             text-transform: uppercase;
 
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
-        .step {
-            margin-bottom: 28px;
+        .solution-step {
+            border-top: 1px solid #e5e5e5;
+
+            padding: 20px 0;
         }
 
-        .step-title {
-            font-weight: 700;
+        .solution-step:first-of-type {
+            border-top: none;
+        }
+
+        .solution-step strong {
+            display: block;
+
             margin-bottom: 8px;
-        }
-
-        .calculation {
-            background: #f5f5f5;
-            padding: 18px 22px;
-
-            font-family: "Times New Roman", serif;
-            font-size: 19px;
-
-            margin-top: 10px;
-            overflow-x: auto;
-        }
-
-        .explanation {
-            color: #555;
-            margin-top: 10px;
         }
 
         .final-answer {
             background: #111;
+
             color: white;
 
-            padding: 20px 25px;
+            padding: 20px;
 
-            font-family: "Times New Roman", serif;
-            font-size: 22px;
+            text-align: center;
+
+            font-size: 23px;
+
             font-weight: 700;
 
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
-        .reason-box {
-            background: #f5f5f5;
-            border-left: 4px solid #e00000;
-            padding: 20px 24px;
-            margin-top: 18px;
-        }
 
-        /* =========================
+        /* =========================================
            FOOTER
-        ========================= */
+        ========================================= */
 
         footer {
             background: #111;
+
             color: white;
-            padding: 45px 8%;
-        }
 
-        .footer-inner {
+            padding: 45px 7%;
+
             display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
 
-        footer h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 25px;
-            margin-bottom: 8px;
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 25px;
         }
 
         footer p {
             color: #aaa;
+
             font-size: 14px;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
 
-        @media (max-width: 700px) {
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 750px) {
 
             nav {
                 padding: 0 5%;
@@ -426,46 +594,62 @@
             }
 
             .nav-links a {
-                font-size: 11px;
-            }
-
-            .hero {
-                padding: 65px 6%;
+                font-size: 13px;
             }
 
             main {
-                width: 92%;
-                padding-top: 45px;
+                padding: 55px 18px;
             }
 
             .question-card {
-                padding: 28px 22px;
+                padding: 25px 20px;
             }
 
             .question-header {
                 align-items: flex-start;
-                flex-direction: column;
             }
 
-            .keep-box {
-                padding: 28px 23px;
+            .question-text {
+                font-size: 17px;
             }
+
+            .math-box {
+                font-size: 20px;
+
+                padding: 20px 12px;
+            }
+
+            .question-table th,
+            .question-table td {
+                padding: 9px 5px;
+
+                font-size: 14px;
+            }
+
+            footer {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
         }
 
     </style>
+
 </head>
 
 
 <body>
 
-    <!-- =====================================
+
+    <!-- =========================================
          NAVIGATION
-    ===================================== -->
+    ========================================= -->
 
     <nav>
 
         <a href="index.html" class="logo">
-            EduNova
+            Edu<span>Nova</span>
         </a>
 
         <div class="nav-links">
@@ -487,27 +671,36 @@
     </nav>
 
 
-    <!-- =====================================
+    <!-- =========================================
          HERO
-    ===================================== -->
+    ========================================= -->
 
     <header class="hero">
 
-        <div class="eyebrow">
-            Integration • Topic 01
+        <div class="hero-content">
+
+            <div class="chapter-label">
+                Integration • Topic 01
+            </div>
+
+            <h1>
+                Practice Questions
+            </h1>
+
+            <p>
+                Apply what you have learned about the Trapezium Rule.
+                Work through each question carefully and reveal the
+                solution when you are ready.
+            </p>
+
         </div>
-
-        <h1>
-            Practice Questions
-        </h1>
-
-        <p>
-            Test your understanding of the Trapezium Rule
-            with exam-style questions and fully worked solutions.
-        </p>
 
     </header>
 
+
+    <!-- =========================================
+         MAIN
+    ========================================= -->
 
     <main>
 
@@ -516,16 +709,21 @@
              KEEP IN MIND
         ===================================== -->
 
-        <section class="keep-box">
+        <section class="keep-in-mind">
 
             <h2>
-                KEEP IN MIND
+                Keep in Mind
             </h2>
+
+            <p>
+                Before you begin, remember the key ideas from the
+                lesson:
+            </p>
 
             <ul>
 
                 <li>
-                    <strong>n</strong> is the number of intervals.
+                    The number of intervals is <strong>n</strong>.
                 </li>
 
                 <li>
@@ -534,17 +732,16 @@
                 </li>
 
                 <li>
-                    The first and last y-values are used
-                    <strong>once</strong>.
+                    The first and last y-values are used once.
                 </li>
 
                 <li>
-                    All interior y-values are multiplied by
+                    Every interior y-value is multiplied by
                     <strong>2</strong>.
                 </li>
 
                 <li>
-                    The Trapezium Rule gives an
+                    The Trapezium Rule normally gives an
                     <strong>approximation</strong>, so use
                     <strong>≈</strong>.
                 </li>
@@ -552,25 +749,33 @@
             </ul>
 
 
-            <div class="estimate-box">
+            <h3>
+                Overestimate or Underestimate?
+            </h3>
 
-                <p>
-                    <strong>Overestimate:</strong>
-                    the trapezia lie mostly above the curve,
-                    so the estimated area is greater than the true area.
-                </p>
+            <p>
+                The Trapezium Rule replaces the curved parts of a
+                graph with straight-line segments.
+            </p>
 
-                <p>
-                    <strong>Underestimate:</strong>
-                    the trapezia lie mostly below the curve,
-                    so the estimated area is less than the true area.
-                </p>
+            <p>
+                If the trapezia lie mostly <strong>above the curve</strong>,
+                the estimated area is greater than the true area.
+                This is an <strong>overestimate</strong>.
+            </p>
 
-                <p>
-                    <strong>Quick check:</strong>
-                    compare the straight-line approximation
-                    with the curve.
-                </p>
+            <p>
+                If the trapezia lie mostly <strong>below the curve</strong>,
+                the estimated area is less than the true area.
+                This is an <strong>underestimate</strong>.
+            </p>
+
+            <div class="important">
+
+                <strong>Quick check:</strong>
+
+                Look at where the straight-line approximation lies
+                compared with the curve.
 
             </div>
 
@@ -578,50 +783,26 @@
 
 
         <!-- =====================================
-             QUESTION SELECTOR
+             QUESTION NUMBERS
         ===================================== -->
 
-        <div class="question-selector">
+        <div class="question-navigation">
 
-            <button class="question-number active"
-                    onclick="showQuestion(1)">
-                1
-            </button>
+            <button class="question-number active" onclick="showQuestion(1)">1</button>
 
-            <button class="question-number"
-                    onclick="showQuestion(2)">
-                2
-            </button>
+            <button class="question-number" onclick="showQuestion(2)">2</button>
 
-            <button class="question-number"
-                    onclick="showQuestion(3)">
-                3
-            </button>
+            <button class="question-number" onclick="showQuestion(3)">3</button>
 
-            <button class="question-number"
-                    onclick="showQuestion(4)">
-                4
-            </button>
+            <button class="question-number" onclick="showQuestion(4)">4</button>
 
-            <button class="question-number"
-                    onclick="showQuestion(5)">
-                5
-            </button>
+            <button class="question-number" onclick="showQuestion(5)">5</button>
 
-            <button class="question-number"
-                    onclick="showQuestion(6)">
-                6
-            </button>
+            <button class="question-number" onclick="showQuestion(6)">6</button>
 
-            <button class="question-number"
-                    onclick="showQuestion(7)">
-                7
-            </button>
+            <button class="question-number" onclick="showQuestion(7)">7</button>
 
-            <button class="question-number"
-                    onclick="showQuestion(8)">
-                8
-            </button>
+            <button class="question-number" onclick="showQuestion(8)">8</button>
 
         </div>
 
@@ -630,183 +811,161 @@
              QUESTION 1
         ===================================== -->
 
-        <section class="question-card active"
-                 id="question1">
+        <section class="question-card active" id="question1">
 
             <div class="question-header">
 
-                <h2>
+                <div class="question-label">
                     Question 1
-                </h2>
+                </div>
 
                 <div class="marks">
-                    3 MARKS
+                    3 marks
                 </div>
 
             </div>
-
 
             <div class="question-text">
 
-                <p>
-                    The table below gives values of a function
-                    at equally spaced values of x.
-                </p>
+                Use the Trapezium Rule with four equal intervals
+                to estimate the area under a curve between
+                <strong>x = 0</strong> and <strong>x = 4</strong>.
 
-                <table class="data-table">
-
-                    <tr>
-                        <th>x</th>
-                        <th>0</th>
-                        <th>1</th>
-                        <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                    </tr>
-
-                    <tr>
-                        <th>y</th>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>5</td>
-                        <td>4</td>
-                        <td>7</td>
-                    </tr>
-
-                </table>
-
-                <p>
-                    Use the Trapezium Rule to estimate
-                    the area under the curve between
-                    <strong>x = 0</strong> and <strong>x = 4</strong>.
-                </p>
+                The y-values are:
 
             </div>
 
+            <table class="question-table">
 
-            <button class="answer-button"
-                    onclick="toggleAnswer(1)">
+                <tr>
+                    <th>x</th>
+                    <th>0</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                </tr>
+
+                <tr>
+                    <th>y</th>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>5</td>
+                    <td>4</td>
+                    <td>7</td>
+                </tr>
+
+            </table>
+
+            <button class="answer-button" onclick="toggleAnswer(1)">
                 SHOW ANSWER →
             </button>
 
-
-            <div class="answer"
-                 id="answer1">
+            <div class="answer" id="answer1">
 
                 <div class="answer-title">
-                    Fully Worked Answer
+                    Solution
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 1: Find h</strong>
 
-                    <div class="step-title">
-                        Step 1: Find the number of intervals, n
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        x = 0, 1, 2, 3, 4
-                        <br><br>
-                        There are 4 intervals.
-                        <br><br>
-                        n = 4
-                    </div>
+                        h =
+                        <span class="fraction">
+                            <span class="top">4 − 0</span>
+                            <span class="bottom">4</span>
+                        </span>
 
-                </div>
+                        =
 
+                        <span class="fraction">
+                            <span class="top">4</span>
+                            <span class="bottom">4</span>
+                        </span>
 
-                <div class="step">
+                        = 1
 
-                    <div class="step-title">
-                        Step 2: Find the width of each interval, h
-                    </div>
-
-                    <div class="calculation">
-                        h = (b − a) / n
-                        <br><br>
-                        h = (4 − 0) / 4
-                        <br><br>
-                        h = 4 / 4
-                        <br><br>
-                        h = 1
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 2: Apply the formula</strong>
 
-                    <div class="step-title">
-                        Step 3: Write the Trapezium Rule
-                    </div>
+                    <div class="math-box">
 
-                    <div class="formula">
-                        A ≈ h/2 [y₀ + yₙ + 2(y₁ + y₂ + ... + yₙ₋₁)]
-                    </div>
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
 
-                </div>
+                        [2 + 7 + 2(3 + 5 + 4)]
 
-
-                <div class="step">
-
-                    <div class="step-title">
-                        Step 4: Substitute the values
-                    </div>
-
-                    <div class="calculation">
-                        A ≈ 1/2 [2 + 7 + 2(3 + 5 + 4)]
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 3: Calculate the interior values</strong>
 
-                    <div class="step-title">
-                        Step 5: Add the interior y-values
-                    </div>
+                    3 + 5 + 4 = 12
 
-                    <div class="calculation">
-                        3 + 5 + 4 = 12
-                        <br><br>
-                        2(12) = 24
+                    <br><br>
+
+                    2(12) = 24
+
+                </div>
+
+                <div class="solution-step">
+
+                    <strong>Step 4: Calculate the quantity inside the brackets</strong>
+
+                    2 + 7 + 24 = 33
+
+                    <br><br>
+
+                    Therefore:
+
+                    <div class="math-box">
+
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">33</span>
+                            <span class="bottom">2</span>
+                        </span>
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 5: Calculate the final answer</strong>
 
-                    <div class="step-title">
-                        Step 6: Simplify inside the brackets
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        A ≈ 1/2 [2 + 7 + 24]
-                        <br><br>
-                        A ≈ 1/2 [33]
-                    </div>
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">33</span>
+                            <span class="bottom">2</span>
+                        </span>
 
-                </div>
+                        = 16.5
 
-
-                <div class="step">
-
-                    <div class="step-title">
-                        Step 7: Calculate the final value
-                    </div>
-
-                    <div class="calculation">
-                        A ≈ 33/2
-                        <br><br>
-                        A ≈ 16.5
                     </div>
 
                 </div>
-
 
                 <div class="final-answer">
-                    ∴ Estimated area ≈ 16.5 square units
+
+                    A ≈ 16.5
+
                 </div>
 
             </div>
@@ -818,159 +977,186 @@
              QUESTION 2
         ===================================== -->
 
-        <section class="question-card"
-                 id="question2">
+        <section class="question-card" id="question2">
 
             <div class="question-header">
 
-                <h2>
+                <div class="question-label">
                     Question 2
-                </h2>
+                </div>
 
                 <div class="marks">
-                    4 MARKS
+                    4 marks
                 </div>
 
             </div>
-
 
             <div class="question-text">
 
-                <p>
-                    The table shows values of a function at
-                    equally spaced intervals.
-                </p>
+                The values of a function at five equally spaced
+                points are shown below.
 
-                <table class="data-table">
-
-                    <tr>
-                        <th>x</th>
-                        <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                        <th>5</th>
-                        <th>6</th>
-                    </tr>
-
-                    <tr>
-                        <th>y</th>
-                        <td>4</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>9</td>
-                        <td>8</td>
-                    </tr>
-
-                </table>
-
-                <p>
-                    Use the Trapezium Rule to estimate the
-                    area under the curve between
-                    <strong>x = 2</strong> and <strong>x = 6</strong>.
-                </p>
+                Use the Trapezium Rule to estimate the area between
+                <strong>x = 2</strong> and <strong>x = 6</strong>.
 
             </div>
 
+            <table class="question-table">
 
-            <button class="answer-button"
-                    onclick="toggleAnswer(2)">
+                <tr>
+                    <th>x</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                </tr>
+
+                <tr>
+                    <th>y</th>
+                    <td>4</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>9</td>
+                    <td>8</td>
+                </tr>
+
+            </table>
+
+            <button class="answer-button" onclick="toggleAnswer(2)">
                 SHOW ANSWER →
             </button>
 
-
-            <div class="answer"
-                 id="answer2">
+            <div class="answer" id="answer2">
 
                 <div class="answer-title">
-                    Fully Worked Answer
+                    Solution
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 1: Find n</strong>
 
-                    <div class="step-title">
-                        Step 1: Find n
-                    </div>
+                    The x-values are:
 
-                    <div class="calculation">
-                        x = 2, 3, 4, 5, 6
-                        <br><br>
-                        Number of intervals = 4
-                        <br><br>
-                        n = 4
-                    </div>
+                    2, 3, 4, 5, 6
 
-                </div>
+                    <br><br>
 
+                    There are five points, so the number of intervals
+                    is one less than the number of points.
 
-                <div class="step">
+                    <div class="math-box">
 
-                    <div class="step-title">
-                        Step 2: Find h
-                    </div>
+                        n = 5 − 1 = 4
 
-                    <div class="calculation">
-                        h = (b − a) / n
-                        <br><br>
-                        h = (6 − 2) / 4
-                        <br><br>
-                        h = 4 / 4
-                        <br><br>
-                        h = 1
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 2: Find h</strong>
 
-                    <div class="step-title">
-                        Step 3: Substitute into the formula
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        A ≈ 1/2 [4 + 8 + 2(6 + 7 + 9)]
+                        h =
+                        <span class="fraction">
+                            <span class="top">6 − 2</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">4</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                        = 1
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 3: Apply the Trapezium Rule</strong>
 
-                    <div class="step-title">
-                        Step 4: Calculate the interior values
+                    The first y-value is 4.
+
+                    <br>
+
+                    The last y-value is 8.
+
+                    <br>
+
+                    The interior y-values are 6, 7 and 9.
+
+                    <div class="math-box">
+
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+
+                        [4 + 8 + 2(6 + 7 + 9)]
+
                     </div>
 
-                    <div class="calculation">
+                </div>
+
+                <div class="solution-step">
+
+                    <strong>Step 4: Calculate the interior values</strong>
+
+                    <div class="math-box">
+
                         6 + 7 + 9 = 22
+
                         <br><br>
+
                         2(22) = 44
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 5: Calculate the quantity inside the brackets</strong>
 
-                    <div class="step-title">
-                        Step 5: Simplify
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        A ≈ 1/2 [4 + 8 + 44]
-                        <br><br>
-                        A ≈ 1/2 [56]
-                        <br><br>
-                        A ≈ 56/2
-                        <br><br>
-                        A ≈ 28
+                        4 + 8 + 44 = 56
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
+
+                    <strong>Step 6: Calculate the final answer</strong>
+
+                    <div class="math-box">
+
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">56</span>
+                            <span class="bottom">2</span>
+                        </span>
+
+                        = 28
+
+                    </div>
+
+                </div>
 
                 <div class="final-answer">
-                    ∴ Estimated area ≈ 28 square units
+
+                    A ≈ 28
+
                 </div>
 
             </div>
@@ -982,220 +1168,288 @@
              QUESTION 3
         ===================================== -->
 
-        <section class="question-card"
-                 id="question3">
+        <section class="question-card" id="question3">
 
             <div class="question-header">
 
-                <h2>
+                <div class="question-label">
                     Question 3
-                </h2>
+                </div>
 
                 <div class="marks">
-                    5 MARKS
+                    5 marks
                 </div>
 
             </div>
-
 
             <div class="question-text">
 
-                <p>
-                    The function is
-                    <strong>f(x) = x² + 2</strong>.
-                </p>
+                The function
 
-                <p>
-                    Complete the table, state the value of
-                    <strong>n</strong>, calculate <strong>h</strong>,
-                    and use the Trapezium Rule to estimate
-                    the area between <strong>x = 0</strong>
-                    and <strong>x = 4</strong>.
-                </p>
+                <div class="math-box">
+                    f(x) = x² + 2
+                </div>
 
-                <table class="data-table">
+                is used to estimate the area under the curve between
+                <strong>x = 0</strong> and <strong>x = 4</strong>,
+                using four equal intervals.
 
-                    <tr>
-                        <th>x</th>
-                        <th>0</th>
-                        <th>1</th>
-                        <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                    </tr>
+                <br><br>
 
-                    <tr>
-                        <th>f(x)</th>
-                        <td>2</td>
-                        <td class="missing">?</td>
-                        <td class="missing">?</td>
-                        <td class="missing">?</td>
-                        <td class="missing">?</td>
-                    </tr>
+                <strong>(a)</strong> Complete the table.
 
-                </table>
+                <br>
+
+                <strong>(b)</strong> State the value of <strong>n</strong>.
+
+                <br>
+
+                <strong>(c)</strong> Calculate <strong>h</strong>.
+
+                <br>
+
+                <strong>(d)</strong> Use the Trapezium Rule to estimate
+                the area.
 
             </div>
 
+            <table class="question-table">
 
-            <button class="answer-button"
-                    onclick="toggleAnswer(3)">
+                <tr>
+                    <th>x</th>
+                    <th>0</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                </tr>
+
+                <tr>
+                    <th>y = f(x)</th>
+                    <td class="blank">___</td>
+                    <td class="blank">___</td>
+                    <td class="blank">___</td>
+                    <td class="blank">___</td>
+                    <td class="blank">___</td>
+                </tr>
+
+            </table>
+
+            <button class="answer-button" onclick="toggleAnswer(3)">
                 SHOW ANSWER →
             </button>
 
-
-            <div class="answer"
-                 id="answer3">
+            <div class="answer" id="answer3">
 
                 <div class="answer-title">
-                    Fully Worked Answer
+                    Solution
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 1: Complete the table</strong>
 
-                    <div class="step-title">
-                        Step 1: Complete the table
+                    <div class="math-box">
+
+                        f(0) = 0² + 2
+
+                        <br>
+
+                        = 0 + 2
+
+                        <br>
+
+                        = 2
+
                     </div>
 
-                    <div class="calculation">
-                        f(x) = x² + 2
-                    </div>
+                    <div class="math-box">
 
-                    <p class="explanation">
-                        When x = 1:
-                    </p>
-
-                    <div class="calculation">
                         f(1) = 1² + 2
-                        <br><br>
-                        f(1) = 1 + 2
-                        <br><br>
-                        f(1) = 3
+
+                        <br>
+
+                        = 1 + 2
+
+                        <br>
+
+                        = 3
+
                     </div>
 
-                    <p class="explanation">
-                        When x = 2:
-                    </p>
+                    <div class="math-box">
 
-                    <div class="calculation">
                         f(2) = 2² + 2
-                        <br><br>
-                        f(2) = 4 + 2
-                        <br><br>
-                        f(2) = 6
+
+                        <br>
+
+                        = 4 + 2
+
+                        <br>
+
+                        = 6
+
                     </div>
 
-                    <p class="explanation">
-                        When x = 3:
-                    </p>
+                    <div class="math-box">
 
-                    <div class="calculation">
                         f(3) = 3² + 2
-                        <br><br>
-                        f(3) = 9 + 2
-                        <br><br>
-                        f(3) = 11
+
+                        <br>
+
+                        = 9 + 2
+
+                        <br>
+
+                        = 11
+
                     </div>
 
-                    <p class="explanation">
-                        When x = 4:
-                    </p>
+                    <div class="math-box">
 
-                    <div class="calculation">
                         f(4) = 4² + 2
-                        <br><br>
-                        f(4) = 16 + 2
-                        <br><br>
-                        f(4) = 18
+
+                        <br>
+
+                        = 16 + 2
+
+                        <br>
+
+                        = 18
+
                     </div>
+
+                    <table class="question-table">
+
+                        <tr>
+                            <th>x</th>
+                            <th>0</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                        </tr>
+
+                        <tr>
+                            <th>y</th>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>6</td>
+                            <td>11</td>
+                            <td>18</td>
+                        </tr>
+
+                    </table>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 2: Find n</strong>
 
-                    <div class="step-title">
-                        Step 2: Find n
-                    </div>
+                    There are four equal intervals.
 
-                    <div class="calculation">
-                        x = 0, 1, 2, 3, 4
-                        <br><br>
-                        Number of intervals = 4
-                        <br><br>
+                    <div class="math-box">
+
                         n = 4
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 3: Find h</strong>
 
-                    <div class="step-title">
-                        Step 3: Find h
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        h = (b − a) / n
-                        <br><br>
-                        h = (4 − 0) / 4
-                        <br><br>
-                        h = 1
-                    </div>
+                        h =
+                        <span class="fraction">
+                            <span class="top">4 − 0</span>
+                            <span class="bottom">4</span>
+                        </span>
 
-                </div>
+                        =
 
+                        <span class="fraction">
+                            <span class="top">4</span>
+                            <span class="bottom">4</span>
+                        </span>
 
-                <div class="step">
+                        = 1
 
-                    <div class="step-title">
-                        Step 4: Substitute into the Trapezium Rule
-                    </div>
-
-                    <div class="calculation">
-                        A ≈ 1/2 [2 + 18 + 2(3 + 6 + 11)]
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 4: Apply the Trapezium Rule</strong>
 
-                    <div class="step-title">
-                        Step 5: Calculate the interior values
+                    <div class="math-box">
+
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+
+                        [2 + 18 + 2(3 + 6 + 11)]
+
                     </div>
 
-                    <div class="calculation">
+                </div>
+
+                <div class="solution-step">
+
+                    <strong>Step 5: Calculate the interior values</strong>
+
+                    <div class="math-box">
+
                         3 + 6 + 11 = 20
+
                         <br><br>
+
                         2(20) = 40
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 6: Calculate the quantity inside the brackets</strong>
 
-                    <div class="step-title">
-                        Step 6: Simplify
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        A ≈ 1/2 [2 + 18 + 40]
-                        <br><br>
-                        A ≈ 1/2 [60]
-                        <br><br>
-                        A ≈ 60/2
-                        <br><br>
-                        A ≈ 30
+                        2 + 18 + 40 = 60
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
+
+                    <strong>Step 7: Calculate the final answer</strong>
+
+                    <div class="math-box">
+
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">60</span>
+                            <span class="bottom">2</span>
+                        </span>
+
+                        = 30
+
+                    </div>
+
+                </div>
 
                 <div class="final-answer">
-                    ∴ Estimated area ≈ 30 square units
+
+                    A ≈ 30
+
                 </div>
 
             </div>
@@ -1207,232 +1461,290 @@
              QUESTION 4
         ===================================== -->
 
-        <section class="question-card"
-                 id="question4">
+        <section class="question-card" id="question4">
 
             <div class="question-header">
 
-                <h2>
+                <div class="question-label">
                     Question 4
-                </h2>
+                </div>
 
                 <div class="marks">
-                    6 MARKS
+                    6 marks
                 </div>
 
             </div>
-
 
             <div class="question-text">
 
-                <p>
-                    The function is
-                    <strong>f(x) = x² + 3x + 2</strong>.
-                </p>
+                The function
 
-                <p>
-                    Complete the table and use the Trapezium Rule
-                    to estimate the area under the curve between
-                    <strong>x = 1</strong> and <strong>x = 5</strong>.
-                </p>
+                <div class="math-box">
+                    f(x) = x² + 3x + 2
+                </div>
 
-                <table class="data-table">
+                is given below.
 
-                    <tr>
-                        <th>x</th>
-                        <th>1</th>
-                        <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                        <th>5</th>
-                    </tr>
+                Use the information provided to estimate the area
+                under the curve between <strong>x = 1</strong> and
+                <strong>x = 5</strong> using the Trapezium Rule.
 
-                    <tr>
-                        <th>f(x)</th>
-                        <td class="missing">?</td>
-                        <td class="missing">?</td>
-                        <td class="missing">?</td>
-                        <td class="missing">?</td>
-                        <td class="missing">?</td>
-                    </tr>
-
-                </table>
+                Complete the table and give your answer correct to
+                2 decimal places.
 
             </div>
 
+            <table class="question-table">
 
-            <button class="answer-button"
-                    onclick="toggleAnswer(4)">
+                <tr>
+                    <th>x</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                </tr>
+
+                <tr>
+                    <th>y = f(x)</th>
+                    <td class="blank">___</td>
+                    <td class="blank">___</td>
+                    <td class="blank">___</td>
+                    <td class="blank">___</td>
+                    <td class="blank">___</td>
+                </tr>
+
+            </table>
+
+            <button class="answer-button" onclick="toggleAnswer(4)">
                 SHOW ANSWER →
             </button>
 
-
-            <div class="answer"
-                 id="answer4">
+            <div class="answer" id="answer4">
 
                 <div class="answer-title">
-                    Fully Worked Answer
+                    Solution
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 1: Complete the table</strong>
 
-                    <div class="step-title">
-                        Step 1: Calculate each missing y-value
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        f(x) = x² + 3x + 2
-                    </div>
-
-                    <p class="explanation">
-                        When x = 1:
-                    </p>
-
-                    <div class="calculation">
                         f(1) = 1² + 3(1) + 2
-                        <br><br>
+
+                        <br>
+
                         = 1 + 3 + 2
-                        <br><br>
+
+                        <br>
+
                         = 6
+
                     </div>
 
-                    <p class="explanation">
-                        When x = 2:
-                    </p>
+                    <div class="math-box">
 
-                    <div class="calculation">
                         f(2) = 2² + 3(2) + 2
-                        <br><br>
+
+                        <br>
+
                         = 4 + 6 + 2
-                        <br><br>
+
+                        <br>
+
                         = 12
+
                     </div>
 
-                    <p class="explanation">
-                        When x = 3:
-                    </p>
+                    <div class="math-box">
 
-                    <div class="calculation">
                         f(3) = 3² + 3(3) + 2
-                        <br><br>
+
+                        <br>
+
                         = 9 + 9 + 2
-                        <br><br>
+
+                        <br>
+
                         = 20
+
                     </div>
 
-                    <p class="explanation">
-                        When x = 4:
-                    </p>
+                    <div class="math-box">
 
-                    <div class="calculation">
                         f(4) = 4² + 3(4) + 2
-                        <br><br>
+
+                        <br>
+
                         = 16 + 12 + 2
-                        <br><br>
+
+                        <br>
+
                         = 30
+
                     </div>
 
-                    <p class="explanation">
-                        When x = 5:
-                    </p>
+                    <div class="math-box">
 
-                    <div class="calculation">
                         f(5) = 5² + 3(5) + 2
-                        <br><br>
+
+                        <br>
+
                         = 25 + 15 + 2
-                        <br><br>
+
+                        <br>
+
                         = 42
+
+                    </div>
+
+                    <table class="question-table">
+
+                        <tr>
+                            <th>x</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                        </tr>
+
+                        <tr>
+                            <th>y</th>
+                            <td>6</td>
+                            <td>12</td>
+                            <td>20</td>
+                            <td>30</td>
+                            <td>42</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <div class="solution-step">
+
+                    <strong>Step 2: Find n</strong>
+
+                    The x-values are:
+
+                    1, 2, 3, 4, 5
+
+                    <br><br>
+
+                    There are five points, so:
+
+                    <div class="math-box">
+
+                        n = 5 − 1 = 4
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 3: Find h</strong>
 
-                    <div class="step-title">
-                        Step 2: Find n
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        x = 1, 2, 3, 4, 5
-                        <br><br>
-                        Number of intervals = 4
-                        <br><br>
-                        n = 4
-                    </div>
+                        h =
+                        <span class="fraction">
+                            <span class="top">5 − 1</span>
+                            <span class="bottom">4</span>
+                        </span>
 
-                </div>
+                        =
 
+                        <span class="fraction">
+                            <span class="top">4</span>
+                            <span class="bottom">4</span>
+                        </span>
 
-                <div class="step">
+                        = 1
 
-                    <div class="step-title">
-                        Step 3: Find h
-                    </div>
-
-                    <div class="calculation">
-                        h = (b − a) / n
-                        <br><br>
-                        h = (5 − 1) / 4
-                        <br><br>
-                        h = 4 / 4
-                        <br><br>
-                        h = 1
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 4: Apply the formula</strong>
 
-                    <div class="step-title">
-                        Step 4: Substitute into the formula
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        A ≈ 1/2 [6 + 42 + 2(12 + 20 + 30)]
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+
+                        [6 + 42 + 2(12 + 20 + 30)]
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 5: Calculate the interior values</strong>
 
-                    <div class="step-title">
-                        Step 5: Calculate the interior values
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
                         12 + 20 + 30 = 62
+
                         <br><br>
+
                         2(62) = 124
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 6: Calculate the quantity inside the brackets</strong>
 
-                    <div class="step-title">
-                        Step 6: Simplify
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        A ≈ 1/2 [6 + 42 + 124]
-                        <br><br>
-                        A ≈ 1/2 [172]
-                        <br><br>
-                        A ≈ 172/2
-                        <br><br>
-                        A ≈ 86
+                        6 + 42 + 124 = 172
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
+
+                    <strong>Step 7: Calculate the final answer</strong>
+
+                    <div class="math-box">
+
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">172</span>
+                            <span class="bottom">2</span>
+                        </span>
+
+                        = 86
+
+                    </div>
+
+                    Therefore, correct to 2 decimal places:
+
+                    <div class="math-box">
+
+                        A ≈ 86.00
+
+                    </div>
+
+                </div>
 
                 <div class="final-answer">
-                    ∴ Estimated area ≈ 86 square units
+
+                    A ≈ 86.00
+
                 </div>
 
             </div>
@@ -1444,222 +1756,273 @@
              QUESTION 5
         ===================================== -->
 
-        <section class="question-card"
-                 id="question5">
+        <section class="question-card" id="question5">
 
             <div class="question-header">
 
-                <h2>
+                <div class="question-label">
                     Question 5
-                </h2>
+                </div>
 
                 <div class="marks">
-                    6 MARKS
+                    6 marks
                 </div>
 
             </div>
-
 
             <div class="question-text">
 
-                <p>
-                    The function is
-                    <strong>f(x) = x³ + 1</strong>.
-                </p>
+                The function
 
-                <p>
-                    The table below is incomplete.
-                </p>
+                <div class="math-box">
+                    f(x) = x³ + 1
+                </div>
 
-                <table class="data-table">
+                has the following values.
 
-                    <tr>
-                        <th>x</th>
-                        <th>0</th>
-                        <th>1</th>
-                        <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                    </tr>
-
-                    <tr>
-                        <th>f(x)</th>
-                        <td>1</td>
-                        <td class="missing">?</td>
-                        <td class="missing">?</td>
-                        <td class="missing">?</td>
-                        <td class="missing">?</td>
-                    </tr>
-
-                </table>
-
-                <p>
-                    Estimate the area under the curve between
-                    <strong>x = 0</strong> and <strong>x = 4</strong>
-                    using the Trapezium Rule.
-                </p>
+                Estimate the area under the curve between
+                <strong>x = 0</strong> and <strong>x = 4</strong>
+                using the Trapezium Rule.
 
             </div>
 
+            <table class="question-table">
 
-            <button class="answer-button"
-                    onclick="toggleAnswer(5)">
+                <tr>
+                    <th>x</th>
+                    <th>0</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                </tr>
+
+                <tr>
+                    <th>y = f(x)</th>
+                    <td class="blank">___</td>
+                    <td class="blank">___</td>
+                    <td class="blank">___</td>
+                    <td class="blank">___</td>
+                    <td class="blank">___</td>
+                </tr>
+
+            </table>
+
+            <button class="answer-button" onclick="toggleAnswer(5)">
                 SHOW ANSWER →
             </button>
 
-
-            <div class="answer"
-                 id="answer5">
+            <div class="answer" id="answer5">
 
                 <div class="answer-title">
-                    Fully Worked Answer
+                    Solution
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 1: Calculate the y-values</strong>
 
-                    <div class="step-title">
-                        Step 1: Find the missing y-values
+                    <div class="math-box">
+
+                        f(0) = 0³ + 1
+
+                        <br>
+
+                        = 0 + 1
+
+                        <br>
+
+                        = 1
+
                     </div>
 
-                    <div class="calculation">
-                        f(x) = x³ + 1
-                    </div>
+                    <div class="math-box">
 
-                    <p class="explanation">
-                        When x = 1:
-                    </p>
-
-                    <div class="calculation">
                         f(1) = 1³ + 1
-                        <br><br>
+
+                        <br>
+
                         = 1 + 1
-                        <br><br>
+
+                        <br>
+
                         = 2
+
                     </div>
 
-                    <p class="explanation">
-                        When x = 2:
-                    </p>
+                    <div class="math-box">
 
-                    <div class="calculation">
                         f(2) = 2³ + 1
-                        <br><br>
+
+                        <br>
+
                         = 8 + 1
-                        <br><br>
+
+                        <br>
+
                         = 9
+
                     </div>
 
-                    <p class="explanation">
-                        When x = 3:
-                    </p>
+                    <div class="math-box">
 
-                    <div class="calculation">
                         f(3) = 3³ + 1
-                        <br><br>
+
+                        <br>
+
                         = 27 + 1
-                        <br><br>
+
+                        <br>
+
                         = 28
+
                     </div>
 
-                    <p class="explanation">
-                        When x = 4:
-                    </p>
+                    <div class="math-box">
 
-                    <div class="calculation">
                         f(4) = 4³ + 1
-                        <br><br>
+
+                        <br>
+
                         = 64 + 1
-                        <br><br>
+
+                        <br>
+
                         = 65
+
+                    </div>
+
+                    <table class="question-table">
+
+                        <tr>
+                            <th>x</th>
+                            <th>0</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                        </tr>
+
+                        <tr>
+                            <th>y</th>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>9</td>
+                            <td>28</td>
+                            <td>65</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <div class="solution-step">
+
+                    <strong>Step 2: Find n</strong>
+
+                    There are five x-values, so:
+
+                    <div class="math-box">
+
+                        n = 5 − 1 = 4
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 3: Find h</strong>
 
-                    <div class="step-title">
-                        Step 2: Find n
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        x = 0, 1, 2, 3, 4
-                        <br><br>
-                        Number of intervals = 4
-                        <br><br>
-                        n = 4
-                    </div>
+                        h =
+                        <span class="fraction">
+                            <span class="top">4 − 0</span>
+                            <span class="bottom">4</span>
+                        </span>
 
-                </div>
+                        =
 
+                        <span class="fraction">
+                            <span class="top">4</span>
+                            <span class="bottom">4</span>
+                        </span>
 
-                <div class="step">
+                        = 1
 
-                    <div class="step-title">
-                        Step 3: Find h
-                    </div>
-
-                    <div class="calculation">
-                        h = (b − a) / n
-                        <br><br>
-                        h = (4 − 0) / 4
-                        <br><br>
-                        h = 1
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 4: Apply the Trapezium Rule</strong>
 
-                    <div class="step-title">
-                        Step 4: Apply the Trapezium Rule
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        A ≈ 1/2 [1 + 65 + 2(2 + 9 + 28)]
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+
+                        [1 + 65 + 2(2 + 9 + 28)]
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 5: Calculate the interior values</strong>
 
-                    <div class="step-title">
-                        Step 5: Calculate the interior values
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
                         2 + 9 + 28 = 39
+
                         <br><br>
+
                         2(39) = 78
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 6: Calculate the quantity inside the brackets</strong>
 
-                    <div class="step-title">
-                        Step 6: Simplify
-                    </div>
+                    <div class="math-box">
 
-                    <div class="calculation">
-                        A ≈ 1/2 [1 + 65 + 78]
-                        <br><br>
-                        A ≈ 1/2 [144]
-                        <br><br>
-                        A ≈ 144/2
-                        <br><br>
-                        A ≈ 72
+                        1 + 65 + 78 = 144
+
                     </div>
 
                 </div>
 
+                <div class="solution-step">
+
+                    <strong>Step 7: Calculate the final answer</strong>
+
+                    <div class="math-box">
+
+                        A ≈
+                        <span class="fraction">
+                            <span class="top">144</span>
+                            <span class="bottom">2</span>
+                        </span>
+
+                        = 72
+
+                    </div>
+
+                </div>
 
                 <div class="final-answer">
-                    ∴ Estimated area ≈ 72 square units
+
+                    A ≈ 72
+
                 </div>
 
             </div>
@@ -1671,102 +2034,75 @@
              QUESTION 6
         ===================================== -->
 
-        <section class="question-card"
-                 id="question6">
+        <section class="question-card" id="question6">
 
             <div class="question-header">
 
-                <h2>
+                <div class="question-label">
                     Question 6
-                </h2>
+                </div>
 
                 <div class="marks">
-                    3 MARKS
+                    3 marks
                 </div>
 
             </div>
-
 
             <div class="question-text">
 
-                <p>
-                    A curve is <strong>concave upward</strong>
-                    throughout an interval.
-                </p>
+                A curve is concave upward throughout an interval.
+                The Trapezium Rule is used to estimate the area
+                under the curve.
 
-                <p>
-                    When the Trapezium Rule is used over this
-                    interval, will the estimated area be an
-                    <strong>overestimate</strong> or an
-                    <strong>underestimate</strong>?
-                </p>
+                <br><br>
 
-                <p>
-                    Explain your answer.
-                </p>
+                Is the Trapezium Rule likely to give an
+                <strong>overestimate</strong> or an
+                <strong>underestimate</strong>?
+
+                Explain your answer.
 
             </div>
 
-
-            <button class="answer-button"
-                    onclick="toggleAnswer(6)">
+            <button class="answer-button" onclick="toggleAnswer(6)">
                 SHOW ANSWER →
             </button>
 
-
-            <div class="answer"
-                 id="answer6">
+            <div class="answer" id="answer6">
 
                 <div class="answer-title">
-                    Fully Worked Answer
+                    Solution
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 1: Consider the shape of the curve</strong>
 
-                    <div class="step-title">
-                        Step 1: Identify the shape of the curve
-                    </div>
+                    A concave-up curve bends upward.
 
-                    <div class="calculation">
-                        The curve is concave upward.
-                    </div>
+                    <br><br>
 
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-title">
-                        Step 2: Compare the trapezium with the curve
-                    </div>
-
-                    <div class="reason-box">
-                        For a concave upward curve, the straight
-                        line joining two points on the curve lies
-                        above the curve between those points.
-                    </div>
+                    When the Trapezium Rule joins points on this curve
+                    with straight-line segments, those straight lines
+                    lie above the curve.
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 2: Compare the estimated area with the true area</strong>
 
-                    <div class="step-title">
-                        Step 3: Decide whether the area is larger or smaller
-                    </div>
-
-                    <div class="reason-box">
-                        Because the trapezia lie above the curve,
-                        the trapezium areas are larger than the
-                        actual area under the curve.
-                    </div>
+                    Because the trapezia include the region between
+                    the straight-line segments and the curve, the
+                    calculated area is larger than the actual area
+                    under the curve.
 
                 </div>
-
 
                 <div class="final-answer">
-                    ∴ The Trapezium Rule gives an OVERestimate.
+
+                    Overestimate
+
                 </div>
 
             </div>
@@ -1778,102 +2114,74 @@
              QUESTION 7
         ===================================== -->
 
-        <section class="question-card"
-                 id="question7">
+        <section class="question-card" id="question7">
 
             <div class="question-header">
 
-                <h2>
+                <div class="question-label">
                     Question 7
-                </h2>
+                </div>
 
                 <div class="marks">
-                    3 MARKS
+                    3 marks
                 </div>
 
             </div>
-
 
             <div class="question-text">
 
-                <p>
-                    A curve is <strong>concave downward</strong>
-                    throughout an interval.
-                </p>
+                A curve is concave downward throughout an interval.
+                The Trapezium Rule is used to estimate the area
+                under the curve.
 
-                <p>
-                    When the Trapezium Rule is used over this
-                    interval, will the estimated area be an
-                    <strong>overestimate</strong> or an
-                    <strong>underestimate</strong>?
-                </p>
+                <br><br>
 
-                <p>
-                    Explain your answer.
-                </p>
+                Is the result likely to be an
+                <strong>overestimate</strong> or an
+                <strong>underestimate</strong>?
+
+                Explain why.
 
             </div>
 
-
-            <button class="answer-button"
-                    onclick="toggleAnswer(7)">
+            <button class="answer-button" onclick="toggleAnswer(7)">
                 SHOW ANSWER →
             </button>
 
-
-            <div class="answer"
-                 id="answer7">
+            <div class="answer" id="answer7">
 
                 <div class="answer-title">
-                    Fully Worked Answer
+                    Solution
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 1: Consider the shape of the curve</strong>
 
-                    <div class="step-title">
-                        Step 1: Identify the shape of the curve
-                    </div>
+                    A concave-down curve bends downward.
 
-                    <div class="calculation">
-                        The curve is concave downward.
-                    </div>
+                    <br><br>
 
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-title">
-                        Step 2: Compare the trapezium with the curve
-                    </div>
-
-                    <div class="reason-box">
-                        For a concave downward curve, the straight
-                        line joining two points on the curve lies
-                        below the curve between those points.
-                    </div>
+                    When the Trapezium Rule joins points on this curve
+                    with straight-line segments, those straight lines
+                    lie below the curve.
 
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>Step 2: Compare the estimated area with the true area</strong>
 
-                    <div class="step-title">
-                        Step 3: Decide whether the area is larger or smaller
-                    </div>
-
-                    <div class="reason-box">
-                        Because the trapezia lie below the curve,
-                        the trapezium areas are smaller than the
-                        actual area under the curve.
-                    </div>
+                    Because the trapezia cover less area than the
+                    actual region under the curve, the calculated
+                    area is smaller than the true area.
 
                 </div>
-
 
                 <div class="final-answer">
-                    ∴ The Trapezium Rule gives an UNDERESTIMATE.
+
+                    Underestimate
+
                 </div>
 
             </div>
@@ -1885,146 +2193,134 @@
              QUESTION 8
         ===================================== -->
 
-        <section class="question-card"
-                 id="question8">
+        <section class="question-card" id="question8">
 
             <div class="question-header">
 
-                <h2>
+                <div class="question-label">
                     Question 8
-                </h2>
+                </div>
 
                 <div class="marks">
-                    5 MARKS
+                    5 marks
                 </div>
 
             </div>
-
 
             <div class="question-text">
 
-                <p>
-                    A straight-line Trapezium Rule approximation
-                    lies <strong>above the curve throughout the interval</strong>.
-                </p>
+                A student uses the Trapezium Rule to estimate the
+                area under a curve.
 
-                <p>
-                    The estimated area is
-                    <strong>24.8 square units</strong>.
-                </p>
+                They divide the interval into 4 equal intervals and
+                obtain an estimate of <strong>24.8</strong> square
+                units.
 
-                <p>
-                    State whether the Trapezium Rule gives an
-                    overestimate or an underestimate.
-                    State whether the true area is greater than
-                    or less than 24.8 square units.
-                    Also explain what generally happens to the
-                    accuracy when the number of intervals is increased.
-                </p>
+                The graph shows that the straight-line approximation
+                lies above the curve throughout the interval.
+
+                <br><br>
+
+                <strong>(a)</strong> Is the estimate an overestimate
+                or an underestimate?
+
+                <br>
+
+                <strong>(b)</strong> Is the true area greater than or
+                less than 24.8 square units?
+
+                <br>
+
+                <strong>(c)</strong> Explain what would generally
+                happen to the accuracy if the number of intervals
+                were increased.
 
             </div>
 
-
-            <button class="answer-button"
-                    onclick="toggleAnswer(8)">
+            <button class="answer-button" onclick="toggleAnswer(8)">
                 SHOW ANSWER →
             </button>
 
-
-            <div class="answer"
-                 id="answer8">
+            <div class="answer" id="answer8">
 
                 <div class="answer-title">
-                    Fully Worked Answer
+                    Solution
                 </div>
 
+                <div class="solution-step">
 
-                <div class="step">
+                    <strong>(a) Determine whether the estimate is an overestimate or underestimate.</strong>
 
-                    <div class="step-title">
-                        Step 1: Compare the straight lines with the curve
-                    </div>
+                    The straight-line approximation lies above the
+                    curve throughout the interval.
 
-                    <div class="reason-box">
-                        The straight-line approximation lies above
-                        the curve throughout the interval.
-                    </div>
-
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-title">
-                        Step 2: Decide whether the estimated area is larger
-                    </div>
-
-                    <div class="reason-box">
-                        Since the trapezia extend above the curve,
-                        they include more area than the true area
-                        under the curve.
-                    </div>
-
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-title">
-                        Step 3: Identify the type of error
-                    </div>
-
-                    <div class="calculation">
-                        Estimated area > True area
-                        <br><br>
-                        Therefore, the estimate is an overestimate.
-                    </div>
-
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-title">
-                        Step 4: Compare the true area with 24.8
-                    </div>
-
-                    <div class="calculation">
-                        Estimated area = 24.8
-                        <br><br>
-                        Estimated area > True area
-                        <br><br>
-                        Therefore:
-                        <br><br>
-                        True area < 24.8
-                    </div>
-
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-title">
-                        Step 5: Increasing the number of intervals
-                    </div>
-
-                    <div class="reason-box">
-                        Increasing the number of intervals makes
-                        each trapezium narrower. The straight-line
-                        approximation usually follows the curve
-                        more closely, so the estimate generally
-                        becomes more accurate.
-                    </div>
-
-                </div>
-
-
-                <div class="final-answer">
-                    ∴ Overestimate.
                     <br><br>
-                    ∴ True area < 24.8 square units.
+
+                    Therefore, the trapezia cover more area than the
+                    actual area under the curve.
+
+                    <div class="final-answer">
+
+                        Overestimate
+
+                    </div>
+
+                </div>
+
+                <div class="solution-step">
+
+                    <strong>(b) Compare the estimate with the true area.</strong>
+
+                    Since the estimate is an overestimate:
+
                     <br><br>
-                    ∴ More intervals generally give a more accurate estimate.
+
+                    Estimated area &gt; True area
+
+                    <br><br>
+
+                    The estimated area is 24.8 square units.
+
+                    Therefore:
+
+                    <div class="math-box">
+
+                        24.8 &gt; True area
+
+                    </div>
+
+                    So:
+
+                    <div class="final-answer">
+
+                        True area &lt; 24.8 square units
+
+                    </div>
+
+                </div>
+
+                <div class="solution-step">
+
+                    <strong>(c) Consider what happens when the number of intervals increases.</strong>
+
+                    Increasing the number of intervals makes each
+                    trapezium narrower.
+
+                    <br><br>
+
+                    Narrower trapezia allow the straight-line
+                    approximation to follow the curve more closely.
+
+                    <br><br>
+
+                    Therefore, the difference between the estimated
+                    area and the true area generally becomes smaller.
+
+                    <br><br>
+
+                    Hence, the Trapezium Rule generally becomes more
+                    accurate when the number of intervals is increased.
+
                 </div>
 
             </div>
@@ -2035,46 +2331,42 @@
     </main>
 
 
-    <!-- =====================================
+    <!-- =========================================
          FOOTER
-    ===================================== -->
+    ========================================= -->
 
     <footer>
 
-        <div class="footer-inner">
+        <div>
 
-            <div>
-
-                <h3>
-                    EduNova
-                </h3>
-
-                <p>
-                    Mathematics made clear.
-                </p>
-
+            <div class="logo">
+                Edu<span>Nova</span>
             </div>
 
-            <div>
-
-                <p>
-                    © 2026 EduNova
-                </p>
-
-            </div>
+            <p>
+                Mathematics made clear.
+            </p>
 
         </div>
+
+        <p>
+            © 2026 EduNova. All rights reserved.
+        </p>
 
     </footer>
 
 
-    <!-- =====================================
+    <!-- =========================================
          JAVASCRIPT
-    ===================================== -->
+    ========================================= -->
 
     <script>
 
         function showQuestion(number) {
+
+            /*
+                Hide every question.
+            */
 
             const questions =
                 document.querySelectorAll(".question-card");
@@ -2086,6 +2378,11 @@
             });
 
 
+            /*
+                Remove active state from
+                every question number.
+            */
+
             const buttons =
                 document.querySelectorAll(".question-number");
 
@@ -2096,22 +2393,32 @@
             });
 
 
-            const selectedQuestion =
-                document.getElementById("question" + number);
+            /*
+                Show selected question.
+            */
 
-            selectedQuestion.classList.add("active");
+            document
+                .getElementById("question" + number)
+                .classList.add("active");
 
+
+            /*
+                Highlight selected number.
+            */
 
             buttons[number - 1].classList.add("active");
 
 
-            selectedQuestion.scrollIntoView({
+            /*
+                Scroll gently to the question.
+            */
 
-                behavior: "smooth",
-
-                block: "start"
-
-            });
+            document
+                .getElementById("question" + number)
+                .scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
 
         }
 
@@ -2120,7 +2427,6 @@
 
             const answer =
                 document.getElementById("answer" + number);
-
 
             const button =
                 document.querySelector(
@@ -2150,5 +2456,7 @@
 
     </script>
 
+
 </body>
+
 </html>
