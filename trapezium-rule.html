@@ -319,18 +319,31 @@
  .integral-with-limits {
     display: inline-block;
     position: relative;
-    width: 52px;
+    width: 42px;
     height: 65px;
     vertical-align: middle;
 }
 
 .integral-symbol {
     position: absolute;
-    left: 8px;
+    left: 0px;
     top: 5px;
     font-family: "Times New Roman", serif;
     font-size: 50px;
     line-height: 1;
+}
+        .upper-limit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 16px;
+}
+
+.lower-limit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 16px;
 }
 /* Proper definite integral */
 .math-integral {
@@ -1668,14 +1681,12 @@
 
          <div class="math-box">
 
-    <span class="integral-with-limits">
-        <span class="upper-limit">b</span>
-        <span class="integral-symbol">∫</span>
-        <span class="lower-limit">a</span>
-    </span>
-
-    f(x) dx
-
+  <span class="integral-with-limits">
+    <span class="upper-limit">b</span>
+    <span class="integral-symbol">∫</span>
+    <span class="lower-limit">a</span>
+</span>
+f(x) dx
 </div>
 
             <div class="math-box">
@@ -1707,15 +1718,12 @@
 
                 <strong>
 
-                    <span class="integral">∫</span>
-
-                    <span class="limits">
-                        <span>b</span>
-                        <span>a</span>
-                    </span>
-
-                    f(x) dx
-
+                   <span class="integral-with-limits">
+    <span class="upper-limit">b</span>
+    <span class="integral-symbol">∫</span>
+    <span class="lower-limit">a</span>
+</span>
+f(x) dx ≈
                     ≈
 
                     <span class="fraction">
@@ -1809,12 +1817,12 @@
 </p>
 
 <div class="math-box">
-    <span class="integral-with-limits">
-        <span class="upper-limit">4</span>
-        <span class="integral-symbol">∫</span>
-        <span class="lower-limit">0</span>
-    </span>
-    f(x) dx
+  <span class="integral-with-limits">
+    <span class="upper-limit">4</span>
+    <span class="integral-symbol">∫</span>
+    <span class="lower-limit">0</span>
+</span>
+f(x) dx
 </div>
 
 <p>
