@@ -332,7 +332,18 @@
     font-size: 50px;
     line-height: 1;
 }
+/* Proper definite integral */
+.math-integral {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    font-family: "Times New Roman", serif;
+    margin-right: 6px;
+}
 
+.math-integral math {
+    font-size: 1em;
+}
 .upper-limit {
     position: absolute;
     top: 0;
@@ -1669,15 +1680,22 @@
 
             <div class="math-box">
 
-                <span class="integral">∫</span>
-
-                <span class="limits">
-                    <span>b</span>
-                    <span>a</span>
-                </span>
-
-                f(x) dx
-
+              <span class="math-integral">
+    <math>
+        <mrow>
+            <munderover>
+                <mo>∫</mo>
+                <mi>a</mi>
+                <mi>b</mi>
+            </munderover>
+            <mi>f</mi>
+            <mo>(</mo>
+            <mi>x</mi>
+            <mo>)</mo>
+            <mi>dx</mi>
+        </mrow>
+    </math>
+</span>
             </div>
 
             <p>
@@ -1774,7 +1792,20 @@
 
             <p>
     Use the Trapezium Rule with four equal intervals
-    to estimate the definite integral
+    to estimate the definite integral:
+</p>
+
+<div class="math-box">
+    <span class="integral-with-limits">
+        <span class="upper-limit">4</span>
+        <span class="integral-symbol">∫</span>
+        <span class="lower-limit">0</span>
+    </span>
+    f(x) dx
+</div>
+
+<p>
+    given the following y-values:
 </p>
 
 <div class="math-box">
@@ -2061,12 +2092,22 @@
 
                 <div class="formula">
 
-                 <span class="integral-with-limits">
-    <span class="upper-limit">b</span>
-    <span class="integral-symbol">∫</span>
-    <span class="lower-limit">a</span>
+             <span class="math-integral">
+    <math>
+        <mrow>
+            <munderover>
+                <mo>∫</mo>
+                <mi>a</mi>
+                <mi>b</mi>
+            </munderover>
+            <mi>f</mi>
+            <mo>(</mo>
+            <mi>x</mi>
+            <mo>)</mo>
+            <mi>dx</mi>
+        </mrow>
+    </math>
 </span>
-
                     f(x) dx
 
                     ≈
