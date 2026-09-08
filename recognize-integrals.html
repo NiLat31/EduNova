@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +11,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-
     <style>
 
         * {
@@ -21,14 +19,12 @@
             padding: 0;
         }
 
-
         body {
             font-family: "DM Sans", sans-serif;
             background: #f7f7f7;
             color: #111;
             line-height: 1.7;
         }
-
 
         /* =========================
            NAVIGATION
@@ -38,84 +34,186 @@
             height: 78px;
             background: #111;
             color: white;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             padding: 0 7%;
-
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
-
 
         .logo {
             font-family: "Playfair Display", serif;
             font-size: 28px;
+            font-weight: 700;
             color: white;
             text-decoration: none;
         }
-
 
         .logo span {
             color: #e00000;
         }
 
-
         .back-link {
             color: white;
             text-decoration: none;
+            font-size: 14px;
             font-weight: 600;
-            transition: 0.25s;
+            transition: 0.3s;
         }
-
 
         .back-link:hover {
             color: #e00000;
         }
-
 
         /* =========================
            HERO
         ========================= */
 
         .hero {
+            position: relative;
+            overflow: hidden;
             background: #111;
             color: white;
-            padding: 85px 7%;
+            padding: 88px 7% 92px;
         }
-
 
         .hero-content {
-            max-width: 1100px;
-            margin: auto;
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
         }
 
-
-        .hero small {
+        .hero-label {
+            display: inline-block;
             color: #e00000;
+            font-size: 13px;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
+            margin-bottom: 18px;
         }
-
 
         .hero h1 {
             font-family: "Playfair Display", serif;
-            font-size: clamp(42px, 6vw, 68px);
-            line-height: 1.1;
-            margin: 15px 0 20px;
+            font-size: clamp(48px, 7vw, 78px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+            max-width: 850px;
         }
 
-
         .hero p {
-            color: #ccc;
             max-width: 720px;
+            color: #d6d6d6;
             font-size: 18px;
         }
 
+        /* =========================
+           HERO DECORATION
+        ========================= */
+
+        .hero-decoration {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 350px;
+            height: 350px;
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .hero-decoration .circle {
+            position: absolute;
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: 50%;
+        }
+
+        .hero-decoration .circle.one {
+            width: 300px;
+            height: 300px;
+            right: 0;
+            top: 25px;
+        }
+
+        .hero-decoration .circle.two {
+            width: 205px;
+            height: 205px;
+            right: 48px;
+            top: 72px;
+            border-color: rgba(224,0,0,0.55);
+        }
+
+        .hero-decoration .circle.three {
+            width: 105px;
+            height: 105px;
+            right: 98px;
+            top: 122px;
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        .hero-decoration .math-symbol {
+            position: absolute;
+            font-family: "Playfair Display", serif;
+            color: rgba(255,255,255,0.16);
+            font-size: 45px;
+        }
+
+        .hero-decoration .symbol-one {
+            top: 0;
+            right: 150px;
+        }
+
+        .hero-decoration .symbol-two {
+            bottom: 8px;
+            right: 5px;
+            color: rgba(224,0,0,0.35);
+        }
+
+        .hero-decoration .symbol-three {
+            top: 135px;
+            left: 10px;
+        }
+
+        .hero-decoration .dot {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            background: #e00000;
+            border-radius: 50%;
+        }
+
+        .hero-decoration .dot-one {
+            right: 68px;
+            top: 65px;
+        }
+
+        .hero-decoration .dot-two {
+            right: 275px;
+            bottom: 65px;
+        }
+
+        .hero-decoration .line {
+            position: absolute;
+            height: 1px;
+            background: rgba(255,255,255,0.16);
+            transform-origin: left center;
+        }
+
+        .hero-decoration .line-one {
+            width: 130px;
+            right: 180px;
+            top: 90px;
+            transform: rotate(32deg);
+        }
+
+        .hero-decoration .line-two {
+            width: 105px;
+            right: 30px;
+            bottom: 100px;
+            transform: rotate(-35deg);
+        }
 
         /* =========================
            MAIN
@@ -127,30 +225,38 @@
             padding: 75px 30px;
         }
 
-
         section {
             margin-bottom: 75px;
         }
 
-
         h2 {
             font-family: "Playfair Display", serif;
             font-size: 38px;
-            margin-bottom: 20px;
+            line-height: 1.2;
+            margin-bottom: 22px;
         }
-
 
         h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 28px;
-            margin-bottom: 15px;
+            font-size: 22px;
+            margin-bottom: 14px;
         }
-
 
         p {
             margin-bottom: 18px;
         }
 
+        ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        math {
+            font-family: serif;
+        }
 
         /* =========================
            KEEP IN MIND
@@ -160,82 +266,14 @@
             background: white;
             border-left: 5px solid #e00000;
             padding: 25px 28px;
-            margin: 30px 0;
+            margin: 35px 0;
         }
-
 
         .keep-box strong {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
             font-size: 17px;
         }
-
-
-        /* =========================
-           FORMULA BOX
-        ========================= */
-
-        .formula-box {
-            background: #111;
-            color: white;
-            padding: 32px;
-            margin: 30px 0;
-            text-align: center;
-            overflow-x: auto;
-        }
-
-
-        .formula-box math {
-            font-size: 28px;
-        }
-
-
-        .formula-label {
-            color: #aaa;
-            font-size: 13px;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-
-        /* =========================
-           EXAMPLE
-        ========================= */
-
-        .example {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 32px;
-            margin: 30px 0;
-        }
-
-
-        .example-title {
-            color: #e00000;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 13px;
-            margin-bottom: 18px;
-        }
-
-
-        .step {
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-
-        .step:last-child {
-            border-bottom: none;
-        }
-
-
-        .step math {
-            font-size: 24px;
-        }
-
 
         /* =========================
            IMPORTANT BOX
@@ -245,377 +283,292 @@
             background: #111;
             color: white;
             padding: 30px;
-            margin: 30px 0;
+            margin: 35px 0;
         }
 
-
-        .important-box strong {
-            color: #e00000;
+        .important-box h3 {
+            color: white;
         }
 
+        .important-box p {
+            color: #ddd;
+        }
+
+        /* =========================
+           FORMULA CARDS
+        ========================= */
+
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .formula-card {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 28px;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .formula-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .formula {
+            font-size: 24px;
+            text-align: center;
+        }
 
         /* =========================
            TRIG CYCLE
         ========================= */
 
-        .cycle-card {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 45px 30px;
-            margin-top: 35px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        .cycle-section {
+            margin-top: 65px;
         }
-
-
-        .cycle-card h3 {
-            margin-bottom: 10px;
-        }
-
-
-        .cycle-intro {
-            max-width: 700px;
-            margin: 0 auto 25px;
-            color: #555;
-        }
-
-
-        /* Mode buttons */
 
         .mode-buttons {
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin: 25px 0 15px;
-            flex-wrap: wrap;
+            margin: 30px 0 35px;
         }
-
 
         .mode-button {
+            border: 1px solid #111;
             background: white;
-            border: 2px solid #111;
-            color: #111;
-
-            padding: 13px 25px;
-
+            padding: 13px 22px;
             font-family: "DM Sans", sans-serif;
+            font-size: 13px;
             font-weight: 700;
-
+            letter-spacing: 0.7px;
             cursor: pointer;
-
-            transition: 0.25s;
+            transition: 0.3s;
         }
-
 
         .mode-button:hover {
             background: #111;
             color: white;
         }
 
-
         .mode-button.active {
-            background: #e00000;
-            border-color: #e00000;
+            background: #111;
             color: white;
         }
 
-
-        /* Direction */
-
-        .direction-text {
-            color: #e00000;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
+        .cycle-container {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 55px 25px 45px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-
-        /* Cycle */
 
         .cycle-wrapper {
             position: relative;
-
             width: 580px;
             height: 580px;
-
             max-width: 100%;
-
-            margin: 0 auto;
         }
-
 
         .cycle-ring {
             position: absolute;
-
             width: 350px;
             height: 350px;
-
+            border: 1px solid #d4d4d4;
+            border-radius: 50%;
             left: 50%;
             top: 50%;
-
             transform: translate(-50%, -50%);
-
-            border: 3px solid #111;
-            border-radius: 50%;
         }
 
-
-        /* =========================
-           FUNCTION NODES
-        ========================= */
-
-        .function-node {
+        .cycle-ring::before {
+            content: "";
             position: absolute;
-
-            width: 125px;
-            height: 125px;
-
+            width: 270px;
+            height: 270px;
+            border: 1px dashed #e5e5e5;
             border-radius: 50%;
-
-            background: white;
-            border: 3px solid #111;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            cursor: pointer;
-
-            z-index: 5;
-
-            transition: 0.25s;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
         }
 
-
-        .function-node:hover {
+        .cycle-center {
+            position: absolute;
+            width: 145px;
+            height: 145px;
+            border-radius: 50%;
             background: #111;
             color: white;
-        }
-
-
-        .function-node.active {
-            background: #e00000;
-            border-color: #e00000;
-            color: white;
-        }
-
-
-        .function-node math {
-            font-size: 25px;
-        }
-
-
-        /* Exact positions */
-
-        .sin-node {
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-        }
-
-
-        .cos-node {
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-
-        .minus-sin-node {
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-        }
-
-
-        .minus-cos-node {
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-
-        .sin-node:hover,
-        .sin-node.active {
-            transform: translateX(-50%) scale(1.08);
-        }
-
-
-        .cos-node:hover,
-        .cos-node.active {
-            transform: translateY(-50%) scale(1.08);
-        }
-
-
-        .minus-sin-node:hover,
-        .minus-sin-node.active {
-            transform: translateX(-50%) scale(1.08);
-        }
-
-
-        .minus-cos-node:hover,
-        .minus-cos-node.active {
-            transform: translateY(-50%) scale(1.08);
-        }
-
-
-        /* =========================
-           CENTRE
-        ========================= */
-
-        .cycle-centre {
-            position: absolute;
-
-            width: 130px;
-            height: 130px;
-
             left: 50%;
             top: 50%;
-
             transform: translate(-50%, -50%);
-
-            background: #111;
-            color: white;
-
-            border-radius: 50%;
-
             display: flex;
-            align-items: center;
-            justify-content: center;
             flex-direction: column;
-
-            z-index: 4;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 3;
         }
 
-
-        .cycle-centre small {
-            color: #aaa;
-            font-size: 10px;
-            letter-spacing: 1px;
+        .cycle-center .direction-title {
+            color: #e00000;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
             margin-bottom: 5px;
         }
 
-
-        .cycle-centre strong {
-            font-size: 14px;
+        .cycle-center .direction-main {
+            font-family: "Playfair Display", serif;
+            font-size: 20px;
         }
 
-
-        /* =========================
-           DIRECTION ARROWS
-        ========================= */
-
-        .arrow {
+        .function-node {
             position: absolute;
-
-            width: 55px;
-            height: 55px;
-
-            color: #e00000;
-
-            z-index: 2;
-
+            width: 112px;
+            height: 78px;
+            background: white;
+            border: 2px solid #111;
+            cursor: pointer;
+            z-index: 5;
             display: flex;
             align-items: center;
             justify-content: center;
-
-            font-size: 34px;
-            font-weight: 700;
-
-            transition: 0.3s;
+            transition: 0.25s;
         }
 
-
-        /*
-            Clockwise:
-
-            SIN
-             ↓
-        -COS   COS
-             ↓
-           -SIN
-
-            Therefore:
-
-            SIN → COS
-            COS → −SIN
-            −SIN → −COS
-            −COS → SIN
-        */
-
-
-        .arrow-top-right {
-            left: 62%;
-            top: 22%;
-            transform: rotate(45deg);
+        .function-node:hover {
+            border-color: #e00000;
+            transform: scale(1.04);
         }
 
-
-        .arrow-bottom-right {
-            right: 22%;
-            top: 61%;
-            transform: rotate(45deg);
-        }
-
-
-        .arrow-bottom-left {
-            left: 30%;
-            bottom: 21%;
-            transform: rotate(45deg);
-        }
-
-
-        .arrow-top-left {
-            left: 21%;
-            top: 36%;
-            transform: rotate(45deg);
-        }
-
-
-        /* Integration reverses the visual direction */
-
-        .cycle-wrapper.integration .arrow {
-            transform: rotate(225deg);
-        }
-
-
-        /* =========================
-           CYCLE RESULT
-        ========================= */
-
-        .cycle-result {
+        .function-node.active {
             background: #111;
             color: white;
-
-            max-width: 620px;
-
-            margin: 20px auto 0;
-
-            padding: 25px;
-
-            min-height: 115px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
+            border-color: #111;
         }
 
-
-        .result-label {
-            color: #aaa;
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
+        .node-sin {
+            left: 50%;
+            top: 30px;
+            transform: translateX(-50%);
         }
 
+        .node-cos {
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
 
-        .cycle-result math {
+        .node-neg-sin {
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+        }
+
+        .node-neg-cos {
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .node-sin:hover {
+            transform: translateX(-50%) scale(1.04);
+        }
+
+        .node-cos:hover,
+        .node-neg-cos:hover {
+            transform: translateY(-50%) scale(1.04);
+        }
+
+        .node-neg-sin:hover {
+            transform: translateX(-50%) scale(1.04);
+        }
+
+        .cycle-arrow {
+            position: absolute;
+            z-index: 2;
             font-size: 28px;
+            color: #e00000;
+            font-weight: 700;
         }
 
+        .arrow-top-right {
+            top: 100px;
+            right: 107px;
+        }
+
+        .arrow-bottom-right {
+            bottom: 100px;
+            right: 107px;
+        }
+
+        .arrow-bottom-left {
+            bottom: 100px;
+            left: 107px;
+        }
+
+        .arrow-top-left {
+            top: 100px;
+            left: 107px;
+        }
+
+        .cycle-result {
+            margin-top: 25px;
+            background: #f7f7f7;
+            border-left: 4px solid #e00000;
+            padding: 22px 28px;
+            min-width: 360px;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .cycle-result .result-label {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #777;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+
+        .cycle-result .result-math {
+            font-size: 23px;
+        }
+
+        /* =========================
+           TRIG FORMULAS
+        ========================= */
+
+        .trig-formulas {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .trig-card {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 25px 18px;
+            text-align: center;
+        }
+
+        .trig-card p {
+            font-size: 13px;
+            color: #666;
+            margin-top: 14px;
+            margin-bottom: 0;
+        }
 
         /* =========================
            RECOGNITION TABLE
@@ -626,37 +579,29 @@
             margin-top: 30px;
         }
 
-
         table {
             width: 100%;
             border-collapse: collapse;
             background: white;
         }
 
-
         th {
             background: #111;
             color: white;
             padding: 17px;
             text-align: left;
+            font-size: 14px;
         }
-
 
         td {
-            padding: 18px;
+            padding: 18px 17px;
             border-bottom: 1px solid #ddd;
+            vertical-align: middle;
         }
-
-
-        td math {
-            font-size: 21px;
-        }
-
 
         tr:last-child td {
             border-bottom: none;
         }
-
 
         /* =========================
            SUMMARY
@@ -668,17 +613,13 @@
             padding: 35px;
         }
 
-
-        .summary-item {
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
+        .summary-box ul {
+            margin-bottom: 0;
         }
 
-
-        .summary-item:last-child {
-            border-bottom: none;
+        .summary-box li::marker {
+            color: #e00000;
         }
-
 
         /* =========================
            PRACTICE
@@ -686,23 +627,18 @@
 
         .practice-section {
             text-align: center;
-
             background: white;
             border: 1px solid #ddd;
-
             padding: 55px 35px;
-
             margin-top: 20px;
-
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-
         .practice-section h2 {
+            font-family: "Playfair Display", serif;
             font-size: 38px;
             margin-bottom: 15px;
         }
-
 
         .practice-section p {
             margin: 0 auto 30px;
@@ -710,28 +646,20 @@
             max-width: 650px;
         }
 
-
         .practice-button {
             display: inline-block;
-
             background: #111;
             color: white;
-
             padding: 16px 30px;
-
             font-weight: 700;
             letter-spacing: 0.5px;
-
             text-decoration: none;
-
             transition: 0.3s;
         }
-
 
         .practice-button:hover {
             background: #e00000;
         }
-
 
         /* =========================
            FOOTER
@@ -740,719 +668,574 @@
         footer {
             background: #111;
             color: white;
-
             padding: 45px 7%;
-
             text-align: center;
         }
 
-
         footer .logo {
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
-
 
         footer p {
             color: #aaa;
             margin: 0;
+            font-size: 14px;
         }
 
-
         /* =========================
-           MOBILE
+           RESPONSIVE
         ========================= */
 
-        @media (max-width: 650px) {
+        @media (max-width: 800px) {
 
-            .hero {
-                padding: 65px 7%;
+            .hero-decoration {
+                opacity: 0.45;
+                right: -80px;
             }
 
+            .formula-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trig-formulas {
+                grid-template-columns: 1fr;
+            }
+
+            .cycle-wrapper {
+                width: 480px;
+                height: 480px;
+            }
+
+            .cycle-ring {
+                width: 290px;
+                height: 290px;
+            }
+
+            .node-sin {
+                top: 5px;
+            }
+
+            .node-neg-sin {
+                bottom: 5px;
+            }
+
+            .node-cos {
+                right: 0;
+            }
+
+            .node-neg-cos {
+                left: 0;
+            }
+
+            .arrow-top-right {
+                top: 82px;
+                right: 78px;
+            }
+
+            .arrow-bottom-right {
+                bottom: 82px;
+                right: 78px;
+            }
+
+            .arrow-bottom-left {
+                bottom: 82px;
+                left: 78px;
+            }
+
+            .arrow-top-left {
+                top: 82px;
+                left: 78px;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            .hero {
+                padding: 65px 6%;
+            }
+
+            .hero h1 {
+                font-size: 46px;
+            }
 
             main {
                 padding: 55px 20px;
             }
 
-
             h2 {
-                font-size: 32px;
+                font-size: 31px;
             }
 
+            .cycle-container {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
 
             .cycle-wrapper {
-                width: 450px;
-                height: 450px;
-                transform: scale(0.78);
-                transform-origin: top center;
-                margin-bottom: -100px;
+                width: 350px;
+                height: 350px;
             }
-
 
             .cycle-ring {
-                width: 300px;
-                height: 300px;
+                width: 225px;
+                height: 225px;
             }
 
+            .cycle-ring::before {
+                width: 175px;
+                height: 175px;
+            }
+
+            .cycle-center {
+                width: 95px;
+                height: 95px;
+            }
+
+            .cycle-center .direction-title {
+                font-size: 9px;
+            }
+
+            .cycle-center .direction-main {
+                font-size: 14px;
+            }
 
             .function-node {
-                width: 105px;
-                height: 105px;
+                width: 82px;
+                height: 58px;
             }
 
-
-            .cycle-centre {
-                width: 110px;
-                height: 110px;
+            .function-node math {
+                font-size: 15px;
             }
 
+            .node-sin {
+                top: 0;
+            }
+
+            .node-neg-sin {
+                bottom: 0;
+            }
+
+            .node-cos {
+                right: 0;
+            }
+
+            .node-neg-cos {
+                left: 0;
+            }
+
+            .cycle-arrow {
+                font-size: 20px;
+            }
+
+            .arrow-top-right {
+                top: 55px;
+                right: 60px;
+            }
+
+            .arrow-bottom-right {
+                bottom: 55px;
+                right: 60px;
+            }
+
+            .arrow-bottom-left {
+                bottom: 55px;
+                left: 60px;
+            }
+
+            .arrow-top-left {
+                top: 55px;
+                left: 60px;
+            }
+
+            .cycle-result {
+                min-width: 0;
+                width: 90%;
+            }
+
+            .mode-buttons {
+                flex-direction: column;
+                width: 90%;
+            }
         }
 
     </style>
-
 </head>
-
 
 <body>
 
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+    <nav>
 
-<nav>
+        <a href="dashboard.html" class="logo">
+            Edu<span>Nova</span>
+        </a>
 
-    <a href="dashboard.html" class="logo">
-        Edu<span>Nova</span>
-    </a>
+        <a href="integration.html" class="back-link">
+            ← BACK TO INTEGRATION
+        </a>
 
-    <a href="integration.html" class="back-link">
-        ← Integration
-    </a>
+    </nav>
 
-</nav>
 
+    <!-- =========================
+         HERO
+    ========================= -->
 
-<!-- =========================
-     HERO
-========================= -->
+    <header class="hero">
 
-<header class="hero">
+        <div class="hero-content">
 
-    <div class="hero-content">
+            <span class="hero-label">
+                Integration • Lesson 2
+            </span>
 
-        <small>Integration • Lesson 2</small>
-
-        <h1>Recognize Integrals</h1>
-
-        <p>
-            Learn how to recognize common functions and choose
-            the correct integration rule before doing any calculations.
-        </p>
-
-    </div>
-
-</header>
-
-
-<!-- =========================
-     MAIN
-========================= -->
-
-<main>
-
-
-<!-- =========================
-     INTRODUCTION
-========================= -->
-
-<section>
-
-    <h2>Introduction</h2>
-
-    <p>
-        Before integrating a function, it is important to recognize
-        what type of function you are looking at.
-    </p>
-
-    <p>
-        Some integrals follow familiar rules. Once you recognize
-        the form of the function, you can apply the correct rule
-        directly.
-    </p>
-
-
-    <div class="keep-box">
-
-        <strong>Keep in mind</strong>
-
-        Recognition comes first.
-        Look at the function carefully before choosing an integration rule.
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     BASIC RULES
-========================= -->
-
-<section>
-
-    <h2>Basic Integration Rules</h2>
-
-    <p>
-        Start with these important rules.
-    </p>
-
-
-    <!-- x^n -->
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Power Rule
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <msup>
-                    <mi>x</mi>
-                    <mi>n</mi>
-                </msup>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mfrac>
-
-                    <msup>
-                        <mi>x</mi>
-                        <mrow>
-                            <mi>n</mi>
-                            <mo>+</mo>
-                            <mn>1</mn>
-                        </mrow>
-                    </msup>
-
-                    <mrow>
-                        <mi>n</mi>
-                        <mo>+</mo>
-                        <mn>1</mn>
-                    </mrow>
-
-                </mfrac>
-
-                <mo>+</mo>
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-        <p style="color:#aaa; margin-top:15px;">
-            where n ≠ −1
-        </p>
-
-    </div>
-
-
-    <!-- constant -->
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Constant Rule
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <mi>a</mi>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mi>a</mi>
-                <mi>x</mi>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-    </div>
-
-
-    <!-- ax+b -->
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Linear Function Raised to a Power
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <msup>
-
-                    <mrow>
-
-                        <mo>(</mo>
-
-                        <mi>a</mi>
-                        <mi>x</mi>
-
-                        <mo>+</mo>
-
-                        <mi>b</mi>
-
-                        <mo>)</mo>
-
-                    </mrow>
-
-                    <mi>n</mi>
-
-                </msup>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mfrac>
-
-                    <msup>
-
-                        <mrow>
-
-                            <mo>(</mo>
-
-                            <mi>a</mi>
-                            <mi>x</mi>
-
-                            <mo>+</mo>
-
-                            <mi>b</mi>
-
-                            <mo>)</mo>
-
-                        </mrow>
-
-                        <mrow>
-
-                            <mi>n</mi>
-
-                            <mo>+</mo>
-
-                            <mn>1</mn>
-
-                        </mrow>
-
-                    </msup>
-
-                    <mrow>
-
-                        <mi>a</mi>
-
-                        <mo>(</mo>
-
-                        <mi>n</mi>
-
-                        <mo>+</mo>
-
-                        <mn>1</mn>
-
-                        <mo>)</mo>
-
-                    </mrow>
-
-                </mfrac>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-        <p style="color:#aaa; margin-top:15px;">
-            where n ≠ −1
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     EXPONENTIAL
-========================= -->
-
-<section>
-
-    <h2>Recognizing \(e^{ax}\)</h2>
-
-    <p>
-        If the function contains an exponential term of the form
-        \(e^{ax}\), use the following rule.
-    </p>
-
-
-    <div class="formula-box">
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <msup>
-                    <mi>e</mi>
-                    <mrow>
-                        <mi>a</mi>
-                        <mi>x</mi>
-                    </mrow>
-                </msup>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mfrac>
-
-                    <mn>1</mn>
-
-                    <mi>a</mi>
-
-                </mfrac>
-
-                <msup>
-
-                    <mi>e</mi>
-
-                    <mrow>
-                        <mi>a</mi>
-                        <mi>x</mi>
-                    </mrow>
-
-                </msup>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-    </div>
-
-
-    <div class="example">
-
-        <div class="example-title">
-            Worked Example
-        </div>
-
-
-        <div class="step">
-
-            <p>Find:</p>
-
-            <math display="block">
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <msup>
-                        <mi>e</mi>
-                        <mrow>
-                            <mn>3</mn>
-                            <mi>x</mi>
-                        </mrow>
-                    </msup>
-
-                    <mi>dx</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="step">
+            <h1>
+                Recognize Integrals
+            </h1>
 
             <p>
-                Here, \(a=3\).
+                Learn how to recognize common functions and choose
+                the correct integration formula quickly and confidently.
             </p>
 
         </div>
 
 
-        <div class="step">
+        <!-- Decorative mathematical design -->
 
-            <math display="block">
+        <div class="hero-decoration">
 
-                <mrow>
+            <div class="circle one"></div>
+            <div class="circle two"></div>
+            <div class="circle three"></div>
 
-                    <mo>=</mo>
+            <span class="math-symbol symbol-one">∫</span>
+            <span class="math-symbol symbol-two">π</span>
+            <span class="math-symbol symbol-three">f</span>
 
-                    <mfrac>
-                        <mn>1</mn>
-                        <mn>3</mn>
-                    </mfrac>
+            <span class="dot dot-one"></span>
+            <span class="dot dot-two"></span>
+
+            <span class="line line-one"></span>
+            <span class="line line-two"></span>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main>
+
+
+        <!-- =========================
+             INTRODUCTION
+        ========================= -->
+
+        <section>
+
+            <h2>How to Recognize an Integral</h2>
+
+            <p>
+                Before integrating, first look carefully at the function.
+                Many integration questions use functions that follow a
+                familiar pattern.
+            </p>
+
+            <p>
+                If you recognize the pattern, you can choose the correct
+                formula instead of trying to find a completely new method.
+            </p>
+
+            <div class="keep-box">
+
+                <strong>Keep in mind</strong>
+
+                <p>
+                    The most important skill in this lesson is recognizing
+                    the form of the function before integrating it.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BASIC RULES
+        ========================= -->
+
+        <section>
+
+            <h2>Start With the Basic Rules</h2>
+
+            <p>
+                These are some of the most common forms you should recognize
+                immediately.
+            </p>
+
+            <div class="formula-grid">
+
+                <div class="formula-card">
+
+                    <h3>Power of x</h3>
+
+                    <div class="formula">
+
+                        <math display="block">
+
+                            <mrow>
+
+                                <mo>∫</mo>
+
+                                <msup>
+                                    <mi>x</mi>
+                                    <mi>n</mi>
+                                </msup>
+
+                                <mi>d</mi><mi>x</mi>
+
+                                <mo>=</mo>
+
+                                <mfrac>
+
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mrow>
+                                            <mi>n</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                        </mrow>
+                                    </msup>
+
+                                    <mrow>
+                                        <mi>n</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                    </mrow>
+
+                                </mfrac>
+
+                                <mo>+</mo>
+                                <mi>C</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </div>
+
+                </div>
+
+
+                <div class="formula-card">
+
+                    <h3>Constant</h3>
+
+                    <div class="formula">
+
+                        <math display="block">
+
+                            <mrow>
+
+                                <mo>∫</mo>
+                                <mi>a</mi>
+                                <mi>d</mi><mi>x</mi>
+
+                                <mo>=</mo>
+
+                                <mi>a</mi><mi>x</mi>
+
+                                <mo>+</mo>
+                                <mi>C</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </div>
+
+                </div>
+
+
+                <div class="formula-card">
+
+                    <h3>Power of a linear function</h3>
+
+                    <div class="formula">
+
+                        <math display="block">
+
+                            <mrow>
+
+                                <mo>∫</mo>
+
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mi>a</mi><mi>x</mi>
+                                        <mo>+</mo>
+                                        <mi>b</mi>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mi>n</mi>
+                                </msup>
+
+                                <mi>d</mi><mi>x</mi>
+
+                                <mo>=</mo>
+
+                                <mfrac>
+
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>a</mi><mi>x</mi>
+                                            <mo>+</mo>
+                                            <mi>b</mi>
+                                            <mo>)</mo>
+                                        </mrow>
+
+                                        <mrow>
+                                            <mi>n</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                        </mrow>
+
+                                    </msup>
+
+                                    <mrow>
+
+                                        <mi>a</mi>
+
+                                        <mo>(</mo>
+                                        <mi>n</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <mo>)</mo>
+
+                                    </mrow>
+
+                                </mfrac>
+
+                                <mo>+</mo>
+                                <mi>C</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EXPONENTIAL
+        ========================= -->
+
+        <section>
+
+            <h2>
+                Recognizing
+
+                <math>
 
                     <msup>
+
                         <mi>e</mi>
+
                         <mrow>
-                            <mn>3</mn>
+                            <mi>a</mi>
                             <mi>x</mi>
                         </mrow>
+
                     </msup>
 
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     TRIG CYCLE
-========================= -->
-
-<section>
-
-    <h2>Recognizing Trigonometric Integrals</h2>
-
-    <p>
-        Trigonometric functions can be recognized using a simple
-        four-function cycle.
-    </p>
-
-    <div class="important-box">
-
-        <strong>Remember:</strong>
-
-        Differentiation moves <strong>clockwise</strong> around the cycle,
-        while integration moves <strong>anti-clockwise</strong>.
-
-    </div>
-
-
-    <div class="cycle-card">
-
-        <h3>The Sin–Cos Cycle</h3>
-
-        <p class="cycle-intro">
-            Choose differentiation or integration, then click a function
-            to see where it moves next.
-        </p>
-
-
-        <div class="mode-buttons">
-
-            <button
-                class="mode-button active"
-                id="differentiateButton"
-                onclick="setMode('differentiate')">
-
-                DIFFERENTIATION
-
-            </button>
-
-
-            <button
-                class="mode-button"
-                id="integrateButton"
-                onclick="setMode('integrate')">
-
-                INTEGRATION
-
-            </button>
-
-        </div>
-
-
-        <div class="direction-text" id="directionText">
-            DIFFERENTIATION → CLOCKWISE
-        </div>
-
-
-        <div class="cycle-wrapper" id="cycleWrapper">
-
-            <div class="cycle-ring"></div>
-
-
-            <!-- ARROWS -->
-
-            <div class="arrow arrow-top-right">
-                →
-            </div>
-
-            <div class="arrow arrow-bottom-right">
-                ↓
-            </div>
-
-            <div class="arrow arrow-bottom-left">
-                ←
-            </div>
-
-            <div class="arrow arrow-top-left">
-                ↑
-            </div>
-
-
-            <!-- SIN -->
-
-            <button
-                class="function-node sin-node active"
-                id="sinNode"
-                onclick="chooseFunction('sin')">
-
-                <math>
-
-                    <mrow>
-                        <mi>sin</mi>
-                        <mi>x</mi>
-                    </mrow>
-
                 </math>
 
-            </button>
+            </h2>
 
-
-            <!-- COS -->
-
-            <button
-                class="function-node cos-node"
-                id="cosNode"
-                onclick="chooseFunction('cos')">
-
+            <p>
+                When you see an exponential function containing
                 <math>
 
-                    <mrow>
-                        <mi>cos</mi>
-                        <mi>x</mi>
-                    </mrow>
+                    <msup>
+
+                        <mi>e</mi>
+
+                        <mrow>
+                            <mi>a</mi>
+                            <mi>x</mi>
+                        </mrow>
+
+                    </msup>
 
                 </math>
+                , use the exponential integration rule.
+            </p>
 
-            </button>
+            <div class="important-box">
 
-
-            <!-- -SIN -->
-
-            <button
-                class="function-node minus-sin-node"
-                id="minusSinNode"
-                onclick="chooseFunction('minusSin')">
-
-                <math>
-
-                    <mrow>
-
-                        <mo>−</mo>
-
-                        <mi>sin</mi>
-                        <mi>x</mi>
-
-                    </mrow>
-
-                </math>
-
-            </button>
-
-
-            <!-- -COS -->
-
-            <button
-                class="function-node minus-cos-node"
-                id="minusCosNode"
-                onclick="chooseFunction('minusCos')">
-
-                <math>
-
-                    <mrow>
-
-                        <mo>−</mo>
-
-                        <mi>cos</mi>
-                        <mi>x</mi>
-
-                    </mrow>
-
-                </math>
-
-            </button>
-
-
-            <!-- CENTRE -->
-
-            <div class="cycle-centre">
-
-                <small id="centreMode">
-                    DIFFERENTIATION
-                </small>
-
-                <strong id="centreDirection">
-                    CLOCKWISE
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <!-- RESULT -->
-
-        <div class="cycle-result">
-
-            <div class="result-label">
-                Next function
-            </div>
-
-            <div id="cycleResult">
+                <h3>The rule</h3>
 
                 <math display="block">
 
                     <mrow>
 
-                        <mi>sin</mi>
-                        <mi>x</mi>
+                        <mo>∫</mo>
 
-                        <mo>→</mo>
+                        <msup>
 
-                        <mi>cos</mi>
-                        <mi>x</mi>
+                            <mi>e</mi>
+
+                            <mrow>
+                                <mi>a</mi>
+                                <mi>x</mi>
+                            </mrow>
+
+                        </msup>
+
+                        <mi>d</mi><mi>x</mi>
+
+                        <mo>=</mo>
+
+                        <mfrac>
+
+                            <mn>1</mn>
+                            <mi>a</mi>
+
+                        </mfrac>
+
+                        <msup>
+
+                            <mi>e</mi>
+
+                            <mrow>
+                                <mi>a</mi>
+                                <mi>x</mi>
+                            </mrow>
+
+                        </msup>
+
+                        <mo>+</mo>
+                        <mi>C</mi>
 
                     </mrow>
 
@@ -1460,651 +1243,1033 @@
 
             </div>
 
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     TRIG FORMULAS
-========================= -->
-
-<section>
-
-    <h2>Common Trigonometric Rules</h2>
-
-
-    <!-- cos -->
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Cosine
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <mi>cos</mi>
-                <mo>(</mo>
-                <mi>a</mi>
-                <mi>x</mi>
-                <mo>)</mo>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mfrac>
-
-                    <mn>1</mn>
-                    <mi>a</mi>
-
-                </mfrac>
-
-                <mi>sin</mi>
-                <mo>(</mo>
-                <mi>a</mi>
-                <mi>x</mi>
-                <mo>)</mo>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-    </div>
-
-
-    <!-- sin -->
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Sine
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <mi>sin</mi>
-                <mo>(</mo>
-                <mi>a</mi>
-                <mi>x</mi>
-                <mo>)</mo>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mo>−</mo>
-
-                <mfrac>
-
-                    <mn>1</mn>
-                    <mi>a</mi>
-
-                </mfrac>
-
-                <mi>cos</mi>
-                <mo>(</mo>
-                <mi>a</mi>
-                <mi>x</mi>
-                <mo>)</mo>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-    </div>
-
-
-    <div class="example">
-
-        <div class="example-title">
-            Worked Example
-        </div>
-
-
-        <div class="step">
-
-            <p>Find:</p>
-
-            <math display="block">
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <mi>sin</mi>
-                    <mo>(</mo>
-                    <mn>4</mn>
-                    <mi>x</mi>
-                    <mo>)</mo>
-
-                    <mi>dx</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="step">
-
             <p>
-                The function is sine, so integration moves
-                anti-clockwise from \(sin\) to \(−cos\).
+                The important part is the number multiplying
+                <math><mi>x</mi></math>
+                in the exponent.
             </p>
 
-        </div>
+        </section>
 
 
-        <div class="step">
+        <!-- =========================
+             TRIG CYCLE
+        ========================= -->
 
-            <math display="block">
+        <section class="cycle-section">
 
-                <mrow>
+            <h2>Recognizing Trigonometric Integrals</h2>
 
-                    <mo>=</mo>
+            <p>
+                Trigonometric functions follow a repeating cycle.
+                This makes it easier to remember what happens when
+                differentiating or integrating them.
+            </p>
 
-                    <mo>−</mo>
+            <div class="keep-box">
 
-                    <mfrac>
+                <strong>Teacher's shortcut</strong>
 
-                        <mn>1</mn>
-                        <mn>4</mn>
+                <p>
+                    Differentiation moves clockwise around the cycle.
+                    Integration moves anti-clockwise.
+                </p>
 
-                    </mfrac>
-
-                    <mi>cos</mi>
-                    <mo>(</mo>
-                    <mn>4</mn>
-                    <mi>x</mi>
-                    <mo>)</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-    </div>
-
-</section>
+            </div>
 
 
-<!-- =========================
-     1/x
-========================= -->
+            <div class="mode-buttons">
 
-<section>
+                <button
+                    class="mode-button active"
+                    id="differentiateButton"
+                    onclick="setMode('differentiate')">
 
-    <h2>Recognizing \(\frac{1}{x}\)</h2>
+                    DIFFERENTIATION
 
-    <p>
-        The function \(\frac{1}{x}\) is a special case.
-        We cannot use the ordinary power rule because its power is
-        \(n=-1\).
-    </p>
+                </button>
 
+                <button
+                    class="mode-button"
+                    id="integrateButton"
+                    onclick="setMode('integrate')">
 
-    <div class="formula-box">
+                    INTEGRATION
 
-        <div class="formula-label">
-            Special Rule
-        </div>
+                </button>
 
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <mfrac>
-
-                    <mn>1</mn>
-                    <mi>x</mi>
-
-                </mfrac>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mi>ln</mi>
-
-                <mo>|</mo>
-
-                <mi>x</mi>
-
-                <mo>|</mo>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-    </div>
+            </div>
 
 
-    <div class="example">
+            <div class="cycle-container">
 
-        <div class="example-title">
-            Worked Example
-        </div>
+                <div class="cycle-wrapper" id="cycleWrapper">
+
+                    <div class="cycle-ring"></div>
 
 
-        <div class="step">
+                    <!-- arrows -->
 
-            <p>Find:</p>
+                    <div class="cycle-arrow arrow-top-right">
+                        →
+                    </div>
 
-            <math display="block">
+                    <div class="cycle-arrow arrow-bottom-right">
+                        ↓
+                    </div>
 
-                <mrow>
+                    <div class="cycle-arrow arrow-bottom-left">
+                        ←
+                    </div>
 
-                    <mo>∫</mo>
+                    <div class="cycle-arrow arrow-top-left">
+                        ↑
+                    </div>
+
+
+                    <!-- center -->
+
+                    <div class="cycle-center">
+
+                        <span
+                            class="direction-title"
+                            id="directionTitle">
+
+                            DIFFERENTIATION
+
+                        </span>
+
+                        <span
+                            class="direction-main"
+                            id="directionMain">
+
+                            CLOCKWISE
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- nodes -->
+
+                    <button
+                        class="function-node node-sin active"
+                        onclick="selectFunction('sin')">
+
+                        <math>
+
+                            <mrow>
+
+                                <mi>sin</mi>
+                                <mi>x</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </button>
+
+
+                    <button
+                        class="function-node node-cos"
+                        onclick="selectFunction('cos')">
+
+                        <math>
+
+                            <mrow>
+
+                                <mi>cos</mi>
+                                <mi>x</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </button>
+
+
+                    <button
+                        class="function-node node-neg-sin"
+                        onclick="selectFunction('negativeSin')">
+
+                        <math>
+
+                            <mrow>
+
+                                <mo>−</mo>
+                                <mi>sin</mi>
+                                <mi>x</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </button>
+
+
+                    <button
+                        class="function-node node-neg-cos"
+                        onclick="selectFunction('negativeCos')">
+
+                        <math>
+
+                            <mrow>
+
+                                <mo>−</mo>
+                                <mi>cos</mi>
+                                <mi>x</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </button>
+
+                </div>
+
+
+                <div class="cycle-result">
+
+                    <span class="result-label">
+                        Next function
+                    </span>
+
+                    <div
+                        class="result-math"
+                        id="cycleResult">
+
+                        <math display="block">
+
+                            <mrow>
+
+                                <mi>sin</mi>
+                                <mi>x</mi>
+
+                                <mo>→</mo>
+
+                                <mi>cos</mi>
+                                <mi>x</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TRIG FORMULAS
+        ========================= -->
+
+        <section>
+
+            <h2>Common Trigonometric Integrals</h2>
+
+            <p>
+                Once you recognize the function, use the corresponding
+                formula.
+            </p>
+
+            <div class="trig-formulas">
+
+                <div class="trig-card">
+
+                    <h3>Sine</h3>
+
+                    <math display="block">
+
+                        <mrow>
+
+                            <mo>∫</mo>
+
+                            <mi>sin</mi>
+                            <mo>(</mo>
+                            <mi>a</mi><mi>x</mi>
+                            <mo>)</mo>
+
+                            <mi>d</mi><mi>x</mi>
+
+                            <mo>=</mo>
+
+                            <mo>−</mo>
+
+                            <mfrac>
+
+                                <mn>1</mn>
+                                <mi>a</mi>
+
+                            </mfrac>
+
+                            <mi>cos</mi>
+                            <mo>(</mo>
+                            <mi>a</mi><mi>x</mi>
+                            <mo>)</mo>
+
+                            <mo>+</mo>
+                            <mi>C</mi>
+
+                        </mrow>
+
+                    </math>
+
+                    <p>
+                        Integration moves anti-clockwise.
+                    </p>
+
+                </div>
+
+
+                <div class="trig-card">
+
+                    <h3>Cosine</h3>
+
+                    <math display="block">
+
+                        <mrow>
+
+                            <mo>∫</mo>
+
+                            <mi>cos</mi>
+                            <mo>(</mo>
+                            <mi>a</mi><mi>x</mi>
+                            <mo>)</mo>
+
+                            <mi>d</mi><mi>x</mi>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+
+                                <mn>1</mn>
+                                <mi>a</mi>
+
+                            </mfrac>
+
+                            <mi>sin</mi>
+                            <mo>(</mo>
+                            <mi>a</mi><mi>x</mi>
+                            <mo>)</mo>
+
+                            <mo>+</mo>
+                            <mi>C</mi>
+
+                        </mrow>
+
+                    </math>
+
+                    <p>
+                        Integration moves anti-clockwise.
+                    </p>
+
+                </div>
+
+
+                <div class="trig-card">
+
+                    <h3>Negative sine</h3>
+
+                    <math display="block">
+
+                        <mrow>
+
+                            <mo>∫</mo>
+
+                            <mo>−</mo>
+
+                            <mi>sin</mi>
+                            <mo>(</mo>
+                            <mi>a</mi><mi>x</mi>
+                            <mo>)</mo>
+
+                            <mi>d</mi><mi>x</mi>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+
+                                <mn>1</mn>
+                                <mi>a</mi>
+
+                            </mfrac>
+
+                            <mi>cos</mi>
+                            <mo>(</mo>
+                            <mi>a</mi><mi>x</mi>
+                            <mo>)</mo>
+
+                            <mo>+</mo>
+                            <mi>C</mi>
+
+                        </mrow>
+
+                    </math>
+
+                    <p>
+                        Move anti-clockwise from −sin to cos.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             1/X
+        ========================= -->
+
+        <section>
+
+            <h2>
+
+                Recognizing
+
+                <math>
 
                     <mfrac>
                         <mn>1</mn>
                         <mi>x</mi>
                     </mfrac>
 
-                    <mi>dx</mi>
+                </math>
 
-                </mrow>
+            </h2>
 
-            </math>
+            <p>
+                The function
 
-        </div>
+                <math>
 
+                    <mfrac>
+                        <mn>1</mn>
+                        <mi>x</mi>
+                    </mfrac>
 
-        <div class="step">
+                </math>
 
-            <math display="block">
+                is a special case because the usual power rule
+                does not work when the power is
+                <math><mi>n</mi><mo>=</mo><mo>−</mo><mn>1</mn></math>.
+            </p>
 
-                <mrow>
+            <div class="important-box">
 
-                    <mo>=</mo>
+                <h3>The special rule</h3>
 
-                    <mi>ln</mi>
-
-                    <mo>|</mo>
-                    <mi>x</mi>
-                    <mo>|</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     a/(bx+d)
-========================= -->
-
-<section>
-
-    <h2>Recognizing \(\frac{a}{bx+d}\)</h2>
-
-    <p>
-        Another important form is a constant divided by a linear
-        expression.
-    </p>
-
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Linear Denominator Rule
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <mfrac>
-
-                    <mi>a</mi>
+                <math display="block">
 
                     <mrow>
 
-                        <mi>b</mi>
+                        <mo>∫</mo>
+
+                        <mfrac>
+                            <mn>1</mn>
+                            <mi>x</mi>
+                        </mfrac>
+
+                        <mi>d</mi><mi>x</mi>
+
+                        <mo>=</mo>
+
+                        <mi>ln</mi>
+
+                        <mo>|</mo>
                         <mi>x</mi>
+                        <mo>|</mo>
+
+                        <mo>+</mo>
+                        <mi>C</mi>
+
+                    </mrow>
+
+                </math>
+
+            </div>
+
+            <p>
+                So, whenever you see
+
+                <math>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mi>x</mi>
+                    </mfrac>
+
+                </math>
+
+                , think of
+                <math><mi>ln</mi><mo>|</mo><mi>x</mi><mo>|</mo></math>.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             a/(bx+d)
+        ========================= -->
+
+        <section>
+
+            <h2>
+                Recognizing
+
+                <math display="inline">
+
+                    <mfrac>
+
+                        <mi>a</mi>
+
+                        <mrow>
+                            <mi>b</mi><mi>x</mi>
+                            <mo>+</mo>
+                            <mi>d</mi>
+                        </mrow>
+
+                    </mfrac>
+
+                </math>
+
+            </h2>
+
+            <p>
+                Another important form is a constant divided by a
+                linear function.
+            </p>
+
+            <div class="important-box">
+
+                <h3>The rule</h3>
+
+                <math display="block">
+
+                    <mrow>
+
+                        <mo>∫</mo>
+
+                        <mfrac>
+
+                            <mi>a</mi>
+
+                            <mrow>
+
+                                <mi>b</mi><mi>x</mi>
+
+                                <mo>+</mo>
+
+                                <mi>d</mi>
+
+                            </mrow>
+
+                        </mfrac>
+
+                        <mi>d</mi><mi>x</mi>
+
+                        <mo>=</mo>
+
+                        <mfrac>
+
+                            <mi>a</mi>
+                            <mi>b</mi>
+
+                        </mfrac>
+
+                        <mi>ln</mi>
+
+                        <mo>|</mo>
+
+                        <mi>b</mi><mi>x</mi>
 
                         <mo>+</mo>
 
                         <mi>d</mi>
 
+                        <mo>|</mo>
+
+                        <mo>+</mo>
+
+                        <mi>C</mi>
+
                     </mrow>
 
-                </mfrac>
+                </math>
 
-                <mi>dx</mi>
+            </div>
 
-                <mo>=</mo>
+            <p>
+                Notice that the coefficient
+                <math><mi>b</mi></math>
+                appears in the denominator of the answer.
+            </p>
 
-                <mfrac>
-
-                    <mi>a</mi>
-                    <mi>b</mi>
-
-                </mfrac>
-
-                <mi>ln</mi>
-
-                <mo>|</mo>
-
-                <mi>b</mi>
-                <mi>x</mi>
-
-                <mo>+</mo>
-
-                <mi>d</mi>
-
-                <mo>|</mo>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-    </div>
+        </section>
 
 
-    <div class="example">
+        <!-- =========================
+             RECOGNITION TABLE
+        ========================= -->
 
-        <div class="example-title">
-            Worked Example
-        </div>
+        <section>
+
+            <h2>Recognize the Pattern</h2>
+
+            <p>
+                Use this table to quickly identify the most common
+                forms.
+            </p>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Function you see</th>
+                            <th>Think of</th>
+                            <th>Integration result</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+
+                                <math>
+
+                                    <msup>
+
+                                        <mi>x</mi>
+                                        <mi>n</mi>
+
+                                    </msup>
+
+                                </math>
+
+                            </td>
+
+                            <td>Power rule</td>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+
+                                        <msup>
+
+                                            <mi>x</mi>
+
+                                            <mrow>
+
+                                                <mi>n</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+
+                                            </mrow>
+
+                                        </msup>
+
+                                        <mrow>
+
+                                            <mi>n</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+
+                                        </mrow>
+
+                                    </mfrac>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
+                        </tr>
 
 
-        <div class="step">
+                        <tr>
 
-            <p>Find:</p>
+                            <td>
 
-            <math display="block">
+                                <math>
 
-                <mrow>
+                                    <msup>
 
-                    <mo>∫</mo>
+                                        <mi>e</mi>
 
-                    <mfrac>
+                                        <mrow>
+                                            <mi>a</mi><mi>x</mi>
+                                        </mrow>
 
-                        <mn>6</mn>
+                                    </msup>
+
+                                </math>
+
+                            </td>
+
+                            <td>Exponential rule</td>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <mi>a</mi>
+                                    </mfrac>
+
+                                    <msup>
+
+                                        <mi>e</mi>
+
+                                        <mrow>
+                                            <mi>a</mi><mi>x</mi>
+                                        </mrow>
+
+                                    </msup>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+
+                                <math>
+
+                                    <mi>cos</mi>
+                                    <mo>(</mo>
+                                    <mi>a</mi><mi>x</mi>
+                                    <mo>)</mo>
+
+                                </math>
+
+                            </td>
+
+                            <td>Trig cycle</td>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <mi>a</mi>
+                                    </mfrac>
+
+                                    <mi>sin</mi>
+                                    <mo>(</mo>
+                                    <mi>a</mi><mi>x</mi>
+                                    <mo>)</mo>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+
+                                <math>
+
+                                    <mi>sin</mi>
+                                    <mo>(</mo>
+                                    <mi>a</mi><mi>x</mi>
+                                    <mo>)</mo>
+
+                                </math>
+
+                            </td>
+
+                            <td>Trig cycle</td>
+
+                            <td>
+
+                                <math>
+
+                                    <mo>−</mo>
+
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <mi>a</mi>
+                                    </mfrac>
+
+                                    <mi>cos</mi>
+                                    <mo>(</mo>
+                                    <mi>a</mi><mi>x</mi>
+                                    <mo>)</mo>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <mi>x</mi>
+                                    </mfrac>
+
+                                </math>
+
+                            </td>
+
+                            <td>Logarithm rule</td>
+
+                            <td>
+
+                                <math>
+
+                                    <mi>ln</mi>
+                                    <mo>|</mo>
+                                    <mi>x</mi>
+                                    <mo>|</mo>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+
+                                        <mi>a</mi>
+
+                                        <mrow>
+
+                                            <mi>b</mi><mi>x</mi>
+                                            <mo>+</mo>
+                                            <mi>d</mi>
+
+                                        </mrow>
+
+                                    </mfrac>
+
+                                </math>
+
+                            </td>
+
+                            <td>Logarithm rule</td>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+                                        <mi>a</mi>
+                                        <mi>b</mi>
+                                    </mfrac>
+
+                                    <mi>ln</mi>
+
+                                    <mo>|</mo>
+
+                                    <mi>b</mi><mi>x</mi>
+                                    <mo>+</mo>
+                                    <mi>d</mi>
+
+                                    <mo>|</mo>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COMMON MISTAKES
+        ========================= -->
+
+        <section>
+
+            <h2>Common Mistakes</h2>
+
+            <div class="keep-box">
+
+                <strong>Forgetting the coefficient</strong>
+
+                <p>
+                    If the function contains
+                    <math><mi>a</mi><mi>x</mi></math>,
+                    remember the factor
+
+                    <math>
+
+                        <mfrac>
+                            <mn>1</mn>
+                            <mi>a</mi>
+                        </mfrac>
+
+                    </math>
+
+                    in the answer.
+                </p>
+
+            </div>
+
+
+            <div class="keep-box">
+
+                <strong>Using the power rule for 1/x</strong>
+
+                <p>
+                    Do not use the ordinary power rule when
+                    <math><mi>n</mi><mo>=</mo><mo>−</mo><mn>1</mn></math>.
+                    Use the logarithm rule instead.
+                </p>
+
+            </div>
+
+
+            <div class="keep-box">
+
+                <strong>Forgetting the sign in sine integration</strong>
+
+                <p>
+                    The function is sine, so integration moves
+                    anti-clockwise from
+
+                    <math>
 
                         <mrow>
-
-                            <mn>2</mn>
+                            <mi>sin</mi>
                             <mi>x</mi>
-
-                            <mo>+</mo>
-
-                            <mn>5</mn>
-
                         </mrow>
 
-                    </mfrac>
+                    </math>
 
-                    <mi>dx</mi>
+                    to
 
-                </mrow>
+                    <math>
 
-            </math>
-
-        </div>
-
-
-        <div class="step">
-
-            <p>
-                Here:
-            </p>
-
-            <math display="block">
-
-                <mrow>
-
-                    <mi>a</mi>
-                    <mo>=</mo>
-                    <mn>6</mn>
-
-                    <mo>,</mo>
-
-                    <mi>b</mi>
-                    <mo>=</mo>
-                    <mn>2</mn>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="step">
-
-            <p>
-                Therefore:
-            </p>
-
-            <math display="block">
-
-                <mrow>
-
-                    <mo>=</mo>
-
-                    <mfrac>
-
-                        <mn>6</mn>
-                        <mn>2</mn>
-
-                    </mfrac>
-
-                    <mi>ln</mi>
-
-                    <mo>|</mo>
-
-                    <mn>2</mn>
-                    <mi>x</mi>
-
-                    <mo>+</mo>
-
-                    <mn>5</mn>
-
-                    <mo>|</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="step">
-
-            <math display="block">
-
-                <mrow>
-
-                    <mo>=</mo>
-
-                    <mn>3</mn>
-
-                    <mi>ln</mi>
-
-                    <mo>|</mo>
-
-                    <mn>2</mn>
-                    <mi>x</mi>
-
-                    <mo>+</mo>
-
-                    <mn>5</mn>
-
-                    <mo>|</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     RECOGNITION TABLE
-========================= -->
-
-<section>
-
-    <h2>How to Recognize the Form</h2>
-
-    <div class="table-wrapper">
-
-        <table>
-
-            <thead>
-
-                <tr>
-                    <th>Function</th>
-                    <th>Recognize it as</th>
-                    <th>Use</th>
-                </tr>
-
-            </thead>
-
-
-            <tbody>
-
-                <tr>
-
-                    <td>
-
-                        <math>
-                            <msup>
-                                <mi>e</mi>
-                                <mrow>
-                                    <mi>a</mi>
-                                    <mi>x</mi>
-                                </mrow>
-                            </msup>
-                        </math>
-
-                    </td>
-
-                    <td>
-                        Exponential
-                    </td>
-
-                    <td>
-                        Exponential rule
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-
-                        <math>
+                        <mrow>
+                            <mo>−</mo>
                             <mi>cos</mi>
-                            <mo>(</mo>
-                            <mi>a</mi>
                             <mi>x</mi>
-                            <mo>)</mo>
-                        </math>
+                        </mrow>
 
-                    </td>
+                    </math>.
 
-                    <td>
-                        Cosine
-                    </td>
+                </p>
 
-                    <td>
-                        Trigonometric rule
-                    </td>
+            </div>
 
-                </tr>
+        </section>
 
 
-                <tr>
+        <!-- =========================
+             SUMMARY
+        ========================= -->
 
-                    <td>
+        <section>
 
+            <h2>Lesson Summary</h2>
+
+            <div class="summary-box">
+
+                <ul>
+
+                    <li>
+                        Look at the form of the function before integrating.
+                    </li>
+
+                    <li>
+                        Use the power rule for powers of
+                        <math><mi>x</mi></math>.
+                    </li>
+
+                    <li>
+                        Recognize
                         <math>
-                            <mi>sin</mi>
-                            <mo>(</mo>
-                            <mi>a</mi>
-                            <mi>x</mi>
-                            <mo>)</mo>
+
+                            <msup>
+
+                                <mi>e</mi>
+
+                                <mrow>
+                                    <mi>a</mi><mi>x</mi>
+                                </mrow>
+
+                            </msup>
+
                         </math>
+                        as an exponential function.
+                    </li>
 
-                    </td>
+                    <li>
+                        Use the trig cycle for sine and cosine.
+                    </li>
 
-                    <td>
-                        Sine
-                    </td>
+                    <li>
+                        Differentiation moves clockwise.
+                    </li>
 
-                    <td>
-                        Trigonometric rule
-                    </td>
+                    <li>
+                        Integration moves anti-clockwise.
+                    </li>
 
-                </tr>
-
-
-                <tr>
-
-                    <td>
+                    <li>
+                        Recognize
 
                         <math>
 
@@ -2115,22 +2280,11 @@
 
                         </math>
 
-                    </td>
+                        as a logarithm.
+                    </li>
 
-                    <td>
-                        Reciprocal of x
-                    </td>
-
-                    <td>
-                        Natural logarithm rule
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
+                    <li>
+                        For
 
                         <math>
 
@@ -2139,608 +2293,321 @@
                                 <mi>a</mi>
 
                                 <mrow>
-
-                                    <mi>b</mi>
-                                    <mi>x</mi>
-
+                                    <mi>b</mi><mi>x</mi>
                                     <mo>+</mo>
-
                                     <mi>d</mi>
-
                                 </mrow>
 
                             </mfrac>
 
                         </math>
 
-                    </td>
+                        , use the logarithm rule with
 
-                    <td>
-                        Constant over linear function
-                    </td>
+                        <math>
 
-                    <td>
-                        Logarithm rule
-                    </td>
+                            <mfrac>
+                                <mi>a</mi>
+                                <mi>b</mi>
+                            </mfrac>
 
-                </tr>
+                        </math>
 
-            </tbody>
+                        in front.
+                    </li>
 
-        </table>
+                    <li>
+                        Always add the constant of integration
+                        <math><mi>C</mi></math>.
+                    </li>
 
-    </div>
+                </ul>
 
-</section>
+            </div>
 
-
-<!-- =========================
-     COMMON MISTAKES
-========================= -->
-
-<section>
-
-    <h2>Common Mistakes</h2>
+        </section>
 
 
-    <div class="important-box">
+        <!-- =========================
+             PRACTICE
+        ========================= -->
+
+        <section class="practice-section">
+
+            <h2>Ready to Practice?</h2>
+
+            <p>
+                Test your understanding of recognizing common
+                integration forms with interactive questions.
+            </p>
+
+            <a
+                href="recognize-integrals-questions.html"
+                class="practice-button">
+
+                START QUESTIONS →
+
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <a href="dashboard.html" class="logo">
+            Edu<span>Nova</span>
+        </a>
 
         <p>
-            <strong>1. Forgetting the extra factor.</strong>
+            Mathematics made clear.
         </p>
 
         <p>
-            When integrating \(e^{ax}\), \(\sin(ax)\), or \(\cos(ax)\),
-            remember the factor \(\frac{1}{a}\).
+            © 2026 EduNova. All rights reserved.
         </p>
 
-
-        <p>
-            <strong>2. Using the power rule for \(\frac{1}{x}\).</strong>
-        </p>
-
-        <p>
-            The power rule does not work when \(n=-1\).
-            Use the logarithm rule instead.
-        </p>
+    </footer>
 
 
-        <p>
-            <strong>3. Forgetting \(+C\).</strong>
-        </p>
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
-        <p>
-            Always include the constant of integration when finding
-            an indefinite integral.
-        </p>
+    <script>
 
-    </div>
-
-</section>
+        let currentMode = "differentiate";
+        let selectedFunction = "sin";
 
 
-<!-- =========================
-     SUMMARY
-========================= -->
+        const functions = {
 
-<section>
-
-    <h2>Lesson Summary</h2>
-
-
-    <div class="summary-box">
-
-        <div class="summary-item">
-
-            <strong>Power:</strong>
-
-            <math>
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <msup>
-                        <mi>x</mi>
-                        <mi>n</mi>
-                    </msup>
-
-                    <mi>dx</mi>
-
-                    <mo>=</mo>
-
-                    <mfrac>
-
-                        <msup>
-                            <mi>x</mi>
-                            <mrow>
-                                <mi>n</mi>
-                                <mo>+</mo>
-                                <mn>1</mn>
-                            </mrow>
-                        </msup>
-
+            sin: {
+                html: `
+                    <math display="block">
                         <mrow>
-                            <mi>n</mi>
-                            <mo>+</mo>
-                            <mn>1</mn>
-                        </mrow>
-
-                    </mfrac>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="summary-item">
-
-            <strong>Exponential:</strong>
-
-            <math>
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <msup>
-
-                        <mi>e</mi>
-
-                        <mrow>
-                            <mi>a</mi>
+                            <mi>sin</mi>
                             <mi>x</mi>
                         </mrow>
+                    </math>
+                `,
+                differentiate: "cos",
+                integrate: "negativeCos"
+            },
 
-                    </msup>
-
-                    <mi>dx</mi>
-
-                    <mo>=</mo>
-
-                    <mfrac>
-                        <mn>1</mn>
-                        <mi>a</mi>
-                    </mfrac>
-
-                    <msup>
-
-                        <mi>e</mi>
-
+            cos: {
+                html: `
+                    <math display="block">
                         <mrow>
-                            <mi>a</mi>
+                            <mi>cos</mi>
                             <mi>x</mi>
                         </mrow>
-
-                    </msup>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="summary-item">
-
-            <strong>Sine:</strong>
-
-            <math>
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <mi>sin</mi>
-                    <mo>(</mo>
-                    <mi>a</mi>
-                    <mi>x</mi>
-                    <mo>)</mo>
-
-                    <mi>dx</mi>
-
-                    <mo>=</mo>
-
-                    <mo>−</mo>
-
-                    <mfrac>
-                        <mn>1</mn>
-                        <mi>a</mi>
-                    </mfrac>
-
-                    <mi>cos</mi>
-                    <mo>(</mo>
-                    <mi>a</mi>
-                    <mi>x</mi>
-                    <mo>)</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="summary-item">
-
-            <strong>Cosine:</strong>
-
-            <math>
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <mi>cos</mi>
-                    <mo>(</mo>
-                    <mi>a</mi>
-                    <mi>x</mi>
-                    <mo>)</mo>
-
-                    <mi>dx</mi>
-
-                    <mo>=</mo>
-
-                    <mfrac>
-                        <mn>1</mn>
-                        <mi>a</mi>
-                    </mfrac>
-
-                    <mi>sin</mi>
-                    <mo>(</mo>
-                    <mi>a</mi>
-                    <mi>x</mi>
-                    <mo>)</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="summary-item">
-
-            <strong>Reciprocal:</strong>
-
-            <math>
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <mfrac>
-                        <mn>1</mn>
-                        <mi>x</mi>
-                    </mfrac>
-
-                    <mi>dx</mi>
-
-                    <mo>=</mo>
-
-                    <mi>ln</mi>
-
-                    <mo>|</mo>
-                    <mi>x</mi>
-                    <mo>|</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     PRACTICE
-========================= -->
-
-<section class="practice-section">
-
-    <h2>Ready to Practice?</h2>
-
-    <p>
-        Test your understanding of recognizing common integrals
-        with interactive questions.
-    </p>
-
-    <a href="recognize-integrals-questions.html" class="practice-button">
-        START QUESTIONS →
-    </a>
-
-</section>
-
-
-</main>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-    <a href="dashboard.html" class="logo">
-        Edu<span>Nova</span>
-    </a>
-
-    <p>
-        Mathematics made clear.
-    </p>
-
-    <p style="margin-top:12px;">
-        © 2026 EduNova. All rights reserved.
-    </p>
-
-</footer>
-
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
-<script>
-
-    let mode = "differentiate";
-
-    let selectedFunction = "sin";
-
-
-    /* =========================
-       CYCLE RELATIONSHIPS
-    ========================= */
-
-    const relationships = {
-
-        sin: {
-            differentiate: "cos",
-            integrate: "minusCos"
-        },
-
-        cos: {
-            differentiate: "minusSin",
-            integrate: "sin"
-        },
-
-        minusSin: {
-            differentiate: "minusCos",
-            integrate: "cos"
-        },
-
-        minusCos: {
-            differentiate: "sin",
-            integrate: "minusSin"
-        }
-
-    };
-
-
-    /* =========================
-       MATH DISPLAY
-    ========================= */
-
-    const mathDisplay = {
-
-        sin: `
-            <math display="block">
-                <mrow>
-                    <mi>sin</mi>
-                    <mi>x</mi>
-                </mrow>
-            </math>
-        `,
-
-        cos: `
-            <math display="block">
-                <mrow>
-                    <mi>cos</mi>
-                    <mi>x</mi>
-                </mrow>
-            </math>
-        `,
-
-        minusSin: `
-            <math display="block">
-                <mrow>
-                    <mo>−</mo>
-                    <mi>sin</mi>
-                    <mi>x</mi>
-                </mrow>
-            </math>
-        `,
-
-        minusCos: `
-            <math display="block">
-                <mrow>
-                    <mo>−</mo>
-                    <mi>cos</mi>
-                    <mi>x</mi>
-                </mrow>
-            </math>
-        `
-
-    };
-
-
-    /* =========================
-       SET MODE
-    ========================= */
-
-    function setMode(newMode) {
-
-        mode = newMode;
-
-
-        const differentiateButton =
-            document.getElementById("differentiateButton");
-
-        const integrateButton =
-            document.getElementById("integrateButton");
-
-        const directionText =
-            document.getElementById("directionText");
-
-        const centreMode =
-            document.getElementById("centreMode");
-
-        const centreDirection =
-            document.getElementById("centreDirection");
-
-        const cycleWrapper =
-            document.getElementById("cycleWrapper");
-
-
-        if (mode === "differentiate") {
-
-            differentiateButton.classList.add("active");
-
-            integrateButton.classList.remove("active");
-
-            directionText.textContent =
-                "DIFFERENTIATION → CLOCKWISE";
-
-            centreMode.textContent =
-                "DIFFERENTIATION";
-
-            centreDirection.textContent =
-                "CLOCKWISE";
-
-            cycleWrapper.classList.remove("integration");
-
-        }
-
-        else {
-
-            integrateButton.classList.add("active");
-
-            differentiateButton.classList.remove("active");
-
-            directionText.textContent =
-                "INTEGRATION → ANTI-CLOCKWISE";
-
-            centreMode.textContent =
-                "INTEGRATION";
-
-            centreDirection.textContent =
-                "ANTI-CLOCKWISE";
-
-            cycleWrapper.classList.add("integration");
-
-        }
-
-
-        updateResult();
-
-    }
-
-
-    /* =========================
-       CHOOSE FUNCTION
-    ========================= */
-
-    function chooseFunction(functionName) {
-
-        selectedFunction = functionName;
-
-
-        document
-            .querySelectorAll(".function-node")
-            .forEach(function(node) {
-
-                node.classList.remove("active");
-
-            });
-
-
-        const ids = {
-
-            sin: "sinNode",
-
-            cos: "cosNode",
-
-            minusSin: "minusSinNode",
-
-            minusCos: "minusCosNode"
+                    </math>
+                `,
+                differentiate: "negativeSin",
+                integrate: "sin"
+            },
+
+            negativeSin: {
+                html: `
+                    <math display="block">
+                        <mrow>
+                            <mo>−</mo>
+                            <mi>sin</mi>
+                            <mi>x</mi>
+                        </mrow>
+                    </math>
+                `,
+                differentiate: "negativeCos",
+                integrate: "cos"
+            },
+
+            negativeCos: {
+                html: `
+                    <math display="block">
+                        <mrow>
+                            <mo>−</mo>
+                            <mi>cos</mi>
+                            <mi>x</mi>
+                        </mrow>
+                    </math>
+                `,
+                differentiate: "sin",
+                integrate: "negativeSin"
+            }
 
         };
 
 
-        document
-            .getElementById(ids[functionName])
-            .classList.add("active");
+        function setMode(mode) {
+
+            currentMode = mode;
+
+            const wrapper =
+                document.getElementById("cycleWrapper");
+
+            const differentiateButton =
+                document.getElementById("differentiateButton");
+
+            const integrateButton =
+                document.getElementById("integrateButton");
+
+            const directionTitle =
+                document.getElementById("directionTitle");
+
+            const directionMain =
+                document.getElementById("directionMain");
+
+
+            if (mode === "differentiate") {
+
+                wrapper.classList.remove("integration");
+
+                differentiateButton.classList.add("active");
+                integrateButton.classList.remove("active");
+
+                directionTitle.textContent =
+                    "DIFFERENTIATION";
+
+                directionMain.textContent =
+                    "CLOCKWISE";
+
+            } else {
+
+                wrapper.classList.add("integration");
+
+                integrateButton.classList.add("active");
+                differentiateButton.classList.remove("active");
+
+                directionTitle.textContent =
+                    "INTEGRATION";
+
+                directionMain.textContent =
+                    "ANTI-CLOCKWISE";
+
+            }
+
+            updateResult();
+
+        }
+
+
+        function selectFunction(name) {
+
+            selectedFunction = name;
+
+            document
+                .querySelectorAll(".function-node")
+                .forEach(node => {
+
+                    node.classList.remove("active");
+
+                });
+
+
+            const selectedNode = {
+
+                sin: ".node-sin",
+                cos: ".node-cos",
+                negativeSin: ".node-neg-sin",
+                negativeCos: ".node-neg-cos"
+
+            }[name];
+
+
+            document
+                .querySelector(selectedNode)
+                .classList.add("active");
+
+
+            updateResult();
+
+        }
+
+
+        function updateResult() {
+
+            const nextFunction =
+                functions[selectedFunction][currentMode];
+
+            const currentHTML =
+                functions[selectedFunction].html;
+
+            const nextHTML =
+                functions[nextFunction].html;
+
+
+            document.getElementById("cycleResult").innerHTML = `
+
+                <math display="block">
+
+                    <mrow>
+
+                        ${getFunctionMath(selectedFunction)}
+
+                        <mo>→</mo>
+
+                        ${getFunctionMath(nextFunction)}
+
+                    </mrow>
+
+                </math>
+
+            `;
+
+        }
+
+
+        function getFunctionMath(name) {
+
+            const math = {
+
+                sin: `
+                    <mrow>
+                        <mi>sin</mi>
+                        <mi>x</mi>
+                    </mrow>
+                `,
+
+                cos: `
+                    <mrow>
+                        <mi>cos</mi>
+                        <mi>x</mi>
+                    </mrow>
+                `,
+
+                negativeSin: `
+                    <mrow>
+                        <mo>−</mo>
+                        <mi>sin</mi>
+                        <mi>x</mi>
+                    </mrow>
+                `,
+
+                negativeCos: `
+                    <mrow>
+                        <mo>−</mo>
+                        <mi>cos</mi>
+                        <mi>x</mi>
+                    </mrow>
+                `
+
+            };
+
+            return math[name];
+
+        }
 
 
         updateResult();
 
-    }
-
-
-    /* =========================
-       UPDATE RESULT
-    ========================= */
-
-    function updateResult() {
-
-        const nextFunction =
-            relationships[selectedFunction][mode];
-
-
-        document.getElementById("cycleResult").innerHTML = `
-
-            <math display="block">
-
-                <mrow>
-
-                    ${mathDisplay[selectedFunction]}
-
-                    <mo>→</mo>
-
-                    ${mathDisplay[nextFunction]}
-
-                </mrow>
-
-            </math>
-
-        `;
-
-    }
-
-
-    /* =========================
-       INITIAL STATE
-    ========================= */
-
-    chooseFunction("sin");
-
-</script>
-
+    </script>
 
 </body>
-
 </html>
