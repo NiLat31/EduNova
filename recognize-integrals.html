@@ -249,289 +249,803 @@
         }
 
 
-        /* =========================
-           INTERACTIVE TRIG CYCLE
-        ========================= */
+       ```html
+<!-- =========================
+     INTERACTIVE SIN-COS CYCLE
+========================= -->
 
-        .cycle-card {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 40px 30px;
-            margin-top: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: center;
-        }
+<div class="cycle-card">
 
-        .cycle-card h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 30px;
-        }
+    <h3>The Sin–Cos Cycle</h3>
 
-        .cycle-intro {
-            max-width: 760px;
-            margin: 0 auto 25px;
-        }
+    <p class="cycle-intro">
+        Click a function to see what happens next.
+        Switch between differentiation and integration
+        to change the direction around the cycle.
+    </p>
 
+    <div class="mode-buttons">
 
-        /* Mode buttons */
+        <button
+            class="mode-button active"
+            id="differentiateButton"
+            onclick="setMode('differentiate')">
+            DIFFERENTIATION
+        </button>
 
-        .mode-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin: 25px 0;
-            flex-wrap: wrap;
-        }
+        <button
+            class="mode-button"
+            id="integrateButton"
+            onclick="setMode('integrate')">
+            INTEGRATION
+        </button>
 
-        .mode-button {
-            border: 2px solid #111;
-            background: white;
-            color: #111;
-            padding: 13px 25px;
-            font-family: "DM Sans", sans-serif;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    </div>
 
-        .mode-button:hover {
-            background: #111;
-            color: white;
-        }
-
-        .mode-button.active {
-            background: #e00000;
-            border-color: #e00000;
-            color: white;
-        }
+    <div class="cycle-direction" id="cycleDirection">
+        DIFFERENTIATION → CLOCKWISE
+    </div>
 
 
-        /* Cycle area */
+    <div class="cycle-container">
 
-        .cycle-area {
-            position: relative;
-            max-width: 700px;
-            height: 570px;
-            margin: 20px auto 10px;
-        }
+        <!-- Outer circle -->
 
-        .cycle-ring {
-            position: absolute;
-            width: 340px;
-            height: 340px;
-            border: 3px solid #111;
-            border-radius: 50%;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
+        <div class="cycle-circle"></div>
 
 
-        /* Centre */
+        <!-- CLOCKWISE ARROWS -->
 
-        .cycle-centre {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            background: #111;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            z-index: 3;
-        }
+        <!-- sin → cos -->
 
-        .cycle-centre span:first-child {
-            font-size: 12px;
-            letter-spacing: 1px;
-            color: #aaa;
-            text-transform: uppercase;
-        }
-
-        .cycle-centre span:last-child {
-            font-family: "Playfair Display", serif;
-            font-size: 18px;
-            margin-top: 4px;
-        }
+        <div class="cycle-arrow arrow-top-right">
+            <span>→</span>
+        </div>
 
 
-        /* Function buttons */
+        <!-- cos → -sin -->
 
-        .function-node {
-            position: absolute;
-            width: 125px;
-            height: 125px;
-            border-radius: 50%;
-            background: white;
-            border: 3px solid #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 4;
-            transition:
-                transform 0.25s ease,
-                background 0.25s ease,
-                color 0.25s ease,
-                border-color 0.25s ease;
-        }
-
-        .function-node:hover {
-            transform: scale(1.08);
-        }
-
-        .function-node.active {
-            background: #e00000;
-            border-color: #e00000;
-            color: white;
-            transform: scale(1.08);
-        }
-
-        .function-node math {
-            font-size: 25px;
-        }
+        <div class="cycle-arrow arrow-bottom-right">
+            <span>↓</span>
+        </div>
 
 
-        /* Node positions */
+        <!-- -sin → -cos -->
 
-        .node-sin {
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-        }
-
-        .node-cos {
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .node-minus-sin {
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-        }
-
-        .node-minus-cos {
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .node-sin:hover,
-        .node-sin.active {
-            transform: translateX(-50%) scale(1.08);
-        }
-
-        .node-cos:hover,
-        .node-cos.active {
-            transform: translateY(-50%) scale(1.08);
-        }
-
-        .node-minus-sin:hover,
-        .node-minus-sin.active {
-            transform: translateX(-50%) scale(1.08);
-        }
-
-        .node-minus-cos:hover,
-        .node-minus-cos.active {
-            transform: translateY(-50%) scale(1.08);
-        }
+        <div class="cycle-arrow arrow-bottom-left">
+            <span>←</span>
+        </div>
 
 
-        /* Direction arrows */
+        <!-- -cos → sin -->
 
-        .cycle-arrow {
-            position: absolute;
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            border-top-color: #e00000;
-            z-index: 2;
-            transition: transform 0.5s ease;
-        }
-
-        .cycle-arrow::after {
-            content: "";
-            position: absolute;
-            right: -6px;
-            top: -7px;
-            width: 0;
-            height: 0;
-            border-left: 10px solid #e00000;
-            border-top: 7px solid transparent;
-            border-bottom: 7px solid transparent;
-            transform: rotate(-35deg);
-        }
-
-        .arrow-one {
-            left: calc(50% - 45px);
-            top: 75px;
-            transform: rotate(45deg);
-        }
-
-        .arrow-two {
-            right: 75px;
-            top: calc(50% - 45px);
-            transform: rotate(135deg);
-        }
-
-        .arrow-three {
-            left: calc(50% - 45px);
-            bottom: 75px;
-            transform: rotate(225deg);
-        }
-
-        .arrow-four {
-            left: 75px;
-            top: calc(50% - 45px);
-            transform: rotate(315deg);
-        }
+        <div class="cycle-arrow arrow-top-left">
+            <span>↑</span>
+        </div>
 
 
-        /* Direction text */
+        <!-- FUNCTION NODES -->
 
-        .direction-label {
-            font-size: 15px;
-            font-weight: 700;
-            color: #e00000;
-            letter-spacing: 1px;
-            margin-top: 5px;
-        }
+        <button
+            class="cycle-node node-sin active"
+            onclick="chooseFunction('sin')"
+            id="sinNode">
+
+            <math>
+                <mrow>
+                    <mi>sin</mi>
+                    <mi>x</mi>
+                </mrow>
+            </math>
+
+        </button>
 
 
-        /* Result panel */
+        <button
+            class="cycle-node node-cos"
+            onclick="chooseFunction('cos')"
+            id="cosNode">
 
-        .cycle-result {
-            max-width: 620px;
-            margin: 5px auto 0;
-            padding: 25px;
-            background: #111;
-            color: white;
-            min-height: 105px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
+            <math>
+                <mrow>
+                    <mi>cos</mi>
+                    <mi>x</mi>
+                </mrow>
+            </math>
 
-        .cycle-result .result-small {
-            color: #aaa;
-            font-size: 13px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
+        </button>
 
-        .cycle-result math {
-            font-size: 25px;
-        }
+
+        <button
+            class="cycle-node node-minus-sin"
+            onclick="chooseFunction('minusSin')"
+            id="minusSinNode">
+
+            <math>
+                <mrow>
+                    <mo>−</mo>
+                    <mi>sin</mi>
+                    <mi>x</mi>
+                </mrow>
+            </math>
+
+        </button>
+
+
+        <button
+            class="cycle-node node-minus-cos"
+            onclick="chooseFunction('minusCos')"
+            id="minusCosNode">
+
+            <math>
+                <mrow>
+                    <mo>−</mo>
+                    <mi>cos</mi>
+                    <mi>x</mi>
+                </mrow>
+            </math>
+
+        </button>
+
+
+        <!-- CENTRE -->
+
+        <div class="cycle-centre">
+
+            <span id="centreTitle">
+                DIFFERENTIATION
+            </span>
+
+            <strong id="centreDirection">
+                CLOCKWISE
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div class="cycle-result">
+
+        <div class="result-title">
+            NEXT FUNCTION
+        </div>
+
+        <div id="cycleResult">
+
+            <math display="block">
+                <mrow>
+
+                    <mi>sin</mi>
+                    <mi>x</mi>
+
+                    <mo>→</mo>
+
+                    <mi>cos</mi>
+                    <mi>x</mi>
+
+                </mrow>
+            </math>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<style>
+
+/* =========================
+   CYCLE CARD
+========================= */
+
+.cycle-card {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 40px 30px;
+    margin-top: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.cycle-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+}
+
+.cycle-intro {
+    max-width: 700px;
+    margin: 0 auto 25px;
+}
+
+
+/* =========================
+   MODE BUTTONS
+========================= */
+
+.mode-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0 12px;
+    flex-wrap: wrap;
+}
+
+.mode-button {
+    background: white;
+    border: 2px solid #111;
+    color: #111;
+    padding: 13px 25px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.mode-button:hover {
+    background: #111;
+    color: white;
+}
+
+.mode-button.active {
+    background: #e00000;
+    border-color: #e00000;
+    color: white;
+}
+
+
+/* =========================
+   DIRECTION
+========================= */
+
+.cycle-direction {
+    color: #e00000;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   CYCLE CONTAINER
+========================= */
+
+.cycle-container {
+    width: 620px;
+    height: 560px;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+/* =========================
+   OUTER CIRCLE
+========================= */
+
+.cycle-circle {
+    position: absolute;
+
+    width: 340px;
+    height: 340px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 3px solid #111;
+    border-radius: 50%;
+}
+
+
+/* =========================
+   FUNCTION NODES
+========================= */
+
+.cycle-node {
+    position: absolute;
+
+    width: 125px;
+    height: 125px;
+
+    border-radius: 50%;
+
+    background: white;
+    border: 3px solid #111;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.cycle-node:hover {
+    background: #111;
+    color: white;
+}
+
+.cycle-node.active {
+    background: #e00000;
+    border-color: #e00000;
+    color: white;
+    transform: scale(1.08);
+}
+
+.cycle-node math {
+    font-size: 25px;
+}
+
+
+/* =========================
+   EXACT POSITIONS
+========================= */
+
+/*
+    CLOCKWISE ORDER:
+
+          SIN
+           ↓
+     -COS     COS
+           ↓
+         -SIN
+
+Actually the clockwise path is:
+
+SIN → COS → −SIN → −COS → SIN
+*/
+
+
+.node-sin {
+    left: 50%;
+    top: 0;
+
+    transform: translateX(-50%);
+}
+
+.node-cos {
+    right: 0;
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+.node-minus-sin {
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
+}
+
+.node-minus-cos {
+    left: 0;
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+.node-sin:hover,
+.node-sin.active {
+    transform: translateX(-50%) scale(1.08);
+}
+
+.node-cos:hover,
+.node-cos.active {
+    transform: translateY(-50%) scale(1.08);
+}
+
+.node-minus-sin:hover,
+.node-minus-sin.active {
+    transform: translateX(-50%) scale(1.08);
+}
+
+.node-minus-cos:hover,
+.node-minus-cos.active {
+    transform: translateY(-50%) scale(1.08);
+}
+
+
+/* =========================
+   ARROWS
+========================= */
+
+.cycle-arrow {
+    position: absolute;
+
+    z-index: 2;
+
+    color: #e00000;
+
+    font-size: 38px;
+    font-weight: 700;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/*
+    CLOCKWISE:
+
+    TOP:
+    sin → cos
+
+    RIGHT:
+    cos → −sin
+
+    BOTTOM:
+    −sin → −cos
+
+    LEFT:
+    −cos → sin
+*/
+
+
+.arrow-top-right {
+    left: 62%;
+    top: 22%;
+
+    transform: rotate(45deg);
+}
+
+
+.arrow-bottom-right {
+    right: 21%;
+    top: 58%;
+
+    transform: rotate(45deg);
+}
+
+
+.arrow-bottom-left {
+    left: 30%;
+    bottom: 19%;
+
+    transform: rotate(45deg);
+}
+
+
+.arrow-top-left {
+    left: 21%;
+    top: 37%;
+
+    transform: rotate(45deg);
+}
+
+
+/* =========================
+   CENTRE
+========================= */
+
+.cycle-centre {
+    position: absolute;
+
+    width: 125px;
+    height: 125px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: #111;
+    color: white;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    z-index: 4;
+}
+
+.cycle-centre span {
+    color: #aaa;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.cycle-centre strong {
+    font-size: 14px;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.cycle-result {
+    max-width: 600px;
+    min-height: 110px;
+
+    margin: 0 auto;
+
+    padding: 23px;
+
+    background: #111;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.result-title {
+    color: #aaa;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.cycle-result math {
+    font-size: 27px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    .cycle-container {
+        width: 450px;
+        height: 470px;
+        transform: scale(0.8);
+        transform-origin: top center;
+        margin-bottom: -80px;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+let cycleMode = "differentiate";
+
+let selectedFunction = "sin";
+
+
+/* =========================
+   FUNCTION RELATIONSHIPS
+========================= */
+
+const cycleFunctions = {
+
+    sin: {
+        differentiate: "cos",
+        integrate: "minusCos"
+    },
+
+    cos: {
+        differentiate: "minusSin",
+        integrate: "sin"
+    },
+
+    minusSin: {
+        differentiate: "minusCos",
+        integrate: "cos"
+    },
+
+    minusCos: {
+        differentiate: "sin",
+        integrate: "minusSin"
+    }
+
+};
+
+
+/* =========================
+   DISPLAY LABELS
+========================= */
+
+const functionMath = {
+
+    sin: `
+        <math display="block">
+            <mrow>
+                <mi>sin</mi>
+                <mi>x</mi>
+            </mrow>
+        </math>
+    `,
+
+    cos: `
+        <math display="block">
+            <mrow>
+                <mi>cos</mi>
+                <mi>x</mi>
+            </mrow>
+        </math>
+    `,
+
+    minusSin: `
+        <math display="block">
+            <mrow>
+                <mo>−</mo>
+                <mi>sin</mi>
+                <mi>x</mi>
+            </mrow>
+        </math>
+    `,
+
+    minusCos: `
+        <math display="block">
+            <mrow>
+                <mo>−</mo>
+                <mi>cos</mi>
+                <mi>x</mi>
+            </mrow>
+        </math>
+    `
+
+};
+
+
+/* =========================
+   CHANGE MODE
+========================= */
+
+function setMode(mode) {
+
+    cycleMode = mode;
+
+    const differentiateButton =
+        document.getElementById("differentiateButton");
+
+    const integrateButton =
+        document.getElementById("integrateButton");
+
+    const direction =
+        document.getElementById("cycleDirection");
+
+    const centreTitle =
+        document.getElementById("centreTitle");
+
+    const centreDirection =
+        document.getElementById("centreDirection");
+
+
+    if (mode === "differentiate") {
+
+        differentiateButton.classList.add("active");
+        integrateButton.classList.remove("active");
+
+        direction.textContent =
+            "DIFFERENTIATION → CLOCKWISE";
+
+        centreTitle.textContent =
+            "DIFFERENTIATION";
+
+        centreDirection.textContent =
+            "CLOCKWISE";
+
+    }
+
+    else {
+
+        integrateButton.classList.add("active");
+        differentiateButton.classList.remove("active");
+
+        direction.textContent =
+            "INTEGRATION → ANTI-CLOCKWISE";
+
+        centreTitle.textContent =
+            "INTEGRATION";
+
+        centreDirection.textContent =
+            "ANTI-CLOCKWISE";
+
+    }
+
+
+    updateCycle();
+
+}
+
+
+/* =========================
+   SELECT FUNCTION
+========================= */
+
+function chooseFunction(functionName) {
+
+    selectedFunction = functionName;
+
+
+    document
+        .querySelectorAll(".cycle-node")
+        .forEach(function(node) {
+
+            node.classList.remove("active");
+
+        });
+
+
+    const nodeIds = {
+
+        sin: "sinNode",
+
+        cos: "cosNode",
+
+        minusSin: "minusSinNode",
+
+        minusCos: "minusCosNode"
+
+    };
+
+
+    document
+        .getElementById(nodeIds[functionName])
+        .classList.add("active");
+
+
+    updateCycle();
+
+}
+
+
+/* =========================
+   UPDATE RESULT
+========================= */
+
+function updateCycle() {
+
+    const nextFunction =
+        cycleFunctions[selectedFunction][cycleMode];
+
+
+    document.getElementById("cycleResult").innerHTML = `
+
+        <math display="block">
+
+            <mrow>
+
+                ${functionMath[selectedFunction]}
+
+                <mo>→</mo>
+
+                ${functionMath[nextFunction]}
+
+            </mrow>
+
+        </math>
+
+    `;
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+chooseFunction("sin");
+
+</script>
+```
+
 
 
         /* =========================
