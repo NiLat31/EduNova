@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
 
     <style>
 
@@ -25,6 +28,7 @@
             color: #111;
             line-height: 1.7;
         }
+
 
         /* =========================
            NAVIGATION
@@ -58,7 +62,6 @@
         .nav-links {
             display: flex;
             gap: 35px;
-            align-items: center;
         }
 
         .nav-links a {
@@ -73,6 +76,7 @@
         .nav-links a:hover {
             color: #e00000;
         }
+
 
         /* =========================
            HERO
@@ -97,15 +101,16 @@
             font-family: "Playfair Display", serif;
             font-size: clamp(45px, 6vw, 72px);
             line-height: 1.1;
-            max-width: 900px;
             margin-bottom: 20px;
+            max-width: 900px;
         }
 
         .hero p {
             color: #ccc;
-            max-width: 700px;
             font-size: 18px;
+            max-width: 720px;
         }
+
 
         /* =========================
            MAIN
@@ -118,7 +123,7 @@
         }
 
         section {
-            margin-bottom: 75px;
+            margin-bottom: 80px;
         }
 
         h2 {
@@ -134,14 +139,15 @@
         }
 
         p {
-            margin-bottom: 18px;
             color: #333;
+            margin-bottom: 18px;
         }
 
         .intro-text {
             font-size: 19px;
             max-width: 850px;
         }
+
 
         /* =========================
            KEEP IN MIND
@@ -159,6 +165,7 @@
             margin-bottom: 8px;
             font-size: 18px;
         }
+
 
         /* =========================
            IMPORTANT BOX
@@ -179,6 +186,7 @@
             color: #ddd;
         }
 
+
         /* =========================
            FORMULA BOX
         ========================= */
@@ -186,36 +194,19 @@
         .formula-box {
             background: white;
             border: 1px solid #ddd;
-            padding: 30px;
+            padding: 32px;
             margin: 25px 0;
             text-align: center;
             overflow-x: auto;
         }
 
-        .formula {
-            font-size: 24px;
-            font-weight: 600;
-            margin: 10px 0;
+        math {
+            font-size: 26px;
         }
 
-        .explanation {
-            background: #fafafa;
-            border: 1px solid #e2e2e2;
-            padding: 25px;
-            margin-top: 25px;
-        }
-
-        .step {
-            margin: 12px 0;
-            font-size: 17px;
-        }
-
-        .step strong {
-            color: #111;
-        }
 
         /* =========================
-           EXAMPLE
+           EXAMPLES
         ========================= */
 
         .example-card {
@@ -245,64 +236,303 @@
         }
 
         .solution-line {
-            padding: 8px 0;
-            font-size: 18px;
+            padding: 10px 0;
+            font-size: 19px;
+            overflow-x: auto;
         }
+
+        .explanation {
+            background: #fafafa;
+            border: 1px solid #e2e2e2;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
 
         /* =========================
-           TRIG CIRCLE
+           INTERACTIVE TRIG CYCLE
         ========================= */
 
-        .trig-card {
+        .cycle-card {
             background: white;
             border: 1px solid #ddd;
-            padding: 35px;
+            padding: 40px 30px;
             margin-top: 30px;
-            text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
         }
 
-        .trig-card h3 {
+        .cycle-card h3 {
             font-family: "Playfair Display", serif;
             font-size: 30px;
         }
 
-        .trig-card p {
+        .cycle-intro {
             max-width: 760px;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
         }
 
-        .trig-svg {
-            width: 100%;
-            max-width: 720px;
-            height: auto;
-            margin: 20px auto;
-            display: block;
+
+        /* Mode buttons */
+
+        .mode-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 25px 0;
+            flex-wrap: wrap;
         }
 
-        .direction-boxes {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 20px;
+        .mode-button {
+            border: 2px solid #111;
+            background: white;
+            color: #111;
+            padding: 13px 25px;
+            font-family: "DM Sans", sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .direction-box {
-            padding: 22px;
-            border: 1px solid #ddd;
-            background: #fafafa;
+        .mode-button:hover {
+            background: #111;
+            color: white;
         }
 
-        .direction-box strong {
-            display: block;
+        .mode-button.active {
+            background: #e00000;
+            border-color: #e00000;
+            color: white;
+        }
+
+
+        /* Cycle area */
+
+        .cycle-area {
+            position: relative;
+            max-width: 700px;
+            height: 570px;
+            margin: 20px auto 10px;
+        }
+
+        .cycle-ring {
+            position: absolute;
+            width: 340px;
+            height: 340px;
+            border: 3px solid #111;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        /* Centre */
+
+        .cycle-centre {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: #111;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 3;
+        }
+
+        .cycle-centre span:first-child {
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+
+        .cycle-centre span:last-child {
+            font-family: "Playfair Display", serif;
             font-size: 18px;
+            margin-top: 4px;
+        }
+
+
+        /* Function buttons */
+
+        .function-node {
+            position: absolute;
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 4;
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .function-node:hover {
+            transform: scale(1.08);
+        }
+
+        .function-node.active {
+            background: #e00000;
+            border-color: #e00000;
+            color: white;
+            transform: scale(1.08);
+        }
+
+        .function-node math {
+            font-size: 25px;
+        }
+
+
+        /* Node positions */
+
+        .node-sin {
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        .node-cos {
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .node-minus-sin {
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+
+        .node-minus-cos {
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .node-sin:hover,
+        .node-sin.active {
+            transform: translateX(-50%) scale(1.08);
+        }
+
+        .node-cos:hover,
+        .node-cos.active {
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .node-minus-sin:hover,
+        .node-minus-sin.active {
+            transform: translateX(-50%) scale(1.08);
+        }
+
+        .node-minus-cos:hover,
+        .node-minus-cos.active {
+            transform: translateY(-50%) scale(1.08);
+        }
+
+
+        /* Direction arrows */
+
+        .cycle-arrow {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #e00000;
+            z-index: 2;
+            transition: transform 0.5s ease;
+        }
+
+        .cycle-arrow::after {
+            content: "";
+            position: absolute;
+            right: -6px;
+            top: -7px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid #e00000;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            transform: rotate(-35deg);
+        }
+
+        .arrow-one {
+            left: calc(50% - 45px);
+            top: 75px;
+            transform: rotate(45deg);
+        }
+
+        .arrow-two {
+            right: 75px;
+            top: calc(50% - 45px);
+            transform: rotate(135deg);
+        }
+
+        .arrow-three {
+            left: calc(50% - 45px);
+            bottom: 75px;
+            transform: rotate(225deg);
+        }
+
+        .arrow-four {
+            left: 75px;
+            top: calc(50% - 45px);
+            transform: rotate(315deg);
+        }
+
+
+        /* Direction text */
+
+        .direction-label {
+            font-size: 15px;
+            font-weight: 700;
+            color: #e00000;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+
+        /* Result panel */
+
+        .cycle-result {
+            max-width: 620px;
+            margin: 5px auto 0;
+            padding: 25px;
+            background: #111;
+            color: white;
+            min-height: 105px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .cycle-result .result-small {
+            color: #aaa;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             margin-bottom: 8px;
         }
 
-        .direction-box span {
-            color: #e00000;
-            font-weight: 700;
+        .cycle-result math {
+            font-size: 25px;
         }
+
 
         /* =========================
            RECOGNITION TABLE
@@ -317,7 +547,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 700px;
+            min-width: 720px;
         }
 
         th {
@@ -325,18 +555,17 @@
             color: white;
             padding: 18px;
             text-align: left;
-            font-size: 15px;
         }
 
         td {
             padding: 18px;
             border-bottom: 1px solid #ddd;
-            vertical-align: middle;
         }
 
         tr:last-child td {
             border-bottom: none;
         }
+
 
         /* =========================
            MISTAKES
@@ -354,8 +583,9 @@
             margin-bottom: 8px;
         }
 
+
         /* =========================
-           FINAL FORMULA
+           FINAL BOX
         ========================= */
 
         .final-box {
@@ -374,11 +604,18 @@
         }
 
         .final-formula {
-            font-size: 25px;
-            font-weight: 600;
-            line-height: 2;
-            margin-top: 20px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
         }
+
+        .final-formula-item {
+            background: #222;
+            padding: 16px 20px;
+        }
+
 
         /* =========================
            FOOTER
@@ -405,8 +642,9 @@
             font-size: 13px;
         }
 
+
         /* =========================
-           RESPONSIVE
+           MOBILE
         ========================= */
 
         @media (max-width: 700px) {
@@ -436,24 +674,31 @@
             }
 
             .example-card,
-            .trig-card {
-                padding: 25px;
+            .cycle-card {
+                padding: 25px 18px;
             }
 
-            .direction-boxes {
-                grid-template-columns: 1fr;
+            .cycle-area {
+                height: 470px;
+                transform: scale(0.82);
+                transform-origin: top center;
+                margin-bottom: -70px;
             }
 
             footer {
                 flex-direction: column;
                 align-items: flex-start;
             }
+
         }
 
     </style>
+
 </head>
 
+
 <body>
+
 
     <!-- =========================
          NAVIGATION
@@ -473,6 +718,7 @@
     </nav>
 
 
+
     <!-- =========================
          HERO
     ========================= -->
@@ -488,15 +734,16 @@
         </h1>
 
         <p>
-            Learn how to recognize familiar functions before choosing
-            the correct integration rule.
+            Before you integrate, learn to recognize the form of the
+            function and choose the rule that matches it.
         </p>
 
     </header>
 
 
+
     <!-- =========================
-         MAIN CONTENT
+         MAIN
     ========================= -->
 
     <main>
@@ -509,24 +756,31 @@
             <h2>Recognize Before You Integrate</h2>
 
             <p class="intro-text">
-                Integration becomes much easier when you first recognize
-                the form of the function. Many functions can be integrated
-                using rules that come directly from differentiation.
+                Integration is the reverse process of differentiation.
+                This means that many integration rules can be understood
+                by asking one simple question:
             </p>
 
-            <p>
-                The main idea is simple:
-                <strong>integration reverses differentiation.</strong>
-            </p>
+            <div class="important-box">
+
+                <h3>
+                    What function would give me this when I differentiate?
+                </h3>
+
+                <p>
+                    Once you recognize the pattern, the correct integration
+                    rule becomes much easier to choose.
+                </p>
+
+            </div>
 
             <div class="keep-box">
 
                 <strong>Keep in mind</strong>
 
                 <p>
-                    Before integrating, look carefully at the function.
-                    Ask yourself: <strong>“What function would give me this
-                    when I differentiate it?”</strong>
+                    Do not start integrating immediately. First look at
+                    the function and identify its form.
                 </p>
 
             </div>
@@ -534,15 +788,16 @@
         </section>
 
 
+
         <!-- BASIC RULES -->
 
         <section>
 
-            <h2>1. Important Rules to Remember</h2>
+            <h2>1. Rules You Already Know</h2>
 
             <p>
-                These rules are the foundation for many of the integrals
-                you will meet.
+                Start with the familiar integration rules.
+                These are the patterns you should recognize quickly.
             </p>
 
 
@@ -550,9 +805,49 @@
 
             <div class="formula-box">
 
-                <div class="formula">
-                    ∫ xⁿ dx = xⁿ⁺¹ / (n + 1) + C
-                </div>
+                <math display="block">
+
+                    <mrow>
+
+                        <mo>∫</mo>
+
+                        <msup>
+                            <mi>x</mi>
+                            <mi>n</mi>
+                        </msup>
+
+                        <mi>d</mi><mi>x</mi>
+
+                        <mo>=</mo>
+
+                        <mfrac>
+
+                            <msup>
+                                <mi>x</mi>
+
+                                <mrow>
+                                    <mi>n</mi>
+                                    <mo>+</mo>
+                                    <mn>1</mn>
+                                </mrow>
+
+                            </msup>
+
+                            <mrow>
+                                <mi>n</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                            </mrow>
+
+                        </mfrac>
+
+                        <mo>+</mo>
+
+                        <mi>C</mi>
+
+                    </mrow>
+
+                </math>
 
                 <p>
                     where <strong>n ≠ −1</strong>.
@@ -563,18 +858,57 @@
 
             <div class="example-card">
 
-                <div class="example-label">Example</div>
+                <div class="example-label">
+                    Worked Example
+                </div>
 
                 <h3>Integrate x⁴</h3>
 
                 <div class="solution">
 
                     <div class="solution-line">
-                        ∫ x⁴ dx
+
+                        <math display="block">
+
+                            <mrow>
+                                <mo>∫</mo>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mn>4</mn>
+                                </msup>
+                                <mi>d</mi><mi>x</mi>
+                            </mrow>
+
+                        </math>
+
                     </div>
 
                     <div class="solution-line">
-                        = x⁵ / 5 + C
+
+                        <math display="block">
+
+                            <mrow>
+
+                                <mo>=</mo>
+
+                                <mfrac>
+
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>5</mn>
+                                    </msup>
+
+                                    <mn>5</mn>
+
+                                </mfrac>
+
+                                <mo>+</mo>
+                                <mi>C</mi>
+
+                            </mrow>
+
+                        </math>
+
                     </div>
 
                 </div>
@@ -582,47 +916,107 @@
             </div>
 
 
-            <h3 style="margin-top:45px;">Constant</h3>
+
+            <h3 style="margin-top:45px;">
+                Constant
+            </h3>
 
             <div class="formula-box">
 
-                <div class="formula">
-                    ∫ a dx = ax + C
-                </div>
+                <math display="block">
+
+                    <mrow>
+
+                        <mo>∫</mo>
+                        <mi>a</mi>
+                        <mi>d</mi><mi>x</mi>
+
+                        <mo>=</mo>
+
+                        <mi>a</mi><mi>x</mi>
+
+                        <mo>+</mo>
+                        <mi>C</mi>
+
+                    </mrow>
+
+                </math>
 
             </div>
 
 
-            <div class="example-card">
 
-                <div class="example-label">Example</div>
-
-                <h3>Integrate 7</h3>
-
-                <div class="solution">
-
-                    <div class="solution-line">
-                        ∫ 7 dx
-                    </div>
-
-                    <div class="solution-line">
-                        = 7x + C
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <h3 style="margin-top:45px;">A power of (ax + b)</h3>
+            <h3 style="margin-top:45px;">
+                A power of (ax + b)
+            </h3>
 
             <div class="formula-box">
 
-                <div class="formula">
-                    ∫(ax + b)ⁿ dx
-                    =
-                    (ax + b)ⁿ⁺¹ / [a(n + 1)] + C
-                </div>
+                <math display="block">
+
+                    <mrow>
+
+                        <mo>∫</mo>
+
+                        <msup>
+
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>a</mi><mi>x</mi>
+                                <mo>+</mo>
+                                <mi>b</mi>
+                                <mo>)</mo>
+                            </mrow>
+
+                            <mi>n</mi>
+
+                        </msup>
+
+                        <mi>d</mi><mi>x</mi>
+
+                        <mo>=</mo>
+
+                        <mfrac>
+
+                            <msup>
+
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>a</mi><mi>x</mi>
+                                    <mo>+</mo>
+                                    <mi>b</mi>
+                                    <mo>)</mo>
+                                </mrow>
+
+                                <mrow>
+                                    <mi>n</mi>
+                                    <mo>+</mo>
+                                    <mn>1</mn>
+                                </mrow>
+
+                            </msup>
+
+                            <mrow>
+
+                                <mi>a</mi>
+
+                                <mo>(</mo>
+                                <mi>n</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <mo>)</mo>
+
+                            </mrow>
+
+                        </mfrac>
+
+                        <mo>+</mo>
+
+                        <mi>C</mi>
+
+                    </mrow>
+
+                </math>
 
                 <p>
                     where <strong>n ≠ −1</strong>.
@@ -630,66 +1024,125 @@
 
             </div>
 
-
-            <div class="example-card">
-
-                <div class="example-label">Example</div>
-
-                <h3>Integrate (2x + 3)⁴</h3>
-
-                <div class="solution">
-
-                    <div class="solution-line">
-                        ∫(2x + 3)⁴ dx
-                    </div>
-
-                    <div class="solution-line">
-                        = (2x + 3)⁵ / [2(5)] + C
-                    </div>
-
-                    <div class="solution-line">
-                        = (2x + 3)⁵ / 10 + C
-                    </div>
-
-                </div>
-
-            </div>
-
         </section>
 
 
-        <!-- e^ax -->
+
+        <!-- e AX -->
 
         <section>
 
-            <h2>2. Recognizing eᵃˣ</h2>
+            <h2>2. Recognizing e<sup>ax</sup></h2>
 
             <p>
-                If you see an exponential function of the form
-                <strong>eᵃˣ</strong>, recognize that its derivative
-                contains an extra factor of <strong>a</strong>.
+                When you see an exponential function of the form
+                <strong>e<sup>ax</sup></strong>, remember that
+                differentiating it produces an extra factor of
+                <strong>a</strong>.
             </p>
+
 
             <div class="formula-box">
 
-                <div class="formula">
-                    ∫ eᵃˣ dx = (1/a)eᵃˣ + C
-                </div>
+                <math display="block">
+
+                    <mrow>
+
+                        <mo>∫</mo>
+
+                        <msup>
+                            <mi>e</mi>
+
+                            <mrow>
+                                <mi>a</mi><mi>x</mi>
+                            </mrow>
+
+                        </msup>
+
+                        <mi>d</mi><mi>x</mi>
+
+                        <mo>=</mo>
+
+                        <mfrac>
+
+                            <mn>1</mn>
+                            <mi>a</mi>
+
+                        </mfrac>
+
+                        <msup>
+                            <mi>e</mi>
+
+                            <mrow>
+                                <mi>a</mi><mi>x</mi>
+                            </mrow>
+
+                        </msup>
+
+                        <mo>+</mo>
+                        <mi>C</mi>
+
+                    </mrow>
+
+                </math>
 
             </div>
 
+
             <div class="important-box">
 
-                <h3>Why do we divide by a?</h3>
+                <h3>
+                    Why do we divide by a?
+                </h3>
 
                 <p>
-                    Because when we differentiate eᵃˣ, the chain rule
-                    gives us an extra <strong>a</strong>.
+                    Because differentiation of e<sup>ax</sup> gives:
                 </p>
 
                 <p>
-                    Therefore, integration must cancel that extra
-                    <strong>a</strong>.
+
+                    <math display="block">
+
+                        <mrow>
+
+                            <mfrac>
+                                <mi>d</mi>
+                                <mrow>
+                                    <mi>d</mi><mi>x</mi>
+                                </mrow>
+                            </mfrac>
+
+                            <msup>
+                                <mi>e</mi>
+
+                                <mrow>
+                                    <mi>a</mi><mi>x</mi>
+                                </mrow>
+
+                            </msup>
+
+                            <mo>=</mo>
+
+                            <mi>a</mi>
+
+                            <msup>
+                                <mi>e</mi>
+
+                                <mrow>
+                                    <mi>a</mi><mi>x</mi>
+                                </mrow>
+
+                            </msup>
+
+                        </mrow>
+
+                    </math>
+
+                </p>
+
+                <p>
+                    Integration must therefore divide by
+                    <strong>a</strong> to cancel that extra factor.
                 </p>
 
             </div>
@@ -697,38 +1150,52 @@
 
             <div class="example-card">
 
-                <div class="example-label">Worked Example</div>
+                <div class="example-label">
+                    Worked Example
+                </div>
 
-                <h3>Integrate e³ˣ</h3>
+                <h3>Integrate e<sup>3x</sup></h3>
 
                 <div class="solution">
 
                     <div class="solution-line">
-                        ∫ e³ˣ dx
-                    </div>
 
-                    <div class="solution-line">
-                        = (1/3)e³ˣ + C
-                    </div>
+                        <math display="block">
 
-                </div>
+                            <mrow>
 
-                <div class="explanation">
+                                <mo>∫</mo>
 
-                    <div class="step">
-                        Check by differentiating:
-                    </div>
+                                <msup>
+                                    <mi>e</mi>
+                                    <mrow>
+                                        <mn>3</mn><mi>x</mi>
+                                    </mrow>
+                                </msup>
 
-                    <div class="step">
-                        d/dx [(1/3)e³ˣ]
-                    </div>
+                                <mi>d</mi><mi>x</mi>
 
-                    <div class="step">
-                        = (1/3)(3e³ˣ)
-                    </div>
+                                <mo>=</mo>
 
-                    <div class="step">
-                        = e³ˣ
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mn>3</mn>
+                                </mfrac>
+
+                                <msup>
+                                    <mi>e</mi>
+                                    <mrow>
+                                        <mn>3</mn><mi>x</mi>
+                                    </mrow>
+                                </msup>
+
+                                <mo>+</mo>
+                                <mi>C</mi>
+
+                            </mrow>
+
+                        </math>
+
                     </div>
 
                 </div>
@@ -738,265 +1205,194 @@
         </section>
 
 
-        <!-- TRIGONOMETRIC FUNCTIONS -->
+
+        <!-- TRIGONOMETRIC -->
 
         <section>
 
             <h2>3. Recognizing sin(ax) and cos(ax)</h2>
 
             <p>
-                Trigonometric functions are closely connected through
-                differentiation.
-            </p>
-
-            <p>
-                Your teacher's circle is a useful way to remember the
-                direction of the functions.
+                The trigonometric functions have a repeating pattern
+                when differentiated. Your teacher's circle gives us
+                a very useful way to remember it.
             </p>
 
 
-            <!-- TRIG CIRCLE -->
+            <!-- INTERACTIVE CYCLE -->
 
-            <div class="trig-card">
+            <div class="cycle-card">
 
-                <h3>The Sin–Cos Cycle</h3>
+                <h3>
+                    The Sin–Cos Cycle
+                </h3>
 
-                <p>
-                    During <strong>differentiation</strong>, move clockwise.
-                    During <strong>integration</strong>, move anti-clockwise.
+                <p class="cycle-intro">
+                    Choose a direction, then click a function around
+                    the circle. Watch how the function changes.
                 </p>
 
 
-                <svg
-                    class="trig-svg"
-                    viewBox="0 0 720 560"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-label="Sin cosine differentiation and integration cycle"
+                <div class="mode-buttons">
+
+                    <button
+                        class="mode-button active"
+                        onclick="setMode('differentiate')"
+                        id="differentiateButton"
+                    >
+                        DIFFERENTIATION
+                    </button>
+
+                    <button
+                        class="mode-button"
+                        onclick="setMode('integrate')"
+                        id="integrateButton"
+                    >
+                        INTEGRATION
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="direction-label"
+                    id="directionLabel"
                 >
-
-                    <!-- Circle -->
-
-                    <circle
-                        cx="360"
-                        cy="280"
-                        r="155"
-                        fill="none"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
+                    CLOCKWISE
+                </div>
 
 
-                    <!-- Centre -->
+                <div class="cycle-area">
 
-                    <circle
-                        cx="360"
-                        cy="280"
-                        r="5"
-                        fill="#111"
-                    />
+                    <div class="cycle-ring"></div>
 
 
-                    <!-- Nodes -->
-
-                    <circle
-                        cx="360"
-                        cy="125"
-                        r="58"
-                        fill="white"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
-
-                    <circle
-                        cx="515"
-                        cy="280"
-                        r="58"
-                        fill="white"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
-
-                    <circle
-                        cx="360"
-                        cy="435"
-                        r="58"
-                        fill="white"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
-
-                    <circle
-                        cx="205"
-                        cy="280"
-                        r="58"
-                        fill="white"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
+                    <div class="cycle-arrow arrow-one"></div>
+                    <div class="cycle-arrow arrow-two"></div>
+                    <div class="cycle-arrow arrow-three"></div>
+                    <div class="cycle-arrow arrow-four"></div>
 
 
-                    <!-- Labels -->
-
-                    <text
-                        x="360"
-                        y="134"
-                        text-anchor="middle"
-                        font-family="DM Sans"
-                        font-size="22"
-                        font-weight="700"
+                    <button
+                        class="function-node node-sin active"
+                        onclick="selectFunction('sin')"
+                        id="sinNode"
+                        aria-label="sin x"
                     >
-                        sin x
-                    </text>
 
-                    <text
-                        x="515"
-                        y="289"
-                        text-anchor="middle"
-                        font-family="DM Sans"
-                        font-size="22"
-                        font-weight="700"
+                        <math>
+
+                            <mrow>
+
+                                <mi>sin</mi>
+                                <mi>x</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </button>
+
+
+                    <button
+                        class="function-node node-cos"
+                        onclick="selectFunction('cos')"
+                        id="cosNode"
+                        aria-label="cos x"
                     >
-                        cos x
-                    </text>
 
-                    <text
-                        x="360"
-                        y="444"
-                        text-anchor="middle"
-                        font-family="DM Sans"
-                        font-size="22"
-                        font-weight="700"
+                        <math>
+
+                            <mrow>
+
+                                <mi>cos</mi>
+                                <mi>x</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </button>
+
+
+                    <button
+                        class="function-node node-minus-sin"
+                        onclick="selectFunction('minusSin')"
+                        id="minusSinNode"
+                        aria-label="negative sin x"
                     >
-                        −sin x
-                    </text>
 
-                    <text
-                        x="205"
-                        y="289"
-                        text-anchor="middle"
-                        font-family="DM Sans"
-                        font-size="22"
-                        font-weight="700"
+                        <math>
+
+                            <mrow>
+
+                                <mo>−</mo>
+                                <mi>sin</mi>
+                                <mi>x</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </button>
+
+
+                    <button
+                        class="function-node node-minus-cos"
+                        onclick="selectFunction('minusCos')"
+                        id="minusCosNode"
+                        aria-label="negative cos x"
                     >
-                        −cos x
-                    </text>
+
+                        <math>
+
+                            <mrow>
+
+                                <mo>−</mo>
+                                <mi>cos</mi>
+                                <mi>x</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </button>
 
 
-                    <!-- Clockwise arrows -->
+                    <div class="cycle-centre">
 
-                    <path
-                        d="M 420 140 Q 500 170 515 220"
-                        fill="none"
-                        stroke="#e00000"
-                        stroke-width="4"
-                        marker-end="url(#arrowRed)"
-                    />
+                        <span>Direction</span>
 
-                    <path
-                        d="M 515 340 Q 500 390 420 420"
-                        fill="none"
-                        stroke="#e00000"
-                        stroke-width="4"
-                        marker-end="url(#arrowRed)"
-                    />
-
-                    <path
-                        d="M 300 420 Q 220 390 205 340"
-                        fill="none"
-                        stroke="#e00000"
-                        stroke-width="4"
-                        marker-end="url(#arrowRed)"
-                    />
-
-                    <path
-                        d="M 205 220 Q 220 170 300 140"
-                        fill="none"
-                        stroke="#e00000"
-                        stroke-width="4"
-                        marker-end="url(#arrowRed)"
-                    />
-
-
-                    <!-- Arrow marker -->
-
-                    <defs>
-
-                        <marker
-                            id="arrowRed"
-                            markerWidth="10"
-                            markerHeight="10"
-                            refX="8"
-                            refY="5"
-                            orient="auto"
-                        >
-
-                            <path
-                                d="M 0 0 L 10 5 L 0 10 Z"
-                                fill="#e00000"
-                            />
-
-                        </marker>
-
-                    </defs>
-
-
-                    <!-- Direction labels -->
-
-                    <text
-                        x="360"
-                        y="35"
-                        text-anchor="middle"
-                        font-family="DM Sans"
-                        font-size="18"
-                        font-weight="700"
-                        fill="#e00000"
-                    >
-                        DIFFERENTIATION → CLOCKWISE
-                    </text>
-
-                    <text
-                        x="360"
-                        y="530"
-                        text-anchor="middle"
-                        font-family="DM Sans"
-                        font-size="18"
-                        font-weight="700"
-                        fill="#111"
-                    >
-                        INTEGRATION → ANTI-CLOCKWISE
-                    </text>
-
-                </svg>
-
-
-                <div class="direction-boxes">
-
-                    <div class="direction-box">
-
-                        <strong>Differentiation</strong>
-
-                        <p>
-                            Move clockwise:
-                        </p>
-
-                        <span>
-                            sin x → cos x → −sin x → −cos x
+                        <span id="centreText">
+                            CLOCKWISE
                         </span>
 
                     </div>
 
+                </div>
 
-                    <div class="direction-box">
 
-                        <strong>Integration</strong>
+                <div class="cycle-result">
 
-                        <p>
-                            Move anti-clockwise:
-                        </p>
+                    <div class="result-small">
+                        Selected function
+                    </div>
 
-                        <span>
-                            sin x → −cos x → −sin x → cos x
-                        </span>
+                    <div id="cycleResult">
+
+                        <math display="block">
+
+                            <mrow>
+
+                                <mi>sin</mi><mi>x</mi>
+
+                                <mo>→</mo>
+
+                                <mi>cos</mi><mi>x</mi>
+
+                            </mrow>
+
+                        </math>
 
                     </div>
 
@@ -1005,57 +1401,112 @@
             </div>
 
 
-            <h3 style="margin-top:45px;">Integrating cos(ax)</h3>
+
+            <div class="keep-box">
+
+                <strong>The rule to remember</strong>
+
+                <p>
+                    For <strong>differentiation</strong>, move
+                    <strong>clockwise</strong>.
+                </p>
+
+                <p>
+                    For <strong>integration</strong>, move
+                    <strong>anti-clockwise</strong>.
+                </p>
+
+            </div>
+
+
+
+            <h3 style="margin-top:45px;">
+                Integrating cos(ax)
+            </h3>
 
             <div class="formula-box">
 
-                <div class="formula">
-                    ∫ cos(ax) dx = (1/a)sin(ax) + C
-                </div>
+                <math display="block">
+
+                    <mrow>
+
+                        <mo>∫</mo>
+
+                        <mi>cos</mi>
+
+                        <mo>(</mo>
+                        <mi>a</mi><mi>x</mi>
+                        <mo>)</mo>
+
+                        <mi>d</mi><mi>x</mi>
+
+                        <mo>=</mo>
+
+                        <mfrac>
+                            <mn>1</mn>
+                            <mi>a</mi>
+                        </mfrac>
+
+                        <mi>sin</mi>
+
+                        <mo>(</mo>
+                        <mi>a</mi><mi>x</mi>
+                        <mo>)</mo>
+
+                        <mo>+</mo>
+                        <mi>C</mi>
+
+                    </mrow>
+
+                </math>
 
             </div>
-
-            <p>
-                The factor <strong>1/a</strong> is needed because
-                differentiating sin(ax) produces an extra factor of
-                <strong>a</strong>.
-            </p>
 
 
             <div class="example-card">
 
-                <div class="example-label">Worked Example</div>
+                <div class="example-label">
+                    Worked Example
+                </div>
 
                 <h3>Integrate cos(4x)</h3>
 
                 <div class="solution">
 
                     <div class="solution-line">
-                        ∫ cos(4x) dx
-                    </div>
 
-                    <div class="solution-line">
-                        = (1/4)sin(4x) + C
-                    </div>
+                        <math display="block">
 
-                </div>
+                            <mrow>
 
-                <div class="explanation">
+                                <mo>∫</mo>
 
-                    <div class="step">
-                        Check:
-                    </div>
+                                <mi>cos</mi>
+                                <mo>(</mo>
+                                <mn>4</mn><mi>x</mi>
+                                <mo>)</mo>
 
-                    <div class="step">
-                        d/dx [(1/4)sin(4x)]
-                    </div>
+                                <mi>d</mi><mi>x</mi>
 
-                    <div class="step">
-                        = (1/4)(4cos(4x))
-                    </div>
+                                <mo>=</mo>
 
-                    <div class="step">
-                        = cos(4x)
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mn>4</mn>
+                                </mfrac>
+
+                                <mi>sin</mi>
+                                <mo>(</mo>
+                                <mn>4</mn><mi>x</mi>
+                                <mo>)</mo>
+
+                                <mo>+</mo>
+                                <mi>C</mi>
+
+                            </mrow>
+
+                        </math>
+
                     </div>
 
                 </div>
@@ -1063,57 +1514,98 @@
             </div>
 
 
-            <h3 style="margin-top:45px;">Integrating sin(ax)</h3>
+
+            <h3 style="margin-top:45px;">
+                Integrating sin(ax)
+            </h3>
 
             <div class="formula-box">
 
-                <div class="formula">
-                    ∫ sin(ax) dx = −(1/a)cos(ax) + C
-                </div>
+                <math display="block">
+
+                    <mrow>
+
+                        <mo>∫</mo>
+
+                        <mi>sin</mi>
+
+                        <mo>(</mo>
+                        <mi>a</mi><mi>x</mi>
+                        <mo>)</mo>
+
+                        <mi>d</mi><mi>x</mi>
+
+                        <mo>=</mo>
+
+                        <mo>−</mo>
+
+                        <mfrac>
+                            <mn>1</mn>
+                            <mi>a</mi>
+                        </mfrac>
+
+                        <mi>cos</mi>
+
+                        <mo>(</mo>
+                        <mi>a</mi><mi>x</mi>
+                        <mo>)</mo>
+
+                        <mo>+</mo>
+                        <mi>C</mi>
+
+                    </mrow>
+
+                </math>
 
             </div>
-
-            <p>
-                Notice the negative sign. When integrating sin, we move
-                anti-clockwise from <strong>sin</strong> to
-                <strong>−cos</strong>.
-            </p>
 
 
             <div class="example-card">
 
-                <div class="example-label">Worked Example</div>
+                <div class="example-label">
+                    Worked Example
+                </div>
 
                 <h3>Integrate sin(5x)</h3>
 
                 <div class="solution">
 
                     <div class="solution-line">
-                        ∫ sin(5x) dx
-                    </div>
 
-                    <div class="solution-line">
-                        = −(1/5)cos(5x) + C
-                    </div>
+                        <math display="block">
 
-                </div>
+                            <mrow>
 
-                <div class="explanation">
+                                <mo>∫</mo>
 
-                    <div class="step">
-                        Check:
-                    </div>
+                                <mi>sin</mi>
+                                <mo>(</mo>
+                                <mn>5</mn><mi>x</mi>
+                                <mo>)</mo>
 
-                    <div class="step">
-                        d/dx [−(1/5)cos(5x)]
-                    </div>
+                                <mi>d</mi><mi>x</mi>
 
-                    <div class="step">
-                        = −(1/5)(−5sin(5x))
-                    </div>
+                                <mo>=</mo>
 
-                    <div class="step">
-                        = sin(5x)
+                                <mo>−</mo>
+
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mn>5</mn>
+                                </mfrac>
+
+                                <mi>cos</mi>
+                                <mo>(</mo>
+                                <mn>5</mn><mi>x</mi>
+                                <mo>)</mo>
+
+                                <mo>+</mo>
+                                <mi>C</mi>
+
+                            </mrow>
+
+                        </math>
+
                     </div>
 
                 </div>
@@ -1123,142 +1615,180 @@
         </section>
 
 
-        <!-- 1/x -->
+
+        <!-- 1/X -->
 
         <section>
 
             <h2>4. Recognizing 1/x</h2>
 
             <p>
-                There is one important exception to the power rule.
+                The function <strong>1/x</strong> is a special case.
+                Although it can be written as x<sup>−1</sup>, we cannot
+                use the ordinary power rule.
             </p>
 
-            <p>
-                If you see:
-            </p>
 
             <div class="formula-box">
 
-                <div class="formula">
-                    ∫ (1/x) dx
-                </div>
+                <math display="block">
 
-            </div>
+                    <mrow>
 
-            <p>
-                you should immediately recognize it as a logarithmic
-                integral.
-            </p>
+                        <mo>∫</mo>
 
-            <div class="formula-box">
+                        <mfrac>
+                            <mn>1</mn>
+                            <mi>x</mi>
+                        </mfrac>
 
-                <div class="formula">
-                    ∫ (1/x) dx = ln|x| + C
-                </div>
+                        <mi>d</mi><mi>x</mi>
+
+                        <mo>=</mo>
+
+                        <mi>ln</mi>
+
+                        <mo>|</mo>
+                        <mi>x</mi>
+                        <mo>|</mo>
+
+                        <mo>+</mo>
+                        <mi>C</mi>
+
+                    </mrow>
+
+                </math>
 
             </div>
 
 
             <div class="important-box">
 
-                <h3>Why can't we use the power rule?</h3>
+                <h3>
+                    Why is it different?
+                </h3>
 
                 <p>
-                    Since 1/x = x⁻¹, it may look like we can use the
-                    power rule.
+                    If n = −1 in the power rule, then:
                 </p>
 
                 <p>
-                    But the power rule would require us to divide by
-                    n + 1.
+
+                    <math display="block">
+
+                        <mrow>
+
+                            <mi>n</mi>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                            <mo>=</mo>
+                            <mo>−</mo>
+                            <mn>1</mn>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                            <mo>=</mo>
+                            <mn>0</mn>
+
+                        </mrow>
+
+                    </math>
+
                 </p>
 
                 <p>
-                    Here n = −1, so:
+                    This would require division by zero, so the power
+                    rule cannot be used.
                 </p>
 
                 <p>
-                    n + 1 = −1 + 1 = 0
+                    Therefore, <strong>1/x</strong> has its own rule:
+                    <strong>ln|x| + C</strong>.
                 </p>
-
-                <p>
-                    Division by zero is not allowed. Therefore,
-                    <strong>n = −1 is the special case</strong> and
-                    gives a logarithm instead.
-                </p>
-
-            </div>
-
-
-            <div class="example-card">
-
-                <div class="example-label">Worked Example</div>
-
-                <h3>Integrate 1/x</h3>
-
-                <div class="solution">
-
-                    <div class="solution-line">
-                        ∫ (1/x) dx
-                    </div>
-
-                    <div class="solution-line">
-                        = ln|x| + C
-                    </div>
-
-                </div>
 
             </div>
 
         </section>
 
 
-        <!-- a/(bx+d) -->
+
+        <!-- A/(BX+D) -->
 
         <section>
 
             <h2>5. Recognizing a/(bx + d)</h2>
 
             <p>
-                Another important form is:
+                This form looks more complicated, but it is closely
+                related to the integral of 1/x.
             </p>
+
 
             <div class="formula-box">
 
-                <div class="formula">
-                    ∫ a/(bx + d) dx
-                </div>
+                <math display="block">
 
-            </div>
+                    <mrow>
 
-            <p>
-                This has the same basic idea as integrating 1/x, but
-                there is an extra linear expression in the denominator.
-            </p>
+                        <mo>∫</mo>
 
-            <div class="formula-box">
+                        <mfrac>
 
-                <div class="formula">
-                    ∫ a/(bx + d) dx
-                    =
-                    (a/b)ln|bx + d| + C
-                </div>
+                            <mi>a</mi>
+
+                            <mrow>
+                                <mi>b</mi><mi>x</mi>
+                                <mo>+</mo>
+                                <mi>d</mi>
+                            </mrow>
+
+                        </mfrac>
+
+                        <mi>d</mi><mi>x</mi>
+
+                        <mo>=</mo>
+
+                        <mfrac>
+
+                            <mi>a</mi>
+                            <mi>b</mi>
+
+                        </mfrac>
+
+                        <mi>ln</mi>
+
+                        <mo>|</mo>
+
+                        <mi>b</mi><mi>x</mi>
+                        <mo>+</mo>
+                        <mi>d</mi>
+
+                        <mo>|</mo>
+
+                        <mo>+</mo>
+
+                        <mi>C</mi>
+
+                    </mrow>
+
+                </math>
 
             </div>
 
 
             <div class="important-box">
 
-                <h3>Why do we divide by b?</h3>
+                <h3>
+                    Why do we divide by b?
+                </h3>
 
                 <p>
-                    Differentiate ln|bx + d| and the chain rule gives
-                    an extra factor of <strong>b</strong>.
+                    When we differentiate ln|bx + d|, the derivative
+                    of the inside, bx + d, is b.
                 </p>
 
                 <p>
-                    Therefore, we divide by b to cancel that extra
-                    factor.
+                    Therefore, the integration answer needs a factor
+                    of <strong>1/b</strong> to cancel it.
                 </p>
 
             </div>
@@ -1266,38 +1796,91 @@
 
             <div class="example-card">
 
-                <div class="example-label">Worked Example</div>
+                <div class="example-label">
+                    Worked Example
+                </div>
 
-                <h3>Integrate 5/(2x + 3)</h3>
+                <h3>
+                    Integrate
+                    <math>
+
+                        <mfrac>
+
+                            <mn>5</mn>
+
+                            <mrow>
+                                <mn>2</mn><mi>x</mi>
+                                <mo>+</mo>
+                                <mn>3</mn>
+                            </mrow>
+
+                        </mfrac>
+
+                    </math>
+                </h3>
+
 
                 <div class="solution">
 
                     <div class="solution-line">
-                        ∫ 5/(2x + 3) dx
+
+                        <math display="block">
+
+                            <mrow>
+
+                                <mo>∫</mo>
+
+                                <mfrac>
+
+                                    <mn>5</mn>
+
+                                    <mrow>
+                                        <mn>2</mn><mi>x</mi>
+                                        <mo>+</mo>
+                                        <mn>3</mn>
+                                    </mrow>
+
+                                </mfrac>
+
+                                <mi>d</mi><mi>x</mi>
+
+                            </mrow>
+
+                        </math>
+
                     </div>
+
 
                     <div class="solution-line">
-                        = (5/2)ln|2x + 3| + C
-                    </div>
 
-                </div>
+                        <math display="block">
 
-                <div class="explanation">
+                            <mrow>
 
-                    <div class="step">
-                        Check by differentiating:
-                    </div>
+                                <mo>=</mo>
 
-                    <div class="step">
-                        d/dx [(5/2)ln|2x + 3|]
-                    </div>
+                                <mfrac>
+                                    <mn>5</mn>
+                                    <mn>2</mn>
+                                </mfrac>
 
-                    <div class="step">
-                        = (5/2) × 2/(2x + 3)
-                    </div>
+                                <mi>ln</mi>
 
-                    <div class="step">
-                        = 5/(2x + 3)
+                                <mo>|</mo>
+
+                                <mn>2</mn><mi>x</mi>
+                                <mo>+</mo>
+                                <mn>3</mn>
+
+                                <mo>|</mo>
+
+                                <mo>+</mo>
+                                <mi>C</mi>
+
+                            </mrow>
+
+                        </math>
+
                     </div>
 
                 </div>
@@ -1305,6 +1888,7 @@
             </div>
 
         </section>
+
 
 
         <!-- RECOGNITION TABLE -->
@@ -1314,8 +1898,8 @@
             <h2>6. Recognize the Pattern</h2>
 
             <p>
-                Before integrating, compare the function with the
-                familiar forms below.
+                Before integrating, compare the function with one of
+                these familiar forms.
             </p>
 
 
@@ -1326,52 +1910,365 @@
                     <thead>
 
                         <tr>
-                            <th>Recognize this</th>
-                            <th>Integrate as</th>
+
+                            <th>
+                                Recognize this
+                            </th>
+
+                            <th>
+                                Integrate as
+                            </th>
+
                         </tr>
 
                     </thead>
 
+
                     <tbody>
 
                         <tr>
-                            <td>xⁿ</td>
-                            <td>xⁿ⁺¹/(n + 1) + C</td>
+
+                            <td>
+
+                                <math>
+
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mi>n</mi>
+                                    </msup>
+
+                                </math>
+
+                            </td>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+
+                                        <msup>
+                                            <mi>x</mi>
+
+                                            <mrow>
+                                                <mi>n</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+
+                                        </msup>
+
+                                        <mrow>
+                                            <mi>n</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                        </mrow>
+
+                                    </mfrac>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
                         </tr>
 
-                        <tr>
-                            <td>a</td>
-                            <td>ax + C</td>
-                        </tr>
 
                         <tr>
-                            <td>(ax + b)ⁿ</td>
-                            <td>(ax + b)ⁿ⁺¹/[a(n + 1)] + C</td>
+
+                            <td>
+                                <math>
+                                    <mi>a</mi>
+                                </math>
+                            </td>
+
+                            <td>
+                                <math>
+                                    <mi>a</mi><mi>x</mi>
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+                                </math>
+                            </td>
+
                         </tr>
 
-                        <tr>
-                            <td>eᵃˣ</td>
-                            <td>(1/a)eᵃˣ + C</td>
-                        </tr>
 
                         <tr>
-                            <td>cos(ax)</td>
-                            <td>(1/a)sin(ax) + C</td>
+
+                            <td>
+
+                                <math>
+
+                                    <msup>
+
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>a</mi><mi>x</mi>
+                                            <mo>+</mo>
+                                            <mi>b</mi>
+                                            <mo>)</mo>
+                                        </mrow>
+
+                                        <mi>n</mi>
+
+                                    </msup>
+
+                                </math>
+
+                            </td>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+
+                                        <msup>
+
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>a</mi><mi>x</mi>
+                                                <mo>+</mo>
+                                                <mi>b</mi>
+                                                <mo>)</mo>
+                                            </mrow>
+
+                                            <mrow>
+                                                <mi>n</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+
+                                        </msup>
+
+                                        <mrow>
+
+                                            <mi>a</mi>
+                                            <mo>(</mo>
+                                            <mi>n</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+
+                                        </mrow>
+
+                                    </mfrac>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
                         </tr>
 
-                        <tr>
-                            <td>sin(ax)</td>
-                            <td>−(1/a)cos(ax) + C</td>
-                        </tr>
 
                         <tr>
-                            <td>1/x</td>
-                            <td>ln|x| + C</td>
+
+                            <td>
+                                <math>
+                                    <msup>
+                                        <mi>e</mi>
+                                        <mrow>
+                                            <mi>a</mi><mi>x</mi>
+                                        </mrow>
+                                    </msup>
+                                </math>
+                            </td>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <mi>a</mi>
+                                    </mfrac>
+
+                                    <msup>
+                                        <mi>e</mi>
+                                        <mrow>
+                                            <mi>a</mi><mi>x</mi>
+                                        </mrow>
+                                    </msup>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
                         </tr>
 
+
                         <tr>
-                            <td>a/(bx + d)</td>
-                            <td>(a/b)ln|bx + d| + C</td>
+
+                            <td>
+
+                                <math>
+
+                                    <mi>cos</mi>
+                                    <mo>(</mo>
+                                    <mi>a</mi><mi>x</mi>
+                                    <mo>)</mo>
+
+                                </math>
+
+                            </td>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <mi>a</mi>
+                                    </mfrac>
+
+                                    <mi>sin</mi>
+                                    <mo>(</mo>
+                                    <mi>a</mi><mi>x</mi>
+                                    <mo>)</mo>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+
+                                <math>
+
+                                    <mi>sin</mi>
+                                    <mo>(</mo>
+                                    <mi>a</mi><mi>x</mi>
+                                    <mo>)</mo>
+
+                                </math>
+
+                            </td>
+
+                            <td>
+
+                                <math>
+
+                                    <mo>−</mo>
+
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <mi>a</mi>
+                                    </mfrac>
+
+                                    <mi>cos</mi>
+                                    <mo>(</mo>
+                                    <mi>a</mi><mi>x</mi>
+                                    <mo>)</mo>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <mi>x</mi>
+                                    </mfrac>
+
+                                </math>
+
+                            </td>
+
+                            <td>
+
+                                <math>
+
+                                    <mi>ln</mi>
+                                    <mo>|</mo>
+                                    <mi>x</mi>
+                                    <mo>|</mo>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+
+                                        <mi>a</mi>
+
+                                        <mrow>
+                                            <mi>b</mi><mi>x</mi>
+                                            <mo>+</mo>
+                                            <mi>d</mi>
+                                        </mrow>
+
+                                    </mfrac>
+
+                                </math>
+
+                            </td>
+
+                            <td>
+
+                                <math>
+
+                                    <mfrac>
+
+                                        <mi>a</mi>
+                                        <mi>b</mi>
+
+                                    </mfrac>
+
+                                    <mi>ln</mi>
+
+                                    <mo>|</mo>
+
+                                    <mi>b</mi><mi>x</mi>
+                                    <mo>+</mo>
+                                    <mi>d</mi>
+
+                                    <mo>|</mo>
+
+                                    <mo>+</mo>
+                                    <mi>C</mi>
+
+                                </math>
+
+                            </td>
+
                         </tr>
 
                     </tbody>
@@ -1383,6 +2280,7 @@
         </section>
 
 
+
         <!-- COMMON MISTAKES -->
 
         <section>
@@ -1392,11 +2290,13 @@
 
             <div class="mistake-card">
 
-                <strong>Forgetting the coefficient inside the function</strong>
+                <strong>
+                    Forgetting the coefficient inside the function
+                </strong>
 
                 <p>
-                    For example, ∫ cos(3x) dx is not simply sin(3x).
-                    The answer must include the factor 1/3.
+                    For example, when integrating cos(3x), you must
+                    include the factor 1/3.
                 </p>
 
             </div>
@@ -1404,11 +2304,13 @@
 
             <div class="mistake-card">
 
-                <strong>Forgetting the negative sign with sin</strong>
+                <strong>
+                    Forgetting the negative sign with sin
+                </strong>
 
                 <p>
-                    Remember:
-                    ∫ sin(ax) dx = −(1/a)cos(ax) + C.
+                    Integration moves anti-clockwise, so sin(ax)
+                    becomes −cos(ax).
                 </p>
 
             </div>
@@ -1416,11 +2318,13 @@
 
             <div class="mistake-card">
 
-                <strong>Using the power rule for 1/x</strong>
+                <strong>
+                    Using the power rule for 1/x
+                </strong>
 
                 <p>
-                    x⁻¹ is the special case where the power rule does
-                    not work. Its integral is ln|x| + C.
+                    1/x is the special case where n = −1.
+                    Its integral is ln|x| + C.
                 </p>
 
             </div>
@@ -1428,16 +2332,19 @@
 
             <div class="mistake-card">
 
-                <strong>Forgetting the derivative of the inside</strong>
+                <strong>
+                    Forgetting the coefficient of the inside
+                </strong>
 
                 <p>
-                    When the inside is ax + b, the coefficient a must
-                    be accounted for in the integral.
+                    If the inside is ax + b, remember that
+                    differentiating it gives a.
                 </p>
 
             </div>
 
         </section>
+
 
 
         <!-- FINAL SUMMARY -->
@@ -1446,26 +2353,113 @@
 
             <div class="final-box">
 
-                <h2>Recognize First</h2>
+                <h2>
+                    Recognize First
+                </h2>
 
                 <p>
-                    The key skill in this topic is recognizing the
-                    structure of the function before applying a rule.
+                    The most important skill in this topic is identifying
+                    the pattern before you integrate.
                 </p>
+
 
                 <div class="final-formula">
 
-                    xⁿ → power rule<br>
+                    <div class="final-formula-item">
 
-                    eᵃˣ → divide by a<br>
+                        <math>
 
-                    cos(ax) → sin(ax), divide by a<br>
+                            <msup>
+                                <mi>x</mi>
+                                <mi>n</mi>
+                            </msup>
 
-                    sin(ax) → −cos(ax), divide by a<br>
+                            <mo>→</mo>
 
-                    1/x → ln|x|<br>
+                            <mfrac>
 
-                    a/(bx + d) → (a/b)ln|bx + d|
+                                <msup>
+                                    <mi>x</mi>
+
+                                    <mrow>
+                                        <mi>n</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                    </mrow>
+
+                                </msup>
+
+                                <mrow>
+                                    <mi>n</mi>
+                                    <mo>+</mo>
+                                    <mn>1</mn>
+                                </mrow>
+
+                            </mfrac>
+
+                            <mo>+</mo>
+                            <mi>C</mi>
+
+                        </math>
+
+                    </div>
+
+
+                    <div class="final-formula-item">
+
+                        <math>
+
+                            <msup>
+                                <mi>e</mi>
+                                <mrow>
+                                    <mi>a</mi><mi>x</mi>
+                                </mrow>
+                            </msup>
+
+                            <mo>→</mo>
+
+                            <mfrac>
+                                <mn>1</mn>
+                                <mi>a</mi>
+                            </mfrac>
+
+                            <msup>
+                                <mi>e</mi>
+                                <mrow>
+                                    <mi>a</mi><mi>x</mi>
+                                </mrow>
+                            </msup>
+
+                            <mo>+</mo>
+                            <mi>C</mi>
+
+                        </math>
+
+                    </div>
+
+
+                    <div class="final-formula-item">
+
+                        <math>
+
+                            <mfrac>
+                                <mn>1</mn>
+                                <mi>x</mi>
+                            </mfrac>
+
+                            <mo>→</mo>
+
+                            <mi>ln</mi>
+                            <mo>|</mo>
+                            <mi>x</mi>
+                            <mo>|</mo>
+
+                            <mo>+</mo>
+                            <mi>C</mi>
+
+                        </math>
+
+                    </div>
 
                 </div>
 
@@ -1475,6 +2469,7 @@
 
 
     </main>
+
 
 
     <!-- =========================
@@ -1502,5 +2497,261 @@
     </footer>
 
 
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        let currentMode = "differentiate";
+
+        const functions = {
+            sin: {
+                nextDifferentiate: "cos",
+                nextIntegrate: "minusCos"
+            },
+
+            cos: {
+                nextDifferentiate: "minusSin",
+                nextIntegrate: "sin"
+            },
+
+            minusSin: {
+                nextDifferentiate: "minusCos",
+                nextIntegrate: "cos"
+            },
+
+            minusCos: {
+                nextDifferentiate: "sin",
+                nextIntegrate: "minusSin"
+            }
+        };
+
+
+        const labels = {
+
+            sin: `
+                <math display="block">
+                    <mrow>
+                        <mi>sin</mi>
+                        <mi>x</mi>
+                        <mo>→</mo>
+                        <mi>cos</mi>
+                        <mi>x</mi>
+                    </mrow>
+                </math>
+            `,
+
+            cos: `
+                <math display="block">
+                    <mrow>
+                        <mi>cos</mi>
+                        <mi>x</mi>
+                        <mo>→</mo>
+                        <mo>−</mo>
+                        <mi>sin</mi>
+                        <mi>x</mi>
+                    </mrow>
+                </math>
+            `,
+
+            minusSin: `
+                <math display="block">
+                    <mrow>
+                        <mo>−</mo>
+                        <mi>sin</mi>
+                        <mi>x</mi>
+                        <mo>→</mo>
+                        <mo>−</mo>
+                        <mi>cos</mi>
+                        <mi>x</mi>
+                    </mrow>
+                </math>
+            `,
+
+            minusCos: `
+                <math display="block">
+                    <mrow>
+                        <mo>−</mo>
+                        <mi>cos</mi>
+                        <mi>x</mi>
+                        <mo>→</mo>
+                        <mi>sin</mi>
+                        <mi>x</mi>
+                    </mrow>
+                </math>
+            `
+        };
+
+
+        function setMode(mode) {
+
+            currentMode = mode;
+
+            const differentiateButton =
+                document.getElementById("differentiateButton");
+
+            const integrateButton =
+                document.getElementById("integrateButton");
+
+            const directionLabel =
+                document.getElementById("directionLabel");
+
+            const centreText =
+                document.getElementById("centreText");
+
+
+            if (mode === "differentiate") {
+
+                differentiateButton.classList.add("active");
+                integrateButton.classList.remove("active");
+
+                directionLabel.textContent = "CLOCKWISE";
+                centreText.textContent = "CLOCKWISE";
+
+            } else {
+
+                integrateButton.classList.add("active");
+                differentiateButton.classList.remove("active");
+
+                directionLabel.textContent = "ANTI-CLOCKWISE";
+                centreText.textContent = "ANTI-CLOCKWISE";
+
+            }
+
+
+            updateResult();
+
+        }
+
+
+        function selectFunction(functionName) {
+
+            document
+                .querySelectorAll(".function-node")
+                .forEach(function(node) {
+
+                    node.classList.remove("active");
+
+                });
+
+
+            const nodeMap = {
+
+                sin: "sinNode",
+                cos: "cosNode",
+                minusSin: "minusSinNode",
+                minusCos: "minusCosNode"
+
+            };
+
+
+            document
+                .getElementById(nodeMap[functionName])
+                .classList.add("active");
+
+
+            updateResult(functionName);
+
+        }
+
+
+        function updateResult(selectedFunction) {
+
+            const activeNode =
+                document.querySelector(".function-node.active");
+
+
+            let functionName = selectedFunction;
+
+
+            if (!functionName) {
+
+                if (activeNode.id === "sinNode") {
+                    functionName = "sin";
+                }
+
+                else if (activeNode.id === "cosNode") {
+                    functionName = "cos";
+                }
+
+                else if (activeNode.id === "minusSinNode") {
+                    functionName = "minusSin";
+                }
+
+                else {
+                    functionName = "minusCos";
+                }
+
+            }
+
+
+            const next =
+                currentMode === "differentiate"
+                    ? functions[functionName].nextDifferentiate
+                    : functions[functionName].nextIntegrate;
+
+
+            const result =
+                document.getElementById("cycleResult");
+
+
+            const currentLabels = {
+
+                sin: `
+                    <math display="block">
+                        <mrow>
+                            <mi>sin</mi><mi>x</mi>
+                        </mrow>
+                    </math>
+                `,
+
+                cos: `
+                    <math display="block">
+                        <mrow>
+                            <mi>cos</mi><mi>x</mi>
+                        </mrow>
+                    </math>
+                `,
+
+                minusSin: `
+                    <math display="block">
+                        <mrow>
+                            <mo>−</mo><mi>sin</mi><mi>x</mi>
+                        </mrow>
+                    </math>
+                `,
+
+                minusCos: `
+                    <math display="block">
+                        <mrow>
+                            <mo>−</mo><mi>cos</mi><mi>x</mi>
+                        </mrow>
+                    </math>
+                `
+
+            };
+
+
+            result.innerHTML =
+                currentLabels[functionName] +
+                labels[functionName]
+                    .replace(
+                        currentLabels[functionName],
+                        ""
+                    );
+
+        }
+
+
+        /* Initial state */
+
+        selectFunction("sin");
+
+    </script>
+
+
 </body>
+
 </html>
