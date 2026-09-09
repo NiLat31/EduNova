@@ -414,8 +414,9 @@ footer p{
     </div>
 
 
-    <form class="feedback-form" id="feedbackForm">
-
+   <form class="feedback-form" id="feedbackForm"
+      action="https://formspree.io/f/xoeqylpb"
+      method="POST">
         <div class="form-group">
 
             <label>
@@ -557,19 +558,16 @@ footer p{
 
 <script>
 
-document.getElementById("feedbackForm").addEventListener("submit", function(event){
+document.getElementById("feedbackForm").addEventListener("submit", function(){
 
-    event.preventDefault();
+    const button = this.querySelector(".submit-button");
 
-    document.getElementById("successMessage").style.display = "block";
+    button.textContent = "SENDING...";
 
-    this.querySelector(".submit-button").textContent = "FEEDBACK SENT ✓";
-
-    this.querySelector(".submit-button").disabled = true;
+    button.disabled = true;
 
 });
 
 </script>
-
 </body>
 </html>
