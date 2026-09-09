@@ -59,19 +59,227 @@ footer{background:#111;color:#fff;padding:45px 7%;display:flex;justify-content:s
 
 <div class="modal-bg" id="modalBg" onclick="backdrop(event)"><div class="modal"><button class="close" onclick="closeAuth()">×</button><div class="label" id="modalLabel">JOIN EDUNOVA</div><h2 id="modalTitle">Create account.</h2><p class="modal-desc" id="modalDesc">Register to unlock the EduNova chapters and your personal learning dashboard.</p><div class="msg" id="msg"></div><form class="form" onsubmit="submitAuth(event)"><input id="user" type="text" placeholder="Username" required autocomplete="username"><input id="email" type="email" placeholder="Email address" required autocomplete="email"><input id="pass" type="password" placeholder="Password" required><input id="confirm" type="password" placeholder="Confirm password" required><button class="submit" id="submit" type="submit">CREATE ACCOUNT →</button></form><div class="switch"><span id="switchText">Already have an account?</span> <button id="switchBtn" onclick="switchMode()" type="button">LOG IN</button></div></div></div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
 <script>
-let mode="signup";
-const $=id=>document.getElementById(id);
-function notifyMe(){alert("EduNova Book notifications are coming soon! 📖")}
-function openAuth(m="signup"){mode=m;$("modalBg").classList.add("show");document.body.style.overflow="hidden";updateModal();$("msg").classList.remove("show");$("msg").textContent="";$("user").focus()}
-function closeAuth(){$("modalBg").classList.remove("show");document.body.style.overflow=""}
-function backdrop(e){if(e.target===$("modalBg"))closeAuth()}
-function switchMode(){mode=mode==="signup"?"login":"signup";updateModal();$("msg").classList.remove("show");$("msg").textContent=""}
-function updateModal(){const signup=mode==="signup";$("modalLabel").textContent=signup?"JOIN EDUNOVA":"WELCOME BACK";$("modalTitle").textContent=signup?"Create account.":"Log in."; $("modalDesc").textContent=signup?"Register to unlock the EduNova chapters and your personal learning dashboard.":"Sign in to continue to your EduNova mathematics dashboard."; $("submit").textContent=signup?"CREATE ACCOUNT →":"LOG IN →";$("switchText").textContent=signup?"Already have an account?":"New to EduNova?";$("switchBtn").textContent=signup?"LOG IN":"SIGN UP";$("email").style.display=signup?"block":"none";$("confirm").style.display=signup?"block":"none";$("email").required=signup;$("confirm").required=signup}
-function message(t){$("msg").textContent=t;$("msg").classList.add("show")}
-function requireAuth(e){e.preventDefault();if(localStorage.getItem("eduNovaUsername"))location.href="dashboard.html";else{openAuth("signup");message("Create your EduNova account first to open the chapters.")}}
-function submitAuth(e){e.preventDefault();const u=$("user").value.trim(),email=$("email").value.trim(),p=$("pass").value;if(mode==="signup"){if(p.length<6)return message("Please use a password with at least 6 characters.");if(p!==$("confirm").value)return message("The passwords do not match.");const old=JSON.parse(localStorage.getItem("eduNovaAccount")||"null");if(old&&old.username.toLowerCase()===u.toLowerCase())return message("That username is already registered. Please log in.");localStorage.setItem("eduNovaAccount",JSON.stringify({username:u,email,password:p}));localStorage.setItem("eduNovaUsername",u);localStorage.setItem("eduNovaEmail",email);location.href="dashboard.html"}else{const a=JSON.parse(localStorage.getItem("eduNovaAccount")||"null");if(!a)return message("No EduNova account was found. Please sign up first.");if(a.username.toLowerCase()!==u.toLowerCase()||a.password!==p)return message("Incorrect username or password.");localStorage.setItem("eduNovaUsername",a.username);localStorage.setItem("eduNovaEmail",a.email);location.href="dashboard.html"}}
-function navState(){if(localStorage.getItem("eduNovaUsername")){$("authNav").style.display="none";$("dashLink").style.display="block"}}
-document.addEventListener("DOMContentLoaded",navState);document.addEventListener("keydown",e=>{if(e.key==="Escape")closeAuth()});
+const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+const { createClient } = supabase;
+
+const supabaseClient = createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+let mode = "signup";
+
+const $ = id => document.getElementById(id);
+
+function notifyMe(){
+    alert("EduNova Book notifications are coming soon! 📖");
+}
+
+function openAuth(m = "signup"){
+    mode = m;
+    $("modalBg").classList.add("show");
+    document.body.style.overflow = "hidden";
+    updateModal();
+    $("msg").classList.remove("show");
+    $("msg").textContent = "";
+    $("user").focus();
+}
+
+function closeAuth(){
+    $("modalBg").classList.remove("show");
+    document.body.style.overflow = "";
+}
+
+function backdrop(e){
+    if(e.target === $("modalBg")) closeAuth();
+}
+
+function switchMode(){
+    mode = mode === "signup" ? "login" : "signup";
+    updateModal();
+    $("msg").classList.remove("show");
+    $("msg").textContent = "";
+}
+
+function updateModal(){
+    const signup = mode === "signup";
+
+    $("modalLabel").textContent = signup
+        ? "JOIN EDUNOVA"
+        : "WELCOME BACK";
+
+    $("modalTitle").textContent = signup
+        ? "Create account."
+        : "Log in.";
+
+    $("modalDesc").textContent = signup
+        ? "Register to unlock the EduNova chapters and your personal learning dashboard."
+        : "Sign in to continue to your EduNova mathematics dashboard.";
+
+    $("submit").textContent = signup
+        ? "CREATE ACCOUNT →"
+        : "LOG IN →";
+
+    $("switchText").textContent = signup
+        ? "Already have an account?"
+        : "New to EduNova?";
+
+    $("switchBtn").textContent = signup
+        ? "LOG IN"
+        : "SIGN UP";
+
+    $("email").style.display = signup ? "block" : "none";
+    $("confirm").style.display = signup ? "block" : "none";
+
+    $("email").required = signup;
+    $("confirm").required = signup;
+}
+
+function message(t){
+    $("msg").textContent = t;
+    $("msg").classList.add("show");
+}
+
+function requireAuth(e){
+    e.preventDefault();
+
+    if(localStorage.getItem("eduNovaUsername")){
+        location.href = "dashboard.html";
+    }else{
+        openAuth("signup");
+        message("Create your EduNova account first to open the chapters.");
+    }
+}
+
+async function submitAuth(e){
+    e.preventDefault();
+
+    const button = $("submit");
+    const username = $("user").value.trim();
+    const email = $("email").value.trim();
+    const password = $("pass").value;
+
+    $("msg").classList.remove("show");
+
+    if(!username){
+        return message("Please enter a username.");
+    }
+
+    if(mode === "signup"){
+
+        if(password.length < 6){
+            return message("Please use a password with at least 6 characters.");
+        }
+
+        if(password !== $("confirm").value){
+            return message("The passwords do not match.");
+        }
+
+        button.disabled = true;
+        button.textContent = "CREATING ACCOUNT...";
+
+        const { data, error } = await supabaseClient.auth.signUp({
+            email: email,
+            password: password
+        });
+
+        if(error){
+            button.disabled = false;
+            button.textContent = "CREATE ACCOUNT →";
+            return message(error.message);
+        }
+
+        if(!data.user){
+            button.disabled = false;
+            button.textContent = "CREATE ACCOUNT →";
+            return message("Something went wrong. Please try again.");
+        }
+
+        const { error: profileError } = await supabaseClient
+            .from("students")
+            .insert({
+                id: data.user.id,
+                username: username
+            });
+
+        if(profileError){
+            button.disabled = false;
+            button.textContent = "CREATE ACCOUNT →";
+            return message("Your account was created, but your student profile could not be saved.");
+        }
+
+        localStorage.setItem("eduNovaUsername", username);
+        localStorage.setItem("eduNovaEmail", email);
+
+        location.href = "dashboard.html";
+
+    }else{
+
+        button.disabled = true;
+        button.textContent = "LOGGING IN...";
+
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
+            email: email || $("email").value,
+            password: password
+        });
+
+        if(error){
+            button.disabled = false;
+            button.textContent = "LOG IN →";
+            return message("Incorrect email or password.");
+        }
+
+        const { data: student, error: studentError } = await supabaseClient
+            .from("students")
+            .select("username")
+            .eq("id", data.user.id)
+            .single();
+
+        if(studentError || !student){
+            button.disabled = false;
+            button.textContent = "LOG IN →";
+            return message("Your account was found, but your EduNova profile could not be loaded.");
+        }
+
+        localStorage.setItem("eduNovaUsername", student.username);
+        localStorage.setItem("eduNovaEmail", data.user.email);
+
+        location.href = "dashboard.html";
+    }
+}
+
+async function navState(){
+
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
+
+    if(session){
+
+        const { data: student } = await supabaseClient
+            .from("students")
+            .select("username")
+            .eq("id", session.user.id)
+            .single();
+
+        if(student){
+            localStorage.setItem("eduNovaUsername", student.username);
+            localStorage.setItem("eduNovaEmail", session.user.email);
+
+            $("authNav").style.display = "none";
+            $("dashLink").style.display = "block";
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", navState);
+
+document.addEventListener("keydown", e => {
+    if(e.key === "Escape") closeAuth();
+});
 </script>
 </body></html>
