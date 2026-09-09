@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduNova | Feedback</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"DM Sans";
+    background:#f7f6f2;
+    color:#111;
+}
+
+/* NAVIGATION */
+
+nav{
+    height:82px;
+    padding:0 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #ddd;
+    background:#f7f6f2;
+}
+
+.logo{
+    font:700 28px "Playfair Display";
+}
+
+.logo span{
+    color:#e52b20;
+}
+
+.nav{
+    display:flex;
+    gap:18px;
+    align-items:center;
+}
+
+.home{
+    text-decoration:none;
+    color:#111;
+    font-size:11px;
+    font-weight:700;
+}
+
+.home:hover{
+    color:#e52b20;
+}
+
+/* HERO */
+
+.hero{
+    background:#111;
+    color:#fff;
+    padding:90px 7% 70px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"?";
+    position:absolute;
+    right:7%;
+    top:-90px;
+    font:300 330px "Playfair Display";
+    color:#202020;
+}
+
+.label{
+    color:#e52b20;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:3px;
+    margin-bottom:17px;
+    position:relative;
+    z-index:2;
+}
+
+.hero h1{
+    font:600 clamp(45px,6vw,76px)/1.02 "Playfair Display";
+    letter-spacing:-3px;
+    position:relative;
+    z-index:2;
+}
+
+.hero h1 span{
+    color:#e52b20;
+}
+
+.hero p{
+    max-width:600px;
+    color:#aaa;
+    margin-top:22px;
+    font-size:15px;
+    line-height:1.8;
+    position:relative;
+    z-index:2;
+}
+
+/* MAIN */
+
+main{
+    max-width:850px;
+    margin:auto;
+    padding:80px 7% 110px;
+}
+
+/* INTRO */
+
+.intro{
+    margin-bottom:35px;
+}
+
+.intro h2{
+    font:600 42px "Playfair Display";
+    letter-spacing:-1px;
+    margin-bottom:12px;
+}
+
+.intro p{
+    color:#666;
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* FORM */
+
+.feedback-form{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:40px;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.form-group{
+    margin-bottom:28px;
+}
+
+.form-group label{
+    display:block;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.2px;
+    margin-bottom:10px;
+}
+
+.optional{
+    color:#999;
+    font-weight:500;
+    letter-spacing:0;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    border:1px solid #ccc;
+    background:#f7f6f2;
+    padding:14px 15px;
+    font:14px "DM Sans";
+    color:#111;
+    outline:none;
+    transition:.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#111;
+    background:#fff;
+}
+
+textarea{
+    min-height:150px;
+    resize:vertical;
+}
+
+/* RATING */
+
+.rating{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.rating input{
+    display:none;
+}
+
+.rating label{
+    border:1px solid #ccc;
+    padding:15px 10px;
+    text-align:center;
+    cursor:pointer;
+    background:#f7f6f2;
+    font-size:12px;
+    transition:.2s;
+}
+
+.rating label:hover{
+    border-color:#111;
+    background:#fff;
+}
+
+.rating input:checked + label{
+    background:#111;
+    color:#fff;
+    border-color:#111;
+}
+
+/* CHECKBOXES */
+
+.improvements{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.improvement-option{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border:1px solid #ddd;
+    padding:13px;
+    background:#f7f6f2;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.improvement-option:hover{
+    border-color:#111;
+    background:#fff;
+}
+
+.improvement-option input{
+    width:auto;
+}
+
+.improvement-option span{
+    font-size:13px;
+}
+
+/* BUTTON */
+
+.submit-button{
+    width:100%;
+    border:0;
+    background:#111;
+    color:#fff;
+    padding:17px;
+    font:700 11px "DM Sans";
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.submit-button:hover{
+    background:#e52b20;
+}
+
+/* NOTE */
+
+.note{
+    margin-top:18px;
+    color:#888;
+    font-size:11px;
+    line-height:1.7;
+    text-align:center;
+}
+
+/* SUCCESS MESSAGE */
+
+.success{
+    display:none;
+    margin-top:25px;
+    background:#111;
+    color:#fff;
+    padding:25px;
+    text-align:center;
+}
+
+.success h3{
+    font:600 25px "Playfair Display";
+    margin-bottom:8px;
+}
+
+.success p{
+    color:#aaa;
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:#fff;
+    padding:40px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.fl{
+    font:600 24px "Playfair Display";
+}
+
+.fl span{
+    color:#e52b20;
+}
+
+footer p{
+    color:#888;
+    font-size:11px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    nav{
+        height:auto;
+        padding:18px 5%;
+    }
+
+    .hero{
+        padding:70px 5% 55px;
+    }
+
+    main{
+        padding:60px 5% 80px;
+    }
+
+    .feedback-form{
+        padding:25px;
+    }
+
+    .rating{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .improvements{
+        grid-template-columns:1fr;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        Edu<span>Nova</span>
+    </div>
+
+    <div class="nav">
+        <a class="home" href="dashboard.html">← DASHBOARD</a>
+    </div>
+
+</nav>
+
+
+<header class="hero">
+
+    <div class="label">EDUNOVA FEEDBACK</div>
+
+    <h1>
+        Help us make<br>
+        <span>EduNova</span> better.
+    </h1>
+
+    <p>
+        EduNova is being built for students. Tell us what you liked,
+        what was confusing, and what you would like to see next.
+    </p>
+
+</header>
+
+
+<main>
+
+    <div class="intro">
+
+        <h2>Your feedback matters.</h2>
+
+        <p>
+            Whether you found something useful, confusing, too easy,
+            too difficult, or simply have an idea, we want to hear it.
+        </p>
+
+    </div>
+
+
+    <form class="feedback-form" id="feedbackForm">
+
+        <div class="form-group">
+
+            <label>
+                YOUR NAME
+                <span class="optional">(optional)</span>
+            </label>
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                HOW WAS YOUR EXPERIENCE?
+            </label>
+
+            <div class="rating">
+
+                <input type="radio" id="excellent" name="rating" value="Excellent" required>
+                <label for="excellent">Excellent</label>
+
+                <input type="radio" id="good" name="rating" value="Good">
+                <label for="good">Good</label>
+
+                <input type="radio" id="okay" name="rating" value="Okay">
+                <label for="okay">Okay</label>
+
+                <input type="radio" id="improve" name="rating" value="Needs improvement">
+                <label for="improve">Needs improvement</label>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                WHAT DID YOU LIKE?
+            </label>
+
+            <textarea
+                name="liked"
+                placeholder="Tell us what you found useful or enjoyable..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                WHAT COULD WE IMPROVE?
+            </label>
+
+            <textarea
+                name="improvement"
+                placeholder="Tell us what could be clearer or better..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                WHAT WOULD YOU LIKE US TO ADD?
+            </label>
+
+            <div class="improvements">
+
+                <label class="improvement-option">
+                    <input type="checkbox" name="additions" value="More lessons">
+                    <span>More lessons</span>
+                </label>
+
+                <label class="improvement-option">
+                    <input type="checkbox" name="additions" value="More questions">
+                    <span>More questions</span>
+                </label>
+
+                <label class="improvement-option">
+                    <input type="checkbox" name="additions" value="More examples">
+                    <span>More examples</span>
+                </label>
+
+                <label class="improvement-option">
+                    <input type="checkbox" name="additions" value="More interactive features">
+                    <span>More interactive features</span>
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <button class="submit-button" type="submit">
+            SEND FEEDBACK →
+        </button>
+
+        <p class="note">
+            Your feedback helps us improve EduNova for future students.
+        </p>
+
+        <div class="success" id="successMessage">
+
+            <h3>Thank you.</h3>
+
+            <p>
+                Your feedback has been received.
+                We appreciate you taking the time to help improve EduNova.
+            </p>
+
+        </div>
+
+    </form>
+
+</main>
+
+
+<footer>
+
+    <div class="fl">
+        Edu<span>Nova</span>
+    </div>
+
+    <p>
+        © 2026 EduNova. Mathematics, reimagined.
+    </p>
+
+</footer>
+
+
+<script>
+
+document.getElementById("feedbackForm").addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    document.getElementById("successMessage").style.display = "block";
+
+    this.querySelector(".submit-button").textContent = "FEEDBACK SENT ✓";
+
+    this.querySelector(".submit-button").disabled = true;
+
+});
+
+</script>
+
+</body>
+</html>
