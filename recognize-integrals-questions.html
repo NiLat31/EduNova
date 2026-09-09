@@ -1,0 +1,2478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Recognize Integrals | EduNova</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #f7f7f7;
+    color: #111;
+    line-height: 1.7;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    height: 78px;
+    background: #111;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    color: white;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #e00000;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #e00000;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background: #111;
+    color: white;
+    padding: 75px 7%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 1100px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-eyebrow {
+    color: #e00000;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(42px, 6vw, 70px);
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 650px;
+    color: #ccc;
+    font-size: 17px;
+}
+
+/* Mathematical decoration */
+
+.hero-decoration {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 350px;
+    height: 350px;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.hero-decoration .circle {
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 50%;
+}
+
+.hero-decoration .circle.one {
+    width: 300px;
+    height: 300px;
+    right: 0;
+    top: 25px;
+}
+
+.hero-decoration .circle.two {
+    width: 205px;
+    height: 205px;
+    right: 48px;
+    top: 72px;
+    border-color: rgba(224,0,0,0.55);
+}
+
+.hero-decoration .circle.three {
+    width: 105px;
+    height: 105px;
+    right: 98px;
+    top: 122px;
+    border-color: rgba(255,255,255,0.25);
+}
+
+.math-symbol {
+    position: absolute;
+    font-family: "Playfair Display", serif;
+    color: rgba(255,255,255,0.16);
+    font-size: 45px;
+}
+
+.symbol-one {
+    top: 0;
+    right: 150px;
+}
+
+.symbol-two {
+    bottom: 8px;
+    right: 5px;
+    color: rgba(224,0,0,0.35);
+}
+
+.symbol-three {
+    top: 135px;
+    left: 10px;
+}
+
+.dot {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: #e00000;
+    border-radius: 50%;
+}
+
+.dot-one {
+    right: 68px;
+    top: 65px;
+}
+
+.dot-two {
+    right: 275px;
+    bottom: 65px;
+}
+
+.line {
+    position: absolute;
+    height: 1px;
+    background: rgba(255,255,255,0.16);
+    transform-origin: left center;
+}
+
+.line-one {
+    width: 130px;
+    right: 180px;
+    top: 90px;
+    transform: rotate(32deg);
+}
+
+.line-two {
+    width: 105px;
+    right: 30px;
+    bottom: 100px;
+    transform: rotate(-35deg);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 65px 25px 80px;
+}
+
+.intro {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 45px;
+}
+
+.intro h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.intro p {
+    color: #555;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-container {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 22px 25px;
+    margin-bottom: 30px;
+}
+
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e9e9e9;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #e00000;
+    transition: 0.4s;
+}
+
+/* =========================
+   QUESTION NAVIGATION
+========================= */
+
+.question-navigation {
+    background: #111;
+    padding: 28px;
+    margin-bottom: 25px;
+}
+
+.question-navigation h3 {
+    color: white;
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+.question-grid {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    gap: 8px;
+}
+
+.question-number {
+    border: 1px solid #555;
+    background: transparent;
+    color: white;
+    height: 42px;
+    cursor: pointer;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.question-number:hover {
+    border-color: #e00000;
+    color: #e00000;
+}
+
+.question-number.active {
+    background: #e00000;
+    border-color: #e00000;
+    color: white;
+}
+
+.question-number.correct {
+    background: #2b2b2b;
+    border-color: #e00000;
+    color: #fff;
+}
+
+/* =========================
+   QUESTION CARD
+========================= */
+
+.question-card {
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    padding: 45px;
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.question-label {
+    color: #e00000;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.difficulty {
+    padding: 7px 12px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.easy {
+    background: #f1f1f1;
+    color: #333;
+}
+
+.medium {
+    background: #eee;
+    color: #111;
+}
+
+.hard {
+    background: #111;
+    color: white;
+}
+
+.challenge {
+    background: #e00000;
+    color: white;
+}
+
+.question-text {
+    font-size: 20px;
+    margin-bottom: 28px;
+}
+
+.integral-display {
+    text-align: center;
+    background: #111;
+    color: white;
+    padding: 30px 20px;
+    margin: 25px 0 35px;
+    overflow-x: auto;
+}
+
+.integral-display math {
+    font-size: 30px;
+}
+
+.question-instruction {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+/* =========================
+   ANSWERS
+========================= */
+
+.answers {
+    display: grid;
+    gap: 12px;
+}
+
+.answer-button {
+    width: 100%;
+    text-align: left;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    padding: 18px 20px;
+    cursor: pointer;
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    transition: 0.25s;
+}
+
+.answer-button:hover {
+    border-color: #111;
+    background: white;
+}
+
+.answer-button.selected {
+    border-color: #111;
+    background: #eee;
+}
+
+.answer-button.correct-answer {
+    background: #111;
+    color: white;
+    border-color: #111;
+}
+
+.answer-button.wrong-answer {
+    border-color: #e00000;
+    color: #e00000;
+}
+
+.answer-button:disabled {
+    cursor: default;
+}
+
+/* =========================
+   FEEDBACK
+========================= */
+
+.feedback {
+    display: none;
+    margin-top: 28px;
+    padding: 22px;
+    border-left: 4px solid #e00000;
+    background: #f7f7f7;
+}
+
+.feedback.show {
+    display: block;
+}
+
+.feedback-title {
+    font-weight: 800;
+    margin-bottom: 7px;
+}
+
+.feedback.correct .feedback-title {
+    color: #111;
+}
+
+.feedback.wrong .feedback-title {
+    color: #e00000;
+}
+
+.solution {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid #ddd;
+}
+
+.solution h4 {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.solution-step {
+    margin: 12px 0;
+    overflow-x: auto;
+}
+
+.solution math {
+    font-size: 21px;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.control-button {
+    border: none;
+    padding: 15px 25px;
+    background: #111;
+    color: white;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.control-button:hover {
+    background: #e00000;
+}
+
+.control-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* =========================
+   SCORE
+========================= */
+
+.score-card {
+    display: none;
+    background: #111;
+    color: white;
+    padding: 45px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.score-card.show {
+    display: block;
+}
+
+.score-card h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.score-number {
+    color: #e00000;
+    font-size: 55px;
+    font-weight: 800;
+    margin: 15px 0;
+}
+
+.score-card p {
+    color: #ccc;
+}
+
+.restart-button {
+    margin-top: 25px;
+    background: #e00000;
+    color: white;
+    border: none;
+    padding: 15px 28px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* =========================
+   BOTTOM NAVIGATION
+========================= */
+
+.bottom-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 45px;
+}
+
+.bottom-navigation a {
+    text-decoration: none;
+    padding: 15px 25px;
+    background: #111;
+    color: white;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.bottom-navigation a:hover {
+    background: #e00000;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #111;
+    color: white;
+    padding: 45px 7%;
+    text-align: center;
+}
+
+.footer-logo {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+}
+
+.footer-logo span {
+    color: #e00000;
+}
+
+footer p {
+    color: #999;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero-decoration {
+        right: -110px;
+        opacity: 0.65;
+    }
+
+    .question-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .question-card {
+        padding: 28px 20px;
+    }
+
+    .question-header {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .question-text {
+        font-size: 18px;
+    }
+
+    .integral-display math {
+        font-size: 25px;
+    }
+
+    .controls,
+    .bottom-navigation {
+        flex-direction: column;
+    }
+
+    .control-button,
+    .bottom-navigation a {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <a href="dashboard.html" class="logo">
+        Edu<span>Nova</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="integration.html">Integration</a>
+        <a href="recognize-integrals.html">Lesson</a>
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-eyebrow">
+            INTEGRATION · LESSON 2
+        </div>
+
+        <h1>Recognize Integrals</h1>
+
+        <p>
+            Test your ability to recognize the correct integration rule
+            and apply it accurately.
+        </p>
+
+    </div>
+
+
+    <div class="hero-decoration">
+
+        <div class="circle one"></div>
+        <div class="circle two"></div>
+        <div class="circle three"></div>
+
+        <span class="math-symbol symbol-one">∫</span>
+        <span class="math-symbol symbol-two">π</span>
+        <span class="math-symbol symbol-three">f</span>
+
+        <span class="dot dot-one"></span>
+        <span class="dot dot-two"></span>
+
+        <span class="line line-one"></span>
+        <span class="line line-two"></span>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+    <section class="intro">
+
+        <h2>Ready to Practice?</h2>
+
+        <p>
+            Start with the basic rules, then work your way towards
+            more challenging integrals. Take your time and look carefully
+            at the form of each integral.
+        </p>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress-container">
+
+        <div class="progress-top">
+
+            <span id="progressText">
+                Question 1 of 15
+            </span>
+
+            <span id="scoreText">
+                Score: 0
+            </span>
+
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+    </div>
+
+
+    <!-- QUESTION NAVIGATION -->
+
+    <div class="question-navigation">
+
+        <h3>Choose a Question</h3>
+
+        <div class="question-grid" id="questionGrid"></div>
+
+    </div>
+
+
+    <!-- QUESTION -->
+
+    <section class="question-card" id="questionCard">
+
+        <div class="question-header">
+
+            <div class="question-label" id="questionLabel">
+                QUESTION 1
+            </div>
+
+            <div class="difficulty easy" id="difficulty">
+                BASIC
+            </div>
+
+        </div>
+
+
+        <div class="question-text" id="questionText"></div>
+
+
+        <div class="integral-display" id="integralDisplay"></div>
+
+
+        <p class="question-instruction">
+            Choose the correct answer.
+        </p>
+
+
+        <div class="answers" id="answers"></div>
+
+
+        <div class="feedback" id="feedback">
+
+            <div class="feedback-title" id="feedbackTitle"></div>
+
+            <div id="feedbackMessage"></div>
+
+            <div class="solution">
+
+                <h4>Solution</h4>
+
+                <div id="solutionContent"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="controls">
+
+            <button class="control-button" id="previousButton">
+                ← PREVIOUS
+            </button>
+
+            <button class="control-button" id="nextButton">
+                NEXT →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCORE -->
+
+    <section class="score-card" id="scoreCard">
+
+        <h2>Practice Complete</h2>
+
+        <p>
+            You have completed all 15 questions.
+        </p>
+
+        <div class="score-number" id="finalScore">
+            0 / 15
+        </div>
+
+        <p id="scoreMessage"></p>
+
+        <button class="restart-button" onclick="restartQuiz()">
+            TRY AGAIN
+        </button>
+
+    </section>
+
+
+    <!-- BOTTOM NAVIGATION -->
+
+    <div class="bottom-navigation">
+
+        <a href="recognize-integrals.html">
+            ← BACK TO LESSON
+        </a>
+
+        <a href="integration.html">
+            ALL INTEGRATION LESSONS
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        Edu<span>Nova</span>
+    </div>
+
+    <p>Mathematics made clear.</p>
+
+    <p>
+        © 2026 EduNova. All rights reserved.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   QUESTIONS
+========================================================= */
+
+const questions = [
+
+    /* =========================
+       LEVEL 1
+    ========================= */
+
+    {
+        difficulty: "BASIC",
+        difficultyClass: "easy",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <msup>
+                        <mi>x</mi>
+                        <mn>4</mn>
+                    </msup>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mfrac><msup><mi>x</mi><mn>5</mn></msup><mn>5</mn></mfrac><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><msup><mi>x</mi><mn>4</mn></msup><mn>4</mn></mfrac><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><msup><mi>x</mi><mn>5</mn></msup><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mn>4</mn><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 0,
+
+        solution: `
+            <div class="solution-step">
+                <math display="block">
+                    <mrow>
+                        <mo>∫</mo>
+                        <msup><mi>x</mi><mn>4</mn></msup>
+                        <mi>dx</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Add 1 to the power:
+                <math>
+                    <mrow>
+                        <mn>4</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>5</mn>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Divide by the new power:
+                <math display="block">
+                    <mrow>
+                        <mfrac>
+                            <msup><mi>x</mi><mn>5</mn></msup>
+                            <mn>5</mn>
+                        </mfrac>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    {
+        difficulty: "BASIC",
+        difficultyClass: "easy",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <mn>7</mn>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mn>7</mn><mi>x</mi><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mn>7</mn><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><msup><mi>x</mi><mn>7</mn></msup><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><mi>x</mi><mn>7</mn></mfrac><mo>+</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 0,
+
+        solution: `
+            <div class="solution-step">
+                A constant integrates directly:
+            </div>
+
+            <div class="solution-step">
+                <math display="block">
+                    <mrow>
+                        <mo>∫</mo><mi>a</mi><mi>dx</mi>
+                        <mo>=</mo>
+                        <mi>a</mi><mi>x</mi><mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Therefore:
+                <math display="block">
+                    <mrow>
+                        <mo>∫</mo><mn>7</mn><mi>dx</mi>
+                        <mo>=</mo>
+                        <mn>7</mn><mi>x</mi><mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    {
+        difficulty: "BASIC",
+        difficultyClass: "easy",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <msup>
+                        <mrow>
+                            <mo>(</mo>
+                            <mn>3</mn><mi>x</mi><mo>+</mo><mn>2</mn>
+                            <mo>)</mo>
+                        </mrow>
+                        <mn>2</mn>
+                    </msup>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mfrac><msup><mrow><mo>(</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo></mrow><mn>3</mn></msup><mn>9</mn></mfrac><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><msup><mrow><mo>(</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo></mrow><mn>3</mn></msup><mn>3</mn></mfrac><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><msup><mrow><mo>(</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo></mrow><mn>3</mn></msup><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><msup><mrow><mo>(</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup><mn>2</mn></mfrac><mo>+</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 0,
+
+        solution: `
+            <div class="solution-step">
+                Use:
+                <math>
+                    <mrow>
+                        <mo>∫</mo>
+                        <msup><mrow><mo>(</mo><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mo>)</mo></mrow><mi>n</mi></msup>
+                        <mi>dx</mi>
+                        <mo>=</mo>
+                        <mfrac>
+                            <msup><mrow><mo>(</mo><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mo>)</mo></mrow><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup>
+                            <mrow><mi>a</mi><mo>(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow>
+                        </mfrac>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Here
+                <math><mrow><mi>a</mi><mo>=</mo><mn>3</mn></mrow></math>
+                and
+                <math><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow></math>.
+            </div>
+
+            <div class="solution-step">
+                Therefore:
+                <math display="block">
+                    <mrow>
+                        <mfrac>
+                            <msup><mrow><mo>(</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo></mrow><mn>3</mn></msup>
+                            <mn>9</mn>
+                        </mfrac>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    {
+        difficulty: "BASIC",
+        difficultyClass: "easy",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <msup><mi>e</mi><mrow><mn>5</mn><mi>x</mi></mrow></msup>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mn>5</mn><msup><mi>e</mi><mrow><mn>5</mn><mi>x</mi></mrow></msup><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><mn>1</mn><mn>5</mn></mfrac><msup><mi>e</mi><mrow><mn>5</mn><mi>x</mi></mrow></msup><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><msup><mi>e</mi><mi>x</mi></msup><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><msup><mi>e</mi><mrow><mn>5</mn><mi>x</mi></mrow></msup><mn>5</mn></mfrac><mo>−</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 1,
+
+        solution: `
+            <div class="solution-step">
+                Use:
+                <math>
+                    <mrow>
+                        <mo>∫</mo>
+                        <msup><mi>e</mi><mrow><mi>a</mi><mi>x</mi></mrow></msup>
+                        <mi>dx</mi>
+                        <mo>=</mo>
+                        <mfrac><mn>1</mn><mi>a</mi></mfrac>
+                        <msup><mi>e</mi><mrow><mi>a</mi><mi>x</mi></mrow></msup>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Here <math><mrow><mi>a</mi><mo>=</mo><mn>5</mn></mrow></math>.
+            </div>
+
+            <div class="solution-step">
+                Therefore:
+                <math display="block">
+                    <mrow>
+                        <mfrac><mn>1</mn><mn>5</mn></mfrac>
+                        <msup><mi>e</mi><mrow><mn>5</mn><mi>x</mi></mrow></msup>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    /* =========================
+       LEVEL 2
+    ========================= */
+
+    {
+        difficulty: "APPLY",
+        difficultyClass: "medium",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <mi>cos</mi>
+                    <mo>(</mo><mn>4</mn><mi>x</mi><mo>)</mo>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mn>4</mn><mi>sin</mi><mo>(</mo><mn>4</mn><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac><mi>sin</mi><mo>(</mo><mn>4</mn><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mo>−</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mi>sin</mi><mo>(</mo><mn>4</mn><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mi>sin</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 1,
+
+        solution: `
+            <div class="solution-step">
+                Use:
+                <math>
+                    <mrow>
+                        <mo>∫</mo><mi>cos</mi><mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo><mi>dx</mi>
+                        <mo>=</mo>
+                        <mfrac><mn>1</mn><mi>a</mi></mfrac>
+                        <mi>sin</mi><mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Since <math><mrow><mi>a</mi><mo>=</mo><mn>4</mn></mrow></math>:
+            </div>
+
+            <div class="solution-step">
+                <math display="block">
+                    <mrow>
+                        <mfrac><mn>1</mn><mn>4</mn></mfrac>
+                        <mi>sin</mi><mo>(</mo><mn>4</mn><mi>x</mi><mo>)</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    {
+        difficulty: "APPLY",
+        difficultyClass: "medium",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <mi>sin</mi>
+                    <mo>(</mo><mn>3</mn><mi>x</mi><mo>)</mo>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>cos</mi><mo>(</mo><mn>3</mn><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mo>−</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>cos</mi><mo>(</mo><mn>3</mn><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mo>−</mo><mn>3</mn><mi>cos</mi><mo>(</mo><mn>3</mn><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mi>cos</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 1,
+
+        solution: `
+            <div class="solution-step">
+                Use:
+                <math>
+                    <mrow>
+                        <mo>∫</mo><mi>sin</mi><mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo><mi>dx</mi>
+                        <mo>=</mo>
+                        <mo>−</mo>
+                        <mfrac><mn>1</mn><mi>a</mi></mfrac>
+                        <mi>cos</mi><mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Here <math><mrow><mi>a</mi><mo>=</mo><mn>3</mn></mrow></math>.
+            </div>
+
+            <div class="solution-step">
+                <math display="block">
+                    <mrow>
+                        <mo>−</mo>
+                        <mfrac><mn>1</mn><mn>3</mn></mfrac>
+                        <mi>cos</mi><mo>(</mo><mn>3</mn><mi>x</mi><mo>)</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    {
+        difficulty: "APPLY",
+        difficultyClass: "medium",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <mfrac>
+                        <mn>1</mn>
+                        <mi>x</mi>
+                    </mfrac>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mi>ln</mi><mo>|</mo><mi>x</mi><mo>|</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><mn>1</mn><mi>x</mi></mfrac><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mi>ln</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mi>x</mi><mi>ln</mi><mo>|</mo><mi>x</mi><mo>|</mo><mo>+</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 0,
+
+        solution: `
+            <div class="solution-step">
+                This is the special case:
+                <math display="block">
+                    <mrow>
+                        <mo>∫</mo>
+                        <mfrac><mn>1</mn><mi>x</mi></mfrac>
+                        <mi>dx</mi>
+                        <mo>=</mo>
+                        <mi>ln</mi><mo>|</mo><mi>x</mi><mo>|</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                The absolute value is important because
+                <math><mi>x</mi></math> may be positive or negative.
+            </div>
+        `
+    },
+
+
+    {
+        difficulty: "APPLY",
+        difficultyClass: "medium",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <mfrac>
+                        <mn>6</mn>
+                        <mrow>
+                            <mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn>
+                        </mrow>
+                    </mfrac>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mn>6</mn><mi>ln</mi><mo>|</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn><mo>|</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mn>3</mn><mi>ln</mi><mo>|</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn><mo>|</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><mn>6</mn><mn>2</mn></mfrac><mi>ln</mi><mo>|</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>|</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mn>2</mn><mi>ln</mi><mo>|</mo><mn>6</mn><mi>x</mi><mo>+</mo><mn>1</mn><mo>|</mo><mo>+</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 1,
+
+        solution: `
+            <div class="solution-step">
+                Use:
+                <math>
+                    <mrow>
+                        <mo>∫</mo>
+                        <mfrac>
+                            <mi>a</mi>
+                            <mrow><mi>b</mi><mi>x</mi><mo>+</mo><mi>d</mi></mrow>
+                        </mfrac>
+                        <mi>dx</mi>
+                        <mo>=</mo>
+                        <mfrac><mi>a</mi><mi>b</mi></mfrac>
+                        <mi>ln</mi>
+                        <mo>|</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>d</mi><mo>|</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Here:
+                <math>
+                    <mrow>
+                        <mi>a</mi><mo>=</mo><mn>6</mn>
+                        <mo>,</mo>
+                        <mi>b</mi><mo>=</mo><mn>2</mn>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                <math display="block">
+                    <mrow>
+                        <mfrac><mn>6</mn><mn>2</mn></mfrac>
+                        <mi>ln</mi>
+                        <mo>|</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn><mo>|</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                <math display="block">
+                    <mrow>
+                        <mn>3</mn>
+                        <mi>ln</mi>
+                        <mo>|</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn><mo>|</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    /* =========================
+       LEVEL 3
+    ========================= */
+
+    {
+        difficulty: "INTERMEDIATE",
+        difficultyClass: "medium",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <msup>
+                        <mrow>
+                            <mo>(</mo>
+                            <mn>2</mn><mi>x</mi><mo>+</mo><mn>5</mn>
+                            <mo>)</mo>
+                        </mrow>
+                        <mrow><mo>−</mo><mn>3</mn></mrow>
+                    </msup>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mo>−</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><msup><mrow><mo>(</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>5</mn><mo>)</mo></mrow><mrow><mo>−</mo><mn>2</mn></mrow></msup><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac><msup><mrow><mo>(</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>5</mn><mo>)</mo></mrow><mrow><mo>−</mo><mn>2</mn></mrow></msup><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mrow><mo>(</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>5</mn><mo>)</mo></mrow><mrow><mo>−</mo><mn>3</mn></mrow></msup><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mo>−</mo><mfrac><mn>1</mn><mn>6</mn></mfrac><msup><mrow><mo>(</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>5</mn><mo>)</mo></mrow><mrow><mo>−</mo><mn>2</mn></mrow></msup><mo>+</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 0,
+
+        solution: `
+            <div class="solution-step">
+                The power is
+                <math><mrow><mi>n</mi><mo>=</mo><mo>−</mo><mn>3</mn></mrow></math>.
+            </div>
+
+            <div class="solution-step">
+                Add 1:
+                <math>
+                    <mrow>
+                        <mo>−</mo><mn>3</mn><mo>+</mo><mn>1</mn>
+                        <mo>=</mo>
+                        <mo>−</mo><mn>2</mn>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                The denominator is:
+                <math>
+                    <mrow>
+                        <mn>2</mn>
+                        <mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>
+                        <mo>=</mo>
+                        <mo>−</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Therefore:
+                <math display="block">
+                    <mrow>
+                        <mo>−</mo>
+                        <mfrac><mn>1</mn><mn>4</mn></mfrac>
+                        <msup>
+                            <mrow><mo>(</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>5</mn><mo>)</mo></mrow>
+                            <mrow><mo>−</mo><mn>2</mn></mrow>
+                        </msup>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    {
+        difficulty: "INTERMEDIATE",
+        difficultyClass: "medium",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <mn>4</mn>
+                    <msup><mi>e</mi><mrow><mo>−</mo><mn>2</mn><mi>x</mi></mrow></msup>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mo>−</mo><mn>2</mn><msup><mi>e</mi><mrow><mo>−</mo><mn>2</mn><mi>x</mi></mrow></msup><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mn>2</mn><msup><mi>e</mi><mrow><mo>−</mo><mn>2</mn><mi>x</mi></mrow></msup><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>e</mi><mrow><mo>−</mo><mn>2</mn><mi>x</mi></mrow></msup><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mn>4</mn><msup><mi>e</mi><mrow><mo>−</mo><mn>2</mn><mi>x</mi></mrow></msup><mo>+</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 0,
+
+        solution: `
+            <div class="solution-step">
+                First identify:
+                <math>
+                    <mrow>
+                        <mi>a</mi><mo>=</mo><mo>−</mo><mn>2</mn>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Use:
+                <math>
+                    <mrow>
+                        <mo>∫</mo>
+                        <msup><mi>e</mi><mrow><mi>a</mi><mi>x</mi></mrow></msup>
+                        <mi>dx</mi>
+                        <mo>=</mo>
+                        <mfrac><mn>1</mn><mi>a</mi></mfrac>
+                        <msup><mi>e</mi><mrow><mi>a</mi><mi>x</mi></mrow></msup>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Include the coefficient 4:
+                <math display="block">
+                    <mrow>
+                        <mn>4</mn>
+                        <mo>(</mo>
+                        <mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac>
+                        <msup><mi>e</mi><mrow><mo>−</mo><mn>2</mn><mi>x</mi></mrow></msup>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                <math display="block">
+                    <mrow>
+                        <mo>−</mo><mn>2</mn>
+                        <msup><mi>e</mi><mrow><mo>−</mo><mn>2</mn><mi>x</mi></mrow></msup>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    {
+        difficulty: "INTERMEDIATE",
+        difficultyClass: "medium",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <mi>sin</mi>
+                    <mo>(</mo><mn>6</mn><mi>x</mi><mo>)</mo>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mfrac><mn>1</mn><mn>6</mn></mfrac><mi>cos</mi><mo>(</mo><mn>6</mn><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mo>−</mo><mfrac><mn>1</mn><mn>6</mn></mfrac><mi>cos</mi><mo>(</mo><mn>6</mn><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mo>−</mo><mn>6</mn><mi>cos</mi><mo>(</mo><mn>6</mn><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mo>−</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>cos</mi><mo>(</mo><mn>6</mn><mi>x</mi><mo>)</mo><mo>+</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 1,
+
+        solution: `
+            <div class="solution-step">
+                Use:
+                <math>
+                    <mrow>
+                        <mo>∫</mo><mi>sin</mi><mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo><mi>dx</mi>
+                        <mo>=</mo>
+                        <mo>−</mo>
+                        <mfrac><mn>1</mn><mi>a</mi></mfrac>
+                        <mi>cos</mi><mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Here <math><mrow><mi>a</mi><mo>=</mo><mn>6</mn></mrow></math>.
+            </div>
+
+            <div class="solution-step">
+                <math display="block">
+                    <mrow>
+                        <mo>−</mo>
+                        <mfrac><mn>1</mn><mn>6</mn></mfrac>
+                        <mi>cos</mi><mo>(</mo><mn>6</mn><mi>x</mi><mo>)</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    {
+        difficulty: "INTERMEDIATE",
+        difficultyClass: "medium",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <mfrac>
+                        <mn>5</mn>
+                        <mrow>
+                            <mn>3</mn><mi>x</mi><mo>−</mo><mn>1</mn>
+                        </mrow>
+                    </mfrac>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mfrac><mn>5</mn><mn>3</mn></mfrac><mi>ln</mi><mo>|</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>1</mn><mo>|</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mn>5</mn><mi>ln</mi><mo>|</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>1</mn><mo>|</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><mn>3</mn><mn>5</mn></mfrac><mi>ln</mi><mo>|</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>1</mn><mo>|</mo><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><mn>5</mn><mn>3</mn></mfrac><mi>ln</mi><mo>|</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo>|</mo><mo>+</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 0,
+
+        solution: `
+            <div class="solution-step">
+                Use:
+                <math>
+                    <mrow>
+                        <mo>∫</mo>
+                        <mfrac>
+                            <mi>a</mi>
+                            <mrow><mi>b</mi><mi>x</mi><mo>+</mo><mi>d</mi></mrow>
+                        </mfrac>
+                        <mi>dx</mi>
+                        <mo>=</mo>
+                        <mfrac><mi>a</mi><mi>b</mi></mfrac>
+                        <mi>ln</mi>
+                        <mo>|</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>d</mi><mo>|</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Here:
+                <math>
+                    <mrow>
+                        <mi>a</mi><mo>=</mo><mn>5</mn>
+                        <mo>,</mo>
+                        <mi>b</mi><mo>=</mo><mn>3</mn>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Therefore:
+                <math display="block">
+                    <mrow>
+                        <mfrac><mn>5</mn><mn>3</mn></mfrac>
+                        <mi>ln</mi>
+                        <mo>|</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>1</mn><mo>|</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    /* =========================
+       LEVEL 4
+    ========================= */
+
+    {
+        difficulty: "ADVANCED",
+        difficultyClass: "hard",
+
+        text: "Which integration rule is the most appropriate for this integral?",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <msup><mi>x</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mo>∫</mo><msup><mi>x</mi><mi>n</mi></msup><mi>dx</mi></mrow></math>`,
+            `<math><mrow><mo>∫</mo><msup><mi>e</mi><mrow><mi>a</mi><mi>x</mi></mrow></msup><mi>dx</mi></mrow></math>`,
+            `<math><mrow><mo>∫</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mi>dx</mi></mrow></math>`,
+            `<math><mrow><mo>∫</mo><mi>cos</mi><mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo><mi>dx</mi></mrow></math>`
+        ],
+
+        correct: 2,
+
+        solution: `
+            <div class="solution-step">
+                Notice that:
+                <math>
+                    <mrow>
+                        <msup><mi>x</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup>
+                        <mo>=</mo>
+                        <mfrac><mn>1</mn><mi>x</mi></mfrac>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Therefore this is the special
+                <math><mfrac><mn>1</mn><mi>x</mi></mfrac>
+                form.
+            </div>
+
+            <div class="solution-step">
+                The answer is:
+                <math display="block">
+                    <mrow>
+                        <mi>ln</mi><mo>|</mo><mi>x</mi><mo>|</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    {
+        difficulty: "ADVANCED",
+        difficultyClass: "hard",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+                    <mo>∫</mo>
+                    <msup>
+                        <mrow>
+                            <mo>(</mo>
+                            <mn>7</mn><mi>x</mi><mo>−</mo><mn>2</mn>
+                            <mo>)</mo>
+                        </mrow>
+                        <mn>4</mn>
+                    </msup>
+                    <mi>dx</mi>
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+            `<math><mrow><mfrac><msup><mrow><mo>(</mo><mn>7</mn><mi>x</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>5</mn></msup><mn>35</mn></mfrac><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><msup><mrow><mo>(</mo><mn>7</mn><mi>x</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>5</mn></msup><mn>7</mn></mfrac><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><msup><mrow><mo>(</mo><mn>7</mn><mi>x</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>5</mn></msup><mn>28</mn></mfrac><mo>+</mo><mi>C</mi></mrow></math>`,
+            `<math><mrow><mfrac><msup><mrow><mo>(</mo><mn>7</mn><mi>x</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>4</mn></msup><mn>28</mn></mfrac><mo>+</mo><mi>C</mi></mrow></math>`
+        ],
+
+        correct: 0,
+
+        solution: `
+            <div class="solution-step">
+                Here:
+                <math>
+                    <mrow>
+                        <mi>a</mi><mo>=</mo><mn>7</mn>
+                        <mo>,</mo>
+                        <mi>n</mi><mo>=</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Add 1 to the power:
+                <math>
+                    <mrow>
+                        <mn>4</mn><mo>+</mo><mn>1</mn>
+                        <mo>=</mo><mn>5</mn>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Denominator:
+                <math>
+                    <mrow>
+                        <mn>7</mn><mo>(</mo><mn>5</mn><mo>)</mo>
+                        <mo>=</mo><mn>35</mn>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Therefore:
+                <math display="block">
+                    <mrow>
+                        <mfrac>
+                            <msup>
+                                <mrow><mo>(</mo><mn>7</mn><mi>x</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow>
+                                <mn>5</mn>
+                            </msup>
+                            <mn>35</mn>
+                        </mfrac>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    },
+
+
+    {
+        difficulty: "ADVANCED",
+        difficultyClass: "hard",
+
+        text: "Find the integral.",
+
+        integral: `
+            <math display="block">
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <mrow>
+                        <mo>(</mo>
+
+                        <mfrac>
+                            <mn>3</mn>
+                            <mrow>
+                                <mn>4</mn><mi>x</mi><mo>+</mo><mn>7</mn>
+                            </mrow>
+                        </mfrac>
+
+                        <mo>+</mo>
+
+                        <msup>
+                            <mi>e</mi>
+                            <mrow><mn>2</mn><mi>x</mi></mrow>
+                        </msup>
+
+                        <mo>+</mo>
+
+                        <mi>cos</mi>
+                        <mo>(</mo><mn>5</mn><mi>x</mi><mo>)</mo>
+
+                        <mo>)</mo>
+                    </mrow>
+
+                    <mi>dx</mi>
+
+                </mrow>
+            </math>
+        `,
+
+        answers: [
+
+            `<math>
+                <mrow>
+                    <mfrac><mn>3</mn><mn>4</mn></mfrac>
+                    <mi>ln</mi><mo>|</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>7</mn><mo>|</mo>
+                    <mo>+</mo>
+                    <mfrac><mn>1</mn><mn>2</mn></mfrac>
+                    <msup><mi>e</mi><mrow><mn>2</mn><mi>x</mi></mrow></msup>
+                    <mo>+</mo>
+                    <mfrac><mn>1</mn><mn>5</mn></mfrac>
+                    <mi>sin</mi><mo>(</mo><mn>5</mn><mi>x</mi><mo>)</mo>
+                    <mo>+</mo><mi>C</mi>
+                </mrow>
+            </math>`,
+
+            `<math>
+                <mrow>
+                    <mn>3</mn>
+                    <mi>ln</mi><mo>|</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>7</mn><mo>|</mo>
+                    <mo>+</mo>
+                    <mn>2</mn>
+                    <msup><mi>e</mi><mrow><mn>2</mn><mi>x</mi></mrow></msup>
+                    <mo>+</mo>
+                    <mn>5</mn><mi>sin</mi><mo>(</mo><mn>5</mn><mi>x</mi><mo>)</mo>
+                    <mo>+</mo><mi>C</mi>
+                </mrow>
+            </math>`,
+
+            `<math>
+                <mrow>
+                    <mfrac><mn>3</mn><mn>4</mn></mfrac>
+                    <mi>ln</mi><mo>|</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>7</mn><mo>|</mo>
+                    <mo>−</mo>
+                    <mfrac><mn>1</mn><mn>2</mn></mfrac>
+                    <msup><mi>e</mi><mrow><mn>2</mn><mi>x</mi></mrow></msup>
+                    <mo>−</mo>
+                    <mfrac><mn>1</mn><mn>5</mn></mfrac>
+                    <mi>sin</mi><mo>(</mo><mn>5</mn><mi>x</mi><mo>)</mo>
+                    <mo>+</mo><mi>C</mi>
+                </mrow>
+            </math>`,
+
+            `<math>
+                <mrow>
+                    <mfrac><mn>3</mn><mn>4</mn></mfrac>
+                    <mi>ln</mi><mo>|</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>7</mn><mo>|</mo>
+                    <mo>+</mo>
+                    <msup><mi>e</mi><mrow><mn>2</mn><mi>x</mi></mrow></msup>
+                    <mo>+</mo>
+                    <mi>sin</mi><mo>(</mo><mn>5</mn><mi>x</mi><mo>)</mo>
+                    <mo>+</mo><mi>C</mi>
+                </mrow>
+            </math>`
+        ],
+
+        correct: 0,
+
+        solution: `
+            <div class="solution-step">
+                Integrate each term separately.
+            </div>
+
+            <div class="solution-step">
+                First:
+                <math display="block">
+                    <mrow>
+                        <mo>∫</mo>
+                        <mfrac>
+                            <mn>3</mn>
+                            <mrow><mn>4</mn><mi>x</mi><mo>+</mo><mn>7</mn></mrow>
+                        </mfrac>
+                        <mi>dx</mi>
+                        <mo>=</mo>
+                        <mfrac><mn>3</mn><mn>4</mn></mfrac>
+                        <mi>ln</mi>
+                        <mo>|</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>7</mn><mo>|</mo>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Second:
+                <math display="block">
+                    <mrow>
+                        <mo>∫</mo>
+                        <msup><mi>e</mi><mrow><mn>2</mn><mi>x</mi></mrow></msup>
+                        <mi>dx</mi>
+                        <mo>=</mo>
+                        <mfrac><mn>1</mn><mn>2</mn></mfrac>
+                        <msup><mi>e</mi><mrow><mn>2</mn><mi>x</mi></mrow></msup>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Third:
+                <math display="block">
+                    <mrow>
+                        <mo>∫</mo>
+                        <mi>cos</mi><mo>(</mo><mn>5</mn><mi>x</mi><mo>)</mo>
+                        <mi>dx</mi>
+                        <mo>=</mo>
+                        <mfrac><mn>1</mn><mn>5</mn></mfrac>
+                        <mi>sin</mi><mo>(</mo><mn>5</mn><mi>x</mi><mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="solution-step">
+                Combine the results:
+                <math display="block">
+                    <mrow>
+                        <mfrac><mn>3</mn><mn>4</mn></mfrac>
+                        <mi>ln</mi><mo>|</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>7</mn><mo>|</mo>
+                        <mo>+</mo>
+                        <mfrac><mn>1</mn><mn>2</mn></mfrac>
+                        <msup><mi>e</mi><mrow><mn>2</mn><mi>x</mi></mrow></msup>
+                        <mo>+</mo>
+                        <mfrac><mn>1</mn><mn>5</mn></mfrac>
+                        <mi>sin</mi><mo>(</mo><mn>5</mn><mi>x</mi><mo>)</mo>
+                        <mo>+</mo><mi>C</mi>
+                    </mrow>
+                </math>
+            </div>
+        `
+    }
+
+];
+
+
+/* =========================================================
+   QUIZ STATE
+========================================================= */
+
+let currentQuestion = 0;
+let score = 0;
+
+let answered = new Array(questions.length).fill(false);
+let selectedAnswers = new Array(questions.length).fill(null);
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const questionGrid = document.getElementById("questionGrid");
+const questionLabel = document.getElementById("questionLabel");
+const difficulty = document.getElementById("difficulty");
+const questionText = document.getElementById("questionText");
+const integralDisplay = document.getElementById("integralDisplay");
+const answersContainer = document.getElementById("answers");
+
+const feedback = document.getElementById("feedback");
+const feedbackTitle = document.getElementById("feedbackTitle");
+const feedbackMessage = document.getElementById("feedbackMessage");
+const solutionContent = document.getElementById("solutionContent");
+
+const progressText = document.getElementById("progressText");
+const scoreText = document.getElementById("scoreText");
+const progressFill = document.getElementById("progressFill");
+
+const previousButton = document.getElementById("previousButton");
+const nextButton = document.getElementById("nextButton");
+
+const scoreCard = document.getElementById("scoreCard");
+const finalScore = document.getElementById("finalScore");
+const scoreMessage = document.getElementById("scoreMessage");
+
+
+/* =========================================================
+   QUESTION NUMBERS
+========================================================= */
+
+function createQuestionNumbers() {
+
+    questionGrid.innerHTML = "";
+
+    questions.forEach((question, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "question-number";
+        button.textContent = index + 1;
+
+        button.addEventListener("click", () => {
+            currentQuestion = index;
+            displayQuestion();
+        });
+
+        questionGrid.appendChild(button);
+
+    });
+
+}
+
+
+/* =========================================================
+   DISPLAY QUESTION
+========================================================= */
+
+function displayQuestion() {
+
+    const question = questions[currentQuestion];
+
+    questionLabel.textContent =
+        `QUESTION ${currentQuestion + 1}`;
+
+    difficulty.textContent =
+        question.difficulty;
+
+    difficulty.className =
+        `difficulty ${question.difficultyClass}`;
+
+    questionText.innerHTML =
+        question.text;
+
+    integralDisplay.innerHTML =
+        question.integral;
+
+    answersContainer.innerHTML = "";
+
+    question.answers.forEach((answer, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer-button";
+
+        button.innerHTML = answer;
+
+        button.addEventListener("click", () => {
+
+            if (answered[currentQuestion]) {
+                return;
+            }
+
+            checkAnswer(index);
+
+        });
+
+        answersContainer.appendChild(button);
+
+    });
+
+
+    /* Restore previous answer */
+
+    if (answered[currentQuestion]) {
+
+        const selected =
+            selectedAnswers[currentQuestion];
+
+        const buttons =
+            document.querySelectorAll(".answer-button");
+
+        buttons.forEach((button, index) => {
+
+            button.disabled = true;
+
+            if (index === questions[currentQuestion].correct) {
+                button.classList.add("correct-answer");
+            }
+
+            if (
+                index === selected &&
+                index !== questions[currentQuestion].correct
+            ) {
+                button.classList.add("wrong-answer");
+            }
+
+        });
+
+        showFeedback(
+            selected === question.correct
+        );
+
+    } else {
+
+        feedback.classList.remove("show");
+
+    }
+
+
+    updateProgress();
+    updateQuestionNumbers();
+
+    previousButton.disabled =
+        currentQuestion === 0;
+
+    nextButton.disabled =
+        currentQuestion === questions.length - 1;
+
+}
+
+
+/* =========================================================
+   CHECK ANSWER
+========================================================= */
+
+function checkAnswer(selected) {
+
+    const question = questions[currentQuestion];
+
+    answered[currentQuestion] = true;
+    selectedAnswers[currentQuestion] = selected;
+
+    const isCorrect =
+        selected === question.correct;
+
+    if (isCorrect) {
+        score++;
+    }
+
+    const buttons =
+        document.querySelectorAll(".answer-button");
+
+    buttons.forEach((button, index) => {
+
+        button.disabled = true;
+
+        if (index === question.correct) {
+            button.classList.add("correct-answer");
+        }
+
+        if (
+            index === selected &&
+            index !== question.correct
+        ) {
+            button.classList.add("wrong-answer");
+        }
+
+    });
+
+    showFeedback(isCorrect);
+
+    updateProgress();
+    updateQuestionNumbers();
+
+}
+
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+function showFeedback(isCorrect) {
+
+    const question = questions[currentQuestion];
+
+    feedback.classList.add("show");
+
+    if (isCorrect) {
+
+        feedback.className =
+            "feedback show correct";
+
+        feedbackTitle.textContent =
+            "Correct! ✓";
+
+        feedbackMessage.textContent =
+            "Excellent. You recognized the correct form and applied the appropriate rule.";
+
+    } else {
+
+        feedback.className =
+            "feedback show wrong";
+
+        feedbackTitle.textContent =
+            "Not quite.";
+
+        feedbackMessage.textContent =
+            "Look carefully at the form of the integral. The solution below shows the correct approach.";
+
+    }
+
+    solutionContent.innerHTML =
+        question.solution;
+
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+function updateProgress() {
+
+    const completed =
+        answered.filter(Boolean).length;
+
+    progressText.textContent =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+
+    scoreText.textContent =
+        `Score: ${score}`;
+
+    const percentage =
+        ((currentQuestion + 1) / questions.length) * 100;
+
+    progressFill.style.width =
+        `${percentage}%`;
+
+}
+
+
+/* =========================================================
+   QUESTION NUMBERS UPDATE
+========================================================= */
+
+function updateQuestionNumbers() {
+
+    const buttons =
+        document.querySelectorAll(".question-number");
+
+    buttons.forEach((button, index) => {
+
+        button.classList.remove("active");
+        button.classList.remove("correct");
+
+        if (index === currentQuestion) {
+            button.classList.add("active");
+        }
+
+        if (answered[index]) {
+            button.classList.add("correct");
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   NEXT / PREVIOUS
+========================================================= */
+
+previousButton.addEventListener("click", () => {
+
+    if (currentQuestion > 0) {
+
+        currentQuestion--;
+
+        displayQuestion();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+});
+
+
+nextButton.addEventListener("click", () => {
+
+    if (currentQuestion < questions.length - 1) {
+
+        currentQuestion++;
+
+        displayQuestion();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    } else {
+
+        showFinalScore();
+
+    }
+
+});
+
+
+/* =========================================================
+   FINAL SCORE
+========================================================= */
+
+function showFinalScore() {
+
+    scoreCard.classList.add("show");
+
+    finalScore.textContent =
+        `${score} / ${questions.length}`;
+
+    if (score === 15) {
+
+        scoreMessage.textContent =
+            "Outstanding. You have a very strong understanding of the standard integration forms.";
+
+    } else if (score >= 12) {
+
+        scoreMessage.textContent =
+            "Excellent work. Your recognition of integration forms is developing very well.";
+
+    } else if (score >= 9) {
+
+        scoreMessage.textContent =
+            "Good progress. Review the rules you found difficult and try the questions again.";
+
+    } else if (score >= 6) {
+
+        scoreMessage.textContent =
+            "You are building the foundation. Go back through the lesson and focus on recognizing each form.";
+
+    } else {
+
+        scoreMessage.textContent =
+            "Keep practicing. Understanding the form of an integral is the first step towards becoming confident with integration.";
+
+    }
+
+    scoreCard.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   RESTART
+========================================================= */
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+    score = 0;
+
+    answered =
+        new Array(questions.length).fill(false);
+
+    selectedAnswers =
+        new Array(questions.length).fill(null);
+
+    scoreCard.classList.remove("show");
+
+    displayQuestion();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+createQuestionNumbers();
+displayQuestion();
+
+</script>
+
+</body>
+</html>
