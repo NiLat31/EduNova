@@ -121,7 +121,62 @@
 
 </main>
 <footer><div class="fl">Edu<span>Nova</span></div><p>© 2026 EduNova. Mathematics, reimagined.</p></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-const u=localStorage.getItem("eduNovaUsername");if(!u)location.href="index.html";else document.getElementById("username").textContent=u;
-function logout(){localStorage.removeItem("eduNovaUsername");localStorage.removeItem("eduNovaEmail");location.href="index.html"}function coming(n){alert(n+" is being prepared for EduNova. The chapter content is coming soon! 📚")}
-</script></body></html>
+const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+const { createClient } = supabase;
+
+const supabaseClient = createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+async function checkSession(){
+
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
+
+    if(!session){
+        location.href = "index.html";
+        return;
+    }
+
+    const { data: student, error } = await supabaseClient
+        .from("students")
+        .select("username")
+        .eq("id", session.user.id)
+        .single();
+
+    if(error || !student){
+        await supabaseClient.auth.signOut();
+        localStorage.removeItem("eduNovaUsername");
+        localStorage.removeItem("eduNovaEmail");
+        location.href = "index.html";
+        return;
+    }
+
+    document.getElementById("username").textContent = student.username;
+}
+
+async function logout(){
+
+    await supabaseClient.auth.signOut();
+
+    localStorage.removeItem("eduNovaUsername");
+    localStorage.removeItem("eduNovaEmail");
+
+    location.href = "index.html";
+}
+
+function coming(n){
+    alert(n + " is being prepared for EduNova. The chapter content is coming soon! 📚");
+}
+
+document.addEventListener("DOMContentLoaded", checkSession);
+</script>
+</body>
+</html>
