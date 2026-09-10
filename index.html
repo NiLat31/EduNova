@@ -161,16 +161,20 @@ async function submitAuth(e){
 
     const button = $("submit");
     const username = $("user").value.trim();
-    const email = $("email").value.trim();
+    const email = $("email").value.trim().toLowerCase();
     const password = $("pass").value;
 
     $("msg").classList.remove("show");
 
-    if(!username){
-        return message("Please enter a username.");
-    }
-
     if(mode === "signup"){
+
+        if(!username){
+            return message("Please enter a username.");
+        }
+
+        if(!email){
+            return message("Please enter your email address.");
+        }
 
         if(password.length < 6){
             return message("Please use a password with at least 6 characters.");
@@ -206,16 +210,18 @@ async function submitAuth(e){
                 id: data.user.id,
                 username: username
             });
-if(profileError){
-    console.error("Profile error:", profileError);
 
-    button.disabled = false;
-    button.textContent = "CREATE ACCOUNT →";
+        if(profileError){
+            console.error("Profile error:", profileError);
 
-    return message(
-        "Your account was created, but your student profile could not be saved."
-    );
-}
+            button.disabled = false;
+            button.textContent = "CREATE ACCOUNT →";
+
+            return message(
+                "Your account was created, but your student profile could not be saved."
+            );
+        }
+
         localStorage.setItem("eduNovaUsername", username);
         localStorage.setItem("eduNovaEmail", email);
 
@@ -223,24 +229,35 @@ if(profileError){
 
     }else{
 
+        if(!email){
+            return message("Please enter your email address.");
+        }
+
+        if(!password){
+            return message("Please enter your password.");
+        }
+
         button.disabled = true;
         button.textContent = "LOGGING IN...";
 
         const { data, error } = await supabaseClient.auth.signInWithPassword({
-            email: email || $("email").value,
+            email: email,
             password: password
         });
 
-       if(error){
-    button.disabled = false;
-    button.textContent = "LOG IN →";
+        if(error){
+            console.error("Login error:", error);
 
-    if(error.message.toLowerCase().includes("email not confirmed")){
-        return message("Please confirm your email address before logging in.");
-    }
+            button.disabled = false;
+            button.textContent = "LOG IN →";
 
-    return message(error.message);
-}
+            if(error.message.toLowerCase().includes("email not confirmed")){
+                return message("Please confirm your email address before logging in.");
+            }
+
+            return message(error.message);
+        }
+
         const { data: student, error: studentError } = await supabaseClient
             .from("students")
             .select("username")
@@ -248,9 +265,14 @@ if(profileError){
             .single();
 
         if(studentError || !student){
+            console.error("Student profile error:", studentError);
+
             button.disabled = false;
             button.textContent = "LOG IN →";
-            return message("Your account was found, but your EduNova profile could not be loaded.");
+
+            return message(
+                "Your account was found, but your EduNova profile could not be loaded."
+            );
         }
 
         localStorage.setItem("eduNovaUsername", student.username);
@@ -259,7 +281,6 @@ if(profileError){
         location.href = "dashboard.html";
     }
 }
-
 async function navState(){
 
     const {
