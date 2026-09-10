@@ -1,0 +1,3446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trigonometrical Relationships | EduNova</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #f7f7f7;
+            color: #111;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            height: 78px;
+            background: #111;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #e00000;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        .back-link:hover {
+            color: #e00000;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: #111;
+            color: white;
+            padding: 85px 7%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero small {
+            color: #e00000;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(42px, 6vw, 68px);
+            line-height: 1.1;
+            margin: 15px 0 20px;
+            max-width: 850px;
+        }
+
+        .hero p {
+            color: #ccc;
+            max-width: 720px;
+            font-size: 18px;
+        }
+
+        /* =========================
+           HERO DECORATION
+        ========================= */
+
+        .hero-decoration {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 350px;
+            height: 350px;
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .hero-decoration .circle {
+            position: absolute;
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: 50%;
+        }
+
+        .hero-decoration .circle.one {
+            width: 300px;
+            height: 300px;
+            right: 0;
+            top: 25px;
+        }
+
+        .hero-decoration .circle.two {
+            width: 205px;
+            height: 205px;
+            right: 48px;
+            top: 72px;
+            border-color: rgba(224,0,0,0.55);
+        }
+
+        .hero-decoration .circle.three {
+            width: 105px;
+            height: 105px;
+            right: 98px;
+            top: 122px;
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        .hero-decoration .math-symbol {
+            position: absolute;
+            font-family: "Playfair Display", serif;
+            color: rgba(255,255,255,0.16);
+            font-size: 45px;
+        }
+
+        .hero-decoration .symbol-one {
+            top: 0;
+            right: 150px;
+        }
+
+        .hero-decoration .symbol-two {
+            bottom: 8px;
+            right: 5px;
+            color: rgba(224,0,0,0.35);
+        }
+
+        .hero-decoration .symbol-three {
+            top: 135px;
+            left: 10px;
+        }
+
+        .hero-decoration .dot {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            background: #e00000;
+            border-radius: 50%;
+        }
+
+        .hero-decoration .dot-one {
+            right: 68px;
+            top: 65px;
+        }
+
+        .hero-decoration .dot-two {
+            right: 275px;
+            bottom: 65px;
+        }
+
+        .hero-decoration .line {
+            position: absolute;
+            height: 1px;
+            background: rgba(255,255,255,0.16);
+            transform-origin: left center;
+        }
+
+        .hero-decoration .line-one {
+            width: 130px;
+            right: 180px;
+            top: 90px;
+            transform: rotate(32deg);
+        }
+
+        .hero-decoration .line-two {
+            width: 105px;
+            right: 30px;
+            bottom: 100px;
+            transform: rotate(-35deg);
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 75px 30px;
+        }
+
+        section {
+            margin-bottom: 75px;
+        }
+
+        h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 18px;
+        }
+
+        /* =========================
+           KEEP IN MIND
+        ========================= */
+
+        .keep-box {
+            background: white;
+            border-left: 5px solid #e00000;
+            padding: 25px 28px;
+            margin: 30px 0;
+        }
+
+        .keep-box strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 17px;
+        }
+
+        /* =========================
+           IMPORTANT BOX
+        ========================= */
+
+        .important-box {
+            background: #111;
+            color: white;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box strong {
+            color: #e00000;
+        }
+
+        /* =========================
+           REMINDER BOX
+        ========================= */
+
+        .reminder-box {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 32px;
+            margin: 30px 0;
+        }
+
+        .reminder-label {
+            color: #e00000;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        /* =========================
+           FORMULA BOX
+        ========================= */
+
+        .formula-box {
+            background: #111;
+            color: white;
+            padding: 32px;
+            margin: 30px 0;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .formula-box math {
+            font-size: 28px;
+        }
+
+        .formula-label {
+            color: #aaa;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           DERIVATION
+        ========================= */
+
+        .derivation {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 32px;
+            margin: 30px 0;
+        }
+
+        .derivation-title {
+            color: #e00000;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .derivation-step {
+            padding: 17px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .derivation-step:last-child {
+            border-bottom: none;
+        }
+
+        .derivation-step math {
+            font-size: 25px;
+        }
+
+        .reason {
+            color: #555;
+            margin-top: 8px;
+            margin-bottom: 0;
+        }
+
+        /* =========================
+           EXAMPLE
+        ========================= */
+
+        .example {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 32px;
+            margin: 30px 0;
+        }
+
+        .example-title {
+            color: #e00000;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .step {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step math {
+            font-size: 24px;
+        }
+
+        /* =========================
+           DOUBLE ANGLE
+        ========================= */
+
+        .double-angle {
+            background: #111;
+            color: white;
+            padding: 38px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .double-angle h3 {
+            color: white;
+        }
+
+        .double-angle p {
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+
+        .double-angle math {
+            font-size: 28px;
+            margin: 12px;
+        }
+
+        /* =========================
+           SUMMARY
+        ========================= */
+
+        .summary-box {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 35px;
+        }
+
+        .summary-item {
+            padding: 18px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-item math {
+            font-size: 22px;
+        }
+
+        /* =========================
+           PRACTICE
+        ========================= */
+
+        .practice-section {
+            text-align: center;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 55px 35px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .practice-section h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .practice-section p {
+            margin: 0 auto 30px;
+            color: #555;
+            max-width: 650px;
+        }
+
+        .practice-button {
+            display: inline-block;
+            background: #111;
+            color: white;
+            padding: 16px 30px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .practice-button:hover {
+            background: #e00000;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111;
+            color: white;
+            padding: 45px 7%;
+            text-align: center;
+        }
+
+        footer .logo {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aaa;
+            margin: 0;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            .hero {
+                padding: 65px 7%;
+            }
+
+            .hero-decoration {
+                right: -110px;
+                opacity: 0.65;
+            }
+
+            main {
+                padding: 55px 20px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            .formula-box math,
+            .double-angle math {
+                font-size: 23px;
+            }
+
+            .derivation-step math,
+            .step math {
+                font-size: 21px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <a href="dashboard.html" class="logo">
+        Edu<span>Nova</span>
+    </a>
+
+    <a href="integration.html" class="back-link">
+        ← Integration
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <small>Integration • Lesson 3</small>
+
+        <h1>Integration Using Trigonometrical Relationships</h1>
+
+        <p>
+            Discover how familiar trigonometric differentiation rules
+            lead directly to their integration formulas.
+        </p>
+
+    </div>
+
+
+    <div class="hero-decoration">
+
+        <div class="circle one"></div>
+        <div class="circle two"></div>
+        <div class="circle three"></div>
+
+        <span class="math-symbol symbol-one">∫</span>
+        <span class="math-symbol symbol-two">θ</span>
+        <span class="math-symbol symbol-three">π</span>
+
+        <span class="dot dot-one"></span>
+        <span class="dot dot-two"></span>
+
+        <span class="line line-one"></span>
+        <span class="line line-two"></span>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+<!-- =========================
+     INTRODUCTION
+========================= -->
+
+<section>
+
+    <h2>Where Do These Integration Rules Come From?</h2>
+
+    <p>
+        You may have already seen formulas such as
+        the integral of
+        <span class="inline-math">
+            <math>
+                <msup>
+                    <mi>sec</mi>
+                    <mn>2</mn>
+                </msup>
+                <mi>x</mi>
+            </math>
+        </span>
+        or
+        <span class="inline-math">
+            <math>
+                <mi>sin</mi>
+                <mi>x</mi>
+            </math>
+        </span>.
+    </p>
+
+    <p>
+        It can be tempting to memorize these formulas and use them
+        whenever they appear. But there is a much better question to ask:
+    </p>
+
+
+    <div class="important-box">
+
+        <p>
+            <strong>Ask yourself:</strong>
+        </p>
+
+        <p style="margin-bottom:0;">
+            “What function would give me this expression when I differentiate it?”
+        </p>
+
+    </div>
+
+
+    <p>
+        This is because integration and differentiation are closely connected.
+        Integration can undo differentiation.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     INTEGRATION CANCELS DIFFERENTIATION
+========================= -->
+
+<section>
+
+    <h2>Integration Undoes Differentiation</h2>
+
+    <p>
+        Think of differentiation and integration as opposite processes.
+        Differentiation takes a function and finds its derivative.
+        Integration works backwards and finds a function whose derivative
+        is the expression we started with.
+    </p>
+
+
+    <div class="formula-box">
+
+        <div class="formula-label">
+            Differentiation followed by integration
+        </div>
+
+        <math display="block">
+
+            <mrow>
+
+                <mo>∫</mo>
+
+                <mfrac>
+
+                    <mi>d</mi>
+                    <mrow>
+                        <mi>d</mi><mi>x</mi>
+                    </mrow>
+
+                </mfrac>
+
+                <mo>[</mo>
+
+                <mi>f</mi>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>)</mo>
+
+                <mo>]</mo>
+
+                <mi>dx</mi>
+
+                <mo>=</mo>
+
+                <mi>f</mi>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>)</mo>
+
+                <mo>+</mo>
+
+                <mi>C</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+
+    <div class="formula-box">
+
+        <div class="formula-label">
+            Integration followed by differentiation
+        </div>
+
+        <math display="block">
+
+            <mrow>
+
+                <mfrac>
+
+                    <mi>d</mi>
+
+                    <mrow>
+                        <mi>d</mi><mi>x</mi>
+                    </mrow>
+
+                </mfrac>
+
+                <mo>[</mo>
+
+                <mo>∫</mo>
+
+                <mi>f</mi>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>)</mo>
+
+                <mi>dx</mi>
+
+                <mo>]</mo>
+
+                <mo>=</mo>
+
+                <mi>f</mi>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>)</mo>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+
+    <div class="keep-box">
+
+        <strong>Why is there a +C?</strong>
+
+        Differentiating a constant gives zero.
+        Therefore, differentiation cannot tell us which constant was originally present.
+        When we integrate, we include <strong>+C</strong> to represent any constant.
+
+    </div>
+
+
+    <div class="example">
+
+        <div class="example-title">
+            See the idea in action
+        </div>
+
+
+        <div class="step">
+
+            <p>Start with a function:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mi>f</mi>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>=</mo>
+
+                    <msup>
+                        <mi>x</mi>
+                        <mn>3</mn>
+                    </msup>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="step">
+
+            <p>Differentiate it:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>(</mo>
+
+                    <msup>
+                        <mi>x</mi>
+                        <mn>3</mn>
+                    </msup>
+
+                    <mo>)</mo>
+
+                    <mo>=</mo>
+
+                    <mn>3</mn>
+                    <msup>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="step">
+
+            <p>Now integrate the result:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <mn>3</mn>
+                    <msup>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <msup>
+                        <mi>x</mi>
+                        <mn>3</mn>
+                    </msup>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DIFFERENTIATION REMINDER
+========================= -->
+
+<section>
+
+    <h2>A Quick Differentiation Reminder</h2>
+
+    <p>
+        Since we are going to work backwards from differentiation,
+        let's remind ourselves of the trigonometric derivatives we need.
+    </p>
+
+
+    <div class="summary-box">
+
+        <div class="summary-item">
+
+            <strong>Sine:</strong>
+
+            <math>
+
+                <mrow>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>(</mo>
+                    <mi>sin</mi><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>=</mo>
+
+                    <mi>cos</mi><mi>x</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <strong>Cosine:</strong>
+
+            <math>
+
+                <mrow>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>(</mo>
+                    <mi>cos</mi><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>=</mo>
+
+                    <mo>−</mo>
+                    <mi>sin</mi><mi>x</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <strong>Tangent:</strong>
+
+            <math>
+
+                <mrow>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>(</mo>
+                    <mi>tan</mi><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>=</mo>
+
+                    <msup>
+                        <mi>sec</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <strong>Cotangent:</strong>
+
+            <math>
+
+                <mrow>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>(</mo>
+                    <mi>ln</mi>
+                    <mo>|</mo>
+                    <mi>sin</mi><mi>x</mi>
+                    <mo>|</mo>
+                    <mo>)</mo>
+
+                    <mo>=</mo>
+
+                    <mi>cot</mi><mi>x</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SEC^2
+========================= -->
+
+<section>
+
+    <h2>1. Integrating sec²x</h2>
+
+    <p>
+        Let's begin with one of the most direct examples.
+        We want to find:
+    </p>
+
+
+    <div class="formula-box">
+
+        <math display="block">
+
+            <mrow>
+
+                <mo>∫</mo>
+
+                <msup>
+                    <mi>sec</mi>
+                    <mn>2</mn>
+                </msup>
+
+                <mi>x</mi>
+
+                <mi>dx</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+
+    <p>
+        Instead of trying to remember the answer, ask:
+    </p>
+
+
+    <div class="keep-box">
+
+        <strong>What differentiates to sec²x?</strong>
+
+        From differentiation:
+
+        <span class="inline-math">
+
+            <math>
+
+                <mrow>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>(</mo>
+
+                    <mi>tan</mi><mi>x</mi>
+
+                    <mo>)</mo>
+
+                    <mo>=</mo>
+
+                    <msup>
+                        <mi>sec</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                </mrow>
+
+            </math>
+
+        </span>
+
+    </div>
+
+
+    <div class="derivation">
+
+        <div class="derivation-title">
+            Derivation
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>We know:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>(</mo>
+                    <mi>tan</mi><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>=</mo>
+
+                    <msup>
+                        <mi>sec</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                Integration reverses this differentiation:
+            </p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <msup>
+                        <mi>sec</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <mi>tan</mi><mi>x</mi>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+    </div>
+
+
+    <div class="formula-box">
+
+        <div class="formula-label">
+            Result
+        </div>
+
+        <math display="block">
+
+            <mrow>
+
+                <mo>∫</mo>
+
+                <msup>
+                    <mi>sec</mi>
+                    <mn>2</mn>
+                </msup>
+
+                <mi>x</mi>
+
+                <mi>dx</mi>
+
+                <mo>=</mo>
+
+                <mi>tan</mi><mi>x</mi>
+
+                <mo>+</mo>
+
+                <mi>C</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SEC^2 AX
+========================= -->
+
+<section>
+
+    <h2>What If We Have ax?</h2>
+
+    <p>
+        Now suppose the angle is not simply
+        <span class="inline-math">
+            <math><mi>x</mi></math>
+        </span>,
+        but
+        <span class="inline-math">
+            <math><mi>a</mi><mi>x</mi></math>
+        </span>.
+    </p>
+
+
+    <p>
+        We want to find:
+    </p>
+
+
+    <div class="formula-box">
+
+        <math display="block">
+
+            <mrow>
+
+                <mo>∫</mo>
+
+                <msup>
+                    <mi>sec</mi>
+                    <mn>2</mn>
+                </msup>
+
+                <mo>(</mo>
+                <mi>a</mi><mi>x</mi>
+                <mo>)</mo>
+
+                <mi>dx</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+
+    <div class="derivation">
+
+        <div class="derivation-title">
+            Deriving the 1/a
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>Start with the function:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mi>tan</mi>
+
+                    <mo>(</mo>
+                    <mi>a</mi><mi>x</mi>
+                    <mo>)</mo>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                Differentiate using the chain rule:
+            </p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>[</mo>
+
+                    <mi>tan</mi>
+                    <mo>(</mo>
+                    <mi>a</mi><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>]</mo>
+
+                    <mo>=</mo>
+
+                    <mi>a</mi>
+
+                    <msup>
+                        <mi>sec</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mo>(</mo>
+                    <mi>a</mi><mi>x</mi>
+                    <mo>)</mo>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                We need only
+                <span class="inline-math">
+                    <math>
+                        <msup>
+                            <mi>sec</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo>
+                    </math>
+                </span>,
+                but differentiation produced an extra
+                <span class="inline-math">
+                    <math><mi>a</mi></math>
+                </span>.
+            </p>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                Divide by
+                <span class="inline-math">
+                    <math><mi>a</mi></math>
+                </span>
+                to remove that extra factor:
+            </p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mi>a</mi>
+                    </mfrac>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>[</mo>
+
+                    <mi>tan</mi>
+                    <mo>(</mo>
+                    <mi>a</mi><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>]</mo>
+
+                    <mo>=</mo>
+
+                    <msup>
+                        <mi>sec</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mo>(</mo>
+                    <mi>a</mi><mi>x</mi>
+                    <mo>)</mo>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                Therefore:
+            </p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <msup>
+                        <mi>sec</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mo>(</mo>
+                    <mi>a</mi><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mi>a</mi>
+                    </mfrac>
+
+                    <mi>tan</mi>
+
+                    <mo>(</mo>
+                    <mi>a</mi><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+    </div>
+
+
+    <div class="keep-box">
+
+        <strong>Why does 1/a appear?</strong>
+
+        Because differentiating a function containing
+        <span class="inline-math">
+            <math><mi>a</mi><mi>x</mi></math>
+        </span>
+        produces an extra factor of
+        <span class="inline-math">
+            <math><mi>a</mi></math>
+        </span>.
+        The
+        <span class="inline-math">
+            <math><mfrac><mn>1</mn><mi>a</mi></mfrac></math>
+        </span>
+        cancels it.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COT
+========================= -->
+
+<section>
+
+    <h2>2. Integrating cot x</h2>
+
+    <p>
+        For
+        <span class="inline-math">
+            <math><mi>cot</mi><mi>x</mi></math>
+        </span>,
+        we again work backwards from differentiation.
+    </p>
+
+
+    <div class="derivation">
+
+        <div class="derivation-title">
+            Derivation
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                Start with:
+            </p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mi>ln</mi>
+
+                    <mo>|</mo>
+                    <mi>sin</mi><mi>x</mi>
+                    <mo>|</mo>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                Differentiate it:
+            </p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>[</mo>
+
+                    <mi>ln</mi>
+                    <mo>|</mo>
+                    <mi>sin</mi><mi>x</mi>
+                    <mo>|</mo>
+
+                    <mo>]</mo>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+
+                        <mi>cos</mi><mi>x</mi>
+
+                        <mi>sin</mi><mi>x</mi>
+
+                    </mfrac>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                Since
+                <span class="inline-math">
+                    <math>
+                        <mfrac>
+                            <mi>cos</mi><mi>x</mi>
+                            <mi>sin</mi><mi>x</mi>
+                        </mfrac>
+                    </math>
+                </span>
+                is
+                <span class="inline-math">
+                    <math><mi>cot</mi><mi>x</mi></math>
+                </span>:
+            </p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>[</mo>
+
+                    <mi>ln</mi>
+                    <mo>|</mo>
+                    <mi>sin</mi><mi>x</mi>
+                    <mo>|</mo>
+
+                    <mo>]</mo>
+
+                    <mo>=</mo>
+
+                    <mi>cot</mi><mi>x</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <mi>cot</mi><mi>x</mi>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <mi>ln</mi>
+                    <mo>|</mo>
+                    <mi>sin</mi><mi>x</mi>
+                    <mo>|</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+    </div>
+
+
+    <div class="formula-box">
+
+        <div class="formula-label">
+            Result
+        </div>
+
+        <math display="block">
+
+            <mrow>
+
+                <mo>∫</mo>
+
+                <mi>cot</mi><mi>x</mi>
+
+                <mi>dx</mi>
+
+                <mo>=</mo>
+
+                <mi>ln</mi>
+
+                <mo>|</mo>
+
+                <mi>sin</mi><mi>x</mi>
+
+                <mo>|</mo>
+
+                <mo>+</mo>
+
+                <mi>C</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COSEC^2
+========================= -->
+
+<section>
+
+    <h2>3. Integrating cosec²x</h2>
+
+    <p>
+        Now use the same reverse-thinking method.
+    </p>
+
+
+    <div class="keep-box">
+
+        <strong>Ask:</strong>
+
+        What differentiates to
+        <span class="inline-math">
+            <math>
+                <msup>
+                    <mi>cosec</mi>
+                    <mn>2</mn>
+                </msup>
+                <mi>x</mi>
+            </math>
+        </span>
+        with the correct sign?
+
+    </div>
+
+
+    <div class="derivation">
+
+        <div class="derivation-title">
+            Derivation
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>We know:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>(</mo>
+
+                    <mi>cot</mi><mi>x</mi>
+
+                    <mo>)</mo>
+
+                    <mo>=</mo>
+
+                    <mo>−</mo>
+
+                    <msup>
+                        <mi>cosec</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                Our integral contains positive
+                <span class="inline-math">
+                    <math>
+                        <msup>
+                            <mi>cosec</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mi>x</mi>
+                    </math>
+                </span>,
+                so we need a negative sign:
+            </p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mfrac>
+                        <mi>d</mi>
+                        <mrow>
+                            <mi>d</mi><mi>x</mi>
+                        </mrow>
+                    </mfrac>
+
+                    <mo>(</mo>
+
+                    <mo>−</mo>
+                    <mi>cot</mi><mi>x</mi>
+
+                    <mo>)</mo>
+
+                    <mo>=</mo>
+
+                    <msup>
+                        <mi>cosec</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <msup>
+                        <mi>cosec</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <mo>−</mo>
+
+                    <mi>cot</mi><mi>x</mi>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+    </div>
+
+
+    <div class="formula-box">
+
+        <div class="formula-label">
+            Result
+        </div>
+
+        <math display="block">
+
+            <mrow>
+
+                <mo>∫</mo>
+
+                <msup>
+                    <mi>cosec</mi>
+                    <mn>2</mn>
+                </msup>
+
+                <mi>x</mi>
+
+                <mi>dx</mi>
+
+                <mo>=</mo>
+
+                <mo>−</mo>
+
+                <mi>cot</mi><mi>x</mi>
+
+                <mo>+</mo>
+
+                <mi>C</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SIN COS
+========================= -->
+
+<section>
+
+    <h2>4. Integrating sin x cos x</h2>
+
+    <p>
+        This time, the integrand contains two trigonometric functions
+        multiplied together.
+    </p>
+
+
+    <div class="formula-box">
+
+        <math display="block">
+
+            <mrow>
+
+                <mo>∫</mo>
+
+                <mi>sin</mi><mi>x</mi>
+
+                <mi>cos</mi><mi>x</mi>
+
+                <mi>dx</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+
+    <p>
+        We can use the double-angle identity to turn the product into
+        a single trigonometric function.
+    </p>
+
+
+    <div class="double-angle">
+
+        <h3>Remember</h3>
+
+        <p>
+            The double-angle formula for sine is:
+        </p>
+
+        <math display="block">
+
+            <mrow>
+
+                <mi>sin</mi>
+
+                <mo>(</mo>
+                <mn>2</mn><mi>x</mi>
+                <mo>)</mo>
+
+                <mo>=</mo>
+
+                <mn>2</mn>
+
+                <mi>sin</mi><mi>x</mi>
+
+                <mi>cos</mi><mi>x</mi>
+
+            </mrow>
+
+        </math>
+
+
+        <p>
+            Therefore:
+        </p>
+
+        <math display="block">
+
+            <mrow>
+
+                <mi>sin</mi><mi>x</mi>
+
+                <mi>cos</mi><mi>x</mi>
+
+                <mo>=</mo>
+
+                <mfrac>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </mfrac>
+
+                <mi>sin</mi>
+
+                <mo>(</mo>
+                <mn>2</mn><mi>x</mi>
+                <mo>)</mo>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+
+    <div class="derivation">
+
+        <div class="derivation-title">
+            Derivation
+        </div>
+
+
+        <div class="derivation-step">
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <mi>sin</mi><mi>x</mi>
+
+                    <mi>cos</mi><mi>x</mi>
+
+                    <mi>dx</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                Replace
+                <span class="inline-math">
+                    <math>
+                        <mi>sin</mi><mi>x</mi>
+                        <mi>cos</mi><mi>x</mi>
+                    </math>
+                </span>
+                using the double-angle identity:
+            </p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>=</mo>
+
+                    <mo>∫</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mi>sin</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mi>dx</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>∫</mo>
+
+                    <mi>sin</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mi>dx</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                Since the angle is
+                <span class="inline-math">
+                    <math><mn>2</mn><mi>x</mi></math>
+                </span>,
+                integration introduces another factor of
+                <span class="inline-math">
+                    <math><mfrac><mn>1</mn><mn>2</mn></mfrac></math>
+                </span>:
+            </p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>(</mo>
+
+                    <mo>−</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mi>cos</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>)</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>=</mo>
+
+                    <mo>−</mo>
+
+                    <mfrac>
+
+                        <mn>1</mn>
+
+                        <mn>4</mn>
+
+                    </mfrac>
+
+                    <mi>cos</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+    </div>
+
+
+    <div class="formula-box">
+
+        <div class="formula-label">
+            Result
+        </div>
+
+        <math display="block">
+
+            <mrow>
+
+                <mo>∫</mo>
+
+                <mi>sin</mi><mi>x</mi>
+
+                <mi>cos</mi><mi>x</mi>
+
+                <mi>dx</mi>
+
+                <mo>=</mo>
+
+                <mo>−</mo>
+
+                <mfrac>
+                    <mn>1</mn>
+                    <mn>4</mn>
+                </mfrac>
+
+                <mi>cos</mi>
+
+                <mo>(</mo>
+                <mn>2</mn><mi>x</mi>
+                <mo>)</mo>
+
+                <mo>+</mo>
+
+                <mi>C</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DOUBLE ANGLE REMINDER
+========================= -->
+
+<section>
+
+    <h2>Reminder: Double-Angle Formulas</h2>
+
+    <p>
+        The next two integrals involve
+        <span class="inline-math">
+            <math><msup><mi>sin</mi><mn>2</mn></msup><mi>x</mi></math>
+        </span>
+        and
+        <span class="inline-math">
+            <math><msup><mi>cos</mi><mn>2</mn></msup><mi>x</mi></math>
+        </span>.
+        These cannot be integrated using the ordinary power rule.
+    </p>
+
+    <p>
+        We first rewrite them using double-angle identities.
+    </p>
+
+
+    <div class="double-angle">
+
+        <h3>Sine Double-Angle Relationship</h3>
+
+        <math display="block">
+
+            <mrow>
+
+                <mi>sin</mi>
+
+                <mo>(</mo>
+                <mn>2</mn><mi>x</mi>
+                <mo>)</mo>
+
+                <mo>=</mo>
+
+                <mn>2</mn>
+
+                <mi>sin</mi><mi>x</mi>
+
+                <mi>cos</mi><mi>x</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+
+    <div class="double-angle">
+
+        <h3>Cosine Double-Angle Relationship</h3>
+
+        <math display="block">
+
+            <mrow>
+
+                <mi>cos</mi>
+
+                <mo>(</mo>
+                <mn>2</mn><mi>x</mi>
+                <mo>)</mo>
+
+                <mo>=</mo>
+
+                <msup>
+                    <mi>cos</mi>
+                    <mn>2</mn>
+                </msup>
+
+                <mi>x</mi>
+
+                <mo>−</mo>
+
+                <msup>
+                    <mi>sin</mi>
+                    <mn>2</mn>
+                </msup>
+
+                <mi>x</mi>
+
+            </mrow>
+
+        </math>
+
+
+        <p style="margin-top:20px;">
+            Combining this with
+            <span class="inline-math">
+                <math>
+                    <msup><mi>sin</mi><mn>2</mn></msup>
+                    <mi>x</mi>
+                    <mo>+</mo>
+                    <msup><mi>cos</mi><mn>2</mn></msup>
+                    <mi>x</mi>
+                    <mo>=</mo>
+                    <mn>1</mn>
+                </math>
+            </span>
+            gives:
+        </p>
+
+
+        <math display="block">
+
+            <mrow>
+
+                <msup>
+                    <mi>cos</mi>
+                    <mn>2</mn>
+                </msup>
+
+                <mi>x</mi>
+
+                <mo>=</mo>
+
+                <mfrac>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </mfrac>
+
+                <mo>[</mo>
+
+                <mn>1</mn>
+
+                <mo>+</mo>
+
+                <mi>cos</mi>
+
+                <mo>(</mo>
+                <mn>2</mn><mi>x</mi>
+                <mo>)</mo>
+
+                <mo>]</mo>
+
+            </mrow>
+
+        </math>
+
+
+        <math display="block">
+
+            <mrow>
+
+                <msup>
+                    <mi>sin</mi>
+                    <mn>2</mn>
+                </msup>
+
+                <mi>x</mi>
+
+                <mo>=</mo>
+
+                <mfrac>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </mfrac>
+
+                <mo>[</mo>
+
+                <mn>1</mn>
+
+                <mo>−</mo>
+
+                <mi>cos</mi>
+
+                <mo>(</mo>
+                <mn>2</mn><mi>x</mi>
+                <mo>)</mo>
+
+                <mo>]</mo>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COS^2
+========================= -->
+
+<section>
+
+    <h2>5. Integrating cos²x</h2>
+
+    <div class="formula-box">
+
+        <math display="block">
+
+            <mrow>
+
+                <mo>∫</mo>
+
+                <msup>
+                    <mi>cos</mi>
+                    <mn>2</mn>
+                </msup>
+
+                <mi>x</mi>
+
+                <mi>dx</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+
+    <div class="derivation">
+
+        <div class="derivation-title">
+            Step-by-step derivation
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                Start with the double-angle identity:
+            </p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <msup>
+                        <mi>cos</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>[</mo>
+
+                    <mn>1</mn>
+
+                    <mo>+</mo>
+
+                    <mi>cos</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>]</mo>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>Substitute it into the integral:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <msup>
+                        <mi>cos</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <mo>∫</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>[</mo>
+
+                    <mn>1</mn>
+
+                    <mo>+</mo>
+
+                    <mi>cos</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>]</mo>
+
+                    <mi>dx</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>Separate the terms:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>∫</mo>
+
+                    <mn>1</mn>
+
+                    <mi>dx</mi>
+
+                    <mo>+</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>∫</mo>
+
+                    <mi>cos</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mi>dx</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>Integrate each term:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>+</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>(</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mi>sin</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>)</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>Simplify:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>+</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>4</mn>
+                    </mfrac>
+
+                    <mi>sin</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+    </div>
+
+
+    <div class="formula-box">
+
+        <div class="formula-label">
+            Result
+        </div>
+
+        <math display="block">
+
+            <mrow>
+
+                <mo>∫</mo>
+
+                <msup>
+                    <mi>cos</mi>
+                    <mn>2</mn>
+                </msup>
+
+                <mi>x</mi>
+
+                <mi>dx</mi>
+
+                <mo>=</mo>
+
+                <mfrac>
+                    <mi>x</mi>
+                    <mn>2</mn>
+                </mfrac>
+
+                <mo>+</mo>
+
+                <mfrac>
+                    <mn>1</mn>
+                    <mn>4</mn>
+                </mfrac>
+
+                <mi>sin</mi>
+
+                <mo>(</mo>
+                <mn>2</mn><mi>x</mi>
+                <mo>)</mo>
+
+                <mo>+</mo>
+
+                <mi>C</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SIN^2
+========================= -->
+
+<section>
+
+    <h2>6. Integrating sin²x</h2>
+
+    <div class="formula-box">
+
+        <math display="block">
+
+            <mrow>
+
+                <mo>∫</mo>
+
+                <msup>
+                    <mi>sin</mi>
+                    <mn>2</mn>
+                </msup>
+
+                <mi>x</mi>
+
+                <mi>dx</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+
+    <div class="derivation">
+
+        <div class="derivation-title">
+            Step-by-step derivation
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>
+                Use the double-angle identity:
+            </p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <msup>
+                        <mi>sin</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>[</mo>
+
+                    <mn>1</mn>
+
+                    <mo>−</mo>
+
+                    <mi>cos</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>]</mo>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>Substitute:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <msup>
+                        <mi>sin</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <mo>∫</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>[</mo>
+
+                    <mn>1</mn>
+
+                    <mo>−</mo>
+
+                    <mi>cos</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>]</mo>
+
+                    <mi>dx</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>Separate the terms:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>∫</mo>
+
+                    <mn>1</mn>
+
+                    <mi>dx</mi>
+
+                    <mo>−</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>∫</mo>
+
+                    <mi>cos</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mi>dx</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>Integrate:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>−</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>(</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mi>sin</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>)</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="derivation-step">
+
+            <p>Simplify:</p>
+
+            <math display="block">
+
+                <mrow>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>−</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>4</mn>
+                    </mfrac>
+
+                    <mi>sin</mi>
+
+                    <mo>(</mo>
+                    <mn>2</mn><mi>x</mi>
+                    <mo>)</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+    </div>
+
+
+    <div class="formula-box">
+
+        <div class="formula-label">
+            Result
+        </div>
+
+        <math display="block">
+
+            <mrow>
+
+                <mo>∫</mo>
+
+                <msup>
+                    <mi>sin</mi>
+                    <mn>2</mn>
+                </msup>
+
+                <mi>x</mi>
+
+                <mi>dx</mi>
+
+                <mo>=</mo>
+
+                <mfrac>
+                    <mi>x</mi>
+                    <mn>2</mn>
+                </mfrac>
+
+                <mo>−</mo>
+
+                <mfrac>
+                    <mn>1</mn>
+                    <mn>4</mn>
+                </mfrac>
+
+                <mi>sin</mi>
+
+                <mo>(</mo>
+                <mn>2</mn><mi>x</mi>
+                <mo>)</mo>
+
+                <mo>+</mo>
+
+                <mi>C</mi>
+
+            </mrow>
+
+        </math>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SUMMARY
+========================= -->
+
+<section>
+
+    <h2>All the Relationships Together</h2>
+
+    <div class="summary-box">
+
+
+        <div class="summary-item">
+
+            <strong>Secant squared:</strong>
+
+            <math>
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <msup>
+                        <mi>sec</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mi>a</mi>
+                    </mfrac>
+
+                    <mi>tan</mi>
+
+                    <mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <strong>Cotangent:</strong>
+
+            <math>
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <mi>cot</mi>
+
+                    <mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mi>a</mi>
+                    </mfrac>
+
+                    <mi>ln</mi>
+
+                    <mo>|</mo>
+
+                    <mi>sin</mi>
+
+                    <mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo>
+
+                    <mo>|</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <strong>Cosecant squared:</strong>
+
+            <math>
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <msup>
+                        <mi>cosec</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <mo>−</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mi>a</mi>
+                    </mfrac>
+
+                    <mi>cot</mi>
+
+                    <mo>(</mo><mi>a</mi><mi>x</mi><mo>)</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <strong>Sine × cosine:</strong>
+
+            <math>
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <mi>sin</mi><mi>x</mi>
+
+                    <mi>cos</mi><mi>x</mi>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <mo>−</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>4</mn>
+                    </mfrac>
+
+                    <mi>cos</mi>
+
+                    <mo>(</mo><mn>2</mn><mi>x</mi><mo>)</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <strong>Cosine squared:</strong>
+
+            <math>
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <msup>
+                        <mi>cos</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>+</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>4</mn>
+                    </mfrac>
+
+                    <mi>sin</mi>
+
+                    <mo>(</mo><mn>2</mn><mi>x</mi><mo>)</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <strong>Sine squared:</strong>
+
+            <math>
+
+                <mrow>
+
+                    <mo>∫</mo>
+
+                    <msup>
+                        <mi>sin</mi>
+                        <mn>2</mn>
+                    </msup>
+
+                    <mi>x</mi>
+
+                    <mi>dx</mi>
+
+                    <mo>=</mo>
+
+                    <mfrac>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </mfrac>
+
+                    <mo>−</mo>
+
+                    <mfrac>
+                        <mn>1</mn>
+                        <mn>4</mn>
+                    </mfrac>
+
+                    <mi>sin</mi>
+
+                    <mo>(</mo><mn>2</mn><mi>x</mi><mo>)</mo>
+
+                    <mo>+</mo>
+
+                    <mi>C</mi>
+
+                </mrow>
+
+            </math>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRACTICE
+========================= -->
+
+<section class="practice-section">
+
+    <h2>Ready to Practice?</h2>
+
+    <p>
+        Now that you know where the formulas come from,
+        test whether you can recognize the correct relationship
+        and use it confidently.
+    </p>
+
+    <a href="trigonometrical-relationships-questions.html"
+       class="practice-button">
+
+        START QUESTIONS →
+
+    </a>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <a href="dashboard.html" class="logo">
+        Edu<span>Nova</span>
+    </a>
+
+    <p>
+        Mathematics made clear.
+    </p>
+
+    <p style="margin-top:12px;">
+        © 2026 EduNova. All rights reserved.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
