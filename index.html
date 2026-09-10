@@ -132,13 +132,14 @@ function updateModal(){
         ? "LOG IN"
         : "SIGN UP";
 
-    $("email").style.display = signup ? "block" : "none";
+    $("user").style.display = signup ? "block" : "none";
+    $("email").style.display = "block";
     $("confirm").style.display = signup ? "block" : "none";
 
-    $("email").required = signup;
+    $("user").required = signup;
+    $("email").required = true;
     $("confirm").required = signup;
 }
-
 function message(t){
     $("msg").textContent = t;
     $("msg").classList.add("show");
@@ -205,13 +206,16 @@ async function submitAuth(e){
                 id: data.user.id,
                 username: username
             });
+if(profileError){
+    console.error("Profile error:", profileError);
 
-        if(profileError){
-            button.disabled = false;
-            button.textContent = "CREATE ACCOUNT →";
-            return message("Your account was created, but your student profile could not be saved.");
-        }
+    button.disabled = false;
+    button.textContent = "CREATE ACCOUNT →";
 
+    return message(
+        "Your account was created, but your student profile could not be saved."
+    );
+}
         localStorage.setItem("eduNovaUsername", username);
         localStorage.setItem("eduNovaEmail", email);
 
@@ -227,12 +231,16 @@ async function submitAuth(e){
             password: password
         });
 
-        if(error){
-            button.disabled = false;
-            button.textContent = "LOG IN →";
-            return message("Incorrect email or password.");
-        }
+       if(error){
+    button.disabled = false;
+    button.textContent = "LOG IN →";
 
+    if(error.message.toLowerCase().includes("email not confirmed")){
+        return message("Please confirm your email address before logging in.");
+    }
+
+    return message(error.message);
+}
         const { data: student, error: studentError } = await supabaseClient
             .from("students")
             .select("username")
