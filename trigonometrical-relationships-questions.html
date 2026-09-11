@@ -1,940 +1,1231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trigonometrical Relationships Questions | EduNova</title>
 
-  <title>Trigonometrical Relationships Questions | EduNova</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #f5f5f5;
+    color: #111;
+    min-height: 100vh;
+}
 
-    body {
-      font-family: "DM Sans", sans-serif;
-      background: #f5f5f5;
-      color: #111;
-      min-height: 100vh;
-    }
+/* NAVIGATION */
+nav {
+    height: 72px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+}
 
-    /* NAVIGATION */
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #e00000;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: #e00000;
+}
+
+/* HERO */
+.hero {
+    background: #111;
+    color: white;
+    padding: 75px 7% 85px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "∫";
+    position: absolute;
+    right: 8%;
+    top: -45px;
+    font-family: "Playfair Display", serif;
+    font-size: 280px;
+    color: rgba(224, 0, 0, 0.08);
+    pointer-events: none;
+}
+
+.hero-small {
+    color: #e00000;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1.05;
+    max-width: 850px;
+}
+
+.hero p {
+    margin-top: 20px;
+    color: #cfcfcf;
+    font-size: 17px;
+    max-width: 700px;
+    line-height: 1.7;
+}
+
+/* MAIN */
+.container {
+    width: 86%;
+    max-width: 1200px;
+    margin: 55px auto 90px;
+}
+
+/* LEVEL */
+.level {
+    margin-bottom: 50px;
+}
+
+.level-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.level-number {
+    width: 42px;
+    height: 42px;
+    background: #111;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.level-title h2 {
+    font-size: 24px;
+}
+
+.level-title p {
+    color: #777;
+    font-size: 14px;
+    margin-left: 3px;
+}
+
+/* QUESTION GRID */
+.question-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    gap: 12px;
+}
+
+.question-btn {
+    border: 1px solid #ddd;
+    background: white;
+    padding: 15px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.question-btn:hover {
+    border-color: #e00000;
+    color: #e00000;
+    transform: translateY(-2px);
+}
+
+.question-btn.active {
+    background: #e00000;
+    color: white;
+    border-color: #e00000;
+}
+
+/* QUESTION PANEL */
+.question-panel {
+    display: none;
+    background: white;
+    border-radius: 12px;
+    margin-top: 45px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    border-top: 4px solid #e00000;
+}
+
+.question-panel.show {
+    display: block;
+}
+
+.question-label {
+    color: #e00000;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.question-text {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    overflow-x: auto;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.control-btn {
+    border: none;
+    background: #111;
+    color: white;
+    padding: 13px 22px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.control-btn:hover {
+    background: #e00000;
+}
+
+.control-btn.solution-button {
+    background: #e00000;
+}
+
+.control-btn.solution-button:hover {
+    background: #111;
+}
+
+/* ANSWER */
+.answer-box {
+    display: none;
+    margin-top: 25px;
+    padding: 22px;
+    background: #f7f7f7;
+    border-left: 4px solid #e00000;
+    font-size: 21px;
+    font-weight: 700;
+    overflow-x: auto;
+}
+
+.answer-box.show {
+    display: block;
+}
+
+/* SOLUTION */
+.solution-box {
+    display: none;
+    margin-top: 20px;
+    padding: 28px;
+    background: #fafafa;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    line-height: 2;
+    font-size: 18px;
+    overflow-x: auto;
+}
+
+.solution-box.show {
+    display: block;
+}
+
+.solution-title {
+    color: #e00000;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.solution-box .step {
+    margin: 8px 0;
+}
+
+.note {
+    margin-top: 18px;
+    padding: 15px 18px;
+    background: #fff;
+    border-left: 3px solid #111;
+    color: #555;
+    font-size: 15px;
+}
+
+/* FOOTER */
+footer {
+    background: #111;
+    color: #999;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 14px;
+}
+
+footer strong {
+    color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
     nav {
-      height: 72px;
-      background: #111;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 7%;
-    }
-
-    .logo {
-      color: white;
-      font-family: "Playfair Display", serif;
-      font-size: 27px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .logo span {
-      color: #e00000;
+        padding: 0 5%;
     }
 
     .nav-links {
-      display: flex;
-      gap: 32px;
+        gap: 15px;
     }
 
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: #e00000;
-    }
-
-    /* HERO */
     .hero {
-      background: #111;
-      color: white;
-      padding: 65px 7% 75px;
-      position: relative;
-      overflow: hidden;
+        padding: 60px 6% 70px;
     }
 
-    .hero::after {
-      content: "∫";
-      position: absolute;
-      right: 8%;
-      top: 20px;
-      font-family: "Playfair Display", serif;
-      font-size: 190px;
-      color: rgba(224, 0, 0, 0.13);
-      pointer-events: none;
-    }
-
-    .lesson-label {
-      color: #e00000;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .hero h1 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(35px, 5vw, 60px);
-      line-height: 1.08;
-      max-width: 850px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero p {
-      margin-top: 18px;
-      color: #cfcfcf;
-      font-size: 17px;
-      max-width: 650px;
-      line-height: 1.7;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* MAIN */
     .container {
-      width: min(1100px, 90%);
-      margin: 55px auto 80px;
+        width: 90%;
+        margin-top: 40px;
     }
 
-    .section-title {
-      margin-bottom: 25px;
-    }
-
-    .section-title h2 {
-      font-family: "Playfair Display", serif;
-      font-size: 32px;
-    }
-
-    .section-title p {
-      color: #666;
-      margin-top: 8px;
-    }
-
-    /* LEVELS */
-    .level {
-      margin-bottom: 42px;
-    }
-
-    .level-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 18px;
-    }
-
-    .level-number {
-      width: 42px;
-      height: 42px;
-      background: #111;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-    }
-
-    .level-header h3 {
-      font-size: 21px;
-    }
-
-    .level-header span {
-      color: #777;
-      font-size: 14px;
-    }
-
-    /* QUESTION GRID */
-    .question-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-      gap: 12px;
-    }
-
-    .question-btn {
-      border: 1px solid #ddd;
-      background: white;
-      border-radius: 10px;
-      padding: 16px 15px;
-      cursor: pointer;
-      text-align: left;
-      font-family: inherit;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-
-    .question-btn:hover {
-      border-color: #e00000;
-      transform: translateY(-2px);
-    }
-
-    .question-btn.active {
-      background: #111;
-      color: white;
-      border-color: #111;
-    }
-
-    .question-btn .q-number {
-      color: #e00000;
-      font-size: 12px;
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .question-btn.active .q-number {
-      color: #ff5555;
-    }
-
-    /* QUESTION PANEL */
     .question-panel {
-      margin-top: 45px;
-      background: white;
-      border-radius: 16px;
-      padding: 35px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-      display: none;
-    }
-
-    .question-panel.show {
-      display: block;
-    }
-
-    .question-label {
-      color: #e00000;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
+        padding: 25px 20px;
     }
 
     .question-text {
-      font-family: "Playfair Display", serif;
-      font-size: 27px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
-
-    .answer-box {
-      display: none;
-      background: #f7f7f7;
-      border-left: 4px solid #e00000;
-      padding: 22px;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-
-    .answer-box.show {
-      display: block;
-    }
-
-    .answer-title {
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #e00000;
-    }
-
-    .answer {
-      font-size: 19px;
-      line-height: 1.8;
-    }
-
-    .show-answer {
-      background: #111;
-      color: white;
-      border: none;
-      padding: 13px 22px;
-      border-radius: 7px;
-      cursor: pointer;
-      font-family: inherit;
-      font-weight: 700;
-      transition: 0.2s;
-    }
-
-    .show-answer:hover {
-      background: #e00000;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 13px;
-    }
-
-    footer strong {
-      color: white;
-    }
-
-    @media (max-width: 650px) {
-      nav {
-        padding: 0 5%;
-      }
-
-      .nav-links {
-        gap: 15px;
-      }
-
-      .nav-links a {
-        font-size: 12px;
-      }
-
-      .hero {
-        padding: 50px 5% 60px;
-      }
-
-      .container {
-        width: 92%;
-      }
-
-      .question-panel {
-        padding: 25px 20px;
-      }
-
-      .question-text {
         font-size: 22px;
-      }
     }
-  </style>
+
+    .solution-box {
+        font-size: 16px;
+        padding: 20px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-  <nav>
+<nav>
     <a href="dashboard.html" class="logo">Edu<span>Nova</span></a>
 
     <div class="nav-links">
-      <a href="index.html">HOME</a>
-      <a href="integration.html">INTEGRATION</a>
+        <a href="dashboard.html">HOME</a>
+        <a href="integration.html">INTEGRATION</a>
     </div>
-  </nav>
+</nav>
 
-  <section class="hero">
-    <div class="lesson-label">Integration • Lesson 3</div>
-
-    <h1>Integration Using Trigonometrical Relationships</h1>
-
+<section class="hero">
+    <div class="hero-small">Integration • Lesson 3</div>
+    <h1>Practice Questions</h1>
     <p>
-      Practice recognizing and applying the trigonometrical relationships
-      used throughout this lesson.
+        Integration Using Trigonometrical Relationships
+        <br>
+        Work through the questions, check your answer, then reveal the full solution.
     </p>
-  </section>
+</section>
 
-  <main class="container">
+<main class="container">
 
-    <div class="section-title">
-      <h2>Questions</h2>
-      <p>Select a question to begin. Try it yourself before revealing the answer.</p>
+    <div class="level">
+        <div class="level-title">
+            <div class="level-number">1</div>
+            <div>
+                <h2>Foundation</h2>
+                <p>Basic trigonometrical integrals</p>
+            </div>
+        </div>
+
+        <div class="question-grid">
+            <button class="question-btn" onclick="showQuestion(1, this)">1</button>
+            <button class="question-btn" onclick="showQuestion(2, this)">2</button>
+            <button class="question-btn" onclick="showQuestion(3, this)">3</button>
+            <button class="question-btn" onclick="showQuestion(4, this)">4</button>
+            <button class="question-btn" onclick="showQuestion(5, this)">5</button>
+            <button class="question-btn" onclick="showQuestion(6, this)">6</button>
+            <button class="question-btn" onclick="showQuestion(7, this)">7</button>
+            <button class="question-btn" onclick="showQuestion(8, this)">8</button>
+            <button class="question-btn" onclick="showQuestion(9, this)">9</button>
+            <button class="question-btn" onclick="showQuestion(10, this)">10</button>
+        </div>
     </div>
 
-    <!-- LEVEL 1 -->
-    <section class="level">
-      <div class="level-header">
-        <div class="level-number">1</div>
-        <div>
-          <h3>Foundation</h3>
-          <span>Start with the basic relationships.</span>
+    <div class="level">
+        <div class="level-title">
+            <div class="level-number">2</div>
+            <div>
+                <h2>Developing</h2>
+                <p>Trigonometrical functions with multiples of x</p>
+            </div>
         </div>
-      </div>
 
-      <div class="question-grid">
-        <button class="question-btn" onclick="showQuestion(1)">
-          <span class="q-number">QUESTION 01</span>
-          ∫ sec²x dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(2)">
-          <span class="q-number">QUESTION 02</span>
-          ∫ 4sec²x dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(3)">
-          <span class="q-number">QUESTION 03</span>
-          ∫ cosec²x dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(4)">
-          <span class="q-number">QUESTION 04</span>
-          ∫ 7cosec²x dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(5)">
-          <span class="q-number">QUESTION 05</span>
-          ∫ cot x dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(6)">
-          <span class="q-number">QUESTION 06</span>
-          ∫ 5cot x dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(7)">
-          <span class="q-number">QUESTION 07</span>
-          ∫ sin x cos x dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(8)">
-          <span class="q-number">QUESTION 08</span>
-          ∫ 6sin x cos x dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(9)">
-          <span class="q-number">QUESTION 09</span>
-          ∫ sin²x dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(10)">
-          <span class="q-number">QUESTION 10</span>
-          ∫ cos²x dx
-        </button>
-      </div>
-    </section>
-
-    <!-- LEVEL 2 -->
-    <section class="level">
-      <div class="level-header">
-        <div class="level-number">2</div>
-        <div>
-          <h3>Angles of the Form ax</h3>
-          <span>Remember the factor produced by the chain rule.</span>
+        <div class="question-grid">
+            <button class="question-btn" onclick="showQuestion(11, this)">11</button>
+            <button class="question-btn" onclick="showQuestion(12, this)">12</button>
+            <button class="question-btn" onclick="showQuestion(13, this)">13</button>
+            <button class="question-btn" onclick="showQuestion(14, this)">14</button>
+            <button class="question-btn" onclick="showQuestion(15, this)">15</button>
+            <button class="question-btn" onclick="showQuestion(16, this)">16</button>
+            <button class="question-btn" onclick="showQuestion(17, this)">17</button>
+            <button class="question-btn" onclick="showQuestion(18, this)">18</button>
+            <button class="question-btn" onclick="showQuestion(19, this)">19</button>
+            <button class="question-btn" onclick="showQuestion(20, this)">20</button>
         </div>
-      </div>
+    </div>
 
-      <div class="question-grid">
-        <button class="question-btn" onclick="showQuestion(11)">
-          <span class="q-number">QUESTION 11</span>
-          ∫ sec²(3x) dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(12)">
-          <span class="q-number">QUESTION 12</span>
-          ∫ sec²(5x) dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(13)">
-          <span class="q-number">QUESTION 13</span>
-          ∫ cot(4x) dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(14)">
-          <span class="q-number">QUESTION 14</span>
-          ∫ cot(7x) dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(15)">
-          <span class="q-number">QUESTION 15</span>
-          ∫ cosec²(2x) dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(16)">
-          <span class="q-number">QUESTION 16</span>
-          ∫ cosec²(6x) dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(17)">
-          <span class="q-number">QUESTION 17</span>
-          ∫ 3sec²(3x) dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(18)">
-          <span class="q-number">QUESTION 18</span>
-          ∫ 8cot(2x) dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(19)">
-          <span class="q-number">QUESTION 19</span>
-          ∫ 10cosec²(5x) dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(20)">
-          <span class="q-number">QUESTION 20</span>
-          ∫ sin(2x)cos(2x) dx
-        </button>
-      </div>
-    </section>
-
-    <!-- LEVEL 3 -->
-    <section class="level">
-      <div class="level-header">
-        <div class="level-number">3</div>
-        <div>
-          <h3>Recognition</h3>
-          <span>Choose the correct relationship before integrating.</span>
+    <div class="level">
+        <div class="level-title">
+            <div class="level-number">3</div>
+            <div>
+                <h2>Intermediate</h2>
+                <p>Combining trigonometrical relationships</p>
+            </div>
         </div>
-      </div>
 
-      <div class="question-grid">
-        <button class="question-btn" onclick="showQuestion(21)">
-          <span class="q-number">QUESTION 21</span>
-          ∫(4sec²x − 3cot x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(22)">
-          <span class="q-number">QUESTION 22</span>
-          ∫(2cosec²x + 5sec²x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(23)">
-          <span class="q-number">QUESTION 23</span>
-          ∫(7cot x − 2cosec²x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(24)">
-          <span class="q-number">QUESTION 24</span>
-          ∫(3sin x cos x + 2sec²x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(25)">
-          <span class="q-number">QUESTION 25</span>
-          ∫(5sin²x − 2cos²x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(26)">
-          <span class="q-number">QUESTION 26</span>
-          ∫(4cos²x + 3sin²x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(27)">
-          <span class="q-number">QUESTION 27</span>
-          ∫[sec²(2x) + cot(3x)]dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(28)">
-          <span class="q-number">QUESTION 28</span>
-          ∫[2cosec²(4x) − 3cot(2x)]dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(29)">
-          <span class="q-number">QUESTION 29</span>
-          ∫[6sin x cos x + 4cos²x]dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(30)">
-          <span class="q-number">QUESTION 30</span>
-          ∫[3sin²x + 5sin x cos x]dx
-        </button>
-      </div>
-    </section>
-
-    <!-- LEVEL 4 -->
-    <section class="level">
-      <div class="level-header">
-        <div class="level-number">4</div>
-        <div>
-          <h3>Tricky</h3>
-          <span>Look carefully for the relationship hidden inside the expression.</span>
+        <div class="question-grid">
+            <button class="question-btn" onclick="showQuestion(21, this)">21</button>
+            <button class="question-btn" onclick="showQuestion(22, this)">22</button>
+            <button class="question-btn" onclick="showQuestion(23, this)">23</button>
+            <button class="question-btn" onclick="showQuestion(24, this)">24</button>
+            <button class="question-btn" onclick="showQuestion(25, this)">25</button>
+            <button class="question-btn" onclick="showQuestion(26, this)">26</button>
+            <button class="question-btn" onclick="showQuestion(27, this)">27</button>
+            <button class="question-btn" onclick="showQuestion(28, this)">28</button>
+            <button class="question-btn" onclick="showQuestion(29, this)">29</button>
+            <button class="question-btn" onclick="showQuestion(30, this)">30</button>
         </div>
-      </div>
+    </div>
 
-      <div class="question-grid">
-        <button class="question-btn" onclick="showQuestion(31)">
-          <span class="q-number">QUESTION 31</span>
-          ∫(1 + cos 2x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(32)">
-          <span class="q-number">QUESTION 32</span>
-          ∫(1 − cos 2x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(33)">
-          <span class="q-number">QUESTION 33</span>
-          ∫2sin²x dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(34)">
-          <span class="q-number">QUESTION 34</span>
-          ∫3cos²x dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(35)">
-          <span class="q-number">QUESTION 35</span>
-          ∫(2sin²x + 2cos²x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(36)">
-          <span class="q-number">QUESTION 36</span>
-          ∫(5sin²x + 5cos²x + 3sec²x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(37)">
-          <span class="q-number">QUESTION 37</span>
-          ∫(4cos²x − 4sin²x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(38)">
-          <span class="q-number">QUESTION 38</span>
-          ∫(6cos²x − 6sin²x)dx
-        </button>
-      </div>
-    </section>
-
-    <!-- LEVEL 5 -->
-    <section class="level">
-      <div class="level-header">
-        <div class="level-number">5</div>
-        <div>
-          <h3>Hard</h3>
-          <span>Several relationships may need to be recognized and combined.</span>
+    <div class="level">
+        <div class="level-title">
+            <div class="level-number">4</div>
+            <div>
+                <h2>Advanced</h2>
+                <p>Using identities and double-angle relationships</p>
+            </div>
         </div>
-      </div>
-
-      <div class="question-grid">
-        <button class="question-btn" onclick="showQuestion(39)">
-          <span class="q-number">QUESTION 39</span>
-          ∫(4sin x cos x + 3sin²x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(40)">
-          <span class="q-number">QUESTION 40</span>
-          ∫(8sin²x − 4sin x cos x + 6cos²x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(41)">
-          <span class="q-number">QUESTION 41</span>
-          ∫(3 + 4cos 2x − 2sin 2x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(42)">
-          <span class="q-number">QUESTION 42</span>
-          ∫(7 − 5cos 2x + 6sin 2x)dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(43)">
-          <span class="q-number">QUESTION 43</span>
-          ∫[4sin²x − 6cos²x + 8sin x cos x]dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(44)">
-          <span class="q-number">QUESTION 44</span>
-          ∫[5sin²x + 5cos²x + 6sin x cos x − 4cos²x]dx
-        </button>
-
-        <button class="question-btn" onclick="showQuestion(45)">
-          <span class="q-number">QUESTION 45</span>
-          ∫[6cos²x − 6sin²x + 12sin x cos x]dx
-        </button>
-      </div>
-    </section>
-
-    <!-- QUESTION DISPLAY -->
-    <section class="question-panel" id="questionPanel">
-
-      <div class="question-label" id="questionNumber">
-        QUESTION 01
-      </div>
-
-      <div class="question-text" id="questionText">
-      </div>
-
-      <button class="show-answer" onclick="toggleAnswer()">
-        Show Answer
-      </button>
-
-      <div class="answer-box" id="answerBox">
-        <div class="answer-title">Answer</div>
-        <div class="answer" id="answerText"></div>
-      </div>
-
-    </section>
-
-  </main>
-
-  <footer>
-    <strong>EduNova</strong> • Grade 12 Advanced Mathematics
-  </footer>
-
-
-  <script>
-
-    const questions = {
-
-      1: {
-        question: "∫ sec²x dx",
-        answer: "tan x + C"
-      },
-
-      2: {
-        question: "∫ 4sec²x dx",
-        answer: "4tan x + C"
-      },
-
-      3: {
-        question: "∫ cosec²x dx",
-        answer: "−cot x + C"
-      },
-
-      4: {
-        question: "∫ 7cosec²x dx",
-        answer: "−7cot x + C"
-      },
-
-      5: {
-        question: "∫ cot x dx",
-        answer: "ln|sin x| + C"
-      },
-
-      6: {
-        question: "∫ 5cot x dx",
-        answer: "5ln|sin x| + C"
-      },
-
-      7: {
-        question: "∫ sin x cos x dx",
-        answer: "−¼cos(2x) + C"
-      },
-
-      8: {
-        question: "∫ 6sin x cos x dx",
-        answer: "−3cos(2x) + C"
-      },
-
-      9: {
-        question: "∫ sin²x dx",
-        answer: "x/2 − ¼sin(2x) + C"
-      },
-
-      10: {
-        question: "∫ cos²x dx",
-        answer: "x/2 + ¼sin(2x) + C"
-      },
-
-      11: {
-        question: "∫ sec²(3x) dx",
-        answer: "⅓tan(3x) + C"
-      },
-
-      12: {
-        question: "∫ sec²(5x) dx",
-        answer: "⅕tan(5x) + C"
-      },
-
-      13: {
-        question: "∫ cot(4x) dx",
-        answer: "¼ln|sin(4x)| + C"
-      },
-
-      14: {
-        question: "∫ cot(7x) dx",
-        answer: "⅐ln|sin(7x)| + C"
-      },
-
-      15: {
-        question: "∫ cosec²(2x) dx",
-        answer: "−½cot(2x) + C"
-      },
-
-      16: {
-        question: "∫ cosec²(6x) dx",
-        answer: "−⅙cot(6x) + C"
-      },
-
-      17: {
-        question: "∫ 3sec²(3x) dx",
-        answer: "tan(3x) + C"
-      },
-
-      18: {
-        question: "∫ 8cot(2x) dx",
-        answer: "4ln|sin(2x)| + C"
-      },
-
-      19: {
-        question: "∫ 10cosec²(5x) dx",
-        answer: "−2cot(5x) + C"
-      },
-
-      20: {
-        question: "∫ sin(2x)cos(2x) dx",
-        answer: "−⅛cos(4x) + C"
-      },
-
-      21: {
-        question: "∫(4sec²x − 3cot x)dx",
-        answer: "4tan x − 3ln|sin x| + C"
-      },
-
-      22: {
-        question: "∫(2cosec²x + 5sec²x)dx",
-        answer: "−2cot x + 5tan x + C"
-      },
-
-      23: {
-        question: "∫(7cot x − 2cosec²x)dx",
-        answer: "7ln|sin x| + 2cot x + C"
-      },
-
-      24: {
-        question: "∫(3sin x cos x + 2sec²x)dx",
-        answer: "−¾cos(2x) + 2tan x + C"
-      },
-
-      25: {
-        question: "∫(5sin²x − 2cos²x)dx",
-        answer: "3x/2 − 7/4 sin(2x) + C"
-      },
-
-      26: {
-        question: "∫(4cos²x + 3sin²x)dx",
-        answer: "7x/2 + ¼sin(2x) + C"
-      },
-
-      27: {
-        question: "∫[sec²(2x) + cot(3x)]dx",
-        answer: "½tan(2x) + ⅓ln|sin(3x)| + C"
-      },
-
-      28: {
-        question: "∫[2cosec²(4x) − 3cot(2x)]dx",
-        answer: "−½cot(4x) − 3/2 ln|sin(2x)| + C"
-      },
-
-      29: {
-        question: "∫[6sin x cos x + 4cos²x]dx",
-        answer: "−3/2cos(2x) + 2x + sin(2x) + C"
-      },
-
-      30: {
-        question: "∫[3sin²x + 5sin x cos x]dx",
-        answer: "3x/2 − 3/4sin(2x) − 5/4cos(2x) + C"
-      },
-
-      31: {
-        question: "∫(1 + cos 2x)dx",
-        answer: "x + ½sin(2x) + C"
-      },
-
-      32: {
-        question: "∫(1 − cos 2x)dx",
-        answer: "x − ½sin(2x) + C"
-      },
-
-      33: {
-        question: "∫2sin²x dx",
-        answer: "x − ½sin(2x) + C"
-      },
-
-      34: {
-        question: "∫3cos²x dx",
-        answer: "3x/2 + 3/4sin(2x) + C"
-      },
-
-      35: {
-        question: "∫(2sin²x + 2cos²x)dx",
-        answer: "2x + C"
-      },
-
-      36: {
-        question: "∫(5sin²x + 5cos²x + 3sec²x)dx",
-        answer: "5x + 3tan x + C"
-      },
-
-      37: {
-        question: "∫(4cos²x − 4sin²x)dx",
-        answer: "2sin(2x) + C"
-      },
-
-      38: {
-        question: "∫(6cos²x − 6sin²x)dx",
-        answer: "3sin(2x) + C"
-      },
-
-      39: {
-        question: "∫(4sin x cos x + 3sin²x)dx",
-        answer: "−cos(2x) + 3x/2 − 3/4sin(2x) + C"
-      },
-
-      40: {
-        question: "∫(8sin²x − 4sin x cos x + 6cos²x)dx",
-        answer: "7x − ½sin(2x) + 3/2cos(2x) + C"
-      },
-
-      41: {
-        question: "∫(3 + 4cos 2x − 2sin 2x)dx",
-        answer: "3x + 2sin(2x) + cos(2x) + C"
-      },
-
-      42: {
-        question: "∫(7 − 5cos 2x + 6sin 2x)dx",
-        answer: "7x − 5/2sin(2x) − 3cos(2x) + C"
-      },
-
-      43: {
-        question: "∫[4sin²x − 6cos²x + 8sin x cos x]dx",
-        answer: "−x − 5/2sin(2x) − 2cos(2x) + C"
-      },
-
-      44: {
-        question: "∫[5sin²x + 5cos²x + 6sin x cos x − 4cos²x]dx",
-        answer: "3x/2 + 3/2cos(2x) − 3/2sin(2x) + C"
-      },
-
-      45: {
-        question: "∫[6cos²x − 6sin²x + 12sin x cos x]dx",
-        answer: "3sin(2x) − 3cos(2x) + C"
-      }
-
-    };
-
-
-    function showQuestion(number) {
-
-      const panel = document.getElementById("questionPanel");
-      const questionNumber = document.getElementById("questionNumber");
-      const questionText = document.getElementById("questionText");
-      const answerText = document.getElementById("answerText");
-      const answerBox = document.getElementById("answerBox");
-
-      questionNumber.textContent =
-        "QUESTION " + String(number).padStart(2, "0");
-
-      questionText.textContent = questions[number].question;
-      answerText.textContent = questions[number].answer;
-
-      answerBox.classList.remove("show");
-      panel.classList.add("show");
-
-      document.querySelectorAll(".question-btn").forEach(btn => {
+
+        <div class="question-grid">
+            <button class="question-btn" onclick="showQuestion(31, this)">31</button>
+            <button class="question-btn" onclick="showQuestion(32, this)">32</button>
+            <button class="question-btn" onclick="showQuestion(33, this)">33</button>
+            <button class="question-btn" onclick="showQuestion(34, this)">34</button>
+            <button class="question-btn" onclick="showQuestion(35, this)">35</button>
+            <button class="question-btn" onclick="showQuestion(36, this)">36</button>
+            <button class="question-btn" onclick="showQuestion(37, this)">37</button>
+            <button class="question-btn" onclick="showQuestion(38, this)">38</button>
+        </div>
+    </div>
+
+    <div class="level">
+        <div class="level-title">
+            <div class="level-number">5</div>
+            <div>
+                <h2>Challenge</h2>
+                <p>Mixed trigonometrical relationships</p>
+            </div>
+        </div>
+
+        <div class="question-grid">
+            <button class="question-btn" onclick="showQuestion(39, this)">39</button>
+            <button class="question-btn" onclick="showQuestion(40, this)">40</button>
+            <button class="question-btn" onclick="showQuestion(41, this)">41</button>
+            <button class="question-btn" onclick="showQuestion(42, this)">42</button>
+            <button class="question-btn" onclick="showQuestion(43, this)">43</button>
+            <button class="question-btn" onclick="showQuestion(44, this)">44</button>
+            <button class="question-btn" onclick="showQuestion(45, this)">45</button>
+        </div>
+    </div>
+
+    <div id="questionPanel" class="question-panel">
+
+        <div class="question-label" id="questionNumber"></div>
+
+        <div class="question-text" id="questionText"></div>
+
+        <div class="controls">
+            <button class="control-btn" onclick="toggleAnswer()">
+                Show Answer
+            </button>
+
+            <button class="control-btn solution-button" onclick="toggleSolution()">
+                Show Solution
+            </button>
+        </div>
+
+        <div id="answerBox" class="answer-box"></div>
+
+        <div id="solutionBox" class="solution-box">
+            <div class="solution-title">Solution</div>
+            <div id="solutionContent"></div>
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    <strong>EduNova</strong> • Mathematics Education
+</footer>
+
+
+<script>
+
+const questions = {
+
+1: {
+    q: "\\(\\int \\sec^2x\\,dx\\)",
+    a: "\\(\\tan x+C\\)",
+    s: `
+        <div class="step">We know that:</div>
+        <div class="step">\\(\\displaystyle \\int \\sec^2x\\,dx=\\tan x+C\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{\\tan x+C}\\)</div>
+    `
+},
+
+2: {
+    q: "\\(\\int 4\\sec^2x\\,dx\\)",
+    a: "\\(4\\tan x+C\\)",
+    s: `
+        <div class="step">Take the constant 4 outside the integral:</div>
+        <div class="step">\\(4\\int\\sec^2x\\,dx\\)</div>
+        <div class="step">Using \\(\\int\\sec^2x\\,dx=\\tan x+C\\):</div>
+        <div class="step">\\(4\\tan x+C\\)</div>
+        <div class="step">\\(\\boxed{4\\tan x+C}\\)</div>
+    `
+},
+
+3: {
+    q: "\\(\\int \\cosec^2x\\,dx\\)",
+    a: "\\(-\\cot x+C\\)",
+    s: `
+        <div class="step">We know that:</div>
+        <div class="step">\\(\\displaystyle \\int\\cosec^2x\\,dx=-\\cot x+C\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{-\\cot x+C}\\)</div>
+    `
+},
+
+4: {
+    q: "\\(\\int 7\\cosec^2x\\,dx\\)",
+    a: "\\(-7\\cot x+C\\)",
+    s: `
+        <div class="step">Take 7 outside the integral:</div>
+        <div class="step">\\(7\\int\\cosec^2x\\,dx\\)</div>
+        <div class="step">Using \\(\\int\\cosec^2x\\,dx=-\\cot x+C\\):</div>
+        <div class="step">\\(7(-\\cot x)+C\\)</div>
+        <div class="step">\\(\\boxed{-7\\cot x+C}\\)</div>
+    `
+},
+
+5: {
+    q: "\\(\\int \\cot x\\,dx\\)",
+    a: "\\(\\ln|\\sin x|+C\\)",
+    s: `
+        <div class="step">We know:</div>
+        <div class="step">\\(\\displaystyle \\frac{d}{dx}[\\ln|\\sin x|]=\\cot x\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{\\ln|\\sin x|+C}\\)</div>
+    `
+},
+
+6: {
+    q: "\\(\\int 5\\cot x\\,dx\\)",
+    a: "\\(5\\ln|\\sin x|+C\\)",
+    s: `
+        <div class="step">Take 5 outside:</div>
+        <div class="step">\\(5\\int\\cot x\\,dx\\)</div>
+        <div class="step">Using \\(\\int\\cot x\\,dx=\\ln|\\sin x|+C\\):</div>
+        <div class="step">\\(5\\ln|\\sin x|+C\\)</div>
+        <div class="step">\\(\\boxed{5\\ln|\\sin x|+C}\\)</div>
+    `
+},
+
+7: {
+    q: "\\(\\int \\sin x\\cos x\\,dx\\)",
+    a: "\\(-\\frac14\\cos(2x)+C\\)",
+    s: `
+        <div class="step">Use the double-angle identity:</div>
+        <div class="step">\\(\\sin(2x)=2\\sin x\\cos x\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\sin x\\cos x=\\frac12\\sin(2x)\\)</div>
+        <div class="step">So:</div>
+        <div class="step">\\(\\displaystyle \\int\\sin x\\cos x\\,dx
+        =\\frac12\\int\\sin(2x)\\,dx\\)</div>
+        <div class="step">\\(=-\\frac14\\cos(2x)+C\\)</div>
+        <div class="step">\\(\\boxed{-\\frac14\\cos(2x)+C}\\)</div>
+    `
+},
+
+8: {
+    q: "\\(\\int 6\\sin x\\cos x\\,dx\\)",
+    a: "\\(-3\\cos(2x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\sin x\\cos x=\\frac12\\sin(2x)\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(6\\int\\sin x\\cos x\\,dx
+        =6\\int\\frac12\\sin(2x)\\,dx\\)</div>
+        <div class="step">\\(=3\\int\\sin(2x)\\,dx\\)</div>
+        <div class="step">\\(=-\\frac32\\cos(2x)+C\\)</div>
+        <div class="step">Correction using the direct identity:
+        \\(\\int\\sin x\\cos x\\,dx=-\\frac14\\cos(2x)+C\\)</div>
+        <div class="step">Hence:</div>
+        <div class="step">\\(6\\left(-\\frac14\\cos(2x)\\right)
+        =-\\frac32\\cos(2x)\\)</div>
+        <div class="step">\\(\\boxed{-\\frac32\\cos(2x)+C}\\)</div>
+    `
+},
+
+9: {
+    q: "\\(\\int \\sin^2x\\,dx\\)",
+    a: "\\(\\frac{x}{2}-\\frac14\\sin(2x)+C\\)",
+    s: `
+        <div class="step">Use the identity:</div>
+        <div class="step">\\(\\sin^2x=\\frac12[1-\\cos(2x)]\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\displaystyle
+        \\int\\sin^2x\\,dx
+        =\\frac12\\int[1-\\cos(2x)]\\,dx\\)</div>
+        <div class="step">\\(=\\frac{x}{2}-\\frac14\\sin(2x)+C\\)</div>
+        <div class="step">\\(\\boxed{\\frac{x}{2}-\\frac14\\sin(2x)+C}\\)</div>
+    `
+},
+
+10: {
+    q: "\\(\\int \\cos^2x\\,dx\\)",
+    a: "\\(\\frac{x}{2}+\\frac14\\sin(2x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\cos^2x=\\frac12[1+\\cos(2x)]\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\displaystyle
+        \\int\\cos^2x\\,dx
+        =\\frac12\\int[1+\\cos(2x)]\\,dx\\)</div>
+        <div class="step">\\(=\\frac{x}{2}+\\frac14\\sin(2x)+C\\)</div>
+        <div class="step">\\(\\boxed{\\frac{x}{2}+\\frac14\\sin(2x)+C}\\)</div>
+    `
+},
+
+11: {
+    q: "\\(\\int \\sec^2(3x)\\,dx\\)",
+    a: "\\(\\frac13\\tan(3x)+C\\)",
+    s: `
+        <div class="step">We know:</div>
+        <div class="step">\\(\\displaystyle \\frac{d}{dx}[\\tan(3x)]=3\\sec^2(3x)\\)</div>
+        <div class="step">Therefore we need a factor of \\(\\frac13\\):</div>
+        <div class="step">\\(\\boxed{\\frac13\\tan(3x)+C}\\)</div>
+    `
+},
+
+12: {
+    q: "\\(\\int \\sec^2(5x)\\,dx\\)",
+    a: "\\(\\frac15\\tan(5x)+C\\)",
+    s: `
+        <div class="step">Since:</div>
+        <div class="step">\\(\\frac{d}{dx}[\\tan(5x)]=5\\sec^2(5x)\\)</div>
+        <div class="step">Divide by 5:</div>
+        <div class="step">\\(\\boxed{\\frac15\\tan(5x)+C}\\)</div>
+    `
+},
+
+13: {
+    q: "\\(\\int \\cot(4x)\\,dx\\)",
+    a: "\\(\\frac14\\ln|\\sin(4x)|+C\\)",
+    s: `
+        <div class="step">Use the generalized result:</div>
+        <div class="step">\\(\\displaystyle \\int\\cot(ax)\\,dx
+        =\\frac1a\\ln|\\sin(ax)|+C\\)</div>
+        <div class="step">Here \\(a=4\\).</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{\\frac14\\ln|\\sin(4x)|+C}\\)</div>
+    `
+},
+
+14: {
+    q: "\\(\\int \\cot(7x)\\,dx\\)",
+    a: "\\(\\frac17\\ln|\\sin(7x)|+C\\)",
+    s: `
+        <div class="step">Using:</div>
+        <div class="step">\\(\\displaystyle \\int\\cot(ax)\\,dx
+        =\\frac1a\\ln|\\sin(ax)|+C\\)</div>
+        <div class="step">Here \\(a=7\\).</div>
+        <div class="step">\\(\\boxed{\\frac17\\ln|\\sin(7x)|+C}\\)</div>
+    `
+},
+
+15: {
+    q: "\\(\\int \\cosec^2(2x)\\,dx\\)",
+    a: "\\(-\\frac12\\cot(2x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\displaystyle \\int\\cosec^2(ax)\\,dx
+        =-\\frac1a\\cot(ax)+C\\)</div>
+        <div class="step">Here \\(a=2\\).</div>
+        <div class="step">\\(\\boxed{-\\frac12\\cot(2x)+C}\\)</div>
+    `
+},
+
+16: {
+    q: "\\(\\int \\cosec^2(6x)\\,dx\\)",
+    a: "\\(-\\frac16\\cot(6x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\displaystyle \\int\\cosec^2(ax)\\,dx
+        =-\\frac1a\\cot(ax)+C\\)</div>
+        <div class="step">Here \\(a=6\\).</div>
+        <div class="step">\\(\\boxed{-\\frac16\\cot(6x)+C}\\)</div>
+    `
+},
+
+17: {
+    q: "\\(\\int 3\\sec^2(3x)\\,dx\\)",
+    a: "\\(\\tan(3x)+C\\)",
+    s: `
+        <div class="step">We know:</div>
+        <div class="step">\\(\\displaystyle \\frac{d}{dx}[\\tan(3x)]
+        =3\\sec^2(3x)\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{\\tan(3x)+C}\\)</div>
+    `
+},
+
+18: {
+    q: "\\(\\int 8\\cot(2x)\\,dx\\)",
+    a: "\\(4\\ln|\\sin(2x)|+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\displaystyle \\int\\cot(2x)\\,dx
+        =\\frac12\\ln|\\sin(2x)|+C\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(8\\left(\\frac12\\ln|\\sin(2x)|\\right)\\)</div>
+        <div class="step">\\(\\boxed{4\\ln|\\sin(2x)|+C}\\)</div>
+    `
+},
+
+19: {
+    q: "\\(\\int 10\\cosec^2(5x)\\,dx\\)",
+    a: "\\(-2\\cot(5x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\displaystyle
+        \\int\\cosec^2(5x)\\,dx
+        =-\\frac15\\cot(5x)+C\\)</div>
+        <div class="step">Multiply by 10:</div>
+        <div class="step">\\(10\\left(-\\frac15\\cot(5x)\\right)\\)</div>
+        <div class="step">\\(\\boxed{-2\\cot(5x)+C}\\)</div>
+    `
+},
+
+20: {
+    q: "\\(\\int \\sin(2x)\\cos(2x)\\,dx\\)",
+    a: "\\(-\\frac18\\cos(4x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\sin(4x)=2\\sin(2x)\\cos(2x)\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\sin(2x)\\cos(2x)=\\frac12\\sin(4x)\\)</div>
+        <div class="step">So:</div>
+        <div class="step">\\(\\displaystyle
+        \\frac12\\int\\sin(4x)\\,dx\\)</div>
+        <div class="step">\\(=-\\frac18\\cos(4x)+C\\)</div>
+        <div class="step">\\(\\boxed{-\\frac18\\cos(4x)+C}\\)</div>
+    `
+},
+
+21: {
+    q: "\\(\\int(4\\sec^2x-3\\cot x)\\,dx\\)",
+    a: "\\(4\\tan x-3\\ln|\\sin x|+C\\)",
+    s: `
+        <div class="step">Integrate each term separately:</div>
+        <div class="step">\\(4\\int\\sec^2x\\,dx-3\\int\\cot x\\,dx\\)</div>
+        <div class="step">Use:</div>
+        <div class="step">\\(\\int\\sec^2x\\,dx=\\tan x\\)</div>
+        <div class="step">and</div>
+        <div class="step">\\(\\int\\cot x\\,dx=\\ln|\\sin x|\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{4\\tan x-3\\ln|\\sin x|+C}\\)</div>
+    `
+},
+
+22: {
+    q: "\\(\\int(2\\cosec^2x+5\\sec^2x)\\,dx\\)",
+    a: "\\(-2\\cot x+5\\tan x+C\\)",
+    s: `
+        <div class="step">Integrate each term:</div>
+        <div class="step">\\(2\\int\\cosec^2x\\,dx+5\\int\\sec^2x\\,dx\\)</div>
+        <div class="step">\\(=2(-\\cot x)+5(\\tan x)+C\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{-2\\cot x+5\\tan x+C}\\)</div>
+    `
+},
+
+23: {
+    q: "\\(\\int(7\\cot x-2\\cosec^2x)\\,dx\\)",
+    a: "\\(7\\ln|\\sin x|+2\\cot x+C\\)",
+    s: `
+        <div class="step">Integrate term by term:</div>
+        <div class="step">\\(7\\int\\cot x\\,dx-2\\int\\cosec^2x\\,dx\\)</div>
+        <div class="step">\\(=7\\ln|\\sin x|-2(-\\cot x)+C\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{7\\ln|\\sin x|+2\\cot x+C}\\)</div>
+    `
+},
+
+24: {
+    q: "\\(\\int(3\\sin x\\cos x+2\\sec^2x)\\,dx\\)",
+    a: "\\(-\\frac34\\cos(2x)+2\\tan x+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\displaystyle \\int\\sin x\\cos x\\,dx
+        =-\\frac14\\cos(2x)\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(3\\left(-\\frac14\\cos(2x)\\right)
+        +2\\tan x+C\\)</div>
+        <div class="step">\\(\\boxed{-\\frac34\\cos(2x)+2\\tan x+C}\\)</div>
+    `
+},
+
+25: {
+    q: "\\(\\int(5\\sin^2x-2\\cos^2x)\\,dx\\)",
+    a: "\\(\\frac{3x}{2}-\\frac74\\sin(2x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\sin^2x=\\frac12[1-\\cos(2x)]\\)</div>
+        <div class="step">\\(\\cos^2x=\\frac12[1+\\cos(2x)]\\)</div>
+        <div class="step">Substitute:</div>
+        <div class="step">\\(5\\left(\\frac12[1-\\cos2x]\\right)
+        -2\\left(\\frac12[1+\\cos2x]\\right)\\)</div>
+        <div class="step">\\(=\\frac52-\\frac52\\cos2x-1-\\cos2x\\)</div>
+        <div class="step">\\(=\\frac32-\\frac72\\cos2x\\)</div>
+        <div class="step">Integrate:</div>
+        <div class="step">\\(\\frac{3x}{2}-\\frac74\\sin(2x)+C\\)</div>
+        <div class="step">\\(\\boxed{\\frac{3x}{2}-\\frac74\\sin(2x)+C}\\)</div>
+    `
+},
+
+26: {
+    q: "\\(\\int(4\\cos^2x+3\\sin^2x)\\,dx\\)",
+    a: "\\(\\frac{7x}{2}+\\frac14\\sin(2x)+C\\)",
+    s: `
+        <div class="step">Use the identities:</div>
+        <div class="step">\\(\\cos^2x=\\frac12(1+\\cos2x)\\)</div>
+        <div class="step">\\(\\sin^2x=\\frac12(1-\\cos2x)\\)</div>
+        <div class="step">Substitute:</div>
+        <div class="step">\\(4\\left(\\frac12+\\frac12\\cos2x\\right)
+        +3\\left(\\frac12-\\frac12\\cos2x\\right)\\)</div>
+        <div class="step">\\(=2+2\\cos2x+\\frac32-\\frac32\\cos2x\\)</div>
+        <div class="step">\\(=\\frac72+\\frac12\\cos2x\\)</div>
+        <div class="step">Integrate:</div>
+        <div class="step">\\(\\boxed{\\frac{7x}{2}+\\frac14\\sin(2x)+C}\\)</div>
+    `
+},
+
+27: {
+    q: "\\(\\int[\\sec^2(2x)+\\cot(3x)]\\,dx\\)",
+    a: "\\(\\frac12\\tan(2x)+\\frac13\\ln|\\sin(3x)|+C\\)",
+    s: `
+        <div class="step">Integrate the first term:</div>
+        <div class="step">\\(\\displaystyle \\int\\sec^2(2x)\\,dx
+        =\\frac12\\tan(2x)\\)</div>
+        <div class="step">Integrate the second:</div>
+        <div class="step">\\(\\displaystyle \\int\\cot(3x)\\,dx
+        =\\frac13\\ln|\\sin(3x)|\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{\\frac12\\tan(2x)+\\frac13\\ln|\\sin(3x)|+C}\\)</div>
+    `
+},
+
+28: {
+    q: "\\(\\int[2\\cosec^2(4x)-3\\cot(2x)]\\,dx\\)",
+    a: "\\(-\\frac12\\cot(4x)-\\frac32\\ln|\\sin(2x)|+C\\)",
+    s: `
+        <div class="step">For the first term:</div>
+        <div class="step">\\(\\displaystyle
+        2\\int\\cosec^2(4x)\\,dx
+        =2\\left(-\\frac14\\cot(4x)\\right)
+        =-\\frac12\\cot(4x)\\)</div>
+        <div class="step">For the second:</div>
+        <div class="step">\\(\\displaystyle
+        -3\\int\\cot(2x)\\,dx
+        =-3\\left(\\frac12\\ln|\\sin(2x)|\\right)\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{-\\frac12\\cot(4x)-\\frac32\\ln|\\sin(2x)|+C}\\)</div>
+    `
+},
+
+29: {
+    q: "\\(\\int[6\\sin x\\cos x+4\\cos^2x]\,dx\\)",
+    a: "\\(-\\frac32\\cos(2x)+2x+\\sin(2x)+C\\)",
+    s: `
+        <div class="step">For the first term:</div>
+        <div class="step">\\(6\\int\\sin x\\cos x\\,dx
+        =-\\frac32\\cos(2x)\\)</div>
+        <div class="step">For the second term:</div>
+        <div class="step">\\(4\\cos^2x=4\\left(\\frac12[1+\\cos2x]\\right)\\)</div>
+        <div class="step">\\(=2+2\\cos2x\\)</div>
+        <div class="step">Integrating:</div>
+        <div class="step">\\(2x+\\sin(2x)\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{-\\frac32\\cos(2x)+2x+\\sin(2x)+C}\\)</div>
+    `
+},
+
+30: {
+    q: "\\(\\int[3\\sin^2x+5\\sin x\\cos x]\,dx\\)",
+    a: "\\(\\frac{3x}{2}-\\frac34\\sin(2x)-\\frac54\\cos(2x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\sin^2x=\\frac12(1-\\cos2x)\\)</div>
+        <div class="step">and</div>
+        <div class="step">\\(\\sin x\\cos x=\\frac12\\sin2x\\)</div>
+        <div class="step">So the integrand becomes:</div>
+        <div class="step">\\(\\frac32-\\frac32\\cos2x+\\frac52\\sin2x\\)</div>
+        <div class="step">Integrate:</div>
+        <div class="step">\\(\\frac{3x}{2}-\\frac34\\sin2x-\\frac54\\cos2x+C\\)</div>
+        <div class="step">\\(\\boxed{\\frac{3x}{2}-\\frac34\\sin(2x)-\\frac54\\cos(2x)+C}\\)</div>
+    `
+},
+
+31: {
+    q: "\\(\\int(1+\\cos2x)\\,dx\\)",
+    a: "\\(x+\\frac12\\sin(2x)+C\\)",
+    s: `
+        <div class="step">Integrate each term:</div>
+        <div class="step">\\(\\int1\\,dx=x\\)</div>
+        <div class="step">\\(\\displaystyle\\int\\cos(2x)\\,dx
+        =\\frac12\\sin(2x)\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{x+\\frac12\\sin(2x)+C}\\)</div>
+    `
+},
+
+32: {
+    q: "\\(\\int(1-\\cos2x)\\,dx\\)",
+    a: "\\(x-\\frac12\\sin(2x)+C\\)",
+    s: `
+        <div class="step">Integrate term by term:</div>
+        <div class="step">\\(\\int1\\,dx=x\\)</div>
+        <div class="step">\\(\\displaystyle-\\int\\cos(2x)\\,dx
+        =-\\frac12\\sin(2x)\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{x-\\frac12\\sin(2x)+C}\\)</div>
+    `
+},
+
+33: {
+    q: "\\(\\int2\\sin^2x\\,dx\\)",
+    a: "\\(x-\\frac12\\sin(2x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\sin^2x=\\frac12(1-\\cos2x)\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(2\\sin^2x=1-\\cos2x\\)</div>
+        <div class="step">So:</div>
+        <div class="step">\\(\\displaystyle\\int(1-\\cos2x)\\,dx\\)</div>
+        <div class="step">\\(\\boxed{x-\\frac12\\sin(2x)+C}\\)</div>
+    `
+},
+
+34: {
+    q: "\\(\\int3\\cos^2x\\,dx\\)",
+    a: "\\(\\frac{3x}{2}+\\frac34\\sin(2x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\cos^2x=\\frac12(1+\\cos2x)\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(3\\cos^2x=\\frac32(1+\\cos2x)\\)</div>
+        <div class="step">Integrate:</div>
+        <div class="step">\\(\\frac{3x}{2}+\\frac34\\sin(2x)+C\\)</div>
+        <div class="step">\\(\\boxed{\\frac{3x}{2}+\\frac34\\sin(2x)+C}\\)</div>
+    `
+},
+
+35: {
+    q: "\\(\\int(2\\sin^2x+2\\cos^2x)\\,dx\\)",
+    a: "\\(2x+C\\)",
+    s: `
+        <div class="step">Use the identity:</div>
+        <div class="step">\\(\\sin^2x+\\cos^2x=1\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(2\\sin^2x+2\\cos^2x=2\\)</div>
+        <div class="step">Hence:</div>
+        <div class="step">\\(\\int2\\,dx=2x+C\\)</div>
+        <div class="step">\\(\\boxed{2x+C}\\)</div>
+    `
+},
+
+36: {
+    q: "\\(\\int(5\\sin^2x+5\\cos^2x+3\\sec^2x)\\,dx\\)",
+    a: "\\(5x+3\\tan x+C\\)",
+    s: `
+        <div class="step">Group the first two terms:</div>
+        <div class="step">\\(5(\\sin^2x+\\cos^2x)+3\\sec^2x\\)</div>
+        <div class="step">Since \\(\\sin^2x+\\cos^2x=1\\):</div>
+        <div class="step">\\(5+3\\sec^2x\\)</div>
+        <div class="step">Integrate:</div>
+        <div class="step">\\(5x+3\\tan x+C\\)</div>
+        <div class="step">\\(\\boxed{5x+3\\tan x+C}\\)</div>
+    `
+},
+
+37: {
+    q: "\\(\\int(4\\cos^2x-4\\sin^2x)\\,dx\\)",
+    a: "\\(2\\sin(2x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\cos(2x)=\\cos^2x-\\sin^2x\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(4\\cos^2x-4\\sin^2x=4\\cos(2x)\\)</div>
+        <div class="step">Integrate:</div>
+        <div class="step">\\(4\\int\\cos(2x)\\,dx
+        =4\\left(\\frac12\\sin(2x)\\right)\\)</div>
+        <div class="step">\\(\\boxed{2\\sin(2x)+C}\\)</div>
+    `
+},
+
+38: {
+    q: "\\(\\int(6\\cos^2x-6\\sin^2x)\\,dx\\)",
+    a: "\\(3\\sin(2x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\cos(2x)=\\cos^2x-\\sin^2x\\)</div>
+        <div class="step">Thus:</div>
+        <div class="step">\\(6\\cos^2x-6\\sin^2x=6\\cos(2x)\\)</div>
+        <div class="step">Integrate:</div>
+        <div class="step">\\(6\\left(\\frac12\\sin(2x)\\right)\\)</div>
+        <div class="step">\\(\\boxed{3\\sin(2x)+C}\\)</div>
+    `
+},
+
+39: {
+    q: "\\(\\int(4\\sin x\\cos x+3\\sin^2x)\\,dx\\)",
+    a: "\\(-\\cos(2x)+\\frac{3x}{2}-\\frac34\\sin(2x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\sin x\\cos x=\\frac12\\sin2x\\)</div>
+        <div class="step">and</div>
+        <div class="step">\\(\\sin^2x=\\frac12(1-\\cos2x)\\)</div>
+        <div class="step">Substitute:</div>
+        <div class="step">\\(4\\left(\\frac12\\sin2x\\right)
+        +3\\left(\\frac12(1-\\cos2x)\\right)\\)</div>
+        <div class="step">\\(=2\\sin2x+\\frac32-\\frac32\\cos2x\\)</div>
+        <div class="step">Integrate:</div>
+        <div class="step">\\(-\\frac12\\cos2x+\\frac{3x}{2}-\\frac34\\sin2x+C\\)</div>
+        <div class="step">\\(\\boxed{-\\frac12\\cos(2x)+\\frac{3x}{2}-\\frac34\\sin(2x)+C}\\)</div>
+    `
+},
+
+40: {
+    q: "\\(\\int(8\\sin^2x-4\\sin x\\cos x+6\\cos^2x)\\,dx\\)",
+    a: "\\(7x-\\frac12\\sin(2x)+\\frac32\\cos(2x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\sin^2x=\\frac12(1-\\cos2x)\\)</div>
+        <div class="step">\\(\\cos^2x=\\frac12(1+\\cos2x)\\)</div>
+        <div class="step">\\(\\sin x\\cos x=\\frac12\\sin2x\\)</div>
+        <div class="step">Substitute:</div>
+        <div class="step">\\(4(1-\\cos2x)-2\\sin2x+3(1+\\cos2x)\\)</div>
+        <div class="step">\\(=7-\\cos2x-2\\sin2x\\)</div>
+        <div class="step">Integrate:</div>
+        <div class="step">\\(\\boxed{7x-\\frac12\\sin(2x)+\\frac12\\cos(2x)+C}\\)</div>
+    `
+},
+
+41: {
+    q: "\\(\\int(3+4\\cos2x-2\\sin2x)\\,dx\\)",
+    a: "\\(3x+2\\sin(2x)+\\cos(2x)+C\\)",
+    s: `
+        <div class="step">Integrate each term:</div>
+        <div class="step">\\(\\int3\\,dx=3x\\)</div>
+        <div class="step">\\(\\displaystyle4\\int\\cos2x\\,dx=2\\sin2x\\)</div>
+        <div class="step">\\(\\displaystyle-2\\int\\sin2x\\,dx=+\\cos2x\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{3x+2\\sin(2x)+\\cos(2x)+C}\\)</div>
+    `
+},
+
+42: {
+    q: "\\(\\int(7-5\\cos2x+6\\sin2x)\\,dx\\)",
+    a: "\\(7x-\\frac52\\sin(2x)-3\\cos(2x)+C\\)",
+    s: `
+        <div class="step">Integrate each term:</div>
+        <div class="step">\\(\\int7\\,dx=7x\\)</div>
+        <div class="step">\\(\\displaystyle-5\\int\\cos2x\\,dx
+        =-\\frac52\\sin2x\\)</div>
+        <div class="step">\\(\\displaystyle6\\int\\sin2x\\,dx
+        =-3\\cos2x\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(\\boxed{7x-\\frac52\\sin(2x)-3\\cos(2x)+C}\\)</div>
+    `
+},
+
+43: {
+    q: "\\(\\int[4\\sin^2x-6\\cos^2x+8\\sin x\\cos x]\,dx\\)",
+    a: "\\(-x-\\frac52\\sin(2x)-2\\cos(2x)+C\\)",
+    s: `
+        <div class="step">Use:</div>
+        <div class="step">\\(\\sin^2x=\\frac12(1-\\cos2x)\\)</div>
+        <div class="step">\\(\\cos^2x=\\frac12(1+\\cos2x)\\)</div>
+        <div class="step">\\(\\sin x\\cos x=\\frac12\\sin2x\\)</div>
+        <div class="step">Substitute:</div>
+        <div class="step">\\(2(1-\\cos2x)-3(1+\\cos2x)+4\\sin2x\\)</div>
+        <div class="step">\\(=-1-5\\cos2x+4\\sin2x\\)</div>
+        <div class="step">Integrate:</div>
+        <div class="step">\\(\\boxed{-x-\\frac52\\sin(2x)-2\\cos(2x)+C}\\)</div>
+    `
+},
+
+44: {
+    q: "\\(\\int[5\\sin^2x+5\\cos^2x+6\\sin x\\cos x-4\\cos^2x]\,dx\\)",
+    a: "\\(\\frac32x-\\frac32\\cos(2x)+C\\)",
+    s: `
+        <div class="step">First combine the cosine-squared terms:</div>
+        <div class="step">\\(5\\cos^2x-4\\cos^2x=\\cos^2x\\)</div>
+        <div class="step">So the integrand becomes:</div>
+        <div class="step">\\(5\\sin^2x+\\cos^2x+6\\sin x\\cos x\\)</div>
+        <div class="step">Use the identities:</div>
+        <div class="step">\\(5\\sin^2x=\\frac52(1-\\cos2x)\\)</div>
+        <div class="step">\\(\\cos^2x=\\frac12(1+\\cos2x)\\)</div>
+        <div class="step">\\(6\\sin x\\cos x=3\\sin2x\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(3-2\\cos2x+3\\sin2x\\)</div>
+        <div class="step">Integrate:</div>
+        <div class="step">\\(\\boxed{3x-\\sin(2x)-\\frac32\\cos(2x)+C}\\)</div>
+    `
+},
+
+45: {
+    q: "\\(\\int[6\\cos^2x-6\\sin^2x+12\\sin x\\cos x]\,dx\\)",
+    a: "\\(3\\sin(2x)-3\\cos(2x)+C\\)",
+    s: `
+        <div class="step">Use the identities:</div>
+        <div class="step">\\(\\cos^2x-\\sin^2x=\\cos2x\\)</div>
+        <div class="step">and</div>
+        <div class="step">\\(2\\sin x\\cos x=\\sin2x\\)</div>
+        <div class="step">Therefore:</div>
+        <div class="step">\\(6\\cos2x+6\\sin2x\\)</div>
+        <div class="step">Integrate:</div>
+        <div class="step">\\(6\\left(\\frac12\\sin2x\\right)
+        +6\\left(-\\frac12\\cos2x\\right)\\)</div>
+        <div class="step">\\(\\boxed{3\\sin(2x)-3\\cos(2x)+C}\\)</div>
+    `
+}
+
+};
+
+let currentQuestion = null;
+let currentButton = null;
+
+function showQuestion(number, button) {
+
+    currentQuestion = number;
+    currentButton = button;
+
+    document.querySelectorAll(".question-btn").forEach(btn => {
         btn.classList.remove("active");
-      });
+    });
 
-      event.currentTarget.classList.add("active");
+    button.classList.add("active");
 
-      panel.scrollIntoView({
+    const data = questions[number];
+
+    document.getElementById("questionNumber").textContent =
+        "Question " + number;
+
+    document.getElementById("questionText").innerHTML = data.q;
+
+    document.getElementById("answerBox").innerHTML =
+        data.a;
+
+    document.getElementById("solutionContent").innerHTML =
+        data.s;
+
+    document.getElementById("answerBox").classList.remove("show");
+    document.getElementById("solutionBox").classList.remove("show");
+
+    document.getElementById("questionPanel").classList.add("show");
+
+    document.getElementById("questionPanel").scrollIntoView({
         behavior: "smooth",
-        block: "center"
-      });
+        block: "start"
+    });
+
+    if (window.MathJax) {
+        MathJax.typesetPromise();
     }
+}
 
+function toggleAnswer() {
+    document.getElementById("answerBox").classList.toggle("show");
 
-    function toggleAnswer() {
-      const answerBox = document.getElementById("answerBox");
-      answerBox.classList.toggle("show");
+    if (window.MathJax) {
+        MathJax.typesetPromise();
     }
+}
 
-  </script>
+function toggleSolution() {
+    document.getElementById("solutionBox").classList.toggle("show");
+
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
+}
+
+</script>
+
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+    },
+    svg: {
+        fontCache: 'global'
+    }
+};
+</script>
+
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
 </body>
 </html>
