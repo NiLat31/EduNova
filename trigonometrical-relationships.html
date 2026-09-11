@@ -113,107 +113,145 @@
            HERO DECORATION
         ========================= */
 
-        .hero-decoration {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 350px;
-            height: 350px;
-            opacity: 0.9;
-            pointer-events: none;
-        }
+        /* =========================
+   HERO DECORATION
+========================= */
 
-        .hero-decoration .circle {
-            position: absolute;
-            border: 1px solid rgba(255,255,255,0.13);
-            border-radius: 50%;
-        }
+.hero-decoration {
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 430px;
+    height: 300px;
+    opacity: 0.9;
+    pointer-events: none;
+}
 
-        .hero-decoration .circle.one {
-            width: 300px;
-            height: 300px;
-            right: 0;
-            top: 25px;
-        }
+/* Large integration symbol */
+.hero-decoration .math-symbol.symbol-one {
+    position: absolute;
+    right: 285px;
+    top: 75px;
+    font-family: "Playfair Display", serif;
+    font-size: 115px;
+    color: rgba(255,255,255,0.10);
+}
 
-        .hero-decoration .circle.two {
-            width: 205px;
-            height: 205px;
-            right: 48px;
-            top: 72px;
-            border-color: rgba(224,0,0,0.55);
-        }
+/* Theta */
+.hero-decoration .math-symbol.symbol-two {
+    position: absolute;
+    right: 85px;
+    top: 25px;
+    font-family: "Playfair Display", serif;
+    font-size: 72px;
+    color: rgba(224,0,0,0.30);
+}
 
-        .hero-decoration .circle.three {
-            width: 105px;
-            height: 105px;
-            right: 98px;
-            top: 122px;
-            border-color: rgba(255,255,255,0.25);
-        }
+/* Pi */
+.hero-decoration .math-symbol.symbol-three {
+    position: absolute;
+    right: 30px;
+    bottom: 35px;
+    font-family: "Playfair Display", serif;
+    font-size: 55px;
+    color: rgba(255,255,255,0.12);
+}
 
-        .hero-decoration .math-symbol {
-            position: absolute;
-            font-family: "Playfair Display", serif;
-            color: rgba(255,255,255,0.16);
-            font-size: 45px;
-        }
+/* Trigonometric curve */
+.hero-decoration::before {
+    content: "";
+    position: absolute;
+    width: 330px;
+    height: 120px;
+    right: 20px;
+    top: 90px;
+    border-top: 2px solid rgba(255,255,255,0.18);
+    border-radius: 50%;
+    transform: rotate(-8deg);
+}
 
-        .hero-decoration .symbol-one {
-            top: 0;
-            right: 150px;
-        }
+/* Second curve creates a subtle sine-wave feeling */
+.hero-decoration::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 90px;
+    right: 35px;
+    top: 120px;
+    border-bottom: 2px solid rgba(224,0,0,0.28);
+    border-radius: 50%;
+    transform: rotate(8deg);
+}
 
-        .hero-decoration .symbol-two {
-            bottom: 8px;
-            right: 5px;
-            color: rgba(224,0,0,0.35);
-        }
+/* Circles */
+.hero-decoration .circle {
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 50%;
+}
 
-        .hero-decoration .symbol-three {
-            top: 135px;
-            left: 10px;
-        }
+.hero-decoration .circle.one {
+    width: 260px;
+    height: 260px;
+    right: 35px;
+    top: 20px;
+}
 
-        .hero-decoration .dot {
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            background: #e00000;
-            border-radius: 50%;
-        }
+.hero-decoration .circle.two {
+    width: 190px;
+    height: 190px;
+    right: 70px;
+    top: 55px;
+}
 
-        .hero-decoration .dot-one {
-            right: 68px;
-            top: 65px;
-        }
+.hero-decoration .circle.three {
+    width: 115px;
+    height: 115px;
+    right: 108px;
+    top: 92px;
+}
 
-        .hero-decoration .dot-two {
-            right: 275px;
-            bottom: 65px;
-        }
+/* Small dots */
+.hero-decoration .dot {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: #e00000;
+    border-radius: 50%;
+}
 
-        .hero-decoration .line {
-            position: absolute;
-            height: 1px;
-            background: rgba(255,255,255,0.16);
-            transform-origin: left center;
-        }
+.hero-decoration .dot-one {
+    right: 145px;
+    top: 92px;
+}
 
-        .hero-decoration .line-one {
-            width: 130px;
-            right: 180px;
-            top: 90px;
-            transform: rotate(32deg);
-        }
+.hero-decoration .dot-two {
+    right: 265px;
+    top: 190px;
+}
 
-        .hero-decoration .line-two {
-            width: 105px;
-            right: 30px;
-            bottom: 100px;
-            transform: rotate(-35deg);
-        }
+/* Decorative lines */
+.hero-decoration .line {
+    position: absolute;
+    height: 1px;
+    background: rgba(255,255,255,0.14);
+    transform-origin: left center;
+}
+
+.hero-decoration .line-one {
+    width: 120px;
+    right: 185px;
+    top: 82px;
+    transform: rotate(28deg);
+}
+
+.hero-decoration .line-two {
+    width: 110px;
+    right: 165px;
+    top: 215px;
+    transform: rotate(-25deg);
+}
 
         /* =========================
            MAIN
