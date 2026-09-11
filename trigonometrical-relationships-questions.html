@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Trigonometrical Relationships Questions | EduNova</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: #f5f5f5;
+      color: #111;
+      min-height: 100vh;
+    }
+
+    /* NAVIGATION */
+    nav {
+      height: 72px;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+    }
+
+    .logo {
+      color: white;
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: #e00000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #e00000;
+    }
+
+    /* HERO */
+    .hero {
+      background: #111;
+      color: white;
+      padding: 65px 7% 75px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "∫";
+      position: absolute;
+      right: 8%;
+      top: 20px;
+      font-family: "Playfair Display", serif;
+      font-size: 190px;
+      color: rgba(224, 0, 0, 0.13);
+      pointer-events: none;
+    }
+
+    .lesson-label {
+      color: #e00000;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(35px, 5vw, 60px);
+      line-height: 1.08;
+      max-width: 850px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      margin-top: 18px;
+      color: #cfcfcf;
+      font-size: 17px;
+      max-width: 650px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* MAIN */
+    .container {
+      width: min(1100px, 90%);
+      margin: 55px auto 80px;
+    }
+
+    .section-title {
+      margin-bottom: 25px;
+    }
+
+    .section-title h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 32px;
+    }
+
+    .section-title p {
+      color: #666;
+      margin-top: 8px;
+    }
+
+    /* LEVELS */
+    .level {
+      margin-bottom: 42px;
+    }
+
+    .level-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 18px;
+    }
+
+    .level-number {
+      width: 42px;
+      height: 42px;
+      background: #111;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .level-header h3 {
+      font-size: 21px;
+    }
+
+    .level-header span {
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* QUESTION GRID */
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 12px;
+    }
+
+    .question-btn {
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 10px;
+      padding: 16px 15px;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .question-btn:hover {
+      border-color: #e00000;
+      transform: translateY(-2px);
+    }
+
+    .question-btn.active {
+      background: #111;
+      color: white;
+      border-color: #111;
+    }
+
+    .question-btn .q-number {
+      color: #e00000;
+      font-size: 12px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .question-btn.active .q-number {
+      color: #ff5555;
+    }
+
+    /* QUESTION PANEL */
+    .question-panel {
+      margin-top: 45px;
+      background: white;
+      border-radius: 16px;
+      padding: 35px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      display: none;
+    }
+
+    .question-panel.show {
+      display: block;
+    }
+
+    .question-label {
+      color: #e00000;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .question-text {
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .answer-box {
+      display: none;
+      background: #f7f7f7;
+      border-left: 4px solid #e00000;
+      padding: 22px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .answer-box.show {
+      display: block;
+    }
+
+    .answer-title {
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #e00000;
+    }
+
+    .answer {
+      font-size: 19px;
+      line-height: 1.8;
+    }
+
+    .show-answer {
+      background: #111;
+      color: white;
+      border: none;
+      padding: 13px 22px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .show-answer:hover {
+      background: #e00000;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 50px 5% 60px;
+      }
+
+      .container {
+        width: 92%;
+      }
+
+      .question-panel {
+        padding: 25px 20px;
+      }
+
+      .question-text {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="dashboard.html" class="logo">Edu<span>Nova</span></a>
+
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="integration.html">INTEGRATION</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="lesson-label">Integration • Lesson 3</div>
+
+    <h1>Integration Using Trigonometrical Relationships</h1>
+
+    <p>
+      Practice recognizing and applying the trigonometrical relationships
+      used throughout this lesson.
+    </p>
+  </section>
+
+  <main class="container">
+
+    <div class="section-title">
+      <h2>Questions</h2>
+      <p>Select a question to begin. Try it yourself before revealing the answer.</p>
+    </div>
+
+    <!-- LEVEL 1 -->
+    <section class="level">
+      <div class="level-header">
+        <div class="level-number">1</div>
+        <div>
+          <h3>Foundation</h3>
+          <span>Start with the basic relationships.</span>
+        </div>
+      </div>
+
+      <div class="question-grid">
+        <button class="question-btn" onclick="showQuestion(1)">
+          <span class="q-number">QUESTION 01</span>
+          ∫ sec²x dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(2)">
+          <span class="q-number">QUESTION 02</span>
+          ∫ 4sec²x dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(3)">
+          <span class="q-number">QUESTION 03</span>
+          ∫ cosec²x dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(4)">
+          <span class="q-number">QUESTION 04</span>
+          ∫ 7cosec²x dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(5)">
+          <span class="q-number">QUESTION 05</span>
+          ∫ cot x dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(6)">
+          <span class="q-number">QUESTION 06</span>
+          ∫ 5cot x dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(7)">
+          <span class="q-number">QUESTION 07</span>
+          ∫ sin x cos x dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(8)">
+          <span class="q-number">QUESTION 08</span>
+          ∫ 6sin x cos x dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(9)">
+          <span class="q-number">QUESTION 09</span>
+          ∫ sin²x dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(10)">
+          <span class="q-number">QUESTION 10</span>
+          ∫ cos²x dx
+        </button>
+      </div>
+    </section>
+
+    <!-- LEVEL 2 -->
+    <section class="level">
+      <div class="level-header">
+        <div class="level-number">2</div>
+        <div>
+          <h3>Angles of the Form ax</h3>
+          <span>Remember the factor produced by the chain rule.</span>
+        </div>
+      </div>
+
+      <div class="question-grid">
+        <button class="question-btn" onclick="showQuestion(11)">
+          <span class="q-number">QUESTION 11</span>
+          ∫ sec²(3x) dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(12)">
+          <span class="q-number">QUESTION 12</span>
+          ∫ sec²(5x) dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(13)">
+          <span class="q-number">QUESTION 13</span>
+          ∫ cot(4x) dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(14)">
+          <span class="q-number">QUESTION 14</span>
+          ∫ cot(7x) dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(15)">
+          <span class="q-number">QUESTION 15</span>
+          ∫ cosec²(2x) dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(16)">
+          <span class="q-number">QUESTION 16</span>
+          ∫ cosec²(6x) dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(17)">
+          <span class="q-number">QUESTION 17</span>
+          ∫ 3sec²(3x) dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(18)">
+          <span class="q-number">QUESTION 18</span>
+          ∫ 8cot(2x) dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(19)">
+          <span class="q-number">QUESTION 19</span>
+          ∫ 10cosec²(5x) dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(20)">
+          <span class="q-number">QUESTION 20</span>
+          ∫ sin(2x)cos(2x) dx
+        </button>
+      </div>
+    </section>
+
+    <!-- LEVEL 3 -->
+    <section class="level">
+      <div class="level-header">
+        <div class="level-number">3</div>
+        <div>
+          <h3>Recognition</h3>
+          <span>Choose the correct relationship before integrating.</span>
+        </div>
+      </div>
+
+      <div class="question-grid">
+        <button class="question-btn" onclick="showQuestion(21)">
+          <span class="q-number">QUESTION 21</span>
+          ∫(4sec²x − 3cot x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(22)">
+          <span class="q-number">QUESTION 22</span>
+          ∫(2cosec²x + 5sec²x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(23)">
+          <span class="q-number">QUESTION 23</span>
+          ∫(7cot x − 2cosec²x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(24)">
+          <span class="q-number">QUESTION 24</span>
+          ∫(3sin x cos x + 2sec²x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(25)">
+          <span class="q-number">QUESTION 25</span>
+          ∫(5sin²x − 2cos²x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(26)">
+          <span class="q-number">QUESTION 26</span>
+          ∫(4cos²x + 3sin²x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(27)">
+          <span class="q-number">QUESTION 27</span>
+          ∫[sec²(2x) + cot(3x)]dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(28)">
+          <span class="q-number">QUESTION 28</span>
+          ∫[2cosec²(4x) − 3cot(2x)]dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(29)">
+          <span class="q-number">QUESTION 29</span>
+          ∫[6sin x cos x + 4cos²x]dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(30)">
+          <span class="q-number">QUESTION 30</span>
+          ∫[3sin²x + 5sin x cos x]dx
+        </button>
+      </div>
+    </section>
+
+    <!-- LEVEL 4 -->
+    <section class="level">
+      <div class="level-header">
+        <div class="level-number">4</div>
+        <div>
+          <h3>Tricky</h3>
+          <span>Look carefully for the relationship hidden inside the expression.</span>
+        </div>
+      </div>
+
+      <div class="question-grid">
+        <button class="question-btn" onclick="showQuestion(31)">
+          <span class="q-number">QUESTION 31</span>
+          ∫(1 + cos 2x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(32)">
+          <span class="q-number">QUESTION 32</span>
+          ∫(1 − cos 2x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(33)">
+          <span class="q-number">QUESTION 33</span>
+          ∫2sin²x dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(34)">
+          <span class="q-number">QUESTION 34</span>
+          ∫3cos²x dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(35)">
+          <span class="q-number">QUESTION 35</span>
+          ∫(2sin²x + 2cos²x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(36)">
+          <span class="q-number">QUESTION 36</span>
+          ∫(5sin²x + 5cos²x + 3sec²x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(37)">
+          <span class="q-number">QUESTION 37</span>
+          ∫(4cos²x − 4sin²x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(38)">
+          <span class="q-number">QUESTION 38</span>
+          ∫(6cos²x − 6sin²x)dx
+        </button>
+      </div>
+    </section>
+
+    <!-- LEVEL 5 -->
+    <section class="level">
+      <div class="level-header">
+        <div class="level-number">5</div>
+        <div>
+          <h3>Hard</h3>
+          <span>Several relationships may need to be recognized and combined.</span>
+        </div>
+      </div>
+
+      <div class="question-grid">
+        <button class="question-btn" onclick="showQuestion(39)">
+          <span class="q-number">QUESTION 39</span>
+          ∫(4sin x cos x + 3sin²x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(40)">
+          <span class="q-number">QUESTION 40</span>
+          ∫(8sin²x − 4sin x cos x + 6cos²x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(41)">
+          <span class="q-number">QUESTION 41</span>
+          ∫(3 + 4cos 2x − 2sin 2x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(42)">
+          <span class="q-number">QUESTION 42</span>
+          ∫(7 − 5cos 2x + 6sin 2x)dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(43)">
+          <span class="q-number">QUESTION 43</span>
+          ∫[4sin²x − 6cos²x + 8sin x cos x]dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(44)">
+          <span class="q-number">QUESTION 44</span>
+          ∫[5sin²x + 5cos²x + 6sin x cos x − 4cos²x]dx
+        </button>
+
+        <button class="question-btn" onclick="showQuestion(45)">
+          <span class="q-number">QUESTION 45</span>
+          ∫[6cos²x − 6sin²x + 12sin x cos x]dx
+        </button>
+      </div>
+    </section>
+
+    <!-- QUESTION DISPLAY -->
+    <section class="question-panel" id="questionPanel">
+
+      <div class="question-label" id="questionNumber">
+        QUESTION 01
+      </div>
+
+      <div class="question-text" id="questionText">
+      </div>
+
+      <button class="show-answer" onclick="toggleAnswer()">
+        Show Answer
+      </button>
+
+      <div class="answer-box" id="answerBox">
+        <div class="answer-title">Answer</div>
+        <div class="answer" id="answerText"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <strong>EduNova</strong> • Grade 12 Advanced Mathematics
+  </footer>
+
+
+  <script>
+
+    const questions = {
+
+      1: {
+        question: "∫ sec²x dx",
+        answer: "tan x + C"
+      },
+
+      2: {
+        question: "∫ 4sec²x dx",
+        answer: "4tan x + C"
+      },
+
+      3: {
+        question: "∫ cosec²x dx",
+        answer: "−cot x + C"
+      },
+
+      4: {
+        question: "∫ 7cosec²x dx",
+        answer: "−7cot x + C"
+      },
+
+      5: {
+        question: "∫ cot x dx",
+        answer: "ln|sin x| + C"
+      },
+
+      6: {
+        question: "∫ 5cot x dx",
+        answer: "5ln|sin x| + C"
+      },
+
+      7: {
+        question: "∫ sin x cos x dx",
+        answer: "−¼cos(2x) + C"
+      },
+
+      8: {
+        question: "∫ 6sin x cos x dx",
+        answer: "−3cos(2x) + C"
+      },
+
+      9: {
+        question: "∫ sin²x dx",
+        answer: "x/2 − ¼sin(2x) + C"
+      },
+
+      10: {
+        question: "∫ cos²x dx",
+        answer: "x/2 + ¼sin(2x) + C"
+      },
+
+      11: {
+        question: "∫ sec²(3x) dx",
+        answer: "⅓tan(3x) + C"
+      },
+
+      12: {
+        question: "∫ sec²(5x) dx",
+        answer: "⅕tan(5x) + C"
+      },
+
+      13: {
+        question: "∫ cot(4x) dx",
+        answer: "¼ln|sin(4x)| + C"
+      },
+
+      14: {
+        question: "∫ cot(7x) dx",
+        answer: "⅐ln|sin(7x)| + C"
+      },
+
+      15: {
+        question: "∫ cosec²(2x) dx",
+        answer: "−½cot(2x) + C"
+      },
+
+      16: {
+        question: "∫ cosec²(6x) dx",
+        answer: "−⅙cot(6x) + C"
+      },
+
+      17: {
+        question: "∫ 3sec²(3x) dx",
+        answer: "tan(3x) + C"
+      },
+
+      18: {
+        question: "∫ 8cot(2x) dx",
+        answer: "4ln|sin(2x)| + C"
+      },
+
+      19: {
+        question: "∫ 10cosec²(5x) dx",
+        answer: "−2cot(5x) + C"
+      },
+
+      20: {
+        question: "∫ sin(2x)cos(2x) dx",
+        answer: "−⅛cos(4x) + C"
+      },
+
+      21: {
+        question: "∫(4sec²x − 3cot x)dx",
+        answer: "4tan x − 3ln|sin x| + C"
+      },
+
+      22: {
+        question: "∫(2cosec²x + 5sec²x)dx",
+        answer: "−2cot x + 5tan x + C"
+      },
+
+      23: {
+        question: "∫(7cot x − 2cosec²x)dx",
+        answer: "7ln|sin x| + 2cot x + C"
+      },
+
+      24: {
+        question: "∫(3sin x cos x + 2sec²x)dx",
+        answer: "−¾cos(2x) + 2tan x + C"
+      },
+
+      25: {
+        question: "∫(5sin²x − 2cos²x)dx",
+        answer: "3x/2 − 7/4 sin(2x) + C"
+      },
+
+      26: {
+        question: "∫(4cos²x + 3sin²x)dx",
+        answer: "7x/2 + ¼sin(2x) + C"
+      },
+
+      27: {
+        question: "∫[sec²(2x) + cot(3x)]dx",
+        answer: "½tan(2x) + ⅓ln|sin(3x)| + C"
+      },
+
+      28: {
+        question: "∫[2cosec²(4x) − 3cot(2x)]dx",
+        answer: "−½cot(4x) − 3/2 ln|sin(2x)| + C"
+      },
+
+      29: {
+        question: "∫[6sin x cos x + 4cos²x]dx",
+        answer: "−3/2cos(2x) + 2x + sin(2x) + C"
+      },
+
+      30: {
+        question: "∫[3sin²x + 5sin x cos x]dx",
+        answer: "3x/2 − 3/4sin(2x) − 5/4cos(2x) + C"
+      },
+
+      31: {
+        question: "∫(1 + cos 2x)dx",
+        answer: "x + ½sin(2x) + C"
+      },
+
+      32: {
+        question: "∫(1 − cos 2x)dx",
+        answer: "x − ½sin(2x) + C"
+      },
+
+      33: {
+        question: "∫2sin²x dx",
+        answer: "x − ½sin(2x) + C"
+      },
+
+      34: {
+        question: "∫3cos²x dx",
+        answer: "3x/2 + 3/4sin(2x) + C"
+      },
+
+      35: {
+        question: "∫(2sin²x + 2cos²x)dx",
+        answer: "2x + C"
+      },
+
+      36: {
+        question: "∫(5sin²x + 5cos²x + 3sec²x)dx",
+        answer: "5x + 3tan x + C"
+      },
+
+      37: {
+        question: "∫(4cos²x − 4sin²x)dx",
+        answer: "2sin(2x) + C"
+      },
+
+      38: {
+        question: "∫(6cos²x − 6sin²x)dx",
+        answer: "3sin(2x) + C"
+      },
+
+      39: {
+        question: "∫(4sin x cos x + 3sin²x)dx",
+        answer: "−cos(2x) + 3x/2 − 3/4sin(2x) + C"
+      },
+
+      40: {
+        question: "∫(8sin²x − 4sin x cos x + 6cos²x)dx",
+        answer: "7x − ½sin(2x) + 3/2cos(2x) + C"
+      },
+
+      41: {
+        question: "∫(3 + 4cos 2x − 2sin 2x)dx",
+        answer: "3x + 2sin(2x) + cos(2x) + C"
+      },
+
+      42: {
+        question: "∫(7 − 5cos 2x + 6sin 2x)dx",
+        answer: "7x − 5/2sin(2x) − 3cos(2x) + C"
+      },
+
+      43: {
+        question: "∫[4sin²x − 6cos²x + 8sin x cos x]dx",
+        answer: "−x − 5/2sin(2x) − 2cos(2x) + C"
+      },
+
+      44: {
+        question: "∫[5sin²x + 5cos²x + 6sin x cos x − 4cos²x]dx",
+        answer: "3x/2 + 3/2cos(2x) − 3/2sin(2x) + C"
+      },
+
+      45: {
+        question: "∫[6cos²x − 6sin²x + 12sin x cos x]dx",
+        answer: "3sin(2x) − 3cos(2x) + C"
+      }
+
+    };
+
+
+    function showQuestion(number) {
+
+      const panel = document.getElementById("questionPanel");
+      const questionNumber = document.getElementById("questionNumber");
+      const questionText = document.getElementById("questionText");
+      const answerText = document.getElementById("answerText");
+      const answerBox = document.getElementById("answerBox");
+
+      questionNumber.textContent =
+        "QUESTION " + String(number).padStart(2, "0");
+
+      questionText.textContent = questions[number].question;
+      answerText.textContent = questions[number].answer;
+
+      answerBox.classList.remove("show");
+      panel.classList.add("show");
+
+      document.querySelectorAll(".question-btn").forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      event.currentTarget.classList.add("active");
+
+      panel.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+
+
+    function toggleAnswer() {
+      const answerBox = document.getElementById("answerBox");
+      answerBox.classList.toggle("show");
+    }
+
+  </script>
+
+</body>
+</html>
