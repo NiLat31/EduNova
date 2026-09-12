@@ -26,6 +26,10 @@ MathJax = {
 
 <style>
 
+/* =========================
+   RESET
+========================= */
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -39,26 +43,43 @@ body{
 }
 
 
-/* NAVIGATION */
+/* =========================
+   NAVIGATION
+========================= */
 
 nav{
-    height:82px;
+    min-height:82px;
     padding:0 7%;
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:30px;
     border-bottom:1px solid #ddd;
     background:#f7f6f2;
+}
+
+.logo-area{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
 }
 
 .logo{
     font-family:"Playfair Display",serif;
     font-size:28px;
+    line-height:1;
     font-weight:700;
 }
 
 .logo span{
     color:#e52b20;
+}
+
+.logo-tagline{
+    margin-top:5px;
+    color:#777;
+    font-size:9px;
+    letter-spacing:.4px;
 }
 
 .nav{
@@ -94,7 +115,9 @@ nav{
 }
 
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
     background:#111;
@@ -126,7 +149,7 @@ nav{
 .hero h1{
     font:600 clamp(42px,6vw,78px)/1.05 "Playfair Display";
     letter-spacing:-3px;
-    max-width:900px;
+    max-width:950px;
     position:relative;
     z-index:2;
 }
@@ -142,7 +165,9 @@ nav{
 }
 
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 main{
     padding:80px 7% 110px;
@@ -169,7 +194,9 @@ main{
 }
 
 
-/* LEVEL */
+/* =========================
+   LEVELS
+========================= */
 
 .level{
     margin-top:55px;
@@ -200,7 +227,9 @@ main{
 }
 
 
-/* QUESTION GRID */
+/* =========================
+   QUESTION GRID
+========================= */
 
 .question-grid{
     display:grid;
@@ -230,7 +259,9 @@ main{
 }
 
 
-/* QUESTION PANEL */
+/* =========================
+   QUESTION PANEL
+========================= */
 
 .question-panel{
     display:none;
@@ -273,6 +304,7 @@ main{
     padding:25px 30px;
     border:1px solid #ddd;
     background:#fafafa;
+    overflow-x:auto;
 }
 
 .answer-box.show,
@@ -286,13 +318,17 @@ main{
     font-size:10px;
     font-weight:700;
     letter-spacing:2px;
-    margin-bottom:14px;
+    margin-bottom:18px;
 }
 
 .answer-content,
 .solution-content{
     font-size:18px;
     line-height:1.9;
+}
+
+.solution-content .MathJax{
+    margin:12px 0;
 }
 
 .buttons{
@@ -328,7 +364,9 @@ main{
 }
 
 
-/* BOTTOM STRIP */
+/* =========================
+   BOTTOM STRIP
+========================= */
 
 .strip{
     margin-top:65px;
@@ -353,7 +391,9 @@ main{
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     background:#111;
@@ -378,14 +418,24 @@ footer p{
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:800px){
 
     nav{
-        height:auto;
+        min-height:auto;
         padding:18px 5%;
         gap:15px;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+
+    .logo-tagline{
+        font-size:8px;
     }
 
     .nav{
@@ -397,8 +447,19 @@ footer p{
         font-size:9px;
     }
 
+    .logout{
+        padding:9px 10px;
+        font-size:9px;
+    }
+
     .hero{
         padding:70px 5% 60px;
+    }
+
+    .hero:after{
+        right:-20px;
+        top:-40px;
+        font-size:230px;
     }
 
     main{
@@ -423,6 +484,11 @@ footer p{
         font-size:17px;
     }
 
+    .answer-content,
+    .solution-content{
+        font-size:16px;
+    }
+
     .strip{
         flex-direction:column;
         align-items:flex-start;
@@ -443,13 +509,24 @@ footer p{
 <body>
 
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
-    <div class="logo">
-        Edu<span>Nova</span>
+    <div class="logo-area">
+
+        <div class="logo">
+            Edu<span>Nova</span>
+        </div>
+
+        <div class="logo-tagline">
+            Mathematics made clear.
+        </div>
+
     </div>
+
 
     <div class="nav">
 
@@ -471,7 +548,9 @@ footer p{
 
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <header class="hero">
 
@@ -493,7 +572,9 @@ footer p{
 
 
 
-<!-- MAIN -->
+<!-- =========================
+     MAIN
+========================= -->
 
 <main>
 
@@ -521,7 +602,9 @@ footer p{
 
 
 
-    <!-- LEVEL 1 -->
+    <!-- =========================
+         FOUNDATION
+    ========================= -->
 
     <section class="level">
 
@@ -556,7 +639,9 @@ footer p{
 
 
 
-    <!-- LEVEL 2 -->
+    <!-- =========================
+         DEVELOPING
+    ========================= -->
 
     <section class="level">
 
@@ -591,7 +676,9 @@ footer p{
 
 
 
-    <!-- LEVEL 3 -->
+    <!-- =========================
+         INTERMEDIATE
+    ========================= -->
 
     <section class="level">
 
@@ -626,7 +713,9 @@ footer p{
 
 
 
-    <!-- LEVEL 4 -->
+    <!-- =========================
+         ADVANCED
+    ========================= -->
 
     <section class="level">
 
@@ -659,7 +748,9 @@ footer p{
 
 
 
-    <!-- LEVEL 5 -->
+    <!-- =========================
+         CHALLENGE
+    ========================= -->
 
     <section class="level">
 
@@ -691,7 +782,9 @@ footer p{
 
 
 
-    <!-- QUESTION PANEL -->
+    <!-- =========================
+         QUESTION PANEL
+    ========================= -->
 
     <section class="question-panel" id="questionPanel">
 
@@ -744,7 +837,9 @@ footer p{
 
 
 
-    <!-- STRIP -->
+    <!-- =========================
+         STRIP
+    ========================= -->
 
     <div class="strip">
 
@@ -765,7 +860,9 @@ footer p{
 
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -784,7 +881,9 @@ footer p{
 <script>
 
 
-/* LOGIN PROTECTION */
+/* =========================
+   LOGIN PROTECTION
+========================= */
 
 const username = localStorage.getItem("eduNovaUsername");
 
@@ -794,290 +893,314 @@ if (!username) {
 
 
 
-/* QUESTION DATA */
+/* =========================
+   QUESTION DATA
+========================= */
 
 const questions = {
 
 
+/* =========================
+   FOUNDATION
+========================= */
+
 1:{
-q:"\\[\\int \\sec^2x\\,dx\\]",
-a:"\\[\\tan x+C\\]",
-s:"Since \\(\\frac{d}{dx}(\\tan x)=\\sec^2x\\), we have \\(\\int\\sec^2x\\,dx=\\tan x+C\\)."
+    q:"\\[\\int \\sec^2x\\,dx\\]",
+    a:"\\[\\tan x+C\\]",
+    s:"\\[\\begin{aligned}\\int\\sec^2x\\,dx&=\\tan x+C\\end{aligned}\\]"
 },
 
 2:{
-q:"\\[\\int 4\\sec^2x\\,dx\\]",
-a:"\\[4\\tan x+C\\]",
-s:"Take the constant 4 outside the integral: \\(4\\int\\sec^2x\\,dx=4\\tan x+C\\)."
+    q:"\\[\\int 4\\sec^2x\\,dx\\]",
+    a:"\\[4\\tan x+C\\]",
+    s:"\\[\\begin{aligned}\\int 4\\sec^2x\\,dx&=4\\int\\sec^2x\\,dx\\\\&=4\\tan x+C\\end{aligned}\\]"
 },
 
 3:{
-q:"\\[\\int \\cosec^2x\\,dx\\]",
-a:"\\[-\\cot x+C\\]",
-s:"Since \\(\\frac{d}{dx}(\\cot x)=-\\cosec^2x\\), the integral is \\(-\\cot x+C\\)."
+    q:"\\[\\int \\cosec^2x\\,dx\\]",
+    a:"\\[-\\cot x+C\\]",
+    s:"\\[\\begin{aligned}\\int\\cosec^2x\\,dx&=-\\cot x+C\\end{aligned}\\]"
 },
 
 4:{
-q:"\\[\\int 7\\cosec^2x\\,dx\\]",
-a:"\\[-7\\cot x+C\\]",
-s:"Take 7 outside the integral: \\(7\\int\\cosec^2x\\,dx=-7\\cot x+C\\)."
+    q:"\\[\\int 7\\cosec^2x\\,dx\\]",
+    a:"\\[-7\\cot x+C\\]",
+    s:"\\[\\begin{aligned}\\int 7\\cosec^2x\\,dx&=7\\int\\cosec^2x\\,dx\\\\&=7(-\\cot x)+C\\\\&=-7\\cot x+C\\end{aligned}\\]"
 },
 
 5:{
-q:"\\[\\int \\cot x\\,dx\\]",
-a:"\\[\\ln|\\sin x|+C\\]",
-s:"Because \\(\\frac{d}{dx}[\\ln|\\sin x|]=\\cot x\\), the integral is \\(\\ln|\\sin x|+C\\)."
+    q:"\\[\\int \\cot x\\,dx\\]",
+    a:"\\[\\ln|\\sin x|+C\\]",
+    s:"\\[\\begin{aligned}\\int\\cot x\\,dx&=\\int\\frac{\\cos x}{\\sin x}\\,dx\\\\&=\\ln|\\sin x|+C\\end{aligned}\\]"
 },
 
 6:{
-q:"\\[\\int 5\\cot x\\,dx\\]",
-a:"\\[5\\ln|\\sin x|+C\\]",
-s:"Take 5 outside the integral: \\(5\\int\\cot x\\,dx=5\\ln|\\sin x|+C\\)."
+    q:"\\[\\int 5\\cot x\\,dx\\]",
+    a:"\\[5\\ln|\\sin x|+C\\]",
+    s:"\\[\\begin{aligned}\\int 5\\cot x\\,dx&=5\\int\\cot x\\,dx\\\\&=5\\ln|\\sin x|+C\\end{aligned}\\]"
 },
 
 7:{
-q:"\\[\\int \\sin x\\cos x\\,dx\\]",
-a:"\\[-\\frac14\\cos(2x)+C\\]",
-s:"Use \\(\\sin(2x)=2\\sin x\\cos x\\). Therefore \\(\\sin x\\cos x=\\frac12\\sin(2x)\\). Integrating gives \\(-\\frac14\\cos(2x)+C\\)."
+    q:"\\[\\int \\sin x\\cos x\\,dx\\]",
+    a:"\\[-\\frac14\\cos(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int\\sin x\\cos x\\,dx&=\\int\\frac12\\sin(2x)\\,dx\\\\&=\\frac12\\left(-\\frac12\\cos(2x)\\right)+C\\\\&=-\\frac14\\cos(2x)+C\\end{aligned}\\]"
 },
 
 8:{
-q:"\\[\\int 6\\sin x\\cos x\\,dx\\]",
-a:"\\[-\\frac32\\cos(2x)+C\\]",
-s:"Since \\(\\sin x\\cos x=\\frac12\\sin(2x)\\), the integrand becomes \\(3\\sin(2x)\\). Therefore the integral is \\(-\\frac32\\cos(2x)+C\\)."
+    q:"\\[\\int 6\\sin x\\cos x\\,dx\\]",
+    a:"\\[-\\frac32\\cos(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int6\\sin x\\cos x\\,dx&=6\\int\\frac12\\sin(2x)\\,dx\\\\&=3\\int\\sin(2x)\\,dx\\\\&=3\\left(-\\frac12\\cos(2x)\\right)+C\\\\&=-\\frac32\\cos(2x)+C\\end{aligned}\\]"
 },
 
 9:{
-q:"\\[\\int \\sin^2x\\,dx\\]",
-a:"\\[\\frac{x}{2}-\\frac14\\sin(2x)+C\\]",
-s:"Use \\(\\sin^2x=\\frac12[1-\\cos(2x)]\\). Integrating gives \\(\\frac{x}{2}-\\frac14\\sin(2x)+C\\)."
+    q:"\\[\\int \\sin^2x\\,dx\\]",
+    a:"\\[\\frac{x}{2}-\\frac14\\sin(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int\\sin^2x\\,dx&=\\int\\frac{1-\\cos(2x)}{2}\\,dx\\\\&=\\frac12\\int1\\,dx-\\frac12\\int\\cos(2x)\\,dx\\\\&=\\frac{x}{2}-\\frac12\\left(\\frac12\\sin(2x)\\right)+C\\\\&=\\frac{x}{2}-\\frac14\\sin(2x)+C\\end{aligned}\\]"
 },
 
 10:{
-q:"\\[\\int \\cos^2x\\,dx\\]",
-a:"\\[\\frac{x}{2}+\\frac14\\sin(2x)+C\\]",
-s:"Use \\(\\cos^2x=\\frac12[1+\\cos(2x)]\\). Integrating gives \\(\\frac{x}{2}+\\frac14\\sin(2x)+C\\)."
+    q:"\\[\\int \\cos^2x\\,dx\\]",
+    a:"\\[\\frac{x}{2}+\\frac14\\sin(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int\\cos^2x\\,dx&=\\int\\frac{1+\\cos(2x)}{2}\\,dx\\\\&=\\frac12\\int1\\,dx+\\frac12\\int\\cos(2x)\\,dx\\\\&=\\frac{x}{2}+\\frac12\\left(\\frac12\\sin(2x)\\right)+C\\\\&=\\frac{x}{2}+\\frac14\\sin(2x)+C\\end{aligned}\\]"
 },
 
 
+/* =========================
+   DEVELOPING
+========================= */
+
 11:{
-q:"\\[\\int \\sec^2(3x)\\,dx\\]",
-a:"\\[\\frac13\\tan(3x)+C\\]",
-s:"The derivative of \\(\\tan(3x)\\) is \\(3\\sec^2(3x)\\). Therefore divide by 3: \\(\\frac13\\tan(3x)+C\\)."
+    q:"\\[\\int \\sec^2(3x)\\,dx\\]",
+    a:"\\[\\frac13\\tan(3x)+C\\]",
+    s:"\\[\\begin{aligned}\\int\\sec^2(3x)\\,dx&=\\frac13\\tan(3x)+C\\end{aligned}\\]"
 },
 
 12:{
-q:"\\[\\int \\sec^2(5x)\\,dx\\]",
-a:"\\[\\frac15\\tan(5x)+C\\]",
-s:"The derivative of \\(\\tan(5x)\\) is \\(5\\sec^2(5x)\\). Therefore the integral is \\(\\frac15\\tan(5x)+C\\)."
+    q:"\\[\\int \\sec^2(5x)\\,dx\\]",
+    a:"\\[\\frac15\\tan(5x)+C\\]",
+    s:"\\[\\begin{aligned}\\int\\sec^2(5x)\\,dx&=\\frac15\\tan(5x)+C\\end{aligned}\\]"
 },
 
 13:{
-q:"\\[\\int \\cot(4x)\\,dx\\]",
-a:"\\[\\frac14\\ln|\\sin(4x)|+C\\]",
-s:"The derivative of \\(\\ln|\\sin(4x)|\\) is \\(4\\cot(4x)\\). Therefore divide by 4."
+    q:"\\[\\int \\cot(4x)\\,dx\\]",
+    a:"\\[\\frac14\\ln|\\sin(4x)|+C\\]",
+    s:"\\[\\begin{aligned}\\int\\cot(4x)\\,dx&=\\int\\frac{\\cos(4x)}{\\sin(4x)}\\,dx\\\\&=\\frac14\\ln|\\sin(4x)|+C\\end{aligned}\\]"
 },
 
 14:{
-q:"\\[\\int \\cot(7x)\\,dx\\]",
-a:"\\[\\frac17\\ln|\\sin(7x)|+C\\]",
-s:"The derivative of \\(\\ln|\\sin(7x)|\\) is \\(7\\cot(7x)\\). Therefore the integral is \\(\\frac17\\ln|\\sin(7x)|+C\\)."
+    q:"\\[\\int \\cot(7x)\\,dx\\]",
+    a:"\\[\\frac17\\ln|\\sin(7x)|+C\\]",
+    s:"\\[\\begin{aligned}\\int\\cot(7x)\\,dx&=\\int\\frac{\\cos(7x)}{\\sin(7x)}\\,dx\\\\&=\\frac17\\ln|\\sin(7x)|+C\\end{aligned}\\]"
 },
 
 15:{
-q:"\\[\\int \\cosec^2(2x)\\,dx\\]",
-a:"\\[-\\frac12\\cot(2x)+C\\]",
-s:"The derivative of \\(\\cot(2x)\\) is \\(-2\\cosec^2(2x)\\). Therefore the integral is \\(-\\frac12\\cot(2x)+C\\)."
+    q:"\\[\\int \\cosec^2(2x)\\,dx\\]",
+    a:"\\[-\\frac12\\cot(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int\\cosec^2(2x)\\,dx&=-\\frac12\\cot(2x)+C\\end{aligned}\\]"
 },
 
 16:{
-q:"\\[\\int \\cosec^2(6x)\\,dx\\]",
-a:"\\[-\\frac16\\cot(6x)+C\\]",
-s:"The derivative of \\(\\cot(6x)\\) is \\(-6\\cosec^2(6x)\\). Therefore the integral is \\(-\\frac16\\cot(6x)+C\\)."
+    q:"\\[\\int \\cosec^2(6x)\\,dx\\]",
+    a:"\\[-\\frac16\\cot(6x)+C\\]",
+    s:"\\[\\begin{aligned}\\int\\cosec^2(6x)\\,dx&=-\\frac16\\cot(6x)+C\\end{aligned}\\]"
 },
 
 17:{
-q:"\\[\\int 3\\sec^2(3x)\\,dx\\]",
-a:"\\[\\tan(3x)+C\\]",
-s:"The derivative of \\(\\tan(3x)\\) is \\(3\\sec^2(3x)\\), so the integral is directly \\(\\tan(3x)+C\\)."
+    q:"\\[\\int 3\\sec^2(3x)\\,dx\\]",
+    a:"\\[\\tan(3x)+C\\]",
+    s:"\\[\\begin{aligned}\\int3\\sec^2(3x)\\,dx&=\\tan(3x)+C\\end{aligned}\\]"
 },
 
 18:{
-q:"\\[\\int 8\\cot(2x)\\,dx\\]",
-a:"\\[4\\ln|\\sin(2x)|+C\\]",
-s:"The integral of \\(\\cot(2x)\\) is \\(\\frac12\\ln|\\sin(2x)|\\). Multiplying by 8 gives \\(4\\ln|\\sin(2x)|+C\\)."
+    q:"\\[\\int 8\\cot(2x)\\,dx\\]",
+    a:"\\[4\\ln|\\sin(2x)|+C\\]",
+    s:"\\[\\begin{aligned}\\int8\\cot(2x)\\,dx&=8\\left(\\frac12\\ln|\\sin(2x)|\\right)+C\\\\&=4\\ln|\\sin(2x)|+C\\end{aligned}\\]"
 },
 
 19:{
-q:"\\[\\int 10\\cosec^2(5x)\\,dx\\]",
-a:"\\[-2\\cot(5x)+C\\]",
-s:"The integral of \\(\\cosec^2(5x)\\) is \\(-\\frac15\\cot(5x)\\). Multiplying by 10 gives \\(-2\\cot(5x)+C\\)."
+    q:"\\[\\int 10\\cosec^2(5x)\\,dx\\]",
+    a:"\\[-2\\cot(5x)+C\\]",
+    s:"\\[\\begin{aligned}\\int10\\cosec^2(5x)\\,dx&=10\\left(-\\frac15\\cot(5x)\\right)+C\\\\&=-2\\cot(5x)+C\\end{aligned}\\]"
 },
 
 20:{
-q:"\\[\\int \\sin(2x)\\cos(2x)\\,dx\\]",
-a:"\\[-\\frac18\\cos(4x)+C\\]",
-s:"Use \\(\\sin(4x)=2\\sin(2x)\\cos(2x)\\). Hence the integrand is \\(\\frac12\\sin(4x)\\). Integrating gives \\(-\\frac18\\cos(4x)+C\\)."
+    q:"\\[\\int \\sin(2x)\\cos(2x)\\,dx\\]",
+    a:"\\[-\\frac18\\cos(4x)+C\\]",
+    s:"\\[\\begin{aligned}\\int\\sin(2x)\\cos(2x)\\,dx&=\\int\\frac12\\sin(4x)\\,dx\\\\&=\\frac12\\left(-\\frac14\\cos(4x)\\right)+C\\\\&=-\\frac18\\cos(4x)+C\\end{aligned}\\]"
 },
 
 
+/* =========================
+   INTERMEDIATE
+========================= */
+
 21:{
-q:"\\[\\int(4\\sec^2x-3\\cot x)\\,dx\\]",
-a:"\\[4\\tan x-3\\ln|\\sin x|+C\\]",
-s:"Integrate each term separately: \\(4\\int\\sec^2x\\,dx-3\\int\\cot x\\,dx\\). This gives \\(4\\tan x-3\\ln|\\sin x|+C\\)."
+    q:"\\[\\int(4\\sec^2x-3\\cot x)\\,dx\\]",
+    a:"\\[4\\tan x-3\\ln|\\sin x|+C\\]",
+    s:"\\[\\begin{aligned}\\int(4\\sec^2x-3\\cot x)\\,dx&=4\\int\\sec^2x\\,dx-3\\int\\cot x\\,dx\\\\&=4\\tan x-3\\ln|\\sin x|+C\\end{aligned}\\]"
 },
 
 22:{
-q:"\\[\\int(2\\cosec^2x+5\\sec^2x)\\,dx\\]",
-a:"\\[-2\\cot x+5\\tan x+C\\]",
-s:"Use \\(\\int\\cosec^2x\\,dx=-\\cot x\\) and \\(\\int\\sec^2x\\,dx=\\tan x\\)."
+    q:"\\[\\int(2\\cosec^2x+5\\sec^2x)\\,dx\\]",
+    a:"\\[-2\\cot x+5\\tan x+C\\]",
+    s:"\\[\\begin{aligned}\\int(2\\cosec^2x+5\\sec^2x)\\,dx&=2\\int\\cosec^2x\\,dx+5\\int\\sec^2x\\,dx\\\\&=2(-\\cot x)+5(\\tan x)+C\\\\&=-2\\cot x+5\\tan x+C\\end{aligned}\\]"
 },
 
 23:{
-q:"\\[\\int(7\\cot x-2\\cosec^2x)\\,dx\\]",
-a:"\\[7\\ln|\\sin x|+2\\cot x+C\\]",
-s:"Integrate term by term. The first term gives \\(7\\ln|\\sin x|\\), while the second gives \\(+2\\cot x\\)."
+    q:"\\[\\int(7\\cot x-2\\cosec^2x)\\,dx\\]",
+    a:"\\[7\\ln|\\sin x|+2\\cot x+C\\]",
+    s:"\\[\\begin{aligned}\\int(7\\cot x-2\\cosec^2x)\\,dx&=7\\int\\cot x\\,dx-2\\int\\cosec^2x\\,dx\\\\&=7\\ln|\\sin x|-2(-\\cot x)+C\\\\&=7\\ln|\\sin x|+2\\cot x+C\\end{aligned}\\]"
 },
 
 24:{
-q:"\\[\\int(3\\sin x\\cos x+2\\sec^2x)\\,dx\\]",
-a:"\\[-\\frac34\\cos(2x)+2\\tan x+C\\]",
-s:"Use \\(\\int\\sin x\\cos x\\,dx=-\\frac14\\cos(2x)\\). Multiplying by 3 gives \\(-\\frac34\\cos(2x)\\)."
+    q:"\\[\\int(3\\sin x\\cos x+2\\sec^2x)\\,dx\\]",
+    a:"\\[-\\frac34\\cos(2x)+2\\tan x+C\\]",
+    s:"\\[\\begin{aligned}\\int(3\\sin x\\cos x+2\\sec^2x)\\,dx&=3\\int\\sin x\\cos x\\,dx+2\\int\\sec^2x\\,dx\\\\&=3\\left(-\\frac14\\cos(2x)\\right)+2\\tan x+C\\\\&=-\\frac34\\cos(2x)+2\\tan x+C\\end{aligned}\\]"
 },
 
 25:{
-q:"\\[\\int(5\\sin^2x-2\\cos^2x)\\,dx\\]",
-a:"\\[\\frac{3x}{2}-\\frac74\\sin(2x)+C\\]",
-s:"Use \\(\\sin^2x=\\frac12(1-\\cos2x)\\) and \\(\\cos^2x=\\frac12(1+\\cos2x)\\). The integrand becomes \\(\\frac32-\\frac72\\cos2x\\)."
+    q:"\\[\\int(5\\sin^2x-2\\cos^2x)\\,dx\\]",
+    a:"\\[\\frac{3x}{2}-\\frac74\\sin(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int(5\\sin^2x-2\\cos^2x)\\,dx&=\\int\\left[5\\left(\\frac{1-\\cos(2x)}{2}\\right)-2\\left(\\frac{1+\\cos(2x)}{2}\\right)\\right]dx\\\\&=\\int\\left[\\frac52-\\frac52\\cos(2x)-1-\\cos(2x)\\right]dx\\\\&=\\int\\left[\\frac32-\\frac72\\cos(2x)\\right]dx\\\\&=\\frac32\\int1\\,dx-\\frac72\\int\\cos(2x)\\,dx\\\\&=\\frac{3x}{2}-\\frac72\\left(\\frac12\\sin(2x)\\right)+C\\\\&=\\frac{3x}{2}-\\frac74\\sin(2x)+C\\end{aligned}\\]"
 },
 
 26:{
-q:"\\[\\int(4\\cos^2x+3\\sin^2x)\\,dx\\]",
-a:"\\[\\frac{7x}{2}+\\frac14\\sin(2x)+C\\]",
-s:"Substitute the identities for \\(\\cos^2x\\) and \\(\\sin^2x\\). The integrand simplifies to \\(\\frac72+\\frac12\\cos2x\\)."
+    q:"\\[\\int(4\\cos^2x+3\\sin^2x)\\,dx\\]",
+    a:"\\[\\frac{7x}{2}+\\frac14\\sin(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int(4\\cos^2x+3\\sin^2x)\\,dx&=\\int\\left[4\\left(\\frac{1+\\cos(2x)}{2}\\right)+3\\left(\\frac{1-\\cos(2x)}{2}\\right)\\right]dx\\\\&=\\int\\left[2+2\\cos(2x)+\\frac32-\\frac32\\cos(2x)\\right]dx\\\\&=\\int\\left[\\frac72+\\frac12\\cos(2x)\\right]dx\\\\&=\\frac72\\int1\\,dx+\\frac12\\int\\cos(2x)\\,dx\\\\&=\\frac{7x}{2}+\\frac12\\left(\\frac12\\sin(2x)\\right)+C\\\\&=\\frac{7x}{2}+\\frac14\\sin(2x)+C\\end{aligned}\\]"
 },
 
 27:{
-q:"\\[\\int[\\sec^2(2x)+\\cot(3x)]\\,dx\\]",
-a:"\\[\\frac12\\tan(2x)+\\frac13\\ln|\\sin(3x)|+C\\]",
-s:"Integrate each term using the generalized forms for \\(\\sec^2(ax)\\) and \\(\\cot(ax)\\)."
+    q:"\\[\\int[\\sec^2(2x)+\\cot(3x)]\\,dx\\]",
+    a:"\\[\\frac12\\tan(2x)+\\frac13\\ln|\\sin(3x)|+C\\]",
+    s:"\\[\\begin{aligned}\\int[\\sec^2(2x)+\\cot(3x)]\\,dx&=\\int\\sec^2(2x)\\,dx+\\int\\cot(3x)\\,dx\\\\&=\\frac12\\tan(2x)+\\frac13\\ln|\\sin(3x)|+C\\end{aligned}\\]"
 },
 
 28:{
-q:"\\[\\int[2\\cosec^2(4x)-3\\cot(2x)]\\,dx\\]",
-a:"\\[-\\frac12\\cot(4x)-\\frac32\\ln|\\sin(2x)|+C\\]",
-s:"The first term integrates to \\(-\\frac12\\cot(4x)\\). The second integrates to \\(-\\frac32\\ln|\\sin(2x)|\\)."
+    q:"\\[\\int[2\\cosec^2(4x)-3\\cot(2x)]\\,dx\\]",
+    a:"\\[-\\frac12\\cot(4x)-\\frac32\\ln|\\sin(2x)|+C\\]",
+    s:"\\[\\begin{aligned}\\int[2\\cosec^2(4x)-3\\cot(2x)]\\,dx&=2\\int\\cosec^2(4x)\\,dx-3\\int\\cot(2x)\\,dx\\\\&=2\\left(-\\frac14\\cot(4x)\\right)-3\\left(\\frac12\\ln|\\sin(2x)|\\right)+C\\\\&=-\\frac12\\cot(4x)-\\frac32\\ln|\\sin(2x)|+C\\end{aligned}\\]"
 },
 
 29:{
-q:"\\[\\int[6\\sin x\\cos x+4\\cos^2x]\,dx\\]",
-a:"\\[-\\frac32\\cos(2x)+2x+\\sin(2x)+C\\]",
-s:"Use \\(6\\sin x\\cos x=3\\sin2x\\) and \\(4\\cos^2x=2+2\\cos2x\\). Integrate term by term."
+    q:"\\[\\int[6\\sin x\\cos x+4\\cos^2x]\,dx\\]",
+    a:"\\[-\\frac32\\cos(2x)+2x+\\sin(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int[6\\sin x\\cos x+4\\cos^2x]\,dx&=\\int[3\\sin(2x)+2+2\\cos(2x)]\\,dx\\\\&=3\\int\\sin(2x)\\,dx+2\\int1\\,dx+2\\int\\cos(2x)\\,dx\\\\&=3\\left(-\\frac12\\cos(2x)\\right)+2x+2\\left(\\frac12\\sin(2x)\\right)+C\\\\&=-\\frac32\\cos(2x)+2x+\\sin(2x)+C\\end{aligned}\\]"
 },
 
 30:{
-q:"\\[\\int[3\\sin^2x+5\\sin x\\cos x]\,dx\\]",
-a:"\\[\\frac{3x}{2}-\\frac34\\sin(2x)-\\frac54\\cos(2x)+C\\]",
-s:"Use \\(3\\sin^2x=\\frac32-\\frac32\\cos2x\\) and \\(5\\sin x\\cos x=\\frac52\\sin2x\\)."
+    q:"\\[\\int[3\\sin^2x+5\\sin x\\cos x]\,dx\\]",
+    a:"\\[\\frac{3x}{2}-\\frac34\\sin(2x)-\\frac54\\cos(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int[3\\sin^2x+5\\sin x\\cos x]\,dx&=\\int\\left[\\frac32-\\frac32\\cos(2x)+\\frac52\\sin(2x)\\right]dx\\\\&=\\frac32\\int1\\,dx-\\frac32\\int\\cos(2x)\\,dx+\\frac52\\int\\sin(2x)\\,dx\\\\&=\\frac{3x}{2}-\\frac32\\left(\\frac12\\sin(2x)\\right)+\\frac52\\left(-\\frac12\\cos(2x)\\right)+C\\\\&=\\frac{3x}{2}-\\frac34\\sin(2x)-\\frac54\\cos(2x)+C\\end{aligned}\\]"
 },
 
 
+/* =========================
+   ADVANCED
+========================= */
+
 31:{
-q:"\\[\\int(1+\\cos2x)\\,dx\\]",
-a:"\\[x+\\frac12\\sin(2x)+C\\]",
-s:"Integrate 1 to get \\(x\\), and \\(\\cos2x\\) to get \\(\\frac12\\sin2x\\)."
+    q:"\\[\\int(1+\\cos2x)\\,dx\\]",
+    a:"\\[x+\\frac12\\sin(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int(1+\\cos2x)\\,dx&=\\int1\\,dx+\\int\\cos2x\\,dx\\\\&=x+\\frac12\\sin(2x)+C\\end{aligned}\\]"
 },
 
 32:{
-q:"\\[\\int(1-\\cos2x)\\,dx\\]",
-a:"\\[x-\\frac12\\sin(2x)+C\\]",
-s:"Integrate each term directly."
+    q:"\\[\\int(1-\\cos2x)\\,dx\\]",
+    a:"\\[x-\\frac12\\sin(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int(1-\\cos2x)\\,dx&=\\int1\\,dx-\\int\\cos2x\\,dx\\\\&=x-\\frac12\\sin(2x)+C\\end{aligned}\\]"
 },
 
 33:{
-q:"\\[\\int2\\sin^2x\\,dx\\]",
-a:"\\[x-\\frac12\\sin(2x)+C\\]",
-s:"Use \\(2\\sin^2x=1-\\cos2x\\), then integrate."
+    q:"\\[\\int2\\sin^2x\\,dx\\]",
+    a:"\\[x-\\frac12\\sin(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int2\\sin^2x\\,dx&=\\int[1-\\cos(2x)]\\,dx\\\\&=\\int1\\,dx-\\int\\cos(2x)\\,dx\\\\&=x-\\frac12\\sin(2x)+C\\end{aligned}\\]"
 },
 
 34:{
-q:"\\[\\int3\\cos^2x\\,dx\\]",
-a:"\\[\\frac{3x}{2}+\\frac34\\sin(2x)+C\\]",
-s:"Use \\(\\cos^2x=\\frac12(1+\\cos2x)\\), then multiply by 3."
+    q:"\\[\\int3\\cos^2x\\,dx\\]",
+    a:"\\[\\frac{3x}{2}+\\frac34\\sin(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int3\\cos^2x\\,dx&=3\\int\\frac{1+\\cos(2x)}{2}\\,dx\\\\&=\\frac32\\int1\\,dx+\\frac32\\int\\cos(2x)\\,dx\\\\&=\\frac{3x}{2}+\\frac32\\left(\\frac12\\sin(2x)\\right)+C\\\\&=\\frac{3x}{2}+\\frac34\\sin(2x)+C\\end{aligned}\\]"
 },
 
 35:{
-q:"\\[\\int(2\\sin^2x+2\\cos^2x)\\,dx\\]",
-a:"\\[2x+C\\]",
-s:"Use \\(\\sin^2x+\\cos^2x=1\\). The integrand becomes 2."
+    q:"\\[\\int(2\\sin^2x+2\\cos^2x)\\,dx\\]",
+    a:"\\[2x+C\\]",
+    s:"\\[\\begin{aligned}\\int(2\\sin^2x+2\\cos^2x)\\,dx&=2\\int(\\sin^2x+\\cos^2x)\\,dx\\\\&=2\\int1\\,dx\\\\&=2x+C\\end{aligned}\\]"
 },
 
 36:{
-q:"\\[\\int(5\\sin^2x+5\\cos^2x+3\\sec^2x)\\,dx\\]",
-a:"\\[5x+3\\tan x+C\\]",
-s:"Since \\(\\sin^2x+\\cos^2x=1\\), the first two terms become 5. Then integrate \\(3\\sec^2x\\)."
+    q:"\\[\\int(5\\sin^2x+5\\cos^2x+3\\sec^2x)\\,dx\\]",
+    a:"\\[5x+3\\tan x+C\\]",
+    s:"\\[\\begin{aligned}\\int(5\\sin^2x+5\\cos^2x+3\\sec^2x)\\,dx&=\\int[5(\\sin^2x+\\cos^2x)+3\\sec^2x]dx\\\\&=\\int[5+3\\sec^2x]dx\\\\&=5\\int1\\,dx+3\\int\\sec^2x\\,dx\\\\&=5x+3\\tan x+C\\end{aligned}\\]"
 },
 
 37:{
-q:"\\[\\int(4\\cos^2x-4\\sin^2x)\\,dx\\]",
-a:"\\[2\\sin(2x)+C\\]",
-s:"Since \\(\\cos^2x-\\sin^2x=\\cos2x\\), the integrand becomes \\(4\\cos2x\\)."
+    q:"\\[\\int(4\\cos^2x-4\\sin^2x)\\,dx\\]",
+    a:"\\[2\\sin(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int(4\\cos^2x-4\\sin^2x)\\,dx&=4\\int(\\cos^2x-\\sin^2x)\\,dx\\\\&=4\\int\\cos(2x)\\,dx\\\\&=4\\left(\\frac12\\sin(2x)\\right)+C\\\\&=2\\sin(2x)+C\\end{aligned}\\]"
 },
 
 38:{
-q:"\\[\\int(6\\cos^2x-6\\sin^2x)\\,dx\\]",
-a:"\\[3\\sin(2x)+C\\]",
-s:"Use \\(\\cos^2x-\\sin^2x=\\cos2x\\). The integrand becomes \\(6\\cos2x\\)."
+    q:"\\[\\int(6\\cos^2x-6\\sin^2x)\\,dx\\]",
+    a:"\\[3\\sin(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int(6\\cos^2x-6\\sin^2x)\\,dx&=6\\int(\\cos^2x-\\sin^2x)\\,dx\\\\&=6\\int\\cos(2x)\\,dx\\\\&=6\\left(\\frac12\\sin(2x)\\right)+C\\\\&=3\\sin(2x)+C\\end{aligned}\\]"
 },
 
 
+/* =========================
+   CHALLENGE
+========================= */
+
 39:{
-q:"\\[\\int(4\\sin x\\cos x+3\\sin^2x)\\,dx\\]",
-a:"\\[-\\cos(2x)+\\frac{3x}{2}-\\frac34\\sin(2x)+C\\]",
-s:"Use \\(4\\sin x\\cos x=2\\sin2x\\), whose integral is \\(-\\cos2x\\). Also, \\(3\\sin^2x=\\frac32-\\frac32\\cos2x\\), whose integral is \\(\\frac{3x}{2}-\\frac34\\sin2x\\)."
+    q:"\\[\\int(4\\sin x\\cos x+3\\sin^2x)\\,dx\\]",
+    a:"\\[-\\cos(2x)+\\frac{3x}{2}-\\frac34\\sin(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int(4\\sin x\\cos x+3\\sin^2x)\\,dx&=\\int[2\\sin(2x)+3\\sin^2x]dx\\\\&=\\int\\left[2\\sin(2x)+\\frac32-\\frac32\\cos(2x)\\right]dx\\\\&=2\\int\\sin(2x)\\,dx+\\frac32\\int1\\,dx-\\frac32\\int\\cos(2x)\\,dx\\\\&=2\\left(-\\frac12\\cos(2x)\\right)+\\frac{3x}{2}-\\frac32\\left(\\frac12\\sin(2x)\\right)+C\\\\&=-\\cos(2x)+\\frac{3x}{2}-\\frac34\\sin(2x)+C\\end{aligned}\\]"
 },
 
 40:{
-q:"\\[\\int(8\\sin^2x-4\\sin x\\cos x+6\\cos^2x)\\,dx\\]",
-a:"\\[7x-\\frac12\\sin(2x)+\\frac12\\cos(2x)+C\\]",
-s:"Use the identities to simplify the integrand: \\(8\\sin^2x-4\\sin x\\cos x+6\\cos^2x=7-\\cos2x-2\\sin2x\\). Integrating gives the answer."
+    q:"\\[\\int(8\\sin^2x-4\\sin x\\cos x+6\\cos^2x)\\,dx\\]",
+    a:"\\[7x-\\frac12\\sin(2x)+\\cos(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int(8\\sin^2x-4\\sin x\\cos x+6\\cos^2x)\\,dx&=\\int\\left[8\\left(\\frac{1-\\cos(2x)}{2}\\right)-4\\left(\\frac12\\sin(2x)\\right)+6\\left(\\frac{1+\\cos(2x)}{2}\\right)\\right]dx\\\\&=\\int[4-4\\cos(2x)-2\\sin(2x)+3+3\\cos(2x)]\\,dx\\\\&=\\int[7-\\cos(2x)-2\\sin(2x)]\\,dx\\\\&=7\\int1\\,dx-\\int\\cos(2x)\\,dx-2\\int\\sin(2x)\\,dx\\\\&=7x-\\frac12\\sin(2x)-2\\left(-\\frac12\\cos(2x)\\right)+C\\\\&=7x-\\frac12\\sin(2x)+\\cos(2x)+C\\end{aligned}\\]"
 },
 
 41:{
-q:"\\[\\int(3+4\\cos2x-2\\sin2x)\\,dx\\]",
-a:"\\[3x+2\\sin(2x)+\\cos(2x)+C\\]",
-s:"Integrate each term: \\(3\\), \\(4\\cos2x\\), and \\(-2\\sin2x\\)."
+    q:"\\[\\int(3+4\\cos2x-2\\sin2x)\\,dx\\]",
+    a:"\\[3x+2\\sin(2x)+\\cos(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int(3+4\\cos2x-2\\sin2x)\\,dx&=3\\int1\\,dx+4\\int\\cos2x\\,dx-2\\int\\sin2x\\,dx\\\\&=3x+4\\left(\\frac12\\sin(2x)\\right)-2\\left(-\\frac12\\cos(2x)\\right)+C\\\\&=3x+2\\sin(2x)+\\cos(2x)+C\\end{aligned}\\]"
 },
 
 42:{
-q:"\\[\\int(7-5\\cos2x+6\\sin2x)\\,dx\\]",
-a:"\\[7x-\\frac52\\sin(2x)-3\\cos(2x)+C\\]",
-s:"Integrate each term using the standard integrals of \\(\\cos2x\\) and \\(\\sin2x\\)."
+    q:"\\[\\int(7-5\\cos2x+6\\sin2x)\\,dx\\]",
+    a:"\\[7x-\\frac52\\sin(2x)-3\\cos(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int(7-5\\cos2x+6\\sin2x)\\,dx&=7\\int1\\,dx-5\\int\\cos2x\\,dx+6\\int\\sin2x\\,dx\\\\&=7x-5\\left(\\frac12\\sin(2x)\\right)+6\\left(-\\frac12\\cos(2x)\\right)+C\\\\&=7x-\\frac52\\sin(2x)-3\\cos(2x)+C\\end{aligned}\\]"
 },
 
 43:{
-q:"\\[\\int[4\\sin^2x-6\\cos^2x+8\\sin x\\cos x]\,dx\\]",
-a:"\\[-x-\\frac52\\sin(2x)-2\\cos(2x)+C\\]",
-s:"Use the identities to simplify the integrand to \\(-1-5\\cos2x+4\\sin2x\\). Integrate term by term."
+    q:"\\[\\int[4\\sin^2x-6\\cos^2x+8\\sin x\\cos x]\,dx\\]",
+    a:"\\[-x-\\frac52\\sin(2x)-2\\cos(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int[4\\sin^2x-6\\cos^2x+8\\sin x\\cos x]\,dx&=\\int\\left[4\\left(\\frac{1-\\cos(2x)}{2}\\right)-6\\left(\\frac{1+\\cos(2x)}{2}\\right)+8\\left(\\frac12\\sin(2x)\\right)\\right]dx\\\\&=\\int[2-2\\cos(2x)-3-3\\cos(2x)+4\\sin(2x)]\\,dx\\\\&=\\int[-1-5\\cos(2x)+4\\sin(2x)]\\,dx\\\\&=-\\int1\\,dx-5\\int\\cos(2x)\\,dx+4\\int\\sin(2x)\\,dx\\\\&=-x-5\\left(\\frac12\\sin(2x)\\right)+4\\left(-\\frac12\\cos(2x)\\right)+C\\\\&=-x-\\frac52\\sin(2x)-2\\cos(2x)+C\\end{aligned}\\]"
 },
 
 44:{
-q:"\\[\\int[5\\sin^2x+5\\cos^2x+6\\sin x\\cos x-4\\cos^2x]\,dx\\]",
-a:"\\[3x-\\sin(2x)-\\frac32\\cos(2x)+C\\]",
-s:"First use \\(5\\sin^2x+5\\cos^2x=5\\) and \\(6\\sin x\\cos x=3\\sin2x\\). Also \\(-4\\cos^2x=-2-2\\cos2x\\). The integrand becomes \\(3-2\\cos2x+3\\sin2x\\)."
+    q:"\\[\\int[5\\sin^2x+5\\cos^2x+6\\sin x\\cos x-4\\cos^2x]\,dx\\]",
+    a:"\\[3x-\\sin(2x)-\\frac32\\cos(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int[5\\sin^2x+5\\cos^2x+6\\sin x\\cos x-4\\cos^2x]\,dx&=\\int[5(\\sin^2x+\\cos^2x)+6\\sin x\\cos x-4\\cos^2x]dx\\\\&=\\int\\left[5+3\\sin(2x)-2(1+\\cos(2x))\\right]dx\\\\&=\\int[3+3\\sin(2x)-2\\cos(2x)]\\,dx\\\\&=3\\int1\\,dx+3\\int\\sin(2x)\\,dx-2\\int\\cos(2x)\\,dx\\\\&=3x+3\\left(-\\frac12\\cos(2x)\\right)-2\\left(\\frac12\\sin(2x)\\right)+C\\\\&=3x-\\frac32\\cos(2x)-\\sin(2x)+C\\\\&=3x-\\sin(2x)-\\frac32\\cos(2x)+C\\end{aligned}\\]"
 },
 
 45:{
-q:"\\[\\int[6\\cos^2x-6\\sin^2x+12\\sin x\\cos x]\,dx\\]",
-a:"\\[3\\sin(2x)-3\\cos(2x)+C\\]",
-s:"Use \\(\\cos^2x-\\sin^2x=\\cos2x\\) and \\(12\\sin x\\cos x=6\\sin2x\\). The integrand becomes \\(6\\cos2x+6\\sin2x\\)."
+    q:"\\[\\int[6\\cos^2x-6\\sin^2x+12\\sin x\\cos x]\,dx\\]",
+    a:"\\[3\\sin(2x)-3\\cos(2x)+C\\]",
+    s:"\\[\\begin{aligned}\\int[6\\cos^2x-6\\sin^2x+12\\sin x\\cos x]\,dx&=\\int[6(\\cos^2x-\\sin^2x)+12\\sin x\\cos x]dx\\\\&=\\int[6\\cos(2x)+6\\sin(2x)]\\,dx\\\\&=6\\int\\cos(2x)\\,dx+6\\int\\sin(2x)\\,dx\\\\&=6\\left(\\frac12\\sin(2x)\\right)+6\\left(-\\frac12\\cos(2x)\\right)+C\\\\&=3\\sin(2x)-3\\cos(2x)+C\\end{aligned}\\]"
 }
 
 };
 
 
 
-/* SHOW QUESTION */
+/* =========================
+   SHOW QUESTION
+========================= */
 
 function showQuestion(number, button){
 
@@ -1135,7 +1258,9 @@ function showQuestion(number, button){
 
 
 
-/* SHOW ANSWER */
+/* =========================
+   SHOW ANSWER
+========================= */
 
 function toggleAnswer(){
 
@@ -1151,7 +1276,9 @@ function toggleAnswer(){
 
 
 
-/* SHOW SOLUTION */
+/* =========================
+   SHOW SOLUTION
+========================= */
 
 function toggleSolution(){
 
@@ -1167,7 +1294,9 @@ function toggleSolution(){
 
 
 
-/* LOG OUT */
+/* =========================
+   LOG OUT
+========================= */
 
 function logout(){
 
