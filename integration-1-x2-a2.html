@@ -307,7 +307,9 @@ main {
 .fraction .bottom {
     padding: 4px 8px 0;
 }
-
+.summary .fraction .top {
+    border-bottom: 2px solid white;
+}
 .integral {
     font-family: "Times New Roman", serif;
 
@@ -1680,55 +1682,57 @@ footer p {
             </li>
 
             <li>
-                Apply the standard result:
-                <br><br>
+    Apply the standard result:
+    <br><br>
 
-                <span class="fraction">
+    <span class="integral">∫</span>
 
-                    <span class="top">
-                        1
-                    </span>
+    <span class="fraction">
 
-                    <span class="bottom">
-                        x² + a²
-                    </span>
+        <span class="top">
+            1
+        </span>
 
-                </span>
+        <span class="bottom">
+            x² + a²
+        </span>
 
-                dx
+    </span>
 
-                =
+    dx
 
-                <span class="fraction">
+    =
 
-                    <span class="top">
-                        1
-                    </span>
+    <span class="fraction">
 
-                    <span class="bottom">
-                        a
-                    </span>
+        <span class="top">
+            1
+        </span>
 
-                </span>
+        <span class="bottom">
+            a
+        </span>
 
-                tan⁻¹
+    </span>
 
-                <span>(</span>
+    tan⁻¹
 
-                <span class="fraction">
+    <span>(</span>
 
-                    <span class="top">
-                        x
-                    </span>
+    <span class="fraction">
 
-                    <span class="bottom">
-                        a
-                    </span>
+        <span class="top">
+            x
+        </span>
 
-                </span>
+        <span class="bottom">
+            a
+        </span>
 
-                <span>) + C</span>
-            </li>
+    </span>
+
+    <span>) + C</span>
+</li>
 
             <li>
                 Always include the constant <strong>C</strong>.
