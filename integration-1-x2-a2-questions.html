@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduNova | Integration Questions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #f7f7f7;
+    color: #111;
+    line-height: 1.7;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    height: 78px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #e00000;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: #e00000;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 390px;
+    background: #000;
+    color: white;
+    padding: 75px 7%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 330px;
+    height: 330px;
+    border: 1px solid #222;
+    border-radius: 50%;
+    right: -90px;
+    top: -80px;
+}
+
+.hero::after {
+    content: "a²";
+    position: absolute;
+    right: 7%;
+    top: 20px;
+    font-family: "Playfair Display", serif;
+    font-size: 300px;
+    line-height: 1;
+    color: #202020;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.chapter-label {
+    color: #e00000;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: 1.05;
+    max-width: 850px;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    max-width: 720px;
+    color: #d5d5d5;
+    font-size: 19px;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    max-width: 1150px;
+    margin: auto;
+    padding: 75px 30px 90px;
+}
+
+.intro {
+    margin-bottom: 60px;
+}
+
+.intro h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+    line-height: 1.2;
+    margin-bottom: 22px;
+}
+
+.intro p {
+    max-width: 900px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* =========================
+   QUESTION CARDS
+========================= */
+
+.questions {
+    display: grid;
+    gap: 28px;
+}
+
+.question-card {
+    background: white;
+    border: 1px solid #dedede;
+    padding: 38px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+.question-number {
+    color: #e00000;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.question-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.question-formula {
+    background: #f7f7f7;
+    border: 1px solid #e1e1e1;
+    padding: 28px;
+    text-align: center;
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    overflow-x: auto;
+}
+
+/* =========================
+   FRACTIONS
+========================= */
+
+.fraction {
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 1.1;
+    margin: 0 7px;
+}
+
+.fraction .top {
+    border-bottom: 2px solid #111;
+    padding: 0 8px 4px;
+}
+
+.fraction .bottom {
+    padding: 4px 8px 0;
+}
+
+.integral {
+    font-family: "Times New Roman", serif;
+    font-size: 48px;
+    vertical-align: middle;
+}
+
+/* =========================
+   SHOW ANSWER BUTTON
+========================= */
+
+.answer-button {
+    margin-top: 25px;
+    background: #111;
+    color: white;
+    border: none;
+    padding: 13px 24px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.answer-button:hover {
+    background: #e00000;
+}
+
+/* =========================
+   ANSWER
+========================= */
+
+.answer {
+    display: none;
+    margin-top: 30px;
+    border-top: 1px solid #ddd;
+    padding-top: 30px;
+}
+
+.answer.show {
+    display: block;
+}
+
+.answer-title {
+    color: #e00000;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.step {
+    margin-bottom: 28px;
+}
+
+.step-label {
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.step p {
+    font-size: 18px;
+    color: #333;
+}
+
+.step-formula {
+    background: #f7f7f7;
+    border-left: 4px solid #e00000;
+    padding: 22px 25px;
+    margin-top: 12px;
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    text-align: center;
+    overflow-x: auto;
+}
+
+.final-answer {
+    background: #111;
+    color: white;
+    padding: 25px;
+    margin-top: 30px;
+    text-align: center;
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    overflow-x: auto;
+}
+
+.final-answer .fraction .top {
+    border-bottom: 2px solid white;
+}
+
+/* =========================
+   CHALLENGE NOTE
+========================= */
+
+.challenge-note {
+    margin: 55px 0;
+    background: #111;
+    color: white;
+    padding: 30px 35px;
+    border-left: 5px solid #e00000;
+}
+
+.challenge-note strong {
+    color: #e00000;
+}
+
+.challenge-note p {
+    font-size: 18px;
+    color: #ddd;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #000;
+    padding: 45px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+footer .logo {
+    font-size: 25px;
+}
+
+.footer-tagline {
+    color: #888;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+footer p {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    nav {
+        padding: 0 5%;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .hero {
+        padding: 65px 6%;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    main {
+        padding: 65px 20px 75px;
+    }
+
+    .intro h2 {
+        font-size: 34px;
+    }
+
+    .intro p {
+        font-size: 17px;
+    }
+
+    .question-card {
+        padding: 28px 22px;
+    }
+
+    .question-card h3 {
+        font-size: 24px;
+    }
+
+    .question-formula {
+        font-size: 23px;
+        padding: 23px 15px;
+    }
+
+    .step p {
+        font-size: 17px;
+    }
+
+    .step-formula {
+        font-size: 23px;
+        padding: 20px 12px;
+    }
+
+    .final-answer {
+        font-size: 24px;
+        padding: 20px 12px;
+    }
+
+    footer {
+        padding: 40px 6%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .nav-links {
+        gap: 13px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .hero {
+        min-height: 350px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero::after {
+        font-size: 180px;
+        right: -5px;
+    }
+
+    .question-card {
+        padding: 25px 18px;
+    }
+
+    .question-formula {
+        font-size: 21px;
+    }
+
+    .step-formula {
+        font-size: 21px;
+    }
+
+    .final-answer {
+        font-size: 22px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+        Edu<span>Nova</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="integration.html">INTEGRATION</a>
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="chapter-label">
+            Integration • Topic 04
+        </div>
+
+        <h1>
+            Practice Questions
+        </h1>
+
+        <p>
+            Test your understanding of integrating functions in the form
+            <strong>x² + a²</strong>. Read carefully. Some of these questions
+            are designed to catch a careless step.
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+    <section class="intro">
+
+        <h2>
+            Ready for the challenge?
+        </h2>
+
+        <p>
+            Start with the direct questions, then work your way through the
+            traps. Do not rush to the formula. First look carefully at the
+            denominator and decide whether the expression is already in the
+            required form or needs to be rearranged.
+        </p>
+
+    </section>
+
+
+    <div class="challenge-note">
+
+        <p>
+            <strong>Challenge rule:</strong>
+            Try each question before opening the answer. Several questions
+            are deliberately written so that a quick application of the
+            formula can lead to the wrong answer.
+        </p>
+
+    </div>
+
+
+    <section class="questions">
+
+
+        <!-- =========================
+             QUESTION 1
+        ========================== -->
+
+        <div class="question-card">
+
+            <div class="question-number">
+                Question 01 • Direct
+            </div>
+
+            <h3>
+                Evaluate the following integral.
+            </h3>
+
+            <div class="question-formula">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">x² + 16</span>
+                </span>
+
+                dx
+
+            </div>
+
+            <button class="answer-button" onclick="toggleAnswer('answer1')">
+                Show Answer
+            </button>
+
+            <div class="answer" id="answer1">
+
+                <div class="answer-title">
+                    Complete Solution
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 1: Compare with the standard form
+                    </div>
+
+                    <p>
+                        The standard form is:
+                    </p>
+
+                    <div class="step-formula">
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x² + a²</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">a</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">a</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 2: Identify a²
+                    </div>
+
+                    <p>
+                        Comparing the denominator with x² + a²:
+                    </p>
+
+                    <div class="step-formula">
+
+                        a² = 16
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 3: Find a
+                    </div>
+
+                    <div class="step-formula">
+
+                        a = 4
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 4: Substitute into the formula
+                    </div>
+
+                    <div class="step-formula">
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x² + 16</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </div>
+
+                </div>
+
+                <div class="final-answer">
+
+                    <strong>
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x² + 16</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             QUESTION 2
+        ========================== -->
+
+        <div class="question-card">
+
+            <div class="question-number">
+                Question 02 • Direct
+            </div>
+
+            <h3>
+                Evaluate the following integral.
+            </h3>
+
+            <div class="question-formula">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">x² + 121</span>
+                </span>
+
+                dx
+
+            </div>
+
+            <button class="answer-button" onclick="toggleAnswer('answer2')">
+                Show Answer
+            </button>
+
+            <div class="answer" id="answer2">
+
+                <div class="answer-title">
+                    Complete Solution
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 1: Identify a²
+                    </div>
+
+                    <div class="step-formula">
+                        a² = 121
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 2: Find a
+                    </div>
+
+                    <div class="step-formula">
+                        a = 11
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 3: Apply the standard result
+                    </div>
+
+                    <div class="step-formula">
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x² + 121</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">11</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">11</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </div>
+
+                </div>
+
+                <div class="final-answer">
+
+                    <strong>
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x² + 121</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">11</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">11</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             QUESTION 3
+        ========================== -->
+
+        <div class="question-card">
+
+            <div class="question-number">
+                Question 03 • Factor First
+            </div>
+
+            <h3>
+                Evaluate the following integral.
+            </h3>
+
+            <div class="question-formula">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">4x² + 100</span>
+                </span>
+
+                dx
+
+            </div>
+
+            <button class="answer-button" onclick="toggleAnswer('answer3')">
+                Show Answer
+            </button>
+
+            <div class="answer" id="answer3">
+
+                <div class="answer-title">
+                    Complete Solution
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 1: Factor the denominator
+                    </div>
+
+                    <div class="step-formula">
+
+                        4x² + 100
+
+                        =
+
+                        4(x² + 25)
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 2: Rewrite the integral
+                    </div>
+
+                    <div class="step-formula">
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">4(x² + 25)</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x² + 25</span>
+                        </span>
+
+                        dx
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 3: Identify a
+                    </div>
+
+                    <div class="step-formula">
+
+                        a² = 25
+
+                        <br>
+
+                        a = 5
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 4: Apply the formula
+                    </div>
+
+                    <div class="step-formula">
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                        ×
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">5</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">5</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </div>
+
+                </div>
+
+                <div class="final-answer">
+
+                    <strong>
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">4x² + 100</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">20</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">5</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             QUESTION 4
+        ========================== -->
+
+        <div class="question-card">
+
+            <div class="question-number">
+                Question 04 • The a² Trap
+            </div>
+
+            <h3>
+                Evaluate the following integral.
+            </h3>
+
+            <div class="question-formula">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">x² + 36</span>
+                </span>
+
+                dx
+
+            </div>
+
+            <button class="answer-button" onclick="toggleAnswer('answer4')">
+                Show Answer
+            </button>
+
+            <div class="answer" id="answer4">
+
+                <div class="answer-title">
+                    Complete Solution
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 1: Identify a² carefully
+                    </div>
+
+                    <p>
+                        The denominator is x² + 36, so the number 36 represents
+                        <strong>a²</strong>, not a.
+                    </p>
+
+                    <div class="step-formula">
+
+                        a² = 36
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 2: Find a
+                    </div>
+
+                    <div class="step-formula">
+
+                        a = √36 = 6
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 3: Apply the formula
+                    </div>
+
+                    <div class="step-formula">
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x² + 36</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">6</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">6</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </div>
+
+                </div>
+
+                <div class="final-answer">
+
+                    <strong>
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x² + 36</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">6</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">6</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             QUESTION 5
+        ========================== -->
+
+        <div class="question-card">
+
+            <div class="question-number">
+                Question 05 • Numerator Trap
+            </div>
+
+            <h3>
+                Evaluate the following integral.
+            </h3>
+
+            <div class="question-formula">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">3</span>
+                    <span class="bottom">x² + 9</span>
+                </span>
+
+                dx
+
+            </div>
+
+            <button class="answer-button" onclick="toggleAnswer('answer5')">
+                Show Answer
+            </button>
+
+            <div class="answer" id="answer5">
+
+                <div class="answer-title">
+                    Complete Solution
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 1: Take the constant outside
+                    </div>
+
+                    <div class="step-formula">
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">3</span>
+                            <span class="bottom">x² + 9</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        3
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x² + 9</span>
+                        </span>
+
+                        dx
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 2: Identify a
+                    </div>
+
+                    <div class="step-formula">
+
+                        a² = 9
+
+                        <br>
+
+                        a = 3
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 3: Apply the standard result
+                    </div>
+
+                    <div class="step-formula">
+
+                        3
+
+                        ×
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">3</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 4: Simplify
+                    </div>
+
+                    <div class="step-formula">
+
+                        3 ×
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3</span>
+                        </span>
+
+                        = 1
+
+                    </div>
+
+                </div>
+
+                <div class="final-answer">
+
+                    <strong>
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">3</span>
+                            <span class="bottom">x² + 9</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">3</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             QUESTION 6
+        ========================== -->
+
+        <div class="question-card">
+
+            <div class="question-number">
+                Question 06 • Hidden Form
+            </div>
+
+            <h3>
+                Evaluate the following integral.
+            </h3>
+
+            <div class="question-formula">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">9x² + 16</span>
+                </span>
+
+                dx
+
+            </div>
+
+            <button class="answer-button" onclick="toggleAnswer('answer6')">
+                Show Answer
+            </button>
+
+            <div class="answer" id="answer6">
+
+                <div class="answer-title">
+                    Complete Solution
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 1: Factor the denominator
+                    </div>
+
+                    <div class="step-formula">
+
+                        9x² + 16
+
+                        =
+
+                        9
+
+                        <span>(</span>
+
+                        x² +
+
+                        <span class="fraction">
+                            <span class="top">16</span>
+                            <span class="bottom">9</span>
+                        </span>
+
+                        <span>)</span>
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 2: Rewrite the integral
+                    </div>
+
+                    <div class="step-formula">
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9x² + 16</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9</span>
+                        </span>
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">
+                                x² +
+                                <span class="fraction">
+                                    <span class="top">16</span>
+                                    <span class="bottom">9</span>
+                                </span>
+                            </span>
+                        </span>
+
+                        dx
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 3: Identify a
+                    </div>
+
+                    <div class="step-formula">
+
+                        a² =
+
+                        <span class="fraction">
+                            <span class="top">16</span>
+                            <span class="bottom">9</span>
+                        </span>
+
+                        <br>
+
+                        a =
+
+                        <span class="fraction">
+                            <span class="top">4</span>
+                            <span class="bottom">3</span>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 4: Apply the formula
+                    </div>
+
+                    <div class="step-formula">
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9</span>
+                        </span>
+
+                        ×
+
+                        <span class="fraction">
+                            <span class="top">3</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">
+                                x
+                            </span>
+                            <span class="bottom">
+                                <span class="fraction">
+                                    <span class="top">4</span>
+                                    <span class="bottom">3</span>
+                                </span>
+                            </span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 5: Simplify
+                    </div>
+
+                    <div class="step-formula">
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9</span>
+                        </span>
+
+                        ×
+
+                        <span class="fraction">
+                            <span class="top">3</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">12</span>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="final-answer">
+
+                    <strong>
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9x² + 16</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">12</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">3x</span>
+                            <span class="bottom">4</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             QUESTION 7
+        ========================== -->
+
+        <div class="question-card">
+
+            <div class="question-number">
+                Question 07 • Challenge
+            </div>
+
+            <h3>
+                Evaluate the following integral.
+            </h3>
+
+            <div class="question-formula">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">25x² + 49</span>
+                </span>
+
+                dx
+
+            </div>
+
+            <button class="answer-button" onclick="toggleAnswer('answer7')">
+                Show Answer
+            </button>
+
+            <div class="answer" id="answer7">
+
+                <div class="answer-title">
+                    Complete Solution
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 1: Factor the denominator
+                    </div>
+
+                    <div class="step-formula">
+
+                        25x² + 49
+
+                        =
+
+                        25
+
+                        <span>(</span>
+
+                        x² +
+
+                        <span class="fraction">
+                            <span class="top">49</span>
+                            <span class="bottom">25</span>
+                        </span>
+
+                        <span>)</span>
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 2: Rewrite the integral
+                    </div>
+
+                    <div class="step-formula">
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">25x² + 49</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">25</span>
+                        </span>
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">
+                                x² +
+
+                                <span class="fraction">
+                                    <span class="top">49</span>
+                                    <span class="bottom">25</span>
+                                </span>
+
+                            </span>
+                        </span>
+
+                        dx
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 3: Identify a
+                    </div>
+
+                    <div class="step-formula">
+
+                        a² =
+
+                        <span class="fraction">
+                            <span class="top">49</span>
+                            <span class="bottom">25</span>
+                        </span>
+
+                        <br>
+
+                        a =
+
+                        <span class="fraction">
+                            <span class="top">7</span>
+                            <span class="bottom">5</span>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 4: Apply the standard result
+                    </div>
+
+                    <div class="step-formula">
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">25</span>
+                        </span>
+
+                        ×
+
+                        <span class="fraction">
+                            <span class="top">5</span>
+                            <span class="bottom">7</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">
+
+                                <span class="fraction">
+                                    <span class="top">7</span>
+                                    <span class="bottom">5</span>
+                                </span>
+
+                            </span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </div>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-label">
+                        Step 5: Simplify
+                    </div>
+
+                    <div class="step-formula">
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">25</span>
+                        </span>
+
+                        ×
+
+                        <span class="fraction">
+                            <span class="top">5</span>
+                            <span class="bottom">7</span>
+                        </span>
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">35</span>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="final-answer">
+
+                    <strong>
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">25x² + 49</span>
+                        </span>
+
+                        dx
+
+                        =
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">35</span>
+                        </span>
+
+                        tan⁻¹
+
+                        <span>(</span>
+
+                        <span class="fraction">
+                            <span class="top">5x</span>
+                            <span class="bottom">7</span>
+                        </span>
+
+                        <span>) + C</span>
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+
+        <div class="logo">
+            Edu<span>Nova</span>
+        </div>
+
+        <div class="footer-tagline">
+            Mathematics made clear.
+        </div>
+
+    </div>
+
+    <p>
+        © 2026 EduNova. All rights reserved.
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+function toggleAnswer(id) {
+
+    const answer = document.getElementById(id);
+
+    if (answer.classList.contains("show")) {
+        answer.classList.remove("show");
+    } else {
+        answer.classList.add("show");
+    }
+
+}
+
+const username = localStorage.getItem("eduNovaUsername");
+
+if (!username) {
+    window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>
