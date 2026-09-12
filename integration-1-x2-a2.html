@@ -1,6 +1,8 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,6 +14,10 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================
+   RESET
+========================= */
 
 *{
     box-sizing:border-box;
@@ -26,33 +32,18 @@ body{
 }
 
 
-/* NAVIGATION */
+/* =========================
+   NAVIGATION
+========================= */
 
 nav{
     height:82px;
     padding:0 7%;
     display:flex;
     align-items:center;
-    justify-content:space-between;
+    justify-content:flex-end;
     border-bottom:1px solid #ddd;
     background:#f7f6f2;
-}
-
-.logo{
-    font-family:"Playfair Display",serif;
-    font-size:28px;
-    font-weight:700;
-}
-
-.logo span{
-    color:#e52b20;
-}
-
-.logo-tagline{
-    font-size:9px;
-    letter-spacing:1.5px;
-    color:#777;
-    margin-top:2px;
 }
 
 .nav{
@@ -88,14 +79,30 @@ nav{
 }
 
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
     background:#111;
     color:#fff;
-    padding:75px 7% 70px;
+    padding:45px 7% 75px;
     position:relative;
     overflow:hidden;
+}
+
+.hero-logo{
+    position:relative;
+    z-index:2;
+    font-family:"Playfair Display",serif;
+    font-size:30px;
+    font-weight:700;
+    line-height:1;
+    margin-bottom:70px;
+}
+
+.hero-logo span{
+    color:#e52b20;
 }
 
 .hero:after{
@@ -105,6 +112,7 @@ nav{
     top:-55px;
     font:300 300px "Playfair Display";
     color:#202020;
+    line-height:1;
 }
 
 .label{
@@ -136,7 +144,9 @@ nav{
 }
 
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 main{
     padding:80px 7% 110px;
@@ -170,7 +180,9 @@ main{
 }
 
 
-/* SECTION */
+/* =========================
+   SECTION
+========================= */
 
 .section{
     margin-top:65px;
@@ -191,7 +203,9 @@ main{
 }
 
 
-/* FORMULA */
+/* =========================
+   FORMULA
+========================= */
 
 .formula-box{
     background:#111;
@@ -216,7 +230,9 @@ main{
 }
 
 
-/* IMPORTANT BOX */
+/* =========================
+   IMPORTANT BOX
+========================= */
 
 .important{
     background:#e52b20;
@@ -237,7 +253,9 @@ main{
 }
 
 
-/* HOW TO FIND A */
+/* =========================
+   HOW TO FIND A
+========================= */
 
 .a-section{
     background:#fff;
@@ -305,7 +323,9 @@ main{
 }
 
 
-/* EXAMPLES */
+/* =========================
+   EXAMPLES
+========================= */
 
 .example{
     background:#fff;
@@ -374,7 +394,9 @@ main{
 }
 
 
-/* RECOGNITION */
+/* =========================
+   RECOGNITION
+========================= */
 
 .recognition{
     display:grid;
@@ -401,7 +423,9 @@ main{
 }
 
 
-/* COMMON MISTAKES */
+/* =========================
+   COMMON MISTAKES
+========================= */
 
 .mistakes{
     display:grid;
@@ -436,7 +460,9 @@ main{
 }
 
 
-/* SUMMARY */
+/* =========================
+   SUMMARY
+========================= */
 
 .summary{
     margin-top:30px;
@@ -472,45 +498,87 @@ main{
 }
 
 
-/* QUESTIONS BUTTON */
+/* =========================
+   QUESTIONS AREA
+========================= */
 
 .questions-area{
-    margin-top:65px;
-    padding-top:45px;
-    border-top:1px solid #ddd;
+    margin-top:85px;
+    background:#111;
+    color:#fff;
+    padding:65px 60px;
+    position:relative;
+    overflow:hidden;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:25px;
+    gap:45px;
+}
+
+.questions-area:after{
+    content:"∫";
+    position:absolute;
+    right:35px;
+    top:-75px;
+    font:300 260px "Playfair Display";
+    color:#202020;
+    line-height:1;
+}
+
+.questions-content{
+    position:relative;
+    z-index:2;
+    max-width:650px;
+}
+
+.questions-label{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:3px;
+    margin-bottom:16px;
 }
 
 .questions-area h3{
-    font:600 28px "Playfair Display";
-    margin-bottom:7px;
+    font:600 clamp(35px,4vw,55px)/1.05 "Playfair Display";
+    letter-spacing:-1.5px;
+    margin-bottom:18px;
 }
 
 .questions-area p{
-    color:#666;
-    font-size:13px;
+    color:#aaa;
+    font-size:14px;
+    line-height:1.8;
+    max-width:550px;
 }
 
 .questions-button{
-    display:inline-block;
+    position:relative;
+    z-index:2;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     text-decoration:none;
-    background:#111;
+    background:#e52b20;
     color:#fff;
-    padding:14px 22px;
+    padding:17px 28px;
+    min-width:175px;
     font:700 10px "DM Sans";
-    letter-spacing:1px;
+    letter-spacing:1.5px;
     white-space:nowrap;
+    transition:.25s;
 }
 
 .questions-button:hover{
-    background:#e52b20;
+    background:#fff;
+    color:#111;
+    transform:translateY(-3px);
 }
 
 
-/* BACK BUTTON */
+/* =========================
+   BACK BUTTON
+========================= */
 
 .back{
     margin-top:35px;
@@ -532,7 +600,9 @@ main{
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     background:#111;
@@ -543,6 +613,12 @@ footer{
     align-items:center;
 }
 
+.footer-left{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
 .footer-logo{
     font:600 24px "Playfair Display";
 }
@@ -551,20 +627,28 @@ footer{
     color:#e52b20;
 }
 
+.footer-tagline{
+    margin-top:5px;
+    color:#888;
+    font-size:9px;
+    letter-spacing:1px;
+}
+
 footer p{
     color:#888;
     font-size:11px;
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:800px){
 
     nav{
         height:auto;
         padding:18px 5%;
-        gap:15px;
     }
 
     .nav{
@@ -576,8 +660,24 @@ footer p{
         font-size:9px;
     }
 
+    .logout{
+        padding:9px 10px;
+        font-size:9px;
+    }
+
     .hero{
-        padding:65px 5% 55px;
+        padding:40px 5% 60px;
+    }
+
+    .hero-logo{
+        font-size:26px;
+        margin-bottom:55px;
+    }
+
+    .hero:after{
+        right:-25px;
+        top:-35px;
+        font-size:230px;
     }
 
     main{
@@ -603,12 +703,62 @@ footer p{
     .questions-area{
         flex-direction:column;
         align-items:flex-start;
+        padding:50px 30px;
+    }
+
+    .questions-area:after{
+        right:-20px;
+        font-size:200px;
     }
 
     footer{
         flex-direction:column;
-        gap:15px;
+        gap:20px;
+        align-items:flex-start;
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    nav{
+        justify-content:center;
+    }
+
+    .nav{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .hero-logo{
+        margin-bottom:45px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .math-line{
+        font-size:19px;
+    }
+
+    .final-answer-math{
+        font-size:21px;
+    }
+
+    footer{
+        align-items:center;
         text-align:center;
+    }
+
+    .footer-left{
+        align-items:center;
     }
 
 }
@@ -620,21 +770,11 @@ footer p{
 <body>
 
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
-
-    <div>
-
-        <div class="logo">
-            Edu<span>Nova</span>
-        </div>
-
-        <div class="logo-tagline">
-            Mathematics made clear.
-        </div>
-
-    </div>
 
     <div class="nav">
 
@@ -656,9 +796,15 @@ footer p{
 
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <header class="hero">
+
+    <div class="hero-logo">
+        Edu<span>Nova</span>
+    </div>
 
     <div class="label">
         INTEGRATION • TOPIC 04
@@ -678,7 +824,9 @@ footer p{
 
 
 
-<!-- MAIN -->
+<!-- =========================
+     MAIN
+========================= -->
 
 <main>
 
@@ -702,7 +850,9 @@ footer p{
 
 
 
-    <!-- FORMULA -->
+    <!-- =========================
+         FORMULA
+    ========================= -->
 
     <div class="section">
 
@@ -747,7 +897,9 @@ footer p{
 
 
 
-    <!-- FINDING A -->
+    <!-- =========================
+         FINDING A
+    ========================= -->
 
     <div class="section">
 
@@ -834,13 +986,19 @@ footer p{
 
 
 
-    <!-- EXAMPLE 01 -->
+    <!-- =========================
+         WORKED EXAMPLES
+    ========================= -->
 
     <div class="section">
 
         <h3 class="section-heading">
             Worked examples
         </h3>
+
+
+
+        <!-- EXAMPLE 01 -->
 
         <div class="example">
 
@@ -1039,7 +1197,9 @@ footer p{
 
 
 
-    <!-- RECOGNITION -->
+    <!-- =========================
+         RECOGNITION
+    ========================= -->
 
     <div class="section">
 
@@ -1087,7 +1247,9 @@ footer p{
 
 
 
-    <!-- COMMON MISTAKES -->
+    <!-- =========================
+         COMMON MISTAKES
+    ========================= -->
 
     <div class="section">
 
@@ -1170,7 +1332,9 @@ footer p{
 
 
 
-    <!-- SUMMARY -->
+    <!-- =========================
+         SUMMARY
+    ========================= -->
 
     <div class="section">
 
@@ -1248,11 +1412,17 @@ footer p{
 
 
 
-    <!-- QUESTIONS -->
+    <!-- =========================
+         QUESTIONS
+    ========================= -->
 
     <div class="questions-area">
 
-        <div>
+        <div class="questions-content">
+
+            <div class="questions-label">
+                PRACTICE
+            </div>
 
             <h3>
                 Ready to practice?
@@ -1274,7 +1444,9 @@ footer p{
 
 
 
-    <!-- BACK -->
+    <!-- =========================
+         BACK
+    ========================= -->
 
     <div class="back">
 
@@ -1291,12 +1463,22 @@ footer p{
 
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    <div class="footer-logo">
-        Edu<span>Nova</span>
+    <div class="footer-left">
+
+        <div class="footer-logo">
+            Edu<span>Nova</span>
+        </div>
+
+        <div class="footer-tagline">
+            Mathematics made clear.
+        </div>
+
     </div>
 
     <p>
@@ -1309,12 +1491,20 @@ footer p{
 
 <script>
 
+/* =========================
+   LOGIN PROTECTION
+========================= */
+
 const username = localStorage.getItem("eduNovaUsername");
 
 if (!username) {
     window.location.href = "index.html";
 }
 
+
+/* =========================
+   LOG OUT
+========================= */
 
 function logout(){
 
@@ -1329,3 +1519,4 @@ function logout(){
 
 </body>
 </html>
+```
