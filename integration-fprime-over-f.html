@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduNova | Integrating f'(x)/f(x)</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            color: #111;
+            background: #fff;
+            line-height: 1.7;
+        }
+
+        nav {
+            height: 78px;
+            background: #050505;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #e00000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 38px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e00000;
+        }
+
+        .hero {
+            min-height: 430px;
+            background: #050505;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 70px 8%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            color: #e00000;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.08;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            max-width: 720px;
+            font-size: 19px;
+            color: #d8d8d8;
+            line-height: 1.8;
+        }
+
+        .hero-decoration {
+            position: absolute;
+            right: 6%;
+            bottom: -30px;
+            font-family: "Times New Roman", serif;
+            font-size: clamp(110px, 17vw, 230px);
+            color: #202020;
+            font-style: italic;
+            user-select: none;
+        }
+
+        main {
+            max-width: 1150px;
+            margin: auto;
+            padding: 85px 30px;
+        }
+
+        section {
+            margin-bottom: 82px;
+        }
+
+        h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 25px;
+            margin-bottom: 16px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 18px;
+        }
+
+        .intro {
+            max-width: 900px;
+        }
+
+        .math-box {
+            background: #f6f6f6;
+            border-left: 5px solid #e00000;
+            padding: 28px 30px;
+            margin: 30px 0;
+            font-family: "Times New Roman", serif;
+            font-size: 28px;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .math-box.final {
+            background: #050505;
+            color: white;
+            border-left: 5px solid #e00000;
+            font-size: 31px;
+            padding: 34px 25px;
+        }
+
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 1.1;
+            margin: 0 7px;
+        }
+
+        .fraction .top {
+            border-bottom: 2px solid #111;
+            padding: 0 8px 4px;
+        }
+
+        .fraction .bottom {
+            padding: 4px 8px 0;
+        }
+
+        .math-box.final .fraction .top {
+            border-bottom: 2px solid white;
+        }
+
+        .integral {
+            font-family: "Times New Roman", serif;
+            font-size: 48px;
+            vertical-align: middle;
+        }
+
+        .step-box {
+            background: #fafafa;
+            border: 1px solid #e4e4e4;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+        }
+
+        .step-number {
+            display: inline-flex;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #e00000;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .example-label {
+            color: #e00000;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .recognition-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .recognition-card {
+            border: 1px solid #e5e5e5;
+            padding: 28px 22px;
+            border-radius: 12px;
+            background: white;
+        }
+
+        .recognition-card strong {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .recognition-card p {
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+
+        .mistakes {
+            background: #fff5f5;
+            border: 1px solid #f0cccc;
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .mistakes ul {
+            padding-left: 23px;
+        }
+
+        .mistakes li {
+            font-size: 17px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .important {
+            background: #111;
+            color: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 30px;
+        }
+
+        .important h3 {
+            color: white;
+        }
+
+        .important p {
+            color: #ddd;
+        }
+
+        .summary {
+            background: #050505;
+            color: white;
+            padding: 42px;
+            border-radius: 14px;
+        }
+
+        .summary h2 {
+            color: white;
+        }
+
+        .summary ol {
+            padding-left: 25px;
+        }
+
+        .summary li {
+            color: #ddd;
+            font-size: 17px;
+            margin-bottom: 14px;
+        }
+
+        .summary .fraction .top {
+            border-bottom: 2px solid white;
+        }
+
+        .practice-section {
+            text-align: center;
+            padding: 55px 20px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .practice-section p {
+            max-width: 650px;
+            margin: 0 auto 28px;
+        }
+
+        .practice-button {
+            display: inline-block;
+            background: #e00000;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .practice-button:hover {
+            background: #b80000;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #050505;
+            color: white;
+            padding: 42px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        footer .logo {
+            font-size: 25px;
+        }
+
+        .footer-tagline {
+            color: #aaa;
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+        footer p {
+            color: #888;
+            font-size: 13px;
+            margin: 0;
+        }
+
+        @media (max-width: 800px) {
+            nav {
+                padding: 0 5%;
+            }
+
+            nav ul {
+                gap: 18px;
+            }
+
+            .hero {
+                padding: 65px 7%;
+            }
+
+            .hero-decoration {
+                opacity: 0.6;
+            }
+
+            main {
+                padding: 65px 20px;
+            }
+
+            h2 {
+                font-size: 34px;
+            }
+
+            .recognition-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 520px) {
+            nav ul li a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .math-box {
+                font-size: 22px;
+                padding: 22px 15px;
+            }
+
+            .math-box.final {
+                font-size: 24px;
+            }
+
+            .step-box,
+            .summary,
+            .mistakes {
+                padding: 24px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Edu<span>Nova</span></div>
+
+    <ul>
+        <li><a href="dashboard.html">HOME</a></li>
+        <li><a href="integration.html">INTEGRATION</a></li>
+    </ul>
+</nav>
+
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">Integration • Topic 05</div>
+
+        <h1>
+            Integrating<br>
+            f′(x) / f(x)
+        </h1>
+
+        <p>
+            Learn how to recognize when the numerator is the derivative
+            of the denominator, and use this pattern to integrate
+            functions involving natural logarithms.
+        </p>
+    </div>
+
+    <div class="hero-decoration">f′/f</div>
+</section>
+
+
+<main>
+
+    <!-- INTRODUCTION -->
+    <section>
+        <div class="example-label">01 • The idea</div>
+
+        <h2>Recognizing the pattern</h2>
+
+        <p class="intro">
+            Some integrals become much easier when the numerator is related
+            to the derivative of the denominator. The important pattern is
+            a function divided by its own derivative:
+        </p>
+
+        <div class="math-box">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">f′(x)</span>
+                <span class="bottom">f(x)</span>
+            </span>
+            dx
+            =
+            ln|f(x)| + C
+        </div>
+
+        <p>
+            The main skill is not simply memorizing the formula. You need to
+            look at the denominator, differentiate it, and then compare the
+            result with the numerator.
+        </p>
+
+        <div class="important">
+            <h3>The key question</h3>
+            <p>
+                Whenever you see a fraction inside an integral, ask:
+                <strong>“Is the numerator the derivative of the denominator?”</strong>
+            </p>
+        </div>
+    </section>
+
+
+    <!-- RULE -->
+    <section>
+        <div class="example-label">02 • The rule</div>
+
+        <h2>The key integration rule</h2>
+
+        <p>
+            If the numerator is exactly the derivative of the denominator,
+            the integral is the natural logarithm of the denominator.
+        </p>
+
+        <div class="math-box final">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">f′(x)</span>
+                <span class="bottom">f(x)</span>
+            </span>
+            dx
+            =
+            ln|f(x)| + C
+        </div>
+
+        <p>
+            The absolute value is important because the natural logarithm
+            is defined for positive inputs. Writing
+            <strong>ln|f(x)|</strong> gives the general result.
+        </p>
+    </section>
+
+
+    <!-- HOW TO RECOGNIZE -->
+    <section>
+        <div class="example-label">03 • Recognition</div>
+
+        <h2>How to recognize the form</h2>
+
+        <p>
+            There are three simple steps to follow.
+        </p>
+
+        <div class="step-box">
+            <span class="step-number">1</span>
+            <span class="step-title">Look at the denominator</span>
+
+            <p style="margin-top: 18px;">
+                Treat the denominator as the function
+                <strong>f(x)</strong>.
+            </p>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">2</span>
+            <span class="step-title">Differentiate the denominator</span>
+
+            <p style="margin-top: 18px;">
+                Find <strong>f′(x)</strong>.
+            </p>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">3</span>
+            <span class="step-title">Compare it with the numerator</span>
+
+            <p style="margin-top: 18px;">
+                If the numerator is exactly f′(x), use the rule directly.
+                If it is a constant multiple of f′(x), take that constant
+                into account.
+            </p>
+        </div>
+
+        <div class="recognition-grid">
+
+            <div class="recognition-card">
+                <strong>Exact match</strong>
+                <p>
+                    Numerator = derivative of denominator.
+                    Use the rule directly.
+                </p>
+            </div>
+
+            <div class="recognition-card">
+                <strong>Constant missing</strong>
+                <p>
+                    Numerator is a constant multiple of the derivative.
+                    Rewrite it using that constant.
+                </p>
+            </div>
+
+            <div class="recognition-card">
+                <strong>No match</strong>
+                <p>
+                    The numerator is not related to the derivative.
+                    This rule cannot be used directly.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- EXAMPLE 1 -->
+    <section>
+        <div class="example-label">04 • Worked Example 1</div>
+
+        <h2>When the derivative matches exactly</h2>
+
+        <div class="math-box">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">2x</span>
+                <span class="bottom">x² + 5</span>
+            </span>
+            dx
+        </div>
+
+        <p>
+            First, look at the denominator:
+        </p>
+
+        <div class="math-box">
+            f(x) = x² + 5
+        </div>
+
+        <p>
+            Differentiate it:
+        </p>
+
+        <div class="math-box">
+            f′(x) = 2x
+        </div>
+
+        <p>
+            The numerator is <strong>2x</strong>, so it matches
+            f′(x) exactly.
+        </p>
+
+        <div class="math-box">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">2x</span>
+                <span class="bottom">x² + 5</span>
+            </span>
+            dx
+            =
+            ln|x² + 5| + C
+        </div>
+
+        <p>
+            Since x² + 5 is always positive for real x, the absolute value
+            may be omitted here:
+        </p>
+
+        <div class="math-box final">
+            <span class="boxed">ln(x² + 5) + C</span>
+        </div>
+    </section>
+
+
+    <!-- EXAMPLE 2 -->
+    <section>
+        <div class="example-label">05 • Worked Example 2</div>
+
+        <h2>When a constant is missing</h2>
+
+        <p>
+            This is one of the most important cases to understand.
+            Sometimes the numerator is not exactly the derivative of the
+            denominator, but it becomes the derivative after multiplying
+            by a constant.
+        </p>
+
+        <div class="math-box">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">x</span>
+                <span class="bottom">x² + 4</span>
+            </span>
+            dx
+        </div>
+
+        <p>
+            The denominator is:
+        </p>
+
+        <div class="math-box">
+            f(x) = x² + 4
+        </div>
+
+        <p>
+            Its derivative is:
+        </p>
+
+        <div class="math-box">
+            f′(x) = 2x
+        </div>
+
+        <p>
+            But our numerator is only <strong>x</strong>.
+            The derivative is <strong>2x</strong>, so the factor 2 is missing.
+        </p>
+
+        <p>
+            We can rewrite x using the derivative:
+        </p>
+
+        <div class="math-box">
+            x = <span class="fraction">
+                <span class="top">1</span>
+                <span class="bottom">2</span>
+            </span>(2x)
+        </div>
+
+        <p>
+            Therefore:
+        </p>
+
+        <div class="math-box">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">x</span>
+                <span class="bottom">x² + 4</span>
+            </span>
+            dx
+            =
+            <span class="fraction">
+                <span class="top">1</span>
+                <span class="bottom">2</span>
+            </span>
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">2x</span>
+                <span class="bottom">x² + 4</span>
+            </span>
+            dx
+        </div>
+
+        <p>
+            Now the numerator matches the derivative of the denominator.
+            Applying the rule:
+        </p>
+
+        <div class="math-box final">
+            =
+            <span class="fraction">
+                <span class="top">1</span>
+                <span class="bottom">2</span>
+            </span>
+            ln|x² + 4| + C
+        </div>
+
+        <div class="important">
+            <h3>Remember the constant</h3>
+
+            <p>
+                If the numerator is missing a constant factor, you must
+                compensate for it using its reciprocal.
+            </p>
+
+            <p>
+                Missing factor 2 → multiply the integral by
+                <strong>1/2</strong>.
+            </p>
+
+            <p>
+                Missing factor 5 → multiply the integral by
+                <strong>1/5</strong>.
+            </p>
+
+            <p>
+                Missing factor 3 → multiply the integral by
+                <strong>1/3</strong>.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- EXAMPLE 3 -->
+    <section>
+        <div class="example-label">06 • Worked Example 3</div>
+
+        <h2>A larger constant</h2>
+
+        <div class="math-box">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">3x²</span>
+                <span class="bottom">x³ + 7</span>
+            </span>
+            dx
+        </div>
+
+        <p>
+            Let:
+        </p>
+
+        <div class="math-box">
+            f(x) = x³ + 7
+        </div>
+
+        <p>
+            Differentiate:
+        </p>
+
+        <div class="math-box">
+            f′(x) = 3x²
+        </div>
+
+        <p>
+            This time the numerator matches exactly.
+        </p>
+
+        <div class="math-box final">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">3x²</span>
+                <span class="bottom">x³ + 7</span>
+            </span>
+            dx
+            =
+            ln|x³ + 7| + C
+        </div>
+    </section>
+
+
+    <!-- EXAMPLE 4 -->
+    <section>
+        <div class="example-label">07 • Worked Example 4</div>
+
+        <h2>When the derivative is hidden inside the numerator</h2>
+
+        <div class="math-box">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">6x² - 4</span>
+                <span class="bottom">2x³ - 4x + 9</span>
+            </span>
+            dx
+        </div>
+
+        <p>
+            Take the denominator:
+        </p>
+
+        <div class="math-box">
+            f(x) = 2x³ - 4x + 9
+        </div>
+
+        <p>
+            Differentiate it:
+        </p>
+
+        <div class="math-box">
+            f′(x) = 6x² - 4
+        </div>
+
+        <p>
+            The numerator is exactly the derivative of the denominator.
+        </p>
+
+        <div class="math-box final">
+            =
+            ln|2x³ - 4x + 9| + C
+        </div>
+    </section>
+
+
+    <!-- EXAMPLE 5 -->
+    <section>
+        <div class="example-label">08 • Worked Example 5</div>
+
+        <h2>When the numerator is a multiple of the derivative</h2>
+
+        <div class="math-box">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">4x + 6</span>
+                <span class="bottom">2x² + 6x + 5</span>
+            </span>
+            dx
+        </div>
+
+        <p>
+            Differentiate the denominator:
+        </p>
+
+        <div class="math-box">
+            f′(x) = 4x + 6
+        </div>
+
+        <p>
+            The numerator matches exactly, so:
+        </p>
+
+        <div class="math-box final">
+            =
+            ln|2x² + 6x + 5| + C
+        </div>
+
+        <p>
+            Notice that we do not need to expand, simplify, or change
+            the denominator. Once the derivative is recognized, the
+            integral follows directly.
+        </p>
+    </section>
+
+
+    <!-- EXAMPLE 6 -->
+    <section>
+        <div class="example-label">09 • Worked Example 6</div>
+
+        <h2>A trickier missing constant</h2>
+
+        <div class="math-box">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">2x² - 1</span>
+                <span class="bottom">2x³ - 3x + 8</span>
+            </span>
+            dx
+        </div>
+
+        <p>
+            Differentiate the denominator:
+        </p>
+
+        <div class="math-box">
+            f′(x) = 6x² - 3
+        </div>
+
+        <p>
+            The numerator is not the derivative exactly. However:
+        </p>
+
+        <div class="math-box">
+            2x² - 1
+            =
+            <span class="fraction">
+                <span class="top">1</span>
+                <span class="bottom">3</span>
+            </span>
+            (6x² - 3)
+        </div>
+
+        <p>
+            Therefore, the numerator is
+            <strong>one third</strong> of the derivative.
+        </p>
+
+        <div class="math-box">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">2x² - 1</span>
+                <span class="bottom">2x³ - 3x + 8</span>
+            </span>
+            dx
+            =
+            <span class="fraction">
+                <span class="top">1</span>
+                <span class="bottom">3</span>
+            </span>
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">6x² - 3</span>
+                <span class="bottom">2x³ - 3x + 8</span>
+            </span>
+            dx
+        </div>
+
+        <div class="math-box final">
+            =
+            <span class="fraction">
+                <span class="top">1</span>
+                <span class="bottom">3</span>
+            </span>
+            ln|2x³ - 3x + 8| + C
+        </div>
+
+        <div class="important">
+            <h3>The pattern to remember</h3>
+
+            <p>
+                If the numerator is
+                <strong>k f′(x)</strong>, then:
+            </p>
+
+            <p style="text-align: center; font-family: 'Times New Roman', serif; font-size: 28px;">
+                ∫
+                <span class="fraction">
+                    <span class="top">k f′(x)</span>
+                    <span class="bottom">f(x)</span>
+                </span>
+                dx
+                =
+                k ln|f(x)| + C
+            </p>
+
+            <p>
+                If the numerator is only
+                <strong>1/k</strong> of the derivative, the answer
+                contains the factor <strong>1/k</strong>.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- WHEN IT DOES NOT WORK -->
+    <section>
+        <div class="example-label">10 • Important distinction</div>
+
+        <h2>Not every fraction has this form</h2>
+
+        <p>
+            You should never assume that every fraction inside an integral
+            can be solved using this rule. Always differentiate the
+            denominator first.
+        </p>
+
+        <div class="math-box">
+            <span class="integral">∫</span>
+            <span class="fraction">
+                <span class="top">x + 1</span>
+                <span class="bottom">x² + 4</span>
+            </span>
+            dx
+        </div>
+
+        <p>
+            The derivative of the denominator is:
+        </p>
+
+        <div class="math-box">
+            2x
+        </div>
+
+        <p>
+            But the numerator is <strong>x + 1</strong>.
+            There is no constant k that makes
+            \(x+1 = k(2x)\) for every x.
+        </p>
+
+        <p>
+            Therefore, this is <strong>not</strong> a direct
+            \(f′(x)/f(x)\) integral.
+        </p>
+
+        <div class="important">
+            <h3>Do not force the pattern</h3>
+            <p>
+                The numerator must be exactly the derivative of the
+                denominator, or a constant multiple of it.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- COMMON MISTAKES -->
+    <section>
+        <div class="example-label">11 • Common mistakes</div>
+
+        <h2>Watch out for these</h2>
+
+        <div class="mistakes">
+            <ul>
+                <li>
+                    <strong>Forgetting to differentiate the denominator.</strong>
+                    Always check it before applying the rule.
+                </li>
+
+                <li>
+                    <strong>Ignoring a missing constant.</strong>
+                    If the derivative is 4x but the numerator is x,
+                    the missing factor is 4, so the answer needs 1/4.
+                </li>
+
+                <li>
+                    <strong>Using the wrong constant.</strong>
+                    Compare the entire numerator with the entire derivative,
+                    not just one term.
+                </li>
+
+                <li>
+                    <strong>Forgetting the absolute value.</strong>
+                    The general formula is ln|f(x)| + C.
+                </li>
+
+                <li>
+                    <strong>Forgetting +C.</strong>
+                    This is still an indefinite integral.
+                </li>
+
+                <li>
+                    <strong>Forcing the rule when there is no match.</strong>
+                    If the numerator is not a constant multiple of the
+                    denominator's derivative, use another integration method.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- QUICK SUMMARY -->
+    <section>
+        <div class="summary">
+            <h2>Quick Summary</h2>
+
+            <ol>
+                <li>
+                    Look at the denominator and call it f(x).
+                </li>
+
+                <li>
+                    Differentiate it to find f′(x).
+                </li>
+
+                <li>
+                    Compare f′(x) with the numerator.
+                </li>
+
+                <li>
+                    If they match exactly, use
+                    ln|f(x)| + C.
+                </li>
+
+                <li>
+                    If the numerator is a constant multiple of f′(x),
+                    keep that constant in front of the logarithm.
+                </li>
+
+                <li>
+                    If a constant is missing from the numerator,
+                    multiply by its reciprocal.
+                </li>
+            </ol>
+
+            <div class="math-box final" style="margin-bottom: 0;">
+                <span class="integral">∫</span>
+                <span class="fraction">
+                    <span class="top">f′(x)</span>
+                    <span class="bottom">f(x)</span>
+                </span>
+                dx
+                =
+                ln|f(x)| + C
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PRACTICE -->
+    <section class="practice-section">
+        <h2>Ready to Practice?</h2>
+
+        <p>
+            Now test whether you can recognize the pattern, spot missing
+            constants, and avoid the traps.
+        </p>
+
+        <a href="integration-fprime-over-f-questions.html"
+           class="practice-button">
+            Questions
+        </a>
+    </section>
+
+</main>
+
+
+<footer>
+    <div>
+        <div class="logo">Edu<span>Nova</span></div>
+        <div class="footer-tagline">Mathematics made clear.</div>
+    </div>
+
+    <p>© 2026 EduNova. All rights reserved.</p>
+</footer>
+
+
+<script>
+    const username = localStorage.getItem("eduNovaUsername");
+
+    if (!username) {
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>
