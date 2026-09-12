@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduNova | Integration of 1/(x² + a²)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:#f7f6f2;
+    color:#111;
+}
+
+
+/* NAVIGATION */
+
+nav{
+    height:82px;
+    padding:0 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #ddd;
+    background:#f7f6f2;
+}
+
+.logo{
+    font-family:"Playfair Display",serif;
+    font-size:28px;
+    font-weight:700;
+}
+
+.logo span{
+    color:#e52b20;
+}
+
+.logo-tagline{
+    font-size:9px;
+    letter-spacing:1.5px;
+    color:#777;
+    margin-top:2px;
+}
+
+.nav{
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+
+.nav a{
+    text-decoration:none;
+    color:#111;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+    padding:11px 15px;
+}
+
+.nav a:hover{
+    color:#e52b20;
+}
+
+.logout{
+    border:0;
+    background:#111;
+    color:#fff;
+    padding:11px 17px;
+    font:700 10px "DM Sans";
+    cursor:pointer;
+}
+
+.logout:hover{
+    background:#e52b20;
+}
+
+
+/* HERO */
+
+.hero{
+    background:#111;
+    color:#fff;
+    padding:75px 7% 70px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"a²";
+    position:absolute;
+    right:7%;
+    top:-55px;
+    font:300 300px "Playfair Display";
+    color:#202020;
+}
+
+.label{
+    color:#e52b20;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:3px;
+    margin-bottom:18px;
+    position:relative;
+    z-index:2;
+}
+
+.hero h1{
+    font:600 clamp(42px,6vw,78px)/1.05 "Playfair Display";
+    letter-spacing:-3px;
+    max-width:850px;
+    position:relative;
+    z-index:2;
+}
+
+.hero p{
+    max-width:680px;
+    color:#aaa;
+    margin-top:25px;
+    font-size:15px;
+    line-height:1.8;
+    position:relative;
+    z-index:2;
+}
+
+
+/* MAIN */
+
+main{
+    padding:80px 7% 110px;
+}
+
+.lesson{
+    max-width:1000px;
+    margin:auto;
+}
+
+.lesson-label{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.lesson h2{
+    font:600 clamp(35px,4vw,52px)/1.1 "Playfair Display";
+    letter-spacing:-1.5px;
+    margin-bottom:25px;
+}
+
+.intro{
+    max-width:780px;
+    color:#555;
+    font-size:15px;
+    line-height:1.9;
+    margin-bottom:55px;
+}
+
+
+/* SECTION */
+
+.section{
+    margin-top:65px;
+}
+
+.section-heading{
+    font:600 clamp(28px,3vw,38px)/1.2 "Playfair Display";
+    letter-spacing:-1px;
+    margin-bottom:18px;
+}
+
+.section-text{
+    max-width:800px;
+    color:#555;
+    font-size:15px;
+    line-height:1.9;
+    margin-bottom:22px;
+}
+
+
+/* FORMULA */
+
+.formula-box{
+    background:#111;
+    color:#fff;
+    padding:38px 25px;
+    margin:30px 0 35px;
+    text-align:center;
+    overflow-x:auto;
+}
+
+.formula-label{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:16px;
+}
+
+.formula{
+    font:500 clamp(23px,4vw,38px) "Playfair Display";
+    white-space:nowrap;
+}
+
+
+/* IMPORTANT BOX */
+
+.important{
+    background:#e52b20;
+    color:#fff;
+    padding:30px 32px;
+    margin:35px 0;
+}
+
+.important-title{
+    font:600 25px "Playfair Display";
+    margin-bottom:10px;
+}
+
+.important p{
+    color:rgba(255,255,255,.9);
+    font-size:14px;
+    line-height:1.8;
+}
+
+
+/* HOW TO FIND A */
+
+.a-section{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:40px;
+    margin-top:30px;
+}
+
+.a-title{
+    font:600 29px "Playfair Display";
+    margin-bottom:15px;
+}
+
+.a-intro{
+    color:#555;
+    font-size:14px;
+    line-height:1.8;
+    margin-bottom:28px;
+}
+
+.a-compare{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:25px;
+    padding:28px;
+    background:#f7f6f2;
+    margin-bottom:30px;
+    overflow-x:auto;
+}
+
+.a-expression{
+    font:500 25px "Playfair Display";
+    white-space:nowrap;
+}
+
+.a-equals{
+    font:500 25px "Playfair Display";
+    color:#e52b20;
+}
+
+.a-steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.a-step{
+    border:1px solid #ddd;
+    padding:23px;
+}
+
+.a-step-number{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:12px;
+}
+
+.a-step p{
+    color:#555;
+    font-size:13px;
+    line-height:1.7;
+}
+
+
+/* EXAMPLES */
+
+.example{
+    background:#fff;
+    border:1px solid #ddd;
+    margin:30px 0;
+}
+
+.example-header{
+    background:#f7f6f2;
+    border-bottom:1px solid #ddd;
+    padding:19px 25px;
+}
+
+.example-number{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:6px;
+}
+
+.example-title{
+    font:600 23px "Playfair Display";
+}
+
+.example-body{
+    padding:30px;
+}
+
+.example-body p{
+    color:#555;
+    font-size:14px;
+    line-height:1.8;
+    margin-bottom:17px;
+}
+
+.math-line{
+    background:#f7f6f2;
+    border-left:3px solid #111;
+    padding:18px 22px;
+    margin:18px 0;
+    font:500 22px "Playfair Display";
+    overflow-x:auto;
+}
+
+.final-answer{
+    background:#111;
+    color:#fff;
+    padding:24px;
+    margin-top:25px;
+    text-align:center;
+    overflow-x:auto;
+}
+
+.final-answer-label{
+    color:#e52b20;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.final-answer-math{
+    font:500 25px "Playfair Display";
+    white-space:nowrap;
+}
+
+
+/* RECOGNITION */
+
+.recognition{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-top:25px;
+}
+
+.recognition-card{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:27px;
+}
+
+.recognition-card h4{
+    font:600 20px "Playfair Display";
+    margin-bottom:10px;
+}
+
+.recognition-card p{
+    color:#666;
+    font-size:13px;
+    line-height:1.75;
+}
+
+
+/* COMMON MISTAKES */
+
+.mistakes{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-top:25px;
+}
+
+.mistake{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:25px;
+}
+
+.mistake-number{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+.mistake h4{
+    font:600 19px "Playfair Display";
+    margin-bottom:8px;
+}
+
+.mistake p{
+    color:#666;
+    font-size:13px;
+    line-height:1.7;
+}
+
+
+/* SUMMARY */
+
+.summary{
+    margin-top:30px;
+    background:#fff;
+    border:1px solid #ddd;
+    padding:30px;
+}
+
+.summary-row{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:18px 0;
+    border-bottom:1px solid #eee;
+}
+
+.summary-row:last-child{
+    border-bottom:0;
+}
+
+.summary-number{
+    color:#e52b20;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    min-width:35px;
+}
+
+.summary-row p{
+    color:#555;
+    font-size:14px;
+    line-height:1.7;
+}
+
+
+/* QUESTIONS BUTTON */
+
+.questions-area{
+    margin-top:65px;
+    padding-top:45px;
+    border-top:1px solid #ddd;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px;
+}
+
+.questions-area h3{
+    font:600 28px "Playfair Display";
+    margin-bottom:7px;
+}
+
+.questions-area p{
+    color:#666;
+    font-size:13px;
+}
+
+.questions-button{
+    display:inline-block;
+    text-decoration:none;
+    background:#111;
+    color:#fff;
+    padding:14px 22px;
+    font:700 10px "DM Sans";
+    letter-spacing:1px;
+    white-space:nowrap;
+}
+
+.questions-button:hover{
+    background:#e52b20;
+}
+
+
+/* BACK BUTTON */
+
+.back{
+    margin-top:35px;
+}
+
+.back a{
+    display:inline-block;
+    text-decoration:none;
+    color:#111;
+    border:1px solid #111;
+    padding:12px 18px;
+    font:700 10px "DM Sans";
+    letter-spacing:1px;
+}
+
+.back a:hover{
+    background:#111;
+    color:#fff;
+}
+
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:#fff;
+    padding:40px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.footer-logo{
+    font:600 24px "Playfair Display";
+}
+
+.footer-logo span{
+    color:#e52b20;
+}
+
+footer p{
+    color:#888;
+    font-size:11px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    nav{
+        height:auto;
+        padding:18px 5%;
+        gap:15px;
+    }
+
+    .nav{
+        gap:3px;
+    }
+
+    .nav a{
+        padding:9px 7px;
+        font-size:9px;
+    }
+
+    .hero{
+        padding:65px 5% 55px;
+    }
+
+    main{
+        padding:65px 5% 85px;
+    }
+
+    .a-section{
+        padding:28px 22px;
+    }
+
+    .a-steps{
+        grid-template-columns:1fr;
+    }
+
+    .recognition{
+        grid-template-columns:1fr;
+    }
+
+    .mistakes{
+        grid-template-columns:1fr;
+    }
+
+    .questions-area{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div>
+
+        <div class="logo">
+            Edu<span>Nova</span>
+        </div>
+
+        <div class="logo-tagline">
+            Mathematics made clear.
+        </div>
+
+    </div>
+
+    <div class="nav">
+
+        <a href="integration.html">
+            ← INTEGRATION
+        </a>
+
+        <a href="dashboard.html">
+            DASHBOARD
+        </a>
+
+        <button class="logout" onclick="logout()">
+            LOG OUT
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="label">
+        INTEGRATION • TOPIC 04
+    </div>
+
+    <h1>
+        Integration of<br>
+        1/(x² + a²).
+    </h1>
+
+    <p>
+        Learn to recognize the standard form, find the value
+        of a, and apply the inverse tangent result with confidence.
+    </p>
+
+</header>
+
+
+
+<!-- MAIN -->
+
+<main>
+
+<section class="lesson">
+
+
+    <div class="lesson-label">
+        TOPIC 04 / 08
+    </div>
+
+    <h2>
+        The standard form
+    </h2>
+
+    <p class="intro">
+        Some integrals can be evaluated by recognizing a standard
+        form. One of the most important forms in this part of
+        integration involves a quadratic expression of the form
+        x² + a².
+    </p>
+
+
+
+    <!-- FORMULA -->
+
+    <div class="section">
+
+        <h3 class="section-heading">
+            The formula
+        </h3>
+
+        <p class="section-text">
+            When the denominator is in the form x² + a², we can use
+            the following standard result:
+        </p>
+
+        <div class="formula-box">
+
+            <div class="formula-label">
+                STANDARD RESULT
+            </div>
+
+            <div class="formula">
+                ∫ 1/(x² + a²) dx
+                =
+                1/a tan⁻¹(x/a) + C
+            </div>
+
+        </div>
+
+        <div class="important">
+
+            <div class="important-title">
+                The key idea
+            </div>
+
+            <p>
+                Before using the formula, make sure the denominator
+                is actually in the form x² + a². The value of a must
+                be identified correctly first.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FINDING A -->
+
+    <div class="section">
+
+        <h3 class="section-heading">
+            How to find a
+        </h3>
+
+        <p class="section-text">
+            This is one of the most important parts of this topic.
+            The number added to x² is a², not a. To find a, take the
+            positive square root of that number.
+        </p>
+
+        <div class="a-section">
+
+            <div class="a-title">
+                Compare the denominator
+            </div>
+
+            <p class="a-intro">
+                Always compare the expression you have with the
+                standard form:
+            </p>
+
+            <div class="a-compare">
+
+                <div class="a-expression">
+                    x² + a²
+                </div>
+
+                <div class="a-equals">
+                    ↔
+                </div>
+
+                <div class="a-expression">
+                    x² + 25
+                </div>
+
+            </div>
+
+            <div class="a-steps">
+
+                <div class="a-step">
+
+                    <div class="a-step-number">
+                        STEP 01
+                    </div>
+
+                    <p>
+                        Identify the number added to x².
+                    </p>
+
+                </div>
+
+                <div class="a-step">
+
+                    <div class="a-step-number">
+                        STEP 02
+                    </div>
+
+                    <p>
+                        Set a² equal to that number.
+                    </p>
+
+                </div>
+
+                <div class="a-step">
+
+                    <div class="a-step-number">
+                        STEP 03
+                    </div>
+
+                    <p>
+                        Take the positive square root to find a.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- EXAMPLE 01 -->
+
+    <div class="section">
+
+        <h3 class="section-heading">
+            Worked examples
+        </h3>
+
+        <div class="example">
+
+            <div class="example-header">
+
+                <div class="example-number">
+                    EXAMPLE 01
+                </div>
+
+                <div class="example-title">
+                    Finding a directly
+                </div>
+
+            </div>
+
+            <div class="example-body">
+
+                <p>
+                    Evaluate:
+                </p>
+
+                <div class="math-line">
+                    ∫ 1/(x² + 25) dx
+                </div>
+
+                <p>
+                    Compare the denominator with x² + a²:
+                </p>
+
+                <div class="math-line">
+                    a² = 25
+                </div>
+
+                <p>
+                    Take the positive square root:
+                </p>
+
+                <div class="math-line">
+                    a = 5
+                </div>
+
+                <p>
+                    Now substitute a = 5 into the standard formula.
+                </p>
+
+                <div class="final-answer">
+
+                    <div class="final-answer-label">
+                        ANSWER
+                    </div>
+
+                    <div class="final-answer-math">
+                        ∫ 1/(x² + 25) dx
+                        =
+                        1/5 tan⁻¹(x/5) + C
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- EXAMPLE 02 -->
+
+        <div class="example">
+
+            <div class="example-header">
+
+                <div class="example-number">
+                    EXAMPLE 02
+                </div>
+
+                <div class="example-title">
+                    When a coefficient must be factored out
+                </div>
+
+            </div>
+
+            <div class="example-body">
+
+                <p>
+                    Evaluate:
+                </p>
+
+                <div class="math-line">
+                    ∫ 1/(4x² + 36) dx
+                </div>
+
+                <p>
+                    The denominator is not yet in the required form.
+                    Factor out 4:
+                </p>
+
+                <div class="math-line">
+                    4x² + 36 = 4(x² + 9)
+                </div>
+
+                <p>
+                    Therefore:
+                </p>
+
+                <div class="math-line">
+                    ∫ 1/[4(x² + 9)] dx
+                    =
+                    1/4 ∫ 1/(x² + 9) dx
+                </div>
+
+                <p>
+                    Now compare x² + 9 with x² + a²:
+                </p>
+
+                <div class="math-line">
+                    a² = 9
+                    &nbsp;&nbsp;⇒&nbsp;&nbsp;
+                    a = 3
+                </div>
+
+                <p>
+                    Apply the formula:
+                </p>
+
+                <div class="final-answer">
+
+                    <div class="final-answer-label">
+                        ANSWER
+                    </div>
+
+                    <div class="final-answer-math">
+                        1/12 tan⁻¹(x/3) + C
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- EXAMPLE 03 -->
+
+        <div class="example">
+
+            <div class="example-header">
+
+                <div class="example-number">
+                    EXAMPLE 03
+                </div>
+
+                <div class="example-title">
+                    Another value of a
+                </div>
+
+            </div>
+
+            <div class="example-body">
+
+                <p>
+                    Evaluate:
+                </p>
+
+                <div class="math-line">
+                    ∫ 1/(x² + 49) dx
+                </div>
+
+                <p>
+                    Compare with x² + a²:
+                </p>
+
+                <div class="math-line">
+                    a² = 49
+                    &nbsp;&nbsp;⇒&nbsp;&nbsp;
+                    a = 7
+                </div>
+
+                <div class="final-answer">
+
+                    <div class="final-answer-label">
+                        ANSWER
+                    </div>
+
+                    <div class="final-answer-math">
+                        1/7 tan⁻¹(x/7) + C
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RECOGNITION -->
+
+    <div class="section">
+
+        <h3 class="section-heading">
+            How to recognize the form
+        </h3>
+
+        <p class="section-text">
+            The formula should not be used just because an integral
+            contains x². The denominator must be capable of being
+            written in the form x² + a².
+        </p>
+
+        <div class="recognition">
+
+            <div class="recognition-card">
+
+                <h4>
+                    Directly recognizable
+                </h4>
+
+                <p>
+                    x² + 16 is already in the required form.
+                    Here, a² = 16, so a = 4.
+                </p>
+
+            </div>
+
+            <div class="recognition-card">
+
+                <h4>
+                    Rearrangement needed
+                </h4>
+
+                <p>
+                    9x² + 36 needs a common factor removed first:
+                    9(x² + 4). Now a² = 4, so a = 2.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- COMMON MISTAKES -->
+
+    <div class="section">
+
+        <h3 class="section-heading">
+            Common mistakes
+        </h3>
+
+        <div class="mistakes">
+
+            <div class="mistake">
+
+                <div class="mistake-number">
+                    MISTAKE 01
+                </div>
+
+                <h4>
+                    Confusing a² with a
+                </h4>
+
+                <p>
+                    If a² = 25, then a = 5, not 25.
+                </p>
+
+            </div>
+
+            <div class="mistake">
+
+                <div class="mistake-number">
+                    MISTAKE 02
+                </div>
+
+                <h4>
+                    Not factoring first
+                </h4>
+
+                <p>
+                    If there is a common coefficient, factor it out
+                    before applying the standard result.
+                </p>
+
+            </div>
+
+            <div class="mistake">
+
+                <div class="mistake-number">
+                    MISTAKE 03
+                </div>
+
+                <h4>
+                    Forgetting 1/a
+                </h4>
+
+                <p>
+                    The answer is not simply tan⁻¹(x/a). The factor
+                    1/a must be included.
+                </p>
+
+            </div>
+
+            <div class="mistake">
+
+                <div class="mistake-number">
+                    MISTAKE 04
+                </div>
+
+                <h4>
+                    Forgetting + C
+                </h4>
+
+                <p>
+                    Remember to include the constant of integration
+                    in an indefinite integral.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- SUMMARY -->
+
+    <div class="section">
+
+        <h3 class="section-heading">
+            The method in one view
+        </h3>
+
+        <div class="summary">
+
+            <div class="summary-row">
+
+                <div class="summary-number">
+                    01
+                </div>
+
+                <p>
+                    Look at the denominator and try to write it as
+                    x² + a².
+                </p>
+
+            </div>
+
+            <div class="summary-row">
+
+                <div class="summary-number">
+                    02
+                </div>
+
+                <p>
+                    If necessary, factor out a common coefficient.
+                </p>
+
+            </div>
+
+            <div class="summary-row">
+
+                <div class="summary-number">
+                    03
+                </div>
+
+                <p>
+                    Identify a² and take the positive square root
+                    to find a.
+                </p>
+
+            </div>
+
+            <div class="summary-row">
+
+                <div class="summary-number">
+                    04
+                </div>
+
+                <p>
+                    Apply the formula and simplify your answer.
+                </p>
+
+            </div>
+
+            <div class="summary-row">
+
+                <div class="summary-number">
+                    05
+                </div>
+
+                <p>
+                    Include the constant of integration, C.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- QUESTIONS -->
+
+    <div class="questions-area">
+
+        <div>
+
+            <h3>
+                Ready to practise?
+            </h3>
+
+            <p>
+                Test your understanding with questions based on
+                this topic.
+            </p>
+
+        </div>
+
+        <a href="integration-1-x2-a2-questions.html"
+           class="questions-button">
+            QUESTIONS →
+        </a>
+
+    </div>
+
+
+
+    <!-- BACK -->
+
+    <div class="back">
+
+        <a href="integration.html">
+            ← BACK TO INTEGRATION
+        </a>
+
+    </div>
+
+
+</section>
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-logo">
+        Edu<span>Nova</span>
+    </div>
+
+    <p>
+        © 2026 EduNova. Mathematics, reimagined.
+    </p>
+
+</footer>
+
+
+
+<script>
+
+const username = localStorage.getItem("eduNovaUsername");
+
+if (!username) {
+    window.location.href = "index.html";
+}
+
+
+function logout(){
+
+    localStorage.removeItem("eduNovaUsername");
+    localStorage.removeItem("eduNovaEmail");
+
+    window.location.href = "index.html";
+
+}
+
+</script>
+
+</body>
+</html>
