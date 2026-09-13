@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -185,8 +186,29 @@
             padding: 4px 8px 0;
         }
 
-        .math-box.final .fraction .top {
+        .math-box.final .fraction .top,
+        .summary .fraction .top {
             border-bottom: 2px solid white;
+        }
+
+        .inline-fraction {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 1;
+            margin: 0 3px;
+            font-family: "Times New Roman", serif;
+            font-size: 1.05em;
+        }
+
+        .inline-fraction .top {
+            border-bottom: 1.5px solid #111;
+            padding: 0 4px 2px;
+        }
+
+        .inline-fraction .bottom {
+            padding: 2px 4px 0;
         }
 
         .integral {
@@ -309,10 +331,6 @@
             margin-bottom: 14px;
         }
 
-        .summary .fraction .top {
-            border-bottom: 2px solid white;
-        }
-
         .practice-section {
             text-align: center;
             padding: 55px 20px;
@@ -339,6 +357,207 @@
         .practice-button:hover {
             background: #b80000;
             transform: translateY(-2px);
+        }
+
+        /* LESSON COMPLETION */
+
+        .completion-section {
+            position: relative;
+            overflow: hidden;
+            background: #050505;
+            color: white;
+            border-radius: 16px;
+            padding: 65px 35px;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .completion-content {
+            position: relative;
+            z-index: 5;
+        }
+
+        .completion-label {
+            color: #e00000;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            margin-bottom: 14px;
+        }
+
+        .completion-section h2 {
+            color: white;
+            font-size: clamp(36px, 5vw, 56px);
+            margin-bottom: 15px;
+        }
+
+        .completion-section p {
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto 28px;
+            font-size: 16px;
+        }
+
+        .complete-button {
+            border: none;
+            background: #e00000;
+            color: white;
+            padding: 16px 28px;
+            border-radius: 6px;
+            font-family: "DM Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .complete-button:hover {
+            background: white;
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        .complete-button:disabled {
+            cursor: default;
+        }
+
+        .completed-message {
+            display: none;
+        }
+
+        .completed-message h2 {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .completed-message p {
+            margin-bottom: 0;
+        }
+
+        .completion-section.completed .completion-prompt {
+            display: none;
+        }
+
+        .completion-section.completed .completed-message {
+            display: block;
+        }
+
+        .completion-section.completed {
+            background: #080808;
+        }
+
+        /* Colourful animated strips */
+
+        .party-strip {
+            position: absolute;
+            top: -30px;
+            width: 9px;
+            height: 150px;
+            border-radius: 8px;
+            opacity: 0;
+            transform: rotate(25deg);
+            z-index: 1;
+        }
+
+        .party-strip:nth-child(1) {
+            left: 8%;
+            background: #e00000;
+        }
+
+        .party-strip:nth-child(2) {
+            left: 18%;
+            background: #f2c94c;
+        }
+
+        .party-strip:nth-child(3) {
+            left: 29%;
+            background: #4da6ff;
+        }
+
+        .party-strip:nth-child(4) {
+            left: 41%;
+            background: #7bd389;
+        }
+
+        .party-strip:nth-child(5) {
+            left: 54%;
+            background: #b57cff;
+        }
+
+        .party-strip:nth-child(6) {
+            left: 66%;
+            background: #f2994a;
+        }
+
+        .party-strip:nth-child(7) {
+            left: 78%;
+            background: #e00000;
+        }
+
+        .party-strip:nth-child(8) {
+            left: 89%;
+            background: #4da6ff;
+        }
+
+        .completion-section.completed .party-strip {
+            animation: celebrationDrop 1.8s ease-out forwards;
+        }
+
+        .completion-section.completed .party-strip:nth-child(2) {
+            animation-delay: .08s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(3) {
+            animation-delay: .16s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(4) {
+            animation-delay: .24s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(5) {
+            animation-delay: .32s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(6) {
+            animation-delay: .40s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(7) {
+            animation-delay: .48s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(8) {
+            animation-delay: .56s;
+        }
+
+        @keyframes celebrationDrop {
+            0% {
+                opacity: 0;
+                transform: translateY(-40px) rotate(25deg);
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: .95;
+                transform: translateY(145px) rotate(115deg);
+            }
+
+            100% {
+                opacity: .15;
+                transform: translateY(260px) rotate(145deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .completion-section.completed .party-strip {
+                animation: none;
+                opacity: .25;
+            }
         }
 
         footer {
@@ -400,6 +619,10 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .completion-section {
+                padding: 55px 22px;
+            }
         }
 
         @media (max-width: 520px) {
@@ -428,6 +651,10 @@
             .summary,
             .mistakes {
                 padding: 24px 20px;
+            }
+
+            .completion-section h2 {
+                font-size: 36px;
             }
         }
     </style>
@@ -712,10 +939,12 @@
         </p>
 
         <div class="math-box">
-            x = <span class="fraction">
+            x =
+            <span class="fraction">
                 <span class="top">1</span>
                 <span class="bottom">2</span>
-            </span>(2x)
+            </span>
+            (2x)
         </div>
 
         <p>
@@ -1042,13 +1271,17 @@
 
         <p>
             But the numerator is <strong>x + 1</strong>.
-            There is no constant k that makes
-            \(x+1 = k(2x)\) for every x.
+            There is no constant <strong>k</strong> that makes
+            <strong>x + 1 = k(2x)</strong> for every value of x.
         </p>
 
         <p>
             Therefore, this is <strong>not</strong> a direct
-            \(f′(x)/f(x)\) integral.
+            <span class="inline-fraction">
+                <span class="top">f′(x)</span>
+                <span class="bottom">f(x)</span>
+            </span>
+            integral.
         </p>
 
         <div class="important">
@@ -1169,6 +1402,62 @@
         </a>
     </section>
 
+
+    <!-- COMPLETION -->
+    <section class="completion-section" id="completionSection">
+
+        <span class="party-strip"></span>
+        <span class="party-strip"></span>
+        <span class="party-strip"></span>
+        <span class="party-strip"></span>
+        <span class="party-strip"></span>
+        <span class="party-strip"></span>
+        <span class="party-strip"></span>
+        <span class="party-strip"></span>
+
+        <div class="completion-content">
+
+            <div class="completion-prompt">
+
+                <div class="completion-label">
+                    LESSON 05 / 08
+                </div>
+
+                <h2>Lesson complete?</h2>
+
+                <p>
+                    You have reached the end of the explanation.
+                    Mark this lesson as complete to save your progress.
+                </p>
+
+                <button
+                    class="complete-button"
+                    id="completeButton"
+                    onclick="completeLesson()">
+                    ✓ COMPLETE LESSON
+                </button>
+
+            </div>
+
+
+            <div class="completed-message">
+
+                <div class="completion-label">
+                    INTEGRATION • TOPIC 05
+                </div>
+
+                <h2>Congratulations!</h2>
+
+                <p>
+                    You completed <strong>Integrating f′(x) / f(x)</strong>.
+                    Your progress has been saved.
+                </p>
+
+            </div>
+
+        </div>
+    </section>
+
 </main>
 
 
@@ -1182,13 +1471,134 @@
 </footer>
 
 
-<script>
-    const username = localStorage.getItem("eduNovaUsername");
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    if (!username) {
-        window.location.href = "index.html";
+<script>
+
+    const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+    const { createClient } = supabase;
+
+    const supabaseClient = createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+    const completionSection =
+        document.getElementById("completionSection");
+
+    const completeButton =
+        document.getElementById("completeButton");
+
+
+    async function checkSessionAndProgress() {
+
+        const {
+            data: { session }
+        } = await supabaseClient.auth.getSession();
+
+
+        if (!session) {
+            window.location.href = "index.html";
+            return;
+        }
+
+
+        const { data, error } = await supabaseClient
+            .from("lesson_progress")
+            .select("id")
+            .eq("user_id", session.user.id)
+            .eq("chapter", "Integration")
+            .eq("topic_number", 5)
+            .maybeSingle();
+
+
+        if (error) {
+            console.error("Progress check error:", error);
+            return;
+        }
+
+
+        if (data) {
+            showCompletedState();
+        }
+
     }
+
+
+    async function completeLesson() {
+
+        completeButton.disabled = true;
+        completeButton.textContent = "SAVING...";
+
+
+        const {
+            data: { session }
+        } = await supabaseClient.auth.getSession();
+
+
+        if (!session) {
+            window.location.href = "index.html";
+            return;
+        }
+
+
+        const { error } = await supabaseClient
+            .from("lesson_progress")
+            .upsert(
+                {
+                    user_id: session.user.id,
+                    chapter: "Integration",
+                    topic_number: 5,
+                    completed_at: new Date().toISOString()
+                },
+                {
+                    onConflict: "user_id,chapter,topic_number"
+                }
+            );
+
+
+        if (error) {
+
+            console.error("Progress save error:", error);
+
+            alert(
+                "We couldn't save your progress right now. Please try again."
+            );
+
+            completeButton.disabled = false;
+            completeButton.textContent = "✓ COMPLETE LESSON";
+
+            return;
+        }
+
+
+        showCompletedState();
+
+    }
+
+
+    function showCompletedState() {
+
+        completionSection.classList.add("completed");
+
+        completeButton.disabled = true;
+
+    }
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        checkSessionAndProgress
+    );
+
 </script>
 
 </body>
 </html>
+```
