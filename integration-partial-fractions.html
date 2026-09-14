@@ -1,0 +1,2691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduNova | Integration using Partial Fractions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* ================================
+           RESET
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* ================================
+           BODY
+        ================================= */
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            color: #111;
+            background: #fff;
+            line-height: 1.7;
+        }
+
+
+        /* ================================
+           NAVIGATION
+        ================================= */
+
+        nav {
+            height: 78px;
+            background: #050505;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #e00000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 38px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e00000;
+        }
+
+
+        /* ================================
+           HERO
+        ================================= */
+
+        .hero {
+            min-height: 430px;
+            background: #050505;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 70px 8%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            color: #e00000;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.08;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            max-width: 720px;
+            font-size: 19px;
+            color: #d8d8d8;
+            line-height: 1.8;
+        }
+
+        /* Unique partial-fractions hero decoration */
+
+        .hero-decoration {
+            position: absolute;
+            right: 4%;
+            bottom: -5px;
+            color: #202020;
+            font-family: "Times New Roman", serif;
+            font-size: clamp(55px, 8vw, 115px);
+            font-style: italic;
+            line-height: 1;
+            user-select: none;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .hero-decoration .red-factor {
+            color: #292929;
+        }
+
+        .hero-decoration::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 5px;
+            background: #e00000;
+            right: 5px;
+            bottom: -18px;
+            opacity: 0.75;
+        }
+
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        main {
+            max-width: 1150px;
+            margin: auto;
+            padding: 85px 30px;
+        }
+
+        section {
+            margin-bottom: 82px;
+        }
+
+        h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 25px;
+            margin-bottom: 16px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 18px;
+        }
+
+        .intro {
+            max-width: 900px;
+        }
+
+
+        /* ================================
+           MATH BOXES
+        ================================= */
+
+        .math-box {
+            background: #f6f6f6;
+            border-left: 5px solid #e00000;
+            padding: 28px 30px;
+            margin: 30px 0;
+            font-family: "Times New Roman", serif;
+            font-size: 28px;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .math-box.final {
+            background: #050505;
+            color: white;
+            border-left: 5px solid #e00000;
+            font-size: 31px;
+            padding: 34px 25px;
+        }
+
+
+        /* ================================
+           FRACTIONS
+        ================================= */
+
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 1.1;
+            margin: 0 7px;
+        }
+
+        .fraction .top {
+            border-bottom: 2px solid #111;
+            padding: 0 8px 4px;
+        }
+
+        .fraction .bottom {
+            padding: 4px 8px 0;
+        }
+
+        .math-box.final .fraction .top,
+        .important .fraction .top,
+        .summary .fraction .top {
+            border-bottom: 2px solid white;
+        }
+
+
+        /* ================================
+           SMALL INLINE FRACTION
+        ================================= */
+
+        .inline-fraction {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 1;
+            margin: 0 3px;
+            font-family: "Times New Roman", serif;
+            font-size: 1.05em;
+        }
+
+        .inline-fraction .top {
+            border-bottom: 1.5px solid #111;
+            padding: 0 4px 2px;
+        }
+
+        .inline-fraction .bottom {
+            padding: 2px 4px 0;
+        }
+
+
+        /* ================================
+           INTEGRAL SYMBOL
+        ================================= */
+
+        .integral {
+            font-family: "Times New Roman", serif;
+            font-size: 48px;
+            vertical-align: middle;
+        }
+
+
+        /* ================================
+           STEP BOXES
+        ================================= */
+
+        .step-box {
+            background: #fafafa;
+            border: 1px solid #e4e4e4;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+        }
+
+        .step-number {
+            display: inline-flex;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #e00000;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+
+        /* ================================
+           LABELS
+        ================================= */
+
+        .example-label {
+            color: #e00000;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+
+        /* ================================
+           RECOGNITION CARDS
+        ================================= */
+
+        .recognition-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .recognition-card {
+            border: 1px solid #e5e5e5;
+            padding: 28px 22px;
+            border-radius: 12px;
+            background: white;
+        }
+
+        .recognition-card strong {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .recognition-card p {
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+
+
+        /* ================================
+           IMPORTANT BOX
+        ================================= */
+
+        .important {
+            background: #111;
+            color: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 30px;
+        }
+
+        .important h3 {
+            color: white;
+        }
+
+        .important p {
+            color: #ddd;
+        }
+
+
+        /* ================================
+           COMPARISON SECTION
+        ================================= */
+
+        .comparison-intro {
+            max-width: 900px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 35px;
+        }
+
+        .comparison-card {
+            border: 1px solid #e2e2e2;
+            border-radius: 14px;
+            padding: 25px 20px;
+            background: #fff;
+        }
+
+        .comparison-number {
+            color: #e00000;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .comparison-card h3 {
+            font-family: "DM Sans", sans-serif;
+            font-size: 20px;
+            margin-bottom: 18px;
+        }
+
+        .comparison-card p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .method-tag {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 7px 12px;
+            border-radius: 5px;
+            background: #f3f3f3;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+
+        /* ================================
+           PARTIAL FRACTION FORM
+        ================================= */
+
+        .form-box {
+            background: #fafafa;
+            border: 1px solid #e4e4e4;
+            border-radius: 12px;
+            padding: 32px;
+            margin: 28px 0;
+        }
+
+        .form-box h3 {
+            margin-bottom: 12px;
+        }
+
+
+        /* ================================
+           MISTAKES
+        ================================= */
+
+        .mistakes {
+            background: #fff5f5;
+            border: 1px solid #f0cccc;
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .mistakes ul {
+            padding-left: 23px;
+        }
+
+        .mistakes li {
+            font-size: 17px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+
+        /* ================================
+           SUMMARY
+        ================================= */
+
+        .summary {
+            background: #050505;
+            color: white;
+            padding: 42px;
+            border-radius: 14px;
+        }
+
+        .summary h2 {
+            color: white;
+        }
+
+        .summary ol {
+            padding-left: 25px;
+        }
+
+        .summary li {
+            color: #ddd;
+            font-size: 17px;
+            margin-bottom: 14px;
+        }
+
+
+        /* ================================
+           PRACTICE
+        ================================= */
+
+        .practice-section {
+            text-align: center;
+            padding: 55px 20px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .practice-section p {
+            max-width: 650px;
+            margin: 0 auto 28px;
+        }
+
+        .practice-button {
+            display: inline-block;
+            background: #e00000;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .practice-button:hover {
+            background: #b80000;
+            transform: translateY(-2px);
+        }
+
+
+        /* ================================
+           COMPLETION SECTION
+        ================================= */
+
+        .completion-section {
+            position: relative;
+            overflow: hidden;
+            background: #050505;
+            color: white;
+            border-radius: 16px;
+            padding: 65px 35px;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .completion-content {
+            position: relative;
+            z-index: 5;
+        }
+
+        .completion-label {
+            color: #e00000;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            margin-bottom: 14px;
+        }
+
+        .completion-section h2 {
+            color: white;
+            font-size: clamp(36px, 5vw, 56px);
+            margin-bottom: 15px;
+        }
+
+        .completion-section p {
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto 28px;
+            font-size: 16px;
+        }
+
+        .complete-button {
+            border: none;
+            background: #e00000;
+            color: white;
+            padding: 16px 28px;
+            border-radius: 6px;
+            font-family: "DM Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .complete-button:hover {
+            background: white;
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        .complete-button:disabled {
+            cursor: default;
+        }
+
+        .completed-message {
+            display: none;
+        }
+
+        .completed-message h2 {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .completed-message p {
+            margin-bottom: 0;
+        }
+
+        .completion-section.completed .completion-prompt {
+            display: none;
+        }
+
+        .completion-section.completed .completed-message {
+            display: block;
+        }
+
+        .completion-section.completed {
+            background: #080808;
+        }
+
+
+        /* ================================
+           CELEBRATION STRIPS
+        ================================= */
+
+        .party-strip {
+            position: absolute;
+            top: -30px;
+            width: 9px;
+            height: 150px;
+            border-radius: 8px;
+            opacity: 0;
+            transform: rotate(25deg);
+            z-index: 1;
+        }
+
+        .party-strip:nth-child(1) {
+            left: 8%;
+            background: #e00000;
+        }
+
+        .party-strip:nth-child(2) {
+            left: 18%;
+            background: #f2c94c;
+        }
+
+        .party-strip:nth-child(3) {
+            left: 29%;
+            background: #4da6ff;
+        }
+
+        .party-strip:nth-child(4) {
+            left: 41%;
+            background: #7bd389;
+        }
+
+        .party-strip:nth-child(5) {
+            left: 54%;
+            background: #b57cff;
+        }
+
+        .party-strip:nth-child(6) {
+            left: 66%;
+            background: #f2994a;
+        }
+
+        .party-strip:nth-child(7) {
+            left: 78%;
+            background: #e00000;
+        }
+
+        .party-strip:nth-child(8) {
+            left: 89%;
+            background: #4da6ff;
+        }
+
+        .completion-section.completed .party-strip {
+            animation: celebrationDrop 1.8s ease-out forwards;
+        }
+
+        .completion-section.completed .party-strip:nth-child(2) {
+            animation-delay: 0.08s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(3) {
+            animation-delay: 0.16s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(4) {
+            animation-delay: 0.24s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(5) {
+            animation-delay: 0.32s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(6) {
+            animation-delay: 0.40s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(7) {
+            animation-delay: 0.48s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(8) {
+            animation-delay: 0.56s;
+        }
+
+        @keyframes celebrationDrop {
+
+            0% {
+                opacity: 0;
+                transform: translateY(-40px) rotate(25deg);
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 0.95;
+                transform: translateY(145px) rotate(115deg);
+            }
+
+            100% {
+                opacity: 0.15;
+                transform: translateY(260px) rotate(145deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .completion-section.completed .party-strip {
+                animation: none;
+                opacity: 0.25;
+            }
+        }
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            background: #050505;
+            color: white;
+            padding: 42px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        footer .logo {
+            font-size: 25px;
+        }
+
+        .footer-tagline {
+            color: #aaa;
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+        footer p {
+            color: #888;
+            font-size: 13px;
+            margin: 0;
+        }
+
+
+        /* ================================
+           TABLET
+        ================================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            nav ul {
+                gap: 18px;
+            }
+
+            .hero {
+                padding: 65px 7%;
+            }
+
+            .hero-decoration {
+                opacity: 0.55;
+                right: -10%;
+            }
+
+            main {
+                padding: 65px 20px;
+            }
+
+            h2 {
+                font-size: 34px;
+            }
+
+            .recognition-grid,
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .completion-section {
+                padding: 55px 22px;
+            }
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 520px) {
+
+            nav ul li a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .hero-decoration {
+                font-size: 48px;
+                right: -15%;
+                bottom: 15px;
+            }
+
+            .math-box {
+                font-size: 22px;
+                padding: 22px 15px;
+            }
+
+            .math-box.final {
+                font-size: 24px;
+            }
+
+            .step-box,
+            .summary,
+            .mistakes,
+            .form-box {
+                padding: 24px 20px;
+            }
+
+            .completion-section h2 {
+                font-size: 36px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         NAVIGATION
+    ================================= -->
+
+    <nav>
+
+        <div class="logo">
+            Edu<span>Nova</span>
+        </div>
+
+        <ul>
+            <li>
+                <a href="dashboard.html">HOME</a>
+            </li>
+
+            <li>
+                <a href="integration.html">INTEGRATION</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- ================================
+         HERO
+    ================================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                Integration • Topic 06
+            </div>
+
+            <h1>
+                Integration using<br>
+                Partial Fractions
+            </h1>
+
+            <p>
+                Learn how to recognize when an algebraic fraction should
+                be integrated directly, when a standard result applies,
+                and when partial fractions can break a complicated
+                fraction into simpler parts.
+            </p>
+
+        </div>
+
+
+        <!-- Unique decoration for Topic 06 -->
+
+        <div class="hero-decoration">
+            A/(x+a) + B/(x+b)
+        </div>
+
+    </section>
+
+
+    <main>
+
+
+        <!-- ================================
+             01 • THE IDEA
+        ================================= -->
+
+        <section>
+
+            <div class="example-label">
+                01 • The idea
+            </div>
+
+            <h2>
+                Look at the fraction first
+            </h2>
+
+            <p class="intro">
+                Some integrals contain algebraic fractions. Before choosing
+                a method, look carefully at the numerator and denominator.
+                A fraction may look familiar, but a small change can lead
+                to a completely different integration method.
+            </p>
+
+
+            <div class="important">
+
+                <h3>
+                    The key question
+                </h3>
+
+                <p>
+                    Do not automatically use partial fractions just because
+                    you see a fraction. First ask:
+                    <strong>
+                        “What does the structure of this fraction tell me?”
+                    </strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             02 • THREE SIMILAR INTEGRALS
+        ================================= -->
+
+        <section>
+
+            <div class="example-label">
+                02 • Three similar integrals
+            </div>
+
+            <h2>
+                Small changes can change the method
+            </h2>
+
+            <p class="comparison-intro">
+                These three integrals look very similar. However, each one
+                gives us a different clue about how it should be integrated.
+                This is why recognition is so important.
+            </p>
+
+
+            <div class="comparison-grid">
+
+
+                <!-- CARD 1 -->
+
+                <div class="comparison-card">
+
+                    <div class="comparison-number">
+                        01 • DERIVATIVE
+                    </div>
+
+                    <h3>
+                        Numerator matches the derivative
+                    </h3>
+
+                    <div class="math-box">
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">x² + 1</span>
+                        </span>
+
+                        dx
+
+                    </div>
+
+                    <p>
+                        The derivative of the denominator is
+                        <strong>2x</strong>, so the numerator is a constant
+                        multiple of it.
+                    </p>
+
+                    <span class="method-tag">
+                        Logarithmic rule
+                    </span>
+
+                </div>
+
+
+                <!-- CARD 2 -->
+
+                <div class="comparison-card">
+
+                    <div class="comparison-number">
+                        02 • SPECIAL FORM
+                    </div>
+
+                    <h3>
+                        Denominator is x² + a²
+                    </h3>
+
+                    <div class="math-box">
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x² + 1</span>
+                        </span>
+
+                        dx
+
+                    </div>
+
+                    <p>
+                        The numerator is not related to the derivative,
+                        but the denominator has the special form
+                        <strong>x² + a²</strong>.
+                    </p>
+
+                    <span class="method-tag">
+                        Arctangent rule
+                    </span>
+
+                </div>
+
+
+                <!-- CARD 3 -->
+
+                <div class="comparison-card">
+
+                    <div class="comparison-number">
+                        03 • FACTORISE
+                    </div>
+
+                    <h3>
+                        Denominator can be factorised
+                    </h3>
+
+                    <div class="math-box">
+
+                        <span class="integral">∫</span>
+
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x² − 1</span>
+                        </span>
+
+                        dx
+
+                    </div>
+
+                    <p>
+                        The denominator is a difference of squares:
+                        <strong>(x − 1)(x + 1)</strong>.
+                    </p>
+
+                    <span class="method-tag">
+                        Partial fractions
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="important">
+
+                <h3>
+                    One glance. Three different methods.
+                </h3>
+
+                <p>
+                    The important skill is to recognize the structure before
+                    doing the calculation.
+                </p>
+
+                <p>
+                    <strong>Derivative of denominator</strong>
+                    → logarithmic rule
+                </p>
+
+                <p>
+                    <strong>x² + a²</strong>
+                    → arctangent rule
+                </p>
+
+                <p>
+                    <strong>Factorisable denominator</strong>
+                    → partial fractions
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             03 • EXAMPLE 1
+        ================================= -->
+
+        <section>
+
+            <div class="example-label">
+                03 • Worked Example 1
+            </div>
+
+            <h2>
+                Recognize the logarithmic form
+            </h2>
+
+
+            <div class="math-box">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">x</span>
+                    <span class="bottom">x² + 1</span>
+                </span>
+
+                dx
+
+            </div>
+
+
+            <p>
+                The denominator is:
+            </p>
+
+
+            <div class="math-box">
+                f(x) = x² + 1
+            </div>
+
+
+            <p>
+                Its derivative is:
+            </p>
+
+
+            <div class="math-box">
+                f′(x) = 2x
+            </div>
+
+
+            <p>
+                The numerator is <strong>x</strong>, which is half of
+                <strong>2x</strong>.
+            </p>
+
+
+            <div class="math-box">
+
+                x
+                =
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">2</span>
+                </span>
+                (2x)
+
+            </div>
+
+
+            <p>
+                Therefore:
+            </p>
+
+
+            <div class="math-box final">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">x</span>
+                    <span class="bottom">x² + 1</span>
+                </span>
+
+                dx
+
+                =
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">2</span>
+                </span>
+
+                ln(x² + 1) + C
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             04 • EXAMPLE 2
+        ================================= -->
+
+        <section>
+
+            <div class="example-label">
+                04 • Worked Example 2
+            </div>
+
+            <h2>
+                Recognize the arctangent form
+            </h2>
+
+
+            <div class="math-box">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">x² + 1</span>
+                </span>
+
+                dx
+
+            </div>
+
+
+            <p>
+                The denominator is still <strong>x² + 1</strong>, but
+                the numerator has changed.
+            </p>
+
+
+            <p>
+                The derivative of the denominator is:
+            </p>
+
+
+            <div class="math-box">
+                2x
+            </div>
+
+
+            <p>
+                Our numerator is only <strong>1</strong>, so the logarithmic
+                rule does not apply.
+            </p>
+
+
+            <p>
+                Instead, recognize the standard form:
+            </p>
+
+
+            <div class="math-box final">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">x² + a²</span>
+                </span>
+
+                dx
+
+                =
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">a</span>
+                </span>
+
+                tan⁻¹
+
+                <span class="fraction">
+                    <span class="top">x</span>
+                    <span class="bottom">a</span>
+                </span>
+
+                + C
+
+            </div>
+
+
+            <p>
+                Here, <strong>a = 1</strong>.
+            </p>
+
+
+            <div class="math-box final">
+
+                tan⁻¹x + C
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             05 • EXAMPLE 3
+        ================================= -->
+
+        <section>
+
+            <div class="example-label">
+                05 • Worked Example 3
+            </div>
+
+            <h2>
+                Recognize when to factorise
+            </h2>
+
+
+            <div class="math-box">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">x² − 1</span>
+                </span>
+
+                dx
+
+            </div>
+
+
+            <p>
+                This looks similar to the previous example, but the minus
+                sign changes the structure.
+            </p>
+
+
+            <p>
+                Factorise the denominator:
+            </p>
+
+
+            <div class="math-box">
+                x² − 1 = (x − 1)(x + 1)
+            </div>
+
+
+            <p>
+                Now the fraction can be written as:
+            </p>
+
+
+            <div class="math-box">
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">(x − 1)(x + 1)</span>
+                </span>
+
+                =
+
+                <span class="fraction">
+                    <span class="top">A</span>
+                    <span class="bottom">x − 1</span>
+                </span>
+
+                +
+
+                <span class="fraction">
+                    <span class="top">B</span>
+                    <span class="bottom">x + 1</span>
+                </span>
+
+            </div>
+
+
+            <p>
+                Multiplying through by
+                <strong>(x − 1)(x + 1)</strong> gives:
+            </p>
+
+
+            <div class="math-box">
+
+                1 = A(x + 1) + B(x − 1)
+
+            </div>
+
+
+            <p>
+                Setting <strong>x = 1</strong> gives:
+            </p>
+
+
+            <div class="math-box">
+                A = 1/2
+            </div>
+
+
+            <p>
+                Setting <strong>x = −1</strong> gives:
+            </p>
+
+
+            <div class="math-box">
+                B = −1/2
+            </div>
+
+
+            <p>
+                Therefore:
+            </p>
+
+
+            <div class="math-box">
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">x² − 1</span>
+                </span>
+
+                =
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">2(x − 1)</span>
+                </span>
+
+                −
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">2(x + 1)</span>
+                </span>
+
+            </div>
+
+
+            <p>
+                Integrating each part:
+            </p>
+
+
+            <div class="math-box final">
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">2</span>
+                </span>
+
+                ln|x − 1|
+
+                −
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">2</span>
+                </span>
+
+                ln|x + 1|
+
+                + C
+
+            </div>
+
+
+            <p>
+                These logarithms can also be combined:
+            </p>
+
+
+            <div class="math-box final">
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">2</span>
+                </span>
+
+                ln
+
+                <span class="fraction">
+                    <span class="top">|x − 1|</span>
+                    <span class="bottom">|x + 1|</span>
+                </span>
+
+                + C
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             06 • IMPORTANT DISTINCTION
+        ================================= -->
+
+        <section>
+
+            <div class="example-label">
+                06 • Important distinction
+            </div>
+
+            <h2>
+                Know which method belongs to which fraction
+            </h2>
+
+            <p>
+                The three examples above are deliberately similar.
+                Their purpose is to train you to recognize the method
+                before you begin calculating.
+            </p>
+
+
+            <div class="recognition-grid">
+
+
+                <div class="recognition-card">
+
+                    <strong>
+                        Derivative pattern
+                    </strong>
+
+                    <p>
+                        If the numerator is the derivative of the
+                        denominator, or a constant multiple of it,
+                        use the logarithmic rule.
+                    </p>
+
+                </div>
+
+
+                <div class="recognition-card">
+
+                    <strong>
+                        Positive quadratic
+                    </strong>
+
+                    <p>
+                        If the denominator is in the form
+                        x² + a² and the numerator does not match its
+                        derivative, use the arctangent rule.
+                    </p>
+
+                </div>
+
+
+                <div class="recognition-card">
+
+                    <strong>
+                        Factorisable denominator
+                    </strong>
+
+                    <p>
+                        If the denominator can be split into suitable
+                        factors, partial fractions may be the method
+                        you need.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="important">
+
+                <h3>
+                    Do not force a method
+                </h3>
+
+                <p>
+                    A fraction can look familiar without belonging to
+                    the same integration pattern.
+                </p>
+
+                <p>
+                    <strong>
+                        Look → Differentiate or factorise → Recognize → Integrate.
+                    </strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             07 • LINEAR FACTORS
+        ================================= -->
+
+        <section>
+
+            <div class="example-label">
+                07 • Partial Fractions with Linear Factors
+            </div>
+
+            <h2>
+                Splitting a fraction into simpler parts
+            </h2>
+
+            <p>
+                When the denominator is made from different linear factors,
+                we can split the fraction into simpler fractions.
+            </p>
+
+
+            <div class="form-box">
+
+                <h3>
+                    The basic form
+                </h3>
+
+                <div class="math-box">
+
+                    <span class="fraction">
+                        <span class="top">P(x)</span>
+                        <span class="bottom">(x + a)(x + b)</span>
+                    </span>
+
+                    =
+
+                    <span class="fraction">
+                        <span class="top">A</span>
+                        <span class="bottom">x + a</span>
+                    </span>
+
+                    +
+
+                    <span class="fraction">
+                        <span class="top">B</span>
+                        <span class="bottom">x + b</span>
+                    </span>
+
+                </div>
+
+                <p>
+                    Each different linear factor gets its own constant
+                    numerator.
+                </p>
+
+            </div>
+
+
+            <p>
+                Let's use a simple example.
+            </p>
+
+
+            <div class="math-box">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">3x + 5</span>
+                    <span class="bottom">(x + 1)(x + 2)</span>
+                </span>
+
+                dx
+
+            </div>
+
+
+            <p>
+                Start by writing:
+            </p>
+
+
+            <div class="math-box">
+
+                <span class="fraction">
+                    <span class="top">3x + 5</span>
+                    <span class="bottom">(x + 1)(x + 2)</span>
+                </span>
+
+                =
+
+                <span class="fraction">
+                    <span class="top">A</span>
+                    <span class="bottom">x + 1</span>
+                </span>
+
+                +
+
+                <span class="fraction">
+                    <span class="top">B</span>
+                    <span class="bottom">x + 2</span>
+                </span>
+
+            </div>
+
+
+            <p>
+                Multiply through by
+                <strong>(x + 1)(x + 2)</strong>:
+            </p>
+
+
+            <div class="math-box">
+
+                3x + 5
+                =
+                A(x + 2) + B(x + 1)
+
+            </div>
+
+
+            <p>
+                Put <strong>x = −1</strong>:
+            </p>
+
+
+            <div class="math-box">
+                2 = A
+            </div>
+
+
+            <p>
+                Put <strong>x = −2</strong>:
+            </p>
+
+
+            <div class="math-box">
+                −1 = B
+            </div>
+
+
+            <p>
+                Therefore:
+            </p>
+
+
+            <div class="math-box">
+
+                <span class="fraction">
+                    <span class="top">3x + 5</span>
+                    <span class="bottom">(x + 1)(x + 2)</span>
+                </span>
+
+                =
+
+                <span class="fraction">
+                    <span class="top">2</span>
+                    <span class="bottom">x + 1</span>
+                </span>
+
+                −
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">x + 2</span>
+                </span>
+
+            </div>
+
+
+            <p>
+                Now integrate:
+            </p>
+
+
+            <div class="math-box final">
+
+                2ln|x + 1|
+                −
+                ln|x + 2|
+                + C
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             08 • QUADRATIC FACTORS
+        ================================= -->
+
+        <section>
+
+            <div class="example-label">
+                08 • Partial Fractions with a Quadratic Factor
+            </div>
+
+            <h2>
+                When the denominator contains a quadratic
+            </h2>
+
+            <p>
+                A quadratic factor is treated differently from a linear
+                factor. The numerator above a quadratic factor must be
+                linear.
+            </p>
+
+
+            <div class="form-box">
+
+                <h3>
+                    Remember this structure
+                </h3>
+
+                <p>
+                    For a linear factor:
+                </p>
+
+                <div class="math-box">
+
+                    <span class="fraction">
+                        <span class="top">A</span>
+                        <span class="bottom">x + a</span>
+                    </span>
+
+                </div>
+
+
+                <p>
+                    For a quadratic factor:
+                </p>
+
+                <div class="math-box">
+
+                    <span class="fraction">
+                        <span class="top">Bx + C</span>
+                        <span class="bottom">x² + a²</span>
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p>
+                Consider:
+            </p>
+
+
+            <div class="math-box">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">2x² + 2x + 2</span>
+                    <span class="bottom">(x + 1)(x² + 1)</span>
+                </span>
+
+                dx
+
+            </div>
+
+
+            <p>
+                The denominator contains one linear factor,
+                <strong>x + 1</strong>, and one quadratic factor,
+                <strong>x² + 1</strong>.
+            </p>
+
+
+            <p>
+                So the correct partial-fraction form is:
+            </p>
+
+
+            <div class="math-box">
+
+                <span class="fraction">
+                    <span class="top">2x² + 2x + 2</span>
+                    <span class="bottom">(x + 1)(x² + 1)</span>
+                </span>
+
+                =
+
+                <span class="fraction">
+                    <span class="top">A</span>
+                    <span class="bottom">x + 1</span>
+                </span>
+
+                +
+
+                <span class="fraction">
+                    <span class="top">Bx + C</span>
+                    <span class="bottom">x² + 1</span>
+                </span>
+
+            </div>
+
+
+            <p>
+                In this example, the decomposition is:
+            </p>
+
+
+            <div class="math-box">
+
+                <span class="fraction">
+                    <span class="top">2x² + 2x + 2</span>
+                    <span class="bottom">(x + 1)(x² + 1)</span>
+                </span>
+
+                =
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">x + 1</span>
+                </span>
+
+                +
+
+                <span class="fraction">
+                    <span class="top">x + 1</span>
+                    <span class="bottom">x² + 1</span>
+                </span>
+
+            </div>
+
+
+            <p>
+                Now split the integral:
+            </p>
+
+
+            <div class="math-box">
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">x + 1</span>
+                </span>
+
+                dx
+
+                +
+
+                <span class="integral">∫</span>
+
+                <span class="fraction">
+                    <span class="top">x + 1</span>
+                    <span class="bottom">x² + 1</span>
+                </span>
+
+                dx
+
+            </div>
+
+
+            <p>
+                Split the second numerator so that each part can be
+                recognized:
+            </p>
+
+
+            <div class="math-box">
+
+                <span class="fraction">
+                    <span class="top">x + 1</span>
+                    <span class="bottom">x² + 1</span>
+                </span>
+
+                =
+
+                <span class="fraction">
+                    <span class="top">x</span>
+                    <span class="bottom">x² + 1</span>
+                </span>
+
+                +
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">x² + 1</span>
+                </span>
+
+            </div>
+
+
+            <p>
+                Now the first part uses the logarithmic rule, while the
+                second part uses the arctangent rule.
+            </p>
+
+
+            <div class="math-box final">
+
+                ln|x + 1|
+
+                +
+
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">2</span>
+                </span>
+
+                ln(x² + 1)
+
+                +
+
+                tan⁻¹x
+
+                + C
+
+            </div>
+
+
+            <div class="important">
+
+                <h3>
+                    One fraction can contain more than one idea
+                </h3>
+
+                <p>
+                    Partial fractions does not always finish the problem.
+                    After splitting the fraction, look at each new fraction
+                    again. One part may use the logarithmic rule while
+                    another part may use the arctangent rule.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             09 • THE PROCESS
+        ================================= -->
+
+        <section>
+
+            <div class="example-label">
+                09 • The process
+            </div>
+
+            <h2>
+                A reliable method
+            </h2>
+
+            <div class="step-box">
+
+                <span class="step-number">
+                    1
+                </span>
+
+                <span class="step-title">
+                    Look at the denominator
+                </span>
+
+                <p style="margin-top: 18px;">
+                    Decide whether the fraction already matches a known
+                    integration pattern.
+                </p>
+
+            </div>
+
+
+            <div class="step-box">
+
+                <span class="step-number">
+                    2
+                </span>
+
+                <span class="step-title">
+                    Factorise if needed
+                </span>
+
+                <p style="margin-top: 18px;">
+                    Factorise the denominator as far as possible.
+                </p>
+
+            </div>
+
+
+            <div class="step-box">
+
+                <span class="step-number">
+                    3
+                </span>
+
+                <span class="step-title">
+                    Write the partial fractions
+                </span>
+
+                <p style="margin-top: 18px;">
+                    Give each factor the correct numerator.
+                </p>
+
+            </div>
+
+
+            <div class="step-box">
+
+                <span class="step-number">
+                    4
+                </span>
+
+                <span class="step-title">
+                    Find the unknown constants
+                </span>
+
+                <p style="margin-top: 18px;">
+                    Substitute useful values of x or compare coefficients.
+                </p>
+
+            </div>
+
+
+            <div class="step-box">
+
+                <span class="step-number">
+                    5
+                </span>
+
+                <span class="step-title">
+                    Integrate the simpler fractions
+                </span>
+
+                <p style="margin-top: 18px;">
+                    Look again at each fraction and choose the appropriate
+                    integration rule.
+                </p>
+
+            </div>
+
+
+            <div class="important">
+
+                <h3>
+                    The habit to remember
+                </h3>
+
+                <p>
+                    <strong>
+                        Factorise → Decompose → Recognize → Integrate
+                    </strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             10 • COMMON MISTAKES
+        ================================= -->
+
+        <section>
+
+            <div class="example-label">
+                10 • Common mistakes
+            </div>
+
+            <h2>
+                Watch out for these
+            </h2>
+
+
+            <div class="mistakes">
+
+                <ul>
+
+                    <li>
+                        <strong>
+                            Using partial fractions immediately.
+                        </strong>
+                        First check whether the fraction already matches
+                        the logarithmic or arctangent form.
+                    </li>
+
+                    <li>
+                        <strong>
+                            Missing the sign in x² ± a².
+                        </strong>
+                        x² + a² and x² − a² lead to different methods.
+                    </li>
+
+                    <li>
+                        <strong>
+                            Giving a quadratic factor the wrong numerator.
+                        </strong>
+                        A quadratic factor needs a linear numerator such as
+                        Bx + C.
+                    </li>
+
+                    <li>
+                        <strong>
+                            Forgetting to factorise completely.
+                        </strong>
+                        Partial fractions depends on the factorised form
+                        of the denominator.
+                    </li>
+
+                    <li>
+                        <strong>
+                            Integrating before simplifying the fraction.
+                        </strong>
+                        Complete the decomposition first, then integrate.
+                    </li>
+
+                    <li>
+                        <strong>
+                            Forgetting +C.
+                        </strong>
+                        These are indefinite integrals, so the constant of
+                        integration is still required.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             QUICK SUMMARY
+        ================================= -->
+
+        <section>
+
+            <div class="summary">
+
+                <h2>
+                    Quick Summary
+                </h2>
+
+
+                <ol>
+
+                    <li>
+                        Look at the numerator and denominator before choosing
+                        a method.
+                    </li>
+
+                    <li>
+                        If the numerator is related to the derivative of
+                        the denominator, consider the logarithmic rule.
+                    </li>
+
+                    <li>
+                        If the denominator is x² + a², consider the
+                        arctangent rule.
+                    </li>
+
+                    <li>
+                        If the denominator can be factorised into suitable
+                        factors, use partial fractions.
+                    </li>
+
+                    <li>
+                        A linear factor receives a constant numerator.
+                    </li>
+
+                    <li>
+                        A quadratic factor receives a linear numerator.
+                    </li>
+
+                    <li>
+                        After decomposing, look at each fraction again and
+                        choose the correct integration rule.
+                    </li>
+
+                </ol>
+
+
+                <div class="math-box final">
+
+                    <span class="fraction">
+                        <span class="top">A</span>
+                        <span class="bottom">x + a</span>
+                    </span>
+
+                    +
+
+                    <span class="fraction">
+                        <span class="top">Bx + C</span>
+                        <span class="bottom">x² + a²</span>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             PRACTICE
+        ================================= -->
+
+        <section class="practice-section">
+
+            <h2>
+                Ready to Practice?
+            </h2>
+
+            <p>
+                Now test whether you can recognize the correct method,
+                decompose algebraic fractions, and avoid the traps.
+            </p>
+
+
+            <a
+                href="integration-partial-fractions-questions.html"
+                class="practice-button"
+            >
+                Questions
+            </a>
+
+        </section>
+
+
+        <!-- ================================
+             COMPLETION
+        ================================= -->
+
+        <section
+            class="completion-section"
+            id="completionSection"
+        >
+
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+
+
+            <div class="completion-content">
+
+                <div class="completion-prompt">
+
+                    <div class="completion-label">
+                        LESSON 06 / 08
+                    </div>
+
+                    <h2>
+                        Lesson complete?
+                    </h2>
+
+                    <p>
+                        You have reached the end of the explanation.
+                        Mark this lesson as complete to save your progress.
+                    </p>
+
+
+                    <button
+                        class="complete-button"
+                        id="completeButton"
+                        type="button"
+                    >
+                        ✓ COMPLETE LESSON
+                    </button>
+
+                </div>
+
+
+                <div class="completed-message">
+
+                    <div class="completion-label">
+                        INTEGRATION • TOPIC 06
+                    </div>
+
+                    <h2>
+                        Congratulations!
+                    </h2>
+
+                    <p>
+                        You completed
+                        <strong>Integration using Partial Fractions</strong>.
+                        Your progress has been saved.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer>
+
+        <div>
+
+            <div class="logo">
+                Edu<span>Nova</span>
+            </div>
+
+            <div class="footer-tagline">
+                Mathematics made clear.
+            </div>
+
+        </div>
+
+
+        <p>
+            © 2026 EduNova. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================================
+         SUPABASE
+    ================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script>
+
+        /* =================================
+           SUPABASE CONFIGURATION
+        ================================= */
+
+        const SUPABASE_URL =
+            "https://majvqtbortonsrgdknms.supabase.co";
+
+
+        const SUPABASE_PUBLISHABLE_KEY =
+            "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+
+        const { createClient } = supabase;
+
+
+        const supabaseClient = createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+
+
+        /* =================================
+           ELEMENTS
+        ================================= */
+
+        const completionSection =
+            document.getElementById("completionSection");
+
+        const completeButton =
+            document.getElementById("completeButton");
+
+
+        /* =================================
+           CHECK LOGIN + PROGRESS
+        ================================= */
+
+        async function checkSessionAndProgress() {
+
+            const {
+                data: { session },
+                error: sessionError
+            } = await supabaseClient.auth.getSession();
+
+
+            if (sessionError) {
+
+                console.error(
+                    "Session error:",
+                    sessionError
+                );
+
+                return;
+            }
+
+
+            if (!session) {
+
+                window.location.href = "index.html";
+
+                return;
+            }
+
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+
+                .from("lesson_progress")
+
+                .select("id")
+
+                .eq(
+                    "user_id",
+                    session.user.id
+                )
+
+                .eq(
+                    "chapter",
+                    "Integration"
+                )
+
+                .eq(
+                    "topic_number",
+                    6
+                )
+
+                .maybeSingle();
+
+
+            if (error) {
+
+                console.error(
+                    "Progress check error:",
+                    error
+                );
+
+                return;
+            }
+
+
+            if (data) {
+
+                showCompletedState();
+
+            }
+
+        }
+
+
+        /* =================================
+           COMPLETE LESSON
+        ================================= */
+
+        async function completeLesson() {
+
+            completeButton.disabled = true;
+
+            completeButton.textContent =
+                "SAVING...";
+
+
+            const {
+                data: { session },
+                error: sessionError
+            } = await supabaseClient.auth.getSession();
+
+
+            if (sessionError || !session) {
+
+                window.location.href =
+                    "index.html";
+
+                return;
+            }
+
+
+            const {
+                error
+            } = await supabaseClient
+
+                .from("lesson_progress")
+
+                .upsert(
+
+                    {
+                        user_id:
+                            session.user.id,
+
+                        chapter:
+                            "Integration",
+
+                        topic_number:
+                            6,
+
+                        completed_at:
+                            new Date().toISOString()
+                    },
+
+                    {
+                        onConflict:
+                            "user_id,chapter,topic_number"
+                    }
+
+                );
+
+
+            if (error) {
+
+                console.error(
+                    "Progress save error:",
+                    error
+                );
+
+
+                alert(
+                    "We couldn't save your progress right now. Please try again."
+                );
+
+
+                completeButton.disabled =
+                    false;
+
+                completeButton.textContent =
+                    "✓ COMPLETE LESSON";
+
+                return;
+            }
+
+
+            showCompletedState();
+
+        }
+
+
+        /* =================================
+           SHOW COMPLETED STATE
+        ================================= */
+
+        function showCompletedState() {
+
+            completionSection.classList.add(
+                "completed"
+            );
+
+            completeButton.disabled =
+                true;
+
+        }
+
+
+        /* =================================
+           BUTTON EVENT
+        ================================= */
+
+        completeButton.addEventListener(
+            "click",
+            completeLesson
+        );
+
+
+        /* =================================
+           PAGE LOAD
+        ================================= */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            checkSessionAndProgress
+        );
+
+    </script>
+
+</body>
+</html>
