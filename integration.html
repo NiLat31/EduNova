@@ -176,7 +176,43 @@ main{
     transform:translateY(-5px);
     box-shadow:0 18px 35px rgba(0,0,0,.07);
 }
+/* COMPLETED TOPIC */
 
+.topic.completed{
+    border-color:#111;
+    position:relative;
+}
+
+.topic.completed::after{
+    content:"✓ COMPLETED";
+    position:absolute;
+    top:18px;
+    right:18px;
+    background:#111;
+    color:#fff;
+    padding:7px 10px;
+    font-size:8px;
+    font-weight:700;
+    letter-spacing:1.5px;
+}
+
+.topic.completed .topic-symbol{
+    background:#111;
+    color:#fff;
+    border-color:#111;
+}
+
+.topic.completed .topic-number{
+    color:#111;
+}
+
+.topic.completed .open-topic{
+    background:#e52b20;
+}
+
+.topic.completed .open-topic:hover{
+    background:#111;
+}
 .topic-top{
     display:flex;
     justify-content:space-between;
@@ -383,6 +419,7 @@ footer p{
 }
 
 </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 
@@ -474,7 +511,7 @@ footer p{
 
         <!-- 01 -->
 
-        <div class="topic">
+       <div class="topic" data-topic-number="1">
 
             <div class="topic-top">
 
@@ -507,7 +544,7 @@ footer p{
 
         <!-- 02 -->
 
-        <div class="topic">
+       <div class="topic" data-topic-number="2">
 
             <div class="topic-top">
 
@@ -540,7 +577,7 @@ footer p{
 
         <!-- 03 -->
 
-        <div class="topic">
+       <div class="topic" data-topic-number="3">
 
             <div class="topic-top">
 
@@ -573,7 +610,7 @@ footer p{
 
         <!-- 04 -->
 
-        <div class="topic">
+        <div class="topic" data-topic-number="4">
 
             <div class="topic-top">
 
@@ -606,7 +643,7 @@ footer p{
 
         <!-- 05 -->
 
-        <div class="topic">
+       <div class="topic" data-topic-number="5">
 
             <div class="topic-top">
 
@@ -638,7 +675,7 @@ footer p{
 
         <!-- 06 -->
 
-        <div class="topic">
+       <div class="topic" data-topic-number="6">
 
             <div class="topic-top">
 
@@ -661,9 +698,9 @@ footer p{
                 that can be integrated separately.
             </p>
 
-            <button class="open-topic" onclick="openLesson(6)">
-                OPEN TOPIC →
-            </button>
+            <a href="integration-partial-fractions.html" class="open-topic">
+    OPEN TOPIC →
+</a>
 
         </div>
 
@@ -671,7 +708,7 @@ footer p{
 
         <!-- 07 -->
 
-        <div class="topic">
+       <div class="topic" data-topic-number="7">
 
             <div class="topic-top">
 
@@ -694,17 +731,16 @@ footer p{
                 into simpler expressions that can be integrated.
             </p>
 
-            <button class="open-topic" onclick="openLesson(7)">
-                OPEN TOPIC →
-            </button>
-
+           <a href="integration-substitution.html" class="open-topic">
+    OPEN TOPIC →
+</a>
         </div>
 
 
 
         <!-- 08 -->
 
-        <div class="topic">
+       <div class="topic" data-topic-number="8">
 
             <div class="topic-top">
 
@@ -727,10 +763,9 @@ footer p{
                 and understand how the method transforms an integral.
             </p>
 
-            <button class="open-topic" onclick="openLesson(8)">
-                OPEN TOPIC →
-            </button>
-
+           <a href="integration-by-parts.html" class="open-topic">
+    OPEN TOPIC →
+</a>
         </div>
 
 
@@ -955,70 +990,157 @@ footer p{
 
 <script>
 
-const username = localStorage.getItem("eduNovaUsername");
+/* ================================
+   SUPABASE
+================================ */
 
-if (!username) {
-    window.location.href = "index.html";
-}
+const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
+
+/*
+   Paste the same Supabase publishable key
+   you are already using on your lesson pages.
+*/
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+const { createClient } = supabase;
+
+const supabaseClient = createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
 
 
-/* OPEN TOPIC */
+/* ================================
+   CHECK LOGIN + LOAD PROGRESS
+================================ */
 
-function openLesson(number) {
+async function loadIntegrationProgress() {
 
-    const lessons = document.querySelectorAll(".lesson");
+    const {
+        data: { session },
+        error: sessionError
+    } = await supabaseClient.auth.getSession();
 
-    lessons.forEach(function(lesson) {
-        lesson.classList.remove("active");
-    });
+    if (sessionError) {
 
-    const selectedLesson = document.getElementById("lesson" + number);
+        console.error(
+            "Session error:",
+            sessionError
+        );
 
-    if (selectedLesson) {
-
-        selectedLesson.classList.add("active");
-
-        setTimeout(function() {
-
-            selectedLesson.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }, 100);
-
+        return;
     }
 
+    /*
+       If there is no active Supabase session,
+       send the user back to the login page.
+    */
+
+    if (!session) {
+
+        window.location.href = "index.html";
+        return;
+    }
+
+
+    /* ================================
+       GET COMPLETED TOPICS
+    ================================= */
+
+    const {
+        data,
+        error
+    } = await supabaseClient
+        .from("lesson_progress")
+        .select("topic_number")
+        .eq("user_id", session.user.id)
+        .eq("chapter", "Integration");
+
+
+    if (error) {
+
+        console.error(
+            "Progress loading error:",
+            error
+        );
+
+        return;
+    }
+
+
+    /*
+       Create a Set containing the completed
+       topic numbers for this student.
+    */
+
+    const completedTopics = new Set(
+        (data || []).map(function(row) {
+            return Number(row.topic_number);
+        })
+    );
+
+
+    /* ================================
+       UPDATE TOPIC CARDS
+    ================================= */
+
+    const topicCards =
+        document.querySelectorAll(
+            ".topic[data-topic-number]"
+        );
+
+
+    topicCards.forEach(function(card) {
+
+        const topicNumber =
+            Number(
+                card.dataset.topicNumber
+            );
+
+
+        if (completedTopics.has(topicNumber)) {
+
+            card.classList.add("completed");
+
+        }
+
+    });
+
 }
 
 
-/* CLOSE TOPIC */
+/* ================================
+   LOG OUT
+================================ */
 
-function closeLessons() {
+async function logout() {
 
-    const lessons = document.querySelectorAll(".lesson");
+    await supabaseClient.auth.signOut();
 
-    lessons.forEach(function(lesson) {
-        lesson.classList.remove("active");
-    });
+    localStorage.removeItem(
+        "eduNovaUsername"
+    );
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-}
-
-
-/* LOG OUT */
-
-function logout() {
-
-    localStorage.removeItem("eduNovaUsername");
-    localStorage.removeItem("eduNovaEmail");
+    localStorage.removeItem(
+        "eduNovaEmail"
+    );
 
     window.location.href = "index.html";
 
 }
+
+
+/* ================================
+   START
+================================ */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadIntegrationProgress();
+
+    }
+);
 
 </script>
