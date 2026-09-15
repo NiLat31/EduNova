@@ -1,0 +1,2850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduNova | Partial Fractions - Questions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #f7f7f5;
+            color: #111;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            width: 100%;
+            height: 82px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: white;
+            font-size: 27px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #e52b20;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.7px;
+            transition: 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #e52b20;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: #111;
+            color: white;
+            padding: 72px 7% 82px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border: 1px solid rgba(229, 43, 32, 0.35);
+            border-radius: 50%;
+            right: -100px;
+            bottom: -145px;
+        }
+
+        .hero-label {
+            color: #e52b20;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(42px, 6vw, 70px);
+            line-height: 1.05;
+            margin-bottom: 17px;
+        }
+
+        .hero p {
+            max-width: 610px;
+            color: #c9c9c9;
+            font-size: 15px;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            width: min(1050px, 86%);
+            margin: 0 auto;
+            padding: 58px 0 90px;
+        }
+
+        /* =========================
+           QUESTION NAVIGATION
+        ========================= */
+
+        .question-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 38px;
+        }
+
+        .question-number {
+            width: 48px;
+            height: 48px;
+            border: 1px solid #d5d5d5;
+            background: white;
+            color: #111;
+            font-family: "DM Sans", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .question-number:hover {
+            border-color: #111;
+        }
+
+        .question-number.active {
+            background: #111;
+            color: white;
+            border-color: #111;
+        }
+
+        /* =========================
+           QUESTION CARD
+        ========================= */
+
+        .question-card {
+            background: white;
+            border: 1px solid #dededb;
+            padding: clamp(28px, 5vw, 55px);
+            display: none;
+        }
+
+        .question-card.active {
+            display: block;
+        }
+
+        .question-label {
+            color: #e52b20;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .question-card h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(27px, 4vw, 39px);
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .question-instruction {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        /* =========================
+           MATH
+        ========================= */
+
+        .math-display {
+            font-family: "Times New Roman", serif;
+            font-size: clamp(21px, 3vw, 28px);
+            text-align: center;
+            margin: 28px 0;
+            line-height: 1.7;
+            overflow-x: auto;
+            padding: 8px 0;
+        }
+
+        .math-display.small {
+            font-size: clamp(18px, 2.5vw, 24px);
+        }
+
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 1.05;
+            margin: 0 7px;
+            white-space: nowrap;
+        }
+
+        .fraction .top {
+            border-bottom: 2px solid #111;
+            padding: 0 9px 5px;
+        }
+
+        .fraction .bottom {
+            padding: 5px 9px 0;
+        }
+
+        .math-box {
+            background: #f4f4f1;
+            border-left: 4px solid #e52b20;
+            padding: 22px 25px;
+            margin: 25px 0;
+            font-family: "Times New Roman", serif;
+            font-size: 21px;
+            overflow-x: auto;
+        }
+
+        .math-box.final {
+            background: #111;
+            color: white;
+            border-left: 4px solid #e52b20;
+        }
+
+        .math-box.final .fraction .top {
+            border-bottom: 2px solid white;
+        }
+
+        .math-box.final strong {
+            color: white;
+        }
+
+        /* =========================
+           ANSWER BUTTON
+        ========================= */
+
+        .show-answer {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-family: "DM Sans", sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.7px;
+            cursor: pointer;
+            transition: 0.2s ease;
+            margin-top: 12px;
+        }
+
+        .show-answer:hover {
+            background: #e52b20;
+        }
+
+        .show-answer.open {
+            background: #e52b20;
+        }
+
+        /* =========================
+           SOLUTION
+        ========================= */
+
+        .solution {
+            display: none;
+            margin-top: 42px;
+            border-top: 1px solid #dededb;
+            padding-top: 35px;
+        }
+
+        .solution.visible {
+            display: block;
+        }
+
+        .solution-title {
+            font-size: 10px;
+            color: #e52b20;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .step {
+            margin-bottom: 34px;
+        }
+
+        .step-number {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            color: #777;
+            margin-bottom: 9px;
+        }
+
+        .step p {
+            font-size: 15px;
+            margin-bottom: 13px;
+        }
+
+        .step strong {
+            font-weight: 700;
+        }
+
+        .important-note {
+            background: #f1f1ee;
+            border-left: 4px solid #111;
+            padding: 19px 22px;
+            margin: 25px 0;
+            font-size: 14px;
+        }
+
+        /* =========================
+           Q6 SUBPARTS
+        ========================= */
+
+        .sub-question {
+            margin: 35px 0 45px;
+        }
+
+        .sub-question-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 17px;
+        }
+
+        .sub-solution {
+            margin-top: 20px;
+        }
+
+        /* =========================
+           NAVIGATION CONTROLS
+        ========================= */
+
+        .question-controls {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .control-button {
+            border: 1px solid #d3d3d0;
+            background: white;
+            color: #111;
+            padding: 13px 20px;
+            font-family: "DM Sans", sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .control-button:hover {
+            border-color: #111;
+            background: #111;
+            color: white;
+        }
+
+        .control-button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111;
+            color: white;
+            padding: 55px 7%;
+            text-align: center;
+        }
+
+        .footer-logo {
+            text-decoration: none;
+            color: white;
+            font-size: 25px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .footer-logo span {
+            color: #e52b20;
+        }
+
+        .footer-tagline {
+            color: #999;
+            font-size: 11px;
+            letter-spacing: 1px;
+            margin-top: 9px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                height: 72px;
+                padding: 0 6%;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .nav-links a {
+                font-size: 9px;
+                letter-spacing: 1.2px;
+            }
+
+            .hero {
+                padding: 55px 7% 65px;
+            }
+
+            main {
+                width: 90%;
+                padding-top: 40px;
+            }
+
+            .question-number {
+                width: 43px;
+                height: 43px;
+            }
+
+            .question-card {
+                padding: 28px 20px;
+            }
+
+            .math-box {
+                padding: 18px 15px;
+                font-size: 18px;
+            }
+
+            .question-controls {
+                flex-direction: column;
+            }
+
+            .control-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+        <div class="logo-area">
+            <a href="dashboard.html" class="logo">
+                Edu<span>Nova</span>
+            </a>
+        </div>
+
+        <div class="nav-links">
+            <a href="dashboard.html">HOME</a>
+            <a href="integration.html">INTEGRATION</a>
+        </div>
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <header class="hero">
+        <div class="hero-label">INTEGRATION • TOPIC 06</div>
+
+        <h1>Partial Fractions</h1>
+
+        <p>
+            Practice questions designed to test decomposition,
+            recognition, and careful integration.
+        </p>
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main>
+
+        <!-- QUESTION SELECTOR -->
+
+        <div class="question-selector">
+
+            <button class="question-number active" data-question="1">01</button>
+            <button class="question-number" data-question="2">02</button>
+            <button class="question-number" data-question="3">03</button>
+            <button class="question-number" data-question="4">04</button>
+            <button class="question-number" data-question="5">05</button>
+            <button class="question-number" data-question="6">06</button>
+            <button class="question-number" data-question="7">07</button>
+            <button class="question-number" data-question="8">08</button>
+
+        </div>
+
+
+        <!-- ==================================================
+             QUESTION 01
+        ================================================== -->
+
+        <section class="question-card active" data-card="1">
+
+            <div class="question-label">QUESTION 01</div>
+
+            <h2>Partial Fractions</h2>
+
+            <p class="question-instruction">
+                Evaluate:
+            </p>
+
+            <div class="math-display">
+                ∫
+                <span class="fraction">
+                    <span class="top">3x + 5</span>
+                    <span class="bottom">(x + 1)(x + 2)</span>
+                </span>
+                dx
+            </div>
+
+            <button class="show-answer" type="button">
+                SHOW ANSWER
+            </button>
+
+            <div class="solution">
+
+                <div class="solution-title">STEP-BY-STEP SOLUTION</div>
+
+                <div class="step">
+
+                    <div class="step-number">STEP 01</div>
+
+                    <p>
+                        Since the denominator is a product of two different linear factors,
+                        write the fraction in partial fractions:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">3x + 5</span>
+                            <span class="bottom">(x + 1)(x + 2)</span>
+                        </span>
+                        =
+                        <span class="fraction">
+                            <span class="top">A</span>
+                            <span class="bottom">x + 1</span>
+                        </span>
+                        +
+                        <span class="fraction">
+                            <span class="top">B</span>
+                            <span class="bottom">x + 2</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 02</div>
+
+                    <p>
+                        Multiply both sides by
+                        <strong>(x + 1)(x + 2)</strong>
+                        to remove the denominators:
+                    </p>
+
+                    <div class="math-box">
+                        3x + 5 = A(x + 2) + B(x + 1)
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 03</div>
+
+                    <p>
+                        Let <strong>x = -1</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        3(-1) + 5 = A(-1 + 2) + B(-1 + 1)
+                    </div>
+
+                    <div class="math-box">
+                        2 = A(1) + B(0)
+                    </div>
+
+                    <div class="math-box">
+                        A = 2
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 04</div>
+
+                    <p>
+                        Let <strong>x = -2</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        3(-2) + 5 = A(-2 + 2) + B(-2 + 1)
+                    </div>
+
+                    <div class="math-box">
+                        -1 = A(0) + B(-1)
+                    </div>
+
+                    <div class="math-box">
+                        B = 1
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 05</div>
+
+                    <p>
+                        Substitute the values of <strong>A</strong> and <strong>B</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">3x + 5</span>
+                            <span class="bottom">(x + 1)(x + 2)</span>
+                        </span>
+                        =
+                        <span class="fraction">
+                            <span class="top">2</span>
+                            <span class="bottom">x + 1</span>
+                        </span>
+                        +
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x + 2</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 06</div>
+
+                    <p>
+                        Integrate each term:
+                    </p>
+
+                    <div class="math-box">
+                        ∫
+                        <span class="fraction">
+                            <span class="top">2</span>
+                            <span class="bottom">x + 1</span>
+                        </span>
+                        dx
+                        +
+                        ∫
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x + 2</span>
+                        </span>
+                        dx
+                    </div>
+
+                    <div class="math-box">
+                        =
+                        2ln|x + 1|
+                        +
+                        ln|x + 2|
+                        +
+                        C
+                    </div>
+
+                </div>
+
+
+                <div class="math-box final">
+                    <strong>
+                        Answer:
+                        2ln|x + 1| + ln|x + 2| + C
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             QUESTION 02
+        ================================================== -->
+
+        <section class="question-card" data-card="2">
+
+            <div class="question-label">QUESTION 02</div>
+
+            <h2>Partial Fractions</h2>
+
+            <p class="question-instruction">
+                Find the value of:
+            </p>
+
+            <div class="math-display">
+                ∫
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">(x - 1)(x + 2)</span>
+                </span>
+                dx
+            </div>
+
+            <button class="show-answer" type="button">
+                SHOW ANSWER
+            </button>
+
+            <div class="solution">
+
+                <div class="solution-title">STEP-BY-STEP SOLUTION</div>
+
+                <div class="step">
+
+                    <div class="step-number">STEP 01</div>
+
+                    <p>
+                        Write the fraction in partial fractions:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">(x - 1)(x + 2)</span>
+                        </span>
+                        =
+                        <span class="fraction">
+                            <span class="top">A</span>
+                            <span class="bottom">x - 1</span>
+                        </span>
+                        +
+                        <span class="fraction">
+                            <span class="top">B</span>
+                            <span class="bottom">x + 2</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 02</div>
+
+                    <p>
+                        Multiply through by
+                        <strong>(x - 1)(x + 2)</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        1 = A(x + 2) + B(x - 1)
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 03</div>
+
+                    <p>
+                        Let <strong>x = 1</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        1 = A(1 + 2) + B(1 - 1)
+                    </div>
+
+                    <div class="math-box">
+                        1 = 3A
+                    </div>
+
+                    <div class="math-box">
+                        A =
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 04</div>
+
+                    <p>
+                        Let <strong>x = -2</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        1 = A(-2 + 2) + B(-2 - 1)
+                    </div>
+
+                    <div class="math-box">
+                        1 = -3B
+                    </div>
+
+                    <div class="math-box">
+                        B =
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 05</div>
+
+                    <p>
+                        Therefore:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">(x - 1)(x + 2)</span>
+                        </span>
+                        =
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3(x - 1)</span>
+                        </span>
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3(x + 2)</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 06</div>
+
+                    <p>
+                        Integrate both terms:
+                    </p>
+
+                    <div class="math-box">
+                        ∫
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3(x - 1)</span>
+                        </span>
+                        dx
+                        -
+                        ∫
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3(x + 2)</span>
+                        </span>
+                        dx
+                    </div>
+
+                    <div class="math-box">
+                        =
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3</span>
+                        </span>
+                        ln|x - 1|
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3</span>
+                        </span>
+                        ln|x + 2|
+                        +
+                        C
+                    </div>
+
+                </div>
+
+
+                <div class="math-box final">
+                    <strong>
+                        Answer:
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3</span>
+                        </span>
+                        ln|x - 1|
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3</span>
+                        </span>
+                        ln|x + 2|
+                        + C
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             QUESTION 03
+        ================================================== -->
+
+        <section class="question-card" data-card="3">
+
+            <div class="question-label">QUESTION 03</div>
+
+            <h2>Repeated Factors</h2>
+
+            <p class="question-instruction">
+                Evaluate:
+            </p>
+
+            <div class="math-display">
+                ∫
+                <span class="fraction">
+                    <span class="top">1</span>
+                    <span class="bottom">(x + 1)(x - 2)<sup>2</sup></span>
+                </span>
+                dx
+            </div>
+
+            <button class="show-answer" type="button">
+                SHOW ANSWER
+            </button>
+
+            <div class="solution">
+
+                <div class="solution-title">STEP-BY-STEP SOLUTION</div>
+
+                <div class="step">
+
+                    <div class="step-number">STEP 01</div>
+
+                    <p>
+                        Because <strong>(x - 2)</strong> is repeated,
+                        write a separate term for each power:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">(x + 1)(x - 2)<sup>2</sup></span>
+                        </span>
+                        =
+                        <span class="fraction">
+                            <span class="top">A</span>
+                            <span class="bottom">x + 1</span>
+                        </span>
+                        +
+                        <span class="fraction">
+                            <span class="top">B</span>
+                            <span class="bottom">x - 2</span>
+                        </span>
+                        +
+                        <span class="fraction">
+                            <span class="top">C</span>
+                            <span class="bottom">(x - 2)<sup>2</sup></span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 02</div>
+
+                    <p>
+                        Multiply everything by
+                        <strong>(x + 1)(x - 2)<sup>2</sup></strong>:
+                    </p>
+
+                    <div class="math-box">
+                        1 =
+                        A(x - 2)<sup>2</sup>
+                        +
+                        B(x + 1)(x - 2)
+                        +
+                        C(x + 1)
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 03</div>
+
+                    <p>
+                        Let <strong>x = -1</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        1 =
+                        A(-3)<sup>2</sup>
+                        +
+                        B(0)(-3)
+                        +
+                        C(0)
+                    </div>
+
+                    <div class="math-box">
+                        1 = 9A
+                    </div>
+
+                    <div class="math-box">
+                        A =
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 04</div>
+
+                    <p>
+                        Let <strong>x = 2</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        1 =
+                        A(0)<sup>2</sup>
+                        +
+                        B(3)(0)
+                        +
+                        C(3)
+                    </div>
+
+                    <div class="math-box">
+                        1 = 3C
+                    </div>
+
+                    <div class="math-box">
+                        C =
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 05</div>
+
+                    <p>
+                        To find <strong>B</strong>, compare the coefficient of
+                        <strong>x<sup>2</sup></strong>.
+                    </p>
+
+                    <div class="math-box">
+                        0 = A + B
+                    </div>
+
+                    <p>
+                        Since
+                        <strong>A = 1/9</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        0 =
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9</span>
+                        </span>
+                        + B
+                    </div>
+
+                    <div class="math-box">
+                        B =
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 06</div>
+
+                    <p>
+                        Therefore:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">(x + 1)(x - 2)<sup>2</sup></span>
+                        </span>
+                        =
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9(x + 1)</span>
+                        </span>
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9(x - 2)</span>
+                        </span>
+                        +
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3(x - 2)<sup>2</sup></span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 07</div>
+
+                    <p>
+                        Integrate each term separately:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9</span>
+                        </span>
+                        ln|x + 1|
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9</span>
+                        </span>
+                        ln|x - 2|
+                        +
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3</span>
+                        </span>
+                        ∫(x - 2)<sup>-2</sup> dx
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 08</div>
+
+                    <p>
+                        For the final term:
+                    </p>
+
+                    <div class="math-box">
+                        ∫(x - 2)<sup>-2</sup> dx
+                        =
+                        -
+                        (x - 2)<sup>-1</sup>
+                    </div>
+
+                    <div class="math-box">
+                        =
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x - 2</span>
+                        </span>
+                    </div>
+
+                    <p>
+                        Therefore:
+                    </p>
+
+                    <div class="math-box">
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3</span>
+                        </span>
+                        ·
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x - 2</span>
+                        </span>
+                        =
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3(x - 2)</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="math-box final">
+                    <strong>
+                        Answer:
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9</span>
+                        </span>
+                        ln|x + 1|
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">9</span>
+                        </span>
+                        ln|x - 2|
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">3(x - 2)</span>
+                        </span>
+                        + C
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             QUESTION 04
+        ================================================== -->
+
+        <section class="question-card" data-card="4">
+
+            <div class="question-label">QUESTION 04</div>
+
+            <h2>Linear and Quadratic Factors</h2>
+
+            <p class="question-instruction">
+                Find the answer:
+            </p>
+
+            <div class="math-display">
+                ∫
+                <span class="fraction">
+                    <span class="top">2x + 3</span>
+                    <span class="bottom">(x + 1)(x<sup>2</sup> + 1)</span>
+                </span>
+                dx
+            </div>
+
+            <button class="show-answer" type="button">
+                SHOW ANSWER
+            </button>
+
+            <div class="solution">
+
+                <div class="solution-title">STEP-BY-STEP SOLUTION</div>
+
+                <div class="step">
+
+                    <div class="step-number">STEP 01</div>
+
+                    <p>
+                        The denominator contains one linear factor and one quadratic factor.
+                        Write:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">2x + 3</span>
+                            <span class="bottom">(x + 1)(x<sup>2</sup> + 1)</span>
+                        </span>
+                        =
+                        <span class="fraction">
+                            <span class="top">A</span>
+                            <span class="bottom">x + 1</span>
+                        </span>
+                        +
+                        <span class="fraction">
+                            <span class="top">Bx + C</span>
+                            <span class="bottom">x<sup>2</sup> + 1</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 02</div>
+
+                    <p>
+                        Multiply through by
+                        <strong>(x + 1)(x<sup>2</sup> + 1)</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        2x + 3
+                        =
+                        A(x<sup>2</sup> + 1)
+                        +
+                        (Bx + C)(x + 1)
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 03</div>
+
+                    <p>
+                        Let <strong>x = -1</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        2(-1) + 3
+                        =
+                        A((-1)<sup>2</sup> + 1)
+                        +
+                        (B(-1) + C)(0)
+                    </div>
+
+                    <div class="math-box">
+                        1 = 2A
+                    </div>
+
+                    <div class="math-box">
+                        A =
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 04</div>
+
+                    <p>
+                        Expand the right-hand side:
+                    </p>
+
+                    <div class="math-box">
+                        A(x<sup>2</sup> + 1)
+                        +
+                        (Bx + C)(x + 1)
+                    </div>
+
+                    <div class="math-box">
+                        =
+                        Ax<sup>2</sup> + A
+                        +
+                        Bx<sup>2</sup> + Bx + Cx + C
+                    </div>
+
+                    <div class="math-box">
+                        =
+                        (A + B)x<sup>2</sup>
+                        +
+                        (B + C)x
+                        +
+                        (A + C)
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 05</div>
+
+                    <p>
+                        Compare coefficients with:
+                    </p>
+
+                    <div class="math-box">
+                        2x + 3
+                        =
+                        0x<sup>2</sup> + 2x + 3
+                    </div>
+
+                    <p>
+                        Therefore:
+                    </p>
+
+                    <div class="math-box">
+                        A + B = 0
+                    </div>
+
+                    <div class="math-box">
+                        B + C = 2
+                    </div>
+
+                    <div class="math-box">
+                        A + C = 3
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 06</div>
+
+                    <p>
+                        Since
+                        <strong>A = 1/2</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+                        + B = 0
+                    </div>
+
+                    <div class="math-box">
+                        B =
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+                    </div>
+
+                    <p>
+                        Then:
+                    </p>
+
+                    <div class="math-box">
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+                        + C = 2
+                    </div>
+
+                    <div class="math-box">
+                        C =
+                        <span class="fraction">
+                            <span class="top">5</span>
+                            <span class="bottom">2</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 07</div>
+
+                    <p>
+                        Substitute the values:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">2x + 3</span>
+                            <span class="bottom">(x + 1)(x<sup>2</sup> + 1)</span>
+                        </span>
+                        =
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2(x + 1)</span>
+                        </span>
+                        +
+                        <span class="fraction">
+                            <span class="top">-x + 5</span>
+                            <span class="bottom">2(x<sup>2</sup> + 1)</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 08</div>
+
+                    <p>
+                        Split the second fraction into two integrals:
+                    </p>
+
+                    <div class="math-box">
+                        ∫
+                        <span class="fraction">
+                            <span class="top">-x</span>
+                            <span class="bottom">2(x<sup>2</sup> + 1)</span>
+                        </span>
+                        dx
+                        +
+                        ∫
+                        <span class="fraction">
+                            <span class="top">5</span>
+                            <span class="bottom">2(x<sup>2</sup> + 1)</span>
+                        </span>
+                        dx
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 09</div>
+
+                    <p>
+                        Integrate:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+                        ln|x + 1|
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">4</span>
+                        </span>
+                        ln(x<sup>2</sup> + 1)
+                        +
+                        <span class="fraction">
+                            <span class="top">5</span>
+                            <span class="bottom">2</span>
+                        </span>
+                        tan<sup>-1</sup>x
+                        +
+                        C
+                    </div>
+
+                </div>
+
+
+                <div class="math-box final">
+                    <strong>
+                        Answer:
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+                        ln|x + 1|
+                        -
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">4</span>
+                        </span>
+                        ln(x<sup>2</sup> + 1)
+                        +
+                        <span class="fraction">
+                            <span class="top">5</span>
+                            <span class="bottom">2</span>
+                        </span>
+                        tan<sup>-1</sup>x
+                        + C
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             QUESTION 05
+        ================================================== -->
+
+        <section class="question-card" data-card="5">
+
+            <div class="question-label">QUESTION 05</div>
+
+            <h2>Careful Recognition</h2>
+
+            <p class="question-instruction">
+                Evaluate:
+            </p>
+
+            <div class="math-display">
+                ∫
+                <span class="fraction">
+                    <span class="top">x<sup>2</sup> + 3</span>
+                    <span class="bottom">x<sup>2</sup> + 1</span>
+                </span>
+                dx
+            </div>
+
+            <button class="show-answer" type="button">
+                SHOW ANSWER
+            </button>
+
+            <div class="solution">
+
+                <div class="solution-title">STEP-BY-STEP SOLUTION</div>
+
+                <div class="step">
+
+                    <div class="step-number">STEP 01</div>
+
+                    <p>
+                        Compare the numerator and denominator:
+                    </p>
+
+                    <div class="math-box">
+                        x<sup>2</sup> + 3
+                    </div>
+
+                    <div class="math-box">
+                        x<sup>2</sup> + 1
+                    </div>
+
+                    <p>
+                        The numerator and denominator have the same degree.
+                        We therefore simplify the fraction first.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 02</div>
+
+                    <p>
+                        Rewrite the numerator:
+                    </p>
+
+                    <div class="math-box">
+                        x<sup>2</sup> + 3
+                        =
+                        (x<sup>2</sup> + 1) + 2
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 03</div>
+
+                    <p>
+                        Substitute this into the integral:
+                    </p>
+
+                    <div class="math-box">
+                        ∫
+                        <span class="fraction">
+                            <span class="top">(x<sup>2</sup> + 1) + 2</span>
+                            <span class="bottom">x<sup>2</sup> + 1</span>
+                        </span>
+                        dx
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 04</div>
+
+                    <p>
+                        Split the fraction:
+                    </p>
+
+                    <div class="math-box">
+                        ∫
+                        [
+                        1
+                        +
+                        <span class="fraction">
+                            <span class="top">2</span>
+                            <span class="bottom">x<sup>2</sup> + 1</span>
+                        </span>
+                        ]
+                        dx
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 05</div>
+
+                    <p>
+                        Integrate each term:
+                    </p>
+
+                    <div class="math-box">
+                        ∫1 dx
+                        +
+                        2∫
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x<sup>2</sup> + 1</span>
+                        </span>
+                        dx
+                    </div>
+
+                    <div class="math-box">
+                        x + 2tan<sup>-1</sup>x + C
+                    </div>
+
+                </div>
+
+
+                <div class="math-box final">
+                    <strong>
+                        Answer:
+                        x + 2tan<sup>-1</sup>x + C
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             QUESTION 06
+        ================================================== -->
+
+        <section class="question-card" data-card="6">
+
+            <div class="question-label">QUESTION 06</div>
+
+            <h2>Three Cases</h2>
+
+            <p class="question-instruction">
+                Evaluate each of the following integrals.
+            </p>
+
+
+            <!-- PART A -->
+
+            <div class="sub-question">
+
+                <div class="sub-question-title">(a)</div>
+
+                <div class="math-display">
+                    ∫
+                    <span class="fraction">
+                        <span class="top">2x</span>
+                        <span class="bottom">x<sup>2</sup> + 5</span>
+                    </span>
+                    dx
+                </div>
+
+                <button class="show-answer sub-answer-button" type="button">
+                    SHOW ANSWER
+                </button>
+
+                <div class="solution sub-solution">
+
+                    <div class="solution-title">SOLUTION (a)</div>
+
+                    <div class="step">
+
+                        <div class="step-number">STEP 01</div>
+
+                        <p>
+                            Let:
+                        </p>
+
+                        <div class="math-box">
+                            f(x) = x<sup>2</sup> + 5
+                        </div>
+
+                    </div>
+
+                    <div class="step">
+
+                        <div class="step-number">STEP 02</div>
+
+                        <p>
+                            Differentiate:
+                        </p>
+
+                        <div class="math-box">
+                            f′(x) = 2x
+                        </div>
+
+                    </div>
+
+                    <div class="step">
+
+                        <div class="step-number">STEP 03</div>
+
+                        <p>
+                            Therefore:
+                        </p>
+
+                        <div class="math-box">
+                            ∫
+                            <span class="fraction">
+                                <span class="top">2x</span>
+                                <span class="bottom">x<sup>2</sup> + 5</span>
+                            </span>
+                            dx
+                            =
+                            ln|x<sup>2</sup> + 5| + C
+                        </div>
+
+                    </div>
+
+                    <div class="math-box final">
+                        <strong>
+                            Answer:
+                            ln(x<sup>2</sup> + 5) + C
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PART B -->
+
+            <div class="sub-question">
+
+                <div class="sub-question-title">(b)</div>
+
+                <div class="math-display">
+                    ∫
+                    <span class="fraction">
+                        <span class="top">1</span>
+                        <span class="bottom">x<sup>2</sup> + 5</span>
+                    </span>
+                    dx
+                </div>
+
+                <button class="show-answer sub-answer-button" type="button">
+                    SHOW ANSWER
+                </button>
+
+                <div class="solution sub-solution">
+
+                    <div class="solution-title">SOLUTION (b)</div>
+
+                    <div class="step">
+
+                        <div class="step-number">STEP 01</div>
+
+                        <p>
+                            Rewrite the denominator:
+                        </p>
+
+                        <div class="math-box">
+                            x<sup>2</sup> + 5
+                            =
+                            x<sup>2</sup> + (√5)<sup>2</sup>
+                        </div>
+
+                    </div>
+
+                    <div class="step">
+
+                        <div class="step-number">STEP 02</div>
+
+                        <p>
+                            Use the standard integral:
+                        </p>
+
+                        <div class="math-box">
+                            ∫
+                            <span class="fraction">
+                                <span class="top">1</span>
+                                <span class="bottom">x<sup>2</sup> + a<sup>2</sup></span>
+                            </span>
+                            dx
+                            =
+                            <span class="fraction">
+                                <span class="top">1</span>
+                                <span class="bottom">a</span>
+                            </span>
+                            tan<sup>-1</sup>
+                            <span class="fraction">
+                                <span class="top">x</span>
+                                <span class="bottom">a</span>
+                            </span>
+                            + C
+                        </div>
+
+                    </div>
+
+                    <div class="step">
+
+                        <div class="step-number">STEP 03</div>
+
+                        <p>
+                            Here,
+                            <strong>a = √5</strong>.
+                        </p>
+
+                        <div class="math-box">
+                            ∫
+                            <span class="fraction">
+                                <span class="top">1</span>
+                                <span class="bottom">x<sup>2</sup> + 5</span>
+                            </span>
+                            dx
+                            =
+                            <span class="fraction">
+                                <span class="top">1</span>
+                                <span class="bottom">√5</span>
+                            </span>
+                            tan<sup>-1</sup>
+                            <span class="fraction">
+                                <span class="top">x</span>
+                                <span class="bottom">√5</span>
+                            </span>
+                            + C
+                        </div>
+
+                    </div>
+
+                    <div class="math-box final">
+                        <strong>
+                            Answer:
+                            <span class="fraction">
+                                <span class="top">1</span>
+                                <span class="bottom">√5</span>
+                            </span>
+                            tan<sup>-1</sup>
+                            <span class="fraction">
+                                <span class="top">x</span>
+                                <span class="bottom">√5</span>
+                            </span>
+                            + C
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PART C -->
+
+            <div class="sub-question">
+
+                <div class="sub-question-title">(c)</div>
+
+                <div class="math-display">
+                    ∫
+                    <span class="fraction">
+                        <span class="top">1</span>
+                        <span class="bottom">(x + 1)(x + 2)</span>
+                    </span>
+                    dx
+                </div>
+
+                <button class="show-answer sub-answer-button" type="button">
+                    SHOW ANSWER
+                </button>
+
+                <div class="solution sub-solution">
+
+                    <div class="solution-title">SOLUTION (c)</div>
+
+                    <div class="step">
+
+                        <div class="step-number">STEP 01</div>
+
+                        <p>
+                            Write the fraction in partial fractions:
+                        </p>
+
+                        <div class="math-box">
+                            <span class="fraction">
+                                <span class="top">1</span>
+                                <span class="bottom">(x + 1)(x + 2)</span>
+                            </span>
+                            =
+                            <span class="fraction">
+                                <span class="top">A</span>
+                                <span class="bottom">x + 1</span>
+                            </span>
+                            +
+                            <span class="fraction">
+                                <span class="top">B</span>
+                                <span class="bottom">x + 2</span>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="step">
+
+                        <div class="step-number">STEP 02</div>
+
+                        <p>
+                            Multiply through by
+                            <strong>(x + 1)(x + 2)</strong>:
+                        </p>
+
+                        <div class="math-box">
+                            1 = A(x + 2) + B(x + 1)
+                        </div>
+
+                    </div>
+
+                    <div class="step">
+
+                        <div class="step-number">STEP 03</div>
+
+                        <p>
+                            Let <strong>x = -1</strong>:
+                        </p>
+
+                        <div class="math-box">
+                            1 = A(1) + B(0)
+                        </div>
+
+                        <div class="math-box">
+                            A = 1
+                        </div>
+
+                    </div>
+
+                    <div class="step">
+
+                        <div class="step-number">STEP 04</div>
+
+                        <p>
+                            Let <strong>x = -2</strong>:
+                        </p>
+
+                        <div class="math-box">
+                            1 = A(0) + B(-1)
+                        </div>
+
+                        <div class="math-box">
+                            B = -1
+                        </div>
+
+                    </div>
+
+                    <div class="step">
+
+                        <div class="step-number">STEP 05</div>
+
+                        <p>
+                            Therefore:
+                        </p>
+
+                        <div class="math-box">
+                            <span class="fraction">
+                                <span class="top">1</span>
+                                <span class="bottom">(x + 1)(x + 2)</span>
+                            </span>
+                            =
+                            <span class="fraction">
+                                <span class="top">1</span>
+                                <span class="bottom">x + 1</span>
+                            </span>
+                            -
+                            <span class="fraction">
+                                <span class="top">1</span>
+                                <span class="bottom">x + 2</span>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="step">
+
+                        <div class="step-number">STEP 06</div>
+
+                        <p>
+                            Integrate:
+                        </p>
+
+                        <div class="math-box">
+                            ln|x + 1|
+                            -
+                            ln|x + 2|
+                            +
+                            C
+                        </div>
+
+                    </div>
+
+                    <div class="math-box final">
+                        <strong>
+                            Answer:
+                            ln|x + 1| - ln|x + 2| + C
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             QUESTION 07
+        ================================================== -->
+
+        <section class="question-card" data-card="7">
+
+            <div class="question-label">QUESTION 07</div>
+
+            <h2>Quadratic Factors</h2>
+
+            <p class="question-instruction">
+                Evaluate:
+            </p>
+
+            <div class="math-display">
+                ∫
+                <span class="fraction">
+                    <span class="top">2x<sup>2</sup> + 2x + 2</span>
+                    <span class="bottom">(x + 1)(x<sup>2</sup> + 1)</span>
+                </span>
+                dx
+            </div>
+
+            <button class="show-answer" type="button">
+                SHOW ANSWER
+            </button>
+
+            <div class="solution">
+
+                <div class="solution-title">STEP-BY-STEP SOLUTION</div>
+
+                <div class="step">
+
+                    <div class="step-number">STEP 01</div>
+
+                    <p>
+                        Write the partial fraction form:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">2x<sup>2</sup> + 2x + 2</span>
+                            <span class="bottom">(x + 1)(x<sup>2</sup> + 1)</span>
+                        </span>
+                        =
+                        <span class="fraction">
+                            <span class="top">A</span>
+                            <span class="bottom">x + 1</span>
+                        </span>
+                        +
+                        <span class="fraction">
+                            <span class="top">Bx + C</span>
+                            <span class="bottom">x<sup>2</sup> + 1</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 02</div>
+
+                    <p>
+                        Multiply through:
+                    </p>
+
+                    <div class="math-box">
+                        2x<sup>2</sup> + 2x + 2
+                        =
+                        A(x<sup>2</sup> + 1)
+                        +
+                        (Bx + C)(x + 1)
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 03</div>
+
+                    <p>
+                        Let <strong>x = -1</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        2 - 2 + 2 = A(2)
+                    </div>
+
+                    <div class="math-box">
+                        2 = 2A
+                    </div>
+
+                    <div class="math-box">
+                        A = 1
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 04</div>
+
+                    <p>
+                        Expand:
+                    </p>
+
+                    <div class="math-box">
+                        A(x<sup>2</sup> + 1)
+                        +
+                        (Bx + C)(x + 1)
+                    </div>
+
+                    <div class="math-box">
+                        =
+                        (A + B)x<sup>2</sup>
+                        +
+                        (B + C)x
+                        +
+                        (A + C)
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 05</div>
+
+                    <p>
+                        Compare coefficients:
+                    </p>
+
+                    <div class="math-box">
+                        A + B = 2
+                    </div>
+
+                    <div class="math-box">
+                        B + C = 2
+                    </div>
+
+                    <div class="math-box">
+                        A + C = 2
+                    </div>
+
+                    <p>
+                        Since <strong>A = 1</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        1 + B = 2
+                    </div>
+
+                    <div class="math-box">
+                        B = 1
+                    </div>
+
+                    <div class="math-box">
+                        1 + C = 2
+                    </div>
+
+                    <div class="math-box">
+                        C = 1
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 06</div>
+
+                    <p>
+                        Therefore:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">2x<sup>2</sup> + 2x + 2</span>
+                            <span class="bottom">(x + 1)(x<sup>2</sup> + 1)</span>
+                        </span>
+                        =
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x + 1</span>
+                        </span>
+                        +
+                        <span class="fraction">
+                            <span class="top">x + 1</span>
+                            <span class="bottom">x<sup>2</sup> + 1</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 07</div>
+
+                    <p>
+                        Split the second fraction:
+                    </p>
+
+                    <div class="math-box">
+                        ∫
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x + 1</span>
+                        </span>
+                        dx
+                        +
+                        ∫
+                        <span class="fraction">
+                            <span class="top">x</span>
+                            <span class="bottom">x<sup>2</sup> + 1</span>
+                        </span>
+                        dx
+                        +
+                        ∫
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">x<sup>2</sup> + 1</span>
+                        </span>
+                        dx
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 08</div>
+
+                    <p>
+                        Integrate each part:
+                    </p>
+
+                    <div class="math-box">
+                        ln|x + 1|
+                        +
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+                        ln(x<sup>2</sup> + 1)
+                        +
+                        tan<sup>-1</sup>x
+                        +
+                        C
+                    </div>
+
+                </div>
+
+
+                <div class="math-box final">
+                    <strong>
+                        Answer:
+                        ln|x + 1|
+                        +
+                        <span class="fraction">
+                            <span class="top">1</span>
+                            <span class="bottom">2</span>
+                        </span>
+                        ln(x<sup>2</sup> + 1)
+                        +
+                        tan<sup>-1</sup>x
+                        + C
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             QUESTION 08
+        ================================================== -->
+
+        <section class="question-card" data-card="8">
+
+            <div class="question-label">QUESTION 08</div>
+
+            <h2>Final Challenge</h2>
+
+            <p class="question-instruction">
+                Evaluate:
+            </p>
+
+            <div class="math-display">
+                ∫
+                <span class="fraction">
+                    <span class="top">5x + 1</span>
+                    <span class="bottom">(x - 1)(x + 2)</span>
+                </span>
+                dx
+            </div>
+
+            <button class="show-answer" type="button">
+                SHOW ANSWER
+            </button>
+
+            <div class="solution">
+
+                <div class="solution-title">STEP-BY-STEP SOLUTION</div>
+
+                <div class="step">
+
+                    <div class="step-number">STEP 01</div>
+
+                    <p>
+                        Write the partial fraction form:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">5x + 1</span>
+                            <span class="bottom">(x - 1)(x + 2)</span>
+                        </span>
+                        =
+                        <span class="fraction">
+                            <span class="top">A</span>
+                            <span class="bottom">x - 1</span>
+                        </span>
+                        +
+                        <span class="fraction">
+                            <span class="top">B</span>
+                            <span class="bottom">x + 2</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 02</div>
+
+                    <p>
+                        Multiply through:
+                    </p>
+
+                    <div class="math-box">
+                        5x + 1
+                        =
+                        A(x + 2)
+                        +
+                        B(x - 1)
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 03</div>
+
+                    <p>
+                        Let <strong>x = 1</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        5(1) + 1
+                        =
+                        A(1 + 2)
+                        +
+                        B(1 - 1)
+                    </div>
+
+                    <div class="math-box">
+                        6 = 3A
+                    </div>
+
+                    <div class="math-box">
+                        A = 2
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 04</div>
+
+                    <p>
+                        Let <strong>x = -2</strong>:
+                    </p>
+
+                    <div class="math-box">
+                        5(-2) + 1
+                        =
+                        A(-2 + 2)
+                        +
+                        B(-2 - 1)
+                    </div>
+
+                    <div class="math-box">
+                        -9 = -3B
+                    </div>
+
+                    <div class="math-box">
+                        B = 3
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 05</div>
+
+                    <p>
+                        Substitute the values:
+                    </p>
+
+                    <div class="math-box">
+                        <span class="fraction">
+                            <span class="top">5x + 1</span>
+                            <span class="bottom">(x - 1)(x + 2)</span>
+                        </span>
+                        =
+                        <span class="fraction">
+                            <span class="top">2</span>
+                            <span class="bottom">x - 1</span>
+                        </span>
+                        +
+                        <span class="fraction">
+                            <span class="top">3</span>
+                            <span class="bottom">x + 2</span>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">STEP 06</div>
+
+                    <p>
+                        Integrate:
+                    </p>
+
+                    <div class="math-box">
+                        2ln|x - 1|
+                        +
+                        3ln|x + 2|
+                        +
+                        C
+                    </div>
+
+                </div>
+
+
+                <div class="math-box final">
+                    <strong>
+                        Answer:
+                        2ln|x - 1|
+                        +
+                        3ln|x + 2|
+                        + C
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTROLS
+        ========================= -->
+
+        <div class="question-controls">
+
+            <button class="control-button" id="previousButton" type="button">
+                ← PREVIOUS
+            </button>
+
+            <button class="control-button" id="nextButton" type="button">
+                NEXT →
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <a href="dashboard.html" class="footer-logo">
+            Edu<span>Nova</span>
+        </a>
+
+        <div class="footer-tagline">
+            Mathematics made clear.
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        const questionButtons =
+            document.querySelectorAll(".question-number");
+
+        const questionCards =
+            document.querySelectorAll(".question-card");
+
+        const previousButton =
+            document.getElementById("previousButton");
+
+        const nextButton =
+            document.getElementById("nextButton");
+
+        let currentQuestion = 1;
+
+
+        function showQuestion(number) {
+
+            currentQuestion = number;
+
+            questionCards.forEach(function(card) {
+
+                const cardNumber =
+                    Number(card.dataset.card);
+
+                if (cardNumber === number) {
+                    card.classList.add("active");
+                } else {
+                    card.classList.remove("active");
+                }
+
+            });
+
+
+            questionButtons.forEach(function(button) {
+
+                const buttonNumber =
+                    Number(button.dataset.question);
+
+                if (buttonNumber === number) {
+                    button.classList.add("active");
+                } else {
+                    button.classList.remove("active");
+                }
+
+            });
+
+
+            previousButton.disabled =
+                currentQuestion === 1;
+
+            nextButton.disabled =
+                currentQuestion === questionCards.length;
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+
+        questionButtons.forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const number =
+                    Number(button.dataset.question);
+
+                showQuestion(number);
+
+            });
+
+        });
+
+
+        previousButton.addEventListener("click", function() {
+
+            if (currentQuestion > 1) {
+                showQuestion(currentQuestion - 1);
+            }
+
+        });
+
+
+        nextButton.addEventListener("click", function() {
+
+            if (currentQuestion < questionCards.length) {
+                showQuestion(currentQuestion + 1);
+            }
+
+        });
+
+
+        /*
+         * SHOW ANSWER BUTTONS
+         */
+
+        const answerButtons =
+            document.querySelectorAll(".show-answer");
+
+        answerButtons.forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const solution =
+                    button.nextElementSibling;
+
+                solution.classList.toggle("visible");
+
+                button.classList.toggle("open");
+
+                if (solution.classList.contains("visible")) {
+                    button.textContent = "HIDE ANSWER";
+                } else {
+                    button.textContent = "SHOW ANSWER";
+                }
+
+            });
+
+        });
+
+
+        /*
+         * KEYBOARD NAVIGATION
+         */
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "ArrowRight") {
+
+                if (currentQuestion < questionCards.length) {
+                    showQuestion(currentQuestion + 1);
+                }
+
+            }
+
+            if (event.key === "ArrowLeft") {
+
+                if (currentQuestion > 1) {
+                    showQuestion(currentQuestion - 1);
+                }
+
+            }
+
+        });
+
+
+        /*
+         * INITIAL STATE
+         */
+
+        showQuestion(1);
+
+    </script>
+
+</body>
+</html>
