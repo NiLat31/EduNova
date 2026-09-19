@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -21,8 +20,8 @@
 <script>
 window.MathJax = {
     tex: {
-        inlineMath: [['\\(', '\\)']],
-        displayMath: [['\\[', '\\]']]
+        inlineMath: [['\\(','\\)']],
+        displayMath: [['\\[','\\]']]
     },
     svg: {
         fontCache: 'global'
@@ -35,7 +34,6 @@ window.MathJax = {
     async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
 </script>
-
 
 <style>
 
@@ -56,10 +54,7 @@ body{
     line-height:1.7;
 }
 
-
-/* =========================
-   NAV
-========================= */
+/* NAV */
 
 nav{
     height:82px;
@@ -100,15 +95,12 @@ nav{
     color:#e52b20;
 }
 
-
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
     background:#111;
     color:white;
-    padding:72px 7% 82px;
+    padding:70px 7% 78px;
     position:relative;
     overflow:hidden;
 }
@@ -116,8 +108,6 @@ nav{
 .hero-content{
     max-width:1000px;
     margin:auto;
-    position:relative;
-    z-index:3;
 }
 
 .lesson-label{
@@ -130,285 +120,175 @@ nav{
 
 .hero h1{
     font-family:"Playfair Display",serif;
-    font-size:clamp(42px,6vw,70px);
+    font-size:clamp(42px,6vw,68px);
     line-height:1.05;
     max-width:800px;
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 .hero p{
     color:#d0d0d0;
-    max-width:700px;
+    max-width:690px;
     font-size:17px;
 }
 
+/* HERO DECORATION */
 
-/* HERO VISUAL */
-
-.substitution-visual{
+.hero-math{
     position:absolute;
-    right:6%;
+    right:7%;
     top:50%;
     transform:translateY(-50%);
-    display:flex;
-    align-items:center;
-    gap:12px;
-    opacity:.95;
-}
-
-.sub-box{
-    border:1px solid #555;
-    background:#181818;
-    padding:16px 18px;
-    min-width:105px;
-    text-align:center;
-}
-
-.sub-box small{
-    display:block;
-    color:#e52b20;
-    font-size:9px;
-    font-weight:700;
-    letter-spacing:1.5px;
-    margin-bottom:5px;
-}
-
-.sub-box span{
     font-family:"Times New Roman",serif;
-    font-size:19px;
-    color:white;
-}
-
-.sub-arrow{
-    color:#e52b20;
-    font-size:25px;
+    color:#292929;
+    font-size:150px;
     font-weight:700;
+    line-height:1;
+    user-select:none;
 }
 
+.hero-math span{
+    color:#e52b20;
+}
 
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 main{
     max-width:1050px;
     margin:auto;
-    padding:65px 24px 100px;
+    padding:58px 24px 100px;
 }
 
-
-/* =========================
-   INTRO
-========================= */
+/* INTRO */
 
 .intro{
     background:white;
     border:1px solid #ddd;
-    padding:30px;
-    margin-bottom:40px;
-}
-
-.intro-label{
-    color:#e52b20;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:2px;
-    margin-bottom:9px;
-}
-
-.intro h2{
-    font-family:"Playfair Display",serif;
-    font-size:30px;
-    margin-bottom:10px;
+    padding:27px 30px;
+    margin-bottom:32px;
 }
 
 .intro p{
-    color:#555;
-    max-width:760px;
+    color:#444;
+    font-size:15px;
 }
 
-
-/* =========================
-   DIFFICULTY TABS
-========================= */
-
-.difficulty-bar{
-    display:flex;
-    flex-wrap:wrap;
-    gap:9px;
-    margin-bottom:35px;
-}
-
-.level-button{
-    border:1px solid #ddd;
-    background:white;
+.intro strong{
     color:#111;
-    padding:11px 15px;
-    font-family:"DM Sans",sans-serif;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:1.2px;
-    cursor:pointer;
-    transition:.2s;
 }
 
-.level-button:hover{
-    border-color:#111;
-}
+/* FILTER BAR */
 
-.level-button.active{
+.controls{
     background:#111;
     color:white;
-    border-color:#111;
+    padding:22px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:30px;
 }
 
-
-/* =========================
-   QUESTION SELECTOR
-========================= */
-
-.selector{
-    background:white;
-    border:1px solid #ddd;
-    padding:25px;
-    margin-bottom:35px;
+.control-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
 }
 
-.selector-title{
-    color:#e52b20;
+.control-label{
+    color:#aaa;
     font-size:10px;
     font-weight:700;
-    letter-spacing:2px;
-    margin-bottom:15px;
+    letter-spacing:1.5px;
 }
 
-.question-grid{
-    display:grid;
-    grid-template-columns:repeat(10,1fr);
-    gap:8px;
-}
-
-.number-button{
-    border:1px solid #ddd;
-    background:#f8f8f8;
-    height:40px;
-    cursor:pointer;
+select{
+    background:#181818;
+    color:white;
+    border:1px solid #444;
+    padding:10px 13px;
     font-family:"DM Sans",sans-serif;
     font-size:12px;
-    font-weight:700;
-    transition:.2s;
+    cursor:pointer;
 }
 
-.number-button:hover{
-    border-color:#111;
+.progress-text{
+    color:#aaa;
+    font-size:12px;
 }
 
-.number-button.active{
-    background:#e52b20;
-    border-color:#e52b20;
+.progress-text strong{
     color:white;
 }
 
-
-/* =========================
-   QUESTION AREA
-========================= */
+/* QUESTION CARD */
 
 .question-card{
     background:white;
     border:1px solid #ddd;
-    padding:40px;
-    margin-bottom:30px;
+    padding:38px;
+    position:relative;
 }
 
-.question-meta{
+.question-header{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    margin-bottom:13px;
+    align-items:flex-start;
+    gap:20px;
+    margin-bottom:20px;
 }
 
-.question-level{
+.question-number{
     color:#e52b20;
-    font-size:10px;
+    font-size:11px;
     font-weight:700;
     letter-spacing:2px;
 }
 
-.question-number{
-    color:#888;
-    font-size:11px;
+.question-level{
+    color:#777;
+    font-size:10px;
     font-weight:700;
-    letter-spacing:1px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
 }
 
-.question-card h2{
+.question-title{
     font-family:"Playfair Display",serif;
     font-size:29px;
-    margin-bottom:23px;
+    margin-bottom:17px;
 }
 
 .question-math{
     font-family:"Times New Roman",serif;
-    font-size:26px;
-    text-align:center;
-    padding:30px 15px;
-    background:#fafafa;
-    border:1px solid #eee;
+    font-size:25px;
     overflow-x:auto;
+    padding:18px 0 25px;
+    border-top:1px solid #eee;
+    border-bottom:1px solid #eee;
 }
 
-
-/* =========================
-   CONTROLS
-========================= */
-
-.controls{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    margin-top:25px;
+.question-instruction{
+    color:#555;
+    font-size:14px;
+    margin-top:18px;
 }
 
-.control-button{
-    border:none;
-    background:#111;
-    color:white;
-    padding:14px 23px;
-    font-family:"DM Sans",sans-serif;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:1.4px;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.control-button:hover{
-    background:#e52b20;
-}
-
-.control-button.secondary{
-    background:#eee;
-    color:#111;
-}
-
-.control-button.secondary:hover{
-    background:#ddd;
-}
-
-
-/* =========================
-   ANSWER
-========================= */
+/* ANSWER */
 
 .answer-area{
-    display:none;
-    margin-top:30px;
+    margin-top:28px;
 }
 
-.answer-area.visible{
-    display:block;
+.answer-box{
+    display:none;
+    background:#111;
+    color:white;
+    border-left:5px solid #e52b20;
+    padding:24px 27px;
+    margin-bottom:16px;
 }
 
 .answer-label{
@@ -416,125 +296,189 @@ main{
     font-size:10px;
     font-weight:700;
     letter-spacing:2px;
-    margin-bottom:9px;
+    margin-bottom:8px;
 }
 
-.answer-box{
-    background:#111;
-    color:white;
-    padding:25px;
-    text-align:center;
+.answer-math{
     font-family:"Times New Roman",serif;
-    font-size:25px;
+    font-size:23px;
     overflow-x:auto;
 }
 
-.solution-button-area{
-    text-align:center;
-    margin-top:20px;
+.answer-math mjx-container{
+    color:white !important;
 }
 
+/* SOLUTION */
 
-/* =========================
-   SOLUTION
-========================= */
-
-.solution-area{
+.solution{
     display:none;
-    margin-top:30px;
+    margin-top:18px;
+    border:1px solid #ddd;
+    background:#fafafa;
 }
 
-.solution-area.visible{
-    display:block;
-}
-
-.solution-title{
-    font-family:"Playfair Display",serif;
-    font-size:27px;
-    margin-bottom:20px;
-}
-
-.solution-step{
-    border-top:1px solid #e2e2e2;
-    padding:23px 0;
-}
-
-.solution-step:first-child{
-    border-top:none;
-}
-
-.solution-step-label{
+.solution-heading{
+    background:#f0f0f0;
+    padding:15px 20px;
     color:#e52b20;
     font-size:10px;
     font-weight:700;
-    letter-spacing:1.7px;
-    margin-bottom:9px;
+    letter-spacing:2px;
+}
+
+.solution-step{
+    padding:21px 23px;
+    border-top:1px solid #ddd;
+}
+
+.solution-step:first-of-type{
+    border-top:none;
+}
+
+.solution-step-title{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
 }
 
 .solution-step p{
     color:#444;
-    margin-bottom:10px;
+    font-size:14px;
+    margin-bottom:8px;
 }
 
 .solution-math{
     font-family:"Times New Roman",serif;
-    font-size:22px;
+    font-size:21px;
     overflow-x:auto;
-    padding:4px 0;
 }
 
 .solution-note{
-    background:#f7f7f7;
-    border-left:4px solid #e52b20;
-    padding:16px 20px;
+    background:white;
+    border-left:3px solid #111;
+    padding:12px 15px;
     margin-top:12px;
-    color:#333;
+    color:#555;
+    font-size:13px;
 }
 
-.final-answer{
+/* BUTTONS */
+
+.action-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:22px;
+}
+
+.action-button{
+    border:none;
+    padding:13px 20px;
+    font-family:"DM Sans",sans-serif;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.4px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.show-answer{
     background:#111;
     color:white;
-    padding:27px;
-    text-align:center;
-    font-family:"Times New Roman",serif;
-    font-size:24px;
-    overflow-x:auto;
-    margin-top:25px;
 }
 
+.show-answer:hover{
+    background:#e52b20;
+}
 
-/* =========================
-   NAVIGATION
-========================= */
+.show-solution{
+    background:#e52b20;
+    color:white;
+    display:none;
+}
 
-.question-navigation{
+.show-solution:hover{
+    background:#111;
+}
+
+/* NAVIGATION */
+
+.navigation{
     display:flex;
     justify-content:space-between;
     gap:15px;
-    margin-top:30px;
+    margin-top:25px;
 }
 
-.navigation-button{
-    border:1px solid #ddd;
+.nav-button{
+    border:1px solid #ccc;
     background:white;
+    color:#111;
     padding:13px 20px;
-    cursor:pointer;
     font-family:"DM Sans",sans-serif;
     font-size:10px;
     font-weight:700;
     letter-spacing:1.3px;
-    transition:.2s;
+    cursor:pointer;
+    transition:.25s;
 }
 
-.navigation-button:hover{
+.nav-button:hover{
+    border-color:#111;
     background:#111;
     color:white;
 }
 
+.nav-button:disabled{
+    opacity:.35;
+    cursor:default;
+}
 
-/* =========================
-   FOOTER
-========================= */
+/* QUESTION INDEX */
+
+.index-section{
+    margin-top:45px;
+}
+
+.index-title{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:12px;
+}
+
+.index-grid{
+    display:grid;
+    grid-template-columns:repeat(10,1fr);
+    gap:7px;
+}
+
+.index-button{
+    border:1px solid #ddd;
+    background:white;
+    padding:10px 4px;
+    font-family:"DM Sans",sans-serif;
+    font-size:10px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.index-button:hover{
+    border-color:#111;
+}
+
+.index-button.active{
+    background:#111;
+    color:white;
+    border-color:#111;
+}
+
+/* FOOTER */
 
 footer{
     background:#111;
@@ -560,51 +504,45 @@ footer > p{
     margin-top:0;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:800px){
 
-    .substitution-visual{
-        display:none;
-    }
-
     .hero{
-        padding:60px 6% 70px;
+        padding:60px 6% 68px;
     }
 
     .hero h1{
         font-size:43px;
     }
 
+    .hero-math{
+        display:none;
+    }
+
     main{
-        padding:50px 18px 75px;
+        padding:45px 17px 75px;
     }
 
     .question-card{
         padding:27px 21px;
     }
 
-    .question-grid{
-        grid-template-columns:repeat(5,1fr);
+    .question-title{
+        font-size:25px;
     }
 
     .question-math{
-        font-size:22px;
-    }
-
-    .solution-math{
-        font-size:20px;
+        font-size:21px;
     }
 
     .controls{
+        align-items:flex-start;
         flex-direction:column;
     }
 
-    .control-button{
-        width:100%;
+    .index-grid{
+        grid-template-columns:repeat(5,1fr);
     }
 
     footer{
@@ -613,26 +551,18 @@ footer > p{
     }
 
     nav{
-        padding:21px 6%;
+        padding:20px 6%;
     }
 
     .nav-links{
-        gap:20px;
+        gap:17px;
     }
-
 }
 
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     NAVIGATION
-========================= -->
 
 <nav>
 
@@ -641,21 +571,12 @@ footer > p{
     </a>
 
     <div class="nav-links">
-
         <a href="index.html">HOME</a>
-
         <a href="integration.html">INTEGRATION</a>
-
-        <a href="integration-substitution.html">LESSON</a>
-
     </div>
 
 </nav>
 
-
-<!-- =========================
-     HERO
-========================= -->
 
 <header class="hero">
 
@@ -665,63 +586,18 @@ footer > p{
             INTEGRATION • TOPIC 07
         </div>
 
-        <h1>
-            Integration Using Substitution
-        </h1>
+        <h1>Integration Using Substitution</h1>
 
         <p>
-            Practice substitution from straightforward inner expressions
-            to challenging logarithmic, exponential, trigonometric and
-            definite-integral problems.
+            45 questions designed to build substitution skills gradually,
+            from direct substitutions to logarithmic, trigonometric,
+            exponential, nested and definite-integral problems.
         </p>
 
     </div>
 
-
-    <div class="substitution-visual">
-
-        <div class="sub-box">
-
-            <small>CHOOSE</small>
-
-            <span>
-                u = g(x)
-            </span>
-
-        </div>
-
-
-        <div class="sub-arrow">
-            →
-        </div>
-
-
-        <div class="sub-box">
-
-            <small>DIFFERENTIATE</small>
-
-            <span>
-                du = g′(x)dx
-            </span>
-
-        </div>
-
-
-        <div class="sub-arrow">
-            →
-        </div>
-
-
-        <div class="sub-box">
-
-            <small>REWRITE</small>
-
-            <span>
-                ∫ f(u)du
-            </span>
-
-        </div>
-
+    <div class="hero-math">
+        u = g(x) <span>→</span> du
     </div>
 
 </header>
@@ -729,185 +605,128 @@ footer > p{
 
 <main>
 
-
-<!-- =========================
-     INTRO
-========================= -->
-
-<section class="intro">
-
-    <div class="intro-label">
-        PRACTICE • 45 QUESTIONS
-    </div>
-
-    <h2>
-        Choose a question and work it through.
-    </h2>
+<div class="intro">
 
     <p>
-        The questions gradually become more demanding. Look carefully for
-        the expression that can become u, and always check whether its
-        differential can also be obtained from the integral.
+        Work through the questions in order. The difficulty increases gradually,
+        but some later questions contain deliberate traps. Look carefully at
+        the expression you choose for <strong>u</strong>, its derivative,
+        constant factors, and whether the entire integral has actually been
+        rewritten in terms of <strong>u</strong>.
     </p>
-
-</section>
-
-
-<!-- =========================
-     LEVEL FILTER
-========================= -->
-
-<div class="difficulty-bar">
-
-    <button
-        class="level-button active"
-        data-level="all"
-        onclick="filterLevel('all')"
-    >
-        ALL
-    </button>
-
-    <button
-        class="level-button"
-        data-level="Foundation"
-        onclick="filterLevel('Foundation')"
-    >
-        FOUNDATION
-    </button>
-
-    <button
-        class="level-button"
-        data-level="Developing"
-        onclick="filterLevel('Developing')"
-    >
-        DEVELOPING
-    </button>
-
-    <button
-        class="level-button"
-        data-level="Intermediate"
-        onclick="filterLevel('Intermediate')"
-    >
-        INTERMEDIATE
-    </button>
-
-    <button
-        class="level-button"
-        data-level="Advanced"
-        onclick="filterLevel('Advanced')"
-    >
-        ADVANCED
-    </button>
-
-    <button
-        class="level-button"
-        data-level="Challenge"
-        onclick="filterLevel('Challenge')"
-    >
-        CHALLENGE
-    </button>
 
 </div>
 
 
-<!-- =========================
-     QUESTION SELECTOR
-========================= -->
+<div class="controls">
 
-<section class="selector">
+    <div class="control-left">
 
-    <div class="selector-title">
-        SELECT QUESTION
+        <span class="control-label">
+            LEVEL
+        </span>
+
+        <select id="levelFilter">
+
+            <option value="all">
+                All Questions
+            </option>
+
+            <option value="Foundation">
+                Foundation
+            </option>
+
+            <option value="Developing">
+                Developing
+            </option>
+
+            <option value="Intermediate">
+                Intermediate
+            </option>
+
+            <option value="Advanced">
+                Advanced
+            </option>
+
+            <option value="Challenge">
+                Challenge
+            </option>
+
+        </select>
+
     </div>
 
-    <div
-        class="question-grid"
-        id="questionGrid">
+    <div class="progress-text">
+        Question <strong id="currentNumber">01</strong> of
+        <strong>45</strong>
     </div>
 
-</section>
+</div>
 
 
-<!-- =========================
-     QUESTION CARD
-========================= -->
+<section class="question-card">
 
-<section
-    class="question-card"
-    id="questionCard"
->
+    <div class="question-header">
 
-    <div class="question-meta">
-
-        <div
-            class="question-level"
-            id="questionLevel">
+        <div class="question-number" id="questionNumber">
+            QUESTION 01
         </div>
 
-        <div
-            class="question-number"
-            id="questionNumber">
+        <div class="question-level" id="questionLevel">
+            FOUNDATION
         </div>
 
     </div>
 
-
-    <h2>
+    <h2 class="question-title" id="questionTitle">
         Evaluate the integral.
     </h2>
 
+    <div class="question-math" id="questionMath"></div>
 
-    <div
-        class="question-math"
-        id="questionMath">
+    <div class="question-instruction">
+        Give your answer in terms of \(x\), including the constant of integration
+        where appropriate.
     </div>
 
 
-    <div class="controls">
+    <div class="answer-area">
 
-        <button
-            class="control-button"
-            id="answerButton"
-            onclick="showAnswer()"
-        >
-            SHOW ANSWER
-        </button>
+        <div class="answer-box" id="answerBox">
 
-        <button
-            class="control-button secondary"
-            onclick="resetQuestion()"
-        >
-            RESET
-        </button>
+            <div class="answer-label">
+                ANSWER
+            </div>
 
-    </div>
+            <div class="answer-math" id="answerMath"></div>
 
-
-    <!-- ANSWER -->
-
-    <div
-        class="answer-area"
-        id="answerArea"
-    >
-
-        <div class="answer-label">
-            FINAL ANSWER
-        </div>
-
-        <div
-            class="answer-box"
-            id="answerBox"
-        >
         </div>
 
 
-        <div class="solution-button-area">
+        <div class="solution" id="solutionBox">
+
+            <div class="solution-heading">
+                COMPLETE SOLUTION
+            </div>
+
+            <div id="solutionContent"></div>
+
+        </div>
+
+
+        <div class="action-row">
 
             <button
-                class="control-button"
+                class="action-button show-answer"
+                id="answerButton"
+                type="button">
+                SHOW ANSWER
+            </button>
+
+            <button
+                class="action-button show-solution"
                 id="solutionButton"
-                onclick="showSolution()"
-            >
+                type="button">
                 SHOW SOLUTION
             </button>
 
@@ -915,53 +734,40 @@ footer > p{
 
     </div>
 
-
-    <!-- SOLUTION -->
-
-    <div
-        class="solution-area"
-        id="solutionArea"
-    >
-
-        <h3 class="solution-title">
-            Complete solution
-        </h3>
-
-        <div id="solutionContent">
-        </div>
-
-    </div>
-
-
-    <!-- QUESTION NAVIGATION -->
-
-    <div class="question-navigation">
-
-        <button
-            class="navigation-button"
-            onclick="previousQuestion()"
-        >
-            ← PREVIOUS
-        </button>
-
-        <button
-            class="navigation-button"
-            onclick="nextQuestion()"
-        >
-            NEXT →
-        </button>
-
-    </div>
-
 </section>
 
 
+<div class="navigation">
+
+    <button
+        class="nav-button"
+        id="previousButton"
+        type="button">
+        ← PREVIOUS
+    </button>
+
+    <button
+        class="nav-button"
+        id="nextButton"
+        type="button">
+        NEXT →
+    </button>
+
+</div>
+
+
+<section class="index-section">
+
+    <div class="index-title">
+        QUESTION INDEX
+    </div>
+
+    <div class="index-grid" id="questionIndex"></div>
+
+</section>
+
 </main>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
@@ -986,10 +792,9 @@ footer > p{
 
 <script>
 
-
-/* ============================================================
+/* =========================================================
    SUPABASE
-============================================================ */
+========================================================= */
 
 const SUPABASE_URL =
     "https://majvqtbortonsrgdknms.supabase.co";
@@ -1006,4777 +811,1089 @@ const supabaseClient =
     );
 
 
-/* ============================================================
-   QUESTIONS
-============================================================ */
+/* =========================================================
+   QUESTION DATA
+========================================================= */
 
 const questions = [
 
-/* ============================================================
-   FOUNDATION
-============================================================ */
+/* ---------------------------------------------------------
+   FOUNDATION 01–10
+--------------------------------------------------------- */
 
 {
     number:1,
     level:"Foundation",
-
-    question:
-        "\\(\\displaystyle \\int 2x(x^2+1)^3\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac{(x^2+1)^4}{4}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <p>
-                Choose the inner expression:
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=x^2+1
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\frac{du}{dx}=2x
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=2x\\,dx
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <p>
-                Since \(x^2+1=u\) and \(2x\\,dx=du\):
-            </p>
-
-            <div class="solution-math">
-                \\[
-                \\int 2x(x^2+1)^3\\,dx
-                =
-                \\int u^3\\,du
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int u^3\\,du
-                =
-                \\frac{u^4}{4}+C
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{(x^2+1)^4}{4}+C
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int 2x(x^2+3)^4\\,dx\\]",
+    answer:"\\[\\frac{(x^2+3)^5}{5}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "The repeated inner expression is \(x^2+3\).",
+         "\\[u=x^2+3\\]"],
+        ["STEP 2 • FIND du",
+         "Differentiate with respect to \(x\).",
+         "\\[du=2x\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "Replace \(x^2+3\) with \(u\), and \(2x\\,dx\) with \(du\).",
+         "\\[\\int 2x(x^2+3)^4\\,dx=\\int u^4\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "Apply the power rule.",
+         "\\[\\int u^4\\,du=\\frac{u^5}{5}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "Replace \(u\) with \(x^2+3\).",
+         "\\[=\\frac{(x^2+3)^5}{5}+C\\]"]
+    ]
 },
-
 
 {
     number:2,
     level:"Foundation",
-
-    question:
-        "\\(\\displaystyle \\int 3x^2\\sqrt{x^3+2}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac{2}{3}(x^3+2)^{3/2}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=x^3+2
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=3x^2\\,dx
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\sqrt{x^3+2}
-                =
-                (x^3+2)^{1/2}
-                =
-                u^{1/2}
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int 3x^2\\sqrt{x^3+2}\\,dx
-                =
-                \\int u^{1/2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int u^{1/2}\\,du
-                =
-                \\frac{u^{3/2}}{3/2}+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{2}{3}u^{3/2}+C
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{2}{3}(x^3+2)^{3/2}+C
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int x\\sqrt{x^2+1}\\,dx\\]",
+    answer:"\\[\\frac{(x^2+1)^{3/2}}{3}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "Choose the expression inside the square root.",
+         "\\[u=x^2+1\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=2x\\,dx\\]"],
+        ["STEP 3 • ISOLATE x\\,dx",
+         "The integral contains \(x\\,dx\), so divide by 2.",
+         "\\[x\\,dx=\\frac12du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int x\\sqrt{x^2+1}\\,dx=\\frac12\\int u^{1/2}\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=\\frac12\\left(\\frac{u^{3/2}}{3/2}\\right)+C\\]",
+         "\\[=\\frac12\\left(\\frac23u^{3/2}\\right)+C\\]",
+         "\\[=\\frac{u^{3/2}}3+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=\\frac{(x^2+1)^{3/2}}3+C\\]"]
+    ]
 },
-
 
 {
     number:3,
     level:"Foundation",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{4x-1}{(2x^2-x+5)^2}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle -\\frac{1}{2x^2-x+5}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=2x^2-x+5
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=(4x-1)\\,dx
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{4x-1}{(2x^2-x+5)^2}
-                \\,dx
-                =
-                \\int u^{-2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int u^{-2}\\,du
-                =
-                \\frac{u^{-1}}{-1}+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =-u^{-1}+C
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =-\\frac{1}{2x^2-x+5}+C
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int \\frac{3x^2}{(x^3+4)^2}\\,dx\\]",
+    answer:"\\[-\\frac1{x^3+4}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^3+4\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=3x^2\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{3x^2}{(x^3+4)^2}\\,dx=\\int u^{-2}\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[\\int u^{-2}\\,du=\\frac{u^{-1}}{-1}+C\\]",
+         "\\[=-u^{-1}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=-\\frac1{x^3+4}+C\\]"]
+    ]
 },
-
 
 {
     number:4,
     level:"Foundation",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{x}{x^2+9}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac12\\ln(x^2+9)+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=x^2+9
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=2x\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                x\\,dx=\\frac12du
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int\\frac{x}{x^2+9}\\,dx
-                =
-                \\frac12\\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac12\\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac12\\ln|x^2+9|+C
-                \\]
-            </div>
-
-            <div class="solution-note">
-                Since \(x^2+9>0\) for every real \(x\),
-                the absolute value is unnecessary.
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac12\\ln(x^2+9)+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int(2x+1)(x^2+x+5)^3\\,dx\\]",
+    answer:"\\[\\frac{(x^2+x+5)^4}{4}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^2+x+5\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=(2x+1)\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int(2x+1)(x^2+x+5)^3\\,dx=\\int u^3\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[\\int u^3\\,du=\\frac{u^4}{4}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=\\frac{(x^2+x+5)^4}{4}+C\\]"]
+    ]
 },
-
 
 {
     number:5,
     level:"Foundation",
-
-    question:
-        "\\(\\displaystyle \\int 5e^{5x+1}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle e^{5x+1}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=5x+1
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=5\\,dx
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int5e^{5x+1}\\,dx
-                =
-                \\int e^u\\,du
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int e^u\\,du=e^u+C
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{e^{5x+1}+C}
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{6x}{3x^2+5}\\,dx\\]",
+    answer:"\\[\\ln|3x^2+5|+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=3x^2+5\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=6x\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{6x}{3x^2+5}\\,dx=\\int\\frac1u\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[\\int\\frac1u\\,du=\\ln|u|+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=\\ln|3x^2+5|+C\\]"]
+    ]
 },
-
 
 {
     number:6,
     level:"Foundation",
-
-    question:
-        "\\(\\displaystyle \\int \\cos x\\,\\sin^4x\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac{\\sin^5x}{5}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\sin x
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=\\cos x\\,dx
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int\\cos x\\sin^4x\\,dx
-                =
-                \\int u^4\\,du
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int u^4\\,du
-                =
-                \\frac{u^5}{5}+C
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac{\\sin^5x}{5}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{4x+1}{(2x^2+x+7)^3}\\,dx\\]",
+    answer:"\\[-\\frac1{2(2x^2+x+7)^2}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=2x^2+x+7\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=(4x+1)\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{4x+1}{(2x^2+x+7)^3}\\,dx=\\int u^{-3}\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[\\int u^{-3}\\,du=\\frac{u^{-2}}{-2}+C\\]",
+         "\\[=-\\frac1{2u^2}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=-\\frac1{2(2x^2+x+7)^2}+C\\]"]
+    ]
 },
-
 
 {
     number:7,
     level:"Foundation",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{\\sec^2x}{(\\tan x+3)^2}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle -\\frac{1}{\\tan x+3}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\tan x+3
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=\\sec^2x\\,dx
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int\\frac{\\sec^2x}{(\\tan x+3)^2}\\,dx
-                =
-                \\int u^{-2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int u^{-2}\\,du
-                =
-                -u^{-1}+C
-                \\]
-            </div>
-
-        </div>
-
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                -\\frac1{\\tan x+3}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int5x(x^2+4)^{2/3}\\,dx\\]",
+    answer:"\\[\\frac32(x^2+4)^{5/3}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^2+4\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=2x\\,dx\\]"],
+        ["STEP 3 • ISOLATE x\\,dx",
+         "\\[x\\,dx=\\frac12du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int5x(x^2+4)^{2/3}\\,dx=\\frac52\\int u^{2/3}\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=\\frac52\\left(\\frac{u^{5/3}}{5/3}\\right)+C\\]",
+         "\\[=\\frac52\\left(\\frac35u^{5/3}\\right)+C\\]",
+         "\\[=\\frac32u^{5/3}+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=\\frac32(x^2+4)^{5/3}+C\\]"]
+    ]
 },
-
 
 {
     number:8,
     level:"Foundation",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{2x+3}{x^2+3x+7}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\ln(x^2+3x+7)+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=x^2+3x+7
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=(2x+3)\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{2x+3}{x^2+3x+7}\\,dx
-                =
-                \\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int\\frac1u\\,du
-                =
-                \\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\ln|x^2+3x+7|+C
-                \\]
-            </div>
-
-            <div class="solution-note">
-                The quadratic \(x^2+3x+7\) is always positive because its
-                discriminant is \(9-28=-19<0\) and its leading coefficient
-                is positive.
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\ln(x^2+3x+7)+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{3x^2-2x}{(x^3-x^2+1)^4}\\,dx\\]",
+    answer:"\\[-\\frac1{3(x^3-x^2+1)^3}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^3-x^2+1\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=(3x^2-2x)\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{3x^2-2x}{(x^3-x^2+1)^4}\\,dx=\\int u^{-4}\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[\\int u^{-4}\\,du=\\frac{u^{-3}}{-3}+C\\]",
+         "\\[=-\\frac1{3u^3}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=-\\frac1{3(x^3-x^2+1)^3}+C\\]"]
+    ]
 },
-
-
-/* ============================================================
-   DEVELOPING
-============================================================ */
 
 {
     number:9,
-    level:"Developing",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{6x+2}{(3x^2+2x+1)^4}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle -\\frac{1}{3(3x^2+2x+1)^3}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=3x^2+2x+1
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=(6x+2)\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int\\frac{6x+2}{(3x^2+2x+1)^4}\\,dx
-                =
-                \\int u^{-4}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int u^{-4}\\,du
-                =
-                \\frac{u^{-3}}{-3}+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                -\\frac13u^{-3}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                -\\frac{1}{3(3x^2+2x+1)^3}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Foundation",
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{3x^2+1}{\\sqrt{x^3+x}}\\,dx\\]",
+    answer:"\\[2\\sqrt{x^3+x}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^3+x\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=(3x^2+1)\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{3x^2+1}{\\sqrt{x^3+x}}\\,dx=\\int u^{-1/2}\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[\\int u^{-1/2}\\,du=\\frac{u^{1/2}}{1/2}+C\\]",
+         "\\[=2u^{1/2}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=2\\sqrt{x^3+x}+C\\]"]
+    ]
 },
-
 
 {
     number:10,
-    level:"Developing",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{x}{\\sqrt{x^2+4}}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\sqrt{x^2+4}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=x^2+4
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=2x\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                x\\,dx=\\frac12du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\sqrt{x^2+4}=u^{1/2}
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int\\frac{x}{\\sqrt{x^2+4}}\\,dx
-                =
-                \\frac12\\int u^{-1/2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac12
-                \\left(
-                \\frac{u^{1/2}}{1/2}
-                \\right)
-                +C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =u^{1/2}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\sqrt{x^2+4}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Foundation",
+    title:"Evaluate the integral.",
+    question:"\\[\\int(3x^2+1)e^{x^3+x}\\,dx\\]",
+    answer:"\\[e^{x^3+x}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^3+x\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=(3x^2+1)\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int(3x^2+1)e^{x^3+x}\\,dx=\\int e^u\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[\\int e^u\\,du=e^u+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=e^{x^3+x}+C\\]"]
+    ]
 },
 
+
+/* ---------------------------------------------------------
+   DEVELOPING 11–20
+--------------------------------------------------------- */
 
 {
     number:11,
     level:"Developing",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{2x}{x^2+1}\\ln(x^2+1)\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac12[\\ln(x^2+1)]^2+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <p>
-                Choose the logarithm itself:
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln(x^2+1)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{1}{x^2+1}(2x)\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{2x}{x^2+1}\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{2x}{x^2+1}
-                \\ln(x^2+1)\\,dx
-                =
-                \\int u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int u\\,du
-                =
-                \\frac{u^2}{2}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac12[\\ln(x^2+1)]^2+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\cos(3x+1)\\,dx\\]",
+    answer:"\\[\\frac13\\sin(3x+1)+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=3x+1\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=3\\,dx\\]"],
+        ["STEP 3 • ISOLATE dx",
+         "\\[dx=\\frac13du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int\\cos(3x+1)\\,dx=\\frac13\\int\\cos u\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=\\frac13\\sin u+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=\\frac13\\sin(3x+1)+C\\]"]
+    ]
 },
-
 
 {
     number:12,
     level:"Developing",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{2x}{(x^2+1)\\ln(x^2+1)}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\ln|\\ln(x^2+1)|+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln(x^2+1)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{2x}{x^2+1}\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{2x}{(x^2+1)\\ln(x^2+1)}
-                \\,dx
-                =
-                \\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int\\frac1u\\,du
-                =
-                \\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\ln|\\ln(x^2+1)|+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\sin(5x-2)\\,dx\\]",
+    answer:"\\[-\\frac15\\cos(5x-2)+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=5x-2\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=5\\,dx\\]"],
+        ["STEP 3 • ISOLATE dx",
+         "\\[dx=\\frac15du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int\\sin(5x-2)\\,dx=\\frac15\\int\\sin u\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=\\frac15(-\\cos u)+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=-\\frac15\\cos(5x-2)+C\\]"]
+    ]
 },
-
 
 {
     number:13,
     level:"Developing",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{3x^2}{\\sqrt{x^3+5}}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle 2\\sqrt{x^3+5}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=x^3+5
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=3x^2\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{3x^2}{\\sqrt{x^3+5}}\\,dx
-                =
-                \\int u^{-1/2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{u^{1/2}}{1/2}+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =2u^{1/2}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                2\\sqrt{x^3+5}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{x}{(x^2+9)^2}\\,dx\\]",
+    answer:"\\[-\\frac1{2(x^2+9)}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^2+9\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=2x\\,dx\\]"],
+        ["STEP 3 • ISOLATE x\\,dx",
+         "\\[x\\,dx=\\frac12du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int\\frac{x}{(x^2+9)^2}\\,dx=\\frac12\\int u^{-2}\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=\\frac12(-u^{-1})+C\\]",
+         "\\[=-\\frac1{2u}+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=-\\frac1{2(x^2+9)}+C\\]"]
+    ]
 },
-
 
 {
     number:14,
     level:"Developing",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{2x-4}{x^2-4x+7}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\ln(x^2-4x+7)+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=x^2-4x+7
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=(2x-4)\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{2x-4}{x^2-4x+7}\\,dx
-                =
-                \\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =\\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =\\ln|x^2-4x+7|+C
-                \\]
-            </div>
-
-            <div class="solution-note">
-                Since
-                \(x^2-4x+7=(x-2)^2+3>0\),
-                the absolute value may be removed.
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\ln(x^2-4x+7)+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int e^{2x+1}\\,dx\\]",
+    answer:"\\[\\frac12e^{2x+1}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=2x+1\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=2\\,dx\\]"],
+        ["STEP 3 • ISOLATE dx",
+         "\\[dx=\\frac12du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int e^{2x+1}\\,dx=\\frac12\\int e^u\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=\\frac12e^u+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=\\frac12e^{2x+1}+C\\]"]
+    ]
 },
-
 
 {
     number:15,
     level:"Developing",
-
-    question:
-        "\\(\\displaystyle \\int \\sin(2x)\\cos^5(2x)\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle -\\frac{\\cos^6(2x)}{12}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\cos(2x)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\frac{du}{dx}
-                =
-                -2\\sin(2x)
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=-2\\sin(2x)\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\sin(2x)\\,dx=-\\frac12du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int\\sin(2x)\\cos^5(2x)\\,dx
-                =
-                -\\frac12\\int u^5\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                -\\frac12
-                \\left(
-                \\frac{u^6}{6}
-                \\right)+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                -\\frac{u^6}{12}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                -\\frac{\\cos^6(2x)}{12}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{2x}{\\sqrt{x^2+4}}\\,dx\\]",
+    answer:"\\[2\\sqrt{x^2+4}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^2+4\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=2x\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{2x}{\\sqrt{x^2+4}}\\,dx=\\int u^{-1/2}\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=\\frac{u^{1/2}}{1/2}+C\\]",
+         "\\[=2u^{1/2}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=2\\sqrt{x^2+4}+C\\]"]
+    ]
 },
-
 
 {
     number:16,
     level:"Developing",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{\\tan x\\sec^2x}{1+\\tan^2x}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac12\\ln(1+\\tan^2x)+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <p>
-                The denominator is the useful inner expression:
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=1+\\tan^2x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                2\\tan x\\sec^2x\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\tan x\\sec^2x\\,dx
-                =
-                \\frac12du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{\\tan x\\sec^2x}
-                {1+\\tan^2x}\\,dx
-                =
-                \\frac12
-                \\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac12\\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac12\\ln(1+\\tan^2x)+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{4x}{x^2+1}\\,dx\\]",
+    answer:"\\[2\\ln|x^2+1|+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^2+1\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=2x\\,dx\\]"],
+        ["STEP 3 • MATCH THE DIFFERENTIAL",
+         "\\[4x\\,dx=2(2x\\,dx)=2du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int\\frac{4x}{x^2+1}\\,dx=2\\int\\frac1u\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=2\\ln|u|+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=2\\ln|x^2+1|+C\\]"]
+    ]
 },
-
-
-/* ============================================================
-   INTERMEDIATE
-============================================================ */
 
 {
     number:17,
-    level:"Intermediate",
-
-    question:
-        "\\(\\displaystyle \\int (4x+1)e^{2x^2+x}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle e^{2x^2+x}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=2x^2+x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=(4x+1)\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int(4x+1)e^{2x^2+x}\\,dx
-                =
-                \\int e^u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int e^u\\,du=e^u+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                e^{2x^2+x}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Developing",
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{6x^2}{(2x^3+5)^2}\\,dx\\]",
+    answer:"\\[-\\frac1{2x^3+5}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=2x^3+5\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=6x^2\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{6x^2}{(2x^3+5)^2}\\,dx=\\int u^{-2}\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=-u^{-1}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=-\\frac1{2x^3+5}+C\\]"]
+    ]
 },
-
 
 {
     number:18,
-    level:"Intermediate",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{2x+1}{x^2+x+1}\\ln(x^2+x+1)\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac12[\\ln(x^2+x+1)]^2+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln(x^2+x+1)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{2x+1}{x^2+x+1}\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{2x+1}{x^2+x+1}
-                \\ln(x^2+x+1)\\,dx
-                =
-                \\int u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int u\\,du
-                =
-                \\frac{u^2}{2}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac12[\\ln(x^2+x+1)]^2+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Developing",
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{2x+3}{x^2+3x+1}\\,dx\\]",
+    answer:"\\[\\ln|x^2+3x+1|+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "The numerator is the derivative of the denominator.",
+         "\\[u=x^2+3x+1\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=(2x+3)\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{2x+3}{x^2+3x+1}\\,dx=\\int\\frac1u\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=\\ln|u|+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=\\ln|x^2+3x+1|+C\\]"]
+    ]
 },
-
 
 {
     number:19,
-    level:"Intermediate",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{\\cos x}{(2+\\sin x)^3}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle -\\frac{1}{2(2+\\sin x)^2}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=2+\\sin x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=\\cos x\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{\\cos x}{(2+\\sin x)^3}\\,dx
-                =
-                \\int u^{-3}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{u^{-2}}{-2}+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                -\\frac{1}{2u^2}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                -\\frac{1}{2(2+\\sin x)^2}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Developing",
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{2x}{1+x^2}\\,dx\\]",
+    answer:"\\[\\ln(1+x^2)+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=1+x^2\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=2x\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{2x}{1+x^2}\\,dx=\\int\\frac1u\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=\\ln|u|+C\\]"],
+        ["STEP 5 • USE THE SIGN",
+         "Since \(1+x^2>0\), the absolute value is unnecessary.",
+         "\\[=\\ln(1+x^2)+C\\]"]
+    ]
 },
-
 
 {
     number:20,
-    level:"Intermediate",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{\\sin x}{(3+\\cos x)^2}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac{1}{3+\\cos x}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=3+\\cos x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=-\\sin x\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\sin x\\,dx=-du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{\\sin x}{(3+\\cos x)^2}\\,dx
-                =
-                -\\int u^{-2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                -\\left(-u^{-1}\\right)+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =u^{-1}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac1{3+\\cos x}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Developing",
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{3x^2}{x^3+2}\\,dx\\]",
+    answer:"\\[\\ln|x^3+2|+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^3+2\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=3x^2\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{3x^2}{x^3+2}\\,dx=\\int\\frac1u\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=\\ln|u|+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=\\ln|x^3+2|+C\\]"]
+    ]
 },
 
+
+/* ---------------------------------------------------------
+   INTERMEDIATE 21–30
+--------------------------------------------------------- */
 
 {
     number:21,
     level:"Intermediate",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{(\\ln x)^3}{x}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac{(\\ln x)^4}{4}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=\\frac1x\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int\\frac{(\\ln x)^3}{x}\\,dx
-                =
-                \\int u^3\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{u^4}{4}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac{(\\ln x)^4}{4}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\sin x\\cos^4x\\,dx\\]",
+    answer:"\\[-\\frac{\\cos^5x}{5}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "The power of cosine suggests choosing cosine as \(u\).",
+         "\\[u=\\cos x\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=-\\sin x\\,dx\\]"],
+        ["STEP 3 • ISOLATE THE DIFFERENTIAL",
+         "\\[\\sin x\\,dx=-du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int\\sin x\\cos^4x\\,dx=-\\int u^4\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=-\\frac{u^5}{5}+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=-\\frac{\\cos^5x}{5}+C\\]"]
+    ]
 },
-
 
 {
     number:22,
     level:"Intermediate",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{1}{x\\ln x}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\ln|\\ln x|+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=\\frac1x\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac1{x\\ln x}\\,dx
-                =
-                \\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =\\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\ln|\\ln x|+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\tan x\\sec^2x\\,dx\\]",
+    answer:"\\[\\frac12\\tan^2x+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=\\tan x\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=\\sec^2x\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\tan x\\sec^2x\\,dx=\\int u\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=\\frac{u^2}{2}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=\\frac12\\tan^2x+C\\]"]
+    ]
 },
-
 
 {
     number:23,
     level:"Intermediate",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{e^x}{(1+e^x)^2}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle -\\frac{1}{1+e^x}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=1+e^x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=e^x\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{e^x}{(1+e^x)^2}\\,dx
-                =
-                \\int u^{-2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                -u^{-1}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                -\\frac1{1+e^x}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\sec^2(2x+1)\\,dx\\]",
+    answer:"\\[\\frac12\\tan(2x+1)+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=2x+1\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=2\\,dx\\]"],
+        ["STEP 3 • ISOLATE dx",
+         "\\[dx=\\frac12du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int\\sec^2(2x+1)\\,dx=\\frac12\\int\\sec^2u\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=\\frac12\\tan u+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=\\frac12\\tan(2x+1)+C\\]"]
+    ]
 },
-
 
 {
     number:24,
     level:"Intermediate",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{e^{2x}}{1+e^{2x}}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac12\\ln(1+e^{2x})+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=1+e^{2x}
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=2e^{2x}\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                e^{2x}\\,dx=\\frac12du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{e^{2x}}{1+e^{2x}}\\,dx
-                =
-                \\frac12\\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac12\\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac12\\ln(1+e^{2x})+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\sin(2x)\\cos^3(2x)\\,dx\\]",
+    answer:"\\[-\\frac18\\cos^4(2x)+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=\\cos(2x)\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=-2\\sin(2x)\\,dx\\]"],
+        ["STEP 3 • ISOLATE THE DIFFERENTIAL",
+         "\\[\\sin(2x)\\,dx=-\\frac12du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int\\sin(2x)\\cos^3(2x)\\,dx=-\\frac12\\int u^3\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=-\\frac12\\left(\\frac{u^4}{4}\\right)+C\\]",
+         "\\[=-\\frac18u^4+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=-\\frac18\\cos^4(2x)+C\\]"]
+    ]
 },
-
 
 {
     number:25,
     level:"Intermediate",
-
-    question:
-        "\\(\\displaystyle \\int x^2(x^3-1)^{-2/3}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle (x^3-1)^{1/3}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=x^3-1
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=3x^2\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                x^2\\,dx=\\frac13du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int x^2(x^3-1)^{-2/3}\\,dx
-                =
-                \\frac13
-                \\int u^{-2/3}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac13
-                \\left(
-                \\frac{u^{1/3}}{1/3}
-                \\right)+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =u^{1/3}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                (x^3-1)^{1/3}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{\\cos x}{1+\\sin x}\\,dx\\]",
+    answer:"\\[\\ln|1+\\sin x|+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=1+\\sin x\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=\\cos x\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{\\cos x}{1+\\sin x}\\,dx=\\int\\frac1u\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=\\ln|u|+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=\\ln|1+\\sin x|+C\\]"]
+    ]
 },
-
 
 {
     number:26,
     level:"Intermediate",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{3x^2+2}{(x^3+2x+7)^2}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle -\\frac{1}{x^3+2x+7}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=x^3+2x+7
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=(3x^2+2)\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{3x^2+2}{(x^3+2x+7)^2}\\,dx
-                =
-                \\int u^{-2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                -u^{-1}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                -\\frac1{x^3+2x+7}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{\\sec^2x}{(\\tan x+2)^3}\\,dx\\]",
+    answer:"\\[-\\frac1{2(\\tan x+2)^2}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=\\tan x+2\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=\\sec^2x\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{\\sec^2x}{(\\tan x+2)^3}\\,dx=\\int u^{-3}\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=\\frac{u^{-2}}{-2}+C\\]",
+         "\\[=-\\frac1{2u^2}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=-\\frac1{2(\\tan x+2)^2}+C\\]"]
+    ]
 },
-
-
-/* ============================================================
-   ADVANCED
-============================================================ */
 
 {
     number:27,
-    level:"Advanced",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{x}{x^2+1}[\\ln(x^2+1)]^2\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac16[\\ln(x^2+1)]^3+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln(x^2+1)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{2x}{x^2+1}\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\frac{x}{x^2+1}\\,dx
-                =
-                \\frac12du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{x}{x^2+1}
-                [\\ln(x^2+1)]^2\\,dx
-                =
-                \\frac12\\int u^2\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac12
-                \\left(
-                \\frac{u^3}{3}
-                \\right)+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =\\frac16u^3+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac16[\\ln(x^2+1)]^3+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Intermediate",
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{\\sin x}{\\sqrt{\\cos x}}\\,dx\\]",
+    answer:"\\[-2\\sqrt{\\cos x}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=\\cos x\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=-\\sin x\\,dx\\]"],
+        ["STEP 3 • ISOLATE THE DIFFERENTIAL",
+         "\\[\\sin x\\,dx=-du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int\\frac{\\sin x}{\\sqrt{\\cos x}}\\,dx=-\\int u^{-1/2}\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=-2u^{1/2}+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=-2\\sqrt{\\cos x}+C\\]"]
+    ]
 },
-
 
 {
     number:28,
-    level:"Advanced",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{2x}{(x^2+1)\\sqrt{\\ln(x^2+1)}}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle 2\\sqrt{\\ln(x^2+1)}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln(x^2+1)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{2x}{x^2+1}\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\sqrt{\\ln(x^2+1)}
-                =
-                u^{1/2}
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{2x}{(x^2+1)\\sqrt{\\ln(x^2+1)}}\\,dx
-                =
-                \\int u^{-1/2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{u^{1/2}}{1/2}+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =2u^{1/2}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                2\\sqrt{\\ln(x^2+1)}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Intermediate",
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\cos x\\,e^{\\sin x}\\,dx\\]",
+    answer:"\\[e^{\\sin x}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=\\sin x\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=\\cos x\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\cos x\\,e^{\\sin x}\\,dx=\\int e^u\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=e^u+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=e^{\\sin x}+C\\]"]
+    ]
 },
-
 
 {
     number:29,
-    level:"Advanced",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{\\sin x}{\\sqrt{1+\\cos x}}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle -2\\sqrt{1+\\cos x}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=1+\\cos x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=-\\sin x\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\sin x\\,dx=-du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{\\sin x}{\\sqrt{1+\\cos x}}\\,dx
-                =
-                -\\int u^{-1/2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                -\\frac{u^{1/2}}{1/2}+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =-2u^{1/2}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                -2\\sqrt{1+\\cos x}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Intermediate",
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{\\sin x}{2+\\cos x}\\,dx\\]",
+    answer:"\\[-\\ln|2+\\cos x|+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=2+\\cos x\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=-\\sin x\\,dx\\]"],
+        ["STEP 3 • ISOLATE THE DIFFERENTIAL",
+         "\\[\\sin x\\,dx=-du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int\\frac{\\sin x}{2+\\cos x}\\,dx=-\\int\\frac1u\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=-\\ln|u|+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=-\\ln|2+\\cos x|+C\\]"]
+    ]
 },
-
 
 {
     number:30,
-    level:"Advanced",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{\\cos x}{1+\\sin x}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\ln|1+\\sin x|+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=1+\\sin x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=\\cos x\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{\\cos x}{1+\\sin x}\\,dx
-                =
-                \\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =\\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\ln|1+\\sin x|+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Intermediate",
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{\\cos x}{\\sqrt{1+\\sin x}}\\,dx\\]",
+    answer:"\\[2\\sqrt{1+\\sin x}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=1+\\sin x\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=\\cos x\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{\\cos x}{\\sqrt{1+\\sin x}}\\,dx=\\int u^{-1/2}\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=2u^{1/2}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=2\\sqrt{1+\\sin x}+C\\]"]
+    ]
 },
 
+
+/* ---------------------------------------------------------
+   ADVANCED 31–38
+--------------------------------------------------------- */
 
 {
     number:31,
     level:"Advanced",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{x^3}{x^4+1}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac14\\ln(x^4+1)+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=x^4+1
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=4x^3\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                x^3\\,dx=\\frac14du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{x^3}{x^4+1}\\,dx
-                =
-                \\frac14\\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac14\\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac14\\ln(x^4+1)+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{2x+2}{\\sqrt{x^2+2x+5}}\\,dx\\]",
+    answer:"\\[2\\sqrt{x^2+2x+5}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^2+2x+5\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=(2x+2)\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{2x+2}{\\sqrt{x^2+2x+5}}\\,dx=\\int u^{-1/2}\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=2u^{1/2}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=2\\sqrt{x^2+2x+5}+C\\]"]
+    ]
 },
-
 
 {
     number:32,
     level:"Advanced",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{2x+1}{\\sqrt{x^2+x+3}}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle 2\\sqrt{x^2+x+3}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=x^2+x+3
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=(2x+1)\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{2x+1}{\\sqrt{x^2+x+3}}\\,dx
-                =
-                \\int u^{-1/2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{u^{1/2}}{1/2}+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =2u^{1/2}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                2\\sqrt{x^2+x+3}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int(2x+1)\\ln(x^2+x+4)\\,dx\\]",
+    answer:"\\[(x^2+x+4)\\ln(x^2+x+4)-(x^2+x+4)+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "The logarithm contains the repeated inner expression.",
+         "\\[u=x^2+x+4\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=(2x+1)\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int(2x+1)\\ln(x^2+x+4)\\,dx=\\int\\ln u\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "Use the antiderivative of \(\ln u\).",
+         "\\[\\int\\ln u\\,du=u\\ln u-u+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=(x^2+x+4)\\ln(x^2+x+4)-(x^2+x+4)+C\\]"]
+    ]
 },
-
 
 {
     number:33,
     level:"Advanced",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{3x^2+2x}{x^3+x^2+1}\\ln(x^3+x^2+1)\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac12[\\ln(x^3+x^2+1)]^2+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln(x^3+x^2+1)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{3x^2+2x}{x^3+x^2+1}\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{3x^2+2x}{x^3+x^2+1}
-                \\ln(x^3+x^2+1)\\,dx
-                =
-                \\int u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{u^2}{2}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac12[\\ln(x^3+x^2+1)]^2+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{(2x+1)\\ln(x^2+x+1)}{x^2+x+1}\\,dx\\]",
+    answer:"\\[\\frac12\\left[\\ln(x^2+x+1)\\right]^2+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^2+x+1\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=(2x+1)\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{(2x+1)\\ln(x^2+x+1)}{x^2+x+1}\\,dx"
+         +"=\\int\\frac{\\ln u}{u}\\,du\\]"],
+        ["STEP 4 • RECOGNIZE THE POWER OF ln",
+         "Let \(v=\\ln u\), so \(dv=\\frac1u\\,du\).",
+         "\\[\\int\\frac{\\ln u}{u}\\,du=\\int v\\,dv\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=\\frac{v^2}{2}+C\\]",
+         "\\[=\\frac12(\\ln u)^2+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=\\frac12\\left[\\ln(x^2+x+1)\\right]^2+C\\]"]
+    ]
 },
-
 
 {
     number:34,
     level:"Advanced",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{\\cos x}{\\sin x}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\ln|\\sin x|+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\sin x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=\\cos x\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{\\cos x}{\\sin x}\\,dx
-                =
-                \\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =\\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\ln|\\sin x|+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int2x\\,e^{x^2}\\,dx\\]",
+    answer:"\\[e^{x^2}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^2\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=2x\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int2x e^{x^2}\\,dx=\\int e^u\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=e^u+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=e^{x^2}+C\\]"]
+    ]
 },
-
 
 {
     number:35,
     level:"Advanced",
-
-    question:
-        "\\(\\displaystyle \\int_0^{\\pi/2}\\sin x\\cos^3x\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac14\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\cos x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=-\\sin x\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\sin x\\,dx=-du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • CHANGE THE LIMITS
-            </div>
-
-            <p>
-                When \(x=0\):
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=\\cos0=1
-                \\]
-            </div>
-
-            <p>
-                When \(x=\\frac\\pi2\):
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=\\cos\\frac\\pi2=0
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int_0^{\\pi/2}
-                \\sin x\\cos^3x\\,dx
-                =
-                -\\int_1^0u^3\\,du
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\int_0^1u^3\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\left[
-                \\frac{u^4}{4}
-                \\right]_0^1
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 6 • APPLY THE LIMITS
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{1^4}{4}
-                -
-                \\frac{0^4}{4}
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac14
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{3x^2+2}{(x^3+2x+7)^3}\\,dx\\]",
+    answer:"\\[-\\frac1{2(x^3+2x+7)^2}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^3+2x+7\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=(3x^2+2)\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{3x^2+2}{(x^3+2x+7)^3}\\,dx=\\int u^{-3}\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=\\frac{u^{-2}}{-2}+C\\]",
+         "\\[=-\\frac1{2u^2}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=-\\frac1{2(x^3+2x+7)^2}+C\\]"]
+    ]
 },
-
-
-/* ============================================================
-   CHALLENGE
-============================================================ */
 
 {
     number:36,
-    level:"Challenge",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{2x+2}{(x^2+2x+5)\\ln(x^2+2x+5)}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\ln|\\ln(x^2+2x+5)|+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <p>
-                The logarithm is the useful inner function:
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln(x^2+2x+5)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{2x+2}{x^2+2x+5}\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{2x+2}
-                {(x^2+2x+5)\\ln(x^2+2x+5)}
-                \\,dx
-                =
-                \\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =\\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\ln|\\ln(x^2+2x+5)|+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Advanced",
+    title:"Evaluate the integral.",
+    question:"\\[\\int x^2\\cos(x^3)\\,dx\\]",
+    answer:"\\[\\frac13\\sin(x^3)+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^3\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=3x^2\\,dx\\]"],
+        ["STEP 3 • ISOLATE x^2\\,dx",
+         "\\[x^2\\,dx=\\frac13du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int x^2\\cos(x^3)\\,dx=\\frac13\\int\\cos u\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=\\frac13\\sin u+C\\]"],
+        ["STEP 6 • SUBSTITUTE BACK",
+         "\\[=\\frac13\\sin(x^3)+C\\]"]
+    ]
 },
-
 
 {
     number:37,
-    level:"Challenge",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{\\cos x}{(2+\\sin x)\\ln(2+\\sin x)}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\ln|\\ln(2+\\sin x)|+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln(2+\\sin x)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{\\cos x}{2+\\sin x}\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{\\cos x}
-                {(2+\\sin x)\\ln(2+\\sin x)}
-                \\,dx
-                =
-                \\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =\\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\ln|\\ln(2+\\sin x)|+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Advanced",
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{2x+1}{\\sqrt{x^2+x+3}}\\,dx\\]",
+    answer:"\\[2\\sqrt{x^2+x+3}+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^2+x+3\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=(2x+1)\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{2x+1}{\\sqrt{x^2+x+3}}\\,dx=\\int u^{-1/2}\\,du\\]"],
+        ["STEP 4 • INTEGRATE",
+         "\\[=2u^{1/2}+C\\]"],
+        ["STEP 5 • SUBSTITUTE BACK",
+         "\\[=2\\sqrt{x^2+x+3}+C\\]"]
+    ]
 },
-
 
 {
     number:38,
-    level:"Challenge",
-
-    question:
-        "\\(\\displaystyle \\int_0^1\\frac{2x}{1+x^2}\\ln(1+x^2)\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac12(\\ln2)^2\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln(1+x^2)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{2x}{1+x^2}\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • CHANGE THE LIMITS
-            </div>
-
-            <p>
-                When \(x=0\):
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln(1)=0
-                \\]
-            </div>
-
-            <p>
-                When \(x=1\):
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln2
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int_0^1
-                \\frac{2x}{1+x^2}
-                \\ln(1+x^2)\\,dx
-                =
-                \\int_0^{\\ln2}u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\left[
-                \\frac{u^2}{2}
-                \\right]_0^{\\ln2}
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 6 • APPLY THE LIMITS
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{(\\ln2)^2}{2}
-                -
-                \\frac{0^2}{2}
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac12(\\ln2)^2
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    level:"Advanced",
+    title:"Evaluate the integral.",
+    question:"\\[\\int\\frac{2x\\ln(x^2+1)}{x^2+1}\\,dx\\]",
+    answer:"\\[\\frac12[\\ln(x^2+1)]^2+C\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^2+1\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=2x\\,dx\\]"],
+        ["STEP 3 • REWRITE",
+         "\\[\\int\\frac{2x\\ln(x^2+1)}{x^2+1}\\,dx"
+         +"=\\int\\frac{\\ln u}{u}\\,du\\]"],
+        ["STEP 4 • SECOND SUBSTITUTION",
+         "The resulting integral contains \(\ln u\) and \(1/u\). Let \(v=\\ln u\).",
+         "\\[dv=\\frac1u\\,du\\]"],
+        ["STEP 5 • REWRITE AGAIN",
+         "\\[\\int\\frac{\\ln u}{u}\\,du=\\int v\\,dv\\]"],
+        ["STEP 6 • INTEGRATE",
+         "\\[=\\frac{v^2}{2}+C\\]",
+         "\\[=\\frac12(\\ln u)^2+C\\]"],
+        ["STEP 7 • SUBSTITUTE BACK",
+         "\\[=\\frac12[\\ln(x^2+1)]^2+C\\]"]
+    ]
 },
 
+
+/* ---------------------------------------------------------
+   CHALLENGE 39–45
+--------------------------------------------------------- */
 
 {
     number:39,
     level:"Challenge",
-
-    question:
-        "\\(\\displaystyle \\int_0^{\\pi/2}\\frac{\\sin x}{1+\\cos x}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\ln2\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=1+\\cos x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=-\\sin x\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\sin x\\,dx=-du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • CHANGE THE LIMITS
-            </div>
-
-            <p>
-                When \(x=0\):
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=1+\\cos0=2
-                \\]
-            </div>
-
-            <p>
-                When \(x=\\frac\\pi2\):
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=1+\\cos\\frac\\pi2=1
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int_0^{\\pi/2}
-                \\frac{\\sin x}{1+\\cos x}\\,dx
-                =
-                -\\int_2^1\\frac1u\\,du
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\int_1^2\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                [\\ln u]_1^2
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 6 • APPLY THE LIMITS
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =\\ln2-\\ln1
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{\\ln2}
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the definite integral.",
+    question:"\\[\\int_0^1\\frac{2x}{(1+x^2)^2}\\,dx\\]",
+    answer:"\\[\\frac12\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=1+x^2\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=2x\\,dx\\]"],
+        ["STEP 3 • CHANGE THE LIMITS",
+         "When \(x=0\):",
+         "\\[u=1+0^2=1\\]",
+         "When \(x=1\):",
+         "\\[u=1+1^2=2\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int_0^1\\frac{2x}{(1+x^2)^2}\\,dx"
+         +"=\\int_1^2u^{-2}\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=\\left[-u^{-1}\\right]_1^2\\]"],
+        ["STEP 6 • APPLY THE LIMITS",
+         "\\[=-\\frac12-(-1)\\]",
+         "\\[=1-\\frac12\\]",
+         "\\[=\\frac12\\]"]
+    ]
 },
-
 
 {
     number:40,
     level:"Challenge",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{4x^3}{(x^4+1)\\ln(x^4+1)}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\ln|\\ln(x^4+1)|+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln(x^4+1)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{4x^3}{x^4+1}\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{4x^3}
-                {(x^4+1)\\ln(x^4+1)}
-                \\,dx
-                =
-                \\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =\\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\ln|\\ln(x^4+1)|+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the definite integral.",
+    question:"\\[\\int_0^{\\pi/2}\\sin x\\,e^{\\cos x}\\,dx\\]",
+    answer:"\\[e-1\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=\\cos x\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=-\\sin x\\,dx\\]"],
+        ["STEP 3 • ISOLATE THE DIFFERENTIAL",
+         "\\[\\sin x\\,dx=-du\\]"],
+        ["STEP 4 • CHANGE THE LIMITS",
+         "When \(x=0\):",
+         "\\[u=\\cos0=1\\]",
+         "When \(x=\\frac\\pi2\):",
+         "\\[u=\\cos\\frac\\pi2=0\\]"],
+        ["STEP 5 • REWRITE",
+         "\\[\\int_0^{\\pi/2}\\sin x e^{\\cos x}\\,dx"
+         +"=-\\int_1^0e^u\\,du\\]",
+         "\\[=\\int_0^1e^u\\,du\\]"],
+        ["STEP 6 • INTEGRATE",
+         "\\[=[e^u]_0^1\\]"],
+        ["STEP 7 • APPLY THE LIMITS",
+         "\\[=e^1-e^0\\]",
+         "\\[=e-1\\]"]
+    ]
 },
-
 
 {
     number:41,
     level:"Challenge",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{2x}{x^2+1}\\sqrt{1+\\ln(x^2+1)}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac23[1+\\ln(x^2+1)]^{3/2}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=1+\\ln(x^2+1)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{2x}{x^2+1}\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\sqrt{1+\\ln(x^2+1)}
-                =
-                u^{1/2}
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{2x}{x^2+1}
-                \\sqrt{1+\\ln(x^2+1)}
-                \\,dx
-                =
-                \\int u^{1/2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{u^{3/2}}{3/2}+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac23u^{3/2}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac23
-                [1+\\ln(x^2+1)]^{3/2}
-                +C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the definite integral.",
+    question:"\\[\\int_0^1\\frac{2x+1}{x^2+x+1}\\,dx\\]",
+    answer:"\\[\\ln3\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^2+x+1\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=(2x+1)\\,dx\\]"],
+        ["STEP 3 • CHANGE THE LIMITS",
+         "When \(x=0\):",
+         "\\[u=0^2+0+1=1\\]",
+         "When \(x=1\):",
+         "\\[u=1^2+1+1=3\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int_0^1\\frac{2x+1}{x^2+x+1}\\,dx"
+         +"=\\int_1^3\\frac1u\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=[\\ln|u|]_1^3\\]"],
+        ["STEP 6 • APPLY THE LIMITS",
+         "\\[=\\ln3-\\ln1\\]",
+         "\\[=\\ln3\\]"]
+    ]
 },
-
 
 {
     number:42,
     level:"Challenge",
-
-    question:
-        "\\(\\displaystyle \\int e^x\\sqrt{1+e^x}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac23(1+e^x)^{3/2}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=1+e^x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=e^x\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\sqrt{1+e^x}=u^{1/2}
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int e^x\\sqrt{1+e^x}\\,dx
-                =
-                \\int u^{1/2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac{u^{3/2}}{3/2}+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac23u^{3/2}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac23(1+e^x)^{3/2}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the definite integral.",
+    question:"\\[\\int_1^2\\frac{3x^2}{x^3+1}\\,dx\\]",
+    answer:"\\[\\ln\\left(\\frac92\\right)\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=x^3+1\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=3x^2\\,dx\\]"],
+        ["STEP 3 • CHANGE THE LIMITS",
+         "When \(x=1\):",
+         "\\[u=1^3+1=2\\]",
+         "When \(x=2\):",
+         "\\[u=2^3+1=9\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int_1^2\\frac{3x^2}{x^3+1}\\,dx"
+         +"=\\int_2^9\\frac1u\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=[\\ln|u|]_2^9\\]"],
+        ["STEP 6 • APPLY THE LIMITS",
+         "\\[=\\ln9-\\ln2\\]",
+         "\\[=\\ln\\left(\\frac92\\right)\\]"]
+    ]
 },
-
 
 {
     number:43,
     level:"Challenge",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{\\tan x}{1+\\ln(\\cos x)}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle -\\ln|1+\\ln(\\cos x)|+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <p>
-                The expression inside the denominator contains a logarithm,
-                so choose the entire denominator:
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=1+\\ln(\\cos x)
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{d}{dx}
-                [1+\\ln(\\cos x)]\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                \\frac{-\\sin x}{\\cos x}\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=-\\tan x\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\tan x\\,dx=-du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{\\tan x}{1+\\ln(\\cos x)}\\,dx
-                =
-                -\\int\\frac1u\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =-\\ln|u|+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                -\\ln|1+\\ln(\\cos x)|+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the definite integral.",
+    question:"\\[\\int_0^{\\pi/2}\\frac{\\cos x}{(1+\\sin x)^2}\\,dx\\]",
+    answer:"\\[\\frac12\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=1+\\sin x\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=\\cos x\\,dx\\]"],
+        ["STEP 3 • CHANGE THE LIMITS",
+         "When \(x=0\):",
+         "\\[u=1+\\sin0=1\\]",
+         "When \(x=\\frac\\pi2\):",
+         "\\[u=1+\\sin\\frac\\pi2=2\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int_0^{\\pi/2}\\frac{\\cos x}{(1+\\sin x)^2}\\,dx"
+         +"=\\int_1^2u^{-2}\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=\\left[-\\frac1u\\right]_1^2\\]"],
+        ["STEP 6 • APPLY THE LIMITS",
+         "\\[=-\\frac12-(-1)\\]",
+         "\\[=\\frac12\\]"]
+    ]
 },
-
 
 {
     number:44,
     level:"Challenge",
-
-    question:
-        "\\(\\displaystyle \\int \\frac{\\sin x\\cos x}{(1+\\sin^2x)^2}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle -\\frac{1}{2(1+\\sin^2x)}+C\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=1+\\sin^2x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=
-                2\\sin x\\cos x\\,dx
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\sin x\\cos x\\,dx
-                =
-                \\frac12du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int
-                \\frac{\\sin x\\cos x}
-                {(1+\\sin^2x)^2}\\,dx
-                =
-                \\frac12\\int u^{-2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac12
-                \\left(
-                -u^{-1}
-                \\right)+C
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                -\\frac1{2u}+C
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • SUBSTITUTE BACK
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                -\\frac{1}{2(1+\\sin^2x)}+C
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the definite integral.",
+    question:"\\[\\int_0^{\\pi/4}\\tan x\\sec^2x\\,dx\\]",
+    answer:"\\[\\frac12\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "\\[u=\\tan x\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=\\sec^2x\\,dx\\]"],
+        ["STEP 3 • CHANGE THE LIMITS",
+         "When \(x=0\):",
+         "\\[u=\\tan0=0\\]",
+         "When \(x=\\frac\\pi4\):",
+         "\\[u=\\tan\\frac\\pi4=1\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int_0^{\\pi/4}\\tan x\\sec^2x\\,dx"
+         +"=\\int_0^1u\\,du\\]"],
+        ["STEP 5 • INTEGRATE",
+         "\\[=\\left[\\frac{u^2}{2}\\right]_0^1\\]"],
+        ["STEP 6 • APPLY THE LIMITS",
+         "\\[=\\frac{1^2}{2}-\\frac{0^2}{2}\\]",
+         "\\[=\\frac12\\]"]
+    ]
 },
-
 
 {
     number:45,
     level:"Challenge",
-
-    question:
-        "\\(\\displaystyle \\int_2^{e^2}\\frac{1}{x(\\ln x)^2}\\,dx\\)",
-
-    answer:
-        "\\(\\displaystyle \\frac{1}{\\ln2}-\\frac12\\)",
-
-    solution:`
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 1 • CHOOSE u
-            </div>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln x
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 2 • FIND du
-            </div>
-
-            <div class="solution-math">
-                \\[
-                du=\\frac1x\\,dx
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 3 • CHANGE THE LIMITS
-            </div>
-
-            <p>
-                When \(x=2\):
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln2
-                \\]
-            </div>
-
-            <p>
-                When \(x=e^2\):
-            </p>
-
-            <div class="solution-math">
-                \\[
-                u=\\ln(e^2)=2
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 4 • REWRITE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\int_2^{e^2}
-                \\frac{1}{x(\\ln x)^2}\\,dx
-                =
-                \\int_{\\ln2}^{2}
-                u^{-2}\\,du
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 5 • INTEGRATE
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\left[
-                -u^{-1}
-                \\right]_{\\ln2}^{2}
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\left[
-                -\\frac1u
-                \\right]_{\\ln2}^{2}
-                \\]
-            </div>
-
-        </div>
-
-        <div class="solution-step">
-
-            <div class="solution-step-label">
-                STEP 6 • APPLY THE LIMITS
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                -\\frac12
-                -
-                \\left(
-                -\\frac1{\\ln2}
-                \\right)
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                =
-                \\frac1{\\ln2}-\\frac12
-                \\]
-            </div>
-
-            <div class="solution-math">
-                \\[
-                \\boxed{
-                \\frac1{\\ln2}-\\frac12
-                }
-                \\]
-            </div>
-
-        </div>
-
-    `
+    title:"Evaluate the definite integral.",
+    question:"\\[\\int_1^2\\frac{x}{(x^2+1)\\ln(x^2+1)}\\,dx\\]",
+    answer:"\\[\\frac12\\ln\\left(\\frac{\\ln5}{\\ln2}\\right)\\]",
+    steps:[
+        ["STEP 1 • CHOOSE u",
+         "The logarithm contains \(x^2+1\), but the denominator also contains that expression. Start with",
+         "\\[u=x^2+1\\]"],
+        ["STEP 2 • FIND du",
+         "\\[du=2x\\,dx\\]"],
+        ["STEP 3 • ISOLATE x\\,dx",
+         "\\[x\\,dx=\\frac12du\\]"],
+        ["STEP 4 • REWRITE",
+         "\\[\\int_1^2\\frac{x}{(x^2+1)\\ln(x^2+1)}\\,dx"
+         +"=\\frac12\\int\\frac1{u\\ln u}\\,du\\]"],
+        ["STEP 5 • SECOND SUBSTITUTION",
+         "The factor \(1/(u\\ln u)\) suggests a second substitution.",
+         "\\[v=\\ln u\\]",
+         "\\[dv=\\frac1u\\,du\\]"],
+        ["STEP 6 • CHANGE THE LIMITS AGAIN",
+         "When \(x=1\), \(u=2\), so",
+         "\\[v=\\ln2\\]",
+         "When \(x=2\), \(u=5\), so",
+         "\\[v=\\ln5\\]"],
+        ["STEP 7 • REWRITE",
+         "\\[\\frac12\\int_{\\ln2}^{\\ln5}\\frac1v\\,dv\\]"],
+        ["STEP 8 • INTEGRATE",
+         "\\[=\\frac12[\\ln|v|]_{\\ln2}^{\\ln5}\\]"],
+        ["STEP 9 • APPLY THE LIMITS",
+         "\\[=\\frac12\\left(\\ln(\\ln5)-\\ln(\\ln2)\\right)\\]"],
+        ["STEP 10 • SIMPLIFY",
+         "\\[=\\frac12\\ln\\left(\\frac{\\ln5}{\\ln2}\\right)\\]"]
+    ]
 }
 
 ];
 
 
-/* ============================================================
-   STATE
-============================================================ */
-
-let currentQuestion = 1;
-
-let currentFilter = "all";
-
-
-/* ============================================================
-   ELEMENTS
-============================================================ */
-
-const questionGrid =
-    document.getElementById("questionGrid");
-
-const questionLevel =
-    document.getElementById("questionLevel");
+/* =========================================================
+   DOM ELEMENTS
+========================================================= */
 
 const questionNumber =
     document.getElementById("questionNumber");
 
+const questionLevel =
+    document.getElementById("questionLevel");
+
+const questionTitle =
+    document.getElementById("questionTitle");
+
 const questionMath =
     document.getElementById("questionMath");
 
-const answerArea =
-    document.getElementById("answerArea");
+const answerMath =
+    document.getElementById("answerMath");
 
 const answerBox =
     document.getElementById("answerBox");
 
-const solutionArea =
-    document.getElementById("solutionArea");
+const solutionBox =
+    document.getElementById("solutionBox");
 
 const solutionContent =
     document.getElementById("solutionContent");
@@ -5787,230 +1904,359 @@ const answerButton =
 const solutionButton =
     document.getElementById("solutionButton");
 
+const previousButton =
+    document.getElementById("previousButton");
 
-/* ============================================================
-   FILTER
-============================================================ */
+const nextButton =
+    document.getElementById("nextButton");
 
-function filterLevel(level){
+const currentNumber =
+    document.getElementById("currentNumber");
 
-    currentFilter = level;
+const questionIndex =
+    document.getElementById("questionIndex");
 
-    document
-        .querySelectorAll(".level-button")
-        .forEach(button => {
-
-            button.classList.remove("active");
-
-            if(button.dataset.level === level){
-
-                button.classList.add("active");
-
-            }
-
-        });
-
-    buildQuestionGrid();
-
-}
+const levelFilter =
+    document.getElementById("levelFilter");
 
 
-/* ============================================================
-   QUESTION GRID
-============================================================ */
-
-function buildQuestionGrid(){
-
-    questionGrid.innerHTML = "";
-
-    questions.forEach(question => {
-
-        if(
-            currentFilter !== "all" &&
-            question.level !== currentFilter
-        ){
-
-            return;
-
-        }
-
-        const button =
-            document.createElement("button");
-
-        button.className =
-            "number-button";
-
-        button.textContent =
-            question.number;
-
-        if(question.number === currentQuestion){
-
-            button.classList.add("active");
-
-        }
-
-        button.onclick = function(){
-
-            currentQuestion =
-                question.number;
-
-            renderQuestion();
-
-        };
-
-        questionGrid.appendChild(button);
-
-    });
-
-}
+let visibleQuestions = [...questions];
+let currentPosition = 0;
 
 
-/* ============================================================
+/* =========================================================
    RENDER QUESTION
-============================================================ */
+========================================================= */
 
 function renderQuestion(){
 
-    const question =
-        questions.find(
-            item =>
-                item.number === currentQuestion
-        );
+    const q =
+        visibleQuestions[currentPosition];
 
-    if(!question){
-
+    if(!q){
         return;
-
     }
-
-
-    questionLevel.textContent =
-        question.level.toUpperCase();
-
 
     questionNumber.textContent =
         "QUESTION " +
-        String(question.number).padStart(2,"0") +
-        " / 45";
+        String(q.number).padStart(2,"0");
 
+    questionLevel.textContent =
+        q.level.toUpperCase();
+
+    questionTitle.textContent =
+        q.title;
 
     questionMath.innerHTML =
-        question.question;
+        q.question;
 
+    answerMath.innerHTML =
+        q.answer;
 
-    answerBox.innerHTML =
-        question.answer;
+    answerBox.style.display =
+        "none";
 
+    solutionBox.style.display =
+        "none";
+
+    solutionButton.style.display =
+        "none";
+
+    answerButton.textContent =
+        "SHOW ANSWER";
+
+    solutionButton.textContent =
+        "SHOW SOLUTION";
 
     solutionContent.innerHTML =
-        question.solution;
+        q.steps.map(step => {
+
+            const title = step[0];
+
+            const parts = step.slice(1);
+
+            return `
+                <div class="solution-step">
+
+                    <div class="solution-step-title">
+                        ${title}
+                    </div>
+
+                    ${parts.map(part => {
+
+                        if(
+                            part.trim().startsWith("\\[") ||
+                            part.trim().startsWith("\\(")
+                        ){
+                            return `
+                                <div class="solution-math">
+                                    ${part}
+                                </div>
+                            `;
+                        }
+
+                        return `
+                            <p>${part}</p>
+                        `;
+
+                    }).join("")}
+
+                </div>
+            `;
+
+        }).join("");
+
+    currentNumber.textContent =
+        String(q.number).padStart(2,"0");
+
+    previousButton.disabled =
+        currentPosition === 0;
+
+    nextButton.disabled =
+        currentPosition === visibleQuestions.length - 1;
+
+    renderIndex();
+
+    typeset();
+
+}
 
 
-    resetQuestion();
+/* =========================================================
+   MATHJAX
+========================================================= */
 
-
-    buildQuestionGrid();
-
+function typeset(){
 
     if(window.MathJax){
 
         MathJax.typesetPromise([
             questionMath,
-            answerBox,
+            answerMath,
             solutionContent
-        ]);
+        ]).catch(error => {
+            console.error(
+                "MathJax error:",
+                error
+            );
+        });
 
     }
 
 }
 
 
-/* ============================================================
+/* =========================================================
+   QUESTION INDEX
+========================================================= */
+
+function renderIndex(){
+
+    questionIndex.innerHTML = "";
+
+    visibleQuestions.forEach(
+        (q,index) => {
+
+            const button =
+                document.createElement("button");
+
+            button.type = "button";
+
+            button.className =
+                "index-button";
+
+            if(index === currentPosition){
+
+                button.classList.add(
+                    "active"
+                );
+
+            }
+
+            button.textContent =
+                String(q.number).padStart(2,"0");
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    currentPosition =
+                        index;
+
+                    renderQuestion();
+
+                    window.scrollTo({
+                        top:0,
+                        behavior:"smooth"
+                    });
+
+                }
+            );
+
+            questionIndex.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
    SHOW ANSWER
-============================================================ */
+========================================================= */
 
-function showAnswer(){
+answerButton.addEventListener(
+    "click",
+    () => {
 
-    answerArea.classList.add("visible");
+        const isVisible =
+            answerBox.style.display === "block";
 
-    answerButton.textContent =
-        "ANSWER SHOWN";
+        if(isVisible){
 
-    answerButton.disabled = true;
+            answerBox.style.display =
+                "none";
 
-    if(window.MathJax){
+            solutionButton.style.display =
+                "none";
 
-        MathJax.typesetPromise([
-            answerBox
-        ]);
+            solutionBox.style.display =
+                "none";
+
+            answerButton.textContent =
+                "SHOW ANSWER";
+
+        }else{
+
+            answerBox.style.display =
+                "block";
+
+            solutionButton.style.display =
+                "inline-block";
+
+            answerButton.textContent =
+                "HIDE ANSWER";
+
+            typeset();
+
+        }
 
     }
+);
 
-}
 
-
-/* ============================================================
+/* =========================================================
    SHOW SOLUTION
-============================================================ */
+========================================================= */
 
-function showSolution(){
+solutionButton.addEventListener(
+    "click",
+    () => {
 
-    solutionArea.classList.add("visible");
+        const isVisible =
+            solutionBox.style.display === "block";
 
-    solutionButton.textContent =
-        "SOLUTION SHOWN";
+        if(isVisible){
 
-    solutionButton.disabled = true;
+            solutionBox.style.display =
+                "none";
 
-    if(window.MathJax){
+            solutionButton.textContent =
+                "SHOW SOLUTION";
 
-        MathJax.typesetPromise([
-            solutionContent
-        ]);
+        }else{
+
+            solutionBox.style.display =
+                "block";
+
+            solutionButton.textContent =
+                "HIDE SOLUTION";
+
+            typeset();
+
+        }
 
     }
-
-}
-
-
-/* ============================================================
-   RESET
-============================================================ */
-
-function resetQuestion(){
-
-    answerArea.classList.remove(
-        "visible"
-    );
-
-    solutionArea.classList.remove(
-        "visible"
-    );
-
-    answerButton.textContent =
-        "SHOW ANSWER";
-
-    answerButton.disabled =
-        false;
-
-    solutionButton.textContent =
-        "SHOW SOLUTION";
-
-    solutionButton.disabled =
-        false;
-
-}
+);
 
 
-/* ============================================================
-   PREVIOUS
-============================================================ */
+/* =========================================================
+   NEXT / PREVIOUS
+========================================================= */
 
-function previousQuestion(){
+nextButton.addEventListener(
+    "click",
+    () => {
 
-    if(currentQuestion > 1){
+        if(
+            currentPosition <
+            visibleQuestions.length - 1
+        ){
 
-        currentQuestion--;
+            currentPosition++;
+
+            renderQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        }
+
+    }
+);
+
+
+previousButton.addEventListener(
+    "click",
+    () => {
+
+        if(currentPosition > 0){
+
+            currentPosition--;
+
+            renderQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+levelFilter.addEventListener(
+    "change",
+    () => {
+
+        const selected =
+            levelFilter.value;
+
+        if(selected === "all"){
+
+            visibleQuestions =
+                [...questions];
+
+        }else{
+
+            visibleQuestions =
+                questions.filter(
+                    q => q.level === selected
+                );
+
+        }
+
+        currentPosition = 0;
 
         renderQuestion();
 
@@ -6020,46 +2266,50 @@ function previousQuestion(){
         });
 
     }
+);
 
-}
 
+/* =========================================================
+   KEYBOARD NAVIGATION
+========================================================= */
 
-/* ============================================================
-   NEXT
-============================================================ */
+document.addEventListener(
+    "keydown",
+    event => {
 
-function nextQuestion(){
+        if(
+            event.key === "ArrowRight" &&
+            !nextButton.disabled
+        ){
 
-    if(currentQuestion < questions.length){
+            nextButton.click();
 
-        currentQuestion++;
+        }
 
-        renderQuestion();
+        if(
+            event.key === "ArrowLeft" &&
+            !previousButton.disabled
+        ){
 
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
+            previousButton.click();
+
+        }
 
     }
+);
 
-}
 
-
-/* ============================================================
-   SESSION CHECK
-============================================================ */
+/* =========================================================
+   SESSION PROTECTION
+========================================================= */
 
 async function checkSession(){
 
     const {
-        data:{
-            session
-        },
+        data:{session},
         error
     } =
         await supabaseClient.auth.getSession();
-
 
     if(error){
 
@@ -6072,7 +2322,6 @@ async function checkSession(){
 
     }
 
-
     if(!session){
 
         window.location.href =
@@ -6082,28 +2331,21 @@ async function checkSession(){
 
     }
 
+    renderQuestion();
+
 }
 
 
-/* ============================================================
-   INITIALIZE
-============================================================ */
+/* =========================================================
+   START
+========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    async function(){
-
-        await checkSession();
-
-        buildQuestionGrid();
-
-        renderQuestion();
-
-    }
+    checkSession
 );
 
 </script>
 
 </body>
-
 </html>
