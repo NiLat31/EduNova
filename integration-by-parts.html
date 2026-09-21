@@ -698,6 +698,196 @@ main{
     border-color:#111;
 }
 
+    /* =========================
+   CONGRATULATIONS SECTION
+========================= */
+
+.congratulations-section {
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.congratulations-card {
+    width: min(760px, 100%);
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 24px;
+    padding: 55px 35px;
+    text-align: center;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.congrats-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.congratulations-card h2 {
+    margin: 0 0 15px;
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+    color: #111111;
+}
+
+.congratulations-card p {
+    margin: 8px auto;
+    max-width: 600px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #555555;
+}
+
+.congratulations-card strong {
+    color: #e00000;
+}
+
+.congrats-subtext {
+    font-size: 15px !important;
+    color: #777777 !important;
+}
+
+.congrats-line {
+    width: 55px;
+    height: 3px;
+    background: #e00000;
+    margin: 28px auto;
+    border-radius: 10px;
+}
+
+.congrats-badge {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: #111111;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+    /* =========================
+   QUESTIONS SECTION
+========================= */
+
+.questions-section {
+    padding: 90px 20px 100px;
+    background: #f8f8f8;
+}
+
+.questions-header {
+    max-width: 800px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.section-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #e00000;
+}
+
+.questions-header h2 {
+    margin: 0 0 15px;
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+    color: #111111;
+}
+
+.questions-header p {
+    margin: 0 auto;
+    max-width: 650px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #666666;
+}
+
+.questions-card {
+    width: min(850px, 100%);
+    margin: 0 auto 25px;
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.question-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.question-number {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #111111;
+}
+
+.question-level {
+    padding: 7px 13px;
+    border-radius: 20px;
+    background: #f1f1f1;
+    color: #555555;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.question-content {
+    padding: 5px 0 25px;
+}
+
+.question-text {
+    margin: 0 0 15px;
+    font-size: 17px;
+    color: #333333;
+}
+
+.math-expression {
+    overflow-x: auto;
+    padding: 10px 0;
+    font-size: 20px;
+}
+
+.answer-button {
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    background: #111111;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.answer-button:hover {
+    background: #e00000;
+}
+
+.answer-box {
+    display: none;
+    margin-top: 25px;
+    padding: 22px;
+    border-left: 3px solid #e00000;
+    background: #fafafa;
+    border-radius: 0 10px 10px 0;
+}
+
+.answer-box p {
+    margin-top: 0;
+    color: #333333;
+}
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -2361,7 +2551,93 @@ footer > p{
     </div>
 
 </section>
+<!-- =========================
+     CONGRATULATIONS SECTION
+========================= -->
 
+<section class="congratulations-section">
+    <div class="congratulations-card">
+
+        <div class="congrats-icon">🎉</div>
+
+        <h2>Congratulations!</h2>
+
+        <p>
+            You have completed this lesson on
+            <strong>Integration by Parts</strong>.
+        </p>
+
+        <p class="congrats-subtext">
+            Take a moment to review the key ideas, then test your understanding
+            in the questions section below.
+        </p>
+
+        <div class="congrats-line"></div>
+
+        <span class="congrats-badge">
+            Lesson Completed
+        </span>
+
+    </div>
+</section>
+
+    <!-- =========================
+     QUESTIONS SECTION
+========================= -->
+
+<section class="questions-section" id="questions">
+
+    <div class="questions-header">
+
+        <span class="section-label">PRACTICE</span>
+
+        <h2>Test Your Understanding</h2>
+
+        <p>
+            Put your knowledge into practice with the questions below.
+            Work through each problem carefully and check your solution when you are ready.
+        </p>
+
+    </div>
+
+    <div class="questions-card">
+
+        <div class="question-top">
+            <span class="question-number">Question 01</span>
+            <span class="question-level">Foundation</span>
+        </div>
+
+        <div class="question-content">
+            <p class="question-text">
+                Evaluate:
+            </p>
+
+            <div class="math-expression">
+                \[
+                \int x e^x\,dx
+                \]
+            </div>
+        </div>
+
+        <button class="answer-button" onclick="toggleAnswer(1)">
+            SHOW ANSWER
+        </button>
+
+        <div class="answer-box" id="answer-1">
+            <p><strong>Answer:</strong></p>
+
+            <div class="math-expression">
+                \[
+                xe^x-e^x+C
+                \]
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Add more question cards here -->
+
+</section>
 
 <!-- =========================================================
      NAVIGATION
@@ -2547,6 +2823,23 @@ document.addEventListener(
 );
 
 </script>
+<script>
+function toggleAnswer(number) {
+    const answer = document.getElementById("answer-" + number);
+    const button = event.currentTarget;
 
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+        button.textContent = "SHOW ANSWER";
+    } else {
+        answer.style.display = "block";
+        button.textContent = "HIDE ANSWER";
+    }
+
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
+}
+</script>
 </body>
 </html>
