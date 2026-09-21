@@ -698,195 +698,190 @@ main{
     border-color:#111;
 }
 
-    /* =========================
-   CONGRATULATIONS SECTION
-========================= */
+   
+/* =========================================================
+   COMPLETION
+========================================================= */
 
-.congratulations-section {
-    padding: 80px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.completion-section{
+    position:relative;
+    overflow:hidden;
+    background:#111;
+    color:white;
+    margin-top:45px;
+    border:1px solid #111;
 }
 
-.congratulations-card {
-    width: min(760px, 100%);
-    background: #ffffff;
-    border: 1px solid #e8e8e8;
-    border-radius: 24px;
-    padding: 55px 35px;
-    text-align: center;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+.completion-party{
+    height:7px;
+    background:linear-gradient(
+        90deg,
+        #e52b20 0%,
+        #111 25%,
+        #e52b20 50%,
+        #111 75%,
+        #e52b20 100%
+    );
 }
 
-.congrats-icon {
-    font-size: 48px;
-    margin-bottom: 15px;
+.completion-content{
+    padding:55px 35px 60px;
+    text-align:center;
 }
 
-.congratulations-card h2 {
-    margin: 0 0 15px;
-    font-family: "Playfair Display", serif;
-    font-size: 38px;
-    color: #111111;
+.completion-label{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2.5px;
+    margin-bottom:13px;
 }
 
-.congratulations-card p {
-    margin: 8px auto;
-    max-width: 600px;
-    font-size: 17px;
-    line-height: 1.7;
-    color: #555555;
+.completion-content h2{
+    font-family:"Playfair Display",serif;
+    font-size:42px;
+    line-height:1.2;
+    margin-bottom:14px;
 }
 
-.congratulations-card strong {
-    color: #e00000;
+.completion-content p{
+    color:#bbb;
+    font-size:15px;
+    max-width:600px;
+    margin:0 auto 25px;
 }
 
-.congrats-subtext {
-    font-size: 15px !important;
-    color: #777777 !important;
+.complete-button{
+    border:1px solid #e52b20;
+    background:#e52b20;
+    color:white;
+    padding:13px 22px;
+    font-family:"DM Sans",sans-serif;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.4px;
+    cursor:pointer;
+    transition:.25s;
 }
 
-.congrats-line {
-    width: 55px;
-    height: 3px;
-    background: #e00000;
-    margin: 28px auto;
-    border-radius: 10px;
+.complete-button:hover{
+    background:white;
+    color:#111;
+    border-color:white;
 }
 
-.congrats-badge {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 30px;
-    background: #111111;
-    color: #ffffff;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+
+/* =========================================================
+   COMPLETED MESSAGE
+========================================================= */
+
+.completed-section{
+    display:none;
+    position:relative;
+    overflow:hidden;
+    background:#111;
+    color:white;
+    margin-top:45px;
+    border:1px solid #111;
 }
 
-    /* =========================
-   QUESTIONS SECTION
-========================= */
-
-.questions-section {
-    padding: 90px 20px 100px;
-    background: #f8f8f8;
+.completed-party{
+    height:7px;
+    background:linear-gradient(
+        90deg,
+        #e52b20 0%,
+        #111 25%,
+        #e52b20 50%,
+        #111 75%,
+        #e52b20 100%
+    );
 }
 
-.questions-header {
-    max-width: 800px;
-    margin: 0 auto 45px;
-    text-align: center;
+.completed-content{
+    padding:60px 35px 65px;
+    text-align:center;
 }
 
-.section-label {
-    display: inline-block;
-    margin-bottom: 12px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #e00000;
+.completed-label{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2.5px;
+    margin-bottom:13px;
 }
 
-.questions-header h2 {
-    margin: 0 0 15px;
-    font-family: "Playfair Display", serif;
-    font-size: 40px;
-    color: #111111;
+.completed-content h2{
+    font-family:"Playfair Display",serif;
+    font-size:46px;
+    line-height:1.2;
+    margin-bottom:15px;
 }
 
-.questions-header p {
-    margin: 0 auto;
-    max-width: 650px;
-    font-size: 16px;
-    line-height: 1.7;
-    color: #666666;
+.completed-content p{
+    color:#bbb;
+    font-size:15px;
+    margin:0 auto;
+    max-width:650px;
 }
 
-.questions-card {
-    width: min(850px, 100%);
-    margin: 0 auto 25px;
-    padding: 32px;
-    background: #ffffff;
-    border: 1px solid #e6e6e6;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+.completed-content strong{
+    color:white;
 }
 
-.question-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
+
+/* =========================================================
+   PRACTICE
+========================================================= */
+
+.practice-section{
+    background:white;
+    border:1px solid #ddd;
+    margin-top:30px;
+    padding:42px 36px;
 }
 
-.question-number {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    color: #111111;
+.practice-content{
+    text-align:center;
+    max-width:700px;
+    margin:auto;
 }
 
-.question-level {
-    padding: 7px 13px;
-    border-radius: 20px;
-    background: #f1f1f1;
-    color: #555555;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+.practice-label{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:10px;
 }
 
-.question-content {
-    padding: 5px 0 25px;
+.practice-content h2{
+    font-family:"Playfair Display",serif;
+    font-size:32px;
+    line-height:1.2;
+    margin-bottom:14px;
 }
 
-.question-text {
-    margin: 0 0 15px;
-    font-size: 17px;
-    color: #333333;
+.practice-content p{
+    color:#444;
+    font-size:15px;
+    max-width:620px;
+    margin:0 auto 24px;
 }
 
-.math-expression {
-    overflow-x: auto;
-    padding: 10px 0;
-    font-size: 20px;
+.practice-button{
+    display:inline-block;
+    background:#111;
+    color:white;
+    padding:13px 21px;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.4px;
+    transition:.25s;
 }
 
-.answer-button {
-    border: none;
-    padding: 12px 22px;
-    border-radius: 8px;
-    background: #111111;
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.7px;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-.answer-button:hover {
-    background: #e00000;
-}
-
-.answer-box {
-    display: none;
-    margin-top: 25px;
-    padding: 22px;
-    border-left: 3px solid #e00000;
-    background: #fafafa;
-    border-radius: 0 10px 10px 0;
-}
-
-.answer-box p {
-    margin-top: 0;
-    color: #333333;
+.practice-button:hover{
+    background:#e52b20;
 }
 /* =========================================================
    FOOTER
@@ -998,7 +993,29 @@ footer > p{
         align-items:flex-start;
     }
 
-}
+    .completion-content{
+        padding:45px 22px 50px;
+    }
+
+    .completion-content h2{
+        font-size:34px;
+    }
+
+    .completed-content{
+        padding:48px 22px 53px;
+    }
+
+    .completed-content h2{
+        font-size:37px;
+    }
+
+    .practice-section{
+        padding:34px 22px;
+    }
+
+    .practice-content h2{
+        font-size:27px;
+    }
 
 </style>
 </head>
@@ -2551,94 +2568,89 @@ footer > p{
     </div>
 
 </section>
-<!-- =========================
-     CONGRATULATIONS SECTION
-========================= -->
+<!-- =========================================================
+     COMPLETION
+========================================================= -->
 
-<section class="congratulations-section">
-    <div class="congratulations-card">
+<section class="completion-section" id="completionSection">
 
-        <div class="congrats-icon">🎉</div>
+    <div class="completion-party"></div>
+
+    <div class="completion-content">
+
+        <div class="completion-label">
+            LESSON 08 / 08
+        </div>
+
+        <h2>Lesson complete?</h2>
+
+        <p>
+            You have reached the end of the explanation.
+            Mark this lesson as complete to save your progress.
+        </p>
+
+        <button class="complete-button" id="completeLessonBtn">
+            ✓ COMPLETE LESSON
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COMPLETED MESSAGE
+========================================================= -->
+
+<section class="completed-section" id="completedSection">
+
+    <div class="completed-party"></div>
+
+    <div class="completed-content">
+
+        <div class="completed-label">
+            INTEGRATION • TOPIC 08
+        </div>
 
         <h2>Congratulations!</h2>
 
         <p>
-            You have completed this lesson on
-            <strong>Integration by Parts</strong>.
+            You completed <strong>Integration by Parts</strong>.
+            Your progress has been saved.
         </p>
-
-        <p class="congrats-subtext">
-            Take a moment to review the key ideas, then test your understanding
-            in the questions section below.
-        </p>
-
-        <div class="congrats-line"></div>
-
-        <span class="congrats-badge">
-            Lesson Completed
-        </span>
 
     </div>
+
 </section>
 
-    <!-- =========================
-     QUESTIONS SECTION
-========================= -->
 
-<section class="questions-section" id="questions">
+<!-- =========================================================
+     PRACTICE
+========================================================= -->
 
-    <div class="questions-header">
+<section class="practice-section">
 
-        <span class="section-label">PRACTICE</span>
+    <div class="practice-content">
 
-        <h2>Test Your Understanding</h2>
+        <div class="practice-label">
+            READY TO PRACTISE?
+        </div>
+
+        <h2>Test your understanding.</h2>
 
         <p>
-            Put your knowledge into practice with the questions below.
-            Work through each problem carefully and check your solution when you are ready.
+            Test your understanding with a set of integration by parts
+            questions, from straightforward examples to more demanding
+            problems.
         </p>
 
-    </div>
-
-    <div class="questions-card">
-
-        <div class="question-top">
-            <span class="question-number">Question 01</span>
-            <span class="question-level">Foundation</span>
-        </div>
-
-        <div class="question-content">
-            <p class="question-text">
-                Evaluate:
-            </p>
-
-            <div class="math-expression">
-                \[
-                \int x e^x\,dx
-                \]
-            </div>
-        </div>
-
-        <button class="answer-button" onclick="toggleAnswer(1)">
-            SHOW ANSWER
-        </button>
-
-        <div class="answer-box" id="answer-1">
-            <p><strong>Answer:</strong></p>
-
-            <div class="math-expression">
-                \[
-                xe^x-e^x+C
-                \]
-            </div>
-        </div>
+        <a href="integration-by-parts-questions.html" class="practice-button">
+            GO TO QUESTIONS →
+        </a>
 
     </div>
-
-    <!-- Add more question cards here -->
 
 </section>
-
 <!-- =========================================================
      NAVIGATION
 ========================================================= -->
