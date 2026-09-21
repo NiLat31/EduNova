@@ -2833,7 +2833,96 @@ document.addEventListener(
     "DOMContentLoaded",
     checkSession
 );
+/* =========================================================
+   LESSON COMPLETION
+========================================================= */
 
+const completeLessonBtn =
+    document.getElementById("completeLessonBtn");
+
+const completionSection =
+    document.getElementById("completionSection");
+
+const completedSection =
+    document.getElementById("completedSection");
+
+
+completeLessonBtn.addEventListener(
+    "click",
+    async () => {
+
+        const {
+            data:{session},
+            error
+        } =
+            await supabaseClient.auth.getSession();
+
+        if(error){
+
+            console.error(
+                "Session error:",
+                error
+            );
+
+            return;
+
+        }
+
+        if(!session){
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
+
+
+        const { error: saveError } =
+            await supabaseClient
+                .from("lesson_progress")
+                .upsert({
+                    user_id: session.user.id,
+                    chapter: "Integration",
+                    topic_number: 8,
+                    completed_at:
+                        new Date().toISOString()
+                }, {
+                    onConflict:
+                        "user_id,chapter,topic_number"
+                });
+
+
+        if(saveError){
+
+            console.error(
+                "Error saving progress:",
+                saveError
+            );
+
+            alert(
+                "Something went wrong while saving your progress."
+            );
+
+            return;
+
+        }
+
+
+        completionSection.style.display =
+            "none";
+
+        completedSection.style.display =
+            "block";
+
+
+        completedSection.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }
+);
 </script>
 
 </body>
