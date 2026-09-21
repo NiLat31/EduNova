@@ -1,0 +1,2552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduNova | Integration by Parts</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['\\(','\\)']],
+        displayMath: [['\\[','\\]']]
+    },
+    svg: {
+        fontCache: 'global'
+    }
+};
+</script>
+
+<script
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:#f7f7f7;
+    color:#111;
+    line-height:1.7;
+}
+
+/* =========================================================
+   NAV
+========================================================= */
+
+nav{
+    height:82px;
+    background:#111;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+}
+
+.logo{
+    font-family:"Playfair Display",serif;
+    font-size:28px;
+    font-weight:700;
+    color:white;
+    text-decoration:none;
+}
+
+.logo span{
+    color:#e52b20;
+}
+
+.nav-links{
+    display:flex;
+    gap:34px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:#e52b20;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    background:#111;
+    color:white;
+    padding:70px 7% 78px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-content{
+    max-width:1000px;
+    margin:auto;
+    position:relative;
+    z-index:3;
+    padding-right:390px;
+}
+
+.lesson-label{
+    color:#e52b20;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2.5px;
+    margin-bottom:17px;
+}
+
+.hero h1{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(42px,6vw,68px);
+    line-height:1.05;
+    max-width:800px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    color:#d0d0d0;
+    max-width:690px;
+    font-size:17px;
+}
+
+/* HERO BLACK BOX DECORATION */
+
+.hero-math{
+    position:absolute;
+    right:7%;
+    top:50%;
+    transform:translateY(-50%);
+    background:#050505;
+    border:1px solid #292929;
+    padding:30px 35px;
+    min-width:310px;
+    text-align:center;
+    box-shadow:0 18px 50px rgba(0,0,0,.25);
+}
+
+.hero-math-main{
+    font-family:"Times New Roman",serif;
+    color:#eeeeee;
+    font-size:34px;
+    line-height:1.3;
+}
+
+.hero-math-main span{
+    color:#e52b20;
+}
+
+.hero-math-small{
+    margin-top:12px;
+    color:#777;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main{
+    max-width:1050px;
+    margin:auto;
+    padding:58px 24px 100px;
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    background:white;
+    border:1px solid #ddd;
+    padding:30px;
+    margin-bottom:32px;
+}
+
+.intro-label{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.intro p{
+    color:#444;
+    font-size:15px;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.lesson-section{
+    background:white;
+    border:1px solid #ddd;
+    margin-bottom:30px;
+    padding:36px;
+}
+
+.section-number{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+.lesson-section h2{
+    font-family:"Playfair Display",serif;
+    font-size:32px;
+    line-height:1.2;
+    margin-bottom:18px;
+}
+
+.lesson-section h3{
+    font-family:"Playfair Display",serif;
+    font-size:23px;
+    margin:28px 0 12px;
+}
+
+.lesson-section p{
+    color:#444;
+    font-size:15px;
+    margin-bottom:13px;
+}
+
+.math-block{
+    background:#fafafa;
+    border-left:4px solid #e52b20;
+    padding:20px 22px;
+    margin:20px 0;
+    overflow-x:auto;
+    font-family:"Times New Roman",serif;
+    font-size:22px;
+}
+
+.math-center{
+    text-align:center;
+    margin:18px 0;
+    overflow-x:auto;
+    font-family:"Times New Roman",serif;
+    font-size:22px;
+}
+
+/* =========================================================
+   KEY IDEA
+========================================================= */
+
+.key-box{
+    background:#111;
+    color:white;
+    padding:28px 30px;
+    margin:25px 0;
+    border-left:5px solid #e52b20;
+}
+
+.key-box-label{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+.key-box p{
+    color:#ddd;
+    margin-bottom:8px;
+}
+
+.key-box .formula{
+    font-family:"Times New Roman",serif;
+    font-size:27px;
+    color:white;
+    overflow-x:auto;
+}
+
+/* =========================================================
+   STEP GRID
+========================================================= */
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+    margin-top:20px;
+}
+
+.step-card{
+    border:1px solid #ddd;
+    background:#fafafa;
+    padding:23px;
+}
+
+.step-number{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.step-card h4{
+    font-family:"Playfair Display",serif;
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.step-card p{
+    font-size:14px;
+    margin-bottom:0;
+}
+
+/* =========================================================
+   LIATE
+========================================================= */
+
+.liate-box{
+    border:2px solid #111;
+    margin-top:25px;
+    background:white;
+}
+
+.liate-header{
+    background:#111;
+    color:white;
+    padding:20px 23px;
+}
+
+.liate-header span{
+    color:#e52b20;
+}
+
+.liate-header h3{
+    color:white;
+    margin:0 0 5px;
+    font-size:27px;
+}
+
+.liate-header p{
+    color:#bbb;
+    margin:0;
+    font-size:13px;
+}
+
+.liate-list{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+}
+
+.liate-item{
+    padding:23px 12px;
+    text-align:center;
+    border-right:1px solid #ddd;
+}
+
+.liate-item:last-child{
+    border-right:none;
+}
+
+.liate-letter{
+    width:38px;
+    height:38px;
+    margin:0 auto 10px;
+    background:#e52b20;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:17px;
+}
+
+.liate-item strong{
+    display:block;
+    font-size:12px;
+    margin-bottom:5px;
+}
+
+.liate-item span{
+    color:#777;
+    font-size:11px;
+}
+
+/* =========================================================
+   WARNING
+========================================================= */
+
+.warning-box{
+    background:#f1f1f1;
+    border-left:4px solid #111;
+    padding:20px 23px;
+    margin:23px 0;
+}
+
+.warning-box strong{
+    display:block;
+    font-size:12px;
+    letter-spacing:1px;
+    margin-bottom:6px;
+}
+
+.warning-box p{
+    margin:0;
+    font-size:14px;
+}
+
+/* =========================================================
+   INTERACTIVE LIATE TRAINER
+========================================================= */
+
+.interactive{
+    background:#111;
+    color:white;
+    padding:32px;
+    margin-top:25px;
+}
+
+.interactive-label{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.interactive h3{
+    color:white;
+    margin:0 0 10px;
+    font-size:28px;
+}
+
+.interactive > p{
+    color:#bbb;
+    margin-bottom:23px;
+}
+
+.example-choice{
+    background:#181818;
+    border:1px solid #333;
+    padding:23px;
+    margin-bottom:18px;
+}
+
+.example-choice:last-child{
+    margin-bottom:0;
+}
+
+.example-expression{
+    font-family:"Times New Roman",serif;
+    font-size:24px;
+    margin-bottom:17px;
+    overflow-x:auto;
+}
+
+.choice-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+}
+
+.choice-button{
+    border:1px solid #555;
+    background:#222;
+    color:white;
+    padding:10px 14px;
+    font-family:"DM Sans",sans-serif;
+    font-size:11px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.choice-button:hover{
+    border-color:#e52b20;
+}
+
+.choice-result{
+    display:none;
+    margin-top:15px;
+    padding:15px;
+    background:#0d0d0d;
+    border-left:3px solid #e52b20;
+    color:#ddd;
+    font-size:13px;
+}
+
+.choice-result.correct{
+    display:block;
+}
+
+.choice-result.wrong{
+    display:block;
+    border-left-color:#777;
+}
+
+.choice-result strong{
+    color:#e52b20;
+}
+
+/* =========================================================
+   WORKED EXAMPLE
+========================================================= */
+
+.example{
+    border:1px solid #ddd;
+    margin-top:25px;
+}
+
+.example-header{
+    background:#111;
+    color:white;
+    padding:19px 23px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    align-items:center;
+}
+
+.example-number{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.example-title{
+    font-family:"Playfair Display",serif;
+    font-size:22px;
+}
+
+.example-body{
+    padding:27px;
+}
+
+.example-step{
+    padding:18px 0;
+    border-bottom:1px solid #eee;
+}
+
+.example-step:last-child{
+    border-bottom:none;
+}
+
+.example-step-label{
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.example-step p{
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+.example-math{
+    font-family:"Times New Roman",serif;
+    font-size:21px;
+    overflow-x:auto;
+}
+
+/* =========================================================
+   COMPARISON
+========================================================= */
+
+.comparison{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:20px;
+}
+
+.compare-card{
+    padding:22px;
+    border:1px solid #ddd;
+}
+
+.compare-card.bad{
+    border-top:4px solid #777;
+}
+
+.compare-card.good{
+    border-top:4px solid #e52b20;
+}
+
+.compare-label{
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    margin-bottom:9px;
+}
+
+.compare-card p{
+    font-size:14px;
+    margin:0;
+}
+
+/* =========================================================
+   REPEATED INTEGRATION
+========================================================= */
+
+.repeat-box{
+    background:#fafafa;
+    border:1px solid #ddd;
+    padding:25px;
+    margin-top:20px;
+}
+
+.repeat-box ol{
+    padding-left:21px;
+}
+
+.repeat-box li{
+    color:#444;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.summary{
+    background:#111;
+    color:white;
+    padding:32px;
+    margin-top:25px;
+}
+
+.summary h3{
+    color:white;
+    margin-top:0;
+}
+
+.summary ul{
+    padding-left:20px;
+}
+
+.summary li{
+    color:#ddd;
+    font-size:14px;
+    margin-bottom:9px;
+}
+
+.summary strong{
+    color:white;
+}
+
+/* =========================================================
+   NEXT LESSON
+========================================================= */
+
+.next-section{
+    margin-top:45px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.back-button{
+    border:1px solid #ccc;
+    background:white;
+    color:#111;
+    padding:13px 20px;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.3px;
+    transition:.25s;
+}
+
+.back-button:hover{
+    background:#111;
+    color:white;
+    border-color:#111;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#111;
+    color:white;
+    padding:45px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:30px;
+}
+
+footer .logo{
+    font-size:25px;
+}
+
+footer p{
+    color:#aaa;
+    font-size:12px;
+    margin-top:6px;
+}
+
+footer > p{
+    margin-top:0;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:800px){
+
+    .hero{
+        padding:60px 6% 68px;
+    }
+
+    .hero-content{
+        padding-right:0;
+    }
+
+    .hero h1{
+        font-size:43px;
+    }
+
+    .hero-math{
+        display:none;
+    }
+
+    main{
+        padding:45px 17px 75px;
+    }
+
+    .lesson-section{
+        padding:27px 21px;
+    }
+
+    .lesson-section h2{
+        font-size:27px;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .liate-list{
+        grid-template-columns:1fr;
+    }
+
+    .liate-item{
+        border-right:none;
+        border-bottom:1px solid #ddd;
+    }
+
+    .liate-item:last-child{
+        border-bottom:none;
+    }
+
+    .comparison{
+        grid-template-columns:1fr;
+    }
+
+    .interactive{
+        padding:25px 20px;
+    }
+
+    .example-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .next-section{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        padding:20px 6%;
+    }
+
+    .nav-links{
+        gap:17px;
+    }
+
+    footer{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAV
+========================================================= -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+        Edu<span>Nova</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="integration.html">INTEGRATION</a>
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="lesson-label">
+            INTEGRATION • TOPIC 08
+        </div>
+
+        <h1>Integration by Parts</h1>
+
+        <p>
+            A clear method for integrating products of functions by
+            differentiating one part and integrating the other.
+        </p>
+
+    </div>
+
+    <div class="hero-math">
+
+        <div class="hero-math-main">
+            \[
+            \int u\,dv
+            =
+            uv
+            -
+            \int v\,du
+            \]
+        </div>
+
+        <div class="hero-math-small">
+            DIFFERENTIATE ONE • INTEGRATE THE OTHER
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
+
+<section class="intro">
+
+    <div class="intro-label">
+        THE BIG IDEA
+    </div>
+
+    <p>
+        Sometimes an integral contains the product of two functions, and
+        substitution does not give us a simpler integral. Integration by
+        parts gives us another way to handle these products. The method
+        comes from the product rule for differentiation and allows us to
+        transform one difficult integral into another, hopefully simpler,
+        integral.
+    </p>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 1
+========================================================= -->
+
+<section class="lesson-section">
+
+    <div class="section-number">
+        01 • WHY DO WE NEED INTEGRATION BY PARTS?
+    </div>
+
+    <h2>When substitution is not enough</h2>
+
+    <p>
+        Consider the integral
+    </p>
+
+    <div class="math-center">
+        \[
+        \int x\sin x\,dx
+        \]
+    </div>
+
+    <p>
+        This is a product of two different functions:
+    </p>
+
+    <div class="math-center">
+        \[
+        x
+        \qquad\text{and}\qquad
+        \sin x
+        \]
+    </div>
+
+    <p>
+        You cannot integrate each function separately and multiply the
+        answers. In other words,
+    </p>
+
+    <div class="math-block">
+        \[
+        \int x\sin x\,dx
+        \neq
+        \left(\int x\,dx\right)
+        \left(\int\sin x\,dx\right)
+        \]
+    </div>
+
+    <p>
+        Integration by parts is designed specifically for situations like
+        this. Instead of trying to integrate the whole product at once,
+        we deliberately split it into two parts.
+    </p>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 2
+========================================================= -->
+
+<section class="lesson-section">
+
+    <div class="section-number">
+        02 • WHERE DOES THE FORMULA COME FROM?
+    </div>
+
+    <h2>The product rule is the starting point</h2>
+
+    <p>
+        You may already know the product rule:
+    </p>
+
+    <div class="math-center">
+        \[
+        \frac{d}{dx}(uv)
+        =
+        u\frac{dv}{dx}
+        +
+        v\frac{du}{dx}
+        \]
+    </div>
+
+    <p>
+        In differential notation, this can be written as
+    </p>
+
+    <div class="math-center">
+        \[
+        d(uv)=u\,dv+v\,du
+        \]
+    </div>
+
+    <p>
+        Now integrate both sides:
+    </p>
+
+    <div class="math-center">
+        \[
+        uv
+        =
+        \int u\,dv
+        +
+        \int v\,du
+        \]
+    </div>
+
+    <p>
+        Rearranging gives the formula we need:
+    </p>
+
+    <div class="key-box">
+
+        <div class="key-box-label">
+            THE INTEGRATION BY PARTS FORMULA
+        </div>
+
+        <div class="formula">
+            \[
+            \boxed{
+            \int u\,dv
+            =
+            uv-\int v\,du
+            }
+            \]
+        </div>
+
+        <p>
+            The entire method is built around this one formula.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 3
+========================================================= -->
+
+<section class="lesson-section">
+
+    <div class="section-number">
+        03 • WHAT DO u AND dv MEAN?
+    </div>
+
+    <h2>Split the integral into two parts</h2>
+
+    <p>
+        When you see an integral such as
+    </p>
+
+    <div class="math-center">
+        \[
+        \int x\sin x\,dx
+        \]
+    </div>
+
+    <p>
+        we choose one part to become \(u\), and the other part to become
+        \(dv\).
+    </p>
+
+    <div class="steps">
+
+        <div class="step-card">
+
+            <div class="step-number">
+                PART A
+            </div>
+
+            <h4>Choose \(u\)</h4>
+
+            <p>
+                Choose the part that you want to differentiate.
+                After differentiating it, we call the result \(du\).
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <div class="step-number">
+                PART B
+            </div>
+
+            <h4>Choose \(dv\)</h4>
+
+            <p>
+                Choose the part that you want to integrate.
+                After integrating it, we call the result \(v\).
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="math-block">
+        \[
+        u
+        \longrightarrow
+        du
+        \qquad\qquad
+        dv
+        \longrightarrow
+        v
+        \]
+    </div>
+
+    <p>
+        So the basic pattern is:
+    </p>
+
+    <div class="math-center">
+        \[
+        \boxed{
+        \text{choose }u
+        \rightarrow
+        \text{differentiate }u
+        }
+        \]
+    </div>
+
+    <div class="math-center">
+        \[
+        \boxed{
+        \text{choose }dv
+        \rightarrow
+        \text{integrate }dv
+        }
+        \]
+    </div>
+
+    <div class="warning-box">
+
+        <strong>IMPORTANT</strong>
+
+        <p>
+            \(u\) is the part you differentiate, while \(dv\) is the part
+            you integrate. Choosing them in the wrong way can turn a simple
+            integral into a much harder one.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 4
+========================================================= -->
+
+<section class="lesson-section">
+
+    <div class="section-number">
+        04 • THE LIATE RULE
+    </div>
+
+    <h2>How do I know what to choose for \(u\)?</h2>
+
+    <p>
+        This is one of the most important decisions in integration by parts.
+        Fortunately, there is a useful rule called <strong>LIATE</strong>.
+    </p>
+
+    <div class="liate-box">
+
+        <div class="liate-header">
+
+            <h3><span>LIATE</span> • CHOOSE \(u\) FROM THE EARLIEST TYPE</h3>
+
+            <p>
+                When two or more different types appear in the integral,
+                prefer the type that appears earlier in LIATE.
+            </p>
+
+        </div>
+
+        <div class="liate-list">
+
+            <div class="liate-item">
+
+                <div class="liate-letter">L</div>
+
+                <strong>Logarithmic</strong>
+
+                <span>\(\ln x\)</span>
+
+            </div>
+
+            <div class="liate-item">
+
+                <div class="liate-letter">I</div>
+
+                <strong>Inverse Trigonometric</strong>
+
+                <span>\(\sin^{-1}x,\cos^{-1}x,\tan^{-1}x\)</span>
+
+            </div>
+
+            <div class="liate-item">
+
+                <div class="liate-letter">A</div>
+
+                <strong>Algebraic</strong>
+
+                <span>\(x,\ x^2,\ 3x+1\)</span>
+
+            </div>
+
+            <div class="liate-item">
+
+                <div class="liate-letter">T</div>
+
+                <strong>Trigonometric</strong>
+
+                <span>\(\sin x,\cos x,\tan x\)</span>
+
+            </div>
+
+            <div class="liate-item">
+
+                <div class="liate-letter">E</div>
+
+                <strong>Exponential</strong>
+
+                <span>\(e^x,\ 2^x\)</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="key-box">
+
+        <div class="key-box-label">
+            THE RULE TO REMEMBER
+        </div>
+
+        <div class="formula">
+            \[
+            \boxed{
+            L\rightarrow I\rightarrow A\rightarrow T\rightarrow E
+            }
+            \]
+        </div>
+
+        <p>
+            Choose \(u\) from the type that appears earliest in this order.
+            The remaining part becomes \(dv\).
+        </p>
+
+    </div>
+
+    <p>
+        For example, consider
+    </p>
+
+    <div class="math-center">
+        \[
+        \int x\cos x\,dx
+        \]
+    </div>
+
+    <p>
+        Here \(x\) is algebraic and \(\cos x\) is trigonometric.
+        Algebraic comes before trigonometric in LIATE, so choose
+    </p>
+
+    <div class="math-center">
+        \[
+        \boxed{u=x}
+        \qquad
+        \boxed{dv=\cos x\,dx}
+        \]
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 5
+========================================================= -->
+
+<section class="lesson-section">
+
+    <div class="section-number">
+        05 • INTERACTIVE PRACTICE
+    </div>
+
+    <h2>Choose \(u\) using LIATE</h2>
+
+    <p>
+        Before solving the integral, practise the most important decision:
+        <strong>which part should become \(u\)?</strong>
+    </p>
+
+    <div class="interactive">
+
+        <div class="interactive-label">
+            LIATE TRAINER
+        </div>
+
+        <h3>Pick the correct \(u\)</h3>
+
+        <p>
+            Select the part that should be chosen as \(u\).
+        </p>
+
+
+        <!-- EXAMPLE 1 -->
+
+        <div class="example-choice">
+
+            <div class="example-expression">
+                \[
+                \int x e^x\,dx
+                \]
+            </div>
+
+            <div class="choice-buttons">
+
+                <button
+                    class="choice-button"
+                    onclick="checkChoice(this,'result1','x','correct')">
+                    \(u=x\)
+                </button>
+
+                <button
+                    class="choice-button"
+                    onclick="checkChoice(this,'result1','e^x','wrong')">
+                    \(u=e^x\)
+                </button>
+
+            </div>
+
+            <div class="choice-result" id="result1"></div>
+
+        </div>
+
+
+        <!-- EXAMPLE 2 -->
+
+        <div class="example-choice">
+
+            <div class="example-expression">
+                \[
+                \int \ln x\,dx
+                \]
+            </div>
+
+            <div class="choice-buttons">
+
+                <button
+                    class="choice-button"
+                    onclick="checkChoice(this,'result2','1','wrong')">
+                    \(u=1\)
+                </button>
+
+                <button
+                    class="choice-button"
+                    onclick="checkChoice(this,'result2','ln x','correct')">
+                    \(u=\ln x\)
+                </button>
+
+            </div>
+
+            <div class="choice-result" id="result2"></div>
+
+        </div>
+
+
+        <!-- EXAMPLE 3 -->
+
+        <div class="example-choice">
+
+            <div class="example-expression">
+                \[
+                \int x\sin x\,dx
+                \]
+            </div>
+
+            <div class="choice-buttons">
+
+                <button
+                    class="choice-button"
+                    onclick="checkChoice(this,'result3','x','correct')">
+                    \(u=x\)
+                </button>
+
+                <button
+                    class="choice-button"
+                    onclick="checkChoice(this,'result3','sin x','wrong')">
+                    \(u=\sin x\)
+                </button>
+
+            </div>
+
+            <div class="choice-result" id="result3"></div>
+
+        </div>
+
+
+        <!-- EXAMPLE 4 -->
+
+        <div class="example-choice">
+
+            <div class="example-expression">
+                \[
+                \int x\cos(2x)\,dx
+                \]
+            </div>
+
+            <div class="choice-buttons">
+
+                <button
+                    class="choice-button"
+                    onclick="checkChoice(this,'result4','cos','wrong')">
+                    \(u=\cos(2x)\)
+                </button>
+
+                <button
+                    class="choice-button"
+                    onclick="checkChoice(this,'result4','x','correct')">
+                    \(u=x\)
+                </button>
+
+            </div>
+
+            <div class="choice-result" id="result4"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 6
+========================================================= -->
+
+<section class="lesson-section">
+
+    <div class="section-number">
+        06 • THE METHOD
+    </div>
+
+    <h2>The integration by parts recipe</h2>
+
+    <p>
+        Once you have chosen \(u\) and \(dv\), follow the same sequence
+        every time.
+    </p>
+
+    <div class="steps">
+
+        <div class="step-card">
+
+            <div class="step-number">STEP 1</div>
+
+            <h4>Choose \(u\)</h4>
+
+            <p>
+                Use LIATE to decide which part should be differentiated.
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <div class="step-number">STEP 2</div>
+
+            <h4>Choose \(dv\)</h4>
+
+            <p>
+                The remaining part, including \(dx\), becomes \(dv\).
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <div class="step-number">STEP 3</div>
+
+            <h4>Find \(du\)</h4>
+
+            <p>
+                Differentiate \(u\).
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <div class="step-number">STEP 4</div>
+
+            <h4>Find \(v\)</h4>
+
+            <p>
+                Integrate \(dv\).
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <div class="step-number">STEP 5</div>
+
+            <h4>Use the formula</h4>
+
+            <p>
+                Substitute everything into
+                \(\int u\,dv=uv-\int v\,du\).
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <div class="step-number">STEP 6</div>
+
+            <h4>Simplify</h4>
+
+            <p>
+                If another integral by parts is needed, repeat the process.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 7
+========================================================= -->
+
+<section class="lesson-section">
+
+    <div class="section-number">
+        07 • WORKED EXAMPLE 01
+    </div>
+
+    <h2>\(\int x\sin x\,dx\)</h2>
+
+    <div class="example">
+
+        <div class="example-header">
+
+            <div class="example-number">
+                EXAMPLE 01
+            </div>
+
+            <div class="example-title">
+                Algebraic × Trigonometric
+            </div>
+
+        </div>
+
+        <div class="example-body">
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 1 • CHOOSE \(u\) AND \(dv\)
+                </div>
+
+                <p>
+                    \(x\) is algebraic and \(\sin x\) is trigonometric.
+                    According to LIATE, algebraic comes first.
+                </p>
+
+                <div class="example-math">
+                    \[
+                    u=x
+                    \qquad
+                    dv=\sin x\,dx
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 2 • FIND \(du\)
+                </div>
+
+                <div class="example-math">
+                    \[
+                    du=dx
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 3 • FIND \(v\)
+                </div>
+
+                <p>
+                    Integrate \(dv\).
+                </p>
+
+                <div class="example-math">
+                    \[
+                    v=\int\sin x\,dx=-\cos x
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 4 • APPLY THE FORMULA
+                </div>
+
+                <div class="example-math">
+                    \[
+                    \int u\,dv=uv-\int v\,du
+                    \]
+                </div>
+
+                <div class="example-math">
+                    \[
+                    \int x\sin x\,dx
+                    =
+                    x(-\cos x)
+                    -
+                    \int(-\cos x)(dx)
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 5 • SIMPLIFY
+                </div>
+
+                <div class="example-math">
+                    \[
+                    =-x\cos x+\int\cos x\,dx
+                    \]
+                </div>
+
+                <div class="example-math">
+                    \[
+                    =-x\cos x+\sin x+C
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="key-box">
+
+                <div class="key-box-label">
+                    FINAL ANSWER
+                </div>
+
+                <div class="formula">
+                    \[
+                    \boxed{
+                    \int x\sin x\,dx
+                    =
+                    -x\cos x+\sin x+C
+                    }
+                    \]
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 8
+========================================================= -->
+
+<section class="lesson-section">
+
+    <div class="section-number">
+        08 • WORKED EXAMPLE 02
+    </div>
+
+    <h2>\(\int x e^{2x}\,dx\)</h2>
+
+    <div class="example">
+
+        <div class="example-header">
+
+            <div class="example-number">
+                EXAMPLE 02
+            </div>
+
+            <div class="example-title">
+                Algebraic × Exponential
+            </div>
+
+        </div>
+
+        <div class="example-body">
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 1 • CHOOSE \(u\) AND \(dv\)
+                </div>
+
+                <p>
+                    \(x\) is algebraic and \(e^{2x}\) is exponential.
+                    Algebraic comes before exponential in LIATE.
+                </p>
+
+                <div class="example-math">
+                    \[
+                    u=x
+                    \qquad
+                    dv=e^{2x}\,dx
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 2 • FIND \(du\)
+                </div>
+
+                <div class="example-math">
+                    \[
+                    du=dx
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 3 • FIND \(v\)
+                </div>
+
+                <p>
+                    Remember that integrating \(e^{2x}\) requires dividing by
+                    the derivative of \(2x\), which is \(2\).
+                </p>
+
+                <div class="example-math">
+                    \[
+                    v=\int e^{2x}\,dx
+                    =
+                    \frac12e^{2x}
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 4 • APPLY THE FORMULA
+                </div>
+
+                <div class="example-math">
+                    \[
+                    \int x e^{2x}\,dx
+                    =
+                    x\left(\frac12e^{2x}\right)
+                    -
+                    \int
+                    \left(\frac12e^{2x}\right)dx
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 5 • INTEGRATE THE REMAINING TERM
+                </div>
+
+                <div class="example-math">
+                    \[
+                    =
+                    \frac12xe^{2x}
+                    -
+                    \frac12\int e^{2x}\,dx
+                    \]
+                </div>
+
+                <div class="example-math">
+                    \[
+                    =
+                    \frac12xe^{2x}
+                    -
+                    \frac14e^{2x}
+                    +C
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="key-box">
+
+                <div class="key-box-label">
+                    FINAL ANSWER
+                </div>
+
+                <div class="formula">
+                    \[
+                    \boxed{
+                    \int x e^{2x}\,dx
+                    =
+                    \frac12xe^{2x}
+                    -
+                    \frac14e^{2x}
+                    +C
+                    }
+                    \]
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 9
+========================================================= -->
+
+<section class="lesson-section">
+
+    <div class="section-number">
+        09 • WORKED EXAMPLE 03
+    </div>
+
+    <h2>\(\int \ln x\,dx\)</h2>
+
+    <div class="example">
+
+        <div class="example-header">
+
+            <div class="example-number">
+                EXAMPLE 03
+            </div>
+
+            <div class="example-title">
+                Logarithmic Function
+            </div>
+
+        </div>
+
+        <div class="example-body">
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 1 • WRITE THE INTEGRAL AS A PRODUCT
+                </div>
+
+                <p>
+                    Although there is only one visible function, we can
+                    write \(1\) as the other factor.
+                </p>
+
+                <div class="example-math">
+                    \[
+                    \int\ln x\,dx
+                    =
+                    \int\ln x\cdot1\,dx
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 2 • CHOOSE \(u\) AND \(dv\)
+                </div>
+
+                <p>
+                    Logarithmic functions come first in LIATE.
+                </p>
+
+                <div class="example-math">
+                    \[
+                    u=\ln x
+                    \qquad
+                    dv=dx
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 3 • FIND \(du\) AND \(v\)
+                </div>
+
+                <div class="example-math">
+                    \[
+                    du=\frac1x\,dx
+                    \]
+                </div>
+
+                <div class="example-math">
+                    \[
+                    v=\int dx=x
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 4 • APPLY THE FORMULA
+                </div>
+
+                <div class="example-math">
+                    \[
+                    \int\ln x\,dx
+                    =
+                    x\ln x
+                    -
+                    \int x\left(\frac1x\right)dx
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="example-step">
+
+                <div class="example-step-label">
+                    STEP 5 • SIMPLIFY
+                </div>
+
+                <div class="example-math">
+                    \[
+                    =
+                    x\ln x
+                    -
+                    \int1\,dx
+                    \]
+                </div>
+
+                <div class="example-math">
+                    \[
+                    =
+                    x\ln x-x+C
+                    \]
+                </div>
+
+            </div>
+
+
+            <div class="key-box">
+
+                <div class="key-box-label">
+                    FINAL ANSWER
+                </div>
+
+                <div class="formula">
+                    \[
+                    \boxed{
+                    \int\ln x\,dx
+                    =
+                    x\ln x-x+C
+                    }
+                    \]
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 10
+========================================================= -->
+
+<section class="lesson-section">
+
+    <div class="section-number">
+        10 • WHEN ONE ROUND IS NOT ENOUGH
+    </div>
+
+    <h2>Sometimes integration by parts must be repeated</h2>
+
+    <p>
+        Some integrals contain a product such as \(x^2e^{2x}\). The first
+        application of integration by parts makes the problem simpler, but
+        another integration by parts is still required.
+    </p>
+
+    <div class="math-center">
+        \[
+        \int x^2e^{2x}\,dx
+        \]
+    </div>
+
+    <p>
+        Choose
+    </p>
+
+    <div class="math-center">
+        \[
+        u=x^2
+        \qquad
+        dv=e^{2x}\,dx
+        \]
+    </div>
+
+    <p>
+        Then
+    </p>
+
+    <div class="math-center">
+        \[
+        du=2x\,dx
+        \qquad
+        v=\frac12e^{2x}
+        \]
+    </div>
+
+    <p>
+        Applying integration by parts:
+    </p>
+
+    <div class="math-block">
+        \[
+        \int x^2e^{2x}\,dx
+        =
+        \frac12x^2e^{2x}
+        -
+        \int xe^{2x}\,dx
+        \]
+    </div>
+
+    <p>
+        Notice something important: the new integral
+    </p>
+
+    <div class="math-center">
+        \[
+        \int xe^{2x}\,dx
+        \]
+    </div>
+
+    <p>
+        is exactly the type of integral we solved in Example 02.
+        Therefore, we can apply integration by parts again.
+    </p>
+
+    <div class="repeat-box">
+
+        <strong>THE PATTERN</strong>
+
+        <ol>
+
+            <li>
+                Choose \(u=x^2\), so differentiation reduces \(x^2\) to \(2x\).
+            </li>
+
+            <li>
+                Apply integration by parts once.
+            </li>
+
+            <li>
+                The remaining integral contains \(x\), which is simpler than \(x^2\).
+            </li>
+
+            <li>
+                Apply integration by parts again.
+            </li>
+
+            <li>
+                Continue until the algebraic factor has disappeared.
+            </li>
+
+        </ol>
+
+    </div>
+
+    <div class="warning-box">
+
+        <strong>WHY THIS WORKS</strong>
+
+        <p>
+            When \(u\) is an algebraic expression such as \(x^2\), \(x^3\),
+            or \(x^4\), differentiating it repeatedly eventually reduces it
+            to zero. This is why choosing the algebraic factor as \(u\) is
+            often so useful.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 11
+========================================================= -->
+
+<section class="lesson-section">
+
+    <div class="section-number">
+        11 • COMMON TRAPS
+    </div>
+
+    <h2>Things to watch carefully</h2>
+
+    <div class="comparison">
+
+        <div class="compare-card bad">
+
+            <div class="compare-label">
+                TRAP 01
+            </div>
+
+            <p>
+                <strong>Choosing \(u\) randomly.</strong>
+                Always check LIATE first when the integral contains different
+                types of functions.
+            </p>
+
+        </div>
+
+        <div class="compare-card good">
+
+            <div class="compare-label">
+                BETTER APPROACH
+            </div>
+
+            <p>
+                Identify the types of functions and choose \(u\) according
+                to the LIATE order.
+            </p>
+
+        </div>
+
+
+        <div class="compare-card bad">
+
+            <div class="compare-label">
+                TRAP 02
+            </div>
+
+            <p>
+                Forgetting that \(dv\) includes \(dx\).
+            </p>
+
+        </div>
+
+        <div class="compare-card good">
+
+            <div class="compare-label">
+                BETTER APPROACH
+            </div>
+
+            <p>
+                Write \(dv\) with the differential, then integrate it to find
+                \(v\).
+            </p>
+
+        </div>
+
+
+        <div class="compare-card bad">
+
+            <div class="compare-label">
+                TRAP 03
+            </div>
+
+            <p>
+                Forgetting the minus sign in
+                \(uv-\int v\,du\).
+            </p>
+
+        </div>
+
+        <div class="compare-card good">
+
+            <div class="compare-label">
+                BETTER APPROACH
+            </div>
+
+            <p>
+                Write the complete formula before substituting values.
+            </p>
+
+        </div>
+
+
+        <div class="compare-card bad">
+
+            <div class="compare-label">
+                TRAP 04
+            </div>
+
+            <p>
+                Forgetting the constant factor when integrating something
+                such as \(e^{2x}\).
+            </p>
+
+        </div>
+
+        <div class="compare-card good">
+
+            <div class="compare-label">
+                BETTER APPROACH
+            </div>
+
+            <p>
+                Differentiate your value of \(v\) mentally to check that it
+                really gives \(dv\).
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 12
+========================================================= -->
+
+<section class="lesson-section">
+
+    <div class="section-number">
+        12 • QUICK CHECK
+    </div>
+
+    <h2>Before you solve an integration-by-parts question...</h2>
+
+    <div class="summary">
+
+        <h3>Remember these six things</h3>
+
+        <ul>
+
+            <li>
+                <strong>Recognize the product:</strong>
+                integration by parts is especially useful for products of functions.
+            </li>
+
+            <li>
+                <strong>Choose \(u\):</strong>
+                use the LIATE order.
+            </li>
+
+            <li>
+                <strong>Choose \(dv\):</strong>
+                the remaining factor, including \(dx\).
+            </li>
+
+            <li>
+                <strong>Differentiate \(u\):</strong>
+                find \(du\).
+            </li>
+
+            <li>
+                <strong>Integrate \(dv\):</strong>
+                find \(v\).
+            </li>
+
+            <li>
+                <strong>Use the formula:</strong>
+                \[
+                \int u\,dv=uv-\int v\,du
+                \]
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="key-box">
+
+        <div class="key-box-label">
+            THE ONE FORMULA TO KNOW
+        </div>
+
+        <div class="formula">
+            \[
+            \boxed{
+            \int u\,dv
+            =
+            uv-\int v\,du
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        And the one rule that helps you decide what to differentiate:
+    </p>
+
+    <div class="math-center">
+        \[
+        \boxed{
+        \text{LIATE}
+        =
+        \text{Logarithmic}
+        \rightarrow
+        \text{Inverse Trigonometric}
+        \rightarrow
+        \text{Algebraic}
+        \rightarrow
+        \text{Trigonometric}
+        \rightarrow
+        \text{Exponential}
+        }
+        \]
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<div class="next-section">
+
+    <a href="integration.html" class="back-button">
+        ← BACK TO INTEGRATION
+    </a>
+
+</div>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div>
+
+        <div class="logo">
+            Edu<span>Nova</span>
+        </div>
+
+        <p>
+            Mathematics made clear.
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 EduNova. All rights reserved.
+    </p>
+
+</footer>
+
+
+<!-- =========================================================
+     INTERACTIVE JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+   SUPABASE
+========================================================= */
+
+const SUPABASE_URL =
+    "https://majvqtbortonsrgdknms.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+const { createClient } = supabase;
+
+const supabaseClient =
+    createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* =========================================================
+   LIATE INTERACTIVE TRAINER
+========================================================= */
+
+function checkChoice(
+    button,
+    resultId,
+    choice,
+    status
+){
+
+    const result =
+        document.getElementById(resultId);
+
+    if(status === "correct"){
+
+        result.className =
+            "choice-result correct";
+
+        result.innerHTML =
+            "<strong>Correct.</strong> " +
+            "According to LIATE, this is the better choice for \(u\).";
+
+    }else{
+
+        result.className =
+            "choice-result wrong";
+
+        result.innerHTML =
+            "<strong>Not quite.</strong> " +
+            "Check the LIATE order and choose the function that appears earlier.";
+
+    }
+
+    if(window.MathJax){
+
+        MathJax.typesetPromise([result])
+            .catch(error => {
+                console.error(
+                    "MathJax error:",
+                    error
+                );
+            });
+
+    }
+
+}
+
+
+/* =========================================================
+   MATHJAX
+========================================================= */
+
+function typesetPage(){
+
+    if(window.MathJax){
+
+        MathJax.typesetPromise()
+            .catch(error => {
+
+                console.error(
+                    "MathJax error:",
+                    error
+                );
+
+            });
+
+    }
+
+}
+
+
+/* =========================================================
+   SESSION PROTECTION
+========================================================= */
+
+async function checkSession(){
+
+    const {
+        data:{session},
+        error
+    } =
+        await supabaseClient.auth.getSession();
+
+    if(error){
+
+        console.error(
+            "Session error:",
+            error
+        );
+
+        return;
+
+    }
+
+    if(!session){
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+    typesetPage();
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    checkSession
+);
+
+</script>
+
+</body>
+</html>
