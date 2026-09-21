@@ -1016,7 +1016,7 @@ footer > p{
     .practice-content h2{
         font-size:27px;
     }
-
+}
 </style>
 </head>
 
@@ -2835,23 +2835,6 @@ document.addEventListener(
 );
 
 </script>
-<script>
-function toggleAnswer(number) {
-    const answer = document.getElementById("answer-" + number);
-    const button = event.currentTarget;
 
-    if (answer.style.display === "block") {
-        answer.style.display = "none";
-        button.textContent = "SHOW ANSWER";
-    } else {
-        answer.style.display = "block";
-        button.textContent = "HIDE ANSWER";
-    }
-
-    if (window.MathJax) {
-        MathJax.typesetPromise();
-    }
-}
-</script>
 </body>
 </html>
