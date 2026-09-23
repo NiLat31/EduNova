@@ -2756,19 +2756,24 @@ select,
                 \left[
                 \frac{x^3}{3}\ln x
                 -
-                \frac13\int x^2\cdot\frac1x\,dx
+                \frac13\int x^2\,dx
                 \right]_0^1.
                 \]
             </div>
 
             <div class="solution-step">
-                Simplify the integral:
+                Integrate the remaining term:
                 \[
+                \int x^2\,dx=\frac{x^3}{3}.
+                \]
+                Therefore
+                \[
+                \int_0^1x^2\ln x\,dx
                 =
                 \left[
                 \frac{x^3}{3}\ln x
                 -
-                \frac{x^2}{6}
+                \frac{x^3}{9}
                 \right]_0^1.
                 \]
             </div>
@@ -2776,36 +2781,40 @@ select,
             <div class="solution-step">
                 At \(x=1\):
                 \[
-                \frac13\ln1-\frac16
+                \frac13\ln1-\frac19
                 =
-                0-\frac16
+                0-\frac19
                 =
-                -\frac16.
+                -\frac19.
                 \]
             </div>
 
             <div class="solution-step">
-                At \(x=0\), the limiting value of
+                At \(x=0\), we consider the limiting value.
+                Since
                 \[
-                x^3\ln x
+                \lim_{x\to0^+}x^3\ln x=0,
                 \]
-                is \(0\), and
+                and
                 \[
-                \frac{x^2}{6}=0.
+                \lim_{x\to0^+}\frac{x^3}{9}=0,
                 \]
-                Therefore the lower limit is \(0\).
+                the lower limit is
+                \[
+                0.
+                \]
             </div>
 
             <div class="solution-step">
                 Hence
                 \[
-                -\frac16-0=-\frac16.
+                -\frac19-0=-\frac19.
                 \]
             </div>
 
             <div class="final-answer">
                 \[
-                \boxed{-\frac16}
+                \boxed{-\frac19}
                 \]
             </div>
 
