@@ -1361,95 +1361,45 @@ select,
     </div>
 
 
-    <!-- Q11 -->
-
-    <div class="question-card" data-level="intermediate" data-number="11">
-
-        <div class="question-top">
-
-            <div class="question-number">
-                INTERMEDIATE 11
-            </div>
-
-            <div class="question-text">
-                Evaluate
-                \[
-                \int x^3e^x\,dx.
-                \]
-            </div>
-
-            <button class="solution-btn" onclick="toggleSolution(this)">
-                SHOW SOLUTION
-            </button>
-
+  <!-- QUESTION 11 -->
+<div class="question-card" data-level="developing">
+    <div class="question-top">
+        <div class="question-number">QUESTION 11</div>
+        <div class="question-text">
+            Evaluate the indefinite integral: <span class="math">\[\int x^2 e^{-x/2} \, dx\]</span>
         </div>
-
-        <div class="solution">
-
-            <div class="solution-title">FULL SOLUTION</div>
-
-            <div class="solution-step">
-                Let
-                \[
-                u=x^3,\qquad dv=e^x\,dx.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Then
-                \[
-                du=3x^2\,dx,\qquad v=e^x.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Therefore
-                \[
-                \int x^3e^x\,dx
-                =
-                x^3e^x
-                -
-                3\int x^2e^x\,dx.
-                \]
-            </div>
-
-            <div class="solution-step">
-                From the same process,
-                \[
-                \int x^2e^x\,dx
-                =
-                e^x(x^2-2x+2).
-                \]
-            </div>
-
-            <div class="solution-step">
-                Hence
-                \[
-                \int x^3e^x\,dx
-                =
-                x^3e^x
-                -
-                3e^x(x^2-2x+2)+C.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Factor out \(e^x\):
-                \[
-                =
-                e^x(x^3-3x^2+6x-6)+C.
-                \]
-            </div>
-
-            <div class="final-answer">
-                \[
-                \boxed{e^x(x^3-3x^2+6x-6)+C}
-                \]
-            </div>
-
-        </div>
-
+        <button class="solution-btn" onclick="this.parentElement.nextElementSibling.classList.toggle('show')">Show Solution</button>
     </div>
+    <div class="solution">
+        <div class="solution-title">STEP-BY-STEP SOLUTION</div>
+        <div class="solution-step">
+            <strong>Step 1: First Integration by Parts</strong><br>
+            Let \(u = x^2 \implies du = 2x \, dx\)<br>
+            Let \(dv = e^{-x/2} \, dx \implies v = -2e^{-x/2}\)<br>
+            Applying the formula:
+            \[\int x^2 e^{-x/2} \, dx = -2x^2 e^{-x/2} - \int (-2e^{-x/2})(2x) \, dx\]
+            \[= -2x^2 e^{-x/2} + 4\int x e^{-x/2} \, dx\]
+        </div>
+        <div class="solution-step">
+            <strong>Step 2: Second Integration by Parts</strong><br>
+            For the remaining integral \(\int x e^{-x/2} \, dx\):<br>
+            Let \(u = x \implies du = dx\)<br>
+            Let \(dv = e^{-x/2} \, dx \implies v = -2e^{-x/2}\)<br>
+            \[\int x e^{-x/2} \, dx = -2x e^{-x/2} - \int -2e^{-x/2} \, dx\]
+            \[= -2x e^{-x/2} - 4e^{-x/2}\]
+        </div>
+        <div class="solution-step">
+            <strong>Step 3: Combine and Distribute</strong><br>
+            Substitute the result back into the main expression:
+            \[-2x^2 e^{-x/2} + 4\left(-2x e^{-x/2} - 4e^{-x/2}\right)\]
+            \[= -2x^2 e^{-x/2} - 8x e^{-x/2} - 16e^{-x/2} + C\]
+        </div>
+        <div class="final-answer">
+            Final Answer: \(-2e^{-x/2}(x^2 + 4x + 8) + C\)
+        </div>
+    </div>
+</div>
+
 
 
     <!-- Q12 -->
@@ -1550,113 +1500,44 @@ select,
     </div>
 
 
-    <!-- Q13 -->
-
-    <div class="question-card" data-level="intermediate" data-number="13">
-
-        <div class="question-top">
-
-            <div class="question-number">
-                INTERMEDIATE 13
-            </div>
-
-            <div class="question-text">
-                Evaluate
-                \[
-                \int x\arctan x\,dx.
-                \]
-            </div>
-
-            <button class="solution-btn" onclick="toggleSolution(this)">
-                SHOW SOLUTION
-            </button>
-
+   <!-- QUESTION 13 -->
+<div class="question-card" data-level="intermediate">
+    <div class="question-top">
+        <div class="question-number">QUESTION 13</div>
+        <div class="question-text">
+            Evaluate the indefinite integral: <span class="math">\[\int x^2 \cos(2x) \, dx\]</span>
         </div>
-
-        <div class="solution">
-
-            <div class="solution-title">FULL SOLUTION</div>
-
-            <div class="solution-step">
-                Choose
-                \[
-                u=\arctan x,\qquad dv=x\,dx.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Then
-                \[
-                du=\frac{1}{1+x^2}\,dx,
-                \qquad
-                v=\frac{x^2}{2}.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Hence
-                \[
-                \int x\arctan x\,dx
-                =
-                \frac{x^2}{2}\arctan x
-                -
-                \frac12
-                \int
-                \frac{x^2}{1+x^2}\,dx.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Rewrite
-                \[
-                \frac{x^2}{1+x^2}
-                =
-                1-\frac{1}{1+x^2}.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Therefore
-                \[
-                \int
-                \frac{x^2}{1+x^2}\,dx
-                =
-                \int1\,dx
-                -
-                \int\frac1{1+x^2}\,dx.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Thus
-                \[
-                =
-                x-\arctan x.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Substitute:
-                \[
-                \int x\arctan x\,dx
-                =
-                \frac{x^2}{2}\arctan x
-                -
-                \frac12(x-\arctan x)+C.
-                \]
-            </div>
-
-            <div class="final-answer">
-                \[
-                \boxed{
-                \frac{x^2+1}{2}\arctan x-\frac{x}{2}+C
-                }
-                \]
-            </div>
-
-        </div>
-
+        <button class="solution-btn" onclick="this.parentElement.nextElementSibling.classList.toggle('show')">Show Solution</button>
     </div>
+    <div class="solution">
+        <div class="solution-title">STEP-BY-STEP SOLUTION</div>
+        <div class="solution-step">
+            <strong>Step 1: First Integration by Parts</strong><br>
+            Let \(u = x^2 \implies du = 2x \, dx\)<br>
+            Let \(dv = \cos(2x) \, dx \implies v = \frac{1}{2}\sin(2x)\)<br>
+            \[\int x^2 \cos(2x) \, dx = \frac{1}{2}x^2 \sin(2x) - \int \left(\frac{1}{2}\sin(2x)\right)(2x) \, dx\]
+            \[= \frac{1}{2}x^2 \sin(2x) - \int x \sin(2x) \, dx\]
+        </div>
+        <div class="solution-step">
+            <strong>Step 2: Second Integration by Parts</strong><br>
+            For \(\int x \sin(2x) \, dx\):<br>
+            Let \(u = x \implies du = dx\)<br>
+            Let \(dv = \sin(2x) \, dx \implies v = -\frac{1}{2}\cos(2x)\)<br>
+            \[\int x \sin(2x) \, dx = -\frac{1}{2}x \cos(2x) - \int \left(-\frac{1}{2}\cos(2x)\right) \, dx\]
+            \[= -\frac{1}{2}x \cos(2x) + \frac{1}{4}\sin(2x)\]
+        </div>
+        <div class="solution-step">
+            <strong>Step 3: Distribute Negative Sign</strong><br>
+            Combine carefully ensuring proper sign distribution:
+            \[\frac{1}{2}x^2 \sin(2x) - \left(-\frac{1}{2}x \cos(2x) + \frac{1}{4}\sin(2x)\right) + C\]
+            \[= \frac{1}{2}x^2 \sin(2x) + \frac{1}{2}x \cos(2x) - \frac{1}{4}\sin(2x) + C\]
+        </div>
+        <div class="final-answer">
+            Final Answer: \(\frac{1}{2}x^2 \sin(2x) + \frac{1}{2}x \cos(2x) - \frac{1}{4}\sin(2x) + C\)
+        </div>
+    </div>
+</div>
+
 
 
     <!-- Q14 -->
@@ -1985,109 +1866,41 @@ select,
     </div>
 
 
-    <!-- Q17 -->
-
-    <div class="question-card" data-level="advanced" data-number="17">
-
-        <div class="question-top">
-
-            <div class="question-number">
-                ADVANCED 17
-            </div>
-
-            <div class="question-text">
-                Evaluate
-                \[
-                \int x^3\cos x\,dx.
-                \]
-            </div>
-
-            <button class="solution-btn" onclick="toggleSolution(this)">
-                SHOW SOLUTION
-            </button>
-
+ <!-- QUESTION 17 -->
+<div class="question-card" data-level="advanced">
+    <div class="question-top">
+        <div class="question-number">QUESTION 17</div>
+        <div class="question-text">
+            Evaluate the indefinite integral: <span class="math">\[\int x^5 e^{x^3} \, dx\]</span>
         </div>
-
-        <div class="solution">
-
-            <div class="solution-title">FULL SOLUTION</div>
-
-            <div class="solution-step">
-                Let
-                \[
-                u=x^3,\qquad dv=\cos x\,dx.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Then
-                \[
-                du=3x^2\,dx,\qquad v=\sin x.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Therefore
-                \[
-                \int x^3\cos x\,dx
-                =
-                x^3\sin x
-                -
-                3\int x^2\sin x\,dx.
-                \]
-            </div>
-
-            <div class="solution-step">
-                From integration by parts,
-                \[
-                \int x^2\sin x\,dx
-                =
-                -x^2\cos x
-                +
-                2x\sin x
-                +
-                2\cos x.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Substitute:
-                \[
-                \int x^3\cos x\,dx
-                =
-                x^3\sin x
-                -
-                3
-                \left(
-                -x^2\cos x
-                +2x\sin x
-                +2\cos x
-                \right)+C.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Expand:
-                \[
-                =
-                x^3\sin x
-                +3x^2\cos x
-                -6x\sin x
-                -6\cos x+C.
-                \]
-            </div>
-
-            <div class="final-answer">
-                \[
-                \boxed{
-                x^3\sin x+3x^2\cos x-6x\sin x-6\cos x+C
-                }
-                \]
-            </div>
-
-        </div>
-
+        <button class="solution-btn" onclick="this.parentElement.nextElementSibling.classList.toggle('show')">Show Solution</button>
     </div>
+    <div class="solution">
+        <div class="solution-title">STEP-BY-STEP SOLUTION</div>
+        <div class="solution-step">
+            <strong>Step 1: Algebraic Substitution First</strong><br>
+            Rewrite the integral as \(\int x^3 \cdot e^{x^3} \cdot x^2 \, dx\).<br>
+            Let \(t = x^3 \implies dt = 3x^2 \, dx \implies x^2 \, dx = \frac{1}{3}dt\).<br>
+            The integral transforms to:
+            \[\frac{1}{3}\int t e^t \, dt\]
+        </div>
+        <div class="solution-step">
+            <strong>Step 2: Integration by Parts</strong><br>
+            For \(\int t e^t \, dt\):<br>
+            Let \(u = t \implies du = dt\)<br>
+            Let \(dv = e^t \, dt \implies v = e^t\)<br>
+            \[\int t e^t \, dt = t e^t - \int e^t \, dt = t e^t - e^t\]
+        </div>
+        <div class="solution-step">
+            <strong>Step 3: Back-substitute and Scale</strong><br>
+            Multiply by the scaling factor \(\frac{1}{3}\) and replace \(t\) with \(x^3\):
+            \[\frac{1}{3}(t e^t - e^t) = \frac{1}{3}x^3 e^{x^3} - \frac{1}{3}e^{x^3} + C\]
+        </div>
+        <div class="final-answer">
+            Final Answer: \(\frac{1}{3}e^{x^3}(x^3 - 1) + C\)
+        </div>
+    </div>
+</div>
 
 
     <!-- Q18 -->
@@ -2208,246 +2021,108 @@ select,
     </div>
 
 
-    <!-- Q19 -->
-
-    <div class="question-card" data-level="advanced" data-number="19">
-
-        <div class="question-top">
-
-            <div class="question-number">
-                ADVANCED 19
-            </div>
-
-            <div class="question-text">
-                Evaluate
-                \[
-                \int e^{2x}\cos x\,dx.
-                \]
-            </div>
-
-            <button class="solution-btn" onclick="toggleSolution(this)">
-                SHOW SOLUTION
-            </button>
-
+   <!-- QUESTION 19 -->
+<div class="question-card" data-level="advanced">
+    <div class="question-top">
+        <div class="question-number">QUESTION 19</div>
+        <div class="question-text">
+            Evaluate the recurring integral: <span class="math">\[\int e^x \cos x \, dx\]</span>
         </div>
-
-        <div class="solution">
-
-            <div class="solution-title">FULL SOLUTION</div>
-
-            <div class="solution-step">
-                Let
-                \[
-                I=\int e^{2x}\cos x\,dx.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Choose
-                \[
-                u=\cos x,\qquad dv=e^{2x}\,dx.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Then
-                \[
-                du=-\sin x\,dx,
-                \qquad
-                v=\frac12e^{2x}.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Therefore
-                \[
-                I=
-                \frac12e^{2x}\cos x
-                +
-                \frac12\int e^{2x}\sin x\,dx.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Let
-                \[
-                J=\int e^{2x}\sin x\,dx.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Using integration by parts:
-                \[
-                u=\sin x,\qquad
-                dv=e^{2x}\,dx.
-                \]
-                Thus
-                \[
-                du=\cos x\,dx,
-                \qquad
-                v=\frac12e^{2x}.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Hence
-                \[
-                J=
-                \frac12e^{2x}\sin x
-                -
-                \frac12I.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Substitute into \(I\):
-                \[
-                I=
-                \frac12e^{2x}\cos x
-                +
-                \frac12
-                \left(
-                \frac12e^{2x}\sin x
-                -
-                \frac12I
-                \right).
-                \]
-            </div>
-
-            <div class="solution-step">
-                Simplify:
-                \[
-                I=
-                \frac12e^{2x}\cos x
-                +
-                \frac14e^{2x}\sin x
-                -
-                \frac14I.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Add \(\frac14I\) to both sides:
-                \[
-                \frac54I
-                =
-                \frac12e^{2x}\cos x
-                +
-                \frac14e^{2x}\sin x.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Multiply both sides by \(\frac45\):
-                \[
-                I=
-                \frac25e^{2x}\cos x
-                +
-                \frac15e^{2x}\sin x+C.
-                \]
-            </div>
-
-            <div class="final-answer">
-                \[
-                \boxed{
-                \frac{e^{2x}}5(2\cos x+\sin x)+C
-                }
-                \]
-            </div>
-
-        </div>
-
+        <button class="solution-btn" onclick="this.parentElement.nextElementSibling.classList.toggle('show')">Show Solution</button>
     </div>
-
-
-    <!-- Q20 -->
-
-    <div class="question-card" data-level="advanced" data-number="20">
-
-        <div class="question-top">
-
-            <div class="question-number">
-                ADVANCED 20
-            </div>
-
-            <div class="question-text">
-                Evaluate
-                \[
-                \int_0^{\pi/2}x\sin x\,dx.
-                \]
-            </div>
-
-            <button class="solution-btn" onclick="toggleSolution(this)">
-                SHOW SOLUTION
-            </button>
-
+    <div class="solution">
+        <div class="solution-title">STEP-BY-STEP SOLUTION</div>
+        <div class="solution-step">
+            <strong>Step 1: First Parts Pass</strong><br>
+            Let \(I = \int e^x \cos x \, dx\).<br>
+            Let \(u = \cos x \implies du = -\sin x \, dx\)<br>
+            Let \(dv = e^x \, dx \implies v = e^x\)<br>
+            \[I = e^x \cos x + \int e^x \sin x \, dx\]
         </div>
-
-        <div class="solution">
-
-            <div class="solution-title">FULL SOLUTION</div>
-
-            <div class="solution-step">
-                Choose
-                \[
-                u=x,\qquad dv=\sin x\,dx.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Then
-                \[
-                du=dx,\qquad v=-\cos x.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Therefore
-                \[
-                \int_0^{\pi/2}x\sin x\,dx
-                =
-                \left[-x\cos x+\sin x\right]_0^{\pi/2}.
-                \]
-            </div>
-
-            <div class="solution-step">
-                At
-                \[
-                x=\frac{\pi}{2},
-                \]
-                we get
-                \[
-                -\frac{\pi}{2}\cos\frac{\pi}{2}
-                +
-                \sin\frac{\pi}{2}
-                =
-                0+1=1.
-                \]
-            </div>
-
-            <div class="solution-step">
-                At \(x=0\):
-                \[
-                -0\cos0+\sin0=0.
-                \]
-            </div>
-
-            <div class="solution-step">
-                Therefore
-                \[
-                1-0=1.
-                \]
-            </div>
-
-            <div class="final-answer">
-                \[
-                \boxed{1}
-                \]
-            </div>
-
+        <div class="solution-step">
+            <strong>Step 2: Second Parts Pass</strong><br>
+            For \(\int e^x \sin x \, dx\):<br>
+            Let \(u = \sin x \implies du = \cos x \, dx\)<br>
+            Let \(dv = e^x \, dx \implies v = e^x\)<br>
+            \[\int e^x \sin x \, dx = e^x \sin x - \int e^x \cos x \, dx = e^x \sin x - I\]
         </div>
-
+        <div class="solution-step">
+            <strong>Step 3: Collect terms of \(I\)</strong><br>
+            Substitute back into the equation:
+            \[I = e^x \cos x + e^x \sin x - I\]
+            \[2I = e^x(\sin x + \cos x) \implies I = \frac{1}{2}e^x(\sin x + \cos x) + C\]
+        </div>
+        <div class="final-answer">
+            Final Answer: \(\frac{1}{2}e^x(\sin x + \cos x) + C\)
+        </div>
     </div>
+</div>
+
+
+   <!-- QUESTION 20 -->
+<div class="question-card" data-level="advanced" data-number="20">
+    <div class="question-top">
+        <div class="question-number">ADVANCED 20</div>
+        <div class="question-text">
+            Evaluate the definite integral: 
+            \[\int_{0}^{\pi} x^2 \sin(2x) \, dx\]
+        </div>
+        <button class="solution-btn" onclick="toggleSolution(this)">
+            SHOW SOLUTION
+        </button>
+    </div>
+    <div class="solution">
+        <div class="solution-title">FULL SOLUTION</div>
+        
+        <div class="solution-step">
+            <strong>Step 1: First Integration by Parts Pass</strong><br>
+            Let \(u = x^2 \implies du = 2x \, dx\)<br>
+            Let \(dv = \sin(2x) \, dx \implies v = -\frac{1}{2}\cos(2x)\)<br>
+            Applying the formula:
+            \[\int x^2 \sin(2x) \, dx = -\frac{1}{2}x^2 \cos(2x) - \int \left(-\frac{1}{2}\cos(2x)\right)(2x) \, dx\]
+            \[= -\frac{1}{2}x^2 \cos(2x) + \int x \cos(2x) \, dx\]
+        </div>
+
+        <div class="solution-step">
+            <strong>Step 2: Second Integration by Parts Pass</strong><br>
+            For the remaining integral \(\int x \cos(2x) \, dx\):<br>
+            Let \(u = x \implies du = dx\)<br>
+            Let \(dv = \cos(2x) \, dx \implies v = \frac{1}{2}\sin(2x)\)<br>
+            \[\int x \cos(2x) \, dx = \frac{1}{2}x \sin(2x) - \int \frac{1}{2}\sin(2x) \, dx\]
+            \[= \frac{1}{2}x \sin(2x) + \frac{1}{4}\cos(2x)\]
+        </div>
+
+        <div class="solution-step">
+            <strong>Step 3: Combine and Apply Limits</strong><br>
+            Combining the two passes yields the general antiderivative:
+            \[F(x) = -\frac{1}{2}x^2 \cos(2x) + \frac{1}{2}x \sin(2x) + \frac{1}{4}\cos(2x)\]
+            Now evaluate from \(0\) to \(\pi\):
+            \[\left[ -\frac{1}{2}x^2 \cos(2x) + \frac{1}{2}x \sin(2x) + \frac{1}{4}\cos(2x) \right]_{0}^{\pi}\]
+        </div>
+
+        <div class="solution-step">
+            <strong>Step 4: Upper Limit (\(x = \pi\))</strong><br>
+            Recall that \(\cos(2\pi) = 1\) and \(\sin(2\pi) = 0\):
+            \[\left(-\frac{1}{2}\pi^2(1)\right) + \left(\frac{1}{2}\pi(0)\right) + \frac{1}{4}(1) = -\frac{\pi^2}{2} + \frac{1}{4}\]
+        </div>
+
+        <div class="solution-step">
+            <strong>Step 5: Lower Limit (\(x = 0\))</strong><br>
+            Recall that \(\cos(0) = 1\) and \(\sin(0) = 0\):
+            \[\left(-\frac{1}{2}(0)^2(1)\right) + \left(\frac{1}{2}(0)(0)\right) + \frac{1}{4}(1) = \frac{1}{4}\]
+        </div>
+
+        <div class="solution-step">
+            <strong>Step 6: Subtract Limits</strong><br>
+            \[\left(-\frac{\pi^2}{2} + \frac{1}{4}\right) - \left(\frac{1}{4}\right) = -\frac{\pi^2}{2}\]
+        </div>
+
+        <div class="final-answer">
+            \[\boxed{-\frac{\pi^2}{2}}\]
+        </div>
+    </div>
+</div>
+
 
 
     <!-- =====================================================
