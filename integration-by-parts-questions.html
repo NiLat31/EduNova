@@ -1,0 +1,3102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduNova | Integration by Parts Questions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+    },
+    svg: {
+        fontCache: 'global'
+    }
+};
+</script>
+
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #f6f6f6;
+    color: #151515;
+    min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #050505;
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #e00000;
+}
+
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: #e00000;
+}
+
+.home-btn {
+    text-decoration: none;
+    color: white;
+    border: 1px solid #444;
+    padding: 9px 17px;
+    border-radius: 7px;
+    font-size: 14px;
+    transition: 0.25s;
+}
+
+.home-btn:hover {
+    border-color: #e00000;
+    background: #e00000;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background: #050505;
+    color: white;
+    padding: 70px 7% 75px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+}
+
+.lesson-label {
+    color: #e00000;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(42px, 6vw, 76px);
+    line-height: 1;
+    margin-bottom: 22px;
+}
+
+.hero p {
+    max-width: 700px;
+    color: #cfcfcf;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.hero-math {
+    position: absolute;
+    right: 7%;
+    top: 35px;
+    font-size: clamp(55px, 9vw, 130px);
+    font-family: "Times New Roman", serif;
+    color: rgba(255,255,255,0.06);
+    user-select: none;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    width: 86%;
+    max-width: 1100px;
+    margin: 45px auto 80px;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+    background: white;
+    border: 1px solid #e4e4e4;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+
+.controls label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #555;
+}
+
+select,
+.index-input {
+    font-family: "DM Sans", sans-serif;
+    border: 1px solid #d5d5d5;
+    border-radius: 7px;
+    padding: 9px 12px;
+    background: white;
+    font-size: 14px;
+}
+
+.index-input {
+    width: 85px;
+}
+
+.question-count {
+    margin-left: auto;
+    font-size: 13px;
+    color: #777;
+}
+
+/* =========================
+   LEVEL HEADERS
+========================= */
+
+.level-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 40px 0 17px;
+}
+
+.level-title h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+}
+
+.level-line {
+    flex: 1;
+    height: 1px;
+    background: #ddd;
+}
+
+.level-title span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #888;
+}
+
+/* =========================
+   QUESTION CARD
+========================= */
+
+.question-card {
+    background: white;
+    border: 1px solid #e1e1e1;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: 0.25s;
+}
+
+.question-card:hover {
+    border-color: #cfcfcf;
+    box-shadow: 0 7px 22px rgba(0,0,0,0.05);
+}
+
+.question-top {
+    padding: 24px 25px;
+}
+
+.question-number {
+    color: #e00000;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+}
+
+.question-text {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.question-text .math {
+    font-size: 20px;
+}
+
+.solution-btn {
+    margin-top: 20px;
+    border: none;
+    background: #050505;
+    color: white;
+    padding: 10px 17px;
+    border-radius: 7px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.solution-btn:hover {
+    background: #e00000;
+}
+
+.solution {
+    display: none;
+    border-top: 1px solid #e7e7e7;
+    background: #fafafa;
+    padding: 25px;
+}
+
+.solution.show {
+    display: block;
+}
+
+.solution-title {
+    color: #e00000;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.solution-step {
+    margin: 13px 0;
+    line-height: 1.8;
+}
+
+.solution-step strong {
+    color: #111;
+}
+
+.final-answer {
+    border-left: 4px solid #e00000;
+    background: white;
+    padding: 15px 17px;
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+/* =========================
+   COMPLETION
+========================= */
+
+.complete-box {
+    margin-top: 55px;
+    background: #050505;
+    color: white;
+    border-radius: 15px;
+    padding: 35px;
+    text-align: center;
+}
+
+.complete-box h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.complete-box p {
+    color: #cfcfcf;
+    line-height: 1.7;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 18px 5%;
+    }
+
+    .hero {
+        padding: 55px 5%;
+    }
+
+    main {
+        width: 92%;
+    }
+
+    .hero-math {
+        display: none;
+    }
+
+    .question-top,
+    .solution {
+        padding: 20px;
+    }
+
+    .question-text {
+        font-size: 16px;
+    }
+
+    .question-text .math {
+        font-size: 18px;
+    }
+
+    .question-count {
+        width: 100%;
+        margin-left: 0;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        Edu<span>Nova</span>
+    </div>
+
+    <a href="dashboard.html" class="home-btn">
+        Dashboard
+    </a>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="lesson-label">
+            INTEGRATION • TOPIC 08
+        </div>
+
+        <h1>Integration by Parts</h1>
+
+        <p>
+            Practice choosing suitable functions, applying integration by parts,
+            handling repeated integration, definite integrals, and solving
+            recurring integrals where the original integral returns.
+        </p>
+
+    </div>
+
+    <div class="hero-math">
+        ∫u\,dv = uv − ∫v\,du
+    </div>
+
+</section>
+
+
+<main>
+
+    <div class="controls">
+
+        <label for="levelFilter">
+            LEVEL
+        </label>
+
+        <select id="levelFilter">
+            <option value="all">All Questions</option>
+            <option value="foundation">Foundation</option>
+            <option value="developing">Developing</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+            <option value="challenge">Challenge</option>
+        </select>
+
+        <label for="questionIndex">
+            QUESTION
+        </label>
+
+        <input
+            id="questionIndex"
+            class="index-input"
+            type="number"
+            min="1"
+            max="24"
+            placeholder="No."
+        >
+
+        <div class="question-count">
+            24 carefully selected questions
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FOUNDATION
+    ====================================================== -->
+
+    <div class="level-title" data-level="foundation">
+        <h2>Foundation</h2>
+        <div class="level-line"></div>
+        <span>01–05</span>
+    </div>
+
+
+    <!-- Q1 -->
+
+    <div class="question-card" data-level="foundation" data-number="1">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                FOUNDATION 01
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                <span class="math">
+                    \[
+                    \int x e^x\,dx.
+                    \]
+                </span>
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Let
+                \[
+                u=x,\qquad dv=e^x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                du=dx
+                \]
+                and
+                \[
+                v=e^x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Using
+                \[
+                \int u\,dv=uv-\int v\,du,
+                \]
+                we get
+                \[
+                \int xe^x\,dx
+                =
+                xe^x-\int e^x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                \int xe^x\,dx
+                =
+                xe^x-e^x+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{e^x(x-1)+C}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q2 -->
+
+    <div class="question-card" data-level="foundation" data-number="2">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                FOUNDATION 02
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x\cos x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=x,\qquad dv=\cos x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=dx,\qquad v=\sin x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x\cos x\,dx
+                =
+                x\sin x-\int\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Since
+                \[
+                \int\sin x\,dx=-\cos x,
+                \]
+                we obtain
+                \[
+                x\sin x+\cos x+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{x\sin x+\cos x+C}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q3 -->
+
+    <div class="question-card" data-level="foundation" data-number="3">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                FOUNDATION 03
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x\ln x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=\ln x,\qquad dv=x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Differentiate \(u\):
+                \[
+                du=\frac1x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Integrate \(dv\):
+                \[
+                v=\frac{x^2}{2}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Apply integration by parts:
+                \[
+                \int x\ln x\,dx
+                =
+                \frac{x^2}{2}\ln x
+                -
+                \int
+                \frac{x^2}{2}\cdot\frac1x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Simplify:
+                \[
+                =
+                \frac{x^2}{2}\ln x
+                -
+                \frac12\int x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                =
+                \frac{x^2}{2}\ln x
+                -
+                \frac{x^2}{4}
+                +C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{\frac{x^2}{2}\ln x-\frac{x^2}{4}+C}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q4 -->
+
+    <div class="question-card" data-level="foundation" data-number="4">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                FOUNDATION 04
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int xe^{2x}\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Let
+                \[
+                u=x,\qquad dv=e^{2x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=dx
+                \]
+                and
+                \[
+                v=\frac12e^{2x}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int xe^{2x}\,dx
+                =
+                \frac{x e^{2x}}2
+                -
+                \frac12\int e^{2x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Since
+                \[
+                \int e^{2x}\,dx=\frac12e^{2x},
+                \]
+                we get
+                \[
+                \int xe^{2x}\,dx
+                =
+                \frac{x e^{2x}}2
+                -
+                \frac{e^{2x}}4+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{\frac{e^{2x}}4(2x-1)+C}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q5 -->
+
+    <div class="question-card" data-level="foundation" data-number="5">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                FOUNDATION 05
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x^2e^x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=x^2,\qquad dv=e^x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=2x\,dx,\qquad v=e^x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x^2e^x\,dx
+                =
+                x^2e^x-\int2xe^x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                We now evaluate
+                \[
+                \int xe^x\,dx.
+                \]
+                Let
+                \[
+                u=x,\qquad dv=e^x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Thus
+                \[
+                du=dx,\qquad v=e^x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                So
+                \[
+                \int xe^x\,dx
+                =
+                xe^x-\int e^x\,dx
+                =
+                xe^x-e^x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Substitute:
+                \[
+                \int x^2e^x\,dx
+                =
+                x^2e^x
+                -
+                2(xe^x-e^x)+C.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                =
+                x^2e^x-2xe^x+2e^x+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{e^x(x^2-2x+2)+C}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         DEVELOPING
+    ====================================================== -->
+
+    <div class="level-title" data-level="developing">
+        <h2>Developing</h2>
+        <div class="level-line"></div>
+        <span>06–10</span>
+    </div>
+
+
+    <!-- Q6 -->
+
+    <div class="question-card" data-level="developing" data-number="6">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                DEVELOPING 06
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x^2\cos x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Let
+                \[
+                u=x^2,\qquad dv=\cos x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=2x\,dx,\qquad v=\sin x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                \int x^2\cos x\,dx
+                =
+                x^2\sin x
+                -
+                2\int x\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                For
+                \[
+                \int x\sin x\,dx,
+                \]
+                choose
+                \[
+                u=x,\qquad dv=\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Thus
+                \[
+                du=dx,\qquad v=-\cos x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x\sin x\,dx
+                =
+                -x\cos x+\int\cos x\,dx
+                =
+                -x\cos x+\sin x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Substitute:
+                \[
+                \int x^2\cos x\,dx
+                =
+                x^2\sin x
+                -
+                2(-x\cos x+\sin x)+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{x^2\sin x+2x\cos x-2\sin x+C}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q7 -->
+
+    <div class="question-card" data-level="developing" data-number="7">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                DEVELOPING 07
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x^2\ln x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=\ln x,\qquad dv=x^2\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=\frac1x\,dx,
+                \qquad
+                v=\frac{x^3}{3}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x^2\ln x\,dx
+                =
+                \frac{x^3}{3}\ln x
+                -
+                \int
+                \frac{x^3}{3}\cdot\frac1x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Simplify:
+                \[
+                =
+                \frac{x^3}{3}\ln x
+                -
+                \frac13\int x^2\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                =
+                \frac{x^3}{3}\ln x
+                -
+                \frac{x^3}{9}+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{\frac{x^3}{3}\ln x-\frac{x^3}{9}+C}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q8 -->
+
+    <div class="question-card" data-level="developing" data-number="8">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                DEVELOPING 08
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x\sin(2x)\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Let
+                \[
+                u=x,\qquad dv=\sin(2x)\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=dx
+                \]
+                and
+                \[
+                v=-\frac12\cos(2x).
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x\sin(2x)\,dx
+                =
+                -\frac{x}{2}\cos(2x)
+                +
+                \frac12\int\cos(2x)\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Since
+                \[
+                \int\cos(2x)\,dx
+                =
+                \frac12\sin(2x),
+                \]
+                we obtain
+                \[
+                -\frac{x}{2}\cos(2x)
+                +
+                \frac14\sin(2x)+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{-\frac{x}{2}\cos(2x)+\frac14\sin(2x)+C}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q9 -->
+
+    <div class="question-card" data-level="developing" data-number="9">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                DEVELOPING 09
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int \ln x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Write
+                \[
+                \int\ln x\,dx
+                =
+                \int \ln x\cdot1\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=\ln x,\qquad dv=dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                du=\frac1x\,dx,\qquad v=x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Apply integration by parts:
+                \[
+                \int\ln x\,dx
+                =
+                x\ln x-\int x\frac1x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Thus
+                \[
+                =
+                x\ln x-\int1\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                =
+                x\ln x-x+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{x\ln x-x+C}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q10 -->
+
+    <div class="question-card" data-level="developing" data-number="10">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                DEVELOPING 10
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int xe^{-x}\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Let
+                \[
+                u=x,\qquad dv=e^{-x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=dx,\qquad v=-e^{-x}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int xe^{-x}\,dx
+                =
+                -xe^{-x}
+                -
+                \int(-e^{-x})\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                So
+                \[
+                =
+                -xe^{-x}
+                +
+                \int e^{-x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Since
+                \[
+                \int e^{-x}\,dx=-e^{-x},
+                \]
+                we obtain
+                \[
+                -xe^{-x}-e^{-x}+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{-(x+1)e^{-x}+C}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         INTERMEDIATE
+    ====================================================== -->
+
+    <div class="level-title" data-level="intermediate">
+        <h2>Intermediate</h2>
+        <div class="level-line"></div>
+        <span>11–15</span>
+    </div>
+
+
+    <!-- Q11 -->
+
+    <div class="question-card" data-level="intermediate" data-number="11">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                INTERMEDIATE 11
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x^3e^x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Let
+                \[
+                u=x^3,\qquad dv=e^x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=3x^2\,dx,\qquad v=e^x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x^3e^x\,dx
+                =
+                x^3e^x
+                -
+                3\int x^2e^x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                From the same process,
+                \[
+                \int x^2e^x\,dx
+                =
+                e^x(x^2-2x+2).
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                \int x^3e^x\,dx
+                =
+                x^3e^x
+                -
+                3e^x(x^2-2x+2)+C.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Factor out \(e^x\):
+                \[
+                =
+                e^x(x^3-3x^2+6x-6)+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{e^x(x^3-3x^2+6x-6)+C}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q12 -->
+
+    <div class="question-card" data-level="intermediate" data-number="12">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                INTERMEDIATE 12
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x^2\sin x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=x^2,\qquad dv=\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=2x\,dx,\qquad v=-\cos x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x^2\sin x\,dx
+                =
+                -x^2\cos x
+                +
+                2\int x\cos x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Now
+                \[
+                \int x\cos x\,dx
+                =
+                x\sin x-\int\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Since
+                \[
+                \int\sin x\,dx=-\cos x,
+                \]
+                we have
+                \[
+                \int x\cos x\,dx
+                =
+                x\sin x+\cos x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x^2\sin x\,dx
+                =
+                -x^2\cos x
+                +
+                2x\sin x
+                +
+                2\cos x+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{-x^2\cos x+2x\sin x+2\cos x+C}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q13 -->
+
+    <div class="question-card" data-level="intermediate" data-number="13">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                INTERMEDIATE 13
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x\arctan x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=\arctan x,\qquad dv=x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=\frac{1}{1+x^2}\,dx,
+                \qquad
+                v=\frac{x^2}{2}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                \int x\arctan x\,dx
+                =
+                \frac{x^2}{2}\arctan x
+                -
+                \frac12
+                \int
+                \frac{x^2}{1+x^2}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Rewrite
+                \[
+                \frac{x^2}{1+x^2}
+                =
+                1-\frac{1}{1+x^2}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int
+                \frac{x^2}{1+x^2}\,dx
+                =
+                \int1\,dx
+                -
+                \int\frac1{1+x^2}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Thus
+                \[
+                =
+                x-\arctan x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Substitute:
+                \[
+                \int x\arctan x\,dx
+                =
+                \frac{x^2}{2}\arctan x
+                -
+                \frac12(x-\arctan x)+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{
+                \frac{x^2+1}{2}\arctan x-\frac{x}{2}+C
+                }
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q14 -->
+
+    <div class="question-card" data-level="intermediate" data-number="14">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                INTERMEDIATE 14
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x\ln(1+x)\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=\ln(1+x),\qquad dv=x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=\frac{1}{1+x}\,dx,
+                \qquad
+                v=\frac{x^2}{2}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x\ln(1+x)\,dx
+                =
+                \frac{x^2}{2}\ln(1+x)
+                -
+                \frac12
+                \int\frac{x^2}{1+x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Divide:
+                \[
+                \frac{x^2}{x+1}
+                =
+                x-1+\frac1{x+1}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                \int\frac{x^2}{1+x}\,dx
+                =
+                \int
+                \left(
+                x-1+\frac1{x+1}
+                \right)dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                =
+                \frac{x^2}{2}-x+\ln(1+x).
+                \]
+            </div>
+
+            <div class="solution-step">
+                Substitute:
+                \[
+                \int x\ln(1+x)\,dx
+                =
+                \frac{x^2}{2}\ln(1+x)
+                -
+                \frac12
+                \left(
+                \frac{x^2}{2}-x+\ln(1+x)
+                \right)+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{
+                \frac{x^2-1}{2}\ln(1+x)
+                -\frac{x^2}{4}
+                +\frac{x}{2}
+                +C
+                }
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q15 -->
+
+    <div class="question-card" data-level="intermediate" data-number="15">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                INTERMEDIATE 15
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int_0^1 x e^x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=x,\qquad dv=e^x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=dx,\qquad v=e^x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int_0^1xe^x\,dx
+                =
+                \left[xe^x-e^x\right]_0^1.
+                \]
+            </div>
+
+            <div class="solution-step">
+                At \(x=1\):
+                \[
+                1(e)-e=0.
+                \]
+            </div>
+
+            <div class="solution-step">
+                At \(x=0\):
+                \[
+                0(e^0)-e^0=-1.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                0-(-1)=1.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{1}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ADVANCED
+    ====================================================== -->
+
+    <div class="level-title" data-level="advanced">
+        <h2>Advanced</h2>
+        <div class="level-line"></div>
+        <span>16–20</span>
+    </div>
+
+
+    <!-- Q16 -->
+
+    <div class="question-card" data-level="advanced" data-number="16">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                ADVANCED 16
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x^2e^{2x}\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Let
+                \[
+                u=x^2,\qquad dv=e^{2x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=2x\,dx,
+                \qquad
+                v=\frac12e^{2x}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x^2e^{2x}\,dx
+                =
+                \frac{x^2e^{2x}}2
+                -
+                \int xe^{2x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                For the remaining integral, choose
+                \[
+                u=x,\qquad dv=e^{2x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Thus
+                \[
+                du=dx,\qquad
+                v=\frac12e^{2x}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                \int xe^{2x}\,dx
+                =
+                \frac{xe^{2x}}2
+                -
+                \frac12\int e^{2x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Since
+                \[
+                \int e^{2x}\,dx=\frac12e^{2x},
+                \]
+                we get
+                \[
+                \int xe^{2x}\,dx
+                =
+                \frac{xe^{2x}}2-\frac{e^{2x}}4.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x^2e^{2x}\,dx
+                =
+                \frac{x^2e^{2x}}2
+                -
+                \frac{xe^{2x}}2
+                +
+                \frac{e^{2x}}4+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{
+                \frac{e^{2x}}4(2x^2-2x+1)+C
+                }
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q17 -->
+
+    <div class="question-card" data-level="advanced" data-number="17">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                ADVANCED 17
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x^3\cos x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Let
+                \[
+                u=x^3,\qquad dv=\cos x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=3x^2\,dx,\qquad v=\sin x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x^3\cos x\,dx
+                =
+                x^3\sin x
+                -
+                3\int x^2\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                From integration by parts,
+                \[
+                \int x^2\sin x\,dx
+                =
+                -x^2\cos x
+                +
+                2x\sin x
+                +
+                2\cos x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Substitute:
+                \[
+                \int x^3\cos x\,dx
+                =
+                x^3\sin x
+                -
+                3
+                \left(
+                -x^2\cos x
+                +2x\sin x
+                +2\cos x
+                \right)+C.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Expand:
+                \[
+                =
+                x^3\sin x
+                +3x^2\cos x
+                -6x\sin x
+                -6\cos x+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{
+                x^3\sin x+3x^2\cos x-6x\sin x-6\cos x+C
+                }
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q18 -->
+
+    <div class="question-card" data-level="advanced" data-number="18">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                ADVANCED 18
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int e^x\sin x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Let
+                \[
+                I=\int e^x\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=\sin x,\qquad dv=e^x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=\cos x\,dx,\qquad v=e^x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                I=e^x\sin x-\int e^x\cos x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Let
+                \[
+                J=\int e^x\cos x\,dx.
+                \]
+                Using integration by parts again:
+                \[
+                u=\cos x,\qquad dv=e^x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Thus
+                \[
+                du=-\sin x\,dx,\qquad v=e^x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                J=e^x\cos x+\int e^x\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Since
+                \[
+                I=e^x\sin x-J,
+                \]
+                substitute \(J\):
+                \[
+                I=e^x\sin x-e^x\cos x-I.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Add \(I\) to both sides:
+                \[
+                2I=e^x(\sin x-\cos x).
+                \]
+            </div>
+
+            <div class="solution-step">
+                Divide by \(2\):
+                \[
+                I=\frac12e^x(\sin x-\cos x)+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{
+                \frac{e^x}{2}(\sin x-\cos x)+C
+                }
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q19 -->
+
+    <div class="question-card" data-level="advanced" data-number="19">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                ADVANCED 19
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int e^{2x}\cos x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Let
+                \[
+                I=\int e^{2x}\cos x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=\cos x,\qquad dv=e^{2x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=-\sin x\,dx,
+                \qquad
+                v=\frac12e^{2x}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                I=
+                \frac12e^{2x}\cos x
+                +
+                \frac12\int e^{2x}\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Let
+                \[
+                J=\int e^{2x}\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Using integration by parts:
+                \[
+                u=\sin x,\qquad
+                dv=e^{2x}\,dx.
+                \]
+                Thus
+                \[
+                du=\cos x\,dx,
+                \qquad
+                v=\frac12e^{2x}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                J=
+                \frac12e^{2x}\sin x
+                -
+                \frac12I.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Substitute into \(I\):
+                \[
+                I=
+                \frac12e^{2x}\cos x
+                +
+                \frac12
+                \left(
+                \frac12e^{2x}\sin x
+                -
+                \frac12I
+                \right).
+                \]
+            </div>
+
+            <div class="solution-step">
+                Simplify:
+                \[
+                I=
+                \frac12e^{2x}\cos x
+                +
+                \frac14e^{2x}\sin x
+                -
+                \frac14I.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Add \(\frac14I\) to both sides:
+                \[
+                \frac54I
+                =
+                \frac12e^{2x}\cos x
+                +
+                \frac14e^{2x}\sin x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Multiply both sides by \(\frac45\):
+                \[
+                I=
+                \frac25e^{2x}\cos x
+                +
+                \frac15e^{2x}\sin x+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{
+                \frac{e^{2x}}5(2\cos x+\sin x)+C
+                }
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q20 -->
+
+    <div class="question-card" data-level="advanced" data-number="20">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                ADVANCED 20
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int_0^{\pi/2}x\sin x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=x,\qquad dv=\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=dx,\qquad v=-\cos x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int_0^{\pi/2}x\sin x\,dx
+                =
+                \left[-x\cos x+\sin x\right]_0^{\pi/2}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                At
+                \[
+                x=\frac{\pi}{2},
+                \]
+                we get
+                \[
+                -\frac{\pi}{2}\cos\frac{\pi}{2}
+                +
+                \sin\frac{\pi}{2}
+                =
+                0+1=1.
+                \]
+            </div>
+
+            <div class="solution-step">
+                At \(x=0\):
+                \[
+                -0\cos0+\sin0=0.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                1-0=1.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{1}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CHALLENGE
+    ====================================================== -->
+
+    <div class="level-title" data-level="challenge">
+        <h2>Challenge</h2>
+        <div class="level-line"></div>
+        <span>21–24</span>
+    </div>
+
+
+    <!-- Q21 -->
+
+    <div class="question-card" data-level="challenge" data-number="21">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                CHALLENGE 21
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x^2\ln(1+x^2)\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=\ln(1+x^2),
+                \qquad
+                dv=x^2\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=\frac{2x}{1+x^2}\,dx,
+                \qquad
+                v=\frac{x^3}{3}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x^2\ln(1+x^2)\,dx
+                =
+                \frac{x^3}{3}\ln(1+x^2)
+                -
+                \frac23
+                \int
+                \frac{x^4}{1+x^2}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Divide:
+                \[
+                \frac{x^4}{1+x^2}
+                =
+                x^2-1+\frac1{1+x^2}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                \int
+                \frac{x^4}{1+x^2}\,dx
+                =
+                \int
+                \left(
+                x^2-1+\frac1{1+x^2}
+                \right)dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                =
+                \frac{x^3}{3}-x+\arctan x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Substitute:
+                \[
+                \int x^2\ln(1+x^2)\,dx
+                =
+                \frac{x^3}{3}\ln(1+x^2)
+                -
+                \frac23
+                \left(
+                \frac{x^3}{3}-x+\arctan x
+                \right)+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{
+                \frac{x^3}{3}\ln(1+x^2)
+                -\frac{2x^3}{9}
+                +\frac{2x}{3}
+                -\frac23\arctan x+C
+                }
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q22 -->
+
+    <div class="question-card" data-level="challenge" data-number="22">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                CHALLENGE 22
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int x^3e^{-x}\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Let
+                \[
+                u=x^3,\qquad dv=e^{-x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=3x^2\,dx,
+                \qquad
+                v=-e^{-x}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x^3e^{-x}\,dx
+                =
+                -x^3e^{-x}
+                +
+                3\int x^2e^{-x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Now
+                \[
+                \int x^2e^{-x}\,dx
+                =
+                -x^2e^{-x}
+                +
+                2\int xe^{-x}\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Also
+                \[
+                \int xe^{-x}\,dx
+                =
+                -(x+1)e^{-x}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int x^2e^{-x}\,dx
+                =
+                -x^2e^{-x}
+                -
+                2(x+1)e^{-x}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                =
+                -(x^2+2x+2)e^{-x}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Substitute:
+                \[
+                \int x^3e^{-x}\,dx
+                =
+                -x^3e^{-x}
+                -
+                3(x^2+2x+2)e^{-x}+C.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Factor:
+                \[
+                =
+                -e^{-x}
+                (x^3+3x^2+6x+6)+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{
+                -e^{-x}(x^3+3x^2+6x+6)+C
+                }
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q23 -->
+
+    <div class="question-card" data-level="challenge" data-number="23">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                CHALLENGE 23
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int_0^1 x^2\ln x\,dx.
+                \]
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=\ln x,\qquad dv=x^2\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Then
+                \[
+                du=\frac1x\,dx,
+                \qquad
+                v=\frac{x^3}{3}.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                \int_0^1x^2\ln x\,dx
+                =
+                \left[
+                \frac{x^3}{3}\ln x
+                -
+                \frac13\int x^2\cdot\frac1x\,dx
+                \right]_0^1.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Simplify the integral:
+                \[
+                =
+                \left[
+                \frac{x^3}{3}\ln x
+                -
+                \frac{x^2}{6}
+                \right]_0^1.
+                \]
+            </div>
+
+            <div class="solution-step">
+                At \(x=1\):
+                \[
+                \frac13\ln1-\frac16
+                =
+                0-\frac16
+                =
+                -\frac16.
+                \]
+            </div>
+
+            <div class="solution-step">
+                At \(x=0\), the limiting value of
+                \[
+                x^3\ln x
+                \]
+                is \(0\), and
+                \[
+                \frac{x^2}{6}=0.
+                \]
+                Therefore the lower limit is \(0\).
+            </div>
+
+            <div class="solution-step">
+                Hence
+                \[
+                -\frac16-0=-\frac16.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{-\frac16}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Q24 -->
+
+    <div class="question-card" data-level="challenge" data-number="24">
+
+        <div class="question-top">
+
+            <div class="question-number">
+                CHALLENGE 24
+            </div>
+
+            <div class="question-text">
+                Evaluate
+                \[
+                \int e^x\cos x\,dx.
+                \]
+                Use integration by parts and show clearly what happens when the
+                original integral appears again.
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution(this)">
+                SHOW SOLUTION
+            </button>
+
+        </div>
+
+        <div class="solution">
+
+            <div class="solution-title">FULL SOLUTION</div>
+
+            <div class="solution-step">
+                Let
+                \[
+                I=\int e^x\cos x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Choose
+                \[
+                u=\cos x,\qquad dv=e^x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                du=-\sin x\,dx,
+                \qquad
+                v=e^x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Applying integration by parts:
+                \[
+                I
+                =
+                e^x\cos x
+                -
+                \int e^x(-\sin x)\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Therefore
+                \[
+                I
+                =
+                e^x\cos x
+                +
+                \int e^x\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Now evaluate
+                \[
+                \int e^x\sin x\,dx.
+                \]
+                Let
+                \[
+                J=\int e^x\sin x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Using integration by parts again:
+                \[
+                u=\sin x,\qquad dv=e^x\,dx.
+                \]
+                Hence
+                \[
+                du=\cos x\,dx,\qquad v=e^x.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Thus
+                \[
+                J=e^x\sin x-\int e^x\cos x\,dx.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Since
+                \[
+                I=\int e^x\cos x\,dx,
+                \]
+                we have
+                \[
+                J=e^x\sin x-I.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Substitute into the first equation:
+                \[
+                I=e^x\cos x+e^x\sin x-I.
+                \]
+            </div>
+
+            <div class="solution-step">
+                Add \(I\) to both sides:
+                \[
+                2I=e^x(\sin x+\cos x).
+                \]
+            </div>
+
+            <div class="solution-step">
+                Divide by \(2\):
+                \[
+                I=
+                \frac12e^x(\sin x+\cos x)+C.
+                \]
+            </div>
+
+            <div class="final-answer">
+                \[
+                \boxed{
+                \frac{e^x}{2}(\sin x+\cos x)+C
+                }
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="complete-box">
+
+        <h2>Integration by Parts Complete</h2>
+
+        <p>
+            You have worked through the essential forms of integration by parts,
+            from direct applications to repeated integration, definite integrals,
+            logarithmic functions, inverse trigonometric functions, and recurring
+            integrals.
+        </p>
+
+    </div>
+
+</main>
+
+
+<script>
+
+/* =========================
+   SOLUTION TOGGLE
+========================= */
+
+function toggleSolution(button) {
+
+    const solution = button.parentElement.nextElementSibling;
+
+    solution.classList.toggle("show");
+
+    if (solution.classList.contains("show")) {
+        button.textContent = "HIDE SOLUTION";
+    } else {
+        button.textContent = "SHOW SOLUTION";
+    }
+
+    if (window.MathJax) {
+        MathJax.typesetPromise([solution]);
+    }
+}
+
+
+/* =========================
+   LEVEL FILTER
+========================= */
+
+const levelFilter = document.getElementById("levelFilter");
+const questionIndex = document.getElementById("questionIndex");
+const cards = document.querySelectorAll(".question-card");
+const levelTitles = document.querySelectorAll(".level-title");
+
+
+levelFilter.addEventListener("change", function () {
+
+    const selected = this.value;
+
+    cards.forEach(card => {
+
+        if (selected === "all" || card.dataset.level === selected) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+    levelTitles.forEach(title => {
+
+        if (selected === "all" || title.dataset.level === selected) {
+            title.style.display = "";
+        } else {
+            title.style.display = "none";
+        }
+
+    });
+
+    questionIndex.value = "";
+
+});
+
+
+/* =========================
+   QUESTION NUMBER SEARCH
+========================= */
+
+questionIndex.addEventListener("input", function () {
+
+    const number = parseInt(this.value);
+
+    if (!number || number < 1 || number > 24) {
+
+        cards.forEach(card => {
+            card.style.display = "";
+        });
+
+        levelTitles.forEach(title => {
+            title.style.display = "";
+        });
+
+        return;
+    }
+
+    cards.forEach(card => {
+
+        if (parseInt(card.dataset.number) === number) {
+            card.style.display = "";
+            card.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+    levelTitles.forEach(title => {
+        title.style.display = "none";
+    });
+
+});
+
+
+/* =========================
+   MATHJAX REFRESH
+========================= */
+
+window.addEventListener("load", function () {
+
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
