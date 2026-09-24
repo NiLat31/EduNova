@@ -16,7 +16,6 @@
         rel="stylesheet"
     >
 
-
     <style>
 
         /* =========================================
@@ -316,60 +315,51 @@
             vertical-align: middle;
         }
 
- .integral-with-limits {
-    display: inline-block;
-    position: relative;
-    width: 42px;
-    height: 65px;
-    vertical-align: middle;
-}
+        .integral-with-limits {
+            display: inline-block;
+            position: relative;
+            width: 42px;
+            height: 65px;
+            vertical-align: middle;
+        }
 
-.integral-symbol {
-    position: absolute;
-    left: 0px;
-    top: 5px;
-    font-family: "Times New Roman", serif;
-    font-size: 50px;
-    line-height: 1;
-}
+        .integral-symbol {
+            position: absolute;
+            left: 0px;
+            top: 5px;
+            font-family: "Times New Roman", serif;
+            font-size: 50px;
+            line-height: 1;
+        }
+
         .upper-limit {
-    position: absolute;
-    top: 0;
-    right: 7;
-    font-size: 16px;
-}
+            position: absolute;
+            top: 0;
+            right: 7px;
+            font-size: 16px;
+        }
 
-.lower-limit {
-    position: absolute;
-    bottom: 0;
-    right: 7;
-    font-size: 16px;
-}
-/* Proper definite integral */
-.math-integral {
-    display: inline-flex;
-    align-items: center;
-    vertical-align: middle;
-    font-family: "Times New Roman", serif;
-    margin-right: 6px;
-}
+        .lower-limit {
+            position: absolute;
+            bottom: 0;
+            right: 7px;
+            font-size: 16px;
+        }
 
-.math-integral math {
-    font-size: 1em;
-}
-.upper-limit {
-    position: absolute;
-    top: 0;
-    right: 7;
-    font-size: 16px;
-}
+        /* Proper definite integral */
+        .math-integral {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            font-family: "Times New Roman", serif;
+            margin-right: 6px;
+        }
 
-.lower-limit {
-    position: absolute;
-    bottom: 0;
-    right: 7;
-    font-size: 16px;
-}
+        .math-integral math {
+            font-size: 1em;
+        }
+
+
         /* =========================================
            NOTES
         ========================================= */
@@ -590,59 +580,253 @@
             border-color: white;
         }
 
-/* =========================================
-   PRACTICE QUESTIONS BUTTON
-========================================= */
 
-.practice-section {
-    text-align: center;
+        /* =========================================
+           COMPLETION
+        ========================================= */
 
-    background: white;
+        .completion-section {
+            position: relative;
+            overflow: hidden;
+            background: #111;
+            color: white;
+            padding: 65px 35px;
+            margin-top: 70px;
+            text-align: center;
+        }
 
-    border: 1px solid #ddd;
+        .completion-content {
+            position: relative;
+            z-index: 2;
+        }
 
-    padding: 55px 35px;
+        .completion-label {
+            color: #e00000;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
 
-    margin-top: 20px;
+        .completion-section h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
+        .completion-section p {
+            color: #ccc;
+            max-width: 650px;
+            margin: 0 auto 28px;
+            font-size: 17px;
+        }
 
-.practice-section h2 {
-    font-family: "Playfair Display", serif;
+        .complete-button {
+            background: #e00000;
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-family: "DM Sans", sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-    font-size: 38px;
+        .complete-button:hover {
+            background: white;
+            color: #111;
+        }
 
-    margin-bottom: 15px;
-}
+        .complete-button:disabled {
+            cursor: default;
+        }
 
-.practice-section p {
-    margin: 0 auto 30px;
+        .completed-message {
+            display: none;
+        }
 
-    color: #555;
+        .completion-section.completed .completion-prompt {
+            display: none;
+        }
 
-    max-width: 650px;
-}
+        .completion-section.completed .completed-message {
+            display: block;
+        }
 
-.practice-button {
-    display: inline-block;
+        .completion-section.completed {
+            background: #111;
+        }
 
-    background: #111;
 
-    color: white;
+        /* =========================================
+           CELEBRATION STRIPS
+        ========================================= */
 
-    padding: 16px 30px;
+        .party-strip {
+            position: absolute;
+            width: 10px;
+            height: 75px;
+            top: -90px;
+            transform: rotate(25deg);
+            opacity: 0;
+        }
 
-    font-weight: 700;
+        .party-strip:nth-child(1) {
+            left: 8%;
+            background: #e00000;
+        }
 
-    letter-spacing: 0.5px;
+        .party-strip:nth-child(2) {
+            left: 20%;
+            background: #fff;
+        }
 
-    transition: 0.3s;
-}
+        .party-strip:nth-child(3) {
+            left: 32%;
+            background: #e00000;
+        }
 
-.practice-button:hover {
-    background: #e00000;
-}
+        .party-strip:nth-child(4) {
+            left: 44%;
+            background: #fff;
+        }
+
+        .party-strip:nth-child(5) {
+            left: 56%;
+            background: #e00000;
+        }
+
+        .party-strip:nth-child(6) {
+            left: 68%;
+            background: #fff;
+        }
+
+        .party-strip:nth-child(7) {
+            left: 80%;
+            background: #e00000;
+        }
+
+        .party-strip:nth-child(8) {
+            left: 92%;
+            background: #fff;
+        }
+
+        .completion-section.completed .party-strip {
+            animation: celebrationDrop 1.2s ease-out forwards;
+        }
+
+        .completion-section.completed .party-strip:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(2) {
+            animation-delay: 0.12s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(3) {
+            animation-delay: 0.19s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(4) {
+            animation-delay: 0.26s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(5) {
+            animation-delay: 0.33s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(6) {
+            animation-delay: 0.40s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(7) {
+            animation-delay: 0.47s;
+        }
+
+        .completion-section.completed .party-strip:nth-child(8) {
+            animation-delay: 0.54s;
+        }
+
+        @keyframes celebrationDrop {
+            0% {
+                top: -90px;
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 110%;
+                opacity: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .completion-section.completed .party-strip {
+                animation: none;
+            }
+        }
+
+
+        /* =========================================
+           PRACTICE QUESTIONS BUTTON
+        ========================================= */
+
+        .practice-section {
+            text-align: center;
+
+            background: white;
+
+            border: 1px solid #ddd;
+
+            padding: 55px 35px;
+
+            margin-top: 20px;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .practice-section h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 38px;
+
+            margin-bottom: 15px;
+        }
+
+        .practice-section p {
+            margin: 0 auto 30px;
+
+            color: #555;
+
+            max-width: 650px;
+        }
+
+        .practice-button {
+            display: inline-block;
+
+            background: #111;
+
+            color: white;
+
+            padding: 16px 30px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+            transition: 0.3s;
+        }
+
+        .practice-button:hover {
+            background: #e00000;
+        }
+
+
         /* =========================================
            FOOTER
         ========================================= */
@@ -1108,47 +1292,60 @@
 
                     <!-- POINT LABELS -->
 
-                    <!-- POINT LABELS -->
+                    <!-- x-coordinates -->
 
-<!-- x-coordinates -->
+                    <text x="80" y="395" font-size="20">
+                        x₀
+                    </text>
 
-<text x="80" y="395" font-size="20">
-    x₀
-</text>
+                    <text x="200" y="395" font-size="20">
+                        x₁
+                    </text>
 
-<text x="200" y="395" font-size="20">
-    x₁
-</text>
+                    <text x="320" y="395" font-size="20">
+                        x₂
+                    </text>
 
-<text x="320" y="395" font-size="20">
-    x₂
-</text>
+                    <text x="440" y="395" font-size="20">
+                        x₃
+                    </text>
 
-<text x="440" y="395" font-size="20">
-    x₃
-</text>
+                    <text x="560" y="395" font-size="20">
+                        x₄
+                    </text>
 
-<text x="560" y="395" font-size="20">
-    x₄
-</text>
-
-<text x="680" y="395" font-size="20">
-    x₅
-</text>
+                    <text x="680" y="395" font-size="20">
+                        x₅
+                    </text>
 
 
-<!-- y-ordinates -->
-<text x="78" y="315" font-size="20">y₀</text>
-                    
-<text x="220" y="180" font-size="20">y₁</text>
+                    <!-- y-ordinates -->
 
-<text x="345" y="145" font-size="20">y₂</text>
-                    
-<text x="465" y="225" font-size="20">y₃</text>
+                    <text x="78" y="315" font-size="20">
+                        y₀
+                    </text>
 
-<text x="585" y="165" font-size="20">y₄</text>
+                    <text x="220" y="180" font-size="20">
+                        y₁
+                    </text>
 
-<text x="700" y="90" font-size="20">y₅</text>
+                    <text x="345" y="145" font-size="20">
+                        y₂
+                    </text>
+
+                    <text x="465" y="225" font-size="20">
+                        y₃
+                    </text>
+
+                    <text x="585" y="165" font-size="20">
+                        y₄
+                    </text>
+
+                    <text x="700" y="90" font-size="20">
+                        y₅
+                    </text>
+
+
                     <!-- h LABELS -->
 
                     <text x="145" y="350" font-size="18">
@@ -1731,39 +1928,39 @@
             </div>
 
 
-         
             <p>
                 Since the Trapezium Rule normally gives an estimate,
                 we use the approximation symbol ≈.
             </p>
 
-   <div class="math-box final">
+            <div class="math-box final">
 
-    <strong>
+                <strong>
 
-        <span class="integral-with-limits">
-            <span class="upper-limit">b</span>
-            <span class="integral-symbol">∫</span>
-            <span class="lower-limit">a</span>
-        </span><span class="math-function">f(x) dx</span>
+                    <span class="integral-with-limits">
+                        <span class="upper-limit">b</span>
+                        <span class="integral-symbol">∫</span>
+                        <span class="lower-limit">a</span>
+                    </span><span class="math-function">f(x) dx</span>
 
-        ≈
+                    ≈
 
-        <span class="fraction">
-            <span class="top">h</span>
-            <span class="bottom">2</span>
-        </span>
+                    <span class="fraction">
+                        <span class="top">h</span>
+                        <span class="bottom">2</span>
+                    </span>
 
-        [y₀ + yₙ + 2(y₁ + y₂ + ... + yₙ₋₁)]
+                    [y₀ + yₙ + 2(y₁ + y₂ + ... + yₙ₋₁)]
 
-    </strong>
+                </strong>
 
-</div>
+            </div>
+
 
             <!-- FINDING h -->
 
             <h3>
-                6. Finding h
+                5. Finding h
             </h3>
 
             <p>
@@ -1820,35 +2017,38 @@
                     Example
                 </div>
 
-          <p>
-    Use the Trapezium Rule with four equal intervals
-    to estimate the definite integral:
-</p>
+                <p>
+                    Use the Trapezium Rule with four equal intervals
+                    to estimate the definite integral:
+                </p>
 
-<div class="math-box">
-    <span class="integral-with-limits">
-        <span class="upper-limit">4</span>
-        <span class="integral-symbol">∫</span>
-        <span class="lower-limit">0</span>
-    </span>
+                <div class="math-box">
 
-    <strong>f(x) dx</strong>
-</div>
+                    <span class="integral-with-limits">
+                        <span class="upper-limit">4</span>
+                        <span class="integral-symbol">∫</span>
+                        <span class="lower-limit">0</span>
+                    </span>
 
-<p>
-    Given the following y-values:
-</p>
+                    <strong>f(x) dx</strong>
 
-<div class="math-box y-values-box">
-    <strong>
-        y<sub>0</sub> = 2,&nbsp;&nbsp;
-        y<sub>1</sub> = 3,&nbsp;&nbsp;
-        y<sub>2</sub> = 5,&nbsp;&nbsp;
-        y<sub>3</sub> = 4,&nbsp;&nbsp;
-        y<sub>4</sub> = 7
-    </strong>
-</div>
+                </div>
 
+                <p>
+                    Given the following y-values:
+                </p>
+
+                <div class="math-box y-values-box">
+
+                    <strong>
+                        y<sub>0</sub> = 2,&nbsp;&nbsp;
+                        y<sub>1</sub> = 3,&nbsp;&nbsp;
+                        y<sub>2</sub> = 5,&nbsp;&nbsp;
+                        y<sub>3</sub> = 4,&nbsp;&nbsp;
+                        y<sub>4</sub> = 7
+                    </strong>
+
+                </div>
 
 
                 <div class="step">
@@ -1876,9 +2076,9 @@
                         Step 2: Find h
                     </div>
 
-                   <p>
-    From the definite integral, the limits are:
-</p>
+                    <p>
+                        From the definite integral, the limits are:
+                    </p>
 
                     <div class="math-box">
 
@@ -2120,23 +2320,29 @@
 
                 <div class="formula">
 
-             <span class="math-integral">
-    <math>
-        <mrow>
-            <munderover>
-                <mo>∫</mo>
-                <mi>a</mi>
-                <mi>b</mi>
-            </munderover>
-            <mi>f</mi>
-            <mo>(</mo>
-            <mi>x</mi>
-            <mo>)</mo>
-            <mi>dx</mi>
-        </mrow>
-    </math>
-</span>
-                
+                    <span class="math-integral">
+
+                        <math>
+
+                            <mrow>
+
+                                <munderover>
+                                    <mo>∫</mo>
+                                    <mi>a</mi>
+                                    <mi>b</mi>
+                                </munderover>
+
+                                <mi>f</mi>
+                                <mo>(</mo>
+                                <mi>x</mi>
+                                <mo>)</mo>
+                                <mi>dx</mi>
+
+                            </mrow>
+
+                        </math>
+
+                    </span>
 
                     ≈
 
@@ -2163,6 +2369,7 @@
                         max-width:750px;
                     "
                 >
+
                     where
 
                     <strong style="color:white;">
@@ -2170,11 +2377,78 @@
                     </strong>
 
                     and n is the number of equal intervals.
+
                 </p>
 
             </div>
 
-                </section>
+        </section>
+
+
+
+        <!-- =====================================
+             COMPLETION
+        ===================================== -->
+
+        <section class="completion-section" id="completionSection">
+
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+            <span class="party-strip"></span>
+
+            <div class="completion-content">
+
+                <div class="completion-prompt">
+
+                    <div class="completion-label">
+                        LESSON 01 / 08
+                    </div>
+
+                    <h2>
+                        Lesson complete?
+                    </h2>
+
+                    <p>
+                        You have reached the end of the explanation.
+                        Mark this lesson as complete to save your progress.
+                    </p>
+
+                    <button
+                        class="complete-button"
+                        id="completeButton"
+                        type="button"
+                    >
+                        ✓ COMPLETE LESSON
+                    </button>
+
+                </div>
+
+                <div class="completed-message">
+
+                    <div class="completion-label">
+                        INTEGRATION • TOPIC 01
+                    </div>
+
+                    <h2>
+                        Congratulations!
+                    </h2>
+
+                    <p>
+                        You completed <strong>The Trapezium Rule</strong>.
+                        Your progress has been saved.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
 
 
         <!-- =====================================
@@ -2200,6 +2474,7 @@
 
 
     </main>
+
 
 
     <!-- =========================================
@@ -2229,60 +2504,211 @@
 
 
     <!-- =========================================
+         SUPABASE
+    ========================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- =========================================
          JAVASCRIPT
     ========================================= -->
 
     <script>
 
+        /* =========================================
+           STRAIGHT-LINE APPROXIMATION ANIMATION
+        ========================================= */
+
         function animateApproximation() {
 
-            const line =
-                document.getElementById("approximationLine");
+            const line = document.getElementById("approximationLine");
+            const button = document.getElementById("approximationButton");
 
-            const button =
-                document.getElementById("approximationButton");
-
-
-            /*
-                Reset the line first.
-                This allows the animation to work again
-                if the button is clicked more than once.
-            */
-
-            line.style.transition = "none";
+            if (!line || !button) {
+                return;
+            }
 
             line.style.strokeDashoffset = "1000";
 
+            line.getBoundingClientRect();
 
-            /*
-                Force the browser to recognize the reset
-                before starting the animation.
-            */
-
-            void line.offsetWidth;
-
-
-            /*
-                Draw the approximation from left to right.
-            */
-
-            line.style.transition =
-                "stroke-dashoffset 2.8s ease";
+            line.style.transition = "stroke-dashoffset 2s ease";
 
             line.style.strokeDashoffset = "0";
 
-
-            /*
-                Change the button after it is clicked.
-            */
-
-            button.innerHTML =
-                "APPROXIMATION SHOWN ✓";
+            button.disabled = true;
+            button.textContent = "✓ APPROXIMATION SHOWN";
 
         }
 
-    </script>
 
+
+        /* =========================================
+           LESSON COMPLETION
+        ========================================= */
+
+        const SUPABASE_URL = "YOUR_EXISTING_SUPABASE_URL";
+        const SUPABASE_KEY = "YOUR_EXISTING_SUPABASE_KEY";
+
+        const supabaseClient = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+        async function checkSessionAndProgress() {
+
+            const {
+                data: { session }
+            } = await supabaseClient.auth.getSession();
+
+            if (!session) {
+
+                window.location.href = "index.html";
+
+                return;
+
+            }
+
+
+            const { data, error } = await supabaseClient
+                .from("lesson_progress")
+                .select("*")
+                .eq("user_id", session.user.id)
+                .eq("chapter", "Integration")
+                .eq("topic_number", 1)
+                .maybeSingle();
+
+
+            if (error) {
+
+                console.error(
+                    "Error checking lesson progress:",
+                    error
+                );
+
+                return;
+
+            }
+
+
+            if (data) {
+
+                showCompletedState();
+
+            }
+
+        }
+
+
+
+        async function completeLesson() {
+
+            const button =
+                document.getElementById("completeButton");
+
+            button.disabled = true;
+            button.textContent = "SAVING...";
+
+
+            const {
+                data: { session }
+            } = await supabaseClient.auth.getSession();
+
+
+            if (!session) {
+
+                window.location.href = "index.html";
+
+                return;
+
+            }
+
+
+            const { error } = await supabaseClient
+                .from("lesson_progress")
+                .upsert(
+                    {
+                        user_id: session.user.id,
+                        chapter: "Integration",
+                        topic_number: 1,
+                        completed_at: new Date().toISOString()
+                    },
+                    {
+                        onConflict:
+                            "user_id,chapter,topic_number"
+                    }
+                );
+
+
+            if (error) {
+
+                console.error(
+                    "Error saving lesson progress:",
+                    error
+                );
+
+                button.disabled = false;
+
+                button.textContent =
+                    "✓ COMPLETE LESSON";
+
+                return;
+
+            }
+
+
+            showCompletedState();
+
+        }
+
+
+
+        function showCompletedState() {
+
+            const section =
+                document.getElementById("completionSection");
+
+            const button =
+                document.getElementById("completeButton");
+
+
+            section.classList.add("completed");
+
+            button.disabled = true;
+
+            button.textContent =
+                "✓ LESSON COMPLETED";
+
+        }
+
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const completeButton =
+                    document.getElementById("completeButton");
+
+
+                if (completeButton) {
+
+                    completeButton.addEventListener(
+                        "click",
+                        completeLesson
+                    );
+
+                }
+
+
+                checkSessionAndProgress();
+
+            }
+        );
+
+    </script>
 
 </body>
 </html>
