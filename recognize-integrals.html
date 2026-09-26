@@ -2746,6 +2746,109 @@
 </section>
 
 
+<!-- =========================
+     CONGRATULATIONS
+========================= -->
+
+<section id="congratulationsSection" style="display:none;">
+
+    <div style="
+        background:#111;
+        color:white;
+        padding:55px 35px;
+        text-align:center;
+        margin-top:20px;
+    ">
+
+        <div style="
+            color:#e00000;
+            font-weight:700;
+            letter-spacing:2px;
+            text-transform:uppercase;
+            font-size:13px;
+            margin-bottom:15px;
+        ">
+            Lesson Complete
+        </div>
+
+        <h2 style="
+            color:white;
+            margin-bottom:15px;
+        ">
+            Congratulations! 🎉
+        </h2>
+
+        <p style="
+            color:#ccc;
+            max-width:650px;
+            margin:0 auto 30px;
+        ">
+            You have completed the Recognize Integrals lesson.
+            You are now ready to test your understanding with the questions.
+        </p>
+
+        <a
+            href="recognize-integrals-questions.html"
+            style="
+                display:inline-block;
+                background:#e00000;
+                color:white;
+                padding:15px 28px;
+                text-decoration:none;
+                font-weight:700;
+                transition:0.3s;
+            "
+        >
+            START QUESTIONS →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COMPLETE LESSON
+========================= -->
+
+<section id="completeLessonSection" style="
+    text-align:center;
+    margin-top:30px;
+">
+
+    <button
+        id="completeLessonButton"
+        onclick="completeLesson()"
+        style="
+            background:#111;
+            color:white;
+            border:none;
+            padding:16px 30px;
+            font-family:'DM Sans', sans-serif;
+            font-weight:700;
+            font-size:15px;
+            cursor:pointer;
+            transition:0.3s;
+        "
+    >
+        COMPLETE LESSON ✓
+    </button>
+
+    <p
+        id="completionMessage"
+        style="
+            display:none;
+            color:#e00000;
+            font-weight:700;
+            margin-top:15px;
+        "
+    >
+        Lesson completed successfully.
+    </p>
+
+</section>
+
+
 </main>
 
 
@@ -2773,7 +2876,23 @@
 <!-- =========================
      JAVASCRIPT
 ========================= -->
+<!-- =========================
+     SUPABASE
+========================= -->
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+    const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+</script>
 <script>
 
     let mode = "differentiate";
@@ -3023,7 +3142,144 @@
     });
 
 </script>
+<script>
 
+    /* =========================
+       LESSON COMPLETION
+    ========================= */
+
+    const LESSON_CHAPTER = "Integration";
+    const LESSON_TOPIC_NUMBER = 2;
+
+
+    async function completeLesson() {
+
+        const {
+            data: { user },
+            error: userError
+        } = await supabaseClient.auth.getUser();
+
+
+        if (userError || !user) {
+
+            alert("Please log in before completing this lesson.");
+
+            return;
+
+        }
+
+
+        const { error } = await supabaseClient
+            .from("lesson_progress")
+            .upsert(
+                {
+                    user_id: user.id,
+                    chapter: LESSON_CHAPTER,
+                    topic_number: LESSON_TOPIC_NUMBER,
+                    completed_at: new Date().toISOString()
+                },
+                {
+                    onConflict: "user_id,chapter,topic_number"
+                }
+            );
+
+
+        if (error) {
+
+            console.error("Lesson completion error:", error);
+
+            alert("Something went wrong while saving your progress.");
+
+            return;
+
+        }
+
+
+        showCongratulations();
+
+    }
+
+
+    function showCongratulations() {
+
+        const congratulations =
+            document.getElementById("congratulationsSection");
+
+        const completeSection =
+            document.getElementById("completeLessonSection");
+
+        const message =
+            document.getElementById("completionMessage");
+
+
+        if (congratulations) {
+
+            congratulations.style.display = "block";
+
+        }
+
+
+        if (completeSection) {
+
+            completeSection.style.display = "none";
+
+        }
+
+
+        if (message) {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+    async function checkLessonCompletion() {
+
+        const {
+            data: { user },
+            error: userError
+        } = await supabaseClient.auth.getUser();
+
+
+        if (userError || !user) {
+
+            return;
+
+        }
+
+
+        const { data, error } = await supabaseClient
+            .from("lesson_progress")
+            .select("completed_at")
+            .eq("user_id", user.id)
+            .eq("chapter", LESSON_CHAPTER)
+            .eq("topic_number", LESSON_TOPIC_NUMBER)
+            .maybeSingle();
+
+
+        if (error) {
+
+            console.error("Progress check error:", error);
+
+            return;
+
+        }
+
+
+        if (data) {
+
+            showCongratulations();
+
+        }
+
+    }
+
+
+    checkLessonCompletion();
+
+</script>
 
 </body>
 
