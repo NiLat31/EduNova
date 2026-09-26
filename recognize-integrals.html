@@ -830,7 +830,199 @@
             background: #e00000;
         }
 
+/* =========================================
+   COMPLETION
+========================================= */
 
+.completion-section {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+    color: white;
+    padding: 65px 35px;
+    margin-top: 70px;
+    text-align: center;
+}
+
+.completion-content {
+    position: relative;
+    z-index: 2;
+}
+
+.completion-label {
+    color: #e00000;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.completion-section h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.completion-section p {
+    color: #ccc;
+    max-width: 650px;
+    margin: 0 auto 28px;
+    font-size: 17px;
+}
+
+.complete-button {
+    background: #e00000;
+    color: white;
+    border: none;
+    padding: 16px 30px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.complete-button:hover {
+    background: white;
+    color: #111;
+}
+
+.complete-button:disabled {
+    cursor: default;
+}
+
+.completed-message {
+    display: none;
+}
+
+.completion-section.completed .completion-prompt {
+    display: none;
+}
+
+.completion-section.completed .completed-message {
+    display: block;
+}
+
+.completion-section.completed {
+    background: #111;
+}
+
+
+/* =========================================
+   CELEBRATION STRIPS
+========================================= */
+
+.party-strip {
+    position: absolute;
+    width: 10px;
+    height: 75px;
+    top: -90px;
+    transform: rotate(25deg);
+    opacity: 0;
+}
+
+.party-strip:nth-child(1) {
+    left: 8%;
+    background: #e00000;
+}
+
+.party-strip:nth-child(2) {
+    left: 20%;
+    background: #fff;
+}
+
+.party-strip:nth-child(3) {
+    left: 32%;
+    background: #e00000;
+}
+
+.party-strip:nth-child(4) {
+    left: 44%;
+    background: #fff;
+}
+
+.party-strip:nth-child(5) {
+    left: 56%;
+    background: #e00000;
+}
+
+.party-strip:nth-child(6) {
+    left: 68%;
+    background: #fff;
+}
+
+.party-strip:nth-child(7) {
+    left: 80%;
+    background: #e00000;
+}
+
+.party-strip:nth-child(8) {
+    left: 92%;
+    background: #fff;
+}
+
+.completion-section.completed .party-strip {
+    animation: celebrationDrop 1.2s ease-out forwards;
+}
+
+.completion-section.completed .party-strip:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.completion-section.completed .party-strip:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+.completion-section.completed .party-strip:nth-child(3) {
+    animation-delay: 0.19s;
+}
+
+.completion-section.completed .party-strip:nth-child(4) {
+    animation-delay: 0.26s;
+}
+
+.completion-section.completed .party-strip:nth-child(5) {
+    animation-delay: 0.33s;
+}
+
+.completion-section.completed .party-strip:nth-child(6) {
+    animation-delay: 0.40s;
+}
+
+.completion-section.completed .party-strip:nth-child(7) {
+    animation-delay: 0.47s;
+}
+
+.completion-section.completed .party-strip:nth-child(8) {
+    animation-delay: 0.54s;
+}
+
+@keyframes celebrationDrop {
+
+    0% {
+        top: -90px;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 110%;
+        opacity: 0;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .completion-section.completed .party-strip {
+        animation: none;
+    }
+
+}
         /* =========================
            FOOTER
         ========================= */
