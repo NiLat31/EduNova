@@ -26,6 +26,199 @@
             color: #111;
             line-height: 1.7;
         }
+        /* =========================================
+   COMPLETION
+========================================= */
+
+.completion-section {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+    color: white;
+    padding: 65px 35px;
+    margin-top: 70px;
+    text-align: center;
+}
+
+.completion-content {
+    position: relative;
+    z-index: 2;
+}
+
+.completion-label {
+    color: #e00000;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.completion-section h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.completion-section p {
+    color: #ccc;
+    max-width: 650px;
+    margin: 0 auto 28px;
+    font-size: 17px;
+}
+
+.complete-button {
+    background: #e00000;
+    color: white;
+    border: none;
+    padding: 16px 30px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.complete-button:hover {
+    background: white;
+    color: #111;
+}
+
+.complete-button:disabled {
+    cursor: default;
+}
+
+.completed-message {
+    display: none;
+}
+
+.completion-section.completed .completion-prompt {
+    display: none;
+}
+
+.completion-section.completed .completed-message {
+    display: block;
+}
+
+.completion-section.completed {
+    background: #111;
+}
+
+
+/* =========================================
+   CELEBRATION STRIPS
+========================================= */
+
+.party-strip {
+    position: absolute;
+    width: 10px;
+    height: 75px;
+    top: -90px;
+    transform: rotate(25deg);
+    opacity: 0;
+}
+
+.party-strip:nth-child(1) {
+    left: 8%;
+    background: #e00000;
+}
+
+.party-strip:nth-child(2) {
+    left: 20%;
+    background: #fff;
+}
+
+.party-strip:nth-child(3) {
+    left: 32%;
+    background: #e00000;
+}
+
+.party-strip:nth-child(4) {
+    left: 44%;
+    background: #fff;
+}
+
+.party-strip:nth-child(5) {
+    left: 56%;
+    background: #e00000;
+}
+
+.party-strip:nth-child(6) {
+    left: 68%;
+    background: #fff;
+}
+
+.party-strip:nth-child(7) {
+    left: 80%;
+    background: #e00000;
+}
+
+.party-strip:nth-child(8) {
+    left: 92%;
+    background: #fff;
+}
+
+.completion-section.completed .party-strip {
+    animation: celebrationDrop 1.2s ease-out forwards;
+}
+
+.completion-section.completed .party-strip:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.completion-section.completed .party-strip:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+.completion-section.completed .party-strip:nth-child(3) {
+    animation-delay: 0.19s;
+}
+
+.completion-section.completed .party-strip:nth-child(4) {
+    animation-delay: 0.26s;
+}
+
+.completion-section.completed .party-strip:nth-child(5) {
+    animation-delay: 0.33s;
+}
+
+.completion-section.completed .party-strip:nth-child(6) {
+    animation-delay: 0.40s;
+}
+
+.completion-section.completed .party-strip:nth-child(7) {
+    animation-delay: 0.47s;
+}
+
+.completion-section.completed .party-strip:nth-child(8) {
+    animation-delay: 0.54s;
+}
+
+@keyframes celebrationDrop {
+
+    0% {
+        top: -90px;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 110%;
+        opacity: 0;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .completion-section.completed .party-strip {
+        animation: none;
+    }
+
+}
 
         /* =========================
            NAVIGATION
@@ -3430,7 +3623,69 @@
 
 </section>
 
+<!-- =====================================
+     COMPLETION
+===================================== -->
 
+<section class="completion-section" id="completionSection">
+
+    <span class="party-strip"></span>
+    <span class="party-strip"></span>
+    <span class="party-strip"></span>
+    <span class="party-strip"></span>
+    <span class="party-strip"></span>
+    <span class="party-strip"></span>
+    <span class="party-strip"></span>
+    <span class="party-strip"></span>
+
+    <div class="completion-content">
+
+        <div class="completion-prompt">
+
+            <div class="completion-label">
+                LESSON 03 / 08
+            </div>
+
+            <h2>
+                Lesson complete?
+            </h2>
+
+            <p>
+                You have reached the end of the explanation.
+                Mark this lesson as complete to save your progress.
+            </p>
+
+            <button
+                class="complete-button"
+                id="completeButton"
+                type="button"
+            >
+                ✓ COMPLETE LESSON
+            </button>
+
+        </div>
+
+        <div class="completed-message">
+
+            <div class="completion-label">
+                INTEGRATION • TOPIC 03
+            </div>
+
+            <h2>
+                Congratulations!
+            </h2>
+
+            <p>
+                You completed
+                <strong>Integration Using Trigonometrical Relationships</strong>.
+                Your progress has been saved.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 <!-- =========================
      PRACTICE
 ========================= -->
@@ -3581,130 +3836,172 @@
 </script>
 <script>
 
-    /* =========================
-       LESSON COMPLETION
-    ========================= */
+   <script>
 
-    const LESSON_CHAPTER = "Integration";
-    const LESSON_TOPIC_NUMBER = 3;
+/* =========================================
+   LESSON COMPLETION
+========================================= */
 
+const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
+const SUPABASE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
 
-    async function completeLesson() {
-
-        const {
-            data: { user },
-            error: userError
-        } = await supabaseClient.auth.getUser();
-
-
-        if (userError || !user) {
-
-            alert("Please log in before completing this lesson.");
-
-            return;
-
-        }
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
 
-        const { error } = await supabaseClient
-            .from("lesson_progress")
-            .upsert(
-                {
-                    user_id: user.id,
-                    chapter: LESSON_CHAPTER,
-                    topic_number: LESSON_TOPIC_NUMBER,
-                    completed_at: new Date().toISOString()
-                },
-                {
-                    onConflict: "user_id,chapter,topic_number"
-                }
+async function checkSessionAndProgress() {
+
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
+
+
+    if (!session) {
+
+        window.location.href = "index.html";
+
+        return;
+
+    }
+
+
+    const { data, error } = await supabaseClient
+        .from("lesson_progress")
+        .select("*")
+        .eq("user_id", session.user.id)
+        .eq("chapter", "Integration")
+        .eq("topic_number", 3)
+        .maybeSingle();
+
+
+    if (error) {
+
+        console.error(
+            "Error checking lesson progress:",
+            error
+        );
+
+        return;
+
+    }
+
+
+    if (data) {
+
+        showCompletedState();
+
+    }
+
+}
+
+
+
+async function completeLesson() {
+
+    const button =
+        document.getElementById("completeButton");
+
+    button.disabled = true;
+    button.textContent = "SAVING...";
+
+
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
+
+
+    if (!session) {
+
+        window.location.href = "index.html";
+
+        return;
+
+    }
+
+
+    const { error } = await supabaseClient
+        .from("lesson_progress")
+        .upsert(
+            {
+                user_id: session.user.id,
+                chapter: "Integration",
+                topic_number: 3,
+                completed_at: new Date().toISOString()
+            },
+            {
+                onConflict:
+                    "user_id,chapter,topic_number"
+            }
+        );
+
+
+    if (error) {
+
+        console.error(
+            "Error saving lesson progress:",
+            error
+        );
+
+        button.disabled = false;
+
+        button.textContent =
+            "✓ COMPLETE LESSON";
+
+        return;
+
+    }
+
+
+    showCompletedState();
+
+}
+
+
+
+function showCompletedState() {
+
+    const section =
+        document.getElementById("completionSection");
+
+    const button =
+        document.getElementById("completeButton");
+
+
+    section.classList.add("completed");
+
+    button.disabled = true;
+
+    button.textContent =
+        "✓ LESSON COMPLETED";
+
+}
+
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const completeButton =
+            document.getElementById("completeButton");
+
+
+        if (completeButton) {
+
+            completeButton.addEventListener(
+                "click",
+                completeLesson
             );
 
-
-        if (error) {
-
-            console.error("Lesson completion error:", error);
-
-            alert("Something went wrong while saving your progress.");
-
-            return;
-
         }
 
 
-        showCongratulations();
+        checkSessionAndProgress();
 
     }
-
-
-    function showCongratulations() {
-
-        const congratulations =
-            document.getElementById("congratulationsSection");
-
-        const completeSection =
-            document.getElementById("completeLessonSection");
-
-
-        if (congratulations) {
-
-            congratulations.style.display = "block";
-
-        }
-
-
-        if (completeSection) {
-
-            completeSection.style.display = "none";
-
-        }
-
-    }
-
-
-    async function checkLessonCompletion() {
-
-        const {
-            data: { user },
-            error: userError
-        } = await supabaseClient.auth.getUser();
-
-
-        if (userError || !user) {
-
-            return;
-
-        }
-
-
-        const { data, error } = await supabaseClient
-            .from("lesson_progress")
-            .select("completed_at")
-            .eq("user_id", user.id)
-            .eq("chapter", LESSON_CHAPTER)
-            .eq("topic_number", LESSON_TOPIC_NUMBER)
-            .maybeSingle();
-
-
-        if (error) {
-
-            console.error("Progress check error:", error);
-
-            return;
-
-        }
-
-
-        if (data) {
-
-            showCongratulations();
-
-        }
-
-    }
-
-
-    checkLessonCompletion();
+);
 
 </script>
 </body>
