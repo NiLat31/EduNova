@@ -3708,94 +3708,6 @@
     </a>
 
 </section>
-<!-- =========================
-     CONGRATULATIONS
-========================= -->
-
-<section id="congratulationsSection" style="display:none;">
-
-    <div style="
-        background:#111;
-        color:white;
-        padding:55px 35px;
-        text-align:center;
-        margin-top:20px;
-    ">
-
-        <div style="
-            color:#e00000;
-            font-weight:700;
-            letter-spacing:2px;
-            text-transform:uppercase;
-            font-size:13px;
-            margin-bottom:15px;
-        ">
-            Integration • Lesson 3
-        </div>
-
-        <h2 style="
-            color:white;
-            margin-bottom:15px;
-        ">
-            Congratulations! 🎉
-        </h2>
-
-        <p style="
-            color:#ccc;
-            max-width:650px;
-            margin:0 auto 30px;
-        ">
-            You have completed the Integration Using Trigonometrical
-            Relationships lesson.
-            You are now ready to test your understanding with the questions.
-        </p>
-
-        <a href="trigonometrical-relationships-questions.html"
-           style="
-               display:inline-block;
-               background:#e00000;
-               color:white;
-               padding:15px 28px;
-               text-decoration:none;
-               font-weight:700;
-               transition:0.3s;
-           ">
-
-            START QUESTIONS →
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     COMPLETE LESSON
-========================= -->
-
-<section id="completeLessonSection"
-         style="text-align:center; margin-top:30px;">
-
-    <button id="completeLessonButton"
-            onclick="completeLesson()"
-            style="
-                background:#111;
-                color:white;
-                border:none;
-                padding:16px 30px;
-                font-family:'DM Sans', sans-serif;
-                font-weight:700;
-                font-size:15px;
-                cursor:pointer;
-                transition:0.3s;
-            ">
-
-        COMPLETE LESSON ✓
-
-    </button>
-
-</section>
 
 </main>
 
@@ -3820,19 +3732,185 @@
 
 </footer>
 <!-- =========================
-     SUPABASE
+     SUPABASE + LESSON COMPLETION
 ========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-    const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
 
-    const supabaseClient = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
+    /* =========================================
+       SUPABASE
+    ========================================= */
+
+    const SUPABASE_URL =
+        "https://majvqtbortonsrgdknms.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    /* =========================================
+       LESSON COMPLETION
+    ========================================= */
+
+    async function checkSessionAndProgress() {
+
+        const {
+            data: { session }
+        } = await supabaseClient.auth.getSession();
+
+
+        if (!session) {
+
+            window.location.href = "index.html";
+
+            return;
+
+        }
+
+
+        const { data, error } = await supabaseClient
+            .from("lesson_progress")
+            .select("*")
+            .eq("user_id", session.user.id)
+            .eq("chapter", "Integration")
+            .eq("topic_number", 3)
+            .maybeSingle();
+
+
+        if (error) {
+
+            console.error(
+                "Error checking lesson progress:",
+                error
+            );
+
+            return;
+
+        }
+
+
+        if (data) {
+
+            showCompletedState();
+
+        }
+
+    }
+
+
+    async function completeLesson() {
+
+        const button =
+            document.getElementById("completeButton");
+
+
+        button.disabled = true;
+
+        button.textContent = "SAVING...";
+
+
+        const {
+            data: { session }
+        } = await supabaseClient.auth.getSession();
+
+
+        if (!session) {
+
+            window.location.href = "index.html";
+
+            return;
+
+        }
+
+
+        const { error } = await supabaseClient
+            .from("lesson_progress")
+            .upsert(
+                {
+                    user_id: session.user.id,
+                    chapter: "Integration",
+                    topic_number: 3,
+                    completed_at: new Date().toISOString()
+                },
+                {
+                    onConflict:
+                        "user_id,chapter,topic_number"
+                }
+            );
+
+
+        if (error) {
+
+            console.error(
+                "Error saving lesson progress:",
+                error
+            );
+
+            button.disabled = false;
+
+            button.textContent =
+                "✓ COMPLETE LESSON";
+
+            return;
+
+        }
+
+
+        showCompletedState();
+
+    }
+
+
+    function showCompletedState() {
+
+        const section =
+            document.getElementById("completionSection");
+
+        const button =
+            document.getElementById("completeButton");
+
+
+        section.classList.add("completed");
+
+        button.disabled = true;
+
+        button.textContent =
+            "✓ LESSON COMPLETED";
+
+    }
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        () => {
+
+            const completeButton =
+                document.getElementById("completeButton");
+
+
+            if (completeButton) {
+
+                completeButton.addEventListener(
+                    "click",
+                    completeLesson
+                );
+
+            }
+
+
+            checkSessionAndProgress();
+
+        }
     );
+
 </script>
 <script>
 
