@@ -1,6 +1,6 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -15,6 +15,10 @@
 
 <style>
 
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -22,15 +26,20 @@
 }
 
 body{
-    font-family:"DM Sans",sans-serif;
+    font-family:"DM Sans", sans-serif;
     background:#f7f6f2;
     color:#111;
 }
 
+button,
+a{
+    font-family:inherit;
+}
 
-/* =========================================
+
+/* =========================================================
    NAVIGATION
-========================================= */
+========================================================= */
 
 nav{
     height:82px;
@@ -43,31 +52,31 @@ nav{
 }
 
 .logo{
-    font-family:"Playfair Display",serif;
+    font-family:"Playfair Display", serif;
     font-size:28px;
     font-weight:700;
+    letter-spacing:-1px;
 }
 
 .logo span{
     color:#7c3aed;
 }
 
-.nav{
+.nav-links{
     display:flex;
-    gap:12px;
     align-items:center;
+    gap:20px;
 }
 
-.nav a{
+.home-link{
     text-decoration:none;
     color:#111;
-    font-size:10px;
+    font-size:11px;
     font-weight:700;
-    letter-spacing:1px;
-    padding:11px 15px;
+    letter-spacing:.4px;
 }
 
-.nav a:hover{
+.home-link:hover{
     color:#7c3aed;
 }
 
@@ -76,8 +85,11 @@ nav{
     background:#111;
     color:#fff;
     padding:11px 17px;
-    font:700 10px "DM Sans";
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.5px;
     cursor:pointer;
+    transition:.25s ease;
 }
 
 .logout:hover{
@@ -85,102 +97,151 @@ nav{
 }
 
 
-/* =========================================
+/* =========================================================
    HERO
-========================================= */
+========================================================= */
 
 .hero{
-    background:#111;
-    color:#fff;
-    padding:85px 7% 75px;
     position:relative;
     overflow:hidden;
+    background:#111;
+    color:#fff;
+    padding:92px 7% 72px;
+    min-height:390px;
 }
 
-.hero:after{
-    content:"→";
-    position:absolute;
-    right:7%;
-    top:-65px;
-    font:300 330px "Playfair Display";
-    color:#202020;
+.hero-content{
+    position:relative;
+    z-index:3;
 }
 
-.label{
-    color:#7c3aed;
+.hero-label{
+    color:#a78bfa;
     font-size:11px;
     font-weight:700;
     letter-spacing:3px;
     margin-bottom:18px;
-    position:relative;
-    z-index:2;
 }
 
 .hero h1{
-    font:600 clamp(50px,7vw,90px)/1 "Playfair Display";
+    font-family:"Playfair Display", serif;
+    font-size:clamp(48px, 7vw, 82px);
+    line-height:1;
     letter-spacing:-4px;
-    position:relative;
-    z-index:2;
 }
 
 .hero p{
-    max-width:650px;
+    max-width:600px;
+    margin-top:22px;
     color:#aaa;
-    margin-top:25px;
     font-size:15px;
     line-height:1.8;
-    position:relative;
-    z-index:2;
 }
 
 
-/* =========================================
+/* =========================================================
+   HERO DECORATION
+   Purple V with arrow above it
+========================================================= */
+
+.hero-decoration{
+    position:absolute;
+    right:5%;
+    top:50%;
+    transform:translateY(-50%);
+    width:330px;
+    height:270px;
+    background:#7c3aed;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.hero-decoration svg{
+    width:245px;
+    height:245px;
+    overflow:visible;
+}
+
+.hero-decoration .v-letter{
+    font-family:"Playfair Display", serif;
+    font-size:175px;
+    font-weight:500;
+    fill:#111;
+}
+
+.hero-decoration .vector-arrow{
+    stroke:#111;
+    stroke-width:8;
+    stroke-linecap:square;
+    stroke-linejoin:miter;
+    fill:none;
+}
+
+.hero-decoration .arrow-head{
+    fill:#111;
+}
+
+
+/* =========================================================
    MAIN
-========================================= */
+========================================================= */
 
 main{
-    padding:85px 7% 110px;
+    padding:88px 7% 110px;
 }
 
-.intro{
+.section-heading{
     display:flex;
     justify-content:space-between;
-    align-items:end;
+    align-items:flex-end;
     gap:35px;
-    margin-bottom:50px;
+    margin-bottom:46px;
 }
 
-.intro h2{
-    font:600 clamp(38px,4.5vw,60px)/1.05 "Playfair Display";
-    letter-spacing:-2px;
+.section-label{
+    color:#7c3aed;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2.5px;
+    margin-bottom:12px;
 }
 
-.intro p{
-    max-width:430px;
+.section-heading h2{
+    font-family:"Playfair Display", serif;
+    font-size:clamp(38px, 5vw, 60px);
+    line-height:1;
+    letter-spacing:-2.5px;
+}
+
+.section-heading p{
+    max-width:410px;
     color:#666;
-    font-size:14px;
+    font-size:13px;
     line-height:1.8;
 }
 
 
-/* =========================================
+/* =========================================================
    TOPIC GRID
-========================================= */
+========================================================= */
 
 .topics{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2, 1fr);
     gap:18px;
 }
 
 .topic{
+    position:relative;
     background:#fff;
     border:1px solid #ddd;
-    padding:32px;
-    min-height:250px;
+    min-height:265px;
+    padding:30px;
     display:flex;
     flex-direction:column;
-    transition:.3s;
+    transition:.3s ease;
 }
 
 .topic:hover{
@@ -188,148 +249,177 @@ main{
     box-shadow:0 18px 35px rgba(0,0,0,.07);
 }
 
-
-/* =========================================
-   COMPLETED TOPIC
-========================================= */
-
 .topic.completed{
     border-color:#111;
-    position:relative;
-}
-
-.topic.completed::after{
-    content:"✓ COMPLETED";
-    position:absolute;
-    top:18px;
-    right:18px;
-    background:#111;
-    color:#fff;
-    padding:7px 10px;
-    font-size:8px;
-    font-weight:700;
-    letter-spacing:1.5px;
-}
-
-.topic.completed .topic-symbol{
-    background:#111;
-    color:#fff;
-    border-color:#111;
-}
-
-.topic.completed .topic-number{
-    color:#111;
-}
-
-.topic.completed .open-topic{
-    background:#7c3aed;
-}
-
-.topic.completed .open-topic:hover{
-    background:#111;
 }
 
 
-/* =========================================
-   TOPIC CONTENT
-========================================= */
+/* =========================================================
+   TOP ROW
+========================================================= */
 
 .topic-top{
     display:flex;
     justify-content:space-between;
-    align-items:start;
+    align-items:flex-start;
 }
 
 .topic-number{
     color:#7c3aed;
     font-size:10px;
     font-weight:700;
-    letter-spacing:2px;
+    letter-spacing:1.5px;
 }
 
-.topic-symbol{
-    width:58px;
-    height:58px;
+
+/* =========================================================
+   MATHEMATICAL MINI LOGOS
+========================================================= */
+
+.math-icon{
+    width:62px;
+    height:62px;
     border:1px solid #ddd;
     background:#f7f6f2;
     display:flex;
     align-items:center;
     justify-content:center;
-    font:600 25px "Playfair Display";
 }
 
+.math-icon svg{
+    width:43px;
+    height:43px;
+}
+
+.math-icon text{
+    font-family:"Playfair Display", serif;
+    fill:#111;
+}
+
+.math-icon line,
+.math-icon path{
+    stroke:#111;
+}
+
+.math-icon .arrow{
+    fill:#111;
+    stroke:none;
+}
+
+
+/* =========================================================
+   TOPIC CONTENT
+========================================================= */
+
 .topic h3{
-    font:600 27px/1.12 "Playfair Display";
-    margin:27px 0 11px;
+    font-family:"Playfair Display", serif;
+    font-size:28px;
+    line-height:1.08;
+    letter-spacing:-.7px;
+    margin:27px 0 10px;
 }
 
 .topic p{
     color:#666;
     font-size:13px;
     line-height:1.7;
-    max-width:520px;
+    max-width:470px;
 }
 
+
+/* =========================================================
+   TOPIC BUTTON
+========================================================= */
+
 .open-topic{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    width:max-content;
     margin-top:auto;
-    align-self:flex-start;
-    border:0;
+    padding:11px 16px;
     background:#111;
     color:#fff;
-    padding:12px 18px;
-    font:700 10px "DM Sans";
-    cursor:pointer;
     text-decoration:none;
-    display:inline-block;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.7px;
+    transition:.25s ease;
 }
 
 .open-topic:hover{
     background:#7c3aed;
 }
 
+.completed .open-topic{
+    background:#7c3aed;
+}
 
-/* =========================================
+
+/* =========================================================
+   COMPLETED BADGE
+========================================================= */
+
+.completed-badge{
+    display:none;
+    color:#111;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:1.3px;
+    margin-top:13px;
+}
+
+.topic.completed .completed-badge{
+    display:block;
+}
+
+
+/* =========================================================
    BOTTOM STRIP
-========================================= */
+========================================================= */
 
 .strip{
     margin-top:55px;
     background:#7c3aed;
     color:#fff;
-    padding:32px;
+    padding:31px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:25px;
+    gap:30px;
 }
 
 .strip strong{
-    font:25px "Playfair Display";
+    font-family:"Playfair Display", serif;
+    font-size:25px;
+    font-weight:500;
 }
 
 .strip p{
+    max-width:510px;
+    color:rgba(255,255,255,.86);
     font-size:12px;
-    line-height:1.6;
-    max-width:520px;
-    color:rgba(255,255,255,.9);
+    line-height:1.7;
 }
 
 
-/* =========================================
+/* =========================================================
    FOOTER
-========================================= */
+========================================================= */
 
 footer{
     background:#111;
     color:#fff;
-    padding:40px 7%;
+    padding:42px 7%;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
 .footer-logo{
-    font:600 24px "Playfair Display";
+    font-family:"Playfair Display", serif;
+    font-size:24px;
+    font-weight:600;
 }
 
 .footer-logo span{
@@ -342,11 +432,37 @@ footer p{
 }
 
 
-/* =========================================
+/* =========================================================
    MOBILE
-========================================= */
+========================================================= */
 
-@media(max-width:800px){
+@media(max-width:900px){
+
+    .hero-decoration{
+        right:-70px;
+        opacity:.95;
+        width:270px;
+        height:230px;
+    }
+
+    .hero-decoration svg{
+        width:205px;
+        height:205px;
+    }
+
+    .hero-decoration .v-letter{
+        font-size:145px;
+    }
+
+    .section-heading{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+
+@media(max-width:700px){
 
     nav{
         height:auto;
@@ -354,26 +470,61 @@ footer p{
         gap:15px;
     }
 
-    .nav{
-        gap:3px;
+    .logo{
+        font-size:25px;
     }
 
-    .nav a{
-        padding:9px 7px;
-        font-size:9px;
+    .nav-links{
+        gap:12px;
+    }
+
+    .home-link{
+        font-size:10px;
+    }
+
+    .logout{
+        padding:10px 13px;
     }
 
     .hero{
-        padding:70px 5% 60px;
+        padding:70px 5% 65px;
+        min-height:430px;
+    }
+
+    .hero h1{
+        font-size:55px;
+        letter-spacing:-3px;
+    }
+
+    .hero p{
+        max-width:470px;
+    }
+
+    .hero-decoration{
+        width:220px;
+        height:185px;
+        right:-45px;
+        top:auto;
+        bottom:-20px;
+        transform:none;
+        opacity:.9;
+    }
+
+    .hero-decoration svg{
+        width:165px;
+        height:165px;
+    }
+
+    .hero-decoration .v-letter{
+        font-size:120px;
+    }
+
+    .hero-decoration .vector-arrow{
+        stroke-width:6;
     }
 
     main{
         padding:70px 5% 85px;
-    }
-
-    .intro{
-        flex-direction:column;
-        align-items:flex-start;
     }
 
     .topics{
@@ -387,7 +538,7 @@ footer p{
 
     footer{
         flex-direction:column;
-        gap:15px;
+        gap:14px;
         text-align:center;
     }
 
@@ -395,17 +546,15 @@ footer p{
 
 </style>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 </head>
 
 
 <body>
 
 
-<!-- =========================================
+<!-- =========================================================
      NAVIGATION
-========================================= -->
+========================================================= -->
 
 <nav>
 
@@ -413,14 +562,10 @@ footer p{
         Edu<span>Nova</span>
     </div>
 
-    <div class="nav">
+    <div class="nav-links">
 
-        <a href="index.html">
-            ← HOME
-        </a>
-
-        <a href="dashboard.html">
-            DASHBOARD
+        <a href="dashboard.html" class="home-link">
+            ← DASHBOARD
         </a>
 
         <button class="logout" onclick="logout()">
@@ -432,44 +577,77 @@ footer p{
 </nav>
 
 
-
-<!-- =========================================
+<!-- =========================================================
      HERO
-========================================= -->
+========================================================= -->
 
 <header class="hero">
 
-    <div class="label">
-        CHAPTER 02 • VECTORS
+    <div class="hero-content">
+
+        <div class="hero-label">
+            CHAPTER 06 • VECTORS
+        </div>
+
+        <h1>
+            Vectors.
+        </h1>
+
+        <p>
+            Learn how mathematics describes direction, magnitude
+            and position through vectors and their geometric meaning.
+        </p>
+
     </div>
 
-    <h1>
-        Vectors.
-    </h1>
 
-    <p>
-        Build your understanding of vectors step by step.
-        Explore vector notation, geometry, magnitude and
-        position vectors, and learn how vectors describe
-        direction and movement mathematically.
-    </p>
+    <!-- Purple hero decoration -->
+    <div class="hero-decoration">
+
+        <svg viewBox="0 0 250 250" aria-hidden="true">
+
+            <!-- V -->
+            <text
+                x="125"
+                y="205"
+                text-anchor="middle"
+                class="v-letter">
+                V
+            </text>
+
+            <!-- Arrow above V -->
+            <line
+                x1="48"
+                y1="62"
+                x2="194"
+                y2="62"
+                class="vector-arrow">
+            </line>
+
+            <polygon
+                points="194,62 174,50 174,74"
+                class="arrow-head">
+            </polygon>
+
+        </svg>
+
+    </div>
 
 </header>
 
 
-
-<!-- =========================================
-     MAIN
-========================================= -->
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
 
 <main>
 
 
-    <div class="intro">
+    <div class="section-heading">
 
         <div>
 
-            <div class="label">
+            <div class="section-label">
                 CHAPTER TOPICS
             </div>
 
@@ -480,32 +658,55 @@ footer p{
         </div>
 
         <p>
-            Work through the four topics in order. Each section
-            develops an important part of vector mathematics,
-            from the basic definition to position vectors.
+            Build the foundations of vector mathematics, from basic
+            definitions and geometry to magnitude and position vectors.
         </p>
 
     </div>
 
 
-
-    <!-- =========================================
-         TOPICS
-    ========================================= -->
+    <!-- =====================================================
+         TOPIC CARDS
+    ====================================================== -->
 
     <div class="topics">
 
 
-        <!-- =====================================
-             01
-        ====================================== -->
+        <!-- =================================================
+             TOPIC 01
+        ================================================== -->
 
-        <div class="topic" data-topic-number="1">
+        <article class="topic" data-topic-number="1">
 
             <div class="topic-top">
 
-                <div class="topic-symbol">
-                    a⃗
+                <div class="math-icon">
+
+                    <svg viewBox="0 0 50 50" aria-hidden="true">
+
+                        <text
+                            x="24"
+                            y="34"
+                            text-anchor="middle"
+                            font-size="28">
+                            a
+                        </text>
+
+                        <line
+                            x1="12"
+                            y1="10"
+                            x2="38"
+                            y2="10"
+                            stroke-width="2">
+                        </line>
+
+                        <polygon
+                            points="38,10 32,7 32,13"
+                            class="arrow">
+                        </polygon>
+
+                    </svg>
+
                 </div>
 
                 <div class="topic-number">
@@ -519,29 +720,68 @@ footer p{
             </h3>
 
             <p>
-                Understand what vectors are, how they differ from
-                scalars, and how vectors are represented using
-                magnitude and direction.
+                Understand what a vector is, how it represents
+                magnitude and direction, and how vectors are written.
             </p>
 
-            <a href="definition-of-vectors.html" class="open-topic">
+            <a
+                href="definition-of-vectors.html"
+                class="open-topic">
                 OPEN TOPIC →
             </a>
 
-        </div>
+            <div class="completed-badge">
+                ✓ COMPLETED
+            </div>
+
+        </article>
 
 
+        <!-- =================================================
+             TOPIC 02
+        ================================================== -->
 
-        <!-- =====================================
-             02
-        ====================================== -->
-
-        <div class="topic" data-topic-number="2">
+        <article class="topic" data-topic-number="2">
 
             <div class="topic-top">
 
-                <div class="topic-symbol">
-                    ↗
+                <div class="math-icon">
+
+                    <svg viewBox="0 0 50 50" aria-hidden="true">
+
+                        <line
+                            x1="10"
+                            y1="38"
+                            x2="37"
+                            y2="11"
+                            stroke-width="2.5">
+                        </line>
+
+                        <polygon
+                            points="37,11 28,13 35,20"
+                            class="arrow">
+                        </polygon>
+
+                        <line
+                            x1="10"
+                            y1="38"
+                            x2="38"
+                            y2="38"
+                            stroke-width="1.5"
+                            opacity=".35">
+                        </line>
+
+                        <line
+                            x1="10"
+                            y1="38"
+                            x2="10"
+                            y2="10"
+                            stroke-width="1.5"
+                            opacity=".35">
+                        </line>
+
+                    </svg>
+
                 </div>
 
                 <div class="topic-number">
@@ -555,29 +795,45 @@ footer p{
             </h3>
 
             <p>
-                Explore vectors geometrically using diagrams,
-                direction, addition, subtraction and relationships
-                between vectors.
+                Explore vectors geometrically and learn how direction,
+                displacement and geometric relationships work together.
             </p>
 
-            <a href="vector-geometry.html" class="open-topic">
+            <a
+                href="vector-geometry.html"
+                class="open-topic">
                 OPEN TOPIC →
             </a>
 
-        </div>
+            <div class="completed-badge">
+                ✓ COMPLETED
+            </div>
+
+        </article>
 
 
+        <!-- =================================================
+             TOPIC 03
+        ================================================== -->
 
-        <!-- =====================================
-             03
-        ====================================== -->
-
-        <div class="topic" data-topic-number="3">
+        <article class="topic" data-topic-number="3">
 
             <div class="topic-top">
 
-                <div class="topic-symbol">
-                    |a⃗|
+                <div class="math-icon">
+
+                    <svg viewBox="0 0 50 50" aria-hidden="true">
+
+                        <text
+                            x="25"
+                            y="34"
+                            text-anchor="middle"
+                            font-size="24">
+                            |v|
+                        </text>
+
+                    </svg>
+
                 </div>
 
                 <div class="topic-number">
@@ -591,29 +847,64 @@ footer p{
             </h3>
 
             <p>
-                Learn how to calculate the magnitude of a vector
-                and understand what its magnitude represents
-                geometrically.
+                Calculate the length of a vector and connect magnitude
+                with distance and geometric interpretation.
             </p>
 
-            <a href="magnitude-of-a-vector.html" class="open-topic">
+            <a
+                href="magnitude-of-a-vector.html"
+                class="open-topic">
                 OPEN TOPIC →
             </a>
 
-        </div>
+            <div class="completed-badge">
+                ✓ COMPLETED
+            </div>
+
+        </article>
 
 
+        <!-- =================================================
+             TOPIC 04
+        ================================================== -->
 
-        <!-- =====================================
-             04
-        ====================================== -->
-
-        <div class="topic" data-topic-number="4">
+        <article class="topic" data-topic-number="4">
 
             <div class="topic-top">
 
-                <div class="topic-symbol">
-                    OP⃗
+                <div class="math-icon">
+
+                    <svg viewBox="0 0 50 50" aria-hidden="true">
+
+                        <circle
+                            cx="12"
+                            cy="38"
+                            r="3"
+                            fill="#111">
+                        </circle>
+
+                        <circle
+                            cx="38"
+                            cy="12"
+                            r="3"
+                            fill="#111">
+                        </circle>
+
+                        <line
+                            x1="14"
+                            y1="36"
+                            x2="36"
+                            y2="14"
+                            stroke-width="2">
+                        </line>
+
+                        <polygon
+                            points="36,14 28,16 34,22"
+                            class="arrow">
+                        </polygon>
+
+                    </svg>
+
                 </div>
 
                 <div class="topic-number">
@@ -627,25 +918,29 @@ footer p{
             </h3>
 
             <p>
-                Use position vectors to describe the location of
-                points relative to the origin and connect vectors
-                with coordinate geometry.
+                Represent points using position vectors and connect
+                coordinates with vector notation and geometry.
             </p>
 
-            <a href="position-vectors.html" class="open-topic">
+            <a
+                href="position-vectors.html"
+                class="open-topic">
                 OPEN TOPIC →
             </a>
 
-        </div>
+            <div class="completed-badge">
+                ✓ COMPLETED
+            </div>
+
+        </article>
 
 
     </div>
 
 
-
-    <!-- =========================================
+    <!-- =====================================================
          BOTTOM STRIP
-    ========================================= -->
+    ====================================================== -->
 
     <div class="strip">
 
@@ -654,9 +949,8 @@ footer p{
         </strong>
 
         <p>
-            Four topics designed to take you from understanding
-            what a vector is to representing points using
-            position vectors.
+            Start with the language of vectors, then build toward
+            the geometry and calculations that make them powerful.
         </p>
 
     </div>
@@ -665,10 +959,9 @@ footer p{
 </main>
 
 
-
-<!-- =========================================
+<!-- =========================================================
      FOOTER
-========================================= -->
+========================================================= -->
 
 <footer>
 
@@ -683,23 +976,20 @@ footer p{
 </footer>
 
 
+<!-- =========================================================
+     SUPABASE
+========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-
-/* =========================================
-   SUPABASE
-========================================= */
 
 const SUPABASE_URL =
     "https://majvqtbortonsrgdknms.supabase.co";
 
-/*
-   Paste the same Supabase publishable key
-   you are already using on your lesson pages.
-*/
-
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
 
 const { createClient } = supabase;
 
@@ -709,49 +999,30 @@ const supabaseClient = createClient(
 );
 
 
-/* =========================================
-   CHECK LOGIN + LOAD PROGRESS
-========================================= */
+/* =========================================================
+   LOAD VECTOR PROGRESS
+========================================================= */
 
 async function loadVectorsProgress(){
 
     const {
-        data: { session },
-        error: sessionError
+        data: { session }
     } = await supabaseClient.auth.getSession();
 
 
-    if(sessionError){
-
-        console.error(
-            "Session error:",
-            sessionError
-        );
-
-        return;
-    }
-
-
-    /*
-       If there is no active Supabase session,
-       send the user back to the login page.
-    */
+    /* No signed-in user */
 
     if(!session){
 
-        window.location.href = "index.html";
+        location.href = "index.html";
+
         return;
     }
 
 
-    /* =====================================
-       GET COMPLETED TOPICS
-    ====================================== */
+    /* Get completed Vector topics */
 
-    const {
-        data,
-        error
-    } = await supabaseClient
+    const { data, error } = await supabaseClient
         .from("lesson_progress")
         .select("topic_number")
         .eq("user_id", session.user.id)
@@ -761,7 +1032,7 @@ async function loadVectorsProgress(){
     if(error){
 
         console.error(
-            "Progress loading error:",
+            "Could not load Vectors progress:",
             error
         );
 
@@ -769,83 +1040,53 @@ async function loadVectorsProgress(){
     }
 
 
-    /*
-       Create a Set containing the completed
-       topic numbers for this student.
-    */
+    /* Mark completed topics */
 
-    const completedTopics = new Set(
-        (data || []).map(function(row){
+    if(data){
 
-            return Number(
-                row.topic_number
-            );
+        data.forEach(progress => {
 
-        })
-    );
+            const topic =
+                document.querySelector(
+                    `.topic[data-topic-number="${progress.topic_number}"]`
+                );
 
+            if(topic){
 
-    /* =====================================
-       UPDATE TOPIC CARDS
-    ====================================== */
+                topic.classList.add("completed");
 
-    const topicCards =
-        document.querySelectorAll(
-            ".topic[data-topic-number]"
-        );
+            }
 
+        });
 
-    topicCards.forEach(function(card){
-
-        const topicNumber =
-            Number(
-                card.dataset.topicNumber
-            );
-
-
-        if(completedTopics.has(topicNumber)){
-
-            card.classList.add("completed");
-
-        }
-
-    });
+    }
 
 }
 
 
-/* =========================================
+/* =========================================================
    LOG OUT
-========================================= */
+========================================================= */
 
 async function logout(){
 
     await supabaseClient.auth.signOut();
 
-    localStorage.removeItem(
-        "eduNovaUsername"
-    );
+    localStorage.removeItem("eduNovaUsername");
+    localStorage.removeItem("eduNovaEmail");
 
-    localStorage.removeItem(
-        "eduNovaEmail"
-    );
-
-    window.location.href = "index.html";
+    location.href = "index.html";
 
 }
 
 
-/* =========================================
-   START
-========================================= */
+/* =========================================================
+   PAGE START
+========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    function(){
-
-        loadVectorsProgress();
-
-    }
+    loadVectorsProgress
 );
 
 </script>
@@ -853,4 +1094,3 @@ document.addEventListener(
 
 </body>
 </html>
-```
