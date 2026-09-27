@@ -3,974 +3,1113 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>EduNova | Definition of Vectors</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduNova | Definition of Vectors</title>
 
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
-        rel="stylesheet"
-    >
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+>
 
-    <style>
+<style>
 
-        /* =========================================
-           RESET
-        ========================================= */
+/* =========================================================
+   RESET
+========================================================= */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        body {
-            font-family: "DM Sans", sans-serif;
-            background: #f7f6f2;
-            color: #111;
-            line-height: 1.7;
-        }
+body{
+    font-family:"DM Sans", sans-serif;
+    background:#f7f6f2;
+    color:#111;
+    line-height:1.7;
+}
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+button,
+a{
+    font-family:inherit;
+}
 
+button{
+    border:0;
+}
 
-        /* =========================================
-           NAVIGATION
-        ========================================= */
 
-        nav {
-            height: 78px;
-            background: #111;
-            color: white;
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
 
-            padding: 0 7%;
+    height:78px;
+    padding:0 7%;
 
-            position: sticky;
-            top: 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-            z-index: 1000;
-        }
+    background:#111;
+    color:#fff;
 
-        .logo {
-            font-family: "Playfair Display", serif;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
+    border-bottom:1px solid #222;
+}
 
-        .logo span {
-            color: #7c3aed;
-        }
+.logo{
+    font-family:"Playfair Display", serif;
+    font-size:27px;
+    font-weight:700;
+    letter-spacing:-1px;
+}
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
+.logo span{
+    color:#7c3aed;
+}
 
-        .nav-links a {
-            color: white;
-            font-size: 15px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
 
-        .nav-links a:hover {
-            color: #7c3aed;
-        }
+.nav-link{
+    color:#fff;
+    text-decoration:none;
 
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
 
-        /* =========================================
-           HERO
-        ========================================= */
+    transition:.25s ease;
+}
 
-        .hero {
-            min-height: 430px;
+.nav-link:hover{
+    color:#a78bfa;
+}
 
-            background: #111;
-            color: white;
+.logout{
+    background:#7c3aed;
+    color:#fff;
 
-            display: flex;
-            align-items: center;
+    padding:10px 16px;
 
-            padding: 80px 7%;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.7px;
 
-            position: relative;
-            overflow: hidden;
-        }
+    cursor:pointer;
 
-        .hero::before {
-            content: "";
+    transition:.25s ease;
+}
 
-            position: absolute;
+.logout:hover{
+    background:#8b5cf6;
+}
 
-            width: 430px;
-            height: 430px;
 
-            border: 1px solid rgba(255,255,255,0.12);
+/* =========================================================
+   HERO
+========================================================= */
 
-            border-radius: 50%;
+.hero{
+    background:#111;
+    color:#fff;
 
-            right: -100px;
-            top: -130px;
-        }
+    padding:90px 7% 85px;
 
-        .hero::after {
-            content: "";
+    position:relative;
+    overflow:hidden;
+}
 
-            position: absolute;
+.hero::after{
+    content:"";
 
-            width: 280px;
-            height: 280px;
+    position:absolute;
 
-            border: 1px solid rgba(255,255,255,0.08);
+    width:300px;
+    height:300px;
 
-            border-radius: 50%;
+    right:-90px;
+    bottom:-150px;
 
-            right: 100px;
-            bottom: -170px;
-        }
+    border:1px solid rgba(124,58,237,.35);
 
-        .hero-content {
-            max-width: 850px;
+    transform:rotate(45deg);
+}
 
-            position: relative;
-            z-index: 2;
-        }
+.hero-content{
+    max-width:900px;
+    position:relative;
+    z-index:2;
+}
 
-        .chapter-label {
-            color: #a78bfa;
+.hero-label{
+    color:#a78bfa;
 
-            font-size: 14px;
-            font-weight: 700;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:3px;
 
-            letter-spacing: 3px;
-            text-transform: uppercase;
+    margin-bottom:18px;
+}
 
-            margin-bottom: 18px;
-        }
+.hero h1{
+    font-family:"Playfair Display", serif;
 
-        .hero h1 {
-            font-family: "Playfair Display", serif;
+    font-size:clamp(46px,7vw,78px);
+    line-height:1;
 
-            font-size: clamp(45px, 7vw, 80px);
+    letter-spacing:-3px;
+}
 
-            line-height: 1.05;
+.hero p{
+    max-width:680px;
 
-            margin-bottom: 25px;
-        }
+    margin-top:24px;
 
-        .hero p {
-            max-width: 750px;
+    color:#aaa;
 
-            color: #d5d5d5;
+    font-size:15px;
+    line-height:1.85;
+}
 
-            font-size: 19px;
-        }
 
+/* =========================================================
+   MAIN
+========================================================= */
 
-        /* =========================================
-           MAIN
-        ========================================= */
+main{
+    width:min(1120px, 86%);
 
-        main {
-            max-width: 1150px;
+    margin:0 auto;
 
-            margin: 0 auto;
+    padding:80px 0 100px;
+}
 
-            padding: 85px 30px;
-        }
 
-        .section {
-            margin-bottom: 90px;
-        }
+/* =========================================================
+   LESSON INTRO
+========================================================= */
 
-        .section h2 {
-            font-family: "Playfair Display", serif;
+.lesson-intro{
+    background:#fff;
 
-            font-size: 42px;
+    border:1px solid #ddd;
+    border-left:5px solid #7c3aed;
 
-            line-height: 1.2;
+    padding:30px 32px;
 
-            margin-bottom: 25px;
-        }
+    margin-bottom:65px;
+}
 
-        .section h3 {
-            font-size: 25px;
+.lesson-intro strong{
+    display:block;
 
-            margin-top: 45px;
-            margin-bottom: 18px;
-        }
+    font-family:"Playfair Display", serif;
 
-        .section p {
-            max-width: 920px;
+    font-size:25px;
 
-            font-size: 18px;
+    margin-bottom:8px;
+}
 
-            color: #333;
+.lesson-intro p{
+    color:#666;
 
-            margin-bottom: 20px;
-        }
+    font-size:14px;
+    line-height:1.8;
+}
 
 
-        /* =========================================
-           PART LABEL
-        ========================================= */
+/* =========================================================
+   SECTIONS
+========================================================= */
 
-        .part-label {
-            display: inline-block;
+.section{
+    margin-bottom:78px;
+}
 
-            color: #7c3aed;
+.section-label{
+    color:#7c3aed;
 
-            font-size: 13px;
-            font-weight: 700;
+    font-size:10px;
+    font-weight:700;
 
-            letter-spacing: 2.5px;
+    letter-spacing:2.5px;
 
-            text-transform: uppercase;
+    margin-bottom:12px;
+}
 
-            margin-bottom: 12px;
-        }
+.section h2{
+    font-family:"Playfair Display", serif;
 
+    font-size:clamp(35px,5vw,52px);
 
-        /* =========================================
-           INTRODUCTION CARD
-        ========================================= */
+    line-height:1.05;
 
-        .intro-card {
-            background: white;
+    letter-spacing:-2px;
 
-            border-left: 5px solid #7c3aed;
+    margin-bottom:22px;
+}
 
-            padding: 30px 35px;
+.section h3{
+    font-family:"Playfair Display", serif;
 
-            margin: 35px 0;
+    font-size:26px;
 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
+    margin:35px 0 12px;
+}
 
-        .intro-card p {
-            margin-bottom: 0;
-        }
+.section p{
+    color:#555;
 
+    font-size:14px;
 
-        /* =========================================
-           MATH BOX
-        ========================================= */
+    line-height:1.9;
 
-        .math-box {
-            background: white;
+    max-width:850px;
+}
 
-            border: 1px solid #dedede;
 
-            padding: 30px;
+/* =========================================================
+   DEFINITION CARDS
+========================================================= */
 
-            margin: 28px 0;
+.definition-grid{
+    display:grid;
 
-            text-align: center;
+    grid-template-columns:repeat(2,1fr);
 
-            font-size: 28px;
+    gap:18px;
 
-            line-height: 1.8;
+    margin-top:32px;
+}
 
-            overflow-x: auto;
+.definition-card{
+    background:#fff;
 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
-        }
+    border:1px solid #ddd;
 
-        .math-box.final {
-            border: 2px solid #111;
+    padding:28px;
+}
 
-            font-size: 31px;
-        }
+.definition-card .number{
+    color:#7c3aed;
 
+    font-size:10px;
+    font-weight:700;
 
-        /* =========================================
-           NOTE
-        ========================================= */
+    letter-spacing:1.5px;
 
-        .note {
-            background: #111;
+    margin-bottom:16px;
+}
 
-            color: white;
+.definition-card h3{
+    margin:0 0 9px;
 
-            padding: 28px 32px;
+    font-size:23px;
+}
 
-            margin: 30px 0;
+.definition-card p{
+    font-size:13px;
+}
 
-            border-radius: 3px;
-        }
 
-        .note strong {
-            display: block;
+/* =========================================================
+   MATH BOX
+========================================================= */
 
-            color: #a78bfa;
+.math-box{
+    background:#111;
 
-            font-size: 18px;
+    color:#fff;
 
-            margin-bottom: 7px;
-        }
+    padding:28px;
 
+    margin:30px 0;
 
-        /* =========================================
-           VECTOR DEFINITION CARD
-        ========================================= */
+    text-align:center;
 
-        .definition-card {
-            background: white;
+    overflow:hidden;
+}
 
-            border: 1px solid #ddd;
+.math-expression{
+    font-family:"Playfair Display", serif;
 
-            padding: 38px;
+    font-size:clamp(22px,4vw,34px);
 
-            margin: 35px 0;
+    letter-spacing:.2px;
 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    color:#fff;
+}
 
-            text-align: center;
-        }
+.math-small{
+    margin-top:8px;
 
-        .definition-card .big-vector {
-            font-family: "Playfair Display", serif;
+    color:#aaa;
 
-            font-size: 52px;
+    font-size:12px;
+}
 
-            margin-bottom: 15px;
-        }
 
-        .definition-card p {
-            margin: 0 auto;
+/* =========================================================
+   NOTE
+========================================================= */
 
-            max-width: 720px;
-        }
+.note{
+    background:#eeebff;
 
+    border-left:4px solid #7c3aed;
 
-        /* =========================================
-           SCALAR VS VECTOR
-        ========================================= */
+    padding:21px 24px;
 
-        .comparison {
-            display: grid;
+    margin:28px 0;
+}
 
-            grid-template-columns: repeat(2, 1fr);
+.note strong{
+    display:block;
 
-            gap: 20px;
+    color:#5b21b6;
 
-            margin-top: 35px;
-        }
+    font-size:11px;
 
-        .comparison-card {
-            background: white;
+    letter-spacing:1.2px;
 
-            border: 1px solid #ddd;
+    margin-bottom:6px;
+}
 
-            padding: 30px;
-        }
+.note p{
+    color:#4c3b72;
 
-        .comparison-card h3 {
-            margin: 0 0 12px;
+    font-size:13px;
+}
 
-            font-family: "Playfair Display", serif;
 
-            font-size: 28px;
-        }
+/* =========================================================
+   GRAPH CONTAINER
+========================================================= */
 
-        .comparison-card.vector {
-            border-top: 5px solid #7c3aed;
-        }
+.graph-card{
+    background:#fff;
 
-        .comparison-card.scalar {
-            border-top: 5px solid #111;
-        }
+    border:1px solid #ddd;
 
-        .comparison-card ul {
-            padding-left: 20px;
+    margin-top:35px;
 
-            color: #444;
-        }
+    overflow:hidden;
+}
 
+.graph-header{
+    padding:23px 27px;
 
-        /* =========================================
-           GRAPH
-        ========================================= */
+    border-bottom:1px solid #e5e5e5;
 
-        .graph-container {
-            background: white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-            border: 1px solid #ddd;
+    gap:20px;
+}
 
-            padding: 25px;
+.graph-header h3{
+    margin:0;
 
-            margin: 35px 0;
+    font-size:21px;
+}
 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
+.graph-header span{
+    color:#7c3aed;
 
-        .graph-container svg {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+    font-size:9px;
+    font-weight:700;
 
-        .graph-button {
-            display: inline-block;
+    letter-spacing:1.5px;
 
-            margin: 25px 8px 0;
+    white-space:nowrap;
+}
 
-            padding: 14px 22px;
+.graph-area{
+    width:100%;
 
-            border: none;
+    padding:22px;
 
-            background: #111;
+    background:#faf9f6;
+}
 
-            color: white;
+.graph-area svg{
+    display:block;
 
-            font-family: "DM Sans", sans-serif;
+    width:100%;
+    height:auto;
 
-            font-weight: 700;
+    overflow:visible;
+}
 
-            letter-spacing: 0.3px;
 
-            cursor: pointer;
+/* =========================================================
+   SVG STYLES
+========================================================= */
 
-            transition: 0.3s;
-        }
+.axis{
+    stroke:#bdbdbd;
+    stroke-width:1.5;
+}
 
-        .graph-button:hover {
-            background: #7c3aed;
-        }
+.grid-line{
+    stroke:#e8e6e1;
+    stroke-width:1;
+}
 
-        .graph-controls {
-            text-align: center;
-        }
+.vector-main{
+    stroke:#7c3aed;
+    stroke-width:5;
+    stroke-linecap:round;
+    fill:none;
+}
 
+.vector-secondary{
+    stroke:#111;
+    stroke-width:4;
+    stroke-linecap:round;
+    fill:none;
+}
 
-        /* =========================================
-           GRAPH LEGEND
-        ========================================= */
+.vector-soft{
+    stroke:#8b5cf6;
+    stroke-width:4;
+    stroke-linecap:round;
+    fill:none;
+}
 
-        .graph-legend {
-            display: flex;
+.resultant{
+    stroke:#111;
+    stroke-width:5;
+    stroke-linecap:round;
+    fill:none;
+}
 
-            justify-content: center;
+.svg-label{
+    font-family:"DM Sans", sans-serif;
 
-            gap: 25px;
+    font-size:15px;
+    font-weight:700;
 
-            flex-wrap: wrap;
+    fill:#111;
+}
 
-            margin-top: 18px;
+.svg-label-purple{
+    font-family:"DM Sans", sans-serif;
 
-            font-size: 13px;
+    font-size:15px;
+    font-weight:700;
 
-            color: #555;
-        }
+    fill:#7c3aed;
+}
 
-        .legend-item {
-            display: flex;
+.svg-label-small{
+    font-family:"DM Sans", sans-serif;
 
-            align-items: center;
+    font-size:12px;
 
-            gap: 8px;
-        }
+    fill:#666;
+}
 
-        .legend-dot {
-            width: 10px;
-            height: 10px;
+.point{
+    fill:#111;
+}
 
-            border-radius: 50%;
-        }
+.point-purple{
+    fill:#7c3aed;
+}
 
-        .purple-dot {
-            background: #7c3aed;
-        }
 
-        .black-dot {
-            background: #111;
-        }
+/* =========================================================
+   GRAPH CAPTION
+========================================================= */
 
-        .gray-dot {
-            background: #999;
-        }
+.graph-caption{
+    padding:20px 27px 25px;
 
+    border-top:1px solid #e5e5e5;
 
-        /* =========================================
-           WORKED EXAMPLE
-        ========================================= */
+    color:#666;
 
-        .example {
-            background: white;
+    font-size:12px;
 
-            border: 1px solid #ddd;
+    line-height:1.75;
+}
 
-            padding: 35px;
 
-            margin-top: 35px;
+/* =========================================================
+   ANIMATION BUTTON
+========================================================= */
 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
+.graph-controls{
+    display:flex;
 
-        .example-title {
-            color: #7c3aed;
+    gap:10px;
 
-            font-weight: 700;
+    flex-wrap:wrap;
 
-            font-size: 15px;
+    padding:0 27px 25px;
+}
 
-            letter-spacing: 2px;
+.graph-button{
+    background:#111;
+    color:#fff;
 
-            text-transform: uppercase;
+    padding:11px 17px;
 
-            margin-bottom: 15px;
-        }
+    font-size:10px;
+    font-weight:700;
 
-        .step {
-            border-top: 1px solid #e5e5e5;
+    letter-spacing:.7px;
 
-            padding: 22px 0;
-        }
+    cursor:pointer;
 
-        .step:first-of-type {
-            border-top: none;
-        }
+    transition:.25s ease;
+}
 
-        .step-number {
-            font-weight: 700;
+.graph-button:hover{
+    background:#7c3aed;
+}
 
-            margin-bottom: 8px;
-        }
+.graph-button.active{
+    background:#7c3aed;
+}
 
 
-        /* =========================================
-           TYPE CARDS
-        ========================================= */
+/* =========================================================
+   VECTOR ADDITION FORMULA
+========================================================= */
 
-        .type-grid {
-            display: grid;
+.addition-box{
+    display:grid;
 
-            grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:1fr auto 1fr;
 
-            gap: 18px;
+    gap:20px;
 
-            margin-top: 35px;
-        }
+    align-items:center;
 
-        .type-card {
-            background: white;
+    margin-top:32px;
+}
 
-            border: 1px solid #ddd;
+.addition-part{
+    background:#fff;
 
-            padding: 30px;
+    border:1px solid #ddd;
 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
-        }
+    padding:24px;
 
-        .type-number {
-            color: #7c3aed;
+    text-align:center;
+}
 
-            font-size: 11px;
+.addition-symbol{
+    font-family:"Playfair Display", serif;
 
-            font-weight: 700;
+    font-size:35px;
+}
 
-            letter-spacing: 2px;
 
-            margin-bottom: 15px;
-        }
+/* =========================================================
+   EXAMPLE
+========================================================= */
 
-        .type-card h3 {
-            font-family: "Playfair Display", serif;
+.example{
+    background:#fff;
 
-            font-size: 27px;
+    border:1px solid #ddd;
 
-            margin: 0 0 12px;
-        }
+    padding:30px;
 
-        .type-card p {
-            font-size: 16px;
+    margin-top:30px;
+}
 
-            margin-bottom: 0;
-        }
+.example-label{
+    color:#7c3aed;
 
+    font-size:10px;
+    font-weight:700;
 
-        /* =========================================
-           PRACTICE BUTTON
-        ========================================= */
+    letter-spacing:2px;
 
-        .practice-section {
-            text-align: center;
+    margin-bottom:13px;
+}
 
-            background: white;
+.example h3{
+    margin:0 0 16px;
 
-            border: 1px solid #ddd;
+    font-size:24px;
+}
 
-            padding: 55px 35px;
+.example p{
+    font-size:13px;
 
-            margin-top: 20px;
+    margin-bottom:15px;
+}
 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
+.step{
+    display:flex;
 
-        .practice-section h2 {
-            font-family: "Playfair Display", serif;
+    gap:16px;
 
-            font-size: 38px;
+    padding:13px 0;
 
-            margin-bottom: 15px;
-        }
+    border-top:1px solid #eee;
+}
 
-        .practice-section p {
-            margin: 0 auto 30px;
+.step-number{
+    min-width:28px;
+    height:28px;
 
-            color: #555;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-            max-width: 650px;
-        }
+    background:#7c3aed;
+    color:#fff;
 
-        .practice-button {
-            display: inline-block;
+    font-size:11px;
+    font-weight:700;
+}
 
-            background: #111;
+.step p{
+    margin:0;
 
-            color: white;
+    font-size:13px;
+}
 
-            padding: 16px 30px;
 
-            font-weight: 700;
+/* =========================================================
+   VECTOR TYPE SELECTOR
+========================================================= */
 
-            letter-spacing: 0.5px;
+.type-selector{
+    margin-top:35px;
 
-            transition: 0.3s;
-        }
+    background:#fff;
 
-        .practice-button:hover {
-            background: #7c3aed;
-        }
+    border:1px solid #ddd;
+}
 
+.type-buttons{
+    display:grid;
 
-        /* =========================================
-           COMPLETION
-        ========================================= */
+    grid-template-columns:repeat(3,1fr);
 
-        .completion-section {
-            position: relative;
+    border-bottom:1px solid #ddd;
+}
 
-            overflow: hidden;
+.type-button{
+    background:#fff;
 
-            background: #111;
+    padding:17px 10px;
 
-            color: white;
+    color:#555;
 
-            padding: 65px 35px;
+    font-size:10px;
+    font-weight:700;
 
-            margin-top: 70px;
+    letter-spacing:.8px;
 
-            text-align: center;
-        }
+    cursor:pointer;
 
-        .completion-content {
-            position: relative;
-            z-index: 2;
-        }
+    transition:.25s ease;
+}
 
-        .completion-label {
-            color: #a78bfa;
+.type-button:not(:last-child){
+    border-right:1px solid #ddd;
+}
 
-            font-size: 14px;
+.type-button:hover{
+    color:#7c3aed;
+}
 
-            font-weight: 700;
+.type-button.active{
+    background:#7c3aed;
+    color:#fff;
+}
 
-            letter-spacing: 3px;
+.type-panel{
+    display:none;
 
-            text-transform: uppercase;
+    padding:28px;
+}
 
-            margin-bottom: 15px;
-        }
+.type-panel.active{
+    display:block;
+}
 
-        .completion-section h2 {
-            font-family: "Playfair Display", serif;
+.type-panel h3{
+    margin:0 0 8px;
 
-            font-size: 42px;
+    font-size:24px;
+}
 
-            margin-bottom: 15px;
-        }
+.type-panel p{
+    margin-bottom:20px;
 
-        .completion-section p {
-            color: #ccc;
+    font-size:13px;
+}
 
-            max-width: 650px;
 
-            margin: 0 auto 28px;
+/* =========================================================
+   MISTAKES
+========================================================= */
 
-            font-size: 17px;
-        }
+.mistakes{
+    display:grid;
 
-        .complete-button {
-            background: #7c3aed;
+    grid-template-columns:repeat(2,1fr);
 
-            color: white;
+    gap:18px;
 
-            border: none;
+    margin-top:30px;
+}
 
-            padding: 16px 30px;
+.mistake{
+    background:#fff;
 
-            font-family: "DM Sans", sans-serif;
+    border:1px solid #ddd;
 
-            font-weight: 700;
+    padding:25px;
+}
 
-            letter-spacing: 0.5px;
+.mistake strong{
+    display:block;
 
-            cursor: pointer;
+    color:#111;
 
-            transition: 0.3s;
-        }
+    font-size:14px;
 
-        .complete-button:hover {
-            background: white;
+    margin-bottom:7px;
+}
 
-            color: #111;
-        }
+.mistake p{
+    font-size:12px;
+}
 
-        .complete-button:disabled {
-            cursor: default;
-        }
 
-        .completed-message {
-            display: none;
-        }
+/* =========================================================
+   FINAL SUMMARY
+========================================================= */
 
-        .completion-section.completed .completion-prompt {
-            display: none;
-        }
+.summary{
+    background:#111;
 
-        .completion-section.completed .completed-message {
-            display: block;
-        }
+    color:#fff;
 
+    padding:38px;
 
-        /* =========================================
-           CELEBRATION STRIPS
-        ========================================= */
+    margin-top:60px;
+}
 
-        .party-strip {
-            position: absolute;
+.summary-label{
+    color:#a78bfa;
 
-            width: 10px;
-            height: 75px;
+    font-size:10px;
+    font-weight:700;
 
-            top: -90px;
+    letter-spacing:2px;
 
-            transform: rotate(25deg);
+    margin-bottom:13px;
+}
 
-            opacity: 0;
-        }
+.summary h2{
+    font-family:"Playfair Display", serif;
 
-        .party-strip:nth-child(1) {
-            left: 8%;
-            background: #7c3aed;
-        }
+    font-size:36px;
 
-        .party-strip:nth-child(2) {
-            left: 20%;
-            background: #fff;
-        }
+    margin-bottom:17px;
+}
 
-        .party-strip:nth-child(3) {
-            left: 32%;
-            background: #7c3aed;
-        }
+.summary ul{
+    padding-left:20px;
+}
 
-        .party-strip:nth-child(4) {
-            left: 44%;
-            background: #fff;
-        }
+.summary li{
+    color:#bbb;
 
-        .party-strip:nth-child(5) {
-            left: 56%;
-            background: #7c3aed;
-        }
+    font-size:13px;
 
-        .party-strip:nth-child(6) {
-            left: 68%;
-            background: #fff;
-        }
+    margin:8px 0;
+}
 
-        .party-strip:nth-child(7) {
-            left: 80%;
-            background: #7c3aed;
-        }
 
-        .party-strip:nth-child(8) {
-            left: 92%;
-            background: #fff;
-        }
+/* =========================================================
+   COMPLETION
+========================================================= */
 
-        .completion-section.completed .party-strip {
-            animation: celebrationDrop 1.2s ease-out forwards;
-        }
+.completion{
+    margin-top:85px;
 
-        .completion-section.completed .party-strip:nth-child(1) {
-            animation-delay: 0.05s;
-        }
+    text-align:center;
 
-        .completion-section.completed .party-strip:nth-child(2) {
-            animation-delay: 0.12s;
-        }
+    background:#fff;
 
-        .completion-section.completed .party-strip:nth-child(3) {
-            animation-delay: 0.19s;
-        }
+    border:1px solid #ddd;
 
-        .completion-section.completed .party-strip:nth-child(4) {
-            animation-delay: 0.26s;
-        }
+    padding:60px 30px;
+}
 
-        .completion-section.completed .party-strip:nth-child(5) {
-            animation-delay: 0.33s;
-        }
+.completion-label{
+    color:#7c3aed;
 
-        .completion-section.completed .party-strip:nth-child(6) {
-            animation-delay: 0.40s;
-        }
+    font-size:10px;
+    font-weight:700;
 
-        .completion-section.completed .party-strip:nth-child(7) {
-            animation-delay: 0.47s;
-        }
+    letter-spacing:2.5px;
 
-        .completion-section.completed .party-strip:nth-child(8) {
-            animation-delay: 0.54s;
-        }
+    margin-bottom:14px;
+}
 
-        @keyframes celebrationDrop {
+.completion h2{
+    font-family:"Playfair Display", serif;
 
-            0% {
-                top: -90px;
-                opacity: 0;
-            }
+    font-size:clamp(38px,5vw,55px);
 
-            20% {
-                opacity: 1;
-            }
+    letter-spacing:-2px;
 
-            100% {
-                top: 110%;
-                opacity: 0;
-            }
+    line-height:1.05;
 
-        }
+    margin-bottom:15px;
+}
 
+.completion p{
+    max-width:600px;
 
-        /* =========================================
-           FOOTER
-        ========================================= */
+    margin:0 auto;
 
-        footer {
-            background: #111;
+    color:#666;
 
-            color: white;
+    font-size:13px;
 
-            padding: 45px 7%;
+    line-height:1.8;
+}
 
-            display: flex;
+.completion-mark{
+    width:70px;
+    height:70px;
 
-            align-items: center;
+    margin:25px auto;
 
-            justify-content: space-between;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-            gap: 25px;
-        }
+    background:#7c3aed;
 
-        footer p {
-            color: #aaa;
+    color:#fff;
 
-            font-size: 14px;
-        }
+    font-size:27px;
 
+    animation:pulse 2s ease-in-out infinite;
+}
 
-        /* =========================================
-           MOBILE
-        ========================================= */
+@keyframes pulse{
 
-        @media (max-width: 850px) {
+    0%,100%{
+        transform:scale(1);
+    }
 
-            .comparison {
-                grid-template-columns: 1fr;
-            }
+    50%{
+        transform:scale(1.06);
+    }
 
-            .type-grid {
-                grid-template-columns: 1fr;
-            }
+}
 
-        }
+.completion-status{
+    color:#111;
 
+    font-size:10px;
+    font-weight:700;
 
-        @media (max-width: 750px) {
+    letter-spacing:1.5px;
 
-            nav {
-                padding: 0 5%;
-            }
+    margin-bottom:25px;
+}
 
-            .nav-links {
-                gap: 14px;
-            }
+.practice-button{
+    display:inline-flex;
 
-            .nav-links a {
-                font-size: 13px;
-            }
+    align-items:center;
+    justify-content:center;
 
-            .hero {
-                padding: 65px 6%;
-            }
+    background:#111;
+    color:#fff;
 
-            .hero p {
-                font-size: 17px;
-            }
+    padding:14px 21px;
 
-            main {
-                padding: 65px 20px;
-            }
+    text-decoration:none;
 
-            .section h2 {
-                font-size: 34px;
-            }
+    font-size:10px;
+    font-weight:700;
 
-            .section p {
-                font-size: 17px;
-            }
+    letter-spacing:.8px;
 
-            .math-box {
-                font-size: 23px;
+    transition:.25s ease;
+}
 
-                padding: 24px 15px;
-            }
+.practice-button:hover{
+    background:#7c3aed;
+}
 
-            .math-box.final {
-                font-size: 24px;
-            }
 
-            footer {
-                flex-direction: column;
+/* =========================================================
+   FOOTER
+========================================================= */
 
-                align-items: flex-start;
-            }
+footer{
+    background:#111;
 
-        }
+    color:#fff;
 
-    </style>
+    padding:42px 7%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:25px;
+}
+
+.footer-logo{
+    font-family:"Playfair Display", serif;
+
+    font-size:24px;
+    font-weight:600;
+}
+
+.footer-logo span{
+    color:#7c3aed;
+}
+
+footer p{
+    color:#888;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:800px){
+
+    .definition-grid,
+    .mistakes{
+        grid-template-columns:1fr;
+    }
+
+    .addition-box{
+        grid-template-columns:1fr;
+    }
+
+    .addition-symbol{
+        display:none;
+    }
+
+    .graph-header{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .type-buttons{
+        grid-template-columns:1fr;
+    }
+
+    .type-button:not(:last-child){
+        border-right:0;
+        border-bottom:1px solid #ddd;
+    }
+
+}
+
+@media(max-width:600px){
+
+    nav{
+        height:auto;
+
+        padding:17px 5%;
+
+        gap:15px;
+    }
+
+    .nav-links{
+        gap:11px;
+    }
+
+    .nav-link{
+        font-size:9px;
+    }
+
+    .logout{
+        padding:9px 12px;
+    }
+
+    .hero{
+        padding:70px 5% 70px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    main{
+        width:90%;
+
+        padding:65px 0 80px;
+    }
+
+    .lesson-intro{
+        padding:24px;
+    }
+
+    .graph-area{
+        padding:10px;
+    }
+
+    .graph-caption{
+        padding:18px;
+    }
+
+    .graph-controls{
+        padding:0 18px 20px;
+    }
+
+    .example,
+    .summary{
+        padding:25px;
+    }
+
+    footer{
+        flex-direction:column;
+
+        text-align:center;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -978,1855 +1117,1539 @@
 <body>
 
 
-    <!-- =========================================
-         NAVIGATION
-    ========================================= -->
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-    <nav>
+<nav>
 
-        <a href="index.html" class="logo">
-            Edu<span>Nova</span>
+    <div class="logo">
+        Edu<span>Nova</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a
+            href="vectors.html"
+            class="nav-link">
+            ← VECTORS
         </a>
 
-        <div class="nav-links">
+        <button
+            class="logout"
+            onclick="logout()">
+            LOG OUT
+        </button>
 
-            <a href="vectors.html">
-                VECTORS
-            </a>
+    </div>
 
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            VECTORS • TOPIC 01 / 04
         </div>
 
-    </nav>
+        <h1>
+            Definition of Vectors.
+        </h1>
+
+        <p>
+            Learn what vectors are, how they are represented,
+            how they can be added, and how equal, opposite and
+            parallel vectors are identified.
+        </p>
+
+    </div>
+
+</header>
 
 
+<main>
 
-    <!-- =========================================
-         HERO
-    ========================================= -->
 
-    <header class="hero">
+<!-- =========================================================
+     INTRO
+========================================================= -->
 
-        <div class="hero-content">
+<div class="lesson-intro">
 
-            <div class="chapter-label">
-                Vectors • Topic 01
+    <strong>
+        A vector tells us two things.
+    </strong>
+
+    <p>
+        It tells us <b>how much</b> and <b>which way</b>.
+        This combination of magnitude and direction is what
+        makes a vector different from an ordinary number.
+    </p>
+
+</div>
+
+
+<!-- =========================================================
+     PART 1
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-label">
+        PART 01 • THE BASICS
+    </div>
+
+    <h2>
+        What is a vector?
+    </h2>
+
+    <p>
+        A vector is a quantity that has both
+        <b>magnitude</b> and <b>direction</b>.
+        We often represent a vector geometrically using
+        a directed line segment. The arrow shows its direction,
+        while the length of the line represents its magnitude.
+    </p>
+
+
+    <div class="definition-grid">
+
+        <div class="definition-card">
+
+            <div class="number">
+                01 • MAGNITUDE
             </div>
-
-            <h1>
-                Definition of Vectors
-            </h1>
-
-            <p>
-                Learn what vectors represent, how they are written,
-                how they appear geometrically, and how vectors can
-                be combined and compared.
-            </p>
-
-        </div>
-
-    </header>
-
-
-
-    <!-- =========================================
-         MAIN CONTENT
-    ========================================= -->
-
-    <main>
-
-
-        <!-- =====================================
-             PART 01
-        ===================================== -->
-
-        <section class="section">
-
-            <div class="part-label">
-                Part 01
-            </div>
-
-            <h2>
-                What Is a Vector?
-            </h2>
-
-            <p>
-                A vector is a quantity that has both
-                <strong>magnitude</strong> and
-                <strong>direction</strong>.
-            </p>
-
-            <p>
-                Magnitude tells us how large the quantity is,
-                while direction tells us which way it acts.
-            </p>
-
-            <div class="definition-card">
-
-                <div class="big-vector">
-                    Vector = magnitude + direction
-                </div>
-
-                <p>
-                    A vector is therefore different from a quantity
-                    that only tells us a numerical amount.
-                </p>
-
-            </div>
-
-
-            <div class="comparison">
-
-                <div class="comparison-card scalar">
-
-                    <h3>
-                        Scalar
-                    </h3>
-
-                    <p>
-                        A scalar has magnitude only.
-                    </p>
-
-                    <ul>
-
-                        <li>
-                            Mass
-                        </li>
-
-                        <li>
-                            Time
-                        </li>
-
-                        <li>
-                            Temperature
-                        </li>
-
-                        <li>
-                            Distance
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <div class="comparison-card vector">
-
-                    <h3>
-                        Vector
-                    </h3>
-
-                    <p>
-                        A vector has magnitude and direction.
-                    </p>
-
-                    <ul>
-
-                        <li>
-                            Displacement
-                        </li>
-
-                        <li>
-                            Velocity
-                        </li>
-
-                        <li>
-                            Acceleration
-                        </li>
-
-                        <li>
-                            Force
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-
-            <div class="note">
-
-                <strong>
-                    Key idea
-                </strong>
-
-                The direction is an essential part of a vector.
-                Two quantities can have the same magnitude but
-                represent different vectors if their directions differ.
-
-            </div>
-
-
-            <!-- =================================
-                 VECTOR GRAPH
-            ================================= -->
 
             <h3>
-                Vectors on a Graph
+                How much?
             </h3>
 
             <p>
-                Geometrically, a vector can be represented by a
-                directed line segment. The arrow shows the direction
+                The magnitude describes the size or length
                 of the vector.
             </p>
 
-            <div class="graph-container">
-
-                <svg viewBox="0 0 900 470">
-
-                    <!-- GRID -->
-
-                    <g stroke="#e8e8e8" stroke-width="1">
-
-                        <line x1="100" y1="50" x2="100" y2="410"/>
-                        <line x1="180" y1="50" x2="180" y2="410"/>
-                        <line x1="260" y1="50" x2="260" y2="410"/>
-                        <line x1="340" y1="50" x2="340" y2="410"/>
-                        <line x1="420" y1="50" x2="420" y2="410"/>
-                        <line x1="500" y1="50" x2="500" y2="410"/>
-                        <line x1="580" y1="50" x2="580" y2="410"/>
-                        <line x1="660" y1="50" x2="660" y2="410"/>
-                        <line x1="740" y1="50" x2="740" y2="410"/>
-
-                        <line x1="100" y1="50" x2="740" y2="50"/>
-                        <line x1="100" y1="130" x2="740" y2="130"/>
-                        <line x1="100" y1="210" x2="740" y2="210"/>
-                        <line x1="100" y1="290" x2="740" y2="290"/>
-                        <line x1="100" y1="370" x2="740" y2="370"/>
-                        <line x1="100" y1="410" x2="740" y2="410"/>
-
-                    </g>
+        </div>
 
 
-                    <!-- AXES -->
+        <div class="definition-card">
 
-                    <line
-                        x1="100"
-                        y1="370"
-                        x2="760"
-                        y2="370"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
-
-                    <line
-                        x1="100"
-                        y1="410"
-                        x2="100"
-                        y2="40"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
-
-
-                    <!-- AXIS LABELS -->
-
-                    <text
-                        x="770"
-                        y="378"
-                        font-size="22"
-                    >
-                        x
-                    </text>
-
-                    <text
-                        x="88"
-                        y="35"
-                        font-size="22"
-                    >
-                        y
-                    </text>
-
-
-                    <!-- VECTOR -->
-
-                    <line
-                        id="definitionVector"
-                        x1="180"
-                        y1="330"
-                        x2="580"
-                        y2="130"
-                        stroke="#7c3aed"
-                        stroke-width="7"
-                        stroke-linecap="round"
-                    />
-
-                    <polygon
-                        id="definitionArrow"
-                        points="580,130 555,128 566,151"
-                        fill="#7c3aed"
-                    />
-
-
-                    <!-- POINTS -->
-
-                    <circle
-                        cx="180"
-                        cy="330"
-                        r="8"
-                        fill="#111"
-                    />
-
-                    <circle
-                        cx="580"
-                        cy="130"
-                        r="8"
-                        fill="#111"
-                    />
-
-
-                    <!-- LABELS -->
-
-                    <text
-                        x="155"
-                        y="355"
-                        font-size="21"
-                        font-weight="600"
-                    >
-                        A
-                    </text>
-
-                    <text
-                        x="590"
-                        y="120"
-                        font-size="21"
-                        font-weight="600"
-                    >
-                        B
-                    </text>
-
-
-                    <!-- VECTOR LABEL -->
-
-                    <text
-                        x="360"
-                        y="195"
-                        font-size="28"
-                        font-weight="600"
-                        fill="#7c3aed"
-                    >
-                        a⃗
-                    </text>
-
-                </svg>
-
-
-                <div class="graph-controls">
-
-                    <button
-                        class="graph-button"
-                        onclick="animateDefinitionVector()"
-                    >
-                        SHOW VECTOR →
-                    </button>
-
-                    <button
-                        class="graph-button"
-                        onclick="resetDefinitionVector()"
-                    >
-                        RESET
-                    </button>
-
-                </div>
-
+            <div class="number">
+                02 • DIRECTION
             </div>
 
-
-            <p>
-                The vector starts at point <strong>A</strong> and ends
-                at point <strong>B</strong>. The arrowhead indicates
-                the direction from A to B.
-            </p>
-
-
             <h3>
-                How Are Vectors Written?
+                Which way?
             </h3>
 
             <p>
-                A vector can be named using a lowercase letter with
-                an arrow above it, such as:
-            </p>
-
-            <div class="math-box">
-
-                <strong>⃗a</strong>
-
-            </div>
-
-            <p>
-                If a vector starts at point A and finishes at point B,
-                it can also be written using the two points:
-            </p>
-
-            <div class="math-box final">
-
-                <strong>AB⃗</strong>
-
-            </div>
-
-            <p>
-                The order is important. The notation
-                <strong>AB⃗</strong> means the vector travels from
-                A to B.
-            </p>
-
-            <div class="note">
-
-                <strong>
-                    Important
-                </strong>
-
-                Reversing the order reverses the direction.
-                Therefore, <strong>BA⃗</strong> points in the
-                opposite direction to <strong>AB⃗</strong>.
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             PART 02
-        ===================================== -->
-
-        <section class="section">
-
-            <div class="part-label">
-                Part 02
-            </div>
-
-            <h2>
-                Addition of Vectors
-            </h2>
-
-            <p>
-                Vectors can be added together to produce another
-                vector called the <strong>resultant vector</strong>.
-            </p>
-
-            <p>
-                A useful way to add vectors geometrically is the
-                <strong>head-to-tail method</strong>.
-            </p>
-
-
-            <h3>
-                The Head-to-Tail Method
-            </h3>
-
-            <p>
-                Suppose we have two vectors,
-                <strong>a⃗</strong> and <strong>b⃗</strong>.
-            </p>
-
-            <p>
-                To add them, place the tail of
-                <strong>b⃗</strong> at the head of
-                <strong>a⃗</strong>.
-            </p>
-
-            <p>
-                The resultant vector starts at the tail of the first
-                vector and ends at the head of the second vector.
-            </p>
-
-
-            <div class="graph-container">
-
-                <svg viewBox="0 0 900 500">
-
-                    <!-- GRID -->
-
-                    <g stroke="#e8e8e8" stroke-width="1">
-
-                        <line x1="80" y1="70" x2="80" y2="430"/>
-                        <line x1="160" y1="70" x2="160" y2="430"/>
-                        <line x1="240" y1="70" x2="240" y2="430"/>
-                        <line x1="320" y1="70" x2="320" y2="430"/>
-                        <line x1="400" y1="70" x2="400" y2="430"/>
-                        <line x1="480" y1="70" x2="480" y2="430"/>
-                        <line x1="560" y1="70" x2="560" y2="430"/>
-                        <line x1="640" y1="70" x2="640" y2="430"/>
-                        <line x1="720" y1="70" x2="720" y2="430"/>
-                        <line x1="800" y1="70" x2="800" y2="430"/>
-
-                        <line x1="80" y1="70" x2="800" y2="70"/>
-                        <line x1="80" y1="150" x2="800" y2="150"/>
-                        <line x1="80" y1="230" x2="800" y2="230"/>
-                        <line x1="80" y1="310" x2="800" y2="310"/>
-                        <line x1="80" y1="390" x2="800" y2="390"/>
-                        <line x1="80" y1="430" x2="800" y2="430"/>
-
-                    </g>
-
-
-                    <!-- AXES -->
-
-                    <line
-                        x1="80"
-                        y1="390"
-                        x2="820"
-                        y2="390"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
-
-                    <line
-                        x1="80"
-                        y1="430"
-                        x2="80"
-                        y2="45"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
-
-
-                    <!-- A VECTOR -->
-
-                    <line
-                        id="addVectorA"
-                        x1="160"
-                        y1="350"
-                        x2="400"
-                        y2="190"
-                        stroke="#7c3aed"
-                        stroke-width="7"
-                        stroke-linecap="round"
-                    />
-
-                    <polygon
-                        points="400,190 374,191 387,211"
-                        fill="#7c3aed"
-                    />
-
-
-                    <!-- B VECTOR -->
-
-                    <line
-                        id="addVectorB"
-                        x1="400"
-                        y1="190"
-                        x2="640"
-                        y2="310"
-                        stroke="#111"
-                        stroke-width="7"
-                        stroke-linecap="round"
-                    />
-
-                    <polygon
-                        points="640,310 616,296 612,319"
-                        fill="#111"
-                    />
-
-
-                    <!-- RESULTANT -->
-
-                    <line
-                        id="resultantVector"
-                        x1="160"
-                        y1="350"
-                        x2="640"
-                        y2="310"
-                        stroke="#7c3aed"
-                        stroke-width="5"
-                        stroke-dasharray="12 9"
-                        opacity="0"
-                    />
-
-                    <polygon
-                        id="resultantArrow"
-                        points="640,310 615,296 613,321"
-                        fill="#7c3aed"
-                        opacity="0"
-                    />
-
-
-                    <!-- POINTS -->
-
-                    <circle
-                        cx="160"
-                        cy="350"
-                        r="7"
-                        fill="#111"
-                    />
-
-                    <circle
-                        cx="400"
-                        cy="190"
-                        r="7"
-                        fill="#111"
-                    />
-
-                    <circle
-                        cx="640"
-                        cy="310"
-                        r="7"
-                        fill="#111"
-                    />
-
-
-                    <!-- LABELS -->
-
-                    <text
-                        x="135"
-                        y="375"
-                        font-size="21"
-                        font-weight="600"
-                    >
-                        A
-                    </text>
-
-                    <text
-                        x="408"
-                        y="180"
-                        font-size="21"
-                        font-weight="600"
-                    >
-                        B
-                    </text>
-
-                    <text
-                        x="650"
-                        y="305"
-                        font-size="21"
-                        font-weight="600"
-                    >
-                        C
-                    </text>
-
-
-                    <text
-                        x="265"
-                        y="245"
-                        font-size="27"
-                        fill="#7c3aed"
-                        font-weight="600"
-                    >
-                        a⃗
-                    </text>
-
-                    <text
-                        x="505"
-                        y="245"
-                        font-size="27"
-                        fill="#111"
-                        font-weight="600"
-                    >
-                        b⃗
-                    </text>
-
-                    <text
-                        id="resultantLabel"
-                        x="395"
-                        y="335"
-                        font-size="27"
-                        fill="#7c3aed"
-                        font-weight="600"
-                        opacity="0"
-                    >
-                        a⃗ + b⃗
-                    </text>
-
-                </svg>
-
-
-                <div class="graph-controls">
-
-                    <button
-                        class="graph-button"
-                        onclick="showResultant()"
-                    >
-                        SHOW RESULTANT →
-                    </button>
-
-                    <button
-                        class="graph-button"
-                        onclick="resetAdditionGraph()"
-                    >
-                        RESET
-                    </button>
-
-                </div>
-
-                <div class="graph-legend">
-
-                    <div class="legend-item">
-
-                        <span class="legend-dot purple-dot"></span>
-
-                        Vector a⃗
-
-                    </div>
-
-                    <div class="legend-item">
-
-                        <span class="legend-dot black-dot"></span>
-
-                        Vector b⃗
-
-                    </div>
-
-                    <div class="legend-item">
-
-                        <span class="legend-dot gray-dot"></span>
-
-                        Resultant
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="math-box final">
-
-                <strong>
-                    a⃗ + b⃗ = resultant vector
-                </strong>
-
-            </div>
-
-
-            <div class="note">
-
-                <strong>
-                    Key idea
-                </strong>
-
-                Vector addition combines both the magnitude and
-                direction of the vectors. The resultant represents
-                the overall displacement produced by the two vectors.
-
-            </div>
-
-
-            <h3>
-                Example
-            </h3>
-
-            <div class="example">
-
-                <div class="example-title">
-                    Worked Example
-                </div>
-
-                <p>
-                    A vector <strong>a⃗</strong> moves a point
-                    4 units to the right and 2 units upwards.
-                    A second vector <strong>b⃗</strong> moves the
-                    point 3 units to the right and 1 unit upwards.
-                </p>
-
-                <div class="step">
-
-                    <div class="step-number">
-                        Step 1: Write the vectors
-                    </div>
-
-                    <div class="math-box">
-
-                        a⃗ =
-                        (4, 2)
-
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-
-                        b⃗ =
-                        (3, 1)
-
-                    </div>
-
-                </div>
-
-                <div class="step">
-
-                    <div class="step-number">
-                        Step 2: Add corresponding components
-                    </div>
-
-                    <div class="math-box">
-
-                        a⃗ + b⃗
-                        =
-                        (4 + 3, 2 + 1)
-
-                    </div>
-
-                </div>
-
-                <div class="step">
-
-                    <div class="step-number">
-                        Step 3: Simplify
-                    </div>
-
-                    <div class="math-box final">
-
-                        <strong>
-                            a⃗ + b⃗ = (7, 3)
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             PART 03
-        ===================================== -->
-
-        <section class="section">
-
-            <div class="part-label">
-                Part 03
-            </div>
-
-            <h2>
-                Types of Vectors
-            </h2>
-
-            <p>
-                Vectors can be compared according to their magnitude
-                and direction. Three important relationships are
-                <strong>equal vectors</strong>,
-                <strong>opposite vectors</strong>, and
-                <strong>parallel vectors</strong>.
-            </p>
-
-
-            <div class="type-grid">
-
-
-                <div class="type-card">
-
-                    <div class="type-number">
-                        TYPE 01
-                    </div>
-
-                    <h3>
-                        Equal Vectors
-                    </h3>
-
-                    <p>
-                        Two vectors are equal if they have the same
-                        magnitude and the same direction, even if
-                        they are in different positions.
-                    </p>
-
-                </div>
-
-
-                <div class="type-card">
-
-                    <div class="type-number">
-                        TYPE 02
-                    </div>
-
-                    <h3>
-                        Opposite Vectors
-                    </h3>
-
-                    <p>
-                        Two vectors are opposite if they have the same
-                        magnitude but point in opposite directions.
-                    </p>
-
-                </div>
-
-
-                <div class="type-card">
-
-                    <div class="type-number">
-                        TYPE 03
-                    </div>
-
-                    <h3>
-                        Parallel Vectors
-                    </h3>
-
-                    <p>
-                        Two vectors are parallel if they act along
-                        parallel lines. Their directions may be the
-                        same or opposite.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- =================================
-                 INTERACTIVE TYPES GRAPH
-            ================================= -->
-
-            <h3>
-                Explore the Relationships
-            </h3>
-
-            <p>
-                Use the buttons below to see how the three vector
-                relationships appear geometrically.
-            </p>
-
-
-            <div class="graph-container">
-
-                <svg viewBox="0 0 900 500">
-
-                    <!-- GRID -->
-
-                    <g
-                        id="typeGrid"
-                        stroke="#e8e8e8"
-                        stroke-width="1"
-                    >
-
-                        <line x1="70" y1="70" x2="70" y2="430"/>
-                        <line x1="150" y1="70" x2="150" y2="430"/>
-                        <line x1="230" y1="70" x2="230" y2="430"/>
-                        <line x1="310" y1="70" x2="310" y2="430"/>
-                        <line x1="390" y1="70" x2="390" y2="430"/>
-                        <line x1="470" y1="70" x2="470" y2="430"/>
-                        <line x1="550" y1="70" x2="550" y2="430"/>
-                        <line x1="630" y1="70" x2="630" y2="430"/>
-                        <line x1="710" y1="70" x2="710" y2="430"/>
-                        <line x1="790" y1="70" x2="790" y2="430"/>
-
-                        <line x1="70" y1="70" x2="790" y2="70"/>
-                        <line x1="70" y1="150" x2="790" y2="150"/>
-                        <line x1="70" y1="230" x2="790" y2="230"/>
-                        <line x1="70" y1="310" x2="790" y2="310"/>
-                        <line x1="70" y1="390" x2="790" y2="390"/>
-                        <line x1="70" y1="430" x2="790" y2="430"/>
-
-                    </g>
-
-
-                    <!-- AXES -->
-
-                    <line
-                        x1="70"
-                        y1="390"
-                        x2="820"
-                        y2="390"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
-
-                    <line
-                        x1="70"
-                        y1="430"
-                        x2="70"
-                        y2="45"
-                        stroke="#111"
-                        stroke-width="3"
-                    />
-
-
-                    <!-- EQUAL VECTOR -->
-
-                    <g id="equalVectors">
-
-                        <line
-                            x1="150"
-                            y1="340"
-                            x2="350"
-                            y2="220"
-                            stroke="#7c3aed"
-                            stroke-width="7"
-                            stroke-linecap="round"
-                        />
-
-                        <polygon
-                            points="350,220 326,220 338,240"
-                            fill="#7c3aed"
-                        />
-
-                        <line
-                            x1="470"
-                            y1="340"
-                            x2="670"
-                            y2="220"
-                            stroke="#7c3aed"
-                            stroke-width="7"
-                            stroke-linecap="round"
-                        />
-
-                        <polygon
-                            points="670,220 646,220 658,240"
-                            fill="#7c3aed"
-                        />
-
-                        <text
-                            x="245"
-                            y="205"
-                            font-size="26"
-                            fill="#7c3aed"
-                            font-weight="600"
-                        >
-                            a⃗
-                        </text>
-
-                        <text
-                            x="565"
-                            y="205"
-                            font-size="26"
-                            fill="#7c3aed"
-                            font-weight="600"
-                        >
-                            b⃗
-                        </text>
-
-                    </g>
-
-
-                    <!-- OPPOSITE VECTORS -->
-
-                    <g
-                        id="oppositeVectors"
-                        opacity="0"
-                    >
-
-                        <line
-                            x1="150"
-                            y1="340"
-                            x2="350"
-                            y2="220"
-                            stroke="#7c3aed"
-                            stroke-width="7"
-                            stroke-linecap="round"
-                        />
-
-                        <polygon
-                            points="350,220 326,220 338,240"
-                            fill="#7c3aed"
-                        />
-
-                        <line
-                            x1="470"
-                            y1="220"
-                            x2="670"
-                            y2="340"
-                            stroke="#111"
-                            stroke-width="7"
-                            stroke-linecap="round"
-                        />
-
-                        <polygon
-                            points="670,340 645,323 643,348"
-                            fill="#111"
-                        />
-
-                        <text
-                            x="245"
-                            y="205"
-                            font-size="26"
-                            fill="#7c3aed"
-                            font-weight="600"
-                        >
-                            a⃗
-                        </text>
-
-                        <text
-                            x="565"
-                            y="370"
-                            font-size="26"
-                            fill="#111"
-                            font-weight="600"
-                        >
-                            −a⃗
-                        </text>
-
-                    </g>
-
-
-                    <!-- PARALLEL VECTORS -->
-
-                    <g
-                        id="parallelVectors"
-                        opacity="0"
-                    >
-
-                        <line
-                            x1="150"
-                            y1="340"
-                            x2="360"
-                            y2="210"
-                            stroke="#7c3aed"
-                            stroke-width="7"
-                            stroke-linecap="round"
-                        />
-
-                        <polygon
-                            points="360,210 335,210 347,230"
-                            fill="#7c3aed"
-                        />
-
-                        <line
-                            x1="470"
-                            y1="360"
-                            x2="700"
-                            y2="218"
-                            stroke="#111"
-                            stroke-width="7"
-                            stroke-linecap="round"
-                        />
-
-                        <polygon
-                            points="700,218 674,219 687,239"
-                            fill="#111"
-                        />
-
-                        <text
-                            x="245"
-                            y="195"
-                            font-size="26"
-                            fill="#7c3aed"
-                            font-weight="600"
-                        >
-                            a⃗
-                        </text>
-
-                        <text
-                            x="565"
-                            y="195"
-                            font-size="26"
-                            fill="#111"
-                            font-weight="600"
-                        >
-                            b⃗
-                        </text>
-
-                    </g>
-
-                </svg>
-
-
-                <div class="graph-controls">
-
-                    <button
-                        class="graph-button"
-                        onclick="showVectorType('equal')"
-                    >
-                        EQUAL
-                    </button>
-
-                    <button
-                        class="graph-button"
-                        onclick="showVectorType('opposite')"
-                    >
-                        OPPOSITE
-                    </button>
-
-                    <button
-                        class="graph-button"
-                        onclick="showVectorType('parallel')"
-                    >
-                        PARALLEL
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================
-                 EQUAL VECTORS
-            ================================= -->
-
-            <h3>
-                1. Equal Vectors
-            </h3>
-
-            <p>
-                Two vectors are equal when they have the same
-                magnitude and the same direction.
-            </p>
-
-            <p>
-                They do not need to start at the same point.
-            </p>
-
-            <div class="math-box final">
-
-                <strong>
-                    a⃗ = b⃗
-                </strong>
-
-            </div>
-
-
-            <!-- =================================
-                 OPPOSITE VECTORS
-            ================================= -->
-
-            <h3>
-                2. Opposite Vectors
-            </h3>
-
-            <p>
-                Opposite vectors have equal magnitudes but point in
-                opposite directions.
-            </p>
-
-            <div class="math-box final">
-
-                <strong>
-                    b⃗ = −a⃗
-                </strong>
-
-            </div>
-
-            <div class="note">
-
-                <strong>
-                    Important
-                </strong>
-
-                The negative sign changes the direction of the
-                vector, not its magnitude.
-
-            </div>
-
-
-            <!-- =================================
-                 PARALLEL VECTORS
-            ================================= -->
-
-            <h3>
-                3. Parallel Vectors
-            </h3>
-
-            <p>
-                Parallel vectors act along parallel lines. Their
-                magnitudes do not have to be equal.
-            </p>
-
-            <p>
-                For example, one vector may be twice the size of
-                another while remaining parallel to it.
-            </p>
-
-            <div class="math-box">
-
-                <strong>
-                    b⃗ = 2a⃗
-                </strong>
-
-            </div>
-
-            <p>
-                The two vectors have the same direction because one
-                is a positive multiple of the other.
-            </p>
-
-
-        </section>
-
-
-
-        <!-- =====================================
-             SUMMARY
-        ===================================== -->
-
-        <section class="section">
-
-            <h2>
-                Lesson Summary
-            </h2>
-
-            <div class="intro-card">
-
-                <p>
-                    A vector has both magnitude and direction.
-                    Vectors can be written using a letter with an
-                    arrow or by naming their initial and terminal
-                    points. Vectors can be added to produce a
-                    resultant vector, and they can be compared as
-                    equal, opposite, or parallel vectors.
-                </p>
-
-            </div>
-
-
-            <div class="math-box">
-
-                Vector
-                →
-                Magnitude + Direction
-
-            </div>
-
-            <div class="math-box">
-
-                a⃗ + b⃗
-                →
-                Resultant
-
-            </div>
-
-            <div class="math-box">
-
-                Equal
-                →
-                Same magnitude + Same direction
-
-            </div>
-
-            <div class="math-box">
-
-                Opposite
-                →
-                Same magnitude + Opposite direction
-
-            </div>
-
-            <div class="math-box final">
-
-                Parallel
-                →
-                Parallel lines
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             COMPLETION
-        ===================================== -->
-
-        <section
-            class="completion-section"
-            id="completionSection"
-        >
-
-            <span class="party-strip"></span>
-            <span class="party-strip"></span>
-            <span class="party-strip"></span>
-            <span class="party-strip"></span>
-            <span class="party-strip"></span>
-            <span class="party-strip"></span>
-            <span class="party-strip"></span>
-            <span class="party-strip"></span>
-
-
-            <div class="completion-content">
-
-                <div class="completion-prompt">
-
-                    <div class="completion-label">
-                        LESSON 01 / 04
-                    </div>
-
-                    <h2>
-                        Lesson complete?
-                    </h2>
-
-                    <p>
-                        You have reached the end of the explanation.
-                        Mark this lesson as complete to save your progress.
-                    </p>
-
-                    <button
-                        class="complete-button"
-                        id="completeButton"
-                        type="button"
-                    >
-                        ✓ COMPLETE LESSON
-                    </button>
-
-                </div>
-
-
-                <div class="completed-message">
-
-                    <div class="completion-label">
-                        VECTORS • TOPIC 01
-                    </div>
-
-                    <h2>
-                        Congratulations!
-                    </h2>
-
-                    <p>
-                        You completed
-                        <strong>Definition of Vectors</strong>.
-                        Your progress has been saved.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             PRACTICE QUESTIONS
-        ===================================== -->
-
-        <section class="practice-section">
-
-            <h2>
-                Ready to Practice?
-            </h2>
-
-            <p>
-                Test your understanding of vectors, vector notation,
-                addition and vector relationships.
-            </p>
-
-            <a
-                href="definition-of-vectors-questions.html"
-                class="practice-button"
-            >
-                START QUESTIONS →
-            </a>
-
-        </section>
-
-
-    </main>
-
-
-
-    <!-- =========================================
-         FOOTER
-    ========================================= -->
-
-    <footer>
-
-        <div>
-
-            <div class="logo">
-                Edu<span>Nova</span>
-            </div>
-
-            <p>
-                Mathematics made clear.
+                The direction describes the orientation in which
+                the vector acts.
             </p>
 
         </div>
 
+    </div>
+
+
+    <div class="math-box">
+
+        <div class="math-expression">
+            Vector = Magnitude + Direction
+        </div>
+
+        <div class="math-small">
+            Both properties are needed to completely describe a vector.
+        </div>
+
+    </div>
+
+
+    <div class="note">
+
+        <strong>
+            KEY IDEA
+        </strong>
+
         <p>
-            © 2026 EduNova. All rights reserved.
+            The arrowhead is important. It tells us which end of
+            the vector is the terminal end and therefore shows
+            the direction of the vector.
         </p>
 
-    </footer>
+    </div>
 
 
+    <!-- VECTOR GRAPH -->
 
-    <!-- =========================================
-         SUPABASE
-    ========================================= -->
+    <div class="graph-card">
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <div class="graph-header">
+
+            <h3>
+                Reading a vector diagram
+            </h3>
+
+            <span>
+                INTERACTIVE DIAGRAM
+            </span>
+
+        </div>
 
 
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================= -->
+        <div class="graph-area">
 
-    <script>
+            <svg
+                viewBox="0 0 900 430"
+                role="img"
+                aria-label="A vector from point A to point B">
+
+                <defs>
+
+                    <marker
+                        id="arrowPurple"
+                        viewBox="0 0 12 12"
+                        refX="11"
+                        refY="6"
+                        markerWidth="12"
+                        markerHeight="12"
+                        orient="auto"
+                        markerUnits="userSpaceOnUse">
+
+                        <path
+                            d="M 0 0 L 12 6 L 0 12 Z"
+                            fill="#7c3aed">
+                        </path>
+
+                    </marker>
+
+                </defs>
 
 
-        /* =========================================
-           PART 01 GRAPH
-        ========================================= */
+                <!-- GRID -->
 
-        function animateDefinitionVector() {
+                <line
+                    x1="80"
+                    y1="330"
+                    x2="820"
+                    y2="330"
+                    class="axis">
+                </line>
 
-            const vector =
-                document.getElementById("definitionVector");
+                <line
+                    x1="80"
+                    y1="70"
+                    x2="80"
+                    y2="330"
+                    class="axis">
+                </line>
 
-            const arrow =
-                document.getElementById("definitionArrow");
 
-            if (!vector || !arrow) {
-                return;
-            }
+                <line x1="200" y1="70" x2="200" y2="330" class="grid-line"/>
+                <line x1="320" y1="70" x2="320" y2="330" class="grid-line"/>
+                <line x1="440" y1="70" x2="440" y2="330" class="grid-line"/>
+                <line x1="560" y1="70" x2="560" y2="330" class="grid-line"/>
+                <line x1="680" y1="70" x2="680" y2="330" class="grid-line"/>
 
-            vector.style.strokeDasharray = "600";
-            vector.style.strokeDashoffset = "600";
+                <line x1="80" y1="200" x2="820" y2="200" class="grid-line"/>
+                <line x1="80" y1="70" x2="820" y2="70" class="grid-line"/>
 
-            vector.getBoundingClientRect();
 
-            vector.style.transition =
-                "stroke-dashoffset 1.5s ease";
+                <!-- VECTOR -->
 
-            vector.style.strokeDashoffset = "0";
+                <line
+                    x1="180"
+                    y1="290"
+                    x2="670"
+                    y2="120"
+                    class="vector-main"
+                    marker-end="url(#arrowPurple)">
+                </line>
 
-            arrow.style.opacity = "1";
 
+                <!-- POINTS -->
+
+                <circle
+                    cx="180"
+                    cy="290"
+                    r="7"
+                    class="point">
+                </circle>
+
+                <circle
+                    cx="670"
+                    cy="120"
+                    r="7"
+                    class="point-purple">
+                </circle>
+
+
+                <!-- LABELS -->
+
+                <text
+                    x="155"
+                    y="322"
+                    class="svg-label">
+                    A
+                </text>
+
+                <text
+                    x="682"
+                    y="112"
+                    class="svg-label">
+                    B
+                </text>
+
+
+                <text
+                    x="400"
+                    y="184"
+                    class="svg-label-purple">
+                    vector
+                </text>
+
+
+                <text
+                    x="400"
+                    y="212"
+                    class="svg-label-small">
+                    direction A → B
+                </text>
+
+            </svg>
+
+        </div>
+
+
+        <div class="graph-caption">
+
+            The vector begins at <b>A</b> and ends at <b>B</b>.
+            The arrowhead is placed exactly at B, so the direction
+            is from A towards B.
+
+        </div>
+
+    </div>
+
+
+    <h3>
+        How are vectors written?
+    </h3>
+
+    <p>
+        Vectors can be represented using a bold lowercase letter,
+        such as <b>a</b>, or using an arrow above a letter.
+        A vector can also be named using two points, where the
+        order tells us the direction.
+    </p>
+
+
+    <div class="math-box">
+
+        <div class="math-expression">
+            a &nbsp;&nbsp;&nbsp; or &nbsp;&nbsp;&nbsp; AB
+        </div>
+
+        <div class="math-small">
+            The second notation means the vector from A to B.
+        </div>
+
+    </div>
+
+
+    <div class="note">
+
+        <strong>
+            ORDER MATTERS
+        </strong>
+
+        <p>
+            The vector from A to B has the opposite direction
+            to the vector from B to A.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PART 2
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-label">
+        PART 02 • VECTOR ADDITION
+    </div>
+
+    <h2>
+        Adding vectors.
+    </h2>
+
+    <p>
+        Vectors can be added to produce a new vector called the
+        <b>resultant</b>. Geometrically, we can add vectors by
+        placing the tail of the second vector at the head of
+        the first vector.
+    </p>
+
+
+    <div class="math-box">
+
+        <div class="math-expression">
+            a + b = resultant
+        </div>
+
+        <div class="math-small">
+            The resultant joins the starting point to the final point.
+        </div>
+
+    </div>
+
+
+    <!-- ADDITION GRAPH -->
+
+    <div class="graph-card">
+
+        <div class="graph-header">
+
+            <h3>
+                Head-to-tail addition
+            </h3>
+
+            <span>
+                STEP BY STEP
+            </span>
+
+        </div>
+
+
+        <div class="graph-area">
+
+            <svg
+                id="additionGraph"
+                viewBox="0 0 900 470"
+                role="img"
+                aria-label="Vector addition using the head-to-tail method">
+
+                <defs>
+
+                    <marker
+                        id="arrowBlackAdd"
+                        viewBox="0 0 12 12"
+                        refX="11"
+                        refY="6"
+                        markerWidth="12"
+                        markerHeight="12"
+                        orient="auto"
+                        markerUnits="userSpaceOnUse">
+
+                        <path
+                            d="M 0 0 L 12 6 L 0 12 Z"
+                            fill="#111">
+                        </path>
+
+                    </marker>
+
+
+                    <marker
+                        id="arrowPurpleAdd"
+                        viewBox="0 0 12 12"
+                        refX="11"
+                        refY="6"
+                        markerWidth="12"
+                        markerHeight="12"
+                        orient="auto"
+                        markerUnits="userSpaceOnUse">
+
+                        <path
+                            d="M 0 0 L 12 6 L 0 12 Z"
+                            fill="#7c3aed">
+                        </path>
+
+                    </marker>
+
+                </defs>
+
+
+                <!-- GRID -->
+
+                <line x1="70" y1="385" x2="830" y2="385" class="axis"/>
+                <line x1="70" y1="70" x2="70" y2="385" class="axis"/>
+
+                <line x1="180" y1="70" x2="180" y2="385" class="grid-line"/>
+                <line x1="290" y1="70" x2="290" y2="385" class="grid-line"/>
+                <line x1="400" y1="70" x2="400" y2="385" class="grid-line"/>
+                <line x1="510" y1="70" x2="510" y2="385" class="grid-line"/>
+                <line x1="620" y1="70" x2="620" y2="385" class="grid-line"/>
+                <line x1="730" y1="70" x2="730" y2="385" class="grid-line"/>
+
+                <line x1="70" y1="280" x2="830" y2="280" class="grid-line"/>
+                <line x1="70" y1="175" x2="830" y2="175" class="grid-line"/>
+                <line x1="70" y1="70" x2="830" y2="70" class="grid-line"/>
+
+
+                <!-- START POINT -->
+
+                <circle
+                    cx="150"
+                    cy="335"
+                    r="7"
+                    class="point">
+                </circle>
+
+
+                <!-- VECTOR A -->
+
+                <line
+                    x1="150"
+                    y1="335"
+                    x2="405"
+                    y2="250"
+                    class="vector-main"
+                    marker-end="url(#arrowPurpleAdd)">
+                </line>
+
+                <text
+                    x="265"
+                    y="275"
+                    class="svg-label-purple">
+                    a
+                </text>
+
+
+                <!-- VECTOR B -->
+
+                <line
+                    id="vectorB"
+                    x1="405"
+                    y1="250"
+                    x2="670"
+                    y2="145"
+                    class="vector-secondary"
+                    marker-end="url(#arrowBlackAdd)">
+                </line>
+
+                <text
+                    x="520"
+                    y="185"
+                    class="svg-label">
+                    b
+                </text>
+
+
+                <!-- RESULTANT -->
+
+                <line
+                    id="resultantLine"
+                    x1="150"
+                    y1="335"
+                    x2="670"
+                    y2="145"
+                    class="resultant"
+                    marker-end="url(#arrowBlackAdd)"
+                    opacity="0">
+                </line>
+
+
+                <!-- POINT LABELS -->
+
+                <text
+                    x="130"
+                    y="365"
+                    class="svg-label">
+                    Start
+                </text>
+
+                <text
+                    x="675"
+                    y="138"
+                    class="svg-label">
+                    End
+                </text>
+
+
+                <!-- RESULTANT LABEL -->
+
+                <text
+                    id="resultantLabel"
+                    x="390"
+                    y="340"
+                    class="svg-label"
+                    opacity="0">
+                    a + b
+                </text>
+
+            </svg>
+
+        </div>
+
+
+        <div class="graph-controls">
+
+            <button
+                class="graph-button"
+                onclick="showAdditionResult()">
+                SHOW RESULTANT →
+            </button>
+
+            <button
+                class="graph-button"
+                onclick="resetAddition()">
+                RESET
+            </button>
+
+        </div>
+
+
+        <div class="graph-caption">
+
+            First move <b>b</b> so that its tail begins at the head
+            of <b>a</b>. The resultant then runs directly from the
+            original starting point to the final endpoint.
+
+        </div>
+
+    </div>
+
+
+    <h3>
+        Component addition
+    </h3>
+
+    <p>
+        Vectors can also be added using their components.
+        Add the horizontal components together and add the
+        vertical components together.
+    </p>
+
+
+    <div class="addition-box">
+
+        <div class="addition-part">
+
+            <div class="math-expression">
+                a = (a₁, a₂)
+            </div>
+
+        </div>
+
+
+        <div class="addition-symbol">
+            +
+        </div>
+
+
+        <div class="addition-part">
+
+            <div class="math-expression">
+                b = (b₁, b₂)
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="math-box">
+
+        <div class="math-expression">
+            a + b = (a₁ + b₁, a₂ + b₂)
+        </div>
+
+        <div class="math-small">
+            Add corresponding components.
+        </div>
+
+    </div>
+
+
+    <div class="example">
+
+        <div class="example-label">
+            WORKED EXAMPLE
+        </div>
+
+        <h3>
+            Add two vectors
+        </h3>
+
+        <p>
+            Let
+            <b>a = (3, 2)</b>
+            and
+            <b>b = (4, 1)</b>.
+        </p>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <p>
+                Add the first components:
+                <b>3 + 4 = 7</b>.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <p>
+                Add the second components:
+                <b>2 + 1 = 3</b>.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <p>
+                Therefore,
+                <b>a + b = (7, 3)</b>.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PART 3
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-label">
+        PART 03 • VECTOR RELATIONSHIPS
+    </div>
+
+    <h2>
+        Equal, opposite and parallel.
+    </h2>
+
+    <p>
+        Vectors can have important relationships with one another.
+        The position of a vector does not change its identity as a
+        vector. What matters here is its magnitude and direction.
+    </p>
+
+
+    <div class="type-selector">
+
+
+        <div class="type-buttons">
+
+            <button
+                class="type-button active"
+                data-type="equal"
+                onclick="showVectorType('equal', this)">
+                EQUAL
+            </button>
+
+            <button
+                class="type-button"
+                data-type="opposite"
+                onclick="showVectorType('opposite', this)">
+                OPPOSITE
+            </button>
+
+            <button
+                class="type-button"
+                data-type="parallel"
+                onclick="showVectorType('parallel', this)">
+                PARALLEL
+            </button>
+
+        </div>
+
+
+        <!-- EQUAL -->
+
+        <div
+            id="equalPanel"
+            class="type-panel active">
+
+            <h3>
+                Equal vectors
+            </h3>
+
+            <p>
+                Equal vectors have the same magnitude and the same
+                direction. They do not have to start at the same point.
+            </p>
+
+
+            <svg
+                viewBox="0 0 900 330"
+                role="img"
+                aria-label="Two equal vectors">
+
+                <defs>
+
+                    <marker
+                        id="equalArrow"
+                        viewBox="0 0 12 12"
+                        refX="11"
+                        refY="6"
+                        markerWidth="12"
+                        markerHeight="12"
+                        orient="auto"
+                        markerUnits="userSpaceOnUse">
+
+                        <path
+                            d="M 0 0 L 12 6 L 0 12 Z"
+                            fill="#7c3aed">
+                        </path>
+
+                    </marker>
+
+                </defs>
+
+
+                <line
+                    x1="110"
+                    y1="230"
+                    x2="400"
+                    y2="140"
+                    class="vector-main"
+                    marker-end="url(#equalArrow)">
+                </line>
+
+
+                <line
+                    x1="500"
+                    y1="230"
+                    x2="790"
+                    y2="140"
+                    class="vector-main"
+                    marker-end="url(#equalArrow)">
+                </line>
+
+
+                <circle cx="110" cy="230" r="6" class="point"/>
+                <circle cx="500" cy="230" r="6" class="point"/>
+
+
+                <text
+                    x="245"
+                    y="175"
+                    class="svg-label-purple">
+                    a
+                </text>
+
+                <text
+                    x="635"
+                    y="175"
+                    class="svg-label-purple">
+                    b
+                </text>
+
+
+                <text
+                    x="345"
+                    y="275"
+                    class="svg-label-small">
+                    same magnitude
+                </text>
+
+                <text
+                    x="735"
+                    y="275"
+                    class="svg-label-small">
+                    same direction
+                </text>
+
+            </svg>
+
+        </div>
+
+
+        <!-- OPPOSITE -->
+
+        <div
+            id="oppositePanel"
+            class="type-panel">
+
+            <h3>
+                Opposite vectors
+            </h3>
+
+            <p>
+                Opposite vectors have the same magnitude but point in
+                opposite directions. If one vector is <b>a</b>, its
+                opposite can be written as <b>−a</b>.
+            </p>
+
+
+            <svg
+                viewBox="0 0 900 330"
+                role="img"
+                aria-label="Two opposite vectors">
+
+                <defs>
+
+                    <marker
+                        id="oppositePurple"
+                        viewBox="0 0 12 12"
+                        refX="11"
+                        refY="6"
+                        markerWidth="12"
+                        markerHeight="12"
+                        orient="auto"
+                        markerUnits="userSpaceOnUse">
+
+                        <path
+                            d="M 0 0 L 12 6 L 0 12 Z"
+                            fill="#7c3aed">
+                        </path>
+
+                    </marker>
+
+
+                    <marker
+                        id="oppositeBlack"
+                        viewBox="0 0 12 12"
+                        refX="11"
+                        refY="6"
+                        markerWidth="12"
+                        markerHeight="12"
+                        orient="auto"
+                        markerUnits="userSpaceOnUse">
+
+                        <path
+                            d="M 0 0 L 12 6 L 0 12 Z"
+                            fill="#111">
+                        </path>
+
+                    </marker>
+
+                </defs>
+
+
+                <!-- PURPLE VECTOR -->
+
+                <line
+                    x1="150"
+                    y1="150"
+                    x2="445"
+                    y2="150"
+                    class="vector-main"
+                    marker-end="url(#oppositePurple)">
+                </line>
+
+
+                <!-- BLACK VECTOR -->
+
+                <line
+                    x1="750"
+                    y1="230"
+                    x2="455"
+                    y2="230"
+                    class="vector-secondary"
+                    marker-end="url(#oppositeBlack)">
+                </line>
+
+
+                <text
+                    x="290"
+                    y="125"
+                    class="svg-label-purple">
+                    a
+                </text>
+
+
+                <text
+                    x="575"
+                    y="260"
+                    class="svg-label">
+                    −a
+                </text>
+
+
+                <text
+                    x="420"
+                    y="190"
+                    class="svg-label-small">
+                    same magnitude
+                </text>
+
+
+                <text
+                    x="420"
+                    y="310"
+                    class="svg-label-small">
+                    opposite directions
+                </text>
+
+            </svg>
+
+        </div>
+
+
+        <!-- PARALLEL -->
+
+        <div
+            id="parallelPanel"
+            class="type-panel">
+
+            <h3>
+                Parallel vectors
+            </h3>
+
+            <p>
+                Parallel vectors have directions that lie along parallel
+                lines. They may point in the same direction or in
+                opposite directions.
+            </p>
+
+
+            <svg
+                viewBox="0 0 900 330"
+                role="img"
+                aria-label="Two parallel vectors">
+
+                <defs>
+
+                    <marker
+                        id="parallelPurple"
+                        viewBox="0 0 12 12"
+                        refX="11"
+                        refY="6"
+                        markerWidth="12"
+                        markerHeight="12"
+                        orient="auto"
+                        markerUnits="userSpaceOnUse">
+
+                        <path
+                            d="M 0 0 L 12 6 L 0 12 Z"
+                            fill="#7c3aed">
+                        </path>
+
+                    </marker>
+
+
+                    <marker
+                        id="parallelBlack"
+                        viewBox="0 0 12 12"
+                        refX="11"
+                        refY="6"
+                        markerWidth="12"
+                        markerHeight="12"
+                        orient="auto"
+                        markerUnits="userSpaceOnUse">
+
+                        <path
+                            d="M 0 0 L 12 6 L 0 12 Z"
+                            fill="#111">
+                        </path>
+
+                    </marker>
+
+                </defs>
+
+
+                <!-- FIRST VECTOR -->
+
+                <line
+                    x1="120"
+                    y1="250"
+                    x2="440"
+                    y2="130"
+                    class="vector-main"
+                    marker-end="url(#parallelPurple)">
+                </line>
+
+
+                <!-- SECOND VECTOR -->
+
+                <line
+                    x1="500"
+                    y1="250"
+                    x2="820"
+                    y2="130"
+                    class="vector-secondary"
+                    marker-end="url(#parallelBlack)">
+                </line>
+
+
+                <text
+                    x="270"
+                    y="190"
+                    class="svg-label-purple">
+                    a
+                </text>
+
+
+                <text
+                    x="650"
+                    y="190"
+                    class="svg-label">
+                    b
+                </text>
+
+
+                <!-- PARALLEL GUIDE -->
+
+                <line
+                    x1="100"
+                    y1="280"
+                    x2="820"
+                    y2="280"
+                    stroke="#ddd"
+                    stroke-width="1"
+                    stroke-dasharray="6 6">
+                </line>
+
+
+                <text
+                    x="400"
+                    y="305"
+                    class="svg-label-small">
+                    parallel directions
+                </text>
+
+            </svg>
+
+        </div>
+
+    </div>
+
+
+    <div class="note">
+
+        <strong>
+            REMEMBER
+        </strong>
+
+        <p>
+            Equal vectors must have the same magnitude and direction.
+            Opposite vectors have the same magnitude but opposite
+            directions. Parallel vectors have directions along
+            parallel lines.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COMMON MISTAKES
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-label">
+        CHECK YOUR UNDERSTANDING
+    </div>
+
+    <h2>
+        Common mistakes.
+    </h2>
+
+
+    <div class="mistakes">
+
+        <div class="mistake">
+
+            <strong>
+                Forgetting direction
+            </strong>
+
+            <p>
+                Two vectors can have the same length but still be
+                different if they point in different directions.
+            </p>
+
+        </div>
+
+
+        <div class="mistake">
+
+            <strong>
+                Reversing the order
+            </strong>
+
+            <p>
+                The vector from A to B is not the same as the vector
+                from B to A. Reversing the direction changes the vector.
+            </p>
+
+        </div>
+
+
+        <div class="mistake">
+
+            <strong>
+                Joining the wrong endpoints
+            </strong>
+
+            <p>
+                For head-to-tail addition, the tail of the second
+                vector must begin at the head of the first.
+            </p>
+
+        </div>
+
+
+        <div class="mistake">
+
+            <strong>
+                Confusing parallel with equal
+            </strong>
+
+            <p>
+                Parallel vectors describe their direction relationship.
+                Equal vectors must also have the same magnitude.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SUMMARY
+========================================================= -->
+
+<div class="summary">
+
+    <div class="summary-label">
+        TOPIC 01 • SUMMARY
+    </div>
+
+    <h2>
+        The four ideas to remember.
+    </h2>
+
+    <ul>
+
+        <li>
+            A vector has both magnitude and direction.
+        </li>
+
+        <li>
+            A directed line segment can represent a vector.
+        </li>
+
+        <li>
+            Vectors can be added using the head-to-tail method.
+        </li>
+
+        <li>
+            Equal, opposite and parallel vectors describe
+            different relationships between vectors.
+        </li>
+
+    </ul>
+
+</div>
+
+
+<!-- =========================================================
+     COMPLETION
+========================================================= -->
+
+<section class="completion">
+
+    <div class="completion-label">
+        LESSON 01 / 04
+    </div>
+
+    <div class="completion-mark">
+        ✓
+    </div>
+
+    <h2>
+        Definition of Vectors complete.
+    </h2>
+
+    <p>
+        You have built the foundation of vector mathematics.
+        Next, you'll move from the definition of vectors into
+        their geometric relationships.
+    </p>
+
+    <div class="completion-status">
+        VECTORS • TOPIC 01
+    </div>
+
+    <a
+        href="definition-of-vectors-questions.html"
+        class="practice-button">
+        PRACTICE QUESTIONS →
+    </a>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div>
+
+        <div class="footer-logo">
+            Edu<span>Nova</span>
+        </div>
+
+        <p>
+            Mathematics made clear.
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 EduNova. All rights reserved.
+    </p>
+
+</footer>
+
+
+<!-- =========================================================
+     SUPABASE
+========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* =========================================================
+   SUPABASE SETUP
+========================================================= */
+
+const SUPABASE_URL =
+    "https://majvqtbortonsrgdknms.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+const { createClient } = supabase;
+
+const supabaseClient = createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+
+/* =========================================================
+   CHECK LOGIN
+========================================================= */
+
+async function checkSession(){
+
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
+
+    if(!session){
+
+        location.href = "index.html";
+
+        return;
+    }
+
+}
+
+
+/* =========================================================
+   LOG OUT
+========================================================= */
+
+async function logout(){
+
+    await supabaseClient.auth.signOut();
+
+    localStorage.removeItem("eduNovaUsername");
+    localStorage.removeItem("eduNovaEmail");
+
+    location.href = "index.html";
+
+}
+
+
+/* =========================================================
+   ADDITION GRAPH
+========================================================= */
+
+function showAdditionResult(){
+
+    const resultant =
+        document.getElementById("resultantLine");
+
+    const label =
+        document.getElementById("resultantLabel");
+
+    if(!resultant || !label){
+        return;
+    }
+
+    resultant.style.opacity = "1";
+
+    label.style.opacity = "1";
+
+}
+
+
+function resetAddition(){
+
+    const resultant =
+        document.getElementById("resultantLine");
+
+    const label =
+        document.getElementById("resultantLabel");
+
+    if(!resultant || !label){
+        return;
+    }
+
+    resultant.style.opacity = "0";
+
+    label.style.opacity = "0";
+
+}
+
+
+/* =========================================================
+   VECTOR TYPE SELECTOR
+========================================================= */
+
+function showVectorType(type, button){
+
+    const panels = [
+        "equalPanel",
+        "oppositePanel",
+        "parallelPanel"
+    ];
+
+    panels.forEach(panelID => {
+
+        const panel =
+            document.getElementById(panelID);
+
+        if(panel){
+            panel.classList.remove("active");
         }
 
+    });
 
-        function resetDefinitionVector() {
 
-            const vector =
-                document.getElementById("definitionVector");
+    const selectedPanel =
+        document.getElementById(type + "Panel");
 
-            const arrow =
-                document.getElementById("definitionArrow");
+    if(selectedPanel){
+        selectedPanel.classList.add("active");
+    }
 
-            if (!vector || !arrow) {
-                return;
-            }
 
-            vector.style.transition = "none";
+    document
+        .querySelectorAll(".type-button")
+        .forEach(item => {
 
-            vector.style.strokeDasharray = "none";
-            vector.style.strokeDashoffset = "0";
+            item.classList.remove("active");
 
-            arrow.style.opacity = "1";
+        });
 
-        }
 
+    if(button){
+        button.classList.add("active");
+    }
 
+}
 
-        /* =========================================
-           PART 02 VECTOR ADDITION GRAPH
-        ========================================= */
 
-        function showResultant() {
+/* =========================================================
+   MARK LESSON COMPLETE
+========================================================= */
 
-            const resultant =
-                document.getElementById("resultantVector");
+async function markLessonComplete(){
 
-            const arrow =
-                document.getElementById("resultantArrow");
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
 
-            const label =
-                document.getElementById("resultantLabel");
+    if(!session){
 
-            if (!resultant || !arrow || !label) {
-                return;
-            }
+        return;
 
-            resultant.style.transition =
-                "opacity 1s ease";
+    }
 
-            arrow.style.transition =
-                "opacity 1s ease";
 
-            label.style.transition =
-                "opacity 1s ease";
-
-            resultant.style.opacity = "1";
-            arrow.style.opacity = "1";
-            label.style.opacity = "1";
-
-        }
-
-
-        function resetAdditionGraph() {
-
-            const resultant =
-                document.getElementById("resultantVector");
-
-            const arrow =
-                document.getElementById("resultantArrow");
-
-            const label =
-                document.getElementById("resultantLabel");
-
-            if (!resultant || !arrow || !label) {
-                return;
-            }
-
-            resultant.style.opacity = "0";
-            arrow.style.opacity = "0";
-            label.style.opacity = "0";
-
-        }
-
-
-
-        /* =========================================
-           PART 03 VECTOR TYPES GRAPH
-        ========================================= */
-
-        function showVectorType(type) {
-
-            const equal =
-                document.getElementById("equalVectors");
-
-            const opposite =
-                document.getElementById("oppositeVectors");
-
-            const parallel =
-                document.getElementById("parallelVectors");
-
-
-            equal.style.opacity = "0";
-            opposite.style.opacity = "0";
-            parallel.style.opacity = "0";
-
-
-            if (type === "equal") {
-
-                equal.style.transition =
-                    "opacity 0.5s ease";
-
-                equal.style.opacity = "1";
-
-            }
-
-
-            if (type === "opposite") {
-
-                opposite.style.transition =
-                    "opacity 0.5s ease";
-
-                opposite.style.opacity = "1";
-
-            }
-
-
-            if (type === "parallel") {
-
-                parallel.style.transition =
-                    "opacity 0.5s ease";
-
-                parallel.style.opacity = "1";
-
-            }
-
-        }
-
-
-
-        /* =========================================
-           LESSON COMPLETION
-        ========================================= */
-
-        const SUPABASE_URL =
-            "https://majvqtbortonsrgdknms.supabase.co";
-
-        const SUPABASE_KEY =
-            "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
-
-
-        const supabaseClient =
-            window.supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_KEY
-            );
-
-
-        async function checkSessionAndProgress() {
-
-            const {
-                data: { session }
-            } =
-                await supabaseClient.auth.getSession();
-
-
-            if (!session) {
-
-                window.location.href =
-                    "index.html";
-
-                return;
-
-            }
-
-
-            const { data, error } =
-                await supabaseClient
-                    .from("lesson_progress")
-                    .select("*")
-                    .eq(
-                        "user_id",
-                        session.user.id
-                    )
-                    .eq(
-                        "chapter",
-                        "Vectors"
-                    )
-                    .eq(
-                        "topic_number",
-                        1
-                    )
-                    .maybeSingle();
-
-
-            if (error) {
-
-                console.error(
-                    "Error checking lesson progress:",
-                    error
-                );
-
-                return;
-
-            }
-
-
-            if (data) {
-
-                showCompletedState();
-
-            }
-
-        }
-
-
-
-        async function completeLesson() {
-
-            const button =
-                document.getElementById(
-                    "completeButton"
-                );
-
-
-            button.disabled = true;
-
-            button.textContent =
-                "SAVING...";
-
-
-            const {
-                data: { session }
-            } =
-                await supabaseClient.auth.getSession();
-
-
-            if (!session) {
-
-                window.location.href =
-                    "index.html";
-
-                return;
-
-            }
-
-
-            const { error } =
-                await supabaseClient
-                    .from("lesson_progress")
-                    .upsert(
-                        {
-                            user_id:
-                                session.user.id,
-
-                            chapter:
-                                "Vectors",
-
-                            topic_number:
-                                1,
-
-                            completed_at:
-                                new Date().toISOString()
-                        },
-                        {
-                            onConflict:
-                                "user_id,chapter,topic_number"
-                        }
-                    );
-
-
-            if (error) {
-
-                console.error(
-                    "Error saving lesson progress:",
-                    error
-                );
-
-                button.disabled = false;
-
-                button.textContent =
-                    "✓ COMPLETE LESSON";
-
-                return;
-
-            }
-
-
-            showCompletedState();
-
-        }
-
-
-
-        function showCompletedState() {
-
-            const section =
-                document.getElementById(
-                    "completionSection"
-                );
-
-            const button =
-                document.getElementById(
-                    "completeButton"
-                );
-
-
-            section.classList.add(
-                "completed"
-            );
-
-
-            button.disabled = true;
-
-            button.textContent =
-                "✓ LESSON COMPLETED";
-
-        }
-
-
-
-        /* =========================================
-           INITIALISE
-        ========================================= */
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            () => {
-
-                const completeButton =
-                    document.getElementById(
-                        "completeButton"
-                    );
-
-
-                if (completeButton) {
-
-                    completeButton.addEventListener(
-                        "click",
-                        completeLesson
-                    );
-
-                }
-
-
-                /*
-                   Show the first interactive graph
-                   immediately so the student sees the
-                   vector before pressing the button.
-                */
-
-                resetDefinitionVector();
-
-                checkSessionAndProgress();
-
+    const { error } = await supabaseClient
+        .from("lesson_progress")
+        .upsert(
+            {
+                user_id: session.user.id,
+                chapter: "Vectors",
+                topic_number: 1,
+                completed_at: new Date().toISOString()
+            },
+            {
+                onConflict:"user_id,chapter,topic_number"
             }
         );
 
-    </script>
+
+    if(error){
+
+        console.error(
+            "Could not save lesson progress:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   INITIALISE
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function(){
+
+        await checkSession();
+
+        await markLessonComplete();
+
+    }
+);
+
+</script>
+
 
 </body>
+
 </html>
