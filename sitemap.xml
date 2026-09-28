@@ -1,8 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
         <loc>https://nilat31.github.io/EduNova/</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/dashboard.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/integration.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/trapezium-rule.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/trapezium-questions.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/recognize-integrals.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/recognize-integrals-questions.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/integration-1-x2-a2.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/integration-1-x2-a2-questions.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/integration-fprime-over-f.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/integration-fprime-over-f-questions.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/integration-partial-fractions.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/integration-partial-fractions-questions.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/integration-substitution.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/integration-substitution-questions.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/integration-by-parts.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/integration-by-parts-questions.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/vectors.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/definition-of-vectors.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/trigonometrical-relationships.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/trigonometrical-relationships-questions.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nilat31.github.io/EduNova/feedback.html</loc>
     </url>
 
 </urlset>
