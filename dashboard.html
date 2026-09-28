@@ -67,7 +67,125 @@
     flex-direction:column;
     align-items:flex-start;
 }{nav{height:auto;padding:18px 5%;gap:15px}.hero{padding:70px 5% 55px}main{padding:70px 5% 85px}.head{flex-direction:column;align-items:flex-start}.grid{grid-template-columns:1fr}.strip,footer{flex-direction:column;align-items:flex-start}footer{text-align:center;align-items:center}}
-</style></head><body>
+/* =========================================
+   EDUNOVA PREMIUM
+========================================= */
+
+.premium-section{
+    width:100%;
+    margin:55px 0 0;
+}
+
+.premium-card{
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+    background:#111;
+    color:#fff;
+    padding:42px 48px;
+    border-radius:18px;
+    border-left:6px solid #e52b20;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.premium-content{
+    position:relative;
+    z-index:2;
+    max-width:760px;
+}
+
+.premium-label{
+    display:inline-block;
+    color:#e52b20;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:14px;
+}
+
+.premium-card h2{
+    margin:0 0 14px;
+    font:600 32px/1.2 "Playfair Display";
+    color:#fff;
+}
+
+.premium-card p{
+    margin:0 0 25px;
+    max-width:650px;
+    color:#aaa;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.premium-button{
+    border:0;
+    background:#e52b20;
+    color:#fff;
+    padding:13px 22px;
+    border-radius:7px;
+    font:700 10px "DM Sans";
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.premium-button span{
+    margin-left:8px;
+}
+
+.premium-button:hover{
+    background:#fff;
+    color:#111;
+    transform:translateY(-2px);
+}
+
+.premium-mark{
+    position:absolute;
+    right:45px;
+    top:50%;
+    transform:translateY(-50%);
+    width:150px;
+    height:150px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.premium-mark:before{
+    content:"";
+    position:absolute;
+    width:105px;
+    height:105px;
+    border:1px solid rgba(229,43,32,.35);
+    border-radius:50%;
+}
+
+.premium-mark span{
+    position:relative;
+    font-size:40px;
+    color:#e52b20;
+}
+
+@media(max-width:700px){
+
+    .premium-card{
+        padding:32px 28px;
+    }
+
+    .premium-card h2{
+        font-size:26px;
+    }
+
+    .premium-mark{
+        display:none;
+    }
+
+}</style></head><body>
 <nav><div class="logo">Edu<span>Nova</span></div><div class="nav">
     <a class="home" href="index.html">← HOME</a>
 
@@ -93,6 +211,44 @@
 <div class="card"><div class="top"><div class="symbol">i</div><div class="number">07 / 08</div></div><h2>Complex Numbers</h2><p>The complex plane, modulus, argument and algebraic relationships.</p><button class="start" onclick="coming('Complex Numbers')">START CHAPTER →</button></div>
 <div class="card"><div class="top"><div class="symbol">μ σ</div><div class="number">08 / 08</div></div><h2>Normal Distribution</h2><p>The normal model, standardization, probabilities, mean and standard deviation.</p><button class="start" onclick="coming('Normal Distribution')">START CHAPTER →</button></div>
 </div>
+
+<!-- =========================================
+     EDUNOVA PREMIUM
+========================================= -->
+
+<section class="premium-section" id="premiumSection">
+
+    <div class="premium-card">
+
+        <div class="premium-content">
+
+            <div class="premium-label" id="premiumLabel">
+                EDUNOVA PREMIUM
+            </div>
+
+            <h2 id="premiumTitle">
+                Unlock Your Full Semester 2 Experience
+            </h2>
+
+            <p id="premiumText">
+                Get access to the complete Grade 12 Advanced Mathematics
+                learning experience, including practice questions,
+                worked solutions, and more.
+            </p>
+
+            <button class="premium-button" id="premiumButton">
+                GET PREMIUM <span>→</span>
+            </button>
+
+        </div>
+
+        <div class="premium-mark">
+            <span>✦</span>
+        </div>
+
+    </div>
+
+</section>
 
 <div class="feedback-banner">
 
@@ -149,7 +305,7 @@ async function checkSession(){
 
     const { data: student, error } = await supabaseClient
         .from("students")
-        .select("username")
+        .select("username, premium_access")
         .eq("id", session.user.id)
         .single();
 
@@ -162,6 +318,50 @@ async function checkSession(){
     }
 
     document.getElementById("username").textContent = student.username;
+    const premiumSection = document.getElementById("premiumSection");
+const premiumCard = premiumSection.querySelector(".premium-card");
+const premiumLabel = document.getElementById("premiumLabel");
+const premiumTitle = document.getElementById("premiumTitle");
+const premiumText = document.getElementById("premiumText");
+const premiumButton = document.getElementById("premiumButton");
+
+if(student.premium_access === true){
+
+    premiumCard.classList.add("active");
+
+    premiumLabel.textContent = "PREMIUM ACTIVE";
+
+    premiumTitle.textContent =
+        "Your Semester 2 Access Is Active";
+
+    premiumText.textContent =
+        "You have full access to the EduNova Semester 2 learning experience. Keep learning, practicing, and building your mathematics skills.";
+
+    premiumButton.innerHTML =
+        'CONTINUE LEARNING <span>→</span>';
+
+    premiumButton.onclick = function(){
+        window.location.href = "vectors.html";
+    };
+
+}else{
+
+    premiumLabel.textContent = "EDUNOVA PREMIUM";
+
+    premiumTitle.textContent =
+        "Unlock Your Full Semester 2 Experience";
+
+    premiumText.textContent =
+        "Get access to the complete Grade 12 Advanced Mathematics learning experience, including practice questions, worked solutions, and more.";
+
+    premiumButton.innerHTML =
+        'GET PREMIUM <span>→</span>';
+
+    premiumButton.onclick = function(){
+        window.location.href = "premium.html";
+    };
+
+}
 }
 
 async function logout(){
