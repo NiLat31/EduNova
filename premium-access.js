@@ -43,6 +43,6 @@
         document.documentElement.classList.add("premium-access-granted");
     }
 
-    document.addEventListener("DOMContentLoaded", requirePremium);
+    requirePremium();
 
 })();
