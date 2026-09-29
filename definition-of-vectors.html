@@ -33,7 +33,7 @@ html{
 }
 
 body{
-    font-family:"DM Sans", sans-serif;
+    font-family:"DM Sans",sans-serif;
     background:#f7f6f2;
     color:#111;
     line-height:1.7;
@@ -58,7 +58,7 @@ nav{
     top:0;
     z-index:1000;
 
-    height:78px;
+    min-height:78px;
     padding:0 7%;
 
     display:flex;
@@ -68,13 +68,15 @@ nav{
     background:#111;
     color:#fff;
 
-    border-bottom:1px solid #222;
+    border-bottom:1px solid #262626;
 }
 
 .logo{
-    font-family:"Playfair Display", serif;
+    font-family:"Playfair Display",serif;
+
     font-size:27px;
     font-weight:700;
+
     letter-spacing:-1px;
 }
 
@@ -85,15 +87,17 @@ nav{
 .nav-links{
     display:flex;
     align-items:center;
-    gap:22px;
+    gap:24px;
 }
 
 .nav-link{
     color:#fff;
+
     text-decoration:none;
 
     font-size:10px;
     font-weight:700;
+
     letter-spacing:1px;
 
     transition:.25s ease;
@@ -107,10 +111,11 @@ nav{
     background:#7c3aed;
     color:#fff;
 
-    padding:10px 16px;
+    padding:10px 17px;
 
     font-size:10px;
     font-weight:700;
+
     letter-spacing:.7px;
 
     cursor:pointer;
@@ -120,6 +125,8 @@ nav{
 
 .logout:hover{
     background:#8b5cf6;
+
+    transform:translateY(-1px);
 }
 
 
@@ -128,65 +135,240 @@ nav{
 ========================================================= */
 
 .hero{
+    position:relative;
+
+    min-height:430px;
+
+    display:flex;
+    align-items:center;
+
+    padding:85px 7%;
+
     background:#111;
     color:#fff;
 
-    padding:90px 7% 85px;
-
-    position:relative;
     overflow:hidden;
 }
 
-.hero::after{
-    content:"";
 
+/* Decorative mathematical field */
+
+.hero-decoration{
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.9;
+}
+
+.hero-grid{
+    position:absolute;
+
+    width:520px;
+    height:520px;
+
+    right:-80px;
+    top:-80px;
+
+    background:
+        linear-gradient(rgba(124,58,237,.08) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(124,58,237,.08) 1px,transparent 1px);
+
+    background-size:42px 42px;
+
+    transform:rotate(12deg);
+
+    mask-image:linear-gradient(
+        to bottom left,
+        black,
+        transparent 78%
+    );
+}
+
+
+/* Large mathematical circles */
+
+.hero-ring{
     position:absolute;
 
     width:300px;
     height:300px;
 
-    right:-90px;
-    bottom:-150px;
+    right:105px;
+    top:65px;
 
-    border:1px solid rgba(124,58,237,.35);
+    border:1px solid rgba(124,58,237,.28);
 
-    transform:rotate(45deg);
+    border-radius:50%;
 }
 
+.hero-ring::before{
+    content:"";
+
+    position:absolute;
+
+    inset:38px;
+
+    border:1px solid rgba(167,139,250,.2);
+
+    border-radius:50%;
+}
+
+
+/* Vector decoration */
+
+.hero-vector{
+    position:absolute;
+
+    right:95px;
+    top:205px;
+
+    width:330px;
+    height:4px;
+
+    background:#7c3aed;
+
+    transform:rotate(-28deg);
+
+    transform-origin:left center;
+
+    border-radius:10px;
+
+    box-shadow:
+        0 0 20px rgba(124,58,237,.2);
+}
+
+.hero-vector::after{
+    content:"";
+
+    position:absolute;
+
+    right:-1px;
+    top:50%;
+
+    width:0;
+    height:0;
+
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-left:18px solid #7c3aed;
+
+    transform:translateY(-50%);
+}
+
+.hero-vector::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:50%;
+
+    width:10px;
+    height:10px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    transform:translate(-3px,-50%);
+}
+
+
+/* Floating vector labels */
+
+.hero-math{
+    position:absolute;
+
+    font-family:"Playfair Display",serif;
+
+    color:rgba(255,255,255,.18);
+
+    font-size:34px;
+}
+
+.hero-math.one{
+    right:380px;
+    top:95px;
+}
+
+.hero-math.two{
+    right:85px;
+    bottom:55px;
+
+    color:rgba(124,58,237,.4);
+}
+
+.hero-math.three{
+    right:285px;
+    bottom:105px;
+
+    font-size:24px;
+}
+
+
+/* Content */
+
 .hero-content{
-    max-width:900px;
     position:relative;
-    z-index:2;
+
+    z-index:5;
+
+    max-width:850px;
 }
 
 .hero-label{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
     color:#a78bfa;
 
     font-size:10px;
     font-weight:700;
+
     letter-spacing:3px;
 
-    margin-bottom:18px;
+    margin-bottom:20px;
+}
+
+.hero-label::before{
+    content:"";
+
+    width:32px;
+    height:2px;
+
+    background:#7c3aed;
 }
 
 .hero h1{
-    font-family:"Playfair Display", serif;
+    font-family:"Playfair Display",serif;
 
-    font-size:clamp(46px,7vw,78px);
-    line-height:1;
+    max-width:850px;
+
+    font-size:clamp(48px,7vw,82px);
+
+    line-height:.98;
 
     letter-spacing:-3px;
 }
 
-.hero p{
-    max-width:680px;
+.hero h1 span{
+    color:#a78bfa;
+}
 
-    margin-top:24px;
+.hero p{
+    max-width:690px;
+
+    margin-top:27px;
 
     color:#aaa;
 
     font-size:15px;
-    line-height:1.85;
+
+    line-height:1.9;
 }
 
 
@@ -195,11 +377,11 @@ nav{
 ========================================================= */
 
 main{
-    width:min(1120px, 86%);
+    width:min(1120px,86%);
 
     margin:0 auto;
 
-    padding:80px 0 100px;
+    padding:82px 0 105px;
 }
 
 
@@ -208,31 +390,60 @@ main{
 ========================================================= */
 
 .lesson-intro{
+    position:relative;
+
     background:#fff;
 
     border:1px solid #ddd;
+
     border-left:5px solid #7c3aed;
 
-    padding:30px 32px;
+    padding:31px 34px;
 
-    margin-bottom:65px;
+    margin-bottom:72px;
+
+    overflow:hidden;
+}
+
+.lesson-intro::after{
+    content:"→";
+
+    position:absolute;
+
+    right:28px;
+    bottom:-25px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:100px;
+
+    color:#f0eefb;
 }
 
 .lesson-intro strong{
     display:block;
 
-    font-family:"Playfair Display", serif;
+    position:relative;
+    z-index:2;
 
-    font-size:25px;
+    font-family:"Playfair Display",serif;
 
-    margin-bottom:8px;
+    font-size:26px;
+
+    margin-bottom:9px;
 }
 
 .lesson-intro p{
+    position:relative;
+    z-index:2;
+
+    max-width:800px;
+
     color:#666;
 
     font-size:14px;
-    line-height:1.8;
+
+    line-height:1.85;
 }
 
 
@@ -241,7 +452,7 @@ main{
 ========================================================= */
 
 .section{
-    margin-bottom:78px;
+    margin-bottom:90px;
 }
 
 .section-label{
@@ -252,37 +463,37 @@ main{
 
     letter-spacing:2.5px;
 
-    margin-bottom:12px;
+    margin-bottom:13px;
 }
 
 .section h2{
-    font-family:"Playfair Display", serif;
+    font-family:"Playfair Display",serif;
 
-    font-size:clamp(35px,5vw,52px);
+    font-size:clamp(37px,5vw,54px);
 
     line-height:1.05;
 
     letter-spacing:-2px;
 
-    margin-bottom:22px;
+    margin-bottom:23px;
 }
 
 .section h3{
-    font-family:"Playfair Display", serif;
+    font-family:"Playfair Display",serif;
 
-    font-size:26px;
+    font-size:27px;
 
-    margin:35px 0 12px;
+    margin:40px 0 13px;
 }
 
 .section p{
+    max-width:870px;
+
     color:#555;
 
     font-size:14px;
 
-    line-height:1.9;
-
-    max-width:850px;
+    line-height:1.95;
 }
 
 
@@ -297,15 +508,48 @@ main{
 
     gap:18px;
 
-    margin-top:32px;
+    margin-top:34px;
 }
 
 .definition-card{
+    position:relative;
+
     background:#fff;
 
     border:1px solid #ddd;
 
-    padding:28px;
+    padding:30px;
+
+    overflow:hidden;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.definition-card::after{
+    content:"";
+
+    position:absolute;
+
+    right:-30px;
+    bottom:-30px;
+
+    width:100px;
+    height:100px;
+
+    border:1px solid #eee;
+
+    border-radius:50%;
+}
+
+.definition-card:hover{
+    transform:translateY(-4px);
+
+    border-color:#c9baf5;
+
+    box-shadow:0 14px 35px rgba(0,0,0,.06);
 }
 
 .definition-card .number{
@@ -316,13 +560,13 @@ main{
 
     letter-spacing:1.5px;
 
-    margin-bottom:16px;
+    margin-bottom:17px;
 }
 
 .definition-card h3{
     margin:0 0 9px;
 
-    font-size:23px;
+    font-size:24px;
 }
 
 .definition-card p{
@@ -335,23 +579,60 @@ main{
 ========================================================= */
 
 .math-box{
+    position:relative;
+
     background:#111;
 
     color:#fff;
 
-    padding:28px;
+    padding:31px;
 
-    margin:30px 0;
+    margin:31px 0;
 
     text-align:center;
 
     overflow:hidden;
 }
 
-.math-expression{
-    font-family:"Playfair Display", serif;
+.math-box::before{
+    content:"";
 
-    font-size:clamp(22px,4vw,34px);
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    right:-70px;
+    top:-80px;
+
+    border:1px solid rgba(124,58,237,.3);
+
+    border-radius:50%;
+}
+
+.math-box::after{
+    content:"";
+
+    position:absolute;
+
+    width:90px;
+    height:90px;
+
+    left:-45px;
+    bottom:-50px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:50%;
+}
+
+.math-expression{
+    position:relative;
+    z-index:2;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(24px,4vw,37px);
 
     letter-spacing:.2px;
 
@@ -359,7 +640,10 @@ main{
 }
 
 .math-small{
-    margin-top:8px;
+    position:relative;
+    z-index:2;
+
+    margin-top:9px;
 
     color:#aaa;
 
@@ -368,21 +652,110 @@ main{
 
 
 /* =========================================================
+   VECTOR NOTATION
+========================================================= */
+
+.vector-notation{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:1.15em;
+
+    line-height:1;
+
+    padding-top:9px;
+
+    margin:0 5px;
+}
+
+.vector-notation::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    top:0;
+
+    height:2px;
+
+    background:currentColor;
+}
+
+.vector-notation::after{
+    content:"";
+
+    position:absolute;
+
+    right:-1px;
+    top:-4px;
+
+    width:0;
+    height:0;
+
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+    border-left:8px solid currentColor;
+}
+
+.vector-expression{
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+}
+
+
+/* =========================================================
    NOTE
 ========================================================= */
 
 .note{
+    position:relative;
+
     background:#eeebff;
 
     border-left:4px solid #7c3aed;
 
-    padding:21px 24px;
+    padding:22px 25px;
 
-    margin:28px 0;
+    margin:29px 0;
+
+    overflow:hidden;
+}
+
+.note::after{
+    content:"";
+
+    position:absolute;
+
+    width:70px;
+    height:70px;
+
+    right:-25px;
+    top:-25px;
+
+    border:1px solid rgba(124,58,237,.15);
+
+    border-radius:50%;
 }
 
 .note strong{
     display:block;
+
+    position:relative;
+    z-index:2;
 
     color:#5b21b6;
 
@@ -390,10 +763,13 @@ main{
 
     letter-spacing:1.2px;
 
-    margin-bottom:6px;
+    margin-bottom:7px;
 }
 
 .note p{
+    position:relative;
+    z-index:2;
+
     color:#4c3b72;
 
     font-size:13px;
@@ -409,17 +785,24 @@ main{
 
     border:1px solid #ddd;
 
-    margin-top:35px;
+    margin-top:38px;
 
     overflow:hidden;
+
+    transition:box-shadow .3s ease;
+}
+
+.graph-card:hover{
+    box-shadow:0 16px 40px rgba(0,0,0,.055);
 }
 
 .graph-header{
-    padding:23px 27px;
+    padding:24px 28px;
 
     border-bottom:1px solid #e5e5e5;
 
     display:flex;
+
     justify-content:space-between;
     align-items:center;
 
@@ -429,7 +812,7 @@ main{
 .graph-header h3{
     margin:0;
 
-    font-size:21px;
+    font-size:22px;
 }
 
 .graph-header span{
@@ -446,7 +829,7 @@ main{
 .graph-area{
     width:100%;
 
-    padding:22px;
+    padding:28px;
 
     background:#faf9f6;
 }
@@ -467,66 +850,104 @@ main{
 
 .axis{
     stroke:#bdbdbd;
+
     stroke-width:1.5;
 }
 
 .grid-line{
     stroke:#e8e6e1;
+
     stroke-width:1;
 }
 
 .vector-main{
     stroke:#7c3aed;
-    stroke-width:5;
+
+    stroke-width:6;
+
     stroke-linecap:round;
+
     fill:none;
 }
 
 .vector-secondary{
     stroke:#111;
-    stroke-width:4;
+
+    stroke-width:5;
+
     stroke-linecap:round;
+
     fill:none;
 }
 
 .vector-soft{
     stroke:#8b5cf6;
+
     stroke-width:4;
+
     stroke-linecap:round;
+
     fill:none;
 }
 
 .resultant{
     stroke:#111;
-    stroke-width:5;
+
+    stroke-width:7;
+
     stroke-linecap:round;
+
     fill:none;
 }
 
-.svg-label{
-    font-family:"DM Sans", sans-serif;
+.resultant-glow{
+    stroke:#7c3aed;
 
-    font-size:15px;
+    stroke-width:13;
+
+    stroke-linecap:round;
+
+    fill:none;
+
+    opacity:0;
+
+    filter:blur(4px);
+}
+
+.svg-label{
+    font-family:"DM Sans",sans-serif;
+
+    font-size:18px;
     font-weight:700;
 
     fill:#111;
 }
 
 .svg-label-purple{
-    font-family:"DM Sans", sans-serif;
+    font-family:"DM Sans",sans-serif;
 
-    font-size:15px;
+    font-size:18px;
     font-weight:700;
 
     fill:#7c3aed;
 }
 
 .svg-label-small{
-    font-family:"DM Sans", sans-serif;
+    font-family:"DM Sans",sans-serif;
 
-    font-size:12px;
+    font-size:14px;
 
     fill:#666;
+}
+
+.svg-label-result{
+    font-family:"DM Sans",sans-serif;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    fill:#7c3aed;
 }
 
 .point{
@@ -539,24 +960,49 @@ main{
 
 
 /* =========================================================
+   VECTOR DIAGRAM SPECIFIC
+========================================================= */
+
+.vector-diagram-label{
+    font-family:"Playfair Display",serif;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    fill:#111;
+}
+
+.vector-diagram-description{
+    font-family:"DM Sans",sans-serif;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    fill:#555;
+}
+
+
+/* =========================================================
    GRAPH CAPTION
 ========================================================= */
 
 .graph-caption{
-    padding:20px 27px 25px;
+    padding:21px 28px 26px;
 
     border-top:1px solid #e5e5e5;
 
     color:#666;
 
-    font-size:12px;
+    font-size:13px;
 
-    line-height:1.75;
+    line-height:1.8;
 }
 
 
 /* =========================================================
-   ANIMATION BUTTON
+   ANIMATION BUTTONS
 ========================================================= */
 
 .graph-controls{
@@ -566,14 +1012,15 @@ main{
 
     flex-wrap:wrap;
 
-    padding:0 27px 25px;
+    padding:0 28px 26px;
 }
 
 .graph-button{
     background:#111;
+
     color:#fff;
 
-    padding:11px 17px;
+    padding:12px 18px;
 
     font-size:10px;
     font-weight:700;
@@ -582,11 +1029,15 @@ main{
 
     cursor:pointer;
 
-    transition:.25s ease;
+    transition:
+        background .25s ease,
+        transform .25s ease;
 }
 
 .graph-button:hover{
     background:#7c3aed;
+
+    transform:translateY(-2px);
 }
 
 .graph-button.active{
@@ -595,7 +1046,65 @@ main{
 
 
 /* =========================================================
-   VECTOR ADDITION FORMULA
+   RESULTANT ANIMATION
+========================================================= */
+
+#resultantLine{
+    stroke-dasharray:1000;
+
+    stroke-dashoffset:1000;
+
+    transition:
+        opacity .2s ease;
+}
+
+#resultantGlow{
+    stroke-dasharray:1000;
+
+    stroke-dashoffset:1000;
+
+    transition:
+        opacity .2s ease;
+}
+
+.resultant-visible{
+    animation:
+        drawResultant 1.3s cubic-bezier(.65,0,.35,1) forwards;
+}
+
+.resultant-glow-visible{
+    animation:
+        drawResultant 1.3s cubic-bezier(.65,0,.35,1) forwards,
+        resultantGlow 1.8s ease-in-out 1.1s infinite alternate;
+}
+
+@keyframes drawResultant{
+
+    from{
+        stroke-dashoffset:1000;
+    }
+
+    to{
+        stroke-dashoffset:0;
+    }
+
+}
+
+@keyframes resultantGlow{
+
+    from{
+        opacity:.05;
+    }
+
+    to{
+        opacity:.35;
+    }
+
+}
+
+
+/* =========================================================
+   ADDITION FORMULA
 ========================================================= */
 
 .addition-box{
@@ -607,7 +1116,7 @@ main{
 
     align-items:center;
 
-    margin-top:32px;
+    margin-top:34px;
 }
 
 .addition-part{
@@ -615,15 +1124,25 @@ main{
 
     border:1px solid #ddd;
 
-    padding:24px;
+    padding:27px;
 
     text-align:center;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease;
+}
+
+.addition-part:hover{
+    transform:translateY(-3px);
+
+    border-color:#c9baf5;
 }
 
 .addition-symbol{
-    font-family:"Playfair Display", serif;
+    font-family:"Playfair Display",serif;
 
-    font-size:35px;
+    font-size:38px;
 }
 
 
@@ -636,9 +1155,9 @@ main{
 
     border:1px solid #ddd;
 
-    padding:30px;
+    padding:31px;
 
-    margin-top:30px;
+    margin-top:32px;
 }
 
 .example-label{
@@ -655,7 +1174,7 @@ main{
 .example h3{
     margin:0 0 16px;
 
-    font-size:24px;
+    font-size:25px;
 }
 
 .example p{
@@ -669,20 +1188,22 @@ main{
 
     gap:16px;
 
-    padding:13px 0;
+    padding:14px 0;
 
     border-top:1px solid #eee;
 }
 
 .step-number{
-    min-width:28px;
-    height:28px;
+    min-width:30px;
+    height:30px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     background:#7c3aed;
+
     color:#fff;
 
     font-size:11px;
@@ -701,7 +1222,7 @@ main{
 ========================================================= */
 
 .type-selector{
-    margin-top:35px;
+    margin-top:37px;
 
     background:#fff;
 
@@ -717,9 +1238,11 @@ main{
 }
 
 .type-button{
+    position:relative;
+
     background:#fff;
 
-    padding:17px 10px;
+    padding:18px 10px;
 
     color:#555;
 
@@ -743,23 +1266,40 @@ main{
 
 .type-button.active{
     background:#7c3aed;
+
     color:#fff;
 }
 
 .type-panel{
     display:none;
 
-    padding:28px;
+    padding:31px;
 }
 
 .type-panel.active{
     display:block;
+
+    animation:panelFade .35s ease;
+}
+
+@keyframes panelFade{
+
+    from{
+        opacity:0;
+        transform:translateY(7px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
 }
 
 .type-panel h3{
-    margin:0 0 8px;
+    margin:0 0 9px;
 
-    font-size:24px;
+    font-size:25px;
 }
 
 .type-panel p{
@@ -780,19 +1320,41 @@ main{
 
     gap:18px;
 
-    margin-top:30px;
+    margin-top:32px;
 }
 
 .mistake{
+    position:relative;
+
     background:#fff;
 
     border:1px solid #ddd;
 
-    padding:25px;
+    padding:27px;
+
+    overflow:hidden;
+}
+
+.mistake::before{
+    content:"!";
+
+    position:absolute;
+
+    right:20px;
+    top:15px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:50px;
+
+    color:#eee;
 }
 
 .mistake strong{
     display:block;
+
+    position:relative;
+    z-index:2;
 
     color:#111;
 
@@ -802,25 +1364,50 @@ main{
 }
 
 .mistake p{
+    position:relative;
+    z-index:2;
+
     font-size:12px;
 }
 
 
 /* =========================================================
-   FINAL SUMMARY
+   SUMMARY
 ========================================================= */
 
 .summary{
+    position:relative;
+
     background:#111;
 
     color:#fff;
 
-    padding:38px;
+    padding:42px;
 
-    margin-top:60px;
+    margin-top:65px;
+
+    overflow:hidden;
+}
+
+.summary::after{
+    content:"a + b";
+
+    position:absolute;
+
+    right:35px;
+    bottom:-28px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:100px;
+
+    color:rgba(124,58,237,.13);
 }
 
 .summary-label{
+    position:relative;
+    z-index:2;
+
     color:#a78bfa;
 
     font-size:10px;
@@ -832,15 +1419,21 @@ main{
 }
 
 .summary h2{
-    font-family:"Playfair Display", serif;
+    position:relative;
+    z-index:2;
 
-    font-size:36px;
+    font-family:"Playfair Display",serif;
 
-    margin-bottom:17px;
+    font-size:37px;
+
+    margin-bottom:18px;
 }
 
 .summary ul{
-    padding-left:20px;
+    position:relative;
+    z-index:2;
+
+    padding-left:21px;
 }
 
 .summary li{
@@ -848,7 +1441,7 @@ main{
 
     font-size:13px;
 
-    margin:8px 0;
+    margin:9px 0;
 }
 
 
@@ -857,7 +1450,9 @@ main{
 ========================================================= */
 
 .completion{
-    margin-top:85px;
+    position:relative;
+
+    margin-top:88px;
 
     text-align:center;
 
@@ -865,10 +1460,42 @@ main{
 
     border:1px solid #ddd;
 
-    padding:60px 30px;
+    padding:62px 30px;
+
+    overflow:hidden;
+}
+
+.completion::before,
+.completion::after{
+    content:"";
+
+    position:absolute;
+
+    border:1px solid #eee;
+
+    border-radius:50%;
+}
+
+.completion::before{
+    width:190px;
+    height:190px;
+
+    left:-95px;
+    top:-95px;
+}
+
+.completion::after{
+    width:150px;
+    height:150px;
+
+    right:-75px;
+    bottom:-75px;
 }
 
 .completion-label{
+    position:relative;
+    z-index:2;
+
     color:#7c3aed;
 
     font-size:10px;
@@ -880,7 +1507,10 @@ main{
 }
 
 .completion h2{
-    font-family:"Playfair Display", serif;
+    position:relative;
+    z-index:2;
+
+    font-family:"Playfair Display",serif;
 
     font-size:clamp(38px,5vw,55px);
 
@@ -892,7 +1522,10 @@ main{
 }
 
 .completion p{
-    max-width:600px;
+    position:relative;
+    z-index:2;
+
+    max-width:620px;
 
     margin:0 auto;
 
@@ -904,12 +1537,16 @@ main{
 }
 
 .completion-mark{
-    width:70px;
-    height:70px;
+    position:relative;
+    z-index:2;
 
-    margin:25px auto;
+    width:72px;
+    height:72px;
+
+    margin:26px auto;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -917,7 +1554,9 @@ main{
 
     color:#fff;
 
-    font-size:27px;
+    font-size:28px;
+
+    box-shadow:0 12px 30px rgba(124,58,237,.2);
 
     animation:pulse 2s ease-in-out infinite;
 }
@@ -935,6 +1574,9 @@ main{
 }
 
 .completion-status{
+    position:relative;
+    z-index:2;
+
     color:#111;
 
     font-size:10px;
@@ -946,15 +1588,19 @@ main{
 }
 
 .practice-button{
+    position:relative;
+    z-index:2;
+
     display:inline-flex;
 
     align-items:center;
     justify-content:center;
 
     background:#111;
+
     color:#fff;
 
-    padding:14px 21px;
+    padding:14px 22px;
 
     text-decoration:none;
 
@@ -968,6 +1614,8 @@ main{
 
 .practice-button:hover{
     background:#7c3aed;
+
+    transform:translateY(-2px);
 }
 
 
@@ -980,21 +1628,21 @@ footer{
 
     color:#fff;
 
-    padding:42px 7%;
+    padding:44px 7%;
 
     display:flex;
 
     align-items:center;
-
     justify-content:space-between;
 
     gap:25px;
 }
 
 .footer-logo{
-    font-family:"Playfair Display", serif;
+    font-family:"Playfair Display",serif;
 
     font-size:24px;
+
     font-weight:600;
 }
 
@@ -1013,12 +1661,28 @@ footer p{
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:800px){
+@media(max-width:900px){
+
+    .hero-decoration{
+        opacity:.45;
+    }
+
+    .hero-vector{
+        right:-40px;
+    }
+
+    .hero-ring{
+        right:-40px;
+    }
 
     .definition-grid,
     .mistakes{
         grid-template-columns:1fr;
     }
+
+}
+
+@media(max-width:800px){
 
     .addition-box{
         grid-template-columns:1fr;
@@ -1030,6 +1694,7 @@ footer p{
 
     .graph-header{
         align-items:flex-start;
+
         flex-direction:column;
     }
 
@@ -1039,6 +1704,7 @@ footer p{
 
     .type-button:not(:last-child){
         border-right:0;
+
         border-bottom:1px solid #ddd;
     }
 
@@ -1047,7 +1713,7 @@ footer p{
 @media(max-width:600px){
 
     nav{
-        height:auto;
+        min-height:auto;
 
         padding:17px 5%;
 
@@ -1067,11 +1733,33 @@ footer p{
     }
 
     .hero{
-        padding:70px 5% 70px;
+        min-height:430px;
+
+        padding:70px 5%;
     }
 
     .hero h1{
         letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .hero-vector{
+        width:230px;
+
+        right:-80px;
+
+        top:280px;
+    }
+
+    .hero-ring{
+        width:230px;
+        height:230px;
+
+        right:-80px;
+        top:190px;
     }
 
     main{
@@ -1081,7 +1769,7 @@ footer p{
     }
 
     .lesson-intro{
-        padding:24px;
+        padding:25px;
     }
 
     .graph-area{
@@ -1098,7 +1786,11 @@ footer p{
 
     .example,
     .summary{
-        padding:25px;
+        padding:26px;
+    }
+
+    .summary::after{
+        font-size:65px;
     }
 
     footer{
@@ -1152,6 +1844,29 @@ footer p{
 
 <header class="hero">
 
+    <div class="hero-decoration">
+
+        <div class="hero-grid"></div>
+
+        <div class="hero-ring"></div>
+
+        <div class="hero-vector"></div>
+
+        <div class="hero-math one">
+            A → B
+        </div>
+
+        <div class="hero-math two">
+            a + b
+        </div>
+
+        <div class="hero-math three">
+            |v|
+        </div>
+
+    </div>
+
+
     <div class="hero-content">
 
         <div class="hero-label">
@@ -1159,7 +1874,7 @@ footer p{
         </div>
 
         <h1>
-            Definition of Vectors.
+            Definition of <span>Vectors.</span>
         </h1>
 
         <p>
@@ -1286,7 +2001,9 @@ footer p{
     </div>
 
 
-    <!-- VECTOR GRAPH -->
+    <!-- =====================================================
+         READING A VECTOR DIAGRAM
+    ====================================================== -->
 
     <div class="graph-card">
 
@@ -1297,7 +2014,7 @@ footer p{
             </h3>
 
             <span>
-                INTERACTIVE DIAGRAM
+                VECTOR REPRESENTATION
             </span>
 
         </div>
@@ -1306,7 +2023,7 @@ footer p{
         <div class="graph-area">
 
             <svg
-                viewBox="0 0 900 430"
+                viewBox="0 0 900 470"
                 role="img"
                 aria-label="A vector from point A to point B">
 
@@ -1317,8 +2034,8 @@ footer p{
                         viewBox="0 0 12 12"
                         refX="11"
                         refY="6"
-                        markerWidth="12"
-                        markerHeight="12"
+                        markerWidth="13"
+                        markerHeight="13"
                         orient="auto"
                         markerUnits="userSpaceOnUse">
 
@@ -1335,37 +2052,37 @@ footer p{
                 <!-- GRID -->
 
                 <line
-                    x1="80"
-                    y1="330"
-                    x2="820"
-                    y2="330"
+                    x1="85"
+                    y1="360"
+                    x2="815"
+                    y2="360"
                     class="axis">
                 </line>
 
                 <line
-                    x1="80"
-                    y1="70"
-                    x2="80"
-                    y2="330"
+                    x1="85"
+                    y1="75"
+                    x2="85"
+                    y2="360"
                     class="axis">
                 </line>
 
 
-                <line x1="200" y1="70" x2="200" y2="330" class="grid-line"/>
-                <line x1="320" y1="70" x2="320" y2="330" class="grid-line"/>
-                <line x1="440" y1="70" x2="440" y2="330" class="grid-line"/>
-                <line x1="560" y1="70" x2="560" y2="330" class="grid-line"/>
-                <line x1="680" y1="70" x2="680" y2="330" class="grid-line"/>
+                <line x1="205" y1="75" x2="205" y2="360" class="grid-line"/>
+                <line x1="325" y1="75" x2="325" y2="360" class="grid-line"/>
+                <line x1="445" y1="75" x2="445" y2="360" class="grid-line"/>
+                <line x1="565" y1="75" x2="565" y2="360" class="grid-line"/>
+                <line x1="685" y1="75" x2="685" y2="360" class="grid-line"/>
 
-                <line x1="80" y1="200" x2="820" y2="200" class="grid-line"/>
-                <line x1="80" y1="70" x2="820" y2="70" class="grid-line"/>
+                <line x1="85" y1="220" x2="815" y2="220" class="grid-line"/>
+                <line x1="85" y1="75" x2="815" y2="75" class="grid-line"/>
 
 
                 <!-- VECTOR -->
 
                 <line
                     x1="180"
-                    y1="290"
+                    y1="320"
                     x2="670"
                     y2="120"
                     class="vector-main"
@@ -1377,49 +2094,74 @@ footer p{
 
                 <circle
                     cx="180"
-                    cy="290"
-                    r="7"
+                    cy="320"
+                    r="8"
                     class="point">
                 </circle>
 
                 <circle
                     cx="670"
                     cy="120"
-                    r="7"
+                    r="8"
                     class="point-purple">
                 </circle>
 
 
-                <!-- LABELS -->
+                <!-- POINT LABELS -->
 
                 <text
-                    x="155"
-                    y="322"
-                    class="svg-label">
+                    x="160"
+                    y="352"
+                    class="vector-diagram-label">
                     A
                 </text>
 
                 <text
-                    x="682"
+                    x="684"
                     y="112"
-                    class="svg-label">
+                    class="vector-diagram-label">
                     B
                 </text>
 
 
+                <!-- VECTOR LABEL ABOVE THE LINE -->
+
                 <text
-                    x="400"
-                    y="184"
+                    x="390"
+                    y="185"
                     class="svg-label-purple">
                     vector
                 </text>
 
 
+                <!-- DESCRIPTION BELOW -->
+
                 <text
-                    x="400"
-                    y="212"
+                    x="335"
+                    y="225"
+                    class="vector-diagram-description">
+                    direction: A → B
+                </text>
+
+
+                <!-- MAGNITUDE INDICATOR -->
+
+                <line
+                    x1="180"
+                    y1="390"
+                    x2="670"
+                    y2="390"
+                    stroke="#d8d5ce"
+                    stroke-width="2"
+                    stroke-dasharray="7 7">
+                </line>
+
+                <text
+                    x="395"
+                    y="420"
+                    text-anchor="middle"
                     class="svg-label-small">
-                    direction A → B
+                    length represents magnitude
                 </text>
 
             </svg>
@@ -1430,8 +2172,9 @@ footer p{
         <div class="graph-caption">
 
             The vector begins at <b>A</b> and ends at <b>B</b>.
-            The arrowhead is placed exactly at B, so the direction
-            is from A towards B.
+            The arrowhead is placed at B, so the direction is
+            from A towards B. The length of the directed line
+            represents its magnitude.
 
         </div>
 
@@ -1452,8 +2195,20 @@ footer p{
 
     <div class="math-box">
 
-        <div class="math-expression">
-            a &nbsp;&nbsp;&nbsp; or &nbsp;&nbsp;&nbsp; AB
+        <div class="math-expression vector-expression">
+
+            <span class="vector-notation">
+                a
+            </span>
+
+            <span>
+                or
+            </span>
+
+            <span class="vector-notation">
+                AB
+            </span>
+
         </div>
 
         <div class="math-small">
@@ -1514,7 +2269,9 @@ footer p{
     </div>
 
 
-    <!-- ADDITION GRAPH -->
+    <!-- =====================================================
+         ADDITION GRAPH
+    ====================================================== -->
 
     <div class="graph-card">
 
@@ -1525,7 +2282,7 @@ footer p{
             </h3>
 
             <span>
-                STEP BY STEP
+                ANIMATED RESULTANT
             </span>
 
         </div>
@@ -1535,9 +2292,9 @@ footer p{
 
             <svg
                 id="additionGraph"
-                viewBox="0 0 900 470"
+                viewBox="0 0 900 520"
                 role="img"
-                aria-label="Vector addition using the head-to-tail method">
+                aria-label="Perpendicular vectors a and b added using the head-to-tail method">
 
                 <defs>
 
@@ -1546,8 +2303,8 @@ footer p{
                         viewBox="0 0 12 12"
                         refX="11"
                         refY="6"
-                        markerWidth="12"
-                        markerHeight="12"
+                        markerWidth="13"
+                        markerHeight="13"
                         orient="auto"
                         markerUnits="userSpaceOnUse">
 
@@ -1564,8 +2321,8 @@ footer p{
                         viewBox="0 0 12 12"
                         refX="11"
                         refY="6"
-                        markerWidth="12"
-                        markerHeight="12"
+                        markerWidth="13"
+                        markerHeight="13"
                         orient="auto"
                         markerUnits="userSpaceOnUse">
 
@@ -1581,96 +2338,141 @@ footer p{
 
                 <!-- GRID -->
 
-                <line x1="70" y1="385" x2="830" y2="385" class="axis"/>
-                <line x1="70" y1="70" x2="70" y2="385" class="axis"/>
+                <line
+                    x1="90"
+                    y1="420"
+                    x2="830"
+                    y2="420"
+                    class="axis"/>
 
-                <line x1="180" y1="70" x2="180" y2="385" class="grid-line"/>
-                <line x1="290" y1="70" x2="290" y2="385" class="grid-line"/>
-                <line x1="400" y1="70" x2="400" y2="385" class="grid-line"/>
-                <line x1="510" y1="70" x2="510" y2="385" class="grid-line"/>
-                <line x1="620" y1="70" x2="620" y2="385" class="grid-line"/>
-                <line x1="730" y1="70" x2="730" y2="385" class="grid-line"/>
+                <line
+                    x1="90"
+                    y1="70"
+                    x2="90"
+                    y2="420"
+                    class="axis"/>
 
-                <line x1="70" y1="280" x2="830" y2="280" class="grid-line"/>
-                <line x1="70" y1="175" x2="830" y2="175" class="grid-line"/>
-                <line x1="70" y1="70" x2="830" y2="70" class="grid-line"/>
+
+                <line x1="210" y1="70" x2="210" y2="420" class="grid-line"/>
+                <line x1="330" y1="70" x2="330" y2="420" class="grid-line"/>
+                <line x1="450" y1="70" x2="450" y2="420" class="grid-line"/>
+                <line x1="570" y1="70" x2="570" y2="420" class="grid-line"/>
+                <line x1="690" y1="70" x2="690" y2="420" class="grid-line"/>
+                <line x1="810" y1="70" x2="810" y2="420" class="grid-line"/>
+
+                <line x1="90" y1="305" x2="830" y2="305" class="grid-line"/>
+                <line x1="90" y1="190" x2="830" y2="190" class="grid-line"/>
+                <line x1="90" y1="70" x2="830" y2="70" class="grid-line"/>
 
 
                 <!-- START POINT -->
 
                 <circle
-                    cx="150"
-                    cy="335"
-                    r="7"
+                    cx="180"
+                    cy="370"
+                    r="9"
                     class="point">
                 </circle>
 
 
-                <!-- VECTOR A -->
+                <!-- VECTOR A: HORIZONTAL -->
 
                 <line
-                    x1="150"
-                    y1="335"
-                    x2="405"
-                    y2="250"
+                    x1="180"
+                    y1="370"
+                    x2="500"
+                    y2="370"
                     class="vector-main"
                     marker-end="url(#arrowPurpleAdd)">
                 </line>
 
                 <text
-                    x="265"
-                    y="275"
+                    x="325"
+                    y="345"
                     class="svg-label-purple">
                     a
                 </text>
 
 
-                <!-- VECTOR B -->
+                <!-- VECTOR B: VERTICAL -->
 
                 <line
                     id="vectorB"
-                    x1="405"
-                    y1="250"
-                    x2="670"
-                    y2="145"
+                    x1="500"
+                    y1="370"
+                    x2="500"
+                    y2="130"
                     class="vector-secondary"
                     marker-end="url(#arrowBlackAdd)">
                 </line>
 
                 <text
-                    x="520"
-                    y="185"
+                    x="525"
+                    y="250"
                     class="svg-label">
                     b
                 </text>
+
+
+                <!-- RIGHT ANGLE MARKER -->
+
+                <path
+                    d="M 500 340 L 470 340 L 470 370"
+                    fill="none"
+                    stroke="#777"
+                    stroke-width="2">
+                </path>
+
+                <text
+                    x="430"
+                    y="350"
+                    class="svg-label-small">
+                    90°
+                </text>
+
+
+                <!-- RESULTANT GLOW -->
+
+                <line
+                    id="resultantGlow"
+                    x1="180"
+                    y1="370"
+                    x2="500"
+                    y2="130"
+                    class="resultant-glow"
+                    marker-end="url(#arrowPurpleAdd)">
+                </line>
 
 
                 <!-- RESULTANT -->
 
                 <line
                     id="resultantLine"
-                    x1="150"
-                    y1="335"
-                    x2="670"
-                    y2="145"
+                    x1="180"
+                    y1="370"
+                    x2="500"
+                    y2="130"
                     class="resultant"
                     marker-end="url(#arrowBlackAdd)"
                     opacity="0">
                 </line>
 
 
-                <!-- POINT LABELS -->
+                <!-- START LABEL -->
 
                 <text
-                    x="130"
-                    y="365"
+                    x="145"
+                    y="405"
                     class="svg-label">
                     Start
                 </text>
 
+
+                <!-- END LABEL -->
+
                 <text
-                    x="675"
-                    y="138"
+                    x="515"
+                    y="122"
                     class="svg-label">
                     End
                 </text>
@@ -1680,12 +2482,32 @@ footer p{
 
                 <text
                     id="resultantLabel"
-                    x="390"
-                    y="340"
-                    class="svg-label"
+                    x="300"
+                    y="235"
+                    class="svg-label-result"
                     opacity="0">
                     a + b
                 </text>
+
+
+                <!-- EXPLANATION -->
+
+                <text
+                    x="650"
+                    y="145"
+                    class="svg-label-small">
+                    resultant
+                </text>
+
+                <line
+                    x1="635"
+                    y1="152"
+                    x2="520"
+                    y2="220"
+                    stroke="#aaa"
+                    stroke-width="1.5"
+                    stroke-dasharray="5 5">
+                </line>
 
             </svg>
 
@@ -1695,6 +2517,7 @@ footer p{
         <div class="graph-controls">
 
             <button
+                id="resultantButton"
                 class="graph-button"
                 onclick="showAdditionResult()">
                 SHOW RESULTANT →
@@ -1712,8 +2535,9 @@ footer p{
         <div class="graph-caption">
 
             First move <b>b</b> so that its tail begins at the head
-            of <b>a</b>. The resultant then runs directly from the
-            original starting point to the final endpoint.
+            of <b>a</b>. Here the vectors are perpendicular, making
+            the resultant easy to see. The resultant runs directly
+            from the original starting point to the final endpoint.
 
         </div>
 
@@ -1885,7 +2709,9 @@ footer p{
         </div>
 
 
-        <!-- EQUAL -->
+        <!-- =================================================
+             EQUAL
+        ================================================== -->
 
         <div
             id="equalPanel"
@@ -1913,8 +2739,8 @@ footer p{
                         viewBox="0 0 12 12"
                         refX="11"
                         refY="6"
-                        markerWidth="12"
-                        markerHeight="12"
+                        markerWidth="13"
+                        markerHeight="13"
                         orient="auto"
                         markerUnits="userSpaceOnUse">
 
@@ -1948,8 +2774,17 @@ footer p{
                 </line>
 
 
-                <circle cx="110" cy="230" r="6" class="point"/>
-                <circle cx="500" cy="230" r="6" class="point"/>
+                <circle
+                    cx="110"
+                    cy="230"
+                    r="7"
+                    class="point"/>
+
+                <circle
+                    cx="500"
+                    cy="230"
+                    r="7"
+                    class="point"/>
 
 
                 <text
@@ -1968,14 +2803,14 @@ footer p{
 
 
                 <text
-                    x="345"
+                    x="255"
                     y="275"
                     class="svg-label-small">
                     same magnitude
                 </text>
 
                 <text
-                    x="735"
+                    x="635"
                     y="275"
                     class="svg-label-small">
                     same direction
@@ -1986,7 +2821,9 @@ footer p{
         </div>
 
 
-        <!-- OPPOSITE -->
+        <!-- =================================================
+             OPPOSITE
+        ================================================== -->
 
         <div
             id="oppositePanel"
@@ -2015,8 +2852,8 @@ footer p{
                         viewBox="0 0 12 12"
                         refX="11"
                         refY="6"
-                        markerWidth="12"
-                        markerHeight="12"
+                        markerWidth="13"
+                        markerHeight="13"
                         orient="auto"
                         markerUnits="userSpaceOnUse">
 
@@ -2033,8 +2870,8 @@ footer p{
                         viewBox="0 0 12 12"
                         refX="11"
                         refY="6"
-                        markerWidth="12"
-                        markerHeight="12"
+                        markerWidth="13"
+                        markerHeight="13"
                         orient="auto"
                         markerUnits="userSpaceOnUse">
 
@@ -2048,8 +2885,6 @@ footer p{
                 </defs>
 
 
-                <!-- PURPLE VECTOR -->
-
                 <line
                     x1="150"
                     y1="150"
@@ -2059,8 +2894,6 @@ footer p{
                     marker-end="url(#oppositePurple)">
                 </line>
 
-
-                <!-- BLACK VECTOR -->
 
                 <line
                     x1="750"
@@ -2089,7 +2922,7 @@ footer p{
 
 
                 <text
-                    x="420"
+                    x="355"
                     y="190"
                     class="svg-label-small">
                     same magnitude
@@ -2097,8 +2930,8 @@ footer p{
 
 
                 <text
-                    x="420"
-                    y="310"
+                    x="350"
+                    y="305"
                     class="svg-label-small">
                     opposite directions
                 </text>
@@ -2108,7 +2941,9 @@ footer p{
         </div>
 
 
-        <!-- PARALLEL -->
+        <!-- =================================================
+             PARALLEL
+        ================================================== -->
 
         <div
             id="parallelPanel"
@@ -2137,8 +2972,8 @@ footer p{
                         viewBox="0 0 12 12"
                         refX="11"
                         refY="6"
-                        markerWidth="12"
-                        markerHeight="12"
+                        markerWidth="13"
+                        markerHeight="13"
                         orient="auto"
                         markerUnits="userSpaceOnUse">
 
@@ -2155,8 +2990,8 @@ footer p{
                         viewBox="0 0 12 12"
                         refX="11"
                         refY="6"
-                        markerWidth="12"
-                        markerHeight="12"
+                        markerWidth="13"
+                        markerHeight="13"
                         orient="auto"
                         markerUnits="userSpaceOnUse">
 
@@ -2170,8 +3005,6 @@ footer p{
                 </defs>
 
 
-                <!-- FIRST VECTOR -->
-
                 <line
                     x1="120"
                     y1="250"
@@ -2181,8 +3014,6 @@ footer p{
                     marker-end="url(#parallelPurple)">
                 </line>
 
-
-                <!-- SECOND VECTOR -->
 
                 <line
                     x1="500"
@@ -2209,8 +3040,6 @@ footer p{
                     b
                 </text>
 
-
-                <!-- PARALLEL GUIDE -->
 
                 <line
                     x1="100"
@@ -2499,7 +3328,7 @@ async function logout(){
 
 
 /* =========================================================
-   ADDITION GRAPH
+   SHOW ADDITION RESULTANT
 ========================================================= */
 
 function showAdditionResult(){
@@ -2507,35 +3336,101 @@ function showAdditionResult(){
     const resultant =
         document.getElementById("resultantLine");
 
+    const glow =
+        document.getElementById("resultantGlow");
+
     const label =
         document.getElementById("resultantLabel");
 
-    if(!resultant || !label){
+    const button =
+        document.getElementById("resultantButton");
+
+
+    if(!resultant || !glow || !label){
         return;
     }
 
+
+    /* Reset animation first */
+
+    resultant.classList.remove("resultant-visible");
+
+    glow.classList.remove("resultant-glow-visible");
+
+
+    void resultant.offsetWidth;
+
+
+    /* Make visible */
+
     resultant.style.opacity = "1";
+
+    glow.style.opacity = "1";
 
     label.style.opacity = "1";
 
+
+    /* Animate */
+
+    resultant.classList.add("resultant-visible");
+
+    glow.classList.add("resultant-glow-visible");
+
+
+    if(button){
+
+        button.classList.add("active");
+
+        button.textContent = "RESULTANT SHOWN ✓";
+
+    }
+
 }
 
+
+/* =========================================================
+   RESET ADDITION
+========================================================= */
 
 function resetAddition(){
 
     const resultant =
         document.getElementById("resultantLine");
 
+    const glow =
+        document.getElementById("resultantGlow");
+
     const label =
         document.getElementById("resultantLabel");
 
-    if(!resultant || !label){
+    const button =
+        document.getElementById("resultantButton");
+
+
+    if(!resultant || !glow || !label){
         return;
     }
 
+
+    resultant.classList.remove("resultant-visible");
+
+    glow.classList.remove("resultant-glow-visible");
+
+
     resultant.style.opacity = "0";
 
+    glow.style.opacity = "0";
+
     label.style.opacity = "0";
+
+
+    if(button){
+
+        button.classList.remove("active");
+
+        button.textContent = "SHOW RESULTANT →";
+
+    }
 
 }
 
@@ -2544,7 +3439,7 @@ function resetAddition(){
    VECTOR TYPE SELECTOR
 ========================================================= */
 
-function showVectorType(type, button){
+function showVectorType(type,button){
 
     const panels = [
         "equalPanel",
@@ -2552,13 +3447,16 @@ function showVectorType(type, button){
         "parallelPanel"
     ];
 
+
     panels.forEach(panelID => {
 
         const panel =
             document.getElementById(panelID);
 
         if(panel){
+
             panel.classList.remove("active");
+
         }
 
     });
@@ -2567,8 +3465,11 @@ function showVectorType(type, button){
     const selectedPanel =
         document.getElementById(type + "Panel");
 
+
     if(selectedPanel){
+
         selectedPanel.classList.add("active");
+
     }
 
 
@@ -2582,7 +3483,9 @@ function showVectorType(type, button){
 
 
     if(button){
+
         button.classList.add("active");
+
     }
 
 }
@@ -2598,6 +3501,7 @@ async function markLessonComplete(){
         data: { session }
     } = await supabaseClient.auth.getSession();
 
+
     if(!session){
 
         return;
@@ -2605,14 +3509,18 @@ async function markLessonComplete(){
     }
 
 
-    const { error } = await supabaseClient
+    const { error } =
+        await supabaseClient
         .from("lesson_progress")
         .upsert(
             {
-                user_id: session.user.id,
-                chapter: "Vectors",
-                topic_number: 1,
-                completed_at: new Date().toISOString()
+                user_id:session.user.id,
+
+                chapter:"Vectors",
+
+                topic_number:1,
+
+                completed_at:new Date().toISOString()
             },
             {
                 onConflict:"user_id,chapter,topic_number"
@@ -2653,3 +3561,4 @@ document.addEventListener(
 </body>
 
 </html>
+```
