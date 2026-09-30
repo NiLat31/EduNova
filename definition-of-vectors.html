@@ -1612,7 +1612,124 @@ main{
     font-size:.9rem;
 }
 
+/* =========================
+   QUESTIONS CTA
+========================= */
 
+.questions-cta{
+    margin:70px 0 20px;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(167,139,250,.18),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #111014,
+            #09090b
+        );
+
+    border:1px solid rgba(167,139,250,.18);
+    border-radius:24px;
+
+    padding:42px;
+
+    position:relative;
+    overflow:hidden;
+
+    box-shadow:0 18px 45px rgba(0,0,0,.12);
+}
+
+.questions-cta::before{
+    content:"";
+
+    position:absolute;
+
+    width:190px;
+    height:190px;
+
+    border:1px solid rgba(167,139,250,.16);
+    border-radius:50%;
+
+    right:-65px;
+    top:-70px;
+}
+
+.questions-cta-content{
+    position:relative;
+    z-index:2;
+
+    max-width:700px;
+}
+
+.questions-label{
+    color:#c4b5fd;
+
+    font-size:.74rem;
+    font-weight:800;
+
+    letter-spacing:.15em;
+
+    margin-bottom:12px;
+}
+
+.questions-cta h2{
+    color:white;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:2rem;
+
+    margin:0 0 10px;
+
+    letter-spacing:-.025em;
+}
+
+.questions-cta p{
+    color:#bbb7c4;
+
+    margin:0 0 25px;
+
+    max-width:620px;
+}
+
+.questions-btn{
+    display:inline-flex;
+
+    align-items:center;
+    gap:12px;
+
+    background:#7c3aed;
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 18px;
+
+    border-radius:10px;
+
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.questions-btn span{
+    font-size:1.1rem;
+
+    transition:.2s;
+}
+
+.questions-btn:hover{
+    background:#6d28d9;
+
+    transform:translateY(-2px);
+}
+
+.questions-btn:hover span{
+    transform:translateX(4px);
+}
 /* =========================================================
    CONGRATULATIONS
 ========================================================= */
@@ -3581,7 +3698,29 @@ a:focus-visible{
 
 </section>
 
+<section class="questions-cta">
 
+    <div class="questions-cta-content">
+
+        <div class="questions-label">
+            PRACTICE • TOPIC 01
+        </div>
+
+        <h2>Ready to test your understanding?</h2>
+
+        <p>
+            Put your knowledge of magnitude, direction, vector notation,
+            addition, components, and parallel vectors to the test.
+        </p>
+
+        <a href="vectors-definition-questions.html" class="questions-btn">
+            Go to Questions
+            <span>→</span>
+        </a>
+
+    </div>
+
+</section>
 
 <!-- =====================================================
      CONGRATULATIONS
