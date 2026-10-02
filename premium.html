@@ -553,6 +553,9 @@ main{
     letter-spacing:1.5px;
     cursor:pointer;
     transition:.3s;
+   text-decoration:none;
+display:inline-block;
+text-align:center;
 }
 
 .payment-button:hover{
@@ -1260,9 +1263,12 @@ footer p{
             worked solutions and future Semester 2 content.
         </p>
 
-        <button class="payment-button" onclick="comingSoon()">
-            CONTINUE TO SECURE PAYMENT →
-        </button>
+       <a
+    href="https://www.paypal.com/ncp/payment/SDJ6PGPYJ34GY"
+    class="payment-button"
+>
+    CONTINUE TO SECURE PAYMENT →
+</a>
 
         <div class="payment-note">
             Secure payment will be connected to EduNova Premium.
@@ -1315,18 +1321,6 @@ footer p{
 
 </footer>
 
-
-<script>
-
-function comingSoon(){
-
-    alert(
-        "EduNova Premium payments are being prepared. Secure payment will be available soon. 🔒"
-    );
-
-}
-
-</script>
 
 
 </body>
