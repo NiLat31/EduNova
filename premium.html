@@ -1271,9 +1271,9 @@ footer p{
     CONTINUE TO SECURE PAYMENT →
 </button>
        
-        <div class="payment-note">
-            Secure payment will be connected to EduNova Premium.
-        </div>
+      <div class="payment-note">
+    Secure payment is processed through PayPal.
+</div>
 
     </div>
 
@@ -1321,37 +1321,63 @@ footer p{
     </p>
 
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+
+const SUPABASE_URL =
+    "https://majvqtbortonsrgdknms.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+const premiumClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
 document
     .getElementById("premium-payment-button")
     .addEventListener("click", async () => {
 
-        const button = document.getElementById("premium-payment-button");
+        const button =
+            document.getElementById("premium-payment-button");
 
         button.disabled = true;
-        button.textContent = "CONNECTING TO PAYPAL...";
+        button.textContent =
+            "CONNECTING TO PAYPAL...";
 
         try {
-            const { data, error } =
-                await premiumClient.functions.invoke(
-                    "paypal-webhook",
-                    {
-                        body: {}
-                    }
-                );
+
+            const {
+                data,
+                error
+            } = await premiumClient.functions.invoke(
+                "paypal-webhook",
+                {
+                    body: {}
+                }
+            );
 
             if (error) {
                 console.error(error);
-                throw new Error("Could not start PayPal checkout.");
+                throw new Error(
+                    "Could not start PayPal checkout."
+                );
             }
 
             if (!data || !data.approval_url) {
-                throw new Error("PayPal did not return an approval link.");
+                throw new Error(
+                    "PayPal did not return an approval link."
+                );
             }
 
-            window.location.href = data.approval_url;
+            window.location.href =
+                data.approval_url;
 
         } catch (error) {
+
             console.error(error);
 
             alert(
@@ -1359,12 +1385,14 @@ document
             );
 
             button.disabled = false;
+
             button.textContent =
                 "CONTINUE TO SECURE PAYMENT →";
         }
-    });
-</script>
 
+    });
+
+</script>
 
 </body>
 </html>
