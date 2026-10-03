@@ -1263,13 +1263,14 @@ footer p{
             worked solutions and future Semester 2 content.
         </p>
 
-       <a
-    href="https://www.paypal.com/ncp/payment/SDJ6PGPYJ34GY"
+    <button
+    type="button"
     class="payment-button"
+    id="premium-payment-button"
 >
     CONTINUE TO SECURE PAYMENT →
-</a>
-
+</button>
+       
         <div class="payment-note">
             Secure payment will be connected to EduNova Premium.
         </div>
@@ -1320,7 +1321,49 @@ footer p{
     </p>
 
 </footer>
+<script>
+document
+    .getElementById("premium-payment-button")
+    .addEventListener("click", async () => {
 
+        const button = document.getElementById("premium-payment-button");
+
+        button.disabled = true;
+        button.textContent = "CONNECTING TO PAYPAL...";
+
+        try {
+            const { data, error } =
+                await premiumClient.functions.invoke(
+                    "paypal-webhook",
+                    {
+                        body: {}
+                    }
+                );
+
+            if (error) {
+                console.error(error);
+                throw new Error("Could not start PayPal checkout.");
+            }
+
+            if (!data || !data.approval_url) {
+                throw new Error("PayPal did not return an approval link.");
+            }
+
+            window.location.href = data.approval_url;
+
+        } catch (error) {
+            console.error(error);
+
+            alert(
+                "We couldn't connect to PayPal. Please try again."
+            );
+
+            button.disabled = false;
+            button.textContent =
+                "CONTINUE TO SECURE PAYMENT →";
+        }
+    });
+</script>
 
 
 </body>
