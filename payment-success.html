@@ -48,6 +48,17 @@
             font-weight: 600;
             color: #111;
         }
+
+        .dashboard-button {
+            display: none;
+            margin-top: 25px;
+            padding: 14px 24px;
+            background: #111;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
     </style>
 </head>
 
@@ -61,14 +72,109 @@
 
         <p>
             Thank you for purchasing EduNova Premium.
-            We are confirming your payment and activating your access.
         </p>
 
-        <div class="status">
-            Please wait...
+        <div class="status" id="status">
+            Confirming your payment...
         </div>
 
+        <a
+            href="dashboard.html"
+            class="dashboard-button"
+            id="dashboard-button"
+        >
+            GO TO DASHBOARD
+        </a>
+
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        const SUPABASE_URL =
+            "https://majvqtbortonsrgdknms.supabase.co";
+
+        const SUPABASE_PUBLISHABLE_KEY =
+            "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_PUBLISHABLE_KEY
+            );
+
+        async function confirmPayment() {
+
+            const status =
+                document.getElementById("status");
+
+            const dashboardButton =
+                document.getElementById("dashboard-button");
+
+            const params =
+                new URLSearchParams(window.location.search);
+
+            const orderId =
+                params.get("token");
+
+            if (!orderId) {
+                status.textContent =
+                    "We couldn't find the PayPal order.";
+                return;
+            }
+
+            try {
+
+                const {
+                    data: { session }
+                } = await supabaseClient.auth.getSession();
+
+                if (!session) {
+                    status.textContent =
+                        "Please log in again to activate your Premium access.";
+                    return;
+                }
+
+                const { data, error } =
+                    await supabaseClient.functions.invoke(
+                        "capture-paypal-order",
+                        {
+                            body: {
+                                order_id: orderId
+                            }
+                        }
+                    );
+
+                if (error) {
+                    console.error(error);
+                    throw new Error(
+                        "Payment confirmation failed."
+                    );
+                }
+
+                if (!data || !data.premium_access) {
+                    throw new Error(
+                        "Premium access could not be activated."
+                    );
+                }
+
+                status.textContent =
+                    "Your Premium access is now active!";
+
+                dashboardButton.style.display =
+                    "inline-block";
+
+            } catch (error) {
+
+                console.error(error);
+
+                status.textContent =
+                    "We couldn't confirm your payment. Please try again.";
+            }
+        }
+
+        confirmPayment();
+    </script>
 
 </body>
 </html>
