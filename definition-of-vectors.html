@@ -4608,10 +4608,11 @@ window.MathJax = {
 
         <h2>Ready to test your understanding?</h2>
 
-        <p>
-            Put your knowledge of magnitude, direction, vector notation,
-            addition, components, and parallel vectors to the test.
-        </p>
+       <p>
+    Put your understanding of magnitude, direction, vector notation,
+    vector addition, components, equal and opposite vectors, and
+    parallel vectors to the test.
+</p>
 
         <a href="vectors-definition-questions.html" class="questions-btn">
             Go to Questions
@@ -4999,7 +5000,191 @@ function resetAddition(){
 }
 
 
+/* =========================================================
+   EQUAL & OPPOSITE VECTOR INTERACTION
+========================================================= */
 
+function setupEqualOppositeExplorer(){
+
+    const buttons =
+        document.querySelectorAll(
+            ".vector-mode-btn"
+        );
+
+    const vectorB =
+        document.getElementById(
+            "vectorExplorerB"
+        );
+
+    const vectorBLabel =
+        document.getElementById(
+            "vectorExplorerBLabel"
+        );
+
+    const directionText =
+        document.getElementById(
+            "vectorExplorerDirection"
+        );
+
+    const title =
+        document.getElementById(
+            "vectorExplorerTitle"
+        );
+
+    const description =
+        document.getElementById(
+            "vectorExplorerDescription"
+        );
+
+    const equation =
+        document.getElementById(
+            "vectorExplorerEquation"
+        );
+
+    const note =
+        document.getElementById(
+            "vectorExplorerNote"
+        );
+
+    if(
+        !buttons.length ||
+        !vectorB ||
+        !vectorBLabel ||
+        !directionText ||
+        !title ||
+        !description ||
+        !equation ||
+        !note
+    ){
+        return;
+    }
+
+
+    const reducedMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+    function setVectorMode(mode){
+
+        buttons.forEach(
+            function(button){
+
+                button.classList.toggle(
+                    "active",
+                    button.dataset.vectorMode === mode
+                );
+
+            }
+        );
+
+
+        if(mode === "equal"){
+
+            vectorB.setAttribute(
+                "x1",
+                "210"
+            );
+
+            vectorB.setAttribute(
+                "x2",
+                "550"
+            );
+
+            vectorBLabel.textContent =
+                "b";
+
+            directionText.textContent =
+                "same direction";
+
+            title.textContent =
+                "Equal vectors";
+
+            description.textContent =
+                "The two vectors have the same magnitude and point in the same direction. Their positions on the diagram do not matter.";
+
+            equation.textContent =
+                "a = b";
+
+            note.innerHTML =
+                "<strong>Remember:</strong> Equal vectors must have both the same magnitude and the same direction.";
+
+        }
+
+        else{
+
+            vectorB.setAttribute(
+                "x1",
+                "550"
+            );
+
+            vectorB.setAttribute(
+                "x2",
+                "210"
+            );
+
+            vectorBLabel.textContent =
+                "−a";
+
+            directionText.textContent =
+                "opposite direction";
+
+            title.textContent =
+                "Opposite vectors";
+
+            description.textContent =
+                "The vectors have the same magnitude, but one points exactly opposite to the other.";
+
+            equation.textContent =
+                "b = −a";
+
+            note.innerHTML =
+                "<strong>Remember:</strong> Changing a vector to −a keeps its magnitude unchanged but reverses its direction.";
+
+        }
+
+
+        if(!reducedMotion){
+
+            vectorB.style.opacity =
+                "0.25";
+
+            requestAnimationFrame(
+                function(){
+
+                    vectorB.style.opacity =
+                        "1";
+
+                }
+            );
+
+        }
+
+    }
+
+
+    buttons.forEach(
+        function(button){
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    setVectorMode(
+                        button.dataset.vectorMode
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    setVectorMode("equal");
+
+}
 /* =========================================================
    INITIALISE
 ========================================================= */
@@ -5013,6 +5198,8 @@ document.addEventListener(
         await markLessonComplete();
 
         resetAddition();
+
+        setupEqualOppositeExplorer();
 
     }
 );
