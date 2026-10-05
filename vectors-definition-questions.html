@@ -11,85 +11,99 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
 window.MathJax = {
+
     tex: {
-        inlineMath: [['\\(', '\\)']],
-        displayMath: [['\\[', '\\]']]
+
+        inlineMath: [
+            ['\\(', '\\)']
+        ],
+
+        displayMath: [
+            ['\\[', '\\]']
+        ]
+
     },
+
     svg: {
+
         fontCache: 'global'
+
     }
+
 };
+
 </script>
 
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
 
 <style>
 
 /* =========================================================
-   GLOBAL
+   RESET
 ========================================================= */
 
-:root{
-
-    --purple:#7c3aed;
-    --purple-light:#a78bfa;
-    --purple-soft:#ede9fe;
-    --purple-dark:#5b21b6;
-
-    --black:#09090b;
-    --black-2:#101014;
-
-    --white:#ffffff;
-
-    --text:#17151d;
-    --muted:#66636d;
-
-    --border:#e7e4ec;
-
-    --green:#16a34a;
-    --green-soft:#dcfce7;
-
-}
-
 *{
+
     box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
 
     margin:0;
 
-    background:#f7f6f9;
+    padding:0;
 
-    color:var(--text);
+}
 
-    font-family:"DM Sans",sans-serif;
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+body{
+
+    font-family:"DM Sans", sans-serif;
+
+    background:#f7f6f2;
+
+    color:#111;
 
     line-height:1.65;
+
+}
+
+
+button,
+a{
+
+    font-family:inherit;
+
 }
 
 
 /* =========================================================
-   NAVBAR
+   NAVIGATION
 ========================================================= */
 
 nav{
 
-    height:72px;
+    height:82px;
 
-    background:var(--black);
-
-    color:white;
+    padding:0 7%;
 
     display:flex;
 
@@ -97,103 +111,94 @@ nav{
 
     justify-content:space-between;
 
-    padding:0 6%;
+    border-bottom:1px solid #ddd;
 
-    position:sticky;
-
-    top:0;
-
-    z-index:1000;
-
-    border-bottom:1px solid rgba(255,255,255,.08);
+    background:#f7f6f2;
 
 }
 
-
-/* Normal EduNova logo */
 
 .logo{
 
-    font-size:1.35rem;
+    font-family:"Playfair Display", serif;
 
-    font-weight:600;
+    font-size:28px;
 
-    letter-spacing:-.045em;
+    font-weight:700;
 
-    color:white;
+    letter-spacing:-1px;
 
 }
+
 
 .logo span{
 
-    color:var(--purple-light);
-
-    font-weight:600;
+    color:#7c3aed;
 
 }
 
 
-.nav-right{
+.nav-links{
 
     display:flex;
 
     align-items:center;
 
-    gap:18px;
+    gap:20px;
 
 }
 
 
-.nav-link{
-
-    color:#d8d6de;
+.home-link{
 
     text-decoration:none;
 
-    font-size:.9rem;
+    color:#111;
 
-    font-weight:600;
+    font-size:11px;
 
-    transition:.2s;
+    font-weight:700;
+
+    letter-spacing:.4px;
+
+    transition:.25s ease;
 
 }
 
 
-.nav-link:hover{
+.home-link:hover{
 
-    color:white;
+    color:#7c3aed;
 
 }
 
 
 .logout{
 
-    border:1px solid rgba(255,255,255,.18);
+    border:0;
 
-    background:rgba(255,255,255,.05);
+    background:#111;
 
-    color:white;
+    color:#fff;
 
-    border-radius:9px;
+    padding:11px 17px;
 
-    padding:8px 14px;
+    font-size:10px;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
 
     cursor:pointer;
 
-    font-family:inherit;
-
-    font-weight:600;
-
-    transition:.2s;
+    transition:.25s ease;
 
 }
 
 
 .logout:hover{
 
-    background:rgba(124,58,237,.2);
-
-    border-color:var(--purple);
+    background:#7c3aed;
 
 }
 
@@ -204,89 +209,17 @@ nav{
 
 .hero{
 
-    background:
-
-        radial-gradient(
-            circle at 75% 30%,
-            rgba(124,58,237,.28),
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 90% 90%,
-            rgba(167,139,250,.14),
-            transparent 25%
-        ),
-
-        var(--black);
-
-    color:white;
-
-    padding:88px 7% 95px;
-
     position:relative;
 
     overflow:hidden;
 
-}
+    background:#111;
 
+    color:#fff;
 
-.hero-grid{
+    padding:92px 7% 72px;
 
-    position:absolute;
-
-    inset:0;
-
-    opacity:.16;
-
-    background-image:
-
-        linear-gradient(
-            rgba(255,255,255,.08) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.08) 1px,
-            transparent 1px
-        );
-
-    background-size:48px 48px;
-
-}
-
-
-.hero-ring{
-
-    position:absolute;
-
-    width:360px;
-
-    height:360px;
-
-    border:1px solid rgba(167,139,250,.25);
-
-    border-radius:50%;
-
-    right:-80px;
-
-    top:-100px;
-
-}
-
-
-.hero-ring::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:45px;
-
-    border:1px solid rgba(167,139,250,.2);
-
-    border-radius:50%;
+    min-height:390px;
 
 }
 
@@ -295,24 +228,22 @@ nav{
 
     position:relative;
 
-    z-index:2;
+    z-index:3;
 
-    max-width:900px;
+    max-width:850px;
 
 }
 
 
-.eyebrow{
+.hero-label{
 
-    display:inline-block;
+    color:#a78bfa;
 
-    color:#ddd6fe;
-
-    font-size:.76rem;
+    font-size:11px;
 
     font-weight:700;
 
-    letter-spacing:.15em;
+    letter-spacing:3px;
 
     margin-bottom:18px;
 
@@ -321,35 +252,105 @@ nav{
 
 .hero h1{
 
-    font-family:"Playfair Display",serif;
+    font-family:"Playfair Display", serif;
 
-    font-size:clamp(2.7rem,6vw,5rem);
+    font-size:clamp(48px, 7vw, 82px);
 
-    line-height:1.05;
+    line-height:1;
 
-    margin:0 0 22px;
-
-    letter-spacing:-.045em;
-
-}
-
-
-.hero h1 span{
-
-    color:var(--purple-light);
+    letter-spacing:-4px;
 
 }
 
 
 .hero p{
 
-    max-width:720px;
+    max-width:680px;
 
-    color:#c9c7d2;
+    margin-top:22px;
 
-    font-size:1.06rem;
+    color:#aaa;
 
-    margin:0;
+    font-size:15px;
+
+    line-height:1.8;
+
+}
+
+
+/* =========================================================
+   HERO DECORATION
+========================================================= */
+
+.hero-decoration{
+
+    position:absolute;
+
+    right:5%;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:330px;
+
+    height:270px;
+
+    background:#7c3aed;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+}
+
+
+.hero-decoration svg{
+
+    width:245px;
+
+    height:245px;
+
+    overflow:visible;
+
+}
+
+
+.hero-decoration .v-letter{
+
+    font-family:"Playfair Display", serif;
+
+    font-size:175px;
+
+    font-weight:500;
+
+    fill:#111;
+
+}
+
+
+.hero-decoration .vector-arrow{
+
+    stroke:#111;
+
+    stroke-width:8;
+
+    stroke-linecap:square;
+
+    stroke-linejoin:miter;
+
+    fill:none;
+
+}
+
+
+.hero-decoration .arrow-head{
+
+    fill:#111;
 
 }
 
@@ -358,60 +359,65 @@ nav{
    MAIN
 ========================================================= */
 
-.container{
+main{
 
-    width:min(1120px,88%);
-
-    margin:auto;
-
-}
-
-
-.section{
-
-    padding:72px 0;
+    padding:88px 7% 110px;
 
 }
 
 
 .section-heading{
 
-    margin-bottom:30px;
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+
+    gap:35px;
+
+    margin-bottom:46px;
 
 }
 
 
-.section-number{
+.section-label{
 
-    color:var(--purple);
+    color:#7c3aed;
 
-    font-size:.75rem;
+    font-size:10px;
 
-    font-weight:800;
+    font-weight:700;
 
-    letter-spacing:.15em;
+    letter-spacing:2.5px;
+
+    margin-bottom:12px;
 
 }
 
 
 .section-heading h2{
 
-    font-family:"Playfair Display",serif;
+    font-family:"Playfair Display", serif;
 
-    font-size:2.2rem;
+    font-size:clamp(38px, 5vw, 60px);
 
-    margin:6px 0 8px;
+    line-height:1;
 
-    letter-spacing:-.03em;
+    letter-spacing:-2.5px;
 
 }
 
 
 .section-heading p{
 
-    color:var(--muted);
+    max-width:410px;
 
-    margin:0;
+    color:#666;
+
+    font-size:13px;
+
+    line-height:1.8;
 
 }
 
@@ -422,30 +428,22 @@ nav{
 
 .keep-in-mind{
 
-    background:
+    margin-bottom:50px;
 
-        linear-gradient(
-            135deg,
-            #100d18,
-            #171321
-        );
+    background:#111;
 
-    color:white;
+    color:#fff;
 
-    border-radius:22px;
-
-    padding:34px;
+    padding:32px;
 
     position:relative;
 
     overflow:hidden;
 
-    box-shadow:0 18px 45px rgba(0,0,0,.12);
-
 }
 
 
-.keep-in-mind::before{
+.keep-in-mind::after{
 
     content:"";
 
@@ -455,13 +453,13 @@ nav{
 
     height:180px;
 
-    border:1px solid rgba(167,139,250,.2);
+    border:1px solid rgba(167,139,250,.18);
 
     border-radius:50%;
 
-    right:-50px;
+    right:-65px;
 
-    top:-70px;
+    top:-65px;
 
 }
 
@@ -472,66 +470,74 @@ nav{
 
     align-items:center;
 
-    gap:12px;
+    gap:14px;
 
     margin-bottom:22px;
+
+    position:relative;
+
+    z-index:2;
 
 }
 
 
 .keep-icon{
 
-    width:42px;
+    width:40px;
 
-    height:42px;
+    height:40px;
 
-    display:grid;
+    display:flex;
 
-    place-items:center;
+    align-items:center;
 
-    border-radius:12px;
+    justify-content:center;
 
-    background:rgba(124,58,237,.2);
+    background:#7c3aed;
 
-    color:#c4b5fd;
+    color:#fff;
 
-    font-weight:800;
+    font-weight:700;
 
 }
 
 
 .keep-title h2{
 
-    margin:0;
+    font-family:"Playfair Display", serif;
 
-    font-family:"Playfair Display",serif;
+    font-size:25px;
 
-    font-size:1.7rem;
+    font-weight:600;
 
 }
 
 
 .keep-list{
 
-    margin:0;
+    padding-left:22px;
 
-    padding-left:21px;
+    color:#c9c9c9;
 
-    color:#d9d6e2;
+    position:relative;
+
+    z-index:2;
 
 }
 
 
 .keep-list li{
 
-    margin:10px 0;
+    margin:8px 0;
+
+    font-size:13px;
 
 }
 
 
 .keep-list strong{
 
-    color:white;
+    color:#fff;
 
 }
 
@@ -546,52 +552,52 @@ nav{
 
     flex-wrap:wrap;
 
-    gap:10px;
+    gap:9px;
 
-    margin-bottom:35px;
+    margin-bottom:32px;
 
 }
 
 
 .filter-btn{
 
-    border:1px solid var(--border);
+    border:1px solid #ddd;
 
-    background:white;
+    background:#fff;
 
-    color:#4a4852;
+    color:#333;
 
-    border-radius:999px;
+    padding:10px 15px;
 
-    padding:9px 16px;
-
-    font-family:inherit;
+    font-size:10px;
 
     font-weight:700;
 
+    letter-spacing:.5px;
+
     cursor:pointer;
 
-    transition:.2s;
+    transition:.25s ease;
 
 }
 
 
 .filter-btn:hover{
 
-    border-color:#c4b5fd;
+    border-color:#7c3aed;
 
-    color:var(--purple);
+    color:#7c3aed;
 
 }
 
 
 .filter-btn.active{
 
-    background:var(--purple);
+    background:#7c3aed;
 
-    color:white;
+    color:#fff;
 
-    border-color:var(--purple);
+    border-color:#7c3aed;
 
 }
 
@@ -613,15 +619,15 @@ nav{
 
     justify-content:space-between;
 
-    gap:20px;
+    align-items:center;
 
-    color:#65616e;
+    margin-bottom:9px;
 
-    font-size:.88rem;
+    color:#666;
 
-    font-weight:600;
+    font-size:11px;
 
-    margin-bottom:8px;
+    font-weight:700;
 
 }
 
@@ -630,11 +636,9 @@ nav{
 
     width:100%;
 
-    height:7px;
+    height:6px;
 
-    background:#e6e2eb;
-
-    border-radius:999px;
+    background:#dedbd5;
 
     overflow:hidden;
 
@@ -647,61 +651,51 @@ nav{
 
     width:100%;
 
-    background:
+    background:#7c3aed;
 
-        linear-gradient(
-            90deg,
-            var(--purple),
-            var(--purple-light)
-        );
-
-    border-radius:999px;
-
-    transition:.3s;
+    transition:.3s ease;
 
 }
 
 
 /* =========================================================
-   QUESTION CARDS
+   QUESTIONS
 ========================================================= */
 
 .question-list{
 
     display:grid;
 
-    gap:24px;
+    gap:18px;
 
 }
 
 
 .question-card{
 
-    background:white;
+    background:#fff;
 
-    border:1px solid var(--border);
+    border:1px solid #ddd;
 
-    border-radius:20px;
+    padding:0;
 
-    overflow:hidden;
-
-    box-shadow:0 8px 28px rgba(25,20,35,.045);
-
-    transition:.2s;
+    transition:.25s ease;
 
 }
 
 
 .question-card:hover{
 
-    box-shadow:0 12px 32px rgba(25,20,35,.07);
+    box-shadow:0 15px 35px rgba(0,0,0,.06);
+
+    transform:translateY(-2px);
 
 }
 
 
 .question-top{
 
-    padding:24px 26px 20px;
+    padding:26px 28px 20px;
 
     display:flex;
 
@@ -709,31 +703,35 @@ nav{
 
     align-items:flex-start;
 
-    gap:20px;
+    gap:25px;
 
 }
 
 
 .question-number{
 
-    color:var(--purple);
+    color:#7c3aed;
 
-    font-size:.76rem;
+    font-size:10px;
 
-    font-weight:800;
+    font-weight:700;
 
-    letter-spacing:.13em;
+    letter-spacing:2px;
 
 }
 
 
 .question-text{
 
-    font-size:1.08rem;
+    font-size:15px;
 
     font-weight:600;
 
+    line-height:1.7;
+
     margin-top:8px;
+
+    max-width:850px;
 
 }
 
@@ -742,24 +740,24 @@ nav{
 
     flex:none;
 
-    border-radius:999px;
+    border:1px solid #ddd;
 
-    background:var(--purple-soft);
+    padding:6px 10px;
 
-    color:var(--purple-dark);
+    color:#555;
 
-    padding:6px 11px;
+    font-size:9px;
 
-    font-size:.72rem;
+    font-weight:700;
 
-    font-weight:800;
+    letter-spacing:.8px;
 
 }
 
 
 .question-body{
 
-    padding:0 26px 25px;
+    padding:0 28px 26px;
 
 }
 
@@ -768,61 +766,39 @@ nav{
 
     display:flex;
 
-    flex-wrap:wrap;
-
     gap:10px;
 
-    margin-top:20px;
+    margin-top:5px;
 
 }
 
 
 .action-btn{
 
-    border:1px solid #ddd8e6;
+    border:0;
 
-    background:white;
+    background:#111;
 
-    color:#45414e;
+    color:#fff;
 
-    padding:9px 14px;
+    padding:11px 16px;
 
-    border-radius:9px;
-
-    font-family:inherit;
+    font-size:10px;
 
     font-weight:700;
 
+    letter-spacing:.6px;
+
     cursor:pointer;
 
-    transition:.2s;
+    transition:.25s ease;
 
 }
 
 
 .action-btn:hover{
 
-    border-color:var(--purple);
-
-    color:var(--purple);
-
-}
-
-
-.action-btn.solution-btn{
-
-    background:var(--purple);
-
-    color:white;
-
-    border-color:var(--purple);
-
-}
-
-
-.action-btn.solution-btn:hover{
-
-    background:var(--purple-dark);
+    background:#7c3aed;
 
 }
 
@@ -831,9 +807,9 @@ nav{
 
     display:none;
 
-    margin-top:20px;
+    margin-top:22px;
 
-    border-top:1px solid var(--border);
+    border-top:1px solid #e3e0db;
 
     padding-top:20px;
 
@@ -849,13 +825,13 @@ nav{
 
 .answer-title{
 
-    color:var(--green);
+    color:#7c3aed;
 
-    font-weight:800;
+    font-size:10px;
 
-    font-size:.85rem;
+    font-weight:700;
 
-    letter-spacing:.04em;
+    letter-spacing:1.5px;
 
     margin-bottom:8px;
 
@@ -864,39 +840,74 @@ nav{
 
 .answer{
 
-    background:var(--green-soft);
+    background:#f7f6f2;
 
-    border-radius:12px;
+    border:1px solid #e1ded8;
 
-    padding:13px 16px;
+    padding:14px 17px;
 
-    font-weight:700;
+    font-size:14px;
+
+    font-weight:600;
+
+    overflow-x:auto;
 
 }
 
 
 .solution{
 
-    margin-top:15px;
+    margin-top:18px;
 
-    background:#f7f5fb;
+    background:#faf9fc;
 
-    border-left:4px solid var(--purple);
+    border-left:4px solid #7c3aed;
 
-    border-radius:0 12px 12px 0;
+    padding:17px 18px;
 
-    padding:15px 17px;
+    font-size:14px;
+
+    line-height:1.8;
+
+    overflow-x:auto;
 
 }
 
 
 .solution-title{
 
-    color:var(--purple-dark);
+    color:#7c3aed;
 
-    font-weight:800;
+    font-size:10px;
 
-    margin-bottom:7px;
+    font-weight:700;
+
+    letter-spacing:1.5px;
+
+    margin-bottom:10px;
+
+}
+
+
+.solution-line{
+
+    margin-bottom:9px;
+
+}
+
+
+.solution-line:last-child{
+
+    margin-bottom:0;
+
+}
+
+
+/* Make displayed equations breathe */
+
+.solution mjx-container[display="true"]{
+
+    margin:12px 0 !important;
 
 }
 
@@ -909,17 +920,15 @@ nav{
 
     display:none;
 
+    border:1px dashed #ccc;
+
+    padding:50px;
+
     text-align:center;
 
-    background:white;
+    color:#777;
 
-    border:1px dashed #d9d3e2;
-
-    border-radius:18px;
-
-    padding:45px;
-
-    color:#77717f;
+    font-size:13px;
 
 }
 
@@ -930,27 +939,11 @@ nav{
 
 .congrats{
 
-    margin-top:70px;
+    margin-top:65px;
 
-    background:
+    background:#111;
 
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(167,139,250,.22),
-            transparent 25%
-        ),
-
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(124,58,237,.22),
-            transparent 28%
-        ),
-
-        #0d0a13;
-
-    color:white;
-
-    border-radius:28px;
+    color:#fff;
 
     padding:65px 30px;
 
@@ -967,11 +960,11 @@ nav{
 
     position:absolute;
 
-    width:250px;
+    width:260px;
 
-    height:250px;
+    height:260px;
 
-    border:1px solid rgba(167,139,250,.22);
+    border:1px solid rgba(167,139,250,.18);
 
     border-radius:50%;
 
@@ -990,9 +983,9 @@ nav{
 
     position:absolute;
 
-    inset:25px;
+    inset:28px;
 
-    border:1px solid rgba(167,139,250,.14);
+    border:1px solid rgba(167,139,250,.12);
 
     border-radius:50%;
 
@@ -1010,36 +1003,36 @@ nav{
 
 .check{
 
-    width:64px;
+    width:62px;
 
-    height:64px;
-
-    border-radius:50%;
+    height:62px;
 
     margin:0 auto 20px;
 
-    display:grid;
+    display:flex;
 
-    place-items:center;
+    align-items:center;
 
-    background:rgba(124,58,237,.2);
+    justify-content:center;
 
-    border:1px solid rgba(167,139,250,.4);
+    background:#7c3aed;
 
-    color:#c4b5fd;
+    color:#fff;
 
-    font-size:1.7rem;
+    font-size:25px;
 
 }
 
 
 .congrats h2{
 
-    font-family:"Playfair Display",serif;
+    font-family:"Playfair Display", serif;
 
-    font-size:2.5rem;
+    font-size:40px;
 
-    margin:0 0 12px;
+    font-weight:600;
+
+    margin-bottom:12px;
 
 }
 
@@ -1050,7 +1043,11 @@ nav{
 
     margin:0 auto 25px;
 
-    color:#c9c4d3;
+    color:#aaa;
+
+    font-size:13px;
+
+    line-height:1.8;
 
 }
 
@@ -1059,24 +1056,30 @@ nav{
 
     display:inline-block;
 
-    background:var(--purple);
+    background:#7c3aed;
 
-    color:white;
+    color:#fff;
 
     text-decoration:none;
 
-    padding:12px 20px;
+    padding:12px 18px;
 
-    border-radius:10px;
+    font-size:10px;
 
     font-weight:700;
+
+    letter-spacing:.7px;
+
+    transition:.25s ease;
 
 }
 
 
 .back-btn:hover{
 
-    background:var(--purple-dark);
+    background:#fff;
+
+    color:#111;
 
 }
 
@@ -1087,140 +1090,205 @@ nav{
 
 footer{
 
-    background:var(--black);
+    background:#111;
 
-    color:#aaa7b2;
+    color:#fff;
 
-    margin-top:0;
-
-    padding:48px 7% 30px;
-
-}
-
-
-.footer-inner{
-
-    width:min(1120px,88%);
-
-    margin:auto;
+    padding:42px 7%;
 
     display:flex;
 
     justify-content:space-between;
 
-    align-items:flex-start;
-
-    gap:40px;
-
-}
-
-
-.footer-brand{
-
-    max-width:430px;
+    align-items:center;
 
 }
 
 
 .footer-logo{
 
-    font-size:1.35rem;
+    font-family:"Playfair Display", serif;
+
+    font-size:24px;
 
     font-weight:600;
-
-    letter-spacing:-.045em;
-
-    color:white;
-
-    margin-bottom:10px;
 
 }
 
 
 .footer-logo span{
 
-    color:var(--purple-light);
-
-    font-weight:600;
+    color:#7c3aed;
 
 }
 
 
-.footer-description{
+footer p{
 
-    color:#85818c;
+    color:#888;
 
-    font-size:.88rem;
-
-    margin:0;
-
-}
-
-
-.footer-right{
-
-    text-align:right;
-
-}
-
-
-.footer-right p{
-
-    margin:0;
-
-    color:#77737d;
-
-    font-size:.8rem;
-
-}
-
-
-.footer-right p:first-child{
-
-    color:#a9a5ae;
-
-    margin-bottom:5px;
+    font-size:11px;
 
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   MOBILE
 ========================================================= */
+
+@media(max-width:900px){
+
+    .hero-decoration{
+
+        right:-70px;
+
+        opacity:.95;
+
+        width:270px;
+
+        height:230px;
+
+    }
+
+
+    .hero-decoration svg{
+
+        width:205px;
+
+        height:205px;
+
+    }
+
+
+    .hero-decoration .v-letter{
+
+        font-size:145px;
+
+    }
+
+
+    .section-heading{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+}
+
 
 @media(max-width:700px){
 
     nav{
 
-        padding:0 5%;
+        height:auto;
+
+        padding:18px 5%;
+
+        gap:15px;
 
     }
 
 
-    .nav-link{
+    .logo{
 
-        display:none;
+        font-size:25px;
+
+    }
+
+
+    .nav-links{
+
+        gap:12px;
+
+    }
+
+
+    .home-link{
+
+        font-size:10px;
+
+    }
+
+
+    .logout{
+
+        padding:10px 13px;
 
     }
 
 
     .hero{
 
-        padding:65px 6% 75px;
+        padding:70px 5% 65px;
+
+        min-height:430px;
 
     }
 
 
-    .container{
+    .hero h1{
 
-        width:90%;
+        font-size:55px;
+
+        letter-spacing:-3px;
 
     }
 
 
-    .section{
+    .hero p{
 
-        padding:55px 0;
+        max-width:470px;
+
+    }
+
+
+    .hero-decoration{
+
+        width:220px;
+
+        height:185px;
+
+        right:-45px;
+
+        top:auto;
+
+        bottom:-20px;
+
+        transform:none;
+
+        opacity:.9;
+
+    }
+
+
+    .hero-decoration svg{
+
+        width:165px;
+
+        height:165px;
+
+    }
+
+
+    .hero-decoration .v-letter{
+
+        font-size:120px;
+
+    }
+
+
+    .hero-decoration .vector-arrow{
+
+        stroke-width:6;
+
+    }
+
+
+    main{
+
+        padding:70px 5% 85px;
 
     }
 
@@ -1228,39 +1296,47 @@ footer{
     .question-top{
 
         flex-direction:column;
+
+        padding:22px 20px 18px;
+
+    }
+
+
+    .question-body{
+
+        padding:0 20px 22px;
+
+    }
+
+
+    .question-text{
+
+        font-size:14px;
 
     }
 
 
     .keep-in-mind{
 
-        padding:27px;
+        padding:25px 22px;
 
     }
 
 
-    .question-body,
-    .question-top{
+    .congrats h2{
 
-        padding-left:20px;
-
-        padding-right:20px;
+        font-size:34px;
 
     }
 
 
-    .footer-inner{
+    footer{
 
         flex-direction:column;
 
-        gap:25px;
+        gap:14px;
 
-    }
-
-
-    .footer-right{
-
-        text-align:left;
+        text-align:center;
 
     }
 
@@ -1275,7 +1351,7 @@ footer{
 
 
 <!-- =========================================================
-     NAVBAR
+     NAVIGATION
 ========================================================= -->
 
 <nav>
@@ -1284,20 +1360,22 @@ footer{
         Edu<span>Nova</span>
     </div>
 
-    <div class="nav-right">
+
+    <div class="nav-links">
 
         <a
             href="vectors.html"
-            class="nav-link"
+            class="home-link"
         >
             ← VECTORS
         </a>
+
 
         <button
             class="logout"
             onclick="logout()"
         >
-            Log out
+            LOG OUT
         </button>
 
     </div>
@@ -1311,19 +1389,17 @@ footer{
 
 <header class="hero">
 
-    <div class="hero-grid"></div>
-
-    <div class="hero-ring"></div>
-
     <div class="hero-content">
 
-        <div class="eyebrow">
+        <div class="hero-label">
             VECTORS • TOPIC 01 / 04 • QUESTIONS
         </div>
 
+
         <h1>
-            Definition of <span>Vectors.</span>
+            Definition of Vectors.
         </h1>
+
 
         <p>
             Test your understanding of magnitude, direction,
@@ -1333,19 +1409,80 @@ footer{
 
     </div>
 
+
+    <div class="hero-decoration">
+
+        <svg
+            viewBox="0 0 250 250"
+            aria-hidden="true"
+        >
+
+            <text
+                x="125"
+                y="205"
+                text-anchor="middle"
+                class="v-letter"
+            >
+                V
+            </text>
+
+
+            <line
+                x1="48"
+                y1="62"
+                x2="194"
+                y2="62"
+                class="vector-arrow"
+            ></line>
+
+
+            <polygon
+                points="194,62 174,50 174,74"
+                class="arrow-head"
+            ></polygon>
+
+        </svg>
+
+    </div>
+
 </header>
 
 
-<main class="container">
-
-
 <!-- =========================================================
-     KEEP IN MIND
+     MAIN
 ========================================================= -->
 
-<section class="section">
+<main>
 
-    <div class="keep-in-mind">
+
+    <div class="section-heading">
+
+        <div>
+
+            <div class="section-label">
+                QUESTIONS
+            </div>
+
+            <h2>
+                Test your understanding.
+            </h2>
+
+        </div>
+
+
+        <p>
+            Work through the questions from Foundation to Challenge.
+            Try each one before revealing the answer and solution.
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         KEEP IN MIND
+    ====================================================== -->
+
+    <section class="keep-in-mind">
 
         <div class="keep-title">
 
@@ -1367,36 +1504,43 @@ footer{
                 A scalar has magnitude only.
             </li>
 
+
             <li>
                 <strong>Direction matters.</strong>
                 Reversing a vector changes its direction:
                 \(\overrightarrow{AB}\neq\overrightarrow{BA}\).
             </li>
 
+
             <li>
                 <strong>Equal vectors</strong> have the same magnitude
                 and the same direction, even when they are in different positions.
             </li>
+
 
             <li>
                 <strong>For head-to-tail addition,</strong>
                 the second vector starts where the first vector ends.
             </li>
 
+
             <li>
                 <strong>The resultant</strong> connects the starting point
                 directly to the final point.
             </li>
+
 
             <li>
                 <strong>When adding components,</strong>
                 add horizontal components together and vertical components together.
             </li>
 
+
             <li>
                 <strong>Parallel vectors</strong> may point in the same direction
                 or exactly opposite directions.
             </li>
+
 
             <li>
                 Do not confuse <strong>magnitude</strong> with direction.
@@ -1405,81 +1549,68 @@ footer{
 
         </ul>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =========================================================
-     QUESTIONS
-========================================================= -->
-
-<section class="section">
-
-    <div class="section-heading">
-
-        <div class="section-number">
-            QUESTIONS
-        </div>
-
-        <h2>
-            Test your understanding.
-        </h2>
-
-        <p>
-            Work through the questions from Foundation to Challenge.
-            Try each one before revealing the solution.
-        </p>
-
-    </div>
-
+    <!-- =====================================================
+         FILTER
+    ====================================================== -->
 
     <div class="filter-bar">
 
         <button
             class="filter-btn active"
-            onclick="filterQuestions('All',this)"
+            onclick="filterQuestions('All', this)"
         >
-            All
+            ALL
         </button>
+
 
         <button
             class="filter-btn"
-            onclick="filterQuestions('Foundation',this)"
+            onclick="filterQuestions('Foundation', this)"
         >
-            Foundation
+            FOUNDATION
         </button>
+
 
         <button
             class="filter-btn"
-            onclick="filterQuestions('Developing',this)"
+            onclick="filterQuestions('Developing', this)"
         >
-            Developing
+            DEVELOPING
         </button>
+
 
         <button
             class="filter-btn"
-            onclick="filterQuestions('Intermediate',this)"
+            onclick="filterQuestions('Intermediate', this)"
         >
-            Intermediate
+            INTERMEDIATE
         </button>
+
 
         <button
             class="filter-btn"
-            onclick="filterQuestions('Advanced',this)"
+            onclick="filterQuestions('Advanced', this)"
         >
-            Advanced
+            ADVANCED
         </button>
+
 
         <button
             class="filter-btn"
-            onclick="filterQuestions('Challenge',this)"
+            onclick="filterQuestions('Challenge', this)"
         >
-            Challenge
+            CHALLENGE
         </button>
 
     </div>
 
+
+    <!-- =====================================================
+         PROGRESS
+    ====================================================== -->
 
     <div class="progress-wrap">
 
@@ -1489,11 +1620,13 @@ footer{
                 40 questions
             </span>
 
+
             <span id="visibleCount">
                 Showing 40
             </span>
 
         </div>
+
 
         <div class="progress-bar">
 
@@ -1506,6 +1639,10 @@ footer{
 
     </div>
 
+
+    <!-- =====================================================
+         QUESTION LIST
+    ====================================================== -->
 
     <div
         class="question-list"
@@ -1521,13 +1658,14 @@ footer{
     </div>
 
 
-<!-- =========================================================
-     CONGRATULATIONS
-========================================================= -->
+    <!-- =====================================================
+         CONGRATULATIONS
+    ====================================================== -->
 
     <div class="congrats">
 
         <div class="congrats-orbit"></div>
+
 
         <div class="congrats-content">
 
@@ -1535,9 +1673,11 @@ footer{
                 ✓
             </div>
 
+
             <h2>
                 Congratulations!
             </h2>
+
 
             <p>
                 You have completed the questions for
@@ -1547,18 +1687,17 @@ footer{
                 and parallel vectors.
             </p>
 
+
             <a
                 href="vectors.html"
                 class="back-btn"
             >
-                Back to Vectors
+                BACK TO VECTORS
             </a>
 
         </div>
 
     </div>
-
-</section>
 
 </main>
 
@@ -1569,34 +1708,14 @@ footer{
 
 <footer>
 
-    <div class="footer-inner">
-
-        <div class="footer-brand">
-
-            <div class="footer-logo">
-                Edu<span>Nova</span>
-            </div>
-
-            <p class="footer-description">
-                Mathematics, explained clearly.
-            </p>
-
-        </div>
-
-
-        <div class="footer-right">
-
-            <p>
-                EduNova Mathematics
-            </p>
-
-            <p>
-                © 2026 EduNova. All rights reserved.
-            </p>
-
-        </div>
-
+    <div class="footer-logo">
+        Edu<span>Nova</span>
     </div>
+
+
+    <p>
+        © 2026 EduNova. Mathematics, reimagined.
+    </p>
 
 </footer>
 
@@ -1610,11 +1729,14 @@ footer{
 const SUPABASE_URL =
     "https://majvqtbortonsrgdknms.supabase.co";
 
+
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
 
+
 const { createClient } =
     window.supabase;
+
 
 const supabaseClient =
     createClient(
@@ -1634,26 +1756,32 @@ async function checkSession(){
     } =
         await supabaseClient.auth.getSession();
 
+
     if(!session){
 
         location.href = "index.html";
 
-        return;
+        return false;
 
     }
+
+
+    return true;
 
 }
 
 
 /* =========================================================
-   LOGOUT
+   LOG OUT
 ========================================================= */
 
 async function logout(){
 
     await supabaseClient.auth.signOut();
 
-    localStorage.clear();
+    localStorage.removeItem("eduNovaUsername");
+
+    localStorage.removeItem("eduNovaEmail");
 
     location.href = "index.html";
 
@@ -1684,6 +1812,7 @@ const questions = [
         "A vector describes both how much movement there is and which way the movement points. Therefore, the two required pieces of information are magnitude and direction."
 },
 
+
 {
     level:"Foundation",
     number:2,
@@ -1697,6 +1826,7 @@ const questions = [
     solution:
         "A scalar has magnitude only. A vector has both magnitude and direction."
 },
+
 
 {
     level:"Foundation",
@@ -1712,6 +1842,7 @@ const questions = [
         "Magnitude tells us the size or length of the vector. The given magnitude is already 8 units, so the answer is 8 units."
 },
 
+
 {
     level:"Foundation",
     number:4,
@@ -1725,6 +1856,7 @@ const questions = [
     solution:
         "The word \"upward\" tells us which way the vector points. Therefore, it gives the direction, not the magnitude."
 },
+
 
 {
     level:"Foundation",
@@ -1740,6 +1872,7 @@ const questions = [
         "The first letter is the starting point and the second letter is the ending point. Therefore, \\(\\overrightarrow{AB}\\) points from A to B."
 },
 
+
 {
     level:"Foundation",
     number:6,
@@ -1754,6 +1887,7 @@ const questions = [
         "\\(\\overrightarrow{AB}\\) points from A to B, while \\(\\overrightarrow{BA}\\) points from B to A. Reversing the order reverses the direction, so they are not the same vector."
 },
 
+
 {
     level:"Foundation",
     number:7,
@@ -1767,6 +1901,7 @@ const questions = [
     solution:
         "Equal vectors must have both the same magnitude and the same direction. Since the directions are different, the vectors are not equal."
 },
+
 
 {
     level:"Foundation",
@@ -1801,6 +1936,7 @@ const questions = [
         "The magnitude is the size of the vector, so it is 12 units. The direction is given as left."
 },
 
+
 {
     level:"Developing",
     number:10,
@@ -1814,6 +1950,7 @@ const questions = [
     solution:
         "A vector requires two pieces of information: magnitude and direction. A scalar provides only magnitude, so it does not completely describe a vector."
 },
+
 
 {
     level:"Developing",
@@ -1829,6 +1966,7 @@ const questions = [
         "\\(\\overrightarrow{BA}\\) reverses the direction of \\(\\overrightarrow{AB}\\). If A to B is east, then B to A is west."
 },
 
+
 {
     level:"Developing",
     number:12,
@@ -1842,6 +1980,7 @@ const questions = [
     solution:
         "Both vectors have the same magnitude, 6, but their directions are opposite. Equal vectors must have the same magnitude and the same direction."
 },
+
 
 {
     level:"Developing",
@@ -1857,6 +1996,7 @@ const questions = [
         "Both vectors have the same magnitude, 9, and the same direction, right. Therefore, they are equal vectors."
 },
 
+
 {
     level:"Developing",
     number:14,
@@ -1871,6 +2011,7 @@ const questions = [
         "The first letter is the starting point and the second letter is the ending point. Therefore, the vector from P to Q is \\(\\overrightarrow{PQ}\\)."
 },
 
+
 {
     level:"Developing",
     number:15,
@@ -1884,6 +2025,7 @@ const questions = [
     solution:
         "Reversing a vector changes its direction but not its length. Therefore, \\(\\overrightarrow{DC}\\) still has magnitude 10 units."
 },
+
 
 {
     level:"Developing",
@@ -1918,6 +2060,7 @@ const questions = [
         "In component notation \\((x,y)\\), the first value gives the horizontal component and the second value gives the vertical component. Therefore, \\(x=4\\) and \\(y=7\\)."
 },
 
+
 {
     level:"Intermediate",
     number:18,
@@ -1929,8 +2072,9 @@ const questions = [
         "\\(\\mathbf{a}+\\mathbf{b}=(7,7)\\).",
 
     solution:
-        "Add corresponding components.\\n\\nHorizontal:\\n\\(3+4=7\\).\\n\\nVertical:\\n\\(2+5=7\\).\\n\\nTherefore,\\n\\[\\mathbf{a}+\\mathbf{b}=(7,7).\\]"
+        "Add corresponding components.\n\nHorizontal:\n\\(3+4=7\\).\n\nVertical:\n\\(2+5=7\\).\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}=(7,7).\\]"
 },
+
 
 {
     level:"Intermediate",
@@ -1943,8 +2087,9 @@ const questions = [
         "\\((9,3)\\).",
 
     solution:
-        "Add the horizontal components:\\n\\n\\(6+3=9\\).\\n\\nAdd the vertical components:\\n\\n\\(-2+5=3\\).\\n\\nTherefore,\\n\\[\\mathbf{a}+\\mathbf{b}=(9,3).\\]"
+        "Add the horizontal components:\n\n\\(6+3=9\\).\n\nAdd the vertical components:\n\n\\(-2+5=3\\).\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}=(9,3).\\]"
 },
+
 
 {
     level:"Intermediate",
@@ -1957,8 +2102,9 @@ const questions = [
         "\\((-2,-4)\\).",
 
     solution:
-        "Add corresponding components.\\n\\nHorizontal:\\n\\[-4+2=-2\\]\\n\\nVertical:\\n\\[3+(-7)=-4\\]\\n\\nTherefore, the resultant is\\n\\[(-2,-4).\\]"
+        "Add corresponding components.\n\nHorizontal:\n\\[-4+2=-2\\]\n\nVertical:\n\\[3+(-7)=-4\\]\n\nTherefore, the resultant is\n\\[(-2,-4).\\]"
 },
+
 
 {
     level:"Intermediate",
@@ -1974,6 +2120,7 @@ const questions = [
         "The first number in \\((x,y)\\) is the horizontal component, so it is 5. The second number is the vertical component, so it is -3."
 },
 
+
 {
     level:"Intermediate",
     number:22,
@@ -1988,6 +2135,7 @@ const questions = [
         "The horizontal component is -2. A negative horizontal component indicates movement to the left."
 },
 
+
 {
     level:"Intermediate",
     number:23,
@@ -2001,6 +2149,7 @@ const questions = [
     solution:
         "The vertical component is -6. A negative vertical component indicates movement downward."
 },
+
 
 {
     level:"Intermediate",
@@ -2032,8 +2181,9 @@ const questions = [
         "\\((4,5)\\).",
 
     solution:
-        "Add the horizontal components:\\n\\n\\[7+(-3)=4\\]\\n\\nAdd the vertical components:\\n\\n\\[-4+9=5\\]\\n\\nTherefore,\\n\\[\\mathbf{a}+\\mathbf{b}=(4,5).\\]"
+        "Add the horizontal components:\n\n\\[7+(-3)=4\\]\n\nAdd the vertical components:\n\n\\[-4+9=5\\]\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}=(4,5).\\]"
 },
+
 
 {
     level:"Advanced",
@@ -2046,8 +2196,9 @@ const questions = [
         "\\((0,3)\\).",
 
     solution:
-        "Add the horizontal components:\\n\\n\\[2+(-6)+4=0\\]\\n\\nAdd the vertical components:\\n\\n\\[5+1+(-3)=3\\]\\n\\nTherefore,\\n\\[\\mathbf{a}+\\mathbf{b}+\\mathbf{c}=(0,3).\\]"
+        "Add the horizontal components:\n\n\\[2+(-6)+4=0\\]\n\nAdd the vertical components:\n\n\\[5+1+(-3)=3\\]\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}+\\mathbf{c}=(0,3).\\]"
 },
+
 
 {
     level:"Advanced",
@@ -2060,8 +2211,9 @@ const questions = [
         "The resultant is \\((0,-3)\\). The zero horizontal component means there is no overall horizontal movement.",
 
     solution:
-        "Add the horizontal components:\\n\\n\\[8+(-8)=0\\]\\n\\nAdd the vertical components:\\n\\n\\[-5+2=-3\\]\\n\\nTherefore,\\n\\[(0,-3)\\]\\n\\nBecause the horizontal component is zero, the horizontal movements cancel completely."
+        "Add the horizontal components:\n\n\\[8+(-8)=0\\]\n\nAdd the vertical components:\n\n\\[-5+2=-3\\]\n\nTherefore,\n\\[(0,-3)\\]\n\nBecause the horizontal component is zero, the horizontal movements cancel completely."
 },
+
 
 {
     level:"Advanced",
@@ -2074,8 +2226,9 @@ const questions = [
         "The resultant is \\((0,0)\\). Their horizontal and vertical movements completely cancel.",
 
     solution:
-        "Horizontal:\\n\\n\\[5+(-5)=0\\]\\n\\nVertical:\\n\\n\\[2+(-2)=0\\]\\n\\nTherefore,\\n\\[\\mathbf{p}+\\mathbf{q}=(0,0).\\]\\n\\nBoth components cancel, so there is no overall horizontal or vertical movement."
+        "Horizontal:\n\n\\[5+(-5)=0\\]\n\nVertical:\n\n\\[2+(-2)=0\\]\n\nTherefore,\n\\[\\mathbf{p}+\\mathbf{q}=(0,0).\\]\n\nBoth components cancel, so there is no overall horizontal or vertical movement."
 },
+
 
 {
     level:"Advanced",
@@ -2088,8 +2241,9 @@ const questions = [
         "\\((6,-2)\\).",
 
     solution:
-        "For head-to-tail addition, combine the horizontal and vertical components.\\n\\nHorizontal:\\n\\[4+2=6\\]\\n\\nVertical:\\n\\[3+(-5)=-2\\]\\n\\nTherefore, the resultant movement is\\n\\[(6,-2).\\]"
+        "For head-to-tail addition, combine the horizontal and vertical components.\n\nHorizontal:\n\\[4+2=6\\]\n\nVertical:\n\\[3+(-5)=-2\\]\n\nTherefore, the resultant movement is\n\\[(6,-2).\\]"
 },
+
 
 {
     level:"Advanced",
@@ -2105,6 +2259,7 @@ const questions = [
         "They have the same magnitude, but their directions are opposite, so they are not equal vectors. Their directions lie along the same line but point in opposite directions, so they are parallel."
 },
 
+
 {
     level:"Advanced",
     number:31,
@@ -2118,6 +2273,7 @@ const questions = [
     solution:
         "One vector points upward and the other points downward. Since these directions are exactly opposite, their directions are reversed."
 },
+
 
 {
     level:"Advanced",
@@ -2149,8 +2305,9 @@ const questions = [
         "Resultant = \\((4,0)\\). The horizontal component is positive and the vertical component is zero.",
 
     solution:
-        "Horizontal:\\n\\n\\[6+(-2)=4\\]\\n\\nVertical:\\n\\n\\[4+(-4)=0\\]\\n\\nTherefore,\\n\\[\\mathbf{a}+\\mathbf{b}=(4,0).\\]\\n\\nThe horizontal component is positive because it is 4. The vertical component is zero because the vertical movements cancel."
+        "Horizontal:\n\n\\[6+(-2)=4\\]\n\nVertical:\n\n\\[4+(-4)=0\\]\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}=(4,0).\\]\n\nThe horizontal component is positive because it is 4. The vertical component is zero because the vertical movements cancel."
 },
+
 
 {
     level:"Challenge",
@@ -2166,6 +2323,7 @@ const questions = [
         "The vectors have the same magnitude, but northeast and southwest are opposite directions. Therefore, they are not equal. Because they point along the same line in opposite directions, they are parallel."
 },
 
+
 {
     level:"Challenge",
     number:35,
@@ -2179,6 +2337,7 @@ const questions = [
     solution:
         "Having the same magnitude is only one requirement. For example, a vector of magnitude 5 pointing right and a vector of magnitude 5 pointing upward have the same magnitude but different directions. Therefore, they are not equal."
 },
+
 
 {
     level:"Challenge",
@@ -2194,6 +2353,7 @@ const questions = [
         "Parallel vectors can have different magnitudes. For example, one vector may have magnitude 3 and another magnitude 8 while both point in the same direction. They are parallel, but they are not equal because their magnitudes differ."
 },
 
+
 {
     level:"Challenge",
     number:37,
@@ -2205,8 +2365,9 @@ const questions = [
         "The resultant is \\((0,0)\\) because both corresponding components cancel.",
 
     solution:
-        "Horizontal components:\\n\\n\\[3+(-3)=0\\]\\n\\nVertical components:\\n\\n\\[-7+7=0\\]\\n\\nTherefore,\\n\\[\\mathbf{a}+\\mathbf{b}=(0,0).\\]\\n\\nBoth the horizontal and vertical movements cancel, so there is no overall movement in either direction."
+        "Horizontal components:\n\n\\[3+(-3)=0\\]\n\nVertical components:\n\n\\[-7+7=0\\]\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}=(0,0).\\]\n\nBoth the horizontal and vertical movements cancel, so there is no overall movement in either direction."
 },
+
 
 {
     level:"Challenge",
@@ -2219,8 +2380,9 @@ const questions = [
         "Yes. The resultant is \\((0,7)\\).",
 
     solution:
-        "Add the horizontal components:\\n\\n\\[4+(-4)=0\\]\\n\\nAdd the vertical components:\\n\\n\\[6+1=7\\]\\n\\nTherefore,\\n\\[\\mathbf{a}+\\mathbf{b}=(0,7).\\]\\n\\nThe student is correct."
+        "Add the horizontal components:\n\n\\[4+(-4)=0\\]\n\nAdd the vertical components:\n\n\\[6+1=7\\]\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}=(0,7).\\]\n\nThe student is correct."
 },
+
 
 {
     level:"Challenge",
@@ -2233,8 +2395,9 @@ const questions = [
         "The resultant is \\((0,0)\\). Both horizontal and vertical components cancel completely.",
 
     solution:
-        "Horizontal:\\n\\n\\[5+(-1)+(-4)=0\\]\\n\\nVertical:\\n\\n\\[-2+6+(-4)=0\\]\\n\\nTherefore,\\n\\[\\mathbf{a}+\\mathbf{b}+\\mathbf{c}=(0,0).\\]\\n\\nBoth components cancel completely, so the overall movement is zero."
+        "Horizontal:\n\n\\[5+(-1)+(-4)=0\\]\n\nVertical:\n\n\\[-2+6+(-4)=0\\]\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}+\\mathbf{c}=(0,0).\\]\n\nBoth components cancel completely, so the overall movement is zero."
 },
+
 
 {
     level:"Challenge",
@@ -2247,7 +2410,7 @@ const questions = [
         "\\(x=9\\).",
 
     solution:
-        "The horizontal components must add to the horizontal component of the resultant.\\n\\nTherefore,\\n\\[x+(-7)=2\\]\\n\\nAdd 7 to both sides:\\n\\[x=9\\]\\n\\nCheck the vertical component:\\n\\[4+(-1)=3\\]\\n\\nwhich matches the given resultant. Therefore,\\n\\[\\boxed{x=9}\\]"
+        "The horizontal components must add to the horizontal component of the resultant.\n\nTherefore,\n\\[x+(-7)=2\\]\n\nAdd 7 to both sides:\n\\[x=9\\]\n\nCheck the vertical component:\n\\[4+(-1)=3\\]\n\nwhich matches the given resultant. Therefore,\n\\[\\boxed{x=9}\\]"
 }
 
 ];
@@ -2260,11 +2423,14 @@ const questions = [
 const questionList =
     document.getElementById("questionList");
 
+
 const emptyMessage =
     document.getElementById("emptyMessage");
 
+
 const visibleCount =
     document.getElementById("visibleCount");
+
 
 const progressFill =
     document.getElementById("progressFill");
@@ -2272,17 +2438,82 @@ const progressFill =
 
 /* =========================================================
    SOLUTION FORMATTER
+   FIXES BOTH:
+   1. Real new lines
+   2. Literal \n sequences inside JS strings
 ========================================================= */
 
 function formatSolution(text){
 
-    return text
-        .split("\n\n")
-        .map(
-            part =>
-                `<div style="margin-bottom:9px">${part}</div>`
-        )
-        .join("");
+    /*
+       Some of the original solutions contained \\n.
+
+       In JavaScript this becomes the literal characters
+       "\n", rather than a real line break.
+
+       Convert those literal sequences first.
+    */
+
+    const cleanedText =
+        text.replace(/\\n/g, "\n");
+
+
+    /*
+       Split the solution into logical paragraphs.
+    */
+
+    const parts =
+        cleanedText.split(/\n\s*\n/);
+
+
+    return parts.map(part => {
+
+        /*
+           Convert remaining single line breaks into <br>.
+           MathJax delimiters remain untouched.
+        */
+
+        const formatted =
+            part
+                .replace(/\n/g, "<br>");
+
+
+        return `
+            <div class="solution-line">
+                ${formatted}
+            </div>
+        `;
+
+    }).join("");
+
+}
+
+
+/* =========================================================
+   TYPESet MATH
+========================================================= */
+
+async function typesetMath(element){
+
+    if(
+        window.MathJax &&
+        typeof MathJax.typesetPromise === "function"
+    ){
+
+        try{
+
+            await MathJax.typesetPromise([element]);
+
+        }catch(error){
+
+            console.error(
+                "MathJax rendering error:",
+                error
+            );
+
+        }
+
+    }
 
 }
 
@@ -2291,9 +2522,10 @@ function formatSolution(text){
    RENDER QUESTIONS
 ========================================================= */
 
-function renderQuestions(level="All"){
+async function renderQuestions(level="All"){
 
     questionList.innerHTML="";
+
 
     const filtered =
         level === "All"
@@ -2329,7 +2561,8 @@ function renderQuestions(level="All"){
             document.createElement("article");
 
 
-        card.className="question-card";
+        card.className =
+            "question-card";
 
 
         card.innerHTML = `
@@ -2341,6 +2574,7 @@ function renderQuestions(level="All"){
                     <div class="question-number">
                         QUESTION ${String(q.number).padStart(2,"0")}
                     </div>
+
 
                     <div class="question-text">
                         ${q.question}
@@ -2364,7 +2598,7 @@ function renderQuestions(level="All"){
                         class="action-btn solution-btn"
                         onclick="toggleAnswer(this)"
                     >
-                        SHOW ANSWER & SOLUTION
+                        SHOW ANSWER &amp; SOLUTION
                     </button>
 
                 </div>
@@ -2385,8 +2619,9 @@ function renderQuestions(level="All"){
                     <div class="solution">
 
                         <div class="solution-title">
-                            Solution
+                            SOLUTION
                         </div>
+
 
                         <div>
                             ${formatSolution(q.solution)}
@@ -2406,11 +2641,12 @@ function renderQuestions(level="All"){
     });
 
 
-    if(window.MathJax){
+    /*
+       Render all visible mathematical notation
+       after the cards actually exist in the DOM.
+    */
 
-        MathJax.typesetPromise([questionList]);
-
-    }
+    await typesetMath(questionList);
 
 }
 
@@ -2419,7 +2655,7 @@ function renderQuestions(level="All"){
    SHOW / HIDE ANSWER
 ========================================================= */
 
-function toggleAnswer(button){
+async function toggleAnswer(button){
 
     const box =
         button
@@ -2427,13 +2663,29 @@ function toggleAnswer(button){
             .querySelector(".answer-box");
 
 
+    const isOpening =
+        !box.classList.contains("show");
+
+
     box.classList.toggle("show");
 
 
-    if(box.classList.contains("show")){
+    if(isOpening){
 
         button.textContent =
             "HIDE ANSWER & SOLUTION";
+
+        /*
+           Wait one frame so the answer box is fully
+           inserted/displayed before MathJax processes it.
+        */
+
+        await new Promise(
+            resolve => requestAnimationFrame(resolve)
+        );
+
+
+        await typesetMath(box);
 
     }else{
 
@@ -2442,26 +2694,20 @@ function toggleAnswer(button){
 
     }
 
-
-    if(window.MathJax){
-
-        MathJax.typesetPromise([box]);
-
-    }
-
 }
 
 
 /* =========================================================
-   FILTER
+   FILTER QUESTIONS
 ========================================================= */
 
-function filterQuestions(level,button){
+function filterQuestions(level, button){
 
     document
         .querySelectorAll(".filter-btn")
         .forEach(
-            btn => btn.classList.remove("active")
+            btn =>
+                btn.classList.remove("active")
         );
 
 
@@ -2497,7 +2743,11 @@ async function markLessonComplete(){
         await supabaseClient.auth.getSession();
 
 
-    if(!session) return;
+    if(!session){
+
+        return;
+
+    }
 
 
     const { error } =
@@ -2551,9 +2801,19 @@ document.addEventListener(
     "DOMContentLoaded",
     async function(){
 
-        await checkSession();
+        const loggedIn =
+            await checkSession();
 
-        renderQuestions();
+
+        if(!loggedIn){
+
+            return;
+
+        }
+
+
+        await renderQuestions();
+
 
         await markLessonComplete();
 
