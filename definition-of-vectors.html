@@ -16,6 +16,486 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+   /* =========================================================
+   EQUAL & OPPOSITE VECTORS
+   INTERACTIVE EXPLORER
+========================================================= */
+
+.equal-opposite-intro{
+    max-width:820px;
+    margin:0 0 28px;
+}
+
+.equal-opposite-intro p{
+    color:#625e69;
+    line-height:1.8;
+    font-size:1rem;
+}
+
+
+/* =========================================================
+   INTERACTIVE EXPLORER
+========================================================= */
+
+.vector-explorer{
+    margin:35px 0;
+    background:#fff;
+    border:1px solid #e7e2ec;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 12px 35px rgba(35,25,50,.04);
+}
+
+.vector-explorer-heading{
+    padding:30px 32px 8px;
+}
+
+.vector-explorer-kicker{
+    font-size:.72rem;
+    font-weight:800;
+    letter-spacing:1.7px;
+    color:#7c3aed;
+    text-transform:uppercase;
+    margin-bottom:8px;
+}
+
+.vector-explorer-heading h3{
+    margin:0 0 9px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:1.65rem;
+    color:#17151d;
+}
+
+.vector-explorer-heading p{
+    margin:0;
+
+    max-width:700px;
+
+    color:#625e69;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.vector-explorer-controls{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+
+    padding:20px 32px 18px;
+}
+
+.vector-mode-btn{
+    border:1px solid #e7e2ec;
+
+    background:#fff;
+    color:#17151d;
+
+    border-radius:12px;
+
+    padding:11px 17px;
+
+    font-family:"DM Sans",sans-serif;
+    font-size:.92rem;
+    font-weight:750;
+
+    cursor:pointer;
+
+    min-height:44px;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.vector-mode-btn:hover{
+    border-color:#b9a4e8;
+    transform:translateY(-1px);
+}
+
+.vector-mode-btn.active{
+    background:#17151d;
+    color:#fff;
+    border-color:#17151d;
+}
+
+
+/* =========================================================
+   DIAGRAM
+========================================================= */
+
+.vector-explorer-stage{
+    border-top:1px solid #e7e2ec;
+}
+
+.vector-explorer-stage svg{
+    display:block;
+
+    width:100%;
+    height:auto;
+
+    min-height:260px;
+
+    background:#fff;
+}
+
+
+/* Grid */
+
+.vector-explorer-grid{
+    stroke:#eeeaf2;
+    stroke-width:1;
+}
+
+.vector-explorer-axis{
+    stroke:#d8d2df;
+    stroke-width:1.5;
+}
+
+.vector-explorer-guide{
+    stroke:#cfc8d8;
+    stroke-width:2;
+
+    stroke-dasharray:6 7;
+}
+
+
+/* Vector A */
+
+.vector-explorer-a{
+    stroke:#7c3aed;
+    stroke-width:7;
+
+    stroke-linecap:round;
+
+    transition:
+        x1 .45s ease,
+        x2 .45s ease,
+        y1 .45s ease,
+        y2 .45s ease;
+}
+
+
+/* Vector B */
+
+.vector-explorer-b{
+    stroke:#17151d;
+    stroke-width:7;
+
+    stroke-linecap:round;
+
+    transition:
+        x1 .45s ease,
+        x2 .45s ease,
+        y1 .45s ease,
+        y2 .45s ease,
+        opacity .35s ease;
+}
+
+
+/* Arrowheads */
+
+.vector-explorer-arrow-purple{
+    fill:#7c3aed;
+}
+
+.vector-explorer-arrow-black{
+    fill:#17151d;
+}
+
+
+/* Labels */
+
+.vector-explorer-label{
+    font-family:"DM Sans",sans-serif;
+
+    font-size:18px;
+    font-weight:800;
+
+    fill:#17151d;
+}
+
+.vector-explorer-label-purple{
+    fill:#7c3aed;
+}
+
+.vector-explorer-metric{
+    font-family:"DM Sans",sans-serif;
+
+    font-size:14px;
+
+    fill:#625e69;
+}
+
+
+/* =========================================================
+   EXPLANATION PANEL
+========================================================= */
+
+.vector-explorer-info{
+    padding:20px 22px 22px;
+
+    border-top:1px solid #e7e2ec;
+
+    background:#faf9fc;
+}
+
+.vector-explorer-info h4{
+    margin:0 0 7px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:1.25rem;
+
+    color:#17151d;
+}
+
+.vector-explorer-info p{
+    margin:0;
+
+    color:#625e69;
+
+    line-height:1.7;
+}
+
+
+/* Formula */
+
+.vector-explorer-equation{
+    margin-top:14px;
+
+    padding:13px 16px;
+
+    background:#111015;
+
+    color:#fff;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-size:1.08rem;
+    font-weight:700;
+}
+
+
+/* Remember box */
+
+.vector-explorer-note{
+    margin-top:14px;
+
+    padding:14px 16px;
+
+    border-left:4px solid #7c3aed;
+
+    background:#f0ecff;
+
+    border-radius:10px;
+
+    color:#514b5e;
+
+    line-height:1.55;
+}
+
+.vector-explorer-note strong{
+    color:#4c1d95;
+}
+
+
+/* =========================================================
+   RELATIONSHIP CARDS
+========================================================= */
+
+.equal-opposite-relationships{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+    margin:30px 0;
+}
+
+.equal-opposite-relationship-card{
+    display:grid;
+
+    grid-template-columns:auto 1fr;
+
+    gap:18px;
+
+    align-items:start;
+
+    background:#fff;
+
+    border:1px solid #e8e4ed;
+
+    border-radius:18px;
+
+    padding:28px 30px;
+
+    box-shadow:0 12px 35px rgba(35,25,50,.04);
+}
+
+.equal-opposite-symbol{
+    width:44px;
+    height:44px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:12px;
+
+    background:#f0ecff;
+
+    color:#7c3aed;
+
+    font-size:1.4rem;
+    font-weight:800;
+}
+
+.opposite-symbol{
+    font-size:1.2rem;
+}
+
+.equal-opposite-relationship-card h3{
+    margin:0 0 9px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:1.35rem;
+}
+
+.equal-opposite-relationship-card p{
+    margin:0;
+
+    color:#625e69;
+
+    line-height:1.7;
+}
+
+.equal-opposite-relationship-card strong{
+    color:#24202a;
+}
+
+.equal-opposite-formula{
+    margin-top:18px;
+
+    padding:15px;
+
+    background:#121016;
+
+    color:#fff;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    overflow-x:auto;
+}
+
+
+/* =========================================================
+   VECTOR AND ITS NEGATIVE
+========================================================= */
+
+.equal-opposite-concept{
+    background:#fff;
+
+    border:1px solid #e7e2ec;
+
+    border-radius:20px;
+
+    padding:30px 32px;
+
+    margin-top:28px;
+}
+
+.equal-opposite-concept h3{
+    margin:0 0 10px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:1.5rem;
+}
+
+.equal-opposite-concept > p{
+    max-width:780px;
+
+    color:#625e69;
+
+    line-height:1.75;
+}
+
+.equal-opposite-final-formula{
+    margin-top:25px;
+
+    padding:22px;
+
+    background:#121016;
+
+    color:#fff;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    font-size:1.05rem;
+
+    overflow-x:auto;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:850px){
+
+    .equal-opposite-relationships{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .vector-explorer-heading{
+        padding:25px 22px 8px;
+    }
+
+    .vector-explorer-controls{
+        padding:18px 22px;
+    }
+
+    .vector-explorer-stage svg{
+        min-height:230px;
+    }
+
+    .vector-explorer-label{
+        font-size:15px;
+    }
+
+    .vector-explorer-metric{
+        font-size:12px;
+    }
+
+    .equal-opposite-relationship-card{
+        padding:24px;
+    }
+
+    .equal-opposite-concept{
+        padding:24px;
+    }
+
+}
 
 /* =========================================================
    GLOBAL
@@ -2204,250 +2684,33 @@ a:focus-visible{
 }
 
 </style>
+   <script>
+window.MathJax = {
+    tex: {
+        inlineMath: [
+            ['\\(', '\\)']
+        ],
+        displayMath: [
+            ['\\[', '\\]']
+        ]
+    },
+
+    svg: {
+        fontCache: 'global'
+    }
+};
+</script>
+
+<script
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
 
 </head>
 
 
 <body>
-/* =========================================================
-   EQUAL & OPPOSITE VECTORS
-========================================================= */
 
-.info-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:22px;
-    margin:35px 0;
-}
-
-.info-card{
-    background:#fff;
-    border:1px solid #e7e2ec;
-    border-radius:20px;
-    padding:28px;
-}
-
-.info-icon{
-    width:44px;
-    height:44px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:12px;
-
-    background:#f0ecff;
-    color:#7c3aed;
-
-    font-size:1.35rem;
-    font-weight:700;
-
-    margin-bottom:18px;
-}
-
-.info-icon.opposite{
-    font-size:1.15rem;
-}
-
-.info-card h3{
-    margin:0 0 10px;
-
-    font-family:"Playfair Display",serif;
-    font-size:1.45rem;
-}
-
-.info-card p{
-    color:#66636d;
-    margin:0;
-}
-
-.math-box{
-    margin:20px 0;
-
-    padding:17px 20px;
-
-    background:#f7f4ff;
-
-    border:1px solid #e8e0ff;
-
-    border-radius:14px;
-
-    text-align:center;
-
-    color:#3b1c77;
-
-    overflow-x:auto;
-}
-
-.small-note{
-    font-size:.88rem;
-}
-
-
-/* A AND -A */
-
-.concept-box{
-    background:#fff;
-
-    border:1px solid #e7e2ec;
-
-    border-radius:22px;
-
-    padding:32px;
-
-    margin-top:28px;
-}
-
-.concept-title{
-    font-family:"Playfair Display",serif;
-
-    font-size:1.55rem;
-
-    margin-bottom:10px;
-}
-
-.concept-box > p{
-    color:#66636d;
-
-    max-width:760px;
-}
-
-
-/* VECTOR COMPARISON */
-
-.vector-comparison{
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:35px;
-
-    margin:35px 0 25px;
-}
-
-.vector-item{
-    text-align:center;
-}
-
-.vector-label{
-    font-size:1.15rem;
-    font-weight:700;
-
-    color:#7c3aed;
-
-    margin-bottom:15px;
-}
-
-.vector-line{
-    position:relative;
-
-    height:6px;
-
-    background:#17151d;
-
-    border-radius:10px;
-
-    width:80%;
-
-    margin:auto;
-}
-
-.vector-line span{
-    position:absolute;
-
-    width:0;
-    height:0;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-    border-top:8px solid transparent;
-    border-bottom:8px solid transparent;
-}
-
-.vector-line.right span{
-    right:-2px;
-
-    border-left:13px solid #7c3aed;
-}
-
-.vector-line.left span{
-    left:-2px;
-
-    border-right:13px solid #17151d;
-}
-
-.vector-caption{
-    margin-top:12px;
-
-    color:#77727f;
-
-    font-size:.85rem;
-}
-
-
-/* KEY IDEA */
-
-.key-idea{
-    display:flex;
-
-    align-items:flex-start;
-
-    gap:16px;
-
-    margin-top:28px;
-
-    padding:20px 22px;
-
-    background:#f0ecff;
-
-    border:1px solid #ddd1ff;
-
-    border-radius:16px;
-}
-
-.key-icon{
-    width:38px;
-    height:38px;
-
-    flex:none;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:50%;
-
-    background:#7c3aed;
-
-    color:white;
-
-    font-weight:800;
-}
-
-.key-idea strong{
-    color:#4c1d95;
-}
-
-.key-idea p{
-    margin:4px 0 0;
-
-    color:#5f5870;
-}
-
-
-@media(max-width:700px){
-
-    .info-grid,
-    .vector-comparison{
-        grid-template-columns:1fr;
-    }
-
-    .concept-box{
-        padding:24px;
-    }
-
-}
 
 <!-- =====================================================
      NAVIGATION
@@ -3788,148 +4051,388 @@ a:focus-visible{
      PART 4 — EQUAL AND OPPOSITE VECTORS
 ========================================================= -->
 
-<section class="lesson-section">
+<section class="part">
 
-    <div class="section-label">
-        PART 04
+    <div class="part-header">
+
+        <div class="part-number">
+            04
+        </div>
+
+        <div>
+            <h2>
+                Equal and opposite vectors.
+            </h2>
+
+            <p>
+                Vectors can be compared by looking at their magnitude
+                and direction.
+            </p>
+        </div>
+
     </div>
 
-    <h2>
-        Equal and Opposite Vectors
-    </h2>
 
-    <p class="section-intro">
-        Vectors can be compared by looking at their magnitude and
-        direction. Two important relationships are equal vectors
-        and opposite vectors.
-    </p>
+    <div class="equal-opposite-intro">
+
+        <p>
+            Two vectors may have the same magnitude and direction,
+            making them equal, or the same magnitude but opposite
+            directions, making them opposite vectors.
+        </p>
+
+    </div>
 
 
-    <!-- EQUAL VECTORS -->
+    <!-- =====================================================
+         INTERACTIVE VECTOR EXPLORER
+    ===================================================== -->
 
-    <div class="info-grid">
+    <div class="vector-explorer">
 
-        <div class="info-card">
+        <div class="vector-explorer-heading">
 
-            <div class="info-icon">
+            <div class="vector-explorer-kicker">
+                INTERACTIVE EXPLORER
+            </div>
+
+            <h3>
+                Equal and opposite vectors.
+            </h3>
+
+            <p>
+                Change the relationship below and watch how magnitude
+                and direction determine whether two vectors are equal
+                or opposite.
+            </p>
+
+        </div>
+
+
+        <!-- MODE BUTTONS -->
+
+        <div
+            class="vector-explorer-controls"
+            role="group"
+            aria-label="Choose vector relationship"
+        >
+
+            <button
+                type="button"
+                class="vector-mode-btn active"
+                data-vector-mode="equal"
+            >
+                Equal vectors
+            </button>
+
+            <button
+                type="button"
+                class="vector-mode-btn"
+                data-vector-mode="opposite"
+            >
+                Opposite vectors
+            </button>
+
+        </div>
+
+
+        <!-- DIAGRAM -->
+
+        <div class="vector-explorer-stage">
+
+            <svg
+                viewBox="0 0 760 390"
+                role="img"
+                aria-label="Interactive diagram comparing equal and opposite vectors"
+            >
+
+                <defs>
+
+                    <!-- Purple arrow -->
+
+                    <marker
+                        id="vectorExplorerPurpleArrow"
+                        viewBox="0 0 10 10"
+                        refX="8"
+                        refY="5"
+                        markerWidth="7"
+                        markerHeight="7"
+                        orient="auto-start-reverse"
+                    >
+
+                        <path
+                            d="M 0 0 L 10 5 L 0 10 z"
+                            class="vector-explorer-arrow-purple"
+                        />
+
+                    </marker>
+
+
+                    <!-- Black arrow -->
+
+                    <marker
+                        id="vectorExplorerBlackArrow"
+                        viewBox="0 0 10 10"
+                        refX="8"
+                        refY="5"
+                        markerWidth="7"
+                        markerHeight="7"
+                        orient="auto-start-reverse"
+                    >
+
+                        <path
+                            d="M 0 0 L 10 5 L 0 10 z"
+                            class="vector-explorer-arrow-black"
+                        />
+
+                    </marker>
+
+                </defs>
+
+
+                <!-- Background guide lines -->
+
+                <line
+                    x1="80"
+                    y1="195"
+                    x2="680"
+                    y2="195"
+                    class="vector-explorer-axis"
+                />
+
+                <line
+                    x1="80"
+                    y1="105"
+                    x2="680"
+                    y2="105"
+                    class="vector-explorer-grid"
+                />
+
+                <line
+                    x1="80"
+                    y1="285"
+                    x2="680"
+                    y2="285"
+                    class="vector-explorer-grid"
+                />
+
+
+                <!-- Magnitude guide -->
+
+                <line
+                    x1="210"
+                    y1="120"
+                    x2="550"
+                    y2="120"
+                    class="vector-explorer-guide"
+                />
+
+
+                <!-- Vector a -->
+
+                <line
+                    id="vectorExplorerA"
+                    x1="210"
+                    y1="120"
+                    x2="550"
+                    y2="120"
+                    class="vector-explorer-a"
+                    marker-end="url(#vectorExplorerPurpleArrow)"
+                />
+
+
+                <!-- Vector b -->
+
+                <line
+                    id="vectorExplorerB"
+                    x1="210"
+                    y1="270"
+                    x2="550"
+                    y2="270"
+                    class="vector-explorer-b"
+                    marker-end="url(#vectorExplorerBlackArrow)"
+                />
+
+
+                <!-- Labels -->
+
+                <text
+                    x="380"
+                    y="88"
+                    text-anchor="middle"
+                    class="vector-explorer-label vector-explorer-label-purple"
+                >
+                    a
+                </text>
+
+
+                <text
+                    id="vectorExplorerBLabel"
+                    x="380"
+                    y="320"
+                    text-anchor="middle"
+                    class="vector-explorer-label"
+                >
+                    b
+                </text>
+
+
+                <!-- Explanatory labels -->
+
+                <text
+                    x="380"
+                    y="150"
+                    text-anchor="middle"
+                    class="vector-explorer-metric"
+                >
+                    same magnitude
+                </text>
+
+
+                <text
+                    id="vectorExplorerDirection"
+                    x="380"
+                    y="350"
+                    text-anchor="middle"
+                    class="vector-explorer-metric"
+                >
+                    same direction
+                </text>
+
+            </svg>
+
+
+            <!-- Explanation -->
+
+            <div
+                class="vector-explorer-info"
+                aria-live="polite"
+            >
+
+                <h4 id="vectorExplorerTitle">
+                    Equal vectors
+                </h4>
+
+                <p id="vectorExplorerDescription">
+                    The two vectors have the same magnitude and point
+                    in the same direction. Their positions on the
+                    diagram do not matter.
+                </p>
+
+
+                <div
+                    class="vector-explorer-equation"
+                    id="vectorExplorerEquation"
+                >
+                    a = b
+                </div>
+
+
+                <div
+                    class="vector-explorer-note"
+                    id="vectorExplorerNote"
+                >
+
+                    <strong>
+                        Remember:
+                    </strong>
+
+                    Equal vectors must have both the same magnitude
+                    and the same direction.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         KEY RELATIONSHIPS
+    ===================================================== -->
+
+    <div class="equal-opposite-relationships">
+
+        <div class="equal-opposite-relationship-card">
+
+            <div class="equal-opposite-symbol">
                 =
             </div>
 
-            <h3>
-                Equal vectors
-            </h3>
+            <div>
 
-            <p>
-                Two vectors are equal when they have the
-                <strong>same magnitude</strong> and the
-                <strong>same direction</strong>.
-            </p>
+                <h3>
+                    Equal vectors
+                </h3>
 
-            <div class="math-box">
+                <p>
+                    Two vectors are equal when they have the
+                    <strong>same magnitude</strong> and the
+                    <strong>same direction</strong>.
+                </p>
 
-                \[
-                \mathbf{a}=\mathbf{b}
-                \]
+                <div class="equal-opposite-formula">
+                    \[
+                    \mathbf{a}=\mathbf{b}
+                    \]
+                </div>
 
             </div>
-
-            <p class="small-note">
-                They do not have to be drawn in the same position.
-            </p>
 
         </div>
 
 
-        <div class="info-card">
+        <div class="equal-opposite-relationship-card">
 
-            <div class="info-icon opposite">
-                ↔
+            <div class="equal-opposite-symbol opposite-symbol">
+                −
             </div>
 
-            <h3>
-                Opposite vectors
-            </h3>
+            <div>
 
-            <p>
-                Two vectors are opposite when they have the
-                <strong>same magnitude</strong> but
-                <strong>opposite directions</strong>.
-            </p>
+                <h3>
+                    Opposite vectors
+                </h3>
 
-            <div class="math-box">
+                <p>
+                    Two vectors are opposite when they have the
+                    <strong>same magnitude</strong> but
+                    <strong>opposite directions</strong>.
+                </p>
 
-                \[
-                \mathbf{b}=-\mathbf{a}
-                \]
+                <div class="equal-opposite-formula">
+                    \[
+                    \mathbf{b}=-\mathbf{a}
+                    \]
+                </div>
 
             </div>
-
-            <p class="small-note">
-                The negative sign reverses the direction of the vector.
-            </p>
 
         </div>
 
     </div>
 
 
-    <!-- A AND -A -->
+    <!-- =====================================================
+         VECTOR AND ITS NEGATIVE
+    ===================================================== -->
 
-    <div class="concept-box">
+    <div class="equal-opposite-concept">
 
-        <div class="concept-title">
-            A vector and its negative
-        </div>
+        <h3>
+            A vector and its negative.
+        </h3>
 
         <p>
-            If
-            \(\mathbf{a}\)
-            points in one direction, then
-            \(-\mathbf{a}\)
-            has exactly the same magnitude but points in the
-            opposite direction.
+            If \(\mathbf{a}\) points in one direction, then
+            \(-\mathbf{a}\) has exactly the same magnitude but
+            points in the opposite direction.
         </p>
 
 
-        <div class="vector-comparison">
-
-            <div class="vector-item">
-
-                <div class="vector-label">
-                    \(\mathbf{a}\)
-                </div>
-
-                <div class="vector-line right">
-                    <span></span>
-                </div>
-
-                <div class="vector-caption">
-                    Same magnitude
-                </div>
-
-            </div>
-
-
-            <div class="vector-item">
-
-                <div class="vector-label">
-                    \(-\mathbf{a}\)
-                </div>
-
-                <div class="vector-line left">
-                    <span></span>
-                </div>
-
-                <div class="vector-caption">
-                    Opposite direction
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="math-box">
+        <div class="equal-opposite-final-formula">
 
             \[
             |\mathbf{a}|=|-\mathbf{a}|
@@ -3938,30 +4441,6 @@ a:focus-visible{
             \[
             \mathbf{a}+(-\mathbf{a})=\mathbf{0}
             \]
-
-        </div>
-
-    </div>
-
-
-    <!-- KEY IDEA -->
-
-    <div class="key-idea">
-
-        <div class="key-icon">
-            ✓
-        </div>
-
-        <div>
-
-            <strong>
-                Key idea
-            </strong>
-
-            <p>
-                Changing the sign of a vector does not change its
-                magnitude. It reverses its direction.
-            </p>
 
         </div>
 
