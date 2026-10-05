@@ -12,32 +12,32 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
     rel="stylesheet"
 >
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<!-- =========================================================
+     MATHJAX
+========================================================= -->
+
 <script>
 
 window.MathJax = {
 
-    tex: {
-
-        inlineMath: [
-            ['\\(', '\\)']
+    tex:{
+        inlineMath:[
+            ['\\(','\\)']
         ],
 
-        displayMath: [
-            ['\\[', '\\]']
+        displayMath:[
+            ['\\[','\\]']
         ]
-
     },
 
-    svg: {
-
-        fontCache: 'global'
-
+    svg:{
+        fontCache:'global'
     }
 
 };
@@ -46,52 +46,40 @@ window.MathJax = {
 
 <script
     async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-</script>
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+></script>
 
 
 <style>
 
 /* =========================================================
-   RESET
+   GLOBAL
 ========================================================= */
 
 *{
-
     box-sizing:border-box;
-
     margin:0;
-
     padding:0;
-
 }
-
 
 html{
-
     scroll-behavior:smooth;
-
 }
-
 
 body{
-
-    font-family:"DM Sans", sans-serif;
-
-    background:#f7f6f2;
-
-    color:#111;
-
-    line-height:1.65;
-
+    font-family:"DM Sans",sans-serif;
+    background:#f8f7fb;
+    color:#17151d;
+    line-height:1.7;
 }
 
-
-button,
 a{
+    color:inherit;
+    text-decoration:none;
+}
 
+button{
     font-family:inherit;
-
 }
 
 
@@ -99,107 +87,101 @@ a{
    NAVIGATION
 ========================================================= */
 
-nav{
+.navbar{
 
-    height:82px;
+    position:sticky;
+    top:0;
+
+    z-index:1000;
+
+    height:72px;
+
+    background:#09090b;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
     padding:0 7%;
 
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    border-bottom:1px solid #ddd;
-
-    background:#f7f6f2;
-
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
-
 
 .logo{
 
-    font-family:"Playfair Display", serif;
+    font-family:"Playfair Display",serif;
 
-    font-size:28px;
+    font-size:1.55rem;
 
     font-weight:700;
 
-    letter-spacing:-1px;
-
+    letter-spacing:.2px;
 }
-
 
 .logo span{
-
-    color:#7c3aed;
-
+    color:#a78bfa;
 }
 
-
-.nav-links{
+.nav-right{
 
     display:flex;
 
     align-items:center;
 
-    gap:20px;
-
+    gap:22px;
 }
 
+.back-link{
 
-.home-link{
+    display:flex;
 
-    text-decoration:none;
+    align-items:center;
 
-    color:#111;
+    gap:8px;
 
-    font-size:11px;
+    color:#cfcbd8;
 
-    font-weight:700;
+    font-size:.9rem;
 
-    letter-spacing:.4px;
+    font-weight:600;
 
     transition:.25s ease;
-
 }
 
-
-.home-link:hover{
-
-    color:#7c3aed;
-
-}
-
-
-.logout{
-
-    border:0;
-
-    background:#111;
+.back-link:hover{
 
     color:#fff;
 
-    padding:11px 17px;
+    transform:translateX(-2px);
+}
 
-    font-size:10px;
+.logout-btn{
 
-    font-weight:700;
+    border:1px solid rgba(255,255,255,.16);
 
-    letter-spacing:.5px;
+    background:rgba(255,255,255,.04);
+
+    color:#fff;
+
+    padding:9px 17px;
+
+    border-radius:9px;
 
     cursor:pointer;
 
-    transition:.25s ease;
+    font-size:.82rem;
 
+    font-weight:600;
+
+    transition:.25s ease;
 }
 
+.logout-btn:hover{
 
-.logout:hover{
+    border-color:#a78bfa;
 
-    background:#7c3aed;
-
+    background:rgba(167,139,250,.1);
 }
 
 
@@ -213,145 +195,183 @@ nav{
 
     overflow:hidden;
 
-    background:#111;
+    min-height:460px;
+
+    background:#09090b;
 
     color:#fff;
-
-    padding:92px 7% 72px;
-
-    min-height:390px;
-
-}
-
-
-.hero-content{
-
-    position:relative;
-
-    z-index:3;
-
-    max-width:850px;
-
-}
-
-
-.hero-label{
-
-    color:#a78bfa;
-
-    font-size:11px;
-
-    font-weight:700;
-
-    letter-spacing:3px;
-
-    margin-bottom:18px;
-
-}
-
-
-.hero h1{
-
-    font-family:"Playfair Display", serif;
-
-    font-size:clamp(48px, 7vw, 82px);
-
-    line-height:1;
-
-    letter-spacing:-4px;
-
-}
-
-
-.hero p{
-
-    max-width:680px;
-
-    margin-top:22px;
-
-    color:#aaa;
-
-    font-size:15px;
-
-    line-height:1.8;
-
-}
-
-
-/* =========================================================
-   HERO DECORATION
-========================================================= */
-
-.hero-decoration{
-
-    position:absolute;
-
-    right:5%;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-    width:330px;
-
-    height:270px;
-
-    background:#7c3aed;
 
     display:flex;
 
     align-items:center;
 
-    justify-content:center;
+    padding:85px 7% 95px;
+}
 
-    overflow:hidden;
+.hero-content{
 
+    position:relative;
+
+    z-index:5;
+
+    max-width:900px;
+}
+
+.hero-label{
+
+    display:inline-block;
+
+    color:#c4b5fd;
+
+    font-size:.78rem;
+
+    font-weight:700;
+
+    letter-spacing:2.2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:22px;
+}
+
+.hero h1{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(3rem,7vw,5.6rem);
+
+    line-height:1.03;
+
+    letter-spacing:-2px;
+
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#a78bfa;
+}
+
+.hero p{
+
+    max-width:760px;
+
+    color:#b9b4c3;
+
+    font-size:1.05rem;
+
+    line-height:1.85;
 }
 
 
-.hero-decoration svg{
+/* =========================================================
+   HERO DECORATIONS
+========================================================= */
 
-    width:245px;
+.hero-grid{
 
-    height:245px;
+    position:absolute;
 
-    overflow:visible;
+    inset:0;
 
+    opacity:.18;
+
+    background-image:
+
+        linear-gradient(
+            rgba(167,139,250,.18) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(167,139,250,.18) 1px,
+            transparent 1px
+        );
+
+    background-size:55px 55px;
+
+    mask-image:linear-gradient(
+        to right,
+        transparent,
+        black 30%,
+        black 70%,
+        transparent
+    );
 }
 
+.hero-ring{
 
-.hero-decoration .v-letter{
+    position:absolute;
 
-    font-family:"Playfair Display", serif;
+    width:520px;
+    height:520px;
 
-    font-size:175px;
+    border:1px solid rgba(167,139,250,.18);
 
-    font-weight:500;
+    border-radius:50%;
 
-    fill:#111;
-
+    right:-150px;
+    top:-160px;
 }
 
+.hero-ring::before,
+.hero-ring::after{
 
-.hero-decoration .vector-arrow{
+    content:"";
 
-    stroke:#111;
+    position:absolute;
 
-    stroke-width:8;
+    border:1px solid rgba(167,139,250,.12);
 
-    stroke-linecap:square;
-
-    stroke-linejoin:miter;
-
-    fill:none;
-
+    border-radius:50%;
 }
 
+.hero-ring::before{
+    inset:65px;
+}
 
-.hero-decoration .arrow-head{
+.hero-ring::after{
+    inset:130px;
+}
 
-    fill:#111;
+.hero-vector{
 
+    position:absolute;
+
+    width:280px;
+    height:2px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #a78bfa,
+        transparent
+    );
+
+    right:8%;
+    bottom:95px;
+
+    transform:rotate(-25deg);
+
+    opacity:.55;
+}
+
+.hero-vector::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border-left:11px solid #a78bfa;
+
+    border-top:6px solid transparent;
+
+    border-bottom:6px solid transparent;
 }
 
 
@@ -361,64 +381,11 @@ nav{
 
 main{
 
-    padding:88px 7% 110px;
+    width:min(1120px,86%);
 
-}
+    margin:auto;
 
-
-.section-heading{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:flex-end;
-
-    gap:35px;
-
-    margin-bottom:46px;
-
-}
-
-
-.section-label{
-
-    color:#7c3aed;
-
-    font-size:10px;
-
-    font-weight:700;
-
-    letter-spacing:2.5px;
-
-    margin-bottom:12px;
-
-}
-
-
-.section-heading h2{
-
-    font-family:"Playfair Display", serif;
-
-    font-size:clamp(38px, 5vw, 60px);
-
-    line-height:1;
-
-    letter-spacing:-2.5px;
-
-}
-
-
-.section-heading p{
-
-    max-width:410px;
-
-    color:#666;
-
-    font-size:13px;
-
-    line-height:1.8;
-
+    padding:75px 0 105px;
 }
 
 
@@ -426,127 +393,182 @@ main{
    KEEP IN MIND
 ========================================================= */
 
-.keep-in-mind{
-
-    margin-bottom:50px;
-
-    background:#111;
-
-    color:#fff;
-
-    padding:32px;
+.keep-card{
 
     position:relative;
 
     overflow:hidden;
 
+    background:#fff;
+
+    border:1px solid #e5e0eb;
+
+    border-left:5px solid #7c3aed;
+
+    border-radius:18px;
+
+    padding:27px 30px;
+
+    margin-bottom:48px;
+
+    box-shadow:0 12px 35px rgba(35,25,50,.045);
 }
 
-
-.keep-in-mind::after{
+.keep-card::after{
 
     content:"";
 
     position:absolute;
 
-    width:180px;
+    width:130px;
+    height:130px;
 
-    height:180px;
-
-    border:1px solid rgba(167,139,250,.18);
+    border:1px solid rgba(124,58,237,.1);
 
     border-radius:50%;
 
-    right:-65px;
-
-    top:-65px;
-
+    right:-55px;
+    top:-55px;
 }
 
-
-.keep-title{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    margin-bottom:22px;
+.keep-label{
 
     position:relative;
 
     z-index:2;
 
+    color:#7c3aed;
+
+    font-size:.72rem;
+
+    font-weight:800;
+
+    letter-spacing:1.8px;
+
+    text-transform:uppercase;
+
+    margin-bottom:7px;
 }
 
-
-.keep-icon{
-
-    width:40px;
-
-    height:40px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#7c3aed;
-
-    color:#fff;
-
-    font-weight:700;
-
-}
-
-
-.keep-title h2{
-
-    font-family:"Playfair Display", serif;
-
-    font-size:25px;
-
-    font-weight:600;
-
-}
-
-
-.keep-list{
-
-    padding-left:22px;
-
-    color:#c9c9c9;
+.keep-card p{
 
     position:relative;
 
     z-index:2;
 
+    color:#625e69;
+
+    font-size:.94rem;
 }
 
-
-.keep-list li{
-
-    margin:8px 0;
-
-    font-size:13px;
-
-}
-
-
-.keep-list strong{
-
-    color:#fff;
-
+.keep-card strong{
+    color:#25212b;
 }
 
 
 /* =========================================================
-   FILTER
+   QUESTION HEADER
 ========================================================= */
 
-.filter-bar{
+.questions-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+
+    gap:30px;
+
+    margin-bottom:32px;
+}
+
+.questions-header-left{
+    max-width:700px;
+}
+
+.eyebrow{
+
+    color:#7c3aed;
+
+    font-size:.75rem;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:10px;
+}
+
+.questions-header h2{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(2rem,4vw,3rem);
+
+    line-height:1.2;
+
+    margin-bottom:9px;
+}
+
+.questions-header p{
+
+    color:#6c6672;
+
+    font-size:.96rem;
+}
+
+.score-card{
+
+    flex:none;
+
+    min-width:155px;
+
+    padding:19px 21px;
+
+    background:#17131f;
+
+    color:#fff;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    box-shadow:0 12px 30px rgba(23,19,31,.12);
+}
+
+.score-label{
+
+    color:#c4b5fd;
+
+    font-size:.68rem;
+
+    font-weight:800;
+
+    letter-spacing:1.4px;
+
+    text-transform:uppercase;
+
+    margin-bottom:3px;
+}
+
+.score-number{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:1.9rem;
+
+    line-height:1.2;
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.filters{
 
     display:flex;
 
@@ -554,51 +576,44 @@ main{
 
     gap:9px;
 
-    margin-bottom:32px;
-
+    margin-bottom:25px;
 }
-
 
 .filter-btn{
 
-    border:1px solid #ddd;
+    border:1px solid #ddd7e5;
 
     background:#fff;
 
-    color:#333;
+    color:#5c5664;
 
-    padding:10px 15px;
+    padding:9px 15px;
 
-    font-size:10px;
-
-    font-weight:700;
-
-    letter-spacing:.5px;
+    border-radius:999px;
 
     cursor:pointer;
 
-    transition:.25s ease;
+    font-size:.78rem;
 
+    font-weight:700;
+
+    transition:.2s ease;
 }
-
 
 .filter-btn:hover{
 
-    border-color:#7c3aed;
+    border-color:#a78bfa;
 
-    color:#7c3aed;
-
+    color:#6d28d9;
 }
-
 
 .filter-btn.active{
 
-    background:#7c3aed;
+    background:#17131f;
+
+    border-color:#17131f;
 
     color:#fff;
-
-    border-color:#7c3aed;
-
 }
 
 
@@ -608,10 +623,8 @@ main{
 
 .progress-wrap{
 
-    margin-bottom:30px;
-
+    margin-bottom:35px;
 }
-
 
 .progress-top{
 
@@ -623,38 +636,41 @@ main{
 
     margin-bottom:9px;
 
-    color:#666;
+    color:#716b78;
 
-    font-size:11px;
+    font-size:.76rem;
 
     font-weight:700;
-
 }
 
+.progress-track{
+
+    width:100%;
+
+    height:8px;
+
+    background:#e7e2ec;
+
+    border-radius:999px;
+
+    overflow:hidden;
+}
 
 .progress-bar{
 
-    width:100%;
-
-    height:6px;
-
-    background:#dedbd5;
-
-    overflow:hidden;
-
-}
-
-
-.progress-fill{
+    width:0%;
 
     height:100%;
 
-    width:100%;
+    background:linear-gradient(
+        90deg,
+        #7c3aed,
+        #a78bfa
+    );
 
-    background:#7c3aed;
+    border-radius:999px;
 
-    transition:.3s ease;
-
+    transition:width .4s ease;
 }
 
 
@@ -666,421 +682,915 @@ main{
 
     display:grid;
 
-    gap:18px;
-
+    gap:22px;
 }
-
 
 .question-card{
 
     background:#fff;
 
-    border:1px solid #ddd;
+    border:1px solid #e5e0e9;
 
-    padding:0;
+    border-radius:20px;
 
-    transition:.25s ease;
+    padding:28px 30px;
 
+    box-shadow:0 12px 35px rgba(35,25,50,.04);
+
+    transition:
+
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
 }
-
 
 .question-card:hover{
 
-    box-shadow:0 15px 35px rgba(0,0,0,.06);
-
     transform:translateY(-2px);
 
+    box-shadow:0 18px 42px rgba(35,25,50,.07);
+
+    border-color:#d9d0e6;
 }
 
-
 .question-top{
-
-    padding:26px 28px 20px;
 
     display:flex;
 
     justify-content:space-between;
 
-    align-items:flex-start;
+    align-items:center;
 
-    gap:25px;
+    gap:15px;
 
+    margin-bottom:17px;
 }
-
 
 .question-number{
-
-    color:#7c3aed;
-
-    font-size:10px;
-
-    font-weight:700;
-
-    letter-spacing:2px;
-
-}
-
-
-.question-text{
-
-    font-size:15px;
-
-    font-weight:600;
-
-    line-height:1.7;
-
-    margin-top:8px;
-
-    max-width:850px;
-
-}
-
-
-.level-tag{
-
-    flex:none;
-
-    border:1px solid #ddd;
-
-    padding:6px 10px;
-
-    color:#555;
-
-    font-size:9px;
-
-    font-weight:700;
-
-    letter-spacing:.8px;
-
-}
-
-
-.question-body{
-
-    padding:0 28px 26px;
-
-}
-
-
-.action-row{
-
-    display:flex;
-
-    gap:10px;
-
-    margin-top:5px;
-
-}
-
-
-.action-btn{
-
-    border:0;
-
-    background:#111;
-
-    color:#fff;
-
-    padding:11px 16px;
-
-    font-size:10px;
-
-    font-weight:700;
-
-    letter-spacing:.6px;
-
-    cursor:pointer;
-
-    transition:.25s ease;
-
-}
-
-
-.action-btn:hover{
-
-    background:#7c3aed;
-
-}
-
-
-.answer-box{
-
-    display:none;
-
-    margin-top:22px;
-
-    border-top:1px solid #e3e0db;
-
-    padding-top:20px;
-
-}
-
-
-.answer-box.show{
-
-    display:block;
-
-}
-
-
-.answer-title{
-
-    color:#7c3aed;
-
-    font-size:10px;
-
-    font-weight:700;
-
-    letter-spacing:1.5px;
-
-    margin-bottom:8px;
-
-}
-
-
-.answer{
-
-    background:#f7f6f2;
-
-    border:1px solid #e1ded8;
-
-    padding:14px 17px;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    overflow-x:auto;
-
-}
-
-
-.solution{
-
-    margin-top:18px;
-
-    background:#faf9fc;
-
-    border-left:4px solid #7c3aed;
-
-    padding:17px 18px;
-
-    font-size:14px;
-
-    line-height:1.8;
-
-    overflow-x:auto;
-
-}
-
-
-.solution-title{
-
-    color:#7c3aed;
-
-    font-size:10px;
-
-    font-weight:700;
-
-    letter-spacing:1.5px;
-
-    margin-bottom:10px;
-
-}
-
-
-.solution-line{
-
-    margin-bottom:9px;
-
-}
-
-
-.solution-line:last-child{
-
-    margin-bottom:0;
-
-}
-
-
-/* Make displayed equations breathe */
-
-.solution mjx-container[display="true"]{
-
-    margin:12px 0 !important;
-
-}
-
-
-/* =========================================================
-   EMPTY
-========================================================= */
-
-.empty{
-
-    display:none;
-
-    border:1px dashed #ccc;
-
-    padding:50px;
-
-    text-align:center;
-
-    color:#777;
-
-    font-size:13px;
-
-}
-
-
-/* =========================================================
-   CONGRATULATIONS
-========================================================= */
-
-.congrats{
-
-    margin-top:65px;
-
-    background:#111;
-
-    color:#fff;
-
-    padding:65px 30px;
-
-    text-align:center;
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-
-.congrats-orbit{
-
-    position:absolute;
-
-    width:260px;
-
-    height:260px;
-
-    border:1px solid rgba(167,139,250,.18);
-
-    border-radius:50%;
-
-    left:50%;
-
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-}
-
-
-.congrats-orbit::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:28px;
-
-    border:1px solid rgba(167,139,250,.12);
-
-    border-radius:50%;
-
-}
-
-
-.congrats-content{
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-
-.check{
-
-    width:62px;
-
-    height:62px;
-
-    margin:0 auto 20px;
 
     display:flex;
 
     align-items:center;
 
-    justify-content:center;
-
-    background:#7c3aed;
-
-    color:#fff;
-
-    font-size:25px;
-
+    gap:10px;
 }
 
+.number-box{
 
-.congrats h2{
+    width:39px;
+    height:39px;
 
-    font-family:"Playfair Display", serif;
+    display:flex;
 
-    font-size:40px;
+    align-items:center;
+    justify-content:center;
+
+    background:#17131f;
+
+    color:#c4b5fd;
+
+    border-radius:11px;
+
+    font-size:.78rem;
+
+    font-weight:800;
+}
+
+.level-badge{
+
+    padding:6px 10px;
+
+    border-radius:999px;
+
+    font-size:.65rem;
+
+    font-weight:800;
+
+    letter-spacing:.8px;
+
+    text-transform:uppercase;
+}
+
+.level-foundation{
+
+    background:#f0ecff;
+
+    color:#6d28d9;
+}
+
+.level-developing{
+
+    background:#eee8ff;
+
+    color:#6d28d9;
+}
+
+.level-intermediate{
+
+    background:#e8ddff;
+
+    color:#5b21b6;
+}
+
+.level-advanced{
+
+    background:#e4d7ff;
+
+    color:#4c1d95;
+}
+
+.level-challenge{
+
+    background:#17131f;
+
+    color:#c4b5fd;
+}
+
+.question-text{
+
+    font-size:1.03rem;
 
     font-weight:600;
 
+    line-height:1.7;
+
+    color:#25212b;
+
+    margin-bottom:22px;
+}
+
+.question-text mjx-container{
+    font-size:105% !important;
+}
+
+
+/* =========================================================
+   ANSWER BUTTON
+========================================================= */
+
+.answer-button{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    border:1px solid #ddd6e6;
+
+    background:#faf9fc;
+
+    color:#28232f;
+
+    padding:13px 16px;
+
+    border-radius:11px;
+
+    cursor:pointer;
+
+    font-size:.78rem;
+
+    font-weight:800;
+
+    letter-spacing:.4px;
+
+    transition:.2s ease;
+}
+
+.answer-button:hover{
+
+    background:#f3eff9;
+
+    border-color:#cfc1e7;
+}
+
+.answer-button .arrow{
+
+    font-size:1rem;
+
+    transition:.25s ease;
+}
+
+.answer-button.open .arrow{
+
+    transform:rotate(180deg);
+}
+
+
+/* =========================================================
+   ANSWER AREA
+========================================================= */
+
+.answer-area{
+
+    display:none;
+
+    margin-top:17px;
+
+    animation:answerReveal .35s ease;
+}
+
+.answer-area.show{
+    display:block;
+}
+
+@keyframes answerReveal{
+
+    from{
+        opacity:0;
+        transform:translateY(-5px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =========================================================
+   GREEN ANSWER BOX
+========================================================= */
+
+.answer-box{
+
+    background:#ecfdf3;
+
+    border:1px solid #b7ebca;
+
+    border-left:5px solid #16a34a;
+
+    border-radius:13px;
+
+    padding:17px 19px;
+
     margin-bottom:12px;
-
 }
 
+.answer-label{
 
-.congrats p{
+    display:flex;
 
-    max-width:650px;
+    align-items:center;
 
-    margin:0 auto 25px;
+    gap:8px;
 
-    color:#aaa;
+    color:#15803d;
 
-    font-size:13px;
+    font-size:.68rem;
 
-    line-height:1.8;
+    font-weight:800;
 
+    letter-spacing:1.4px;
+
+    text-transform:uppercase;
+
+    margin-bottom:6px;
 }
 
+.answer-label::before{
 
-.back-btn{
+    content:"✓";
 
-    display:inline-block;
+    width:19px;
+    height:19px;
 
-    background:#7c3aed;
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#16a34a;
 
     color:#fff;
 
-    text-decoration:none;
+    font-size:.65rem;
+}
 
-    padding:12px 18px;
+.answer-text{
 
-    font-size:10px;
+    color:#14532d;
 
     font-weight:700;
 
-    letter-spacing:.7px;
+    line-height:1.7;
+}
 
-    transition:.25s ease;
+
+/* =========================================================
+   PURPLE SOLUTION BOX
+========================================================= */
+
+.solution-box{
+
+    background:#f4f0ff;
+
+    border:1px solid #ddd2fa;
+
+    border-left:5px solid #7c3aed;
+
+    border-radius:13px;
+
+    padding:19px 21px;
+}
+
+.solution-label{
+
+    color:#6d28d9;
+
+    font-size:.68rem;
+
+    font-weight:800;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+    margin-bottom:10px;
+}
+
+.solution-content{
+
+    color:#4e4858;
+
+    font-size:.92rem;
+
+    line-height:1.8;
+}
+
+.solution-step{
+
+    margin-bottom:10px;
+
+    padding-bottom:10px;
+
+    border-bottom:1px solid rgba(124,58,237,.09);
+}
+
+.solution-step:last-child{
+
+    margin-bottom:0;
+
+    padding-bottom:0;
+
+    border-bottom:none;
+}
+
+.solution-content mjx-container{
+
+    font-size:103% !important;
+}
+
+
+/* =========================================================
+   NO RESULTS
+========================================================= */
+
+.no-results{
+
+    padding:50px 25px;
+
+    background:#fff;
+
+    border:1px dashed #d8d1e0;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    color:#746e7b;
+}
+
+
+/* =========================================================
+   COMPLETION
+========================================================= */
+
+.completion{
+
+    position:relative;
+
+    overflow:hidden;
+
+    margin-top:85px;
+
+    padding:72px 30px 68px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(196,181,253,.58),
+            transparent 46%
+        ),
+
+        radial-gradient(
+            circle at 10% 100%,
+            rgba(167,139,250,.18),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fff,
+            #f0ebff
+        );
+
+    border:1px solid #dcd2f7;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    box-shadow:
+        0 20px 60px rgba(92,62,140,.1);
 
 }
 
 
-.back-btn:hover{
+/* =========================================================
+   COMPLETION ORBITS
+========================================================= */
+
+.completion-orbit{
+
+    position:absolute;
+
+    border:1px solid rgba(124,58,237,.14);
+
+    border-radius:50%;
+
+    pointer-events:none;
+}
+
+.orbit-one{
+
+    width:430px;
+    height:430px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    animation:orbitPulse 5s ease-in-out infinite;
+}
+
+.orbit-two{
+
+    width:640px;
+    height:640px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    animation:orbitPulse 7s ease-in-out infinite reverse;
+}
+
+.orbit-three{
+
+    width:790px;
+    height:790px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-color:rgba(124,58,237,.07);
+
+    animation:orbitPulse 9s ease-in-out infinite;
+}
+
+@keyframes orbitPulse{
+
+    0%,100%{
+
+        opacity:.3;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+    }
+
+    50%{
+
+        opacity:.75;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.035);
+    }
+}
+
+
+/* =========================================================
+   COMPLETION PARTICLES
+========================================================= */
+
+.completion-particles{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+}
+
+.completion-particles span{
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#8b5cf6;
+
+    opacity:.38;
+
+    animation:particleFloat 4s ease-in-out infinite;
+}
+
+.completion-particles span:nth-child(1){
+    left:13%;
+    top:28%;
+}
+
+.completion-particles span:nth-child(2){
+    left:83%;
+    top:21%;
+    animation-delay:1s;
+}
+
+.completion-particles span:nth-child(3){
+    left:18%;
+    top:77%;
+    animation-delay:1.7s;
+}
+
+.completion-particles span:nth-child(4){
+    left:81%;
+    top:73%;
+    animation-delay:.7s;
+}
+
+.completion-particles span:nth-child(5){
+    left:31%;
+    top:14%;
+    animation-delay:2.2s;
+}
+
+.completion-particles span:nth-child(6){
+    left:70%;
+    top:82%;
+    animation-delay:1.2s;
+}
+
+.completion-particles span:nth-child(7){
+    left:9%;
+    top:52%;
+    animation-delay:2.7s;
+}
+
+.completion-particles span:nth-child(8){
+    left:91%;
+    top:48%;
+    animation-delay:1.5s;
+}
+
+@keyframes particleFloat{
+
+    0%,100%{
+        transform:translateY(0) scale(1);
+    }
+
+    50%{
+        transform:translateY(-14px) scale(1.45);
+    }
+}
+
+
+/* =========================================================
+   COMPLETION CONTENT
+========================================================= */
+
+.completion-content{
+
+    position:relative;
+
+    z-index:5;
+}
+
+
+/* =========================================================
+   CHECK
+========================================================= */
+
+.completion-check{
+
+    width:92px;
+    height:92px;
+
+    margin:0 auto 25px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+}
+
+.completion-check-ring{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:50%;
+
+    border:3px solid #7c3aed;
+
+    animation:checkRing 1.7s ease-out infinite;
+}
+
+.completion-check-ring-two{
+
+    position:absolute;
+
+    inset:-9px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(124,58,237,.28);
+
+    animation:checkRingTwo 2.2s ease-out infinite;
+}
+
+@keyframes checkRing{
+
+    0%{
+        transform:scale(.78);
+        opacity:.85;
+    }
+
+    70%{
+        transform:scale(1.1);
+        opacity:.08;
+    }
+
+    100%{
+        transform:scale(1.1);
+        opacity:0;
+    }
+}
+
+@keyframes checkRingTwo{
+
+    0%{
+        transform:scale(.85);
+        opacity:.6;
+    }
+
+    100%{
+        transform:scale(1.25);
+        opacity:0;
+    }
+}
+
+.check-circle{
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    background:#7c3aed;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 10px 30px rgba(124,58,237,.28);
+}
+
+.check-circle svg{
+
+    width:33px;
+    height:33px;
+}
+
+
+/* =========================================================
+   COMPLETION TEXT
+========================================================= */
+
+.completion-kicker{
+
+    color:#6d28d9;
+
+    font-size:.7rem;
+
+    font-weight:800;
+
+    letter-spacing:2.2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:9px;
+}
+
+.completion h2{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(2.4rem,5vw,4rem);
+
+    line-height:1.08;
+
+    color:#201827;
+
+    margin-bottom:15px;
+
+    letter-spacing:-1.5px;
+}
+
+.completion h2 span{
+    color:#7c3aed;
+}
+
+.completion-message{
+
+    max-width:680px;
+
+    margin:0 auto;
+
+    color:#625b6d;
+
+    font-size:1rem;
+
+    line-height:1.85;
+}
+
+
+/* =========================================================
+   COMPLETION STATS
+========================================================= */
+
+.completion-stats{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:25px;
+}
+
+.completion-stat{
+
+    min-width:130px;
+
+    padding:12px 17px;
+
+    background:rgba(255,255,255,.78);
+
+    border:1px solid #ded5f2;
+
+    border-radius:13px;
+
+    backdrop-filter:blur(5px);
+}
+
+.completion-stat strong{
+
+    display:block;
+
+    color:#30283b;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:1.2rem;
+}
+
+.completion-stat span{
+
+    display:block;
+
+    color:#756e80;
+
+    font-size:.67rem;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.completion-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:21px;
+
+    padding:8px 14px;
 
     background:#fff;
 
-    color:#111;
+    border:1px solid #ded5f2;
 
+    border-radius:999px;
+
+    color:#5b21b6;
+
+    font-size:.78rem;
+
+    font-weight:700;
+}
+
+.status-dot{
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#16a34a;
+
+    box-shadow:
+        0 0 0 5px rgba(22,163,74,.1);
+}
+
+
+/* =========================================================
+   COMPLETION BUTTON
+========================================================= */
+
+.practice-button{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    margin-top:26px;
+
+    padding:12px 21px;
+
+    border-radius:10px;
+
+    background:#17131f;
+
+    color:#fff;
+
+    font-size:.84rem;
+
+    font-weight:700;
+
+    transition:.25s ease;
+}
+
+.practice-button:hover{
+
+    background:#7c3aed;
+
+    transform:translateY(-2px);
+}
+
+.practice-button span{
+
+    transition:.2s ease;
+}
+
+.practice-button:hover span{
+    transform:translateX(4px);
 }
 
 
@@ -1090,256 +1600,163 @@ main{
 
 footer{
 
-    background:#111;
+    padding:40px 7%;
+
+    background:#09090b;
+
+    color:#77717f;
+
+    text-align:center;
+
+    font-size:.8rem;
+}
+
+footer strong{
 
     color:#fff;
 
-    padding:42px 7%;
+    font-family:"Playfair Display",serif;
 
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
+    font-size:1.05rem;
 }
 
 
-.footer-logo{
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-    font-family:"Playfair Display", serif;
+@media(max-width:850px){
 
-    font-size:24px;
+    .navbar{
+        padding:0 5%;
+    }
 
-    font-weight:600;
+    .hero{
+        padding:75px 7% 80px;
+    }
+
+    .hero-vector{
+        opacity:.25;
+        right:-40px;
+    }
+
+    main{
+
+        width:90%;
+
+        padding-top:60px;
+    }
+
+    .questions-header{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+    }
+
+    .score-card{
+
+        width:100%;
+
+        text-align:left;
+    }
+
+    .score-number{
+        display:inline;
+        margin-left:7px;
+    }
 
 }
 
+@media(max-width:600px){
 
-.footer-logo span{
+    .navbar{
+        height:64px;
+    }
 
-    color:#7c3aed;
+    .logo{
+        font-size:1.3rem;
+    }
 
-}
+    .nav-right{
+        gap:10px;
+    }
 
+    .back-link{
+        font-size:.72rem;
+    }
 
-footer p{
+    .logout-btn{
 
-    color:#888;
+        padding:8px 11px;
 
-    font-size:11px;
+        font-size:.72rem;
+    }
+
+    .hero{
+
+        min-height:430px;
+
+        padding-top:72px;
+    }
+
+    .hero h1{
+        letter-spacing:-1.2px;
+    }
+
+    .hero p{
+        font-size:.94rem;
+    }
+
+    .question-card{
+        padding:23px 20px;
+    }
+
+    .question-top{
+        align-items:flex-start;
+    }
+
+    .question-text{
+        font-size:.97rem;
+    }
+
+    .completion{
+
+        padding:58px 20px;
+
+        border-radius:24px;
+    }
+
+    .orbit-two{
+
+        width:470px;
+        height:470px;
+    }
+
+    .orbit-three{
+
+        width:590px;
+        height:590px;
+    }
+
+    .completion-stat{
+
+        min-width:115px;
+    }
 
 }
 
 
 /* =========================================================
-   MOBILE
+   ACCESSIBILITY
 ========================================================= */
 
-@media(max-width:900px){
+button:focus-visible,
+a:focus-visible{
 
-    .hero-decoration{
+    outline:3px solid #a78bfa;
 
-        right:-70px;
-
-        opacity:.95;
-
-        width:270px;
-
-        height:230px;
-
-    }
-
-
-    .hero-decoration svg{
-
-        width:205px;
-
-        height:205px;
-
-    }
-
-
-    .hero-decoration .v-letter{
-
-        font-size:145px;
-
-    }
-
-
-    .section-heading{
-
-        flex-direction:column;
-
-        align-items:flex-start;
-
-    }
-
-}
-
-
-@media(max-width:700px){
-
-    nav{
-
-        height:auto;
-
-        padding:18px 5%;
-
-        gap:15px;
-
-    }
-
-
-    .logo{
-
-        font-size:25px;
-
-    }
-
-
-    .nav-links{
-
-        gap:12px;
-
-    }
-
-
-    .home-link{
-
-        font-size:10px;
-
-    }
-
-
-    .logout{
-
-        padding:10px 13px;
-
-    }
-
-
-    .hero{
-
-        padding:70px 5% 65px;
-
-        min-height:430px;
-
-    }
-
-
-    .hero h1{
-
-        font-size:55px;
-
-        letter-spacing:-3px;
-
-    }
-
-
-    .hero p{
-
-        max-width:470px;
-
-    }
-
-
-    .hero-decoration{
-
-        width:220px;
-
-        height:185px;
-
-        right:-45px;
-
-        top:auto;
-
-        bottom:-20px;
-
-        transform:none;
-
-        opacity:.9;
-
-    }
-
-
-    .hero-decoration svg{
-
-        width:165px;
-
-        height:165px;
-
-    }
-
-
-    .hero-decoration .v-letter{
-
-        font-size:120px;
-
-    }
-
-
-    .hero-decoration .vector-arrow{
-
-        stroke-width:6;
-
-    }
-
-
-    main{
-
-        padding:70px 5% 85px;
-
-    }
-
-
-    .question-top{
-
-        flex-direction:column;
-
-        padding:22px 20px 18px;
-
-    }
-
-
-    .question-body{
-
-        padding:0 20px 22px;
-
-    }
-
-
-    .question-text{
-
-        font-size:14px;
-
-    }
-
-
-    .keep-in-mind{
-
-        padding:25px 22px;
-
-    }
-
-
-    .congrats h2{
-
-        font-size:34px;
-
-    }
-
-
-    footer{
-
-        flex-direction:column;
-
-        gap:14px;
-
-        text-align:center;
-
-    }
-
+    outline-offset:3px;
 }
 
 </style>
@@ -1350,32 +1767,35 @@ footer p{
 <body>
 
 
-<!-- =========================================================
+<!-- =====================================================
      NAVIGATION
-========================================================= -->
+===================================================== -->
 
-<nav>
+<nav class="navbar">
 
-    <div class="logo">
+    <a
+        href="dashboard.html"
+        class="logo"
+    >
         Edu<span>Nova</span>
-    </div>
+    </a>
 
 
-    <div class="nav-links">
+    <div class="nav-right">
 
         <a
             href="vectors.html"
-            class="home-link"
+            class="back-link"
         >
             ← VECTORS
         </a>
 
 
         <button
-            class="logout"
+            class="logout-btn"
             onclick="logout()"
         >
-            LOG OUT
+            Log out
         </button>
 
     </div>
@@ -1383,11 +1803,19 @@ footer p{
 </nav>
 
 
-<!-- =========================================================
-     HERO
-========================================================= -->
 
-<header class="hero">
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-grid"></div>
+
+    <div class="hero-ring"></div>
+
+    <div class="hero-vector"></div>
+
 
     <div class="hero-content">
 
@@ -1397,328 +1825,369 @@ footer p{
 
 
         <h1>
-            Definition of Vectors.
+            Definition of <span>Vectors.</span>
         </h1>
 
 
         <p>
             Test your understanding of magnitude, direction,
             vector notation, vector addition, components,
-            and parallel vectors.
+            and parallel vectors through a carefully structured
+            set of questions.
         </p>
 
     </div>
 
-
-    <div class="hero-decoration">
-
-        <svg
-            viewBox="0 0 250 250"
-            aria-hidden="true"
-        >
-
-            <text
-                x="125"
-                y="205"
-                text-anchor="middle"
-                class="v-letter"
-            >
-                V
-            </text>
+</section>
 
 
-            <line
-                x1="48"
-                y1="62"
-                x2="194"
-                y2="62"
-                class="vector-arrow"
-            ></line>
 
-
-            <polygon
-                points="194,62 174,50 174,74"
-                class="arrow-head"
-            ></polygon>
-
-        </svg>
-
-    </div>
-
-</header>
-
-
-<!-- =========================================================
+<!-- =====================================================
      MAIN
-========================================================= -->
+===================================================== -->
 
 <main>
 
 
-    <div class="section-heading">
+<!-- =====================================================
+     KEEP IN MIND
+===================================================== -->
 
-        <div>
+<section class="keep-card">
 
-            <div class="section-label">
-                QUESTIONS
-            </div>
+    <div class="keep-label">
+        Keep in mind.
+    </div>
 
-            <h2>
-                Test your understanding.
-            </h2>
+    <p>
+        A vector describes <strong>both magnitude and direction</strong>.
+        When adding vectors using components, add the horizontal
+        components together and the vertical components together.
+        Take your time and read each question carefully.
+    </p>
 
+</section>
+
+
+
+<!-- =====================================================
+     QUESTION HEADER
+===================================================== -->
+
+<section class="questions-header">
+
+    <div class="questions-header-left">
+
+        <div class="eyebrow">
+            Practice • Topic 01
         </div>
 
+        <h2>
+            Test your understanding.
+        </h2>
 
         <p>
-            Work through the questions from Foundation to Challenge.
-            Try each one before revealing the answer and solution.
+            Work through the questions from the foundations
+            of vectors to the challenge problems.
         </p>
 
     </div>
 
 
-    <!-- =====================================================
-         KEEP IN MIND
-    ====================================================== -->
+    <div class="score-card">
 
-    <section class="keep-in-mind">
-
-        <div class="keep-title">
-
-            <div class="keep-icon">
-                !
-            </div>
-
-            <h2>
-                Keep in mind.
-            </h2>
-
+        <div class="score-label">
+            Progress
         </div>
 
-
-        <ul class="keep-list">
-
-            <li>
-                <strong>A vector has magnitude and direction.</strong>
-                A scalar has magnitude only.
-            </li>
-
-
-            <li>
-                <strong>Direction matters.</strong>
-                Reversing a vector changes its direction:
-                \(\overrightarrow{AB}\neq\overrightarrow{BA}\).
-            </li>
-
-
-            <li>
-                <strong>Equal vectors</strong> have the same magnitude
-                and the same direction, even when they are in different positions.
-            </li>
-
-
-            <li>
-                <strong>For head-to-tail addition,</strong>
-                the second vector starts where the first vector ends.
-            </li>
-
-
-            <li>
-                <strong>The resultant</strong> connects the starting point
-                directly to the final point.
-            </li>
-
-
-            <li>
-                <strong>When adding components,</strong>
-                add horizontal components together and vertical components together.
-            </li>
-
-
-            <li>
-                <strong>Parallel vectors</strong> may point in the same direction
-                or exactly opposite directions.
-            </li>
-
-
-            <li>
-                Do not confuse <strong>magnitude</strong> with direction.
-                Two vectors can have the same magnitude but different directions.
-            </li>
-
-        </ul>
-
-    </section>
-
-
-    <!-- =====================================================
-         FILTER
-    ====================================================== -->
-
-    <div class="filter-bar">
-
-        <button
-            class="filter-btn active"
-            onclick="filterQuestions('All', this)"
-        >
-            ALL
-        </button>
-
-
-        <button
-            class="filter-btn"
-            onclick="filterQuestions('Foundation', this)"
-        >
-            FOUNDATION
-        </button>
-
-
-        <button
-            class="filter-btn"
-            onclick="filterQuestions('Developing', this)"
-        >
-            DEVELOPING
-        </button>
-
-
-        <button
-            class="filter-btn"
-            onclick="filterQuestions('Intermediate', this)"
-        >
-            INTERMEDIATE
-        </button>
-
-
-        <button
-            class="filter-btn"
-            onclick="filterQuestions('Advanced', this)"
-        >
-            ADVANCED
-        </button>
-
-
-        <button
-            class="filter-btn"
-            onclick="filterQuestions('Challenge', this)"
-        >
-            CHALLENGE
-        </button>
-
-    </div>
-
-
-    <!-- =====================================================
-         PROGRESS
-    ====================================================== -->
-
-    <div class="progress-wrap">
-
-        <div class="progress-top">
-
-            <span id="questionCount">
-                40 questions
-            </span>
-
-
-            <span id="visibleCount">
-                Showing 40
-            </span>
-
-        </div>
-
-
-        <div class="progress-bar">
-
-            <div
-                class="progress-fill"
-                id="progressFill"
-            ></div>
-
+        <div class="score-number">
+            <span id="answeredCount">0</span>
+            /
+            <span id="totalCount">40</span>
         </div>
 
     </div>
 
-
-    <!-- =====================================================
-         QUESTION LIST
-    ====================================================== -->
-
-    <div
-        class="question-list"
-        id="questionList"
-    ></div>
+</section>
 
 
-    <div
-        class="empty"
-        id="emptyMessage"
+
+<!-- =====================================================
+     FILTERS
+===================================================== -->
+
+<div class="filters">
+
+    <button
+        class="filter-btn active"
+        data-level="All"
+        onclick="filterQuestions('All',this)"
     >
-        No questions found for this level.
+        All
+    </button>
+
+
+    <button
+        class="filter-btn"
+        data-level="Foundation"
+        onclick="filterQuestions('Foundation',this)"
+    >
+        Foundation
+    </button>
+
+
+    <button
+        class="filter-btn"
+        data-level="Developing"
+        onclick="filterQuestions('Developing',this)"
+    >
+        Developing
+    </button>
+
+
+    <button
+        class="filter-btn"
+        data-level="Intermediate"
+        onclick="filterQuestions('Intermediate',this)"
+    >
+        Intermediate
+    </button>
+
+
+    <button
+        class="filter-btn"
+        data-level="Advanced"
+        onclick="filterQuestions('Advanced',this)"
+    >
+        Advanced
+    </button>
+
+
+    <button
+        class="filter-btn"
+        data-level="Challenge"
+        onclick="filterQuestions('Challenge',this)"
+    >
+        Challenge
+    </button>
+
+</div>
+
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<div class="progress-wrap">
+
+    <div class="progress-top">
+
+        <span>
+            Questions completed
+        </span>
+
+        <span id="progressPercent">
+            0%
+        </span>
+
     </div>
 
 
-    <!-- =====================================================
-         CONGRATULATIONS
-    ====================================================== -->
+    <div class="progress-track">
 
-    <div class="congrats">
+        <div
+            class="progress-bar"
+            id="progressBar"
+        ></div>
 
-        <div class="congrats-orbit"></div>
+    </div>
+
+</div>
 
 
-        <div class="congrats-content">
 
-            <div class="check">
-                ✓
+<!-- =====================================================
+     QUESTIONS
+===================================================== -->
+
+<div
+    class="question-list"
+    id="questionList"
+></div>
+
+
+
+<!-- =====================================================
+     CONGRATULATIONS
+===================================================== -->
+
+<section
+    class="completion"
+    id="completionSection"
+>
+
+
+    <div class="completion-orbit orbit-one"></div>
+
+    <div class="completion-orbit orbit-two"></div>
+
+    <div class="completion-orbit orbit-three"></div>
+
+
+    <div class="completion-particles">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <div class="completion-content">
+
+
+        <div class="completion-check">
+
+            <div class="completion-check-ring"></div>
+
+            <div class="completion-check-ring-two"></div>
+
+
+            <div class="check-circle">
+
+                <svg
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+
+                    <path
+                        d="M7 17L13 23L25 9"
+                        stroke="white"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+
+                </svg>
+
             </div>
-
-
-            <h2>
-                Congratulations!
-            </h2>
-
-
-            <p>
-                You have completed the questions for
-                <strong>Definition of Vectors</strong>.
-                You have tested magnitude and direction,
-                vector notation, addition, components,
-                and parallel vectors.
-            </p>
-
-
-            <a
-                href="vectors.html"
-                class="back-btn"
-            >
-                BACK TO VECTORS
-            </a>
 
         </div>
 
+
+        <div class="completion-kicker">
+            Topic 01 • Completed
+        </div>
+
+
+        <h2>
+            Congratulations<span>!</span>
+        </h2>
+
+
+        <p class="completion-message">
+
+            You have worked through the complete set of
+            Definition of Vectors questions. You have tested
+            magnitude, direction, vector notation, addition,
+            components, and parallel vectors.
+
+            <br><br>
+
+            The next step is not simply knowing the rules.
+            It is being able to recognise them when a problem
+            changes shape.
+
+        </p>
+
+
+        <div class="completion-stats">
+
+            <div class="completion-stat">
+
+                <strong>40</strong>
+
+                <span>Questions</span>
+
+            </div>
+
+
+            <div class="completion-stat">
+
+                <strong>5</strong>
+
+                <span>Levels</span>
+
+            </div>
+
+
+            <div class="completion-stat">
+
+                <strong>01</strong>
+
+                <span>Topic</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="completion-status">
+
+            <span class="status-dot"></span>
+
+            Lesson completed
+
+        </div>
+
+
+        <br>
+
+
+        <a
+            href="vectors.html"
+            class="practice-button"
+        >
+
+            Back to Vectors
+
+            <span>→</span>
+
+        </a>
+
     </div>
+
+</section>
+
 
 </main>
 
 
-<!-- =========================================================
+
+<!-- =====================================================
      FOOTER
-========================================================= -->
+===================================================== -->
 
 <footer>
 
-    <div class="footer-logo">
-        Edu<span>Nova</span>
-    </div>
+    <strong>EduNova</strong>
 
-
-    <p>
-        © 2026 EduNova. Mathematics, reimagined.
-    </p>
+    • Mathematics, explained clearly.
 
 </footer>
 
+
+
+<!-- =====================================================
+     SUPABASE + QUESTION SYSTEM
+===================================================== -->
 
 <script>
 
@@ -1729,14 +2198,12 @@ footer p{
 const SUPABASE_URL =
     "https://majvqtbortonsrgdknms.supabase.co";
 
-
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
 
-
-const { createClient } =
-    window.supabase;
-
+const {
+    createClient
+} = supabase;
 
 const supabaseClient =
     createClient(
@@ -1746,20 +2213,1676 @@ const supabaseClient =
 
 
 /* =========================================================
+   QUESTION BANK
+========================================================= */
+
+const questions = [
+
+/* =========================================================
+   FOUNDATION
+========================================================= */
+
+{
+    number:1,
+    level:"Foundation",
+
+    question:
+        "What two pieces of information are needed to completely describe a vector?",
+
+    answer:
+        "Magnitude and direction.",
+
+    solution:`
+A vector contains two essential pieces of information.
+
+The first is its magnitude, which tells us the size or length of the vector.
+
+The second is its direction, which tells us which way the vector points.
+
+Therefore, a vector is completely described by \\(\\boxed{\\text{magnitude and direction}}\\).
+`
+},
+
+
+{
+    number:2,
+    level:"Foundation",
+
+    question:
+        "Which piece of information is enough to describe a scalar quantity?",
+
+    answer:
+        "Magnitude only.",
+
+    solution:`
+A scalar quantity has size but no direction.
+
+Therefore, only its magnitude is needed to describe it.
+
+So the answer is \\(\\boxed{\\text{magnitude only}}\\).
+`
+},
+
+
+{
+    number:3,
+    level:"Foundation",
+
+    question:
+        "A vector has magnitude 8 and points to the right. What is its magnitude?",
+
+    answer:
+        "\\(8\\)",
+
+    solution:`
+The question already gives the magnitude of the vector.
+
+The direction does not change the magnitude.
+
+Therefore,
+
+\\[
+\\boxed{8}
+\\]
+`
+},
+
+
+{
+    number:4,
+    level:"Foundation",
+
+    question:
+        "A vector points vertically upward. What information does this describe?",
+
+    answer:
+        "The direction of the vector.",
+
+    solution:`
+The phrase “vertically upward” tells us which way the vector points.
+
+Therefore, it describes the vector's direction.
+`
+},
+
+
+{
+    number:5,
+    level:"Foundation",
+
+    question:
+        "What does the arrow over \\(AB\\) tell us about the vector?",
+
+    answer:
+        "It shows that the vector points from A to B.",
+
+    solution:`
+The order of the letters is important.
+
+For \\(\\overrightarrow{AB}\\), the vector starts at A and ends at B.
+
+Therefore, the arrow shows the direction \\(\\boxed{A\\rightarrow B}\\).
+`
+},
+
+
+{
+    number:6,
+    level:"Foundation",
+
+    question:
+        "Are \\(\\overrightarrow{AB}\\) and \\(\\overrightarrow{BA}\\) the same vector?",
+
+    answer:
+        "No. They point in opposite directions.",
+
+    solution:`
+Both vectors have the same magnitude because they have the same endpoints.
+
+However,
+
+\\[
+\\overrightarrow{AB}
+\\]
+
+points from A to B, while
+
+\\[
+\\overrightarrow{BA}
+\\]
+
+points from B to A.
+
+Their directions are opposite, so they are not equal.
+`
+},
+
+
+{
+    number:7,
+    level:"Foundation",
+
+    question:
+        "Can two vectors have the same magnitude but different directions and still be equal?",
+
+    answer:
+        "No.",
+
+    solution:`
+For two vectors to be equal, they must have both:
+
+\\[
+\\text{same magnitude}
+\\]
+
+and
+
+\\[
+\\text{same direction}.
+\\]
+
+Therefore, having different directions means the vectors are not equal.
+`
+},
+
+
+{
+    number:8,
+    level:"Foundation",
+
+    question:
+        "Can two vectors have the same magnitude and direction but be drawn in different positions?",
+
+    answer:
+        "Yes.",
+
+    solution:`
+The position of a vector does not determine whether two vectors are equal.
+
+If two vectors have the same magnitude and the same direction, they are equal even if they are drawn in different locations.
+
+Therefore, \\(\\boxed{\\text{Yes}}\\).
+`
+},
+
+
+/* =========================================================
+   DEVELOPING
+========================================================= */
+
+{
+    number:9,
+    level:"Developing",
+
+    question:
+        "A vector has magnitude 12 and points to the left. State its magnitude and direction.",
+
+    answer:
+        "Magnitude = 12, direction = left.",
+
+    solution:`
+The magnitude is given directly as \\(12\\).
+
+The direction is given as left.
+
+Therefore,
+
+\\[
+\\boxed{\\text{magnitude}=12}
+\\]
+
+and
+
+\\[
+\\boxed{\\text{direction=left}}.
+\\]
+`
+},
+
+
+{
+    number:10,
+    level:"Developing",
+
+    question:
+        "Why can a scalar quantity not completely describe a vector?",
+
+    answer:
+        "A scalar gives magnitude only, while a vector also needs direction.",
+
+    solution:`
+A scalar contains only magnitude.
+
+A vector requires both magnitude and direction.
+
+Therefore, magnitude alone cannot completely describe a vector.
+`
+},
+
+
+{
+    number:11,
+    level:"Developing",
+
+    question:
+        "If \\(\\overrightarrow{AB}\\) points east, in which direction does \\(\\overrightarrow{BA}\\) point?",
+
+    answer:
+        "West.",
+
+    solution:`
+Reversing the order of the endpoints reverses the direction.
+
+Therefore, if
+
+\\[
+\\overrightarrow{AB}
+\\]
+
+points east, then
+
+\\[
+\\overrightarrow{BA}
+\\]
+
+points west.
+`
+},
+
+
+{
+    number:12,
+    level:"Developing",
+
+    question:
+        "Vector \\(a\\) has magnitude 6 and points upward. Vector \\(b\\) has magnitude 6 and points downward. Are they equal?",
+
+    answer:
+        "No.",
+
+    solution:`
+Both vectors have the same magnitude:
+
+\\[
+|a|=|b|=6.
+\\]
+
+However, their directions are opposite.
+
+Equal vectors must have both the same magnitude and the same direction.
+
+Therefore,
+
+\\[
+\\boxed{a\\neq b}.
+\\]
+`
+},
+
+
+{
+    number:13,
+    level:"Developing",
+
+    question:
+        "Vector \\(p\\) has magnitude 9 and points right. Vector \\(q\\) also has magnitude 9 and points right. Are they equal?",
+
+    answer:
+        "Yes.",
+
+    solution:`
+Both vectors have magnitude \\(9\\).
+
+They also point in the same direction.
+
+Therefore, they have the same magnitude and direction, so
+
+\\[
+\\boxed{p=q}.
+\\]
+`
+},
+
+
+{
+    number:14,
+    level:"Developing",
+
+    question:
+        "How would you write the vector that goes from point P to point Q?",
+
+    answer:
+        "\\(\\overrightarrow{PQ}\\)",
+
+    solution:`
+The first letter represents the starting point.
+
+The second letter represents the ending point.
+
+Therefore, a vector from P to Q is written as
+
+\\[
+\\boxed{\\overrightarrow{PQ}}.
+\\]
+`
+},
+
+
+{
+    number:15,
+    level:"Developing",
+
+    question:
+        "If \\(\\overrightarrow{CD}\\) has magnitude 10, what is the magnitude of \\(\\overrightarrow{DC}\\)?",
+
+    answer:
+        "\\(10\\)",
+
+    solution:`
+Reversing the direction of a vector changes its direction but does not change its magnitude.
+
+Therefore,
+
+\\[
+|\\overrightarrow{CD}|=|\\overrightarrow{DC}|=10.
+\\]
+
+So the answer is \\(\\boxed{10}\\).
+`
+},
+
+
+{
+    number:16,
+    level:"Developing",
+
+    question:
+        "A vector moves 5 units horizontally and 3 units vertically. What do the numbers 5 and 3 represent?",
+
+    answer:
+        "The horizontal and vertical components of the vector.",
+
+    solution:`
+A vector can be separated into horizontal and vertical movements.
+
+The movement of 5 units represents the horizontal component.
+
+The movement of 3 units represents the vertical component.
+
+Therefore, the two numbers are the vector's components.
+`
+},
+
+
+/* =========================================================
+   INTERMEDIATE
+========================================================= */
+
+{
+    number:17,
+    level:"Intermediate",
+
+    question:
+        "For the vector \\(\\mathbf{a}=(4,7)\\), which component represents the horizontal movement and which represents the vertical movement?",
+
+    answer:
+        "Horizontal = 4, vertical = 7.",
+
+    solution:`
+For a vector written as
+
+\\[
+\\mathbf{a}=(x,y),
+\\]
+
+the first component represents the horizontal movement.
+
+The second component represents the vertical movement.
+
+Therefore,
+
+\\[
+\\boxed{\\text{horizontal}=4}
+\\]
+
+and
+
+\\[
+\\boxed{\\text{vertical}=7}.
+\\]
+`
+},
+
+
+{
+    number:18,
+    level:"Intermediate",
+
+    question:
+        "Given \\(\\mathbf{a}=(3,2)\\) and \\(\\mathbf{b}=(4,5)\\), find \\(\\mathbf{a}+\\mathbf{b}\\).",
+
+    answer:
+        "\\(\\mathbf{a}+\\mathbf{b}=(7,7)\\)",
+
+    solution:`
+Add the corresponding components.
+
+Horizontal:
+
+\\[
+3+4=7.
+\\]
+
+Vertical:
+
+\\[
+2+5=7.
+\\]
+
+Therefore,
+
+\\[
+\\boxed{\\mathbf{a}+\\mathbf{b}=(7,7)}.
+\\]
+`
+},
+
+
+{
+    number:19,
+    level:"Intermediate",
+
+    question:
+        "Given \\(\\mathbf{a}=(6,-2)\\) and \\(\\mathbf{b}=(3,5)\\), find the resultant vector.",
+
+    answer:
+        "\\((9,3)\\)",
+
+    solution:`
+Add the horizontal components:
+
+\\[
+6+3=9.
+\\]
+
+Add the vertical components:
+
+\\[
+-2+5=3.
+\\]
+
+Therefore,
+
+\\[
+\\boxed{\\mathbf{a}+\\mathbf{b}=(9,3)}.
+\\]
+`
+},
+
+
+{
+    number:20,
+    level:"Intermediate",
+
+    question:
+        "Given \\(\\mathbf{a}=(-4,3)\\) and \\(\\mathbf{b}=(2,-7)\\), find the resultant.",
+
+    answer:
+        "\\((-2,-4)\\)",
+
+    solution:`
+Add the horizontal components:
+
+\\[
+-4+2=-2.
+\\]
+
+Add the vertical components:
+
+\\[
+3+(-7)=-4.
+\\]
+
+Therefore,
+
+\\[
+\\boxed{(-2,-4)}.
+\\]
+`
+},
+
+
+{
+    number:21,
+    level:"Intermediate",
+
+    question:
+        "For \\(\\mathbf{a}=(5,-3)\\), state the horizontal and vertical components.",
+
+    answer:
+        "Horizontal = 5, vertical = -3.",
+
+    solution:`
+The first component is horizontal.
+
+The second component is vertical.
+
+Therefore,
+
+\\[
+\\boxed{\\text{horizontal}=5}
+\\]
+
+and
+
+\\[
+\\boxed{\\text{vertical}=-3}.
+\\]
+
+The negative vertical component means the movement is downward.
+`
+},
+
+
+{
+    number:22,
+    level:"Intermediate",
+
+    question:
+        "For \\(\\mathbf{b}=(-2,8)\\), which horizontal direction does the vector move?",
+
+    answer:
+        "Left.",
+
+    solution:`
+The horizontal component is \\(-2\\).
+
+A negative horizontal component represents movement to the left.
+
+Therefore, the vector moves left horizontally.
+`
+},
+
+
+{
+    number:23,
+    level:"Intermediate",
+
+    question:
+        "For \\(\\mathbf{c}=(4,-6)\\), which vertical direction does the vector move?",
+
+    answer:
+        "Downward.",
+
+    solution:`
+The vertical component is \\(-6\\).
+
+A negative vertical component represents downward movement.
+
+Therefore, the vector moves downward vertically.
+`
+},
+
+
+{
+    number:24,
+    level:"Intermediate",
+
+    question:
+        "Given \\(\\mathbf{a}=(3,4)\\) and \\(\\mathbf{b}=(3,4)\\), are the two vectors equal?",
+
+    answer:
+        "Yes.",
+
+    solution:`
+The two vectors have exactly the same components:
+
+\\[
+\\mathbf{a}=(3,4)
+\\]
+
+and
+
+\\[
+\\mathbf{b}=(3,4).
+\\]
+
+Therefore, they have the same magnitude and direction.
+
+Hence,
+
+\\[
+\\boxed{\\mathbf{a}=\\mathbf{b}}.
+\\]
+`
+},
+
+
+/* =========================================================
+   ADVANCED
+========================================================= */
+
+{
+    number:25,
+    level:"Advanced",
+
+    question:
+        "Given \\(\\mathbf{a}=(7,-4)\\) and \\(\\mathbf{b}=(-3,9)\\), find the resultant vector.",
+
+    answer:
+        "\\((4,5)\\)",
+
+    solution:`
+Add the horizontal components:
+
+\\[
+7+(-3)=4.
+\\]
+
+Add the vertical components:
+
+\\[
+-4+9=5.
+\\]
+
+Therefore,
+
+\\[
+\\boxed{\\mathbf{a}+\\mathbf{b}=(4,5)}.
+\\]
+`
+},
+
+
+{
+    number:26,
+    level:"Advanced",
+
+    question:
+        "Given \\(\\mathbf{a}=(2,5)\\), \\(\\mathbf{b}=(-6,1)\\), and \\(\\mathbf{c}=(4,-3)\\), find \\(\\mathbf{a}+\\mathbf{b}+\\mathbf{c}\\).",
+
+    answer:
+        "\\((0,3)\\)",
+
+    solution:`
+Add the horizontal components:
+
+\\[
+2+(-6)+4=0.
+\\]
+
+Add the vertical components:
+
+\\[
+5+1+(-3)=3.
+\\]
+
+Therefore,
+
+\\[
+\\boxed{\\mathbf{a}+\\mathbf{b}+\\mathbf{c}=(0,3)}.
+\\]
+`
+},
+
+
+{
+    number:27,
+    level:"Advanced",
+
+    question:
+        "Given \\(\\mathbf{a}=(8,-5)\\) and \\(\\mathbf{b}=(-8,2)\\), find the resultant and describe its horizontal movement.",
+
+    answer:
+        "\\((-0,-3)=(0,-3)\\); there is no horizontal movement.",
+
+    solution:`
+Add the horizontal components:
+
+\\[
+8+(-8)=0.
+\\]
+
+Add the vertical components:
+
+\\[
+-5+2=-3.
+\\]
+
+Therefore,
+
+\\[
+\\boxed{(0,-3)}.
+\\]
+
+Because the horizontal component is zero, there is no horizontal movement.
+`
+},
+
+
+{
+    number:28,
+    level:"Advanced",
+
+    question:
+        "Vector \\(\\mathbf{p}=(5,2)\\) is followed by \\(\\mathbf{q}=(-5,-2)\\). What is the resultant?",
+
+    answer:
+        "\\((0,0)\\)",
+
+    solution:`
+Add the horizontal components:
+
+\\[
+5+(-5)=0.
+\\]
+
+Add the vertical components:
+
+\\[
+2+(-2)=0.
+\\]
+
+Therefore,
+
+\\[
+\\boxed{\\mathbf{p}+\\mathbf{q}=(0,0)}.
+\\]
+
+The two movements completely cancel each other.
+`
+},
+
+
+{
+    number:29,
+    level:"Advanced",
+
+    question:
+        "A vector \\(\\mathbf{a}=(4,3)\\) is followed by \\(\\mathbf{b}=(2,-5)\\). Find the resultant.",
+
+    answer:
+        "\\((6,-2)\\)",
+
+    solution:`
+Add the horizontal components:
+
+\\[
+4+2=6.
+\\]
+
+Add the vertical components:
+
+\\[
+3+(-5)=-2.
+\\]
+
+Therefore,
+
+\\[
+\\boxed{(6,-2)}.
+\\]
+`
+},
+
+
+{
+    number:30,
+    level:"Advanced",
+
+    question:
+        "Two vectors each have magnitude 7. One points right and the other points left. Are they equal? Explain.",
+
+    answer:
+        "No. They have the same magnitude but opposite directions.",
+
+    solution:`
+The magnitudes are equal:
+
+\\[
+|a|=|b|=7.
+\\]
+
+However, one vector points right and the other points left.
+
+Equal vectors must have the same magnitude and the same direction.
+
+Therefore, they are not equal.
+`
+},
+
+
+{
+    number:31,
+    level:"Advanced",
+
+    question:
+        "Vector \\(\\mathbf{a}\\) points upward while vector \\(\\mathbf{b}\\) points downward along parallel lines. How are their directions related?",
+
+    answer:
+        "Their directions are opposite.",
+
+    solution:`
+Both vectors are vertical and therefore lie along parallel lines.
+
+However, one points upward and the other points downward.
+
+Therefore, their directions are opposite.
+`
+},
+
+
+{
+    number:32,
+    level:"Advanced",
+
+    question:
+        "Vector \\(\\mathbf{p}\\) has magnitude 10 and points right. Vector \\(\\mathbf{q}\\) has magnitude 4 and also points right. Are they equal? Are they parallel?",
+
+    answer:
+        "They are not equal, but they are parallel and point in the same direction.",
+
+    solution:`
+The vectors have different magnitudes:
+
+\\[
+|p|=10
+\\]
+
+and
+
+\\[
+|q|=4.
+\\]
+
+Therefore, they cannot be equal.
+
+However, both point to the right.
+
+Therefore, they are parallel and have the same direction.
+`
+},
+
+
+/* =========================================================
+   CHALLENGE
+========================================================= */
+
+{
+    number:33,
+    level:"Challenge",
+
+    question:
+        "Given \\(\\mathbf{a}=(6,4)\\) and \\(\\mathbf{b}=(-2,-4)\\), find the resultant and describe its direction.",
+
+    answer:
+        "\\((4,0)\\); the resultant is horizontal and points in the positive direction.",
+
+    solution:`
+Add the horizontal components:
+
+\\[
+6+(-2)=4.
+\\]
+
+Add the vertical components:
+
+\\[
+4+(-4)=0.
+\\]
+
+Therefore,
+
+\\[
+\\boxed{(4,0)}.
+\\]
+
+Because the vertical component is zero, the resultant is purely horizontal.
+
+Because the horizontal component is positive, it points to the right.
+`
+},
+
+
+{
+    number:34,
+    level:"Challenge",
+
+    question:
+        "Two vectors have the same magnitude. One points northeast and the other points southwest. Are they equal? Are they parallel?",
+
+    answer:
+        "They are not equal, but they are parallel.",
+
+    solution:`
+The vectors have the same magnitude.
+
+However, northeast and southwest are opposite directions.
+
+Therefore, they are not equal.
+
+Since they lie along the same direction line but point in opposite directions, they are parallel.
+
+So,
+
+\\[
+\\boxed{\\text{not equal, but parallel}}.
+\\]
+`
+},
+
+
+{
+    number:35,
+    level:"Challenge",
+
+    question:
+        "If two vectors have the same magnitude, does that automatically mean they are equal?",
+
+    answer:
+        "No. They must also have the same direction.",
+
+    solution:`
+Equal vectors require two conditions:
+
+\\[
+\\text{same magnitude}
+\\]
+
+and
+
+\\[
+\\text{same direction}.
+\\]
+
+Having the same magnitude alone is not enough.
+
+Therefore, the statement is false.
+`
+},
+
+
+{
+    number:36,
+    level:"Challenge",
+
+    question:
+        "If two vectors are parallel, does that automatically mean they are equal?",
+
+    answer:
+        "No.",
+
+    solution:`
+Parallel vectors can have different magnitudes.
+
+They can also point in the same direction or in opposite directions.
+
+Therefore, being parallel does not automatically make two vectors equal.
+`
+},
+
+
+{
+    number:37,
+    level:"Challenge",
+
+    question:
+        "Given \\(\\mathbf{a}=(3,-7)\\) and \\(\\mathbf{b}=(-3,7)\\), find their resultant and explain what it means.",
+
+    answer:
+        "\\((0,0)\\); the two vectors cancel completely.",
+
+    solution:`
+Add the horizontal components:
+
+\\[
+3+(-3)=0.
+\\]
+
+Add the vertical components:
+
+\\[
+-7+7=0.
+\\]
+
+Therefore,
+
+\\[
+\\boxed{\\mathbf{a}+\\mathbf{b}=(0,0)}.
+\\]
+
+The resultant is the zero vector, meaning that the two movements completely cancel each other.
+`
+},
+
+
+{
+    number:38,
+    level:"Challenge",
+
+    question:
+        "Given \\(\\mathbf{a}=(4,6)\\) and \\(\\mathbf{b}=(-4,1)\\), a student says the resultant is \\((0,7)\\). Is the student correct?",
+
+    answer:
+        "Yes.",
+
+    solution:`
+Add the horizontal components:
+
+\\[
+4+(-4)=0.
+\\]
+
+Add the vertical components:
+
+\\[
+6+1=7.
+\\]
+
+Therefore,
+
+\\[
+\\boxed{(0,7)}.
+\\]
+
+The student is correct.
+`
+},
+
+
+{
+    number:39,
+    level:"Challenge",
+
+    question:
+        "Given \\(\\mathbf{a}=(5,-2)\\), \\(\\mathbf{b}=(-1,6)\\), and \\(\\mathbf{c}=(-4,-4)\\), find the resultant.",
+
+    answer:
+        "\\((0,0)\\)",
+
+    solution:`
+Add the horizontal components:
+
+\\[
+5+(-1)+(-4)=0.
+\\]
+
+Add the vertical components:
+
+\\[
+-2+6+(-4)=0.
+\\]
+
+Therefore,
+
+\\[
+\\boxed{\\mathbf{a}+\\mathbf{b}+\\mathbf{c}=(0,0)}.
+\\]
+
+The three vectors cancel completely.
+`
+},
+
+
+{
+    number:40,
+    level:"Challenge",
+
+    question:
+        "Given \\(\\mathbf{a}=(x,4)\\) and \\(\\mathbf{b}=(-7,-1)\\), their resultant is \\((2,3)\\). Find \\(x\\).",
+
+    answer:
+        "\\(x=9\\)",
+
+    solution:`
+Add the horizontal components.
+
+The resultant horizontal component is 2, so
+
+\\[
+x+(-7)=2.
+\\]
+
+Therefore,
+
+\\[
+x-7=2.
+\\]
+
+Add 7 to both sides:
+
+\\[
+x=9.
+\\]
+
+Check:
+
+\\[
+(9,4)+(-7,-1)
+\]
+
+gives
+
+\\[
+(9-7,4-1)=(2,3).
+\\]
+
+Therefore,
+
+\\[
+\\boxed{x=9}.
+\\]
+`
+}
+
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let answeredQuestions =
+    new Set();
+
+let currentLevel =
+    "All";
+
+
+/* =========================================================
+   SAFE HTML
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replace(/&/g,"&amp;")
+
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
+}
+
+
+/* =========================================================
+   MATHJAX RENDERING
+========================================================= */
+
+async function typesetMath(element){
+
+    if(
+        !element ||
+        !window.MathJax ||
+        !window.MathJax.typesetPromise
+    ){
+
+        return;
+    }
+
+    try{
+
+        if(
+            window.MathJax.typesetClear
+        ){
+
+            window.MathJax.typesetClear(
+                [element]
+            );
+
+        }
+
+        await window.MathJax.typesetPromise(
+            [element]
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "MathJax rendering error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SOLUTION FORMATTER
+========================================================= */
+
+function formatSolution(text){
+
+    /*
+       This is the important protection against
+       the old \\n problem.
+
+       If a solution contains literal:
+       
+       \\n\\n
+
+       instead of real line breaks, we convert
+       those sequences back into actual newlines.
+    */
+
+    const normalized =
+        String(text)
+
+            .replace(/\\r\\n/g,"\n")
+
+            .replace(/\\n/g,"\n")
+
+            .trim();
+
+
+    return normalized
+
+        .split(/\n{2,}/)
+
+        .map(
+            part => {
+
+                const html =
+                    part
+                        .replace(/\n/g,"<br>");
+
+                return `
+                    <div class="solution-step">
+                        ${html}
+                    </div>
+                `;
+
+            }
+        )
+
+        .join("");
+
+}
+
+
+/* =========================================================
+   LEVEL CLASS
+========================================================= */
+
+function getLevelClass(level){
+
+    return {
+
+        Foundation:
+            "level-foundation",
+
+        Developing:
+            "level-developing",
+
+        Intermediate:
+            "level-intermediate",
+
+        Advanced:
+            "level-advanced",
+
+        Challenge:
+            "level-challenge"
+
+    }[level] || "";
+}
+
+
+/* =========================================================
+   RENDER QUESTIONS
+========================================================= */
+
+async function renderQuestions(level="All"){
+
+    currentLevel =
+        level;
+
+    const list =
+        document.getElementById(
+            "questionList"
+        );
+
+
+    const filtered =
+        level === "All"
+
+            ? questions
+
+            : questions.filter(
+                q => q.level === level
+            );
+
+
+    list.innerHTML = "";
+
+
+    if(filtered.length === 0){
+
+        list.innerHTML = `
+
+            <div class="no-results">
+
+                No questions found for this level.
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    filtered.forEach(q => {
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "question-card";
+
+        card.dataset.number =
+            q.number;
+
+
+        const isAnswered =
+            answeredQuestions.has(
+                q.number
+            );
+
+
+        card.innerHTML = `
+
+            <div class="question-top">
+
+                <div class="question-number">
+
+                    <div class="number-box">
+                        ${String(q.number).padStart(2,"0")}
+                    </div>
+
+                    <div class="level-badge ${getLevelClass(q.level)}">
+                        ${q.level}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="question-text">
+
+                ${q.question}
+
+            </div>
+
+
+            <button
+                class="answer-button ${isAnswered ? "open" : ""}"
+                onclick="toggleAnswer(${q.number},this)"
+                type="button"
+            >
+
+                <span>
+                    ${isAnswered
+                        ? "HIDE ANSWER & SOLUTION"
+                        : "SHOW ANSWER & SOLUTION"
+                    }
+                </span>
+
+                <span class="arrow">
+                    ↓
+                </span>
+
+            </button>
+
+
+            <div
+                class="answer-area ${isAnswered ? "show" : ""}"
+                id="answer-${q.number}"
+            >
+
+                <div class="answer-box">
+
+                    <div class="answer-label">
+                        Correct answer
+                    </div>
+
+                    <div class="answer-text">
+                        ${q.answer}
+                    </div>
+
+                </div>
+
+
+                <div class="solution-box">
+
+                    <div class="solution-label">
+                        Solution
+                    </div>
+
+                    <div class="solution-content">
+
+                        ${formatSolution(q.solution)}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        list.appendChild(card);
+
+    });
+
+
+    updateProgress();
+
+
+    await typesetMath(list);
+
+}
+
+
+/* =========================================================
+   TOGGLE ANSWER
+========================================================= */
+
+async function toggleAnswer(
+    number,
+    button
+){
+
+    const area =
+        document.getElementById(
+            `answer-${number}`
+        );
+
+
+    if(!area){
+        return;
+    }
+
+
+    const opening =
+        !area.classList.contains(
+            "show"
+        );
+
+
+    if(opening){
+
+        area.classList.add(
+            "show"
+        );
+
+        button.classList.add(
+            "open"
+        );
+
+        button.querySelector(
+            "span:first-child"
+        ).textContent =
+            "HIDE ANSWER & SOLUTION";
+
+
+        answeredQuestions.add(
+            number
+        );
+
+    }
+    else{
+
+        area.classList.remove(
+            "show"
+        );
+
+        button.classList.remove(
+            "open"
+        );
+
+        button.querySelector(
+            "span:first-child"
+        ).textContent =
+            "SHOW ANSWER & SOLUTION";
+
+
+        answeredQuestions.delete(
+            number
+        );
+
+    }
+
+
+    updateProgress();
+
+
+    await typesetMath(area);
+
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+async function filterQuestions(
+    level,
+    clickedButton
+){
+
+    document
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(
+            button => {
+
+                button.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    if(clickedButton){
+
+        clickedButton.classList.add(
+            "active"
+        );
+
+    }
+
+
+    await renderQuestions(
+        level
+    );
+
+
+    window.scrollTo({
+        top:
+            document.querySelector(
+                ".questions-header"
+            ).offsetTop - 95,
+
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+function updateProgress(){
+
+    const answered =
+        answeredQuestions.size;
+
+    const total =
+        questions.length;
+
+    const percentage =
+        Math.round(
+            (answered / total) * 100
+        );
+
+
+    document.getElementById(
+        "answeredCount"
+    ).textContent =
+        answered;
+
+
+    document.getElementById(
+        "totalCount"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "progressPercent"
+    ).textContent =
+        `${percentage}%`;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${percentage}%`;
+
+}
+
+
+/* =========================================================
    SESSION
 ========================================================= */
 
 async function checkSession(){
 
     const {
-        data:{session}
+        data:{
+            session
+        }
     } =
-        await supabaseClient.auth.getSession();
+        await supabaseClient
+            .auth
+            .getSession();
 
 
     if(!session){
 
-        location.href = "index.html";
+        location.href =
+            "index.html";
 
         return false;
 
@@ -1772,987 +3895,35 @@ async function checkSession(){
 
 
 /* =========================================================
-   LOG OUT
-========================================================= */
-
-async function logout(){
-
-    await supabaseClient.auth.signOut();
-
-    localStorage.removeItem("eduNovaUsername");
-
-    localStorage.removeItem("eduNovaEmail");
-
-    location.href = "index.html";
-
-}
-
-
-/* =========================================================
-   QUESTION BANK
-========================================================= */
-
-const questions = [
-
-/* =========================================================
-   FOUNDATION 01–08
-========================================================= */
-
-{
-    level:"Foundation",
-    number:1,
-
-    question:
-        "What two pieces of information are needed to completely describe a vector?",
-
-    answer:
-        "Magnitude and direction.",
-
-    solution:
-        "A vector describes both how much movement there is and which way the movement points. Therefore, the two required pieces of information are magnitude and direction."
-},
-
-
-{
-    level:"Foundation",
-    number:2,
-
-    question:
-        "Which of the following is a scalar quantity: magnitude only, direction only, or magnitude and direction?",
-
-    answer:
-        "Magnitude only.",
-
-    solution:
-        "A scalar has magnitude only. A vector has both magnitude and direction."
-},
-
-
-{
-    level:"Foundation",
-    number:3,
-
-    question:
-        "A vector has a magnitude of 8 units and points to the right. What is its magnitude?",
-
-    answer:
-        "8 units.",
-
-    solution:
-        "Magnitude tells us the size or length of the vector. The given magnitude is already 8 units, so the answer is 8 units."
-},
-
-
-{
-    level:"Foundation",
-    number:4,
-
-    question:
-        "A vector points upward. What information does this statement give us: its magnitude or its direction?",
-
-    answer:
-        "Its direction.",
-
-    solution:
-        "The word \"upward\" tells us which way the vector points. Therefore, it gives the direction, not the magnitude."
-},
-
-
-{
-    level:"Foundation",
-    number:5,
-
-    question:
-        "What does the arrow above \\(\\overrightarrow{AB}\\) tell us?",
-
-    answer:
-        "It tells us that the vector points from A to B.",
-
-    solution:
-        "The first letter is the starting point and the second letter is the ending point. Therefore, \\(\\overrightarrow{AB}\\) points from A to B."
-},
-
-
-{
-    level:"Foundation",
-    number:6,
-
-    question:
-        "Are \\(\\overrightarrow{AB}\\) and \\(\\overrightarrow{BA}\\) the same vector? Explain.",
-
-    answer:
-        "No. They have opposite directions.",
-
-    solution:
-        "\\(\\overrightarrow{AB}\\) points from A to B, while \\(\\overrightarrow{BA}\\) points from B to A. Reversing the order reverses the direction, so they are not the same vector."
-},
-
-
-{
-    level:"Foundation",
-    number:7,
-
-    question:
-        "Two vectors have the same magnitude but point in different directions. Are they equal vectors?",
-
-    answer:
-        "No.",
-
-    solution:
-        "Equal vectors must have both the same magnitude and the same direction. Since the directions are different, the vectors are not equal."
-},
-
-
-{
-    level:"Foundation",
-    number:8,
-
-    question:
-        "Two vectors point in the same direction and have the same magnitude, but they are drawn in different positions. Can they still be equal?",
-
-    answer:
-        "Yes.",
-
-    solution:
-        "Equal vectors do not need to be drawn in the same position. They need the same magnitude and the same direction. Therefore, these two vectors are equal."
-},
-
-
-/* =========================================================
-   DEVELOPING 09–16
-========================================================= */
-
-{
-    level:"Developing",
-    number:9,
-
-    question:
-        "A vector has magnitude 12 units and points left. State its magnitude and direction.",
-
-    answer:
-        "Magnitude = 12 units; direction = left.",
-
-    solution:
-        "The magnitude is the size of the vector, so it is 12 units. The direction is given as left."
-},
-
-
-{
-    level:"Developing",
-    number:10,
-
-    question:
-        "Explain why a scalar cannot completely describe a vector.",
-
-    answer:
-        "Because a scalar gives magnitude but does not give direction.",
-
-    solution:
-        "A vector requires two pieces of information: magnitude and direction. A scalar provides only magnitude, so it does not completely describe a vector."
-},
-
-
-{
-    level:"Developing",
-    number:11,
-
-    question:
-        "If \\(\\overrightarrow{AB}\\) points east, what direction does \\(\\overrightarrow{BA}\\) point?",
-
-    answer:
-        "West.",
-
-    solution:
-        "\\(\\overrightarrow{BA}\\) reverses the direction of \\(\\overrightarrow{AB}\\). If A to B is east, then B to A is west."
-},
-
-
-{
-    level:"Developing",
-    number:12,
-
-    question:
-        "Vector \\(\\mathbf{a}\\) has magnitude 6 and points upward. Vector \\(\\mathbf{b}\\) has magnitude 6 and points downward. Are they equal?",
-
-    answer:
-        "No.",
-
-    solution:
-        "Both vectors have the same magnitude, 6, but their directions are opposite. Equal vectors must have the same magnitude and the same direction."
-},
-
-
-{
-    level:"Developing",
-    number:13,
-
-    question:
-        "Vector \\(\\mathbf{p}\\) has magnitude 9 and points right. Vector \\(\\mathbf{q}\\) has magnitude 9 and also points right. What can you conclude?",
-
-    answer:
-        "\\(\\mathbf{p}\\) and \\(\\mathbf{q}\\) are equal vectors.",
-
-    solution:
-        "Both vectors have the same magnitude, 9, and the same direction, right. Therefore, they are equal vectors."
-},
-
-
-{
-    level:"Developing",
-    number:14,
-
-    question:
-        "A vector goes from point P to point Q. Write its vector notation.",
-
-    answer:
-        "\\(\\overrightarrow{PQ}\\).",
-
-    solution:
-        "The first letter is the starting point and the second letter is the ending point. Therefore, the vector from P to Q is \\(\\overrightarrow{PQ}\\)."
-},
-
-
-{
-    level:"Developing",
-    number:15,
-
-    question:
-        "If \\(\\overrightarrow{CD}\\) has magnitude 10 units, what is the magnitude of \\(\\overrightarrow{DC}\\)?",
-
-    answer:
-        "10 units.",
-
-    solution:
-        "Reversing a vector changes its direction but not its length. Therefore, \\(\\overrightarrow{DC}\\) still has magnitude 10 units."
-},
-
-
-{
-    level:"Developing",
-    number:16,
-
-    question:
-        "A vector moves 5 units horizontally and 3 units vertically. What do the numbers 5 and 3 represent?",
-
-    answer:
-        "They represent the horizontal and vertical components of the vector.",
-
-    solution:
-        "The horizontal component describes the left-right movement, while the vertical component describes the up-down movement. Therefore, 5 and 3 are the horizontal and vertical components respectively."
-},
-
-
-/* =========================================================
-   INTERMEDIATE 17–24
-========================================================= */
-
-{
-    level:"Intermediate",
-    number:17,
-
-    question:
-        "A vector is written as \\((4,7)\\). What does the first number represent and what does the second number represent?",
-
-    answer:
-        "4 is the horizontal component and 7 is the vertical component.",
-
-    solution:
-        "In component notation \\((x,y)\\), the first value gives the horizontal component and the second value gives the vertical component. Therefore, \\(x=4\\) and \\(y=7\\)."
-},
-
-
-{
-    level:"Intermediate",
-    number:18,
-
-    question:
-        "Add the vectors \\(\\mathbf{a}=(3,2)\\) and \\(\\mathbf{b}=(4,5)\\).",
-
-    answer:
-        "\\(\\mathbf{a}+\\mathbf{b}=(7,7)\\).",
-
-    solution:
-        "Add corresponding components.\n\nHorizontal:\n\\(3+4=7\\).\n\nVertical:\n\\(2+5=7\\).\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}=(7,7).\\]"
-},
-
-
-{
-    level:"Intermediate",
-    number:19,
-
-    question:
-        "Add \\(\\mathbf{a}=(6,-2)\\) and \\(\\mathbf{b}=(3,5)\\).",
-
-    answer:
-        "\\((9,3)\\).",
-
-    solution:
-        "Add the horizontal components:\n\n\\(6+3=9\\).\n\nAdd the vertical components:\n\n\\(-2+5=3\\).\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}=(9,3).\\]"
-},
-
-
-{
-    level:"Intermediate",
-    number:20,
-
-    question:
-        "Find the resultant of \\(\\mathbf{a}=(-4,3)\\) and \\(\\mathbf{b}=(2,-7)\\).",
-
-    answer:
-        "\\((-2,-4)\\).",
-
-    solution:
-        "Add corresponding components.\n\nHorizontal:\n\\[-4+2=-2\\]\n\nVertical:\n\\[3+(-7)=-4\\]\n\nTherefore, the resultant is\n\\[(-2,-4).\\]"
-},
-
-
-{
-    level:"Intermediate",
-    number:21,
-
-    question:
-        "A vector \\(\\mathbf{a}=(5,-3)\\). State its horizontal and vertical components.",
-
-    answer:
-        "Horizontal component = 5; vertical component = -3.",
-
-    solution:
-        "The first number in \\((x,y)\\) is the horizontal component, so it is 5. The second number is the vertical component, so it is -3."
-},
-
-
-{
-    level:"Intermediate",
-    number:22,
-
-    question:
-        "A vector \\(\\mathbf{b}=(-2,8)\\). Which direction does its horizontal component indicate?",
-
-    answer:
-        "Left.",
-
-    solution:
-        "The horizontal component is -2. A negative horizontal component indicates movement to the left."
-},
-
-
-{
-    level:"Intermediate",
-    number:23,
-
-    question:
-        "A vector \\(\\mathbf{c}=(4,-6)\\). Which direction does its vertical component indicate?",
-
-    answer:
-        "Downward.",
-
-    solution:
-        "The vertical component is -6. A negative vertical component indicates movement downward."
-},
-
-
-{
-    level:"Intermediate",
-    number:24,
-
-    question:
-        "Two vectors are \\(\\mathbf{a}=(3,4)\\) and \\(\\mathbf{b}=(3,4)\\). Are they equal? Explain using their components.",
-
-    answer:
-        "Yes, they are equal.",
-
-    solution:
-        "The corresponding components are identical. Both have horizontal component 3 and vertical component 4. Therefore, they have the same horizontal and vertical movement and represent equal vectors."
-},
-
-
-/* =========================================================
-   ADVANCED 25–32
-========================================================= */
-
-{
-    level:"Advanced",
-    number:25,
-
-    question:
-        "A vector \\(\\mathbf{a}=(7,-4)\\) is added to \\(\\mathbf{b}=(-3,9)\\). Find the resultant.",
-
-    answer:
-        "\\((4,5)\\).",
-
-    solution:
-        "Add the horizontal components:\n\n\\[7+(-3)=4\\]\n\nAdd the vertical components:\n\n\\[-4+9=5\\]\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}=(4,5).\\]"
-},
-
-
-{
-    level:"Advanced",
-    number:26,
-
-    question:
-        "Three vectors are \\(\\mathbf{a}=(2,5)\\), \\(\\mathbf{b}=(-6,1)\\), and \\(\\mathbf{c}=(4,-3)\\). Find \\(\\mathbf{a}+\\mathbf{b}+\\mathbf{c}\\).",
-
-    answer:
-        "\\((0,3)\\).",
-
-    solution:
-        "Add the horizontal components:\n\n\\[2+(-6)+4=0\\]\n\nAdd the vertical components:\n\n\\[5+1+(-3)=3\\]\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}+\\mathbf{c}=(0,3).\\]"
-},
-
-
-{
-    level:"Advanced",
-    number:27,
-
-    question:
-        "A vector \\(\\mathbf{a}=(8,-5)\\) is combined with \\(\\mathbf{b}=(-8,2)\\). What is the resultant and what does its zero horizontal component mean?",
-
-    answer:
-        "The resultant is \\((0,-3)\\). The zero horizontal component means there is no overall horizontal movement.",
-
-    solution:
-        "Add the horizontal components:\n\n\\[8+(-8)=0\\]\n\nAdd the vertical components:\n\n\\[-5+2=-3\\]\n\nTherefore,\n\\[(0,-3)\\]\n\nBecause the horizontal component is zero, the horizontal movements cancel completely."
-},
-
-
-{
-    level:"Advanced",
-    number:28,
-
-    question:
-        "Vector \\(\\mathbf{p}=(5,2)\\) and vector \\(\\mathbf{q}=(-5,-2)\\) are added. What is the resultant? What does this tell you about their movements?",
-
-    answer:
-        "The resultant is \\((0,0)\\). Their horizontal and vertical movements completely cancel.",
-
-    solution:
-        "Horizontal:\n\n\\[5+(-5)=0\\]\n\nVertical:\n\n\\[2+(-2)=0\\]\n\nTherefore,\n\\[\\mathbf{p}+\\mathbf{q}=(0,0).\\]\n\nBoth components cancel, so there is no overall horizontal or vertical movement."
-},
-
-
-{
-    level:"Advanced",
-    number:29,
-
-    question:
-        "A vector \\(\\mathbf{a}=(4,3)\\) is followed by vector \\(\\mathbf{b}=(2,-5)\\). Find the resultant movement.",
-
-    answer:
-        "\\((6,-2)\\).",
-
-    solution:
-        "For head-to-tail addition, combine the horizontal and vertical components.\n\nHorizontal:\n\\[4+2=6\\]\n\nVertical:\n\\[3+(-5)=-2\\]\n\nTherefore, the resultant movement is\n\\[(6,-2).\\]"
-},
-
-
-{
-    level:"Advanced",
-    number:30,
-
-    question:
-        "Two vectors have magnitudes 7 and 7. One points right and the other points left. Are they equal? Are they parallel?",
-
-    answer:
-        "They are not equal, but they are parallel.",
-
-    solution:
-        "They have the same magnitude, but their directions are opposite, so they are not equal vectors. Their directions lie along the same line but point in opposite directions, so they are parallel."
-},
-
-
-{
-    level:"Advanced",
-    number:31,
-
-    question:
-        "Vector \\(\\mathbf{a}\\) points upward and vector \\(\\mathbf{b}\\) points downward. They lie along parallel lines. What is the relationship between their directions?",
-
-    answer:
-        "Their directions are opposite.",
-
-    solution:
-        "One vector points upward and the other points downward. Since these directions are exactly opposite, their directions are reversed."
-},
-
-
-{
-    level:"Advanced",
-    number:32,
-
-    question:
-        "Vector \\(\\mathbf{p}\\) has magnitude 10 and points right. Vector \\(\\mathbf{q}\\) has magnitude 4 and points right. Are they equal? Are they parallel?",
-
-    answer:
-        "They are not equal, but they are parallel and point in the same direction.",
-
-    solution:
-        "They point in the same direction, so they are parallel. However, their magnitudes are different, 10 and 4, so they are not equal vectors."
-},
-
-
-/* =========================================================
-   CHALLENGE 33–40
-========================================================= */
-
-{
-    level:"Challenge",
-    number:33,
-
-    question:
-        "Vector \\(\\mathbf{a}=(6,4)\\) and vector \\(\\mathbf{b}=(-2,-4)\\). Find the resultant. Then state whether the resultant has a positive or negative horizontal component and a positive or negative vertical component.",
-
-    answer:
-        "Resultant = \\((4,0)\\). The horizontal component is positive and the vertical component is zero.",
-
-    solution:
-        "Horizontal:\n\n\\[6+(-2)=4\\]\n\nVertical:\n\n\\[4+(-4)=0\\]\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}=(4,0).\\]\n\nThe horizontal component is positive because it is 4. The vertical component is zero because the vertical movements cancel."
-},
-
-
-{
-    level:"Challenge",
-    number:34,
-
-    question:
-        "Two vectors have the same magnitude. One points northeast and the other points southwest. Are they equal? Are they parallel?",
-
-    answer:
-        "They are not equal, but they are parallel.",
-
-    solution:
-        "The vectors have the same magnitude, but northeast and southwest are opposite directions. Therefore, they are not equal. Because they point along the same line in opposite directions, they are parallel."
-},
-
-
-{
-    level:"Challenge",
-    number:35,
-
-    question:
-        "A student says: \"If two vectors have the same magnitude, they must be equal.\" Is the statement correct? Explain.",
-
-    answer:
-        "No. Two vectors must have the same magnitude and the same direction to be equal.",
-
-    solution:
-        "Having the same magnitude is only one requirement. For example, a vector of magnitude 5 pointing right and a vector of magnitude 5 pointing upward have the same magnitude but different directions. Therefore, they are not equal."
-},
-
-
-{
-    level:"Challenge",
-    number:36,
-
-    question:
-        "A student says: \"If two vectors are parallel, they must be equal.\" Is the statement correct? Explain.",
-
-    answer:
-        "No.",
-
-    solution:
-        "Parallel vectors can have different magnitudes. For example, one vector may have magnitude 3 and another magnitude 8 while both point in the same direction. They are parallel, but they are not equal because their magnitudes differ."
-},
-
-
-{
-    level:"Challenge",
-    number:37,
-
-    question:
-        "Vector \\(\\mathbf{a}=(3,-7)\\) and vector \\(\\mathbf{b}=(-3,7)\\) are added. Explain why the resultant has no horizontal or vertical movement.",
-
-    answer:
-        "The resultant is \\((0,0)\\) because both corresponding components cancel.",
-
-    solution:
-        "Horizontal components:\n\n\\[3+(-3)=0\\]\n\nVertical components:\n\n\\[-7+7=0\\]\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}=(0,0).\\]\n\nBoth the horizontal and vertical movements cancel, so there is no overall movement in either direction."
-},
-
-
-{
-    level:"Challenge",
-    number:38,
-
-    question:
-        "Vector \\(\\mathbf{a}=(4,6)\\) and vector \\(\\mathbf{b}=(-4,1)\\). A student says the resultant is \\((0,7)\\). Is the student correct? Show why.",
-
-    answer:
-        "Yes. The resultant is \\((0,7)\\).",
-
-    solution:
-        "Add the horizontal components:\n\n\\[4+(-4)=0\\]\n\nAdd the vertical components:\n\n\\[6+1=7\\]\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}=(0,7).\\]\n\nThe student is correct."
-},
-
-
-{
-    level:"Challenge",
-    number:39,
-
-    question:
-        "Three vectors are \\(\\mathbf{a}=(5,-2)\\), \\(\\mathbf{b}=(-1,6)\\), and \\(\\mathbf{c}=(-4,-4)\\). Find the resultant and explain what is special about it.",
-
-    answer:
-        "The resultant is \\((0,0)\\). Both horizontal and vertical components cancel completely.",
-
-    solution:
-        "Horizontal:\n\n\\[5+(-1)+(-4)=0\\]\n\nVertical:\n\n\\[-2+6+(-4)=0\\]\n\nTherefore,\n\\[\\mathbf{a}+\\mathbf{b}+\\mathbf{c}=(0,0).\\]\n\nBoth components cancel completely, so the overall movement is zero."
-},
-
-
-{
-    level:"Challenge",
-    number:40,
-
-    question:
-        "A vector \\(\\mathbf{a}=(x,4)\\) is added to \\(\\mathbf{b}=(-7,-1)\\). The resultant is \\((2,3)\\). Find \\(x\\).",
-
-    answer:
-        "\\(x=9\\).",
-
-    solution:
-        "The horizontal components must add to the horizontal component of the resultant.\n\nTherefore,\n\\[x+(-7)=2\\]\n\nAdd 7 to both sides:\n\\[x=9\\]\n\nCheck the vertical component:\n\\[4+(-1)=3\\]\n\nwhich matches the given resultant. Therefore,\n\\[\\boxed{x=9}\\]"
-}
-
-];
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const questionList =
-    document.getElementById("questionList");
-
-
-const emptyMessage =
-    document.getElementById("emptyMessage");
-
-
-const visibleCount =
-    document.getElementById("visibleCount");
-
-
-const progressFill =
-    document.getElementById("progressFill");
-
-
-/* =========================================================
-   SOLUTION FORMATTER
-   FIXES BOTH:
-   1. Real new lines
-   2. Literal \n sequences inside JS strings
-========================================================= */
-
-function formatSolution(text){
-
-    /*
-       Some of the original solutions contained \\n.
-
-       In JavaScript this becomes the literal characters
-       "\n", rather than a real line break.
-
-       Convert those literal sequences first.
-    */
-
-    const cleanedText =
-        text.replace(/\\n/g, "\n");
-
-
-    /*
-       Split the solution into logical paragraphs.
-    */
-
-    const parts =
-        cleanedText.split(/\n\s*\n/);
-
-
-    return parts.map(part => {
-
-        /*
-           Convert remaining single line breaks into <br>.
-           MathJax delimiters remain untouched.
-        */
-
-        const formatted =
-            part
-                .replace(/\n/g, "<br>");
-
-
-        return `
-            <div class="solution-line">
-                ${formatted}
-            </div>
-        `;
-
-    }).join("");
-
-}
-
-
-/* =========================================================
-   TYPESet MATH
-========================================================= */
-
-async function typesetMath(element){
-
-    if(
-        window.MathJax &&
-        typeof MathJax.typesetPromise === "function"
-    ){
-
-        try{
-
-            await MathJax.typesetPromise([element]);
-
-        }catch(error){
-
-            console.error(
-                "MathJax rendering error:",
-                error
-            );
-
-        }
-
-    }
-
-}
-
-
-/* =========================================================
-   RENDER QUESTIONS
-========================================================= */
-
-async function renderQuestions(level="All"){
-
-    questionList.innerHTML="";
-
-
-    const filtered =
-        level === "All"
-        ? questions
-        : questions.filter(
-            q => q.level === level
-        );
-
-
-    visibleCount.textContent =
-        `Showing ${filtered.length}`;
-
-
-    progressFill.style.width =
-        `${(filtered.length / questions.length) * 100}%`;
-
-
-    if(filtered.length === 0){
-
-        emptyMessage.style.display="block";
-
-        return;
-
-    }
-
-
-    emptyMessage.style.display="none";
-
-
-    filtered.forEach(q => {
-
-        const card =
-            document.createElement("article");
-
-
-        card.className =
-            "question-card";
-
-
-        card.innerHTML = `
-
-            <div class="question-top">
-
-                <div>
-
-                    <div class="question-number">
-                        QUESTION ${String(q.number).padStart(2,"0")}
-                    </div>
-
-
-                    <div class="question-text">
-                        ${q.question}
-                    </div>
-
-                </div>
-
-
-                <div class="level-tag">
-                    ${q.level}
-                </div>
-
-            </div>
-
-
-            <div class="question-body">
-
-                <div class="action-row">
-
-                    <button
-                        class="action-btn solution-btn"
-                        onclick="toggleAnswer(this)"
-                    >
-                        SHOW ANSWER &amp; SOLUTION
-                    </button>
-
-                </div>
-
-
-                <div class="answer-box">
-
-                    <div class="answer-title">
-                        ANSWER
-                    </div>
-
-
-                    <div class="answer">
-                        ${q.answer}
-                    </div>
-
-
-                    <div class="solution">
-
-                        <div class="solution-title">
-                            SOLUTION
-                        </div>
-
-
-                        <div>
-                            ${formatSolution(q.solution)}
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        `;
-
-
-        questionList.appendChild(card);
-
-    });
-
-
-    /*
-       Render all visible mathematical notation
-       after the cards actually exist in the DOM.
-    */
-
-    await typesetMath(questionList);
-
-}
-
-
-/* =========================================================
-   SHOW / HIDE ANSWER
-========================================================= */
-
-async function toggleAnswer(button){
-
-    const box =
-        button
-            .closest(".question-body")
-            .querySelector(".answer-box");
-
-
-    const isOpening =
-        !box.classList.contains("show");
-
-
-    box.classList.toggle("show");
-
-
-    if(isOpening){
-
-        button.textContent =
-            "HIDE ANSWER & SOLUTION";
-
-        /*
-           Wait one frame so the answer box is fully
-           inserted/displayed before MathJax processes it.
-        */
-
-        await new Promise(
-            resolve => requestAnimationFrame(resolve)
-        );
-
-
-        await typesetMath(box);
-
-    }else{
-
-        button.textContent =
-            "SHOW ANSWER & SOLUTION";
-
-    }
-
-}
-
-
-/* =========================================================
-   FILTER QUESTIONS
-========================================================= */
-
-function filterQuestions(level, button){
-
-    document
-        .querySelectorAll(".filter-btn")
-        .forEach(
-            btn =>
-                btn.classList.remove("active")
-        );
-
-
-    button.classList.add("active");
-
-
-    renderQuestions(level);
-
-
-    window.scrollTo({
-
-        top:
-            document
-                .querySelector(".filter-bar")
-                .offsetTop - 100,
-
-        behavior:"smooth"
-
-    });
-
-}
-
-
-/* =========================================================
    LESSON COMPLETION
 ========================================================= */
 
 async function markLessonComplete(){
 
     const {
-        data:{session}
+        data:{
+            session
+        }
     } =
-        await supabaseClient.auth.getSession();
+        await supabaseClient
+            .auth
+            .getSession();
 
 
     if(!session){
-
         return;
-
     }
 
 
-    const { error } =
+    const {
+        error
+    } =
         await supabaseClient
-            .from("lesson_progress")
+
+            .from(
+                "lesson_progress"
+            )
+
             .upsert(
 
                 {
@@ -2794,6 +3965,26 @@ async function markLessonComplete(){
 
 
 /* =========================================================
+   LOGOUT
+========================================================= */
+
+async function logout(){
+
+    await supabaseClient
+        .auth
+        .signOut();
+
+
+    localStorage.clear();
+
+
+    location.href =
+        "index.html";
+
+}
+
+
+/* =========================================================
    INITIALISE
 ========================================================= */
 
@@ -2801,18 +3992,18 @@ document.addEventListener(
     "DOMContentLoaded",
     async function(){
 
-        const loggedIn =
+        const validSession =
             await checkSession();
 
 
-        if(!loggedIn){
-
+        if(!validSession){
             return;
-
         }
 
 
-        await renderQuestions();
+        await renderQuestions(
+            "All"
+        );
 
 
         await markLessonComplete();
@@ -2821,6 +4012,7 @@ document.addEventListener(
 );
 
 </script>
+
 
 </body>
 
