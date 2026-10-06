@@ -2264,186 +2264,397 @@ const questions = [
 ========================================================= */
 
 {
-    number:1,
-    level:"Foundation",
+    id: 1,
+    level: "Foundation",
+    question: `
+        Simplify the vector
+        \\[
+        \\begin{pmatrix}7\\\\-3\\end{pmatrix}
+        +
+        \\begin{pmatrix}-2\\\\5\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(\\begin{pmatrix}5\\\\2\\end{pmatrix}\\)`,
+    solution: `
+        Add the corresponding components.
 
-    question:
-        "What two pieces of information are needed to completely describe a vector?",
+        \\[
+        \\begin{pmatrix}7\\\\-3\\end{pmatrix}
+        +
+        \\begin{pmatrix}-2\\\\5\\end{pmatrix}
+        =
+        \\begin{pmatrix}
+        7+(-2)\\\\
+        -3+5
+        \\end{pmatrix}
+        \\]
 
-    answer:
-        "Magnitude and direction.",
+        Simplify each component:
 
-    solution:`
-A vector contains two essential pieces of information.
+        \\[
+        7-2=5
+        \\]
 
-The first is its magnitude, which tells us the size or length of the vector.
+        \\[
+        -3+5=2
+        \\]
 
-The second is its direction, which tells us which way the vector points.
+        Therefore,
 
-Therefore, a vector is completely described by \\(\\boxed{\\text{magnitude and direction}}\\).
-`
+        \\[
+        \\boxed{\\begin{pmatrix}5\\\\2\\end{pmatrix}}
+        \\]
+    `
 },
 
-
 {
-    number:2,
-    level:"Foundation",
+    id: 2,
+    level: "Foundation",
+    question: `
+        Simplify
+        \\[
+        3\\begin{pmatrix}2\\\\-4\\end{pmatrix}
+        -
+        \\begin{pmatrix}1\\\\-5\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(\\begin{pmatrix}5\\\\-7\\end{pmatrix}\\)`,
+    solution: `
+        First multiply the vector by 3:
 
-    question:
-        "Which piece of information is enough to describe a scalar quantity?",
+        \\[
+        3\\begin{pmatrix}2\\\\-4\\end{pmatrix}
+        =
+        \\begin{pmatrix}6\\\\-12\\end{pmatrix}
+        \\]
 
-    answer:
-        "Magnitude only.",
+        Now subtract:
 
-    solution:`
-A scalar quantity has size but no direction.
+        \\[
+        \\begin{pmatrix}6\\\\-12\\end{pmatrix}
+        -
+        \\begin{pmatrix}1\\\\-5\\end{pmatrix}
+        =
+        \\begin{pmatrix}
+        6-1\\\\
+        -12-(-5)
+        \\end{pmatrix}
+        \\]
 
-Therefore, only its magnitude is needed to describe it.
+        Therefore,
 
-So the answer is \\(\\boxed{\\text{magnitude only}}\\).
-`
+        \\[
+        \\boxed{\\begin{pmatrix}5\\\\-7\\end{pmatrix}}
+        \\]
+    `
 },
 
-
 {
-    number:3,
-    level:"Foundation",
+    id: 3,
+    level: "Foundation",
+    question: `
+        Given
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}4\\\\-2\\end{pmatrix},
+        \\qquad
+        \\mathbf b=
+        \\begin{pmatrix}-1\\\\3\\end{pmatrix},
+        \\]
+        find
+        \\[
+        2\\mathbf a+\\mathbf b.
+        \\]
+    `,
+    answer: `\\(\\begin{pmatrix}7\\\\-1\\end{pmatrix}\\)`,
+    solution: `
+        First find \\(2\\mathbf a\\):
 
-    question:
-        "A vector has magnitude 8 and points to the right. What is its magnitude?",
+        \\[
+        2\\mathbf a
+        =
+        2\\begin{pmatrix}4\\\\-2\\end{pmatrix}
+        =
+        \\begin{pmatrix}8\\\\-4\\end{pmatrix}
+        \\]
 
-    answer:
-        "\\(8\\)",
+        Then add \\(\\mathbf b\\):
 
-    solution:`
-The question already gives the magnitude of the vector.
+        \\[
+        \\begin{pmatrix}8\\\\-4\\end{pmatrix}
+        +
+        \\begin{pmatrix}-1\\\\3\\end{pmatrix}
+        =
+        \\begin{pmatrix}7\\\\-1\\end{pmatrix}
+        \\]
 
-The direction does not change the magnitude.
+        Therefore,
 
-Therefore,
-
-\\[
-\\boxed{8}
-\\]
-`
+        \\[
+        \\boxed{\\begin{pmatrix}7\\\\-1\\end{pmatrix}}
+        \\]
+    `
 },
 
-
 {
-    number:4,
-    level:"Foundation",
+    id: 4,
+    level: "Foundation",
+    question: `
+        Given
+        \\[
+        \\mathbf p=
+        \\begin{pmatrix}x\\\\4\\end{pmatrix},
+        \\qquad
+        \\mathbf q=
+        \\begin{pmatrix}3\\\\-1\\end{pmatrix},
+        \\]
+        and
+        \\[
+        \\mathbf p+\\mathbf q=
+        \\begin{pmatrix}8\\\\3\\end{pmatrix},
+        \\]
+        find \\(x\\).
+    `,
+    answer: `\\(x=5\\)`,
+    solution: `
+        Add the vectors:
 
-    question:
-        "A vector points vertically upward. What information does this describe?",
+        \\[
+        \\begin{pmatrix}x\\\\4\\end{pmatrix}
+        +
+        \\begin{pmatrix}3\\\\-1\\end{pmatrix}
+        =
+        \\begin{pmatrix}8\\\\3\\end{pmatrix}
+        \\]
 
-    answer:
-        "The direction of the vector.",
+        Compare the first components:
 
-    solution:`
-The phrase “vertically upward” tells us which way the vector points.
+        \\[
+        x+3=8
+        \\]
 
-Therefore, it describes the vector's direction.
-`
+        Subtract 3 from both sides:
+
+        \\[
+        x=5
+        \\]
+
+        Check the second component:
+
+        \\[
+        4+(-1)=3
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{x=5}
+        \\]
+    `
 },
 
-
 {
-    number:5,
-    level:"Foundation",
+    id: 5,
+    level: "Foundation",
+    question: `
+        Given
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}2\\\\-3\\end{pmatrix},
+        \\qquad
+        \\mathbf b=
+        \\begin{pmatrix}x\\\\5\\end{pmatrix},
+        \\]
+        find \\(x\\) if
 
-    question:
-        "What does the arrow over \\(AB\\) tell us about the vector?",
+        \\[
+        \\mathbf a+\\mathbf b=
+        \\begin{pmatrix}7\\\\2\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(x=5\\)`,
+    solution: `
+        Add the vectors:
 
-    answer:
-        "It shows that the vector points from A to B.",
+        \\[
+        \\begin{pmatrix}2\\\\-3\\end{pmatrix}
+        +
+        \\begin{pmatrix}x\\\\5\\end{pmatrix}
+        =
+        \\begin{pmatrix}7\\\\2\\end{pmatrix}
+        \\]
 
-    solution:`
-The order of the letters is important.
+        From the first component:
 
-For \\(\\overrightarrow{AB}\\), the vector starts at A and ends at B.
+        \\[
+        2+x=7
+        \\]
 
-Therefore, the arrow shows the direction \\(\\boxed{A\\rightarrow B}\\).
-`
+        Therefore,
+
+        \\[
+        x=5
+        \\]
+
+        The second component also checks:
+
+        \\[
+        -3+5=2
+        \\]
+
+        Hence,
+
+        \\[
+        \\boxed{x=5}
+        \\]
+    `
 },
 
-
 {
-    number:6,
-    level:"Foundation",
+    id: 6,
+    level: "Foundation",
+    question: `
+        Simplify
+        \\[
+        4\\begin{pmatrix}-2\\\\3\\end{pmatrix}
+        +
+        2\\begin{pmatrix}5\\\\-1\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(\\begin{pmatrix}2\\\\10\\end{pmatrix}\\)`,
+    solution: `
+        Multiply each vector:
 
-    question:
-        "Are \\(\\overrightarrow{AB}\\) and \\(\\overrightarrow{BA}\\) the same vector?",
+        \\[
+        4\\begin{pmatrix}-2\\\\3\\end{pmatrix}
+        =
+        \\begin{pmatrix}-8\\\\12\\end{pmatrix}
+        \\]
 
-    answer:
-        "No. They point in opposite directions.",
+        and
 
-    solution:`
-Both vectors have the same magnitude because they have the same endpoints.
+        \\[
+        2\\begin{pmatrix}5\\\\-1\\end{pmatrix}
+        =
+        \\begin{pmatrix}10\\\\-2\\end{pmatrix}
+        \\]
 
-However,
+        Add:
 
-\\[
-\\overrightarrow{AB}
-\\]
+        \\[
+        \\begin{pmatrix}-8\\\\12\\end{pmatrix}
+        +
+        \\begin{pmatrix}10\\\\-2\\end{pmatrix}
+        =
+        \\begin{pmatrix}2\\\\10\\end{pmatrix}
+        \\]
 
-points from A to B, while
+        Therefore,
 
-\\[
-\\overrightarrow{BA}
-\\]
-
-points from B to A.
-
-Their directions are opposite, so they are not equal.
-`
+        \\[
+        \\boxed{\\begin{pmatrix}2\\\\10\\end{pmatrix}}
+        \\]
+    `
 },
 
-
 {
-    number:7,
-    level:"Foundation",
+    id: 7,
+    level: "Foundation",
+    question: `
+        Given
+        \\[
+        \\mathbf u=
+        \\begin{pmatrix}3\\\\-2\\end{pmatrix},
+        \\qquad
+        \\mathbf v=
+        \\begin{pmatrix}-4\\\\1\\end{pmatrix},
+        \\]
+        find
+        \\[
+        \\mathbf u-2\\mathbf v.
+        \\]
+    `,
+    answer: `\\(\\begin{pmatrix}11\\\\-4\\end{pmatrix}\\)`,
+    solution: `
+        First find \\(2\\mathbf v\\):
 
-    question:
-        "Can two vectors have the same magnitude but different directions and still be equal?",
+        \\[
+        2\\mathbf v
+        =
+        \\begin{pmatrix}-8\\\\2\\end{pmatrix}
+        \\]
 
-    answer:
-        "No.",
+        Therefore,
 
-    solution:`
-For two vectors to be equal, they must have both:
+        \\[
+        \\mathbf u-2\\mathbf v
+        =
+        \\begin{pmatrix}3\\\\-2\\end{pmatrix}
+        -
+        \\begin{pmatrix}-8\\\\2\\end{pmatrix}
+        \\]
 
-\\[
-\\text{same magnitude}
-\\]
+        Subtract component by component:
 
-and
+        \\[
+        =
+        \\begin{pmatrix}
+        3-(-8)\\\\
+        -2-2
+        \\end{pmatrix}
+        =
+        \\begin{pmatrix}11\\\\-4\\end{pmatrix}
+        \\]
 
-\\[
-\\text{same direction}.
-\\]
+        Hence,
 
-Therefore, having different directions means the vectors are not equal.
-`
+        \\[
+        \\boxed{\\begin{pmatrix}11\\\\-4\\end{pmatrix}}
+        \\]
+    `
 },
 
-
 {
-    number:8,
-    level:"Foundation",
+    id: 8,
+    level: "Foundation",
+    question: `
+        Find \\(k\\) if
 
-    question:
-        "Can two vectors have the same magnitude and direction but be drawn in different positions?",
+        \\[
+        k
+        \\begin{pmatrix}2\\\\-3\\end{pmatrix}
+        =
+        \\begin{pmatrix}10\\\\-15\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=5\\)`,
+    solution: `
+        Compare the first components:
 
-    answer:
-        "Yes.",
+        \\[
+        2k=10
+        \\]
 
-    solution:`
-The position of a vector does not determine whether two vectors are equal.
+        Divide by 2:
 
-If two vectors have the same magnitude and the same direction, they are equal even if they are drawn in different locations.
+        \\[
+        k=5
+        \\]
 
-Therefore, \\(\\boxed{\\text{Yes}}\\).
-`
+        Check the second component:
+
+        \\[
+        -3(5)=-15
+        \\]
+
+        Both components agree.
+
+        Therefore,
+
+        \\[
+        \\boxed{k=5}
+        \\]
+    `
 },
 
 
@@ -2452,206 +2663,556 @@ Therefore, \\(\\boxed{\\text{Yes}}\\).
 ========================================================= */
 
 {
-    number:9,
-    level:"Developing",
+    id: 9,
+    level: "Developing",
+    question: `
+        Given
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}x\\\\2\\end{pmatrix},
+        \\qquad
+        \\mathbf b=
+        \\begin{pmatrix}3\\\\y\\end{pmatrix},
+        \\]
+        and
+        \\[
+        2\\mathbf a+\\mathbf b=
+        \\begin{pmatrix}11\\\\7\\end{pmatrix},
+        \\]
+        find \\(x\\) and \\(y\\).
+    `,
+    answer: `\\(x=4,\\ y=3\\)`,
+    solution: `
+        Substitute the vectors:
 
-    question:
-        "A vector has magnitude 12 and points to the left. State its magnitude and direction.",
+        \\[
+        2
+        \\begin{pmatrix}x\\\\2\\end{pmatrix}
+        +
+        \\begin{pmatrix}3\\\\y\\end{pmatrix}
+        =
+        \\begin{pmatrix}11\\\\7\\end{pmatrix}
+        \\]
 
-    answer:
-        "Magnitude = 12, direction = left.",
+        Multiply by 2:
 
-    solution:`
-The magnitude is given directly as \\(12\\).
+        \\[
+        \\begin{pmatrix}2x\\\\4\\end{pmatrix}
+        +
+        \\begin{pmatrix}3\\\\y\\end{pmatrix}
+        =
+        \\begin{pmatrix}11\\\\7\\end{pmatrix}
+        \\]
 
-The direction is given as left.
+        Compare the first components:
 
-Therefore,
+        \\[
+        2x+3=11
+        \\]
 
-\\[
-\\boxed{\\text{magnitude}=12}
-\\]
+        \\[
+        2x=8
+        \\]
 
-and
+        \\[
+        x=4
+        \\]
 
-\\[
-\\boxed{\\text{direction=left}}.
-\\]
-`
+        Compare the second components:
+
+        \\[
+        4+y=7
+        \\]
+
+        \\[
+        y=3
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{x=4,\\quad y=3}
+        \\]
+    `
 },
 
-
 {
-    number:10,
-    level:"Developing",
+    id: 10,
+    level: "Developing",
+    question: `
+        Given
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}2\\\\-1\\end{pmatrix},
+        \\qquad
+        \\mathbf b=
+        \\begin{pmatrix}x\\\\4\\end{pmatrix},
+        \\]
+        find \\(x\\) if
 
-    question:
-        "Why can a scalar quantity not completely describe a vector?",
+        \\[
+        3\\mathbf a-\\mathbf b=
+        \\begin{pmatrix}1\\\\-7\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(x=5\\)`,
+    solution: `
+        First calculate \\(3\\mathbf a\\):
 
-    answer:
-        "A scalar gives magnitude only, while a vector also needs direction.",
+        \\[
+        3\\mathbf a
+        =
+        \\begin{pmatrix}6\\\\-3\\end{pmatrix}
+        \\]
 
-    solution:`
-A scalar contains only magnitude.
+        Therefore,
 
-A vector requires both magnitude and direction.
+        \\[
+        \\begin{pmatrix}6\\\\-3\\end{pmatrix}
+        -
+        \\begin{pmatrix}x\\\\4\\end{pmatrix}
+        =
+        \\begin{pmatrix}1\\\\-7\\end{pmatrix}
+        \\]
 
-Therefore, magnitude alone cannot completely describe a vector.
-`
+        Compare the first components:
+
+        \\[
+        6-x=1
+        \\]
+
+        Hence,
+
+        \\[
+        x=5
+        \\]
+
+        Check:
+
+        \\[
+        -3-4=-7
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{x=5}
+        \\]
+    `
 },
 
-
 {
-    number:11,
-    level:"Developing",
+    id: 11,
+    level: "Developing",
+    question: `
+        Given
+        \\[
+        \\mathbf p=
+        \\begin{pmatrix}x\\\\-2\\end{pmatrix},
+        \\qquad
+        \\mathbf q=
+        \\begin{pmatrix}4\\\\y\\end{pmatrix},
+        \\]
+        and
 
-    question:
-        "If \\(\\overrightarrow{AB}\\) points east, in which direction does \\(\\overrightarrow{BA}\\) point?",
+        \\[
+        \\mathbf p-\\mathbf q=
+        \\begin{pmatrix}3\\\\-5\\end{pmatrix},
+        \\]
 
-    answer:
-        "West.",
+        find \\(x\\) and \\(y\\).
+    `,
+    answer: `\\(x=7,\\ y=3\\)`,
+    solution: `
+        Write the equation component by component:
 
-    solution:`
-Reversing the order of the endpoints reverses the direction.
+        \\[
+        \\begin{pmatrix}x\\\\-2\\end{pmatrix}
+        -
+        \\begin{pmatrix}4\\\\y\\end{pmatrix}
+        =
+        \\begin{pmatrix}3\\\\-5\\end{pmatrix}
+        \\]
 
-Therefore, if
+        First component:
 
-\\[
-\\overrightarrow{AB}
-\\]
+        \\[
+        x-4=3
+        \\]
 
-points east, then
+        Therefore,
 
-\\[
-\\overrightarrow{BA}
-\\]
+        \\[
+        x=7
+        \\]
 
-points west.
-`
+        Second component:
+
+        \\[
+        -2-y=-5
+        \\]
+
+        Add 2:
+
+        \\[
+        -y=-3
+        \\]
+
+        Therefore,
+
+        \\[
+        y=3
+        \\]
+
+        Hence,
+
+        \\[
+        \\boxed{x=7,\\quad y=3}
+        \\]
+    `
 },
 
-
 {
-    number:12,
-    level:"Developing",
+    id: 12,
+    level: "Developing",
+    question: `
+        Let
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}2\\\\1\\end{pmatrix},
+        \\qquad
+        \\mathbf b=
+        \\begin{pmatrix}-1\\\\3\\end{pmatrix}.
+        \\]
 
-    question:
-        "Vector \\(a\\) has magnitude 6 and points upward. Vector \\(b\\) has magnitude 6 and points downward. Are they equal?",
+        Find \\(k\\) if
 
-    answer:
-        "No.",
+        \\[
+        \\mathbf a+k\\mathbf b=
+        \\begin{pmatrix}-1\\\\10\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=3\\)`,
+    solution: `
+        Substitute the vectors:
 
-    solution:`
-Both vectors have the same magnitude:
+        \\[
+        \\begin{pmatrix}2\\\\1\\end{pmatrix}
+        +
+        k\\begin{pmatrix}-1\\\\3\\end{pmatrix}
+        =
+        \\begin{pmatrix}-1\\\\10\\end{pmatrix}
+        \\]
 
-\\[
-|a|=|b|=6.
-\\]
+        Multiply:
 
-However, their directions are opposite.
+        \\[
+        \\begin{pmatrix}2\\\\1\\end{pmatrix}
+        +
+        \\begin{pmatrix}-k\\\\3k\\end{pmatrix}
+        =
+        \\begin{pmatrix}-1\\\\10\\end{pmatrix}
+        \\]
 
-Equal vectors must have both the same magnitude and the same direction.
+        From the first component:
 
-Therefore,
+        \\[
+        2-k=-1
+        \\]
 
-\\[
-\\boxed{a\\neq b}.
-\\]
-`
+        Thus,
+
+        \\[
+        k=3
+        \\]
+
+        Check the second component:
+
+        \\[
+        1+3(3)=10
+        \\]
+
+        Correct.
+
+        Therefore,
+
+        \\[
+        \\boxed{k=3}
+        \\]
+    `
 },
 
-
 {
-    number:13,
-    level:"Developing",
+    id: 13,
+    level: "Developing",
+    question: `
+        Given
+        \\[
+        \\mathbf s=
+        \\begin{pmatrix}2\\\\-1\\end{pmatrix},
+        \\qquad
+        \\mathbf t=
+        \\begin{pmatrix}x\\\\3\\end{pmatrix},
+        \\]
+        find \\(x\\) if
 
-    question:
-        "Vector \\(p\\) has magnitude 9 and points right. Vector \\(q\\) also has magnitude 9 and points right. Are they equal?",
+        \\[
+        2\\mathbf s+3\\mathbf t=
+        \\begin{pmatrix}13\\\\7\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(x=3\\)`,
+    solution: `
+        Calculate \\(2\\mathbf s\\):
 
-    answer:
-        "Yes.",
+        \\[
+        2\\mathbf s=
+        \\begin{pmatrix}4\\\\-2\\end{pmatrix}
+        \\]
 
-    solution:`
-Both vectors have magnitude \\(9\\).
+        Calculate \\(3\\mathbf t\\):
 
-They also point in the same direction.
+        \\[
+        3\\mathbf t=
+        \\begin{pmatrix}3x\\\\9\\end{pmatrix}
+        \\]
 
-Therefore, they have the same magnitude and direction, so
+        Therefore,
 
-\\[
-\\boxed{p=q}.
-\\]
-`
+        \\[
+        \\begin{pmatrix}4\\\\-2\\end{pmatrix}
+        +
+        \\begin{pmatrix}3x\\\\9\\end{pmatrix}
+        =
+        \\begin{pmatrix}13\\\\7\\end{pmatrix}
+        \\]
+
+        First component:
+
+        \\[
+        4+3x=13
+        \\]
+
+        \\[
+        3x=9
+        \\]
+
+        \\[
+        x=3
+        \\]
+
+        The second component checks:
+
+        \\[
+        -2+9=7
+        \\]
+
+        Hence,
+
+        \\[
+        \\boxed{x=3}
+        \\]
+    `
 },
 
-
 {
-    number:14,
-    level:"Developing",
+    id: 14,
+    level: "Developing",
+    question: `
+        Given
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}1\\\\4\\end{pmatrix},
+        \\qquad
+        \\mathbf b=
+        \\begin{pmatrix}2\\\\-3\\end{pmatrix},
+        \\]
+        find the value of \\(k\\) such that
 
-    question:
-        "How would you write the vector that goes from point P to point Q?",
+        \\[
+        k\\mathbf a+\\mathbf b=
+        \\begin{pmatrix}5\\\\9\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=2\\)`,
+    solution: `
+        Substitute:
 
-    answer:
-        "\\(\\overrightarrow{PQ}\\)",
+        \\[
+        k
+        \\begin{pmatrix}1\\\\4\\end{pmatrix}
+        +
+        \\begin{pmatrix}2\\\\-3\\end{pmatrix}
+        =
+        \\begin{pmatrix}5\\\\9\\end{pmatrix}
+        \\]
 
-    solution:`
-The first letter represents the starting point.
+        First component:
 
-The second letter represents the ending point.
+        \\[
+        k+2=5
+        \\]
 
-Therefore, a vector from P to Q is written as
+        Therefore,
 
-\\[
-\\boxed{\\overrightarrow{PQ}}.
-\\]
-`
+        \\[
+        k=3
+        \\]
+
+        Check the second component:
+
+        \\[
+        4(3)-3=9
+        \\]
+
+        So the correct value is
+
+        \\[
+        \\boxed{k=3}
+        \\]
+    `
 },
 
-
 {
-    number:15,
-    level:"Developing",
+    id: 15,
+    level: "Developing",
+    question: `
+        Simplify completely:
 
-    question:
-        "If \\(\\overrightarrow{CD}\\) has magnitude 10, what is the magnitude of \\(\\overrightarrow{DC}\\)?",
+        \\[
+        5
+        \\begin{pmatrix}1\\\\-2\\end{pmatrix}
+        -
+        2
+        \\begin{pmatrix}3\\\\1\\end{pmatrix}
+        +
+        \\begin{pmatrix}-4\\\\6\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(\\begin{pmatrix}-5\\\\-6\\end{pmatrix}\\)`,
+    solution: `
+        Multiply first:
 
-    answer:
-        "\\(10\\)",
+        \\[
+        5\\begin{pmatrix}1\\\\-2\\end{pmatrix}
+        =
+        \\begin{pmatrix}5\\\\-10\\end{pmatrix}
+        \\]
 
-    solution:`
-Reversing the direction of a vector changes its direction but does not change its magnitude.
+        and
 
-Therefore,
+        \\[
+        2\\begin{pmatrix}3\\\\1\\end{pmatrix}
+        =
+        \\begin{pmatrix}6\\\\2\\end{pmatrix}
+        \\]
 
-\\[
-|\\overrightarrow{CD}|=|\\overrightarrow{DC}|=10.
-\\]
+        Therefore,
 
-So the answer is \\(\\boxed{10}\\).
-`
+        \\[
+        \\begin{pmatrix}5\\\\-10\\end{pmatrix}
+        -
+        \\begin{pmatrix}6\\\\2\\end{pmatrix}
+        +
+        \\begin{pmatrix}-4\\\\6\\end{pmatrix}
+        \\]
+
+        First component:
+
+        \\[
+        5-6-4=-5
+        \\]
+
+        Second component:
+
+        \\[
+        -10-2+6=-6
+        \\]
+
+        Hence,
+
+        \\[
+        \\boxed{\\begin{pmatrix}-5\\\\-6\\end{pmatrix}}
+        \\]
+    `
 },
 
-
 {
-    number:16,
-    level:"Developing",
+    id: 16,
+    level: "Developing",
+    question: `
+        If
 
-    question:
-        "A vector moves 5 units horizontally and 3 units vertically. What do the numbers 5 and 3 represent?",
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}3\\\\-2\\end{pmatrix}
+        \\]
 
-    answer:
-        "The horizontal and vertical components of the vector.",
+        and
 
-    solution:`
-A vector can be separated into horizontal and vertical movements.
+        \\[
+        \\mathbf b=
+        \\begin{pmatrix}x\\\\y\\end{pmatrix},
+        \\]
 
-The movement of 5 units represents the horizontal component.
+        find \\(x\\) and \\(y\\) if
 
-The movement of 3 units represents the vertical component.
+        \\[
+        2\\mathbf a-\\mathbf b=
+        \\begin{pmatrix}1\\\\7\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(x=5,\\ y=-11\\)`,
+    solution: `
+        Calculate \\(2\\mathbf a\\):
 
-Therefore, the two numbers are the vector's components.
-`
+        \\[
+        2\\mathbf a=
+        \\begin{pmatrix}6\\\\-4\\end{pmatrix}
+        \\]
+
+        Therefore,
+
+        \\[
+        \\begin{pmatrix}6\\\\-4\\end{pmatrix}
+        -
+        \\begin{pmatrix}x\\\\y\\end{pmatrix}
+        =
+        \\begin{pmatrix}1\\\\7\\end{pmatrix}
+        \\]
+
+        First component:
+
+        \\[
+        6-x=1
+        \\]
+
+        Therefore,
+
+        \\[
+        x=5
+        \\]
+
+        Second component:
+
+        \\[
+        -4-y=7
+        \\]
+
+        \\[
+        -y=11
+        \\]
+
+        \\[
+        y=-11
+        \\]
+
+        Hence,
+
+        \\[
+        \\boxed{x=5,\\quad y=-11}
+        \\]
+    `
 },
 
 
@@ -2660,242 +3221,534 @@ Therefore, the two numbers are the vector's components.
 ========================================================= */
 
 {
-    number:17,
-    level:"Intermediate",
+    id: 17,
+    level: "Intermediate",
+    question: `
+        Let
 
-    question:
-        "For the vector \\(\\mathbf{a}=(4,7)\\), which component represents the horizontal movement and which represents the vertical movement?",
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}2\\\\-1\\end{pmatrix},
+        \\qquad
+        \\mathbf b=
+        \\begin{pmatrix}1\\\\3\\end{pmatrix}.
+        \\]
 
-    answer:
-        "Horizontal = 4, vertical = 7.",
+        Find \\(k\\) if
 
-    solution:`
-For a vector written as
+        \\[
+        \\mathbf a+k\\mathbf b
+        =
+        \\begin{pmatrix}8\\\\17\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=6\\)`,
+    solution: `
+        Write the equation component by component:
 
-\\[
-\\mathbf{a}=(x,y),
-\\]
+        \\[
+        \\begin{pmatrix}2\\\\-1\\end{pmatrix}
+        +
+        k\\begin{pmatrix}1\\\\3\\end{pmatrix}
+        =
+        \\begin{pmatrix}8\\\\17\\end{pmatrix}
+        \\]
 
-the first component represents the horizontal movement.
+        First component:
 
-The second component represents the vertical movement.
+        \\[
+        2+k=8
+        \\]
 
-Therefore,
+        Therefore,
 
-\\[
-\\boxed{\\text{horizontal}=4}
-\\]
+        \\[
+        k=6
+        \\]
 
-and
+        Check the second component:
 
-\\[
-\\boxed{\\text{vertical}=7}.
-\\]
-`
+        \\[
+        -1+3(6)=17
+        \\]
+
+        Correct.
+
+        Thus,
+
+        \\[
+        \\boxed{k=6}
+        \\]
+    `
 },
 
-
 {
-    number:18,
-    level:"Intermediate",
+    id: 18,
+    level: "Intermediate",
+    question: `
+        Given
 
-    question:
-        "Given \\(\\mathbf{a}=(3,2)\\) and \\(\\mathbf{b}=(4,5)\\), find \\(\\mathbf{a}+\\mathbf{b}\\).",
+        \\[
+        \\mathbf p=
+        \\begin{pmatrix}4\\\\1\\end{pmatrix},
+        \\qquad
+        \\mathbf q=
+        \\begin{pmatrix}-2\\\\3\\end{pmatrix},
+        \\]
 
-    answer:
-        "\\(\\mathbf{a}+\\mathbf{b}=(7,7)\\)",
+        find \\(k\\) if
 
-    solution:`
-Add the corresponding components.
+        \\[
+        2\\mathbf p-k\\mathbf q=
+        \\begin{pmatrix}14\\\\-1\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=-3\\)`,
+    solution: `
+        Calculate \\(2\\mathbf p\\):
 
-Horizontal:
+        \\[
+        2\\mathbf p=
+        \\begin{pmatrix}8\\\\2\\end{pmatrix}
+        \\]
 
-\\[
-3+4=7.
-\\]
+        Therefore,
 
-Vertical:
+        \\[
+        \\begin{pmatrix}8\\\\2\\end{pmatrix}
+        -
+        k\\begin{pmatrix}-2\\\\3\\end{pmatrix}
+        =
+        \\begin{pmatrix}14\\\\-1\\end{pmatrix}
+        \\]
 
-\\[
-2+5=7.
-\\]
+        This becomes
 
-Therefore,
+        \\[
+        \\begin{pmatrix}
+        8+2k\\\\
+        2-3k
+        \\end{pmatrix}
+        =
+        \\begin{pmatrix}14\\\\-1\\end{pmatrix}
+        \\]
 
-\\[
-\\boxed{\\mathbf{a}+\\mathbf{b}=(7,7)}.
-\\]
-`
+        From the first component:
+
+        \\[
+        8+2k=14
+        \\]
+
+        \\[
+        2k=6
+        \\]
+
+        \\[
+        k=3
+        \\]
+
+        Check the second component:
+
+        \\[
+        2-3(3)=-7
+        \\]
+
+        This does not match \\(-1\\).
+
+        Therefore, the given vector equation is inconsistent.
+
+        \\[
+        \\boxed{\\text{No value of }k\\text{ satisfies both components.}}
+        \\]
+    `
 },
 
-
 {
-    number:19,
-    level:"Intermediate",
+    id: 19,
+    level: "Intermediate",
+    question: `
+        Find \\(x\\) if
 
-    question:
-        "Given \\(\\mathbf{a}=(6,-2)\\) and \\(\\mathbf{b}=(3,5)\\), find the resultant vector.",
+        \\[
+        2
+        \\begin{pmatrix}x\\\\3\\end{pmatrix}
+        -
+        \\begin{pmatrix}4\\\\-1\\end{pmatrix}
+        =
+        \\begin{pmatrix}10\\\\7\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(x=7\\)`,
+    solution: `
+        Multiply by 2:
 
-    answer:
-        "\\((9,3)\\)",
+        \\[
+        2
+        \\begin{pmatrix}x\\\\3\\end{pmatrix}
+        =
+        \\begin{pmatrix}2x\\\\6\\end{pmatrix}
+        \\]
 
-    solution:`
-Add the horizontal components:
+        Therefore,
 
-\\[
-6+3=9.
-\\]
+        \\[
+        \\begin{pmatrix}2x\\\\6\\end{pmatrix}
+        -
+        \\begin{pmatrix}4\\\\-1\\end{pmatrix}
+        =
+        \\begin{pmatrix}10\\\\7\\end{pmatrix}
+        \\]
 
-Add the vertical components:
+        First component:
 
-\\[
--2+5=3.
-\\]
+        \\[
+        2x-4=10
+        \\]
 
-Therefore,
+        \\[
+        2x=14
+        \\]
 
-\\[
-\\boxed{\\mathbf{a}+\\mathbf{b}=(9,3)}.
-\\]
-`
+        \\[
+        x=7
+        \\]
+
+        Check:
+
+        \\[
+        6-(-1)=7
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{x=7}
+        \\]
+    `
 },
 
-
 {
-    number:20,
-    level:"Intermediate",
+    id: 20,
+    level: "Intermediate",
+    question: `
+        Let
 
-    question:
-        "Given \\(\\mathbf{a}=(-4,3)\\) and \\(\\mathbf{b}=(2,-7)\\), find the resultant.",
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}1\\\\2\\end{pmatrix},
+        \\qquad
+        \\mathbf b=
+        \\begin{pmatrix}3\\\\-1\\end{pmatrix}.
+        \\]
 
-    answer:
-        "\\((-2,-4)\\)",
+        Find the scalar \\(k\\) such that
 
-    solution:`
-Add the horizontal components:
+        \\[
+        k\\mathbf a+2\\mathbf b
+        =
+        \\begin{pmatrix}11\\\\4\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=5\\)`,
+    solution: `
+        Calculate \\(2\\mathbf b\\):
 
-\\[
--4+2=-2.
-\\]
+        \\[
+        2\\mathbf b=
+        \\begin{pmatrix}6\\\\-2\\end{pmatrix}
+        \\]
 
-Add the vertical components:
+        Therefore,
 
-\\[
-3+(-7)=-4.
-\\]
+        \\[
+        k
+        \\begin{pmatrix}1\\\\2\\end{pmatrix}
+        +
+        \\begin{pmatrix}6\\\\-2\\end{pmatrix}
+        =
+        \\begin{pmatrix}11\\\\4\\end{pmatrix}
+        \\]
 
-Therefore,
+        First component:
 
-\\[
-\\boxed{(-2,-4)}.
-\\]
-`
+        \\[
+        k+6=11
+        \\]
+
+        Hence,
+
+        \\[
+        k=5
+        \\]
+
+        Check:
+
+        \\[
+        2(5)-2=8
+        \\]
+
+        This does not equal 4.
+
+        Therefore the equation is inconsistent.
+
+        \\[
+        \\boxed{\\text{No value of }k\\text{ satisfies both components.}}
+        \\]
+    `
 },
 
-
 {
-    number:21,
-    level:"Intermediate",
+    id: 21,
+    level: "Intermediate",
+    question: `
+        The vectors
 
-    question:
-        "For \\(\\mathbf{a}=(5,-3)\\), state the horizontal and vertical components.",
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}6\\\\-9\\end{pmatrix}
+        \\quad\\text{and}\\quad
+        \\mathbf b=
+        \\begin{pmatrix}2\\\\-3\\end{pmatrix}
+        \\]
 
-    answer:
-        "Horizontal = 5, vertical = -3.",
+        are parallel.
 
-    solution:`
-The first component is horizontal.
+        Find the scalar \\(k\\) such that
 
-The second component is vertical.
+        \\[
+        \\mathbf a=k\\mathbf b.
+        \\]
+    `,
+    answer: `\\(k=3\\)`,
+    solution: `
+        We require
 
-Therefore,
+        \\[
+        \\begin{pmatrix}6\\\\-9\\end{pmatrix}
+        =
+        k
+        \\begin{pmatrix}2\\\\-3\\end{pmatrix}
+        \\,.
+        \\]
 
-\\[
-\\boxed{\\text{horizontal}=5}
-\\]
+        Compare the first components:
 
-and
+        \\[
+        6=2k
+        \\]
 
-\\[
-\\boxed{\\text{vertical}=-3}.
-\\]
+        Therefore,
 
-The negative vertical component means the movement is downward.
-`
+        \\[
+        k=3
+        \\]
+
+        Check the second components:
+
+        \\[
+        -3(3)=-9
+        \\]
+
+        Correct.
+
+        Hence,
+
+        \\[
+        \\boxed{k=3}
+        \\]
+    `
 },
 
-
 {
-    number:22,
-    level:"Intermediate",
+    id: 22,
+    level: "Intermediate",
+    question: `
+        Find \\(k\\) so that the vectors
 
-    question:
-        "For \\(\\mathbf{b}=(-2,8)\\), which horizontal direction does the vector move?",
+        \\[
+        \\begin{pmatrix}k\\\\6\\end{pmatrix}
+        \\quad\\text{and}\\quad
+        \\begin{pmatrix}4\\\\-8\\end{pmatrix}
+        \\]
 
-    answer:
-        "Left.",
+        are parallel.
+    `,
+    answer: `\\(k=-3\\)`,
+    solution: `
+        Parallel vectors have proportional corresponding components.
 
-    solution:`
-The horizontal component is \\(-2\\).
+        Therefore,
 
-A negative horizontal component represents movement to the left.
+        \\[
+        \\frac{k}{4}
+        =
+        \\frac{6}{-8}
+        \\]
 
-Therefore, the vector moves left horizontally.
-`
+        Simplify:
+
+        \\[
+        \\frac{6}{-8}=-\\frac34
+        \\]
+
+        Hence,
+
+        \\[
+        \\frac{k}{4}=-\\frac34
+        \\]
+
+        Multiply by 4:
+
+        \\[
+        k=-3
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{k=-3}
+        \\]
+    `
 },
 
-
 {
-    number:23,
-    level:"Intermediate",
+    id: 23,
+    level: "Intermediate",
+    question: `
+        Given
 
-    question:
-        "For \\(\\mathbf{c}=(4,-6)\\), which vertical direction does the vector move?",
+        \\[
+        \\mathbf r=
+        \\begin{pmatrix}2\\\\5\\end{pmatrix},
+        \\qquad
+        \\mathbf s=
+        \\begin{pmatrix}-1\\\\3\\end{pmatrix},
+        \\]
 
-    answer:
-        "Downward.",
+        find \\(k\\) if
 
-    solution:`
-The vertical component is \\(-6\\).
+        \\[
+        k\\mathbf r-2\\mathbf s
+        =
+        \\begin{pmatrix}8\\\\19\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=3\\)`,
+    solution: `
+        First calculate \\(2\\mathbf s\\):
 
-A negative vertical component represents downward movement.
+        \\[
+        2\\mathbf s=
+        \\begin{pmatrix}-2\\\\6\\end{pmatrix}
+        \\]
 
-Therefore, the vector moves downward vertically.
-`
+        Therefore,
+
+        \\[
+        k
+        \\begin{pmatrix}2\\\\5\\end{pmatrix}
+        -
+        \\begin{pmatrix}-2\\\\6\\end{pmatrix}
+        =
+        \\begin{pmatrix}8\\\\19\\end{pmatrix}
+        \\]
+
+        This gives
+
+        \\[
+        \\begin{pmatrix}
+        2k+2\\\\
+        5k-6
+        \\end{pmatrix}
+        =
+        \\begin{pmatrix}8\\\\19\\end{pmatrix}
+        \\]
+
+        First component:
+
+        \\[
+        2k+2=8
+        \\]
+
+        \\[
+        2k=6
+        \\]
+
+        \\[
+        k=3
+        \\]
+
+        Check:
+
+        \\[
+        5(3)-6=9
+        \\]
+
+        This does not equal 19.
+
+        Therefore the equation is inconsistent.
+
+        \\[
+        \\boxed{\\text{No value of }k\\text{ satisfies the equation.}}
+        \\]
+    `
 },
 
-
 {
-    number:24,
-    level:"Intermediate",
+    id: 24,
+    level: "Intermediate",
+    question: `
+        If
 
-    question:
-        "Given \\(\\mathbf{a}=(3,4)\\) and \\(\\mathbf{b}=(3,4)\\), are the two vectors equal?",
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}x\\\\2x\\end{pmatrix}
+        \\]
 
-    answer:
-        "Yes.",
+        is parallel to
 
-    solution:`
-The two vectors have exactly the same components:
+        \\[
+        \\mathbf b=
+        \\begin{pmatrix}3\\\\6\\end{pmatrix},
+        \\]
 
-\\[
-\\mathbf{a}=(3,4)
-\\]
+        what can you conclude about \\(x\\)?
+    `,
+    answer: `\\(x\\neq0\\), so any non-zero \\(x\\) works.`,
+    solution: `
+        Notice that
 
-and
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}x\\\\2x\\end{pmatrix}
+        =
+        x
+        \\begin{pmatrix}1\\\\2\\end{pmatrix}
+        \\]
 
-\\[
-\\mathbf{b}=(3,4).
-\\]
+        Also,
 
-Therefore, they have the same magnitude and direction.
+        \\[
+        \\mathbf b=
+        \\begin{pmatrix}3\\\\6\\end{pmatrix}
+        =
+        3
+        \\begin{pmatrix}1\\\\2\\end{pmatrix}
+        \\]
 
-Hence,
+        Therefore, both vectors have the same direction whenever
+        \\(\\mathbf a\\) is non-zero.
 
-\\[
-\\boxed{\\mathbf{a}=\\mathbf{b}}.
-\\]
-`
+        If \\(x=0\\), then \\(\\mathbf a\\) is the zero vector, which has no defined direction.
+
+        Hence,
+
+        \\[
+        \\boxed{x\\neq0}
+        \\]
+
+        Any non-zero value of \\(x\\) makes the vectors parallel.
+    `
 },
 
 
@@ -2904,244 +3757,549 @@ Hence,
 ========================================================= */
 
 {
-    number:25,
-    level:"Advanced",
+    id: 25,
+    level: "Advanced",
+    question: `
+        Let
 
-    question:
-        "Given \\(\\mathbf{a}=(7,-4)\\) and \\(\\mathbf{b}=(-3,9)\\), find the resultant vector.",
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}2\\\\1\\end{pmatrix},
+        \\qquad
+        \\mathbf b=
+        \\begin{pmatrix}-1\\\\3\\end{pmatrix}.
+        \\]
 
-    answer:
-        "\\((4,5)\\)",
+        Find \\(k\\) such that
 
-    solution:`
-Add the horizontal components:
+        \\[
+        \\mathbf a+k\\mathbf b
+        \\]
 
-\\[
-7+(-3)=4.
-\\]
+        is parallel to
 
-Add the vertical components:
+        \\[
+        \\begin{pmatrix}1\\\\5\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=\\frac14\\)`,
+    solution: `
+        First form the vector:
 
-\\[
--4+9=5.
-\\]
+        \\[
+        \\mathbf a+k\\mathbf b
+        =
+        \\begin{pmatrix}2\\\\1\\end{pmatrix}
+        +
+        k\\begin{pmatrix}-1\\\\3\\end{pmatrix}
+        \\,.
+        \\]
 
-Therefore,
+        Therefore,
 
-\\[
-\\boxed{\\mathbf{a}+\\mathbf{b}=(4,5)}.
-\\]
-`
+        \\[
+        \\mathbf a+k\\mathbf b
+        =
+        \\begin{pmatrix}
+        2-k\\\\
+        1+3k
+        \\end{pmatrix}
+        \\]
+
+        For it to be parallel to
+        \\(\\begin{pmatrix}1\\\\5\\end{pmatrix}\\),
+
+        \\[
+        \\frac{2-k}{1}
+        =
+        \\frac{1+3k}{5}
+        \\]
+
+        Cross multiply:
+
+        \\[
+        5(2-k)=1+3k
+        \\]
+
+        Expand:
+
+        \\[
+        10-5k=1+3k
+        \\]
+
+        \\[
+        9=8k
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{k=\\frac98}
+        \\]
+    `
 },
 
-
 {
-    number:26,
-    level:"Advanced",
+    id: 26,
+    level: "Advanced",
+    question: `
+        Find \\(k\\) so that
 
-    question:
-        "Given \\(\\mathbf{a}=(2,5)\\), \\(\\mathbf{b}=(-6,1)\\), and \\(\\mathbf{c}=(4,-3)\\), find \\(\\mathbf{a}+\\mathbf{b}+\\mathbf{c}\\).",
+        \\[
+        \\begin{pmatrix}k+2\\\\9\\end{pmatrix}
+        \\]
 
-    answer:
-        "\\((0,3)\\)",
+        is parallel to
 
-    solution:`
-Add the horizontal components:
+        \\[
+        \\begin{pmatrix}4\\\\6\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=4\\)`,
+    solution: `
+        Since the vectors are parallel, their components are proportional:
 
-\\[
-2+(-6)+4=0.
-\\]
+        \\[
+        \\frac{k+2}{4}
+        =
+        \\frac{9}{6}
+        \\]
 
-Add the vertical components:
+        Simplify:
 
-\\[
-5+1+(-3)=3.
-\\]
+        \\[
+        \\frac{9}{6}=\\frac32
+        \\]
 
-Therefore,
+        Therefore,
 
-\\[
-\\boxed{\\mathbf{a}+\\mathbf{b}+\\mathbf{c}=(0,3)}.
-\\]
-`
+        \\[
+        \\frac{k+2}{4}=\\frac32
+        \\]
+
+        Multiply by 4:
+
+        \\[
+        k+2=6
+        \\]
+
+        Hence,
+
+        \\[
+        \\boxed{k=4}
+        \\]
+    `
 },
 
-
 {
-    number:27,
-    level:"Advanced",
+    id: 27,
+    level: "Advanced",
+    question: `
+        Let
 
-    question:
-        "Given \\(\\mathbf{a}=(8,-5)\\) and \\(\\mathbf{b}=(-8,2)\\), find the resultant and describe its horizontal movement.",
+        \\[
+        \\mathbf p=
+        \\begin{pmatrix}3\\\\-2\\end{pmatrix},
+        \\qquad
+        \\mathbf q=
+        \\begin{pmatrix}1\\\\4\\end{pmatrix}.
+        \\]
 
-    answer:
-        "\\((-0,-3)=(0,-3)\\); there is no horizontal movement.",
+        Find \\(k\\) if
 
-    solution:`
-Add the horizontal components:
+        \\[
+        2\\mathbf p-k\\mathbf q
+        \\]
 
-\\[
-8+(-8)=0.
-\\]
+        is parallel to
 
-Add the vertical components:
+        \\[
+        \\begin{pmatrix}1\\\\-2\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=\\frac{8}{3}\\)`,
+    solution: `
+        First calculate:
 
-\\[
--5+2=-3.
-\\]
+        \\[
+        2\\mathbf p
+        =
+        \\begin{pmatrix}6\\\\-4\\end{pmatrix}
+        \\]
 
-Therefore,
+        Then,
 
-\\[
-\\boxed{(0,-3)}.
-\\]
+        \\[
+        2\\mathbf p-k\\mathbf q
+        =
+        \\begin{pmatrix}
+        6-k\\\\
+        -4-4k
+        \\end{pmatrix}
+        \\]
 
-Because the horizontal component is zero, there is no horizontal movement.
-`
+        For parallel vectors,
+
+        \\[
+        \\frac{6-k}{1}
+        =
+        \\frac{-4-4k}{-2}
+        \\]
+
+        Therefore,
+
+        \\[
+        6-k=2+2k
+        \\]
+
+        \\[
+        4=3k
+        \\]
+
+        Hence,
+
+        \\[
+        \\boxed{k=\\frac43}
+        \\]
+    `
 },
 
-
 {
-    number:28,
-    level:"Advanced",
+    id: 28,
+    level: "Advanced",
+    question: `
+        Given
 
-    question:
-        "Vector \\(\\mathbf{p}=(5,2)\\) is followed by \\(\\mathbf{q}=(-5,-2)\\). What is the resultant?",
+        \\[
+        \\mathbf s=
+        \\begin{pmatrix}2\\\\-1\\end{pmatrix},
+        \\qquad
+        \\mathbf t=
+        \\begin{pmatrix}1\\\\3\\end{pmatrix},
+        \\]
 
-    answer:
-        "\\((0,0)\\)",
+        find \\(k\\) such that
 
-    solution:`
-Add the horizontal components:
+        \\[
+        k\\mathbf s-4\\mathbf t
+        \\]
 
-\\[
-5+(-5)=0.
-\\]
+        is parallel to
 
-Add the vertical components:
+        \\[
+        \\begin{pmatrix}1\\\\1\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=14\\)`,
+    solution: `
+        First calculate:
 
-\\[
-2+(-2)=0.
-\\]
+        \\[
+        k\\mathbf s
+        =
+        \\begin{pmatrix}2k\\\\-k\\end{pmatrix}
+        \\]
 
-Therefore,
+        and
 
-\\[
-\\boxed{\\mathbf{p}+\\mathbf{q}=(0,0)}.
-\\]
+        \\[
+        4\\mathbf t
+        =
+        \\begin{pmatrix}4\\\\12\\end{pmatrix}
+        \\]
 
-The two movements completely cancel each other.
-`
+        Therefore,
+
+        \\[
+        k\\mathbf s-4\\mathbf t
+        =
+        \\begin{pmatrix}
+        2k-4\\\\
+        -k-12
+        \\end{pmatrix}
+        \\]
+
+        For this vector to be parallel to
+        \\(\\begin{pmatrix}1\\\\1\\end{pmatrix}\\), its components must be equal:
+
+        \\[
+        2k-4=-k-12
+        \\]
+
+        Add \\(k\\):
+
+        \\[
+        3k-4=-12
+        \\]
+
+        Add 4:
+
+        \\[
+        3k=-8
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{k=-\\frac83}
+        \\]
+    `
 },
 
-
 {
-    number:29,
-    level:"Advanced",
+    id: 29,
+    level: "Advanced",
+    question: `
+        Find \\(x\\) and \\(y\\) if
 
-    question:
-        "A vector \\(\\mathbf{a}=(4,3)\\) is followed by \\(\\mathbf{b}=(2,-5)\\). Find the resultant.",
+        \\[
+        2
+        \\begin{pmatrix}x\\\\y\\end{pmatrix}
+        +
+        \\begin{pmatrix}3\\\\-4\\end{pmatrix}
+        =
+        \\begin{pmatrix}11\\\\8\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(x=4,\\ y=6\\)`,
+    solution: `
+        Multiply:
 
-    answer:
-        "\\((6,-2)\\)",
+        \\[
+        2
+        \\begin{pmatrix}x\\\\y\\end{pmatrix}
+        =
+        \\begin{pmatrix}2x\\\\2y\\end{pmatrix}
+        \\]
 
-    solution:`
-Add the horizontal components:
+        Therefore,
 
-\\[
-4+2=6.
-\\]
+        \\[
+        \\begin{pmatrix}2x\\\\2y\\end{pmatrix}
+        +
+        \\begin{pmatrix}3\\\\-4\\end{pmatrix}
+        =
+        \\begin{pmatrix}11\\\\8\\end{pmatrix}
+        \\]
 
-Add the vertical components:
+        First component:
 
-\\[
-3+(-5)=-2.
-\\]
+        \\[
+        2x+3=11
+        \\]
 
-Therefore,
+        \\[
+        2x=8
+        \\]
 
-\\[
-\\boxed{(6,-2)}.
-\\]
-`
+        \\[
+        x=4
+        \\]
+
+        Second component:
+
+        \\[
+        2y-4=8
+        \\]
+
+        \\[
+        2y=12
+        \\]
+
+        \\[
+        y=6
+        \\]
+
+        Hence,
+
+        \\[
+        \\boxed{x=4,\\quad y=6}
+        \\]
+    `
 },
 
-
 {
-    number:30,
-    level:"Advanced",
+    id: 30,
+    level: "Advanced",
+    question: `
+        The vector
 
-    question:
-        "Two vectors each have magnitude 7. One points right and the other points left. Are they equal? Explain.",
+        \\[
+        \\begin{pmatrix}x-1\\\\2x+4\\end{pmatrix}
+        \\]
 
-    answer:
-        "No. They have the same magnitude but opposite directions.",
+        is parallel to
 
-    solution:`
-The magnitudes are equal:
+        \\[
+        \\begin{pmatrix}2\\\\5\\end{pmatrix}.
+        \\]
 
-\\[
-|a|=|b|=7.
-\\]
+        Find \\(x\\).
+    `,
+    answer: `\\(x=\\frac92\\)`,
+    solution: `
+        Parallel vectors have proportional components:
 
-However, one vector points right and the other points left.
+        \\[
+        \\frac{x-1}{2}
+        =
+        \\frac{2x+4}{5}
+        \\]
 
-Equal vectors must have the same magnitude and the same direction.
+        Cross multiply:
 
-Therefore, they are not equal.
-`
+        \\[
+        5(x-1)=2(2x+4)
+        \\]
+
+        Expand:
+
+        \\[
+        5x-5=4x+8
+        \\]
+
+        Subtract \\(4x\\):
+
+        \\[
+        x-5=8
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{x=13}
+        \\]
+    `
 },
 
-
 {
-    number:31,
-    level:"Advanced",
+    id: 31,
+    level: "Advanced",
+    question: `
+        Given
 
-    question:
-        "Vector \\(\\mathbf{a}\\) points upward while vector \\(\\mathbf{b}\\) points downward along parallel lines. How are their directions related?",
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}2\\\\3\\end{pmatrix},
+        \\qquad
+        \\mathbf b=
+        \\begin{pmatrix}-4\\\\1\\end{pmatrix},
+        \\]
 
-    answer:
-        "Their directions are opposite.",
+        find \\(k\\) such that
 
-    solution:`
-Both vectors are vertical and therefore lie along parallel lines.
+        \\[
+        3\\mathbf a+k\\mathbf b
+        =
+        \\begin{pmatrix}-6\\\\10\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=2\\)`,
+    solution: `
+        Calculate \\(3\\mathbf a\\):
 
-However, one points upward and the other points downward.
+        \\[
+        3\\mathbf a=
+        \\begin{pmatrix}6\\\\9\\end{pmatrix}
+        \\]
 
-Therefore, their directions are opposite.
-`
+        Therefore,
+
+        \\[
+        \\begin{pmatrix}6\\\\9\\end{pmatrix}
+        +
+        k\\begin{pmatrix}-4\\\\1\\end{pmatrix}
+        =
+        \\begin{pmatrix}-6\\\\10\\end{pmatrix}
+        \\]
+
+        First component:
+
+        \\[
+        6-4k=-6
+        \\]
+
+        \\[
+        -4k=-12
+        \\]
+
+        \\[
+        k=3
+        \\]
+
+        Check the second component:
+
+        \\[
+        9+3=12
+        \\]
+
+        This does not equal 10.
+
+        Therefore, the equation has no solution.
+
+        \\[
+        \\boxed{\\text{No value of }k\\text{ satisfies both components.}}
+        \\]
+    `
 },
 
-
 {
-    number:32,
-    level:"Advanced",
+    id: 32,
+    level: "Advanced",
+    question: `
+        A vector is given by
 
-    question:
-        "Vector \\(\\mathbf{p}\\) has magnitude 10 and points right. Vector \\(\\mathbf{q}\\) has magnitude 4 and also points right. Are they equal? Are they parallel?",
+        \\[
+        \\mathbf v=
+        \\begin{pmatrix}3x-2\\\\x+4\\end{pmatrix}.
+        \\]
 
-    answer:
-        "They are not equal, but they are parallel and point in the same direction.",
+        It is parallel to
 
-    solution:`
-The vectors have different magnitudes:
+        \\[
+        \\begin{pmatrix}4\\\\2\\end{pmatrix}.
+        \\]
 
-\\[
-|p|=10
-\\]
+        Find \\(x\\).
+    `,
+    answer: `\\(x=\\frac{20}{1}\\)`,
+    solution: `
+        For parallel vectors,
 
-and
+        \\[
+        \\frac{3x-2}{4}
+        =
+        \\frac{x+4}{2}
+        \\]
 
-\\[
-|q|=4.
-\\]
+        Cross multiply:
 
-Therefore, they cannot be equal.
+        \\[
+        2(3x-2)=4(x+4)
+        \\]
 
-However, both point to the right.
+        Expand:
 
-Therefore, they are parallel and have the same direction.
-`
+        \\[
+        6x-4=4x+16
+        \\]
+
+        Subtract \\(4x\\):
+
+        \\[
+        2x-4=16
+        \\]
+
+        Therefore,
+
+        \\[
+        2x=20
+        \\]
+
+        \\[
+        \\boxed{x=10}
+        \\]
+    `
 },
 
 
@@ -3150,270 +4308,676 @@ Therefore, they are parallel and have the same direction.
 ========================================================= */
 
 {
-    number:33,
-    level:"Challenge",
+    id: 33,
+    level: "Challenge",
+    question: `
+        Let
 
-    question:
-        "Given \\(\\mathbf{a}=(6,4)\\) and \\(\\mathbf{b}=(-2,-4)\\), find the resultant and describe its direction.",
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}2\\\\1\\end{pmatrix},
+        \\qquad
+        \\mathbf b=
+        \\begin{pmatrix}-1\\\\4\\end{pmatrix}.
+        \\]
 
-    answer:
-        "\\((4,0)\\); the resultant is horizontal and points in the positive direction.",
+        Find \\(k\\) such that
 
-    solution:`
-Add the horizontal components:
+        \\[
+        k\\mathbf a-2\\mathbf b
+        \\]
 
-\\[
-6+(-2)=4.
-\\]
+        is parallel to
 
-Add the vertical components:
+        \\[
+        \\begin{pmatrix}1\\\\2\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=\\frac{10}{3}\\)`,
+    solution: `
+        First calculate:
 
-\\[
-4+(-4)=0.
-\\]
+        \\[
+        k\\mathbf a=
+        \\begin{pmatrix}2k\\\\k\\end{pmatrix}
+        \\]
 
-Therefore,
+        and
 
-\\[
-\\boxed{(4,0)}.
-\\]
+        \\[
+        2\\mathbf b=
+        \\begin{pmatrix}-2\\\\8\\end{pmatrix}
+        \\]
 
-Because the vertical component is zero, the resultant is purely horizontal.
+        Therefore,
 
-Because the horizontal component is positive, it points to the right.
-`
+        \\[
+        k\\mathbf a-2\\mathbf b
+        =
+        \\begin{pmatrix}
+        2k+2\\\\
+        k-8
+        \\end{pmatrix}
+        \\]
+
+        For parallelism,
+
+        \\[
+        \\frac{2k+2}{1}
+        =
+        \\frac{k-8}{2}
+        \\]
+
+        Cross multiply:
+
+        \\[
+        2(2k+2)=k-8
+        \\]
+
+        \\[
+        4k+4=k-8
+        \\]
+
+        \\[
+        3k=-12
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{k=-4}
+        \\]
+    `
 },
 
-
 {
-    number:34,
-    level:"Challenge",
+    id: 34,
+    level: "Challenge",
+    question: `
+        Find \\(k\\) and \\(m\\) if
 
-    question:
-        "Two vectors have the same magnitude. One points northeast and the other points southwest. Are they equal? Are they parallel?",
+        \\[
+        k
+        \\begin{pmatrix}2\\\\-1\\end{pmatrix}
+        +
+        m
+        \\begin{pmatrix}1\\\\3\\end{pmatrix}
+        =
+        \\begin{pmatrix}11\\\\7\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=4,\\ m=3\\)`,
+    solution: `
+        Compare the first components:
 
-    answer:
-        "They are not equal, but they are parallel.",
+        \\[
+        2k+m=11
+        \\]
 
-    solution:`
-The vectors have the same magnitude.
+        Compare the second components:
 
-However, northeast and southwest are opposite directions.
+        \\[
+        -k+3m=7
+        \\]
 
-Therefore, they are not equal.
+        From the first equation,
 
-Since they lie along the same direction line but point in opposite directions, they are parallel.
+        \\[
+        m=11-2k
+        \\]
 
-So,
+        Substitute into the second equation:
 
-\\[
-\\boxed{\\text{not equal, but parallel}}.
-\\]
-`
+        \\[
+        -k+3(11-2k)=7
+        \\]
+
+        Expand:
+
+        \\[
+        -k+33-6k=7
+        \\]
+
+        \\[
+        -7k=-26
+        \\]
+
+        \\[
+        k=\\frac{26}{7}
+        \\]
+
+        Then
+
+        \\[
+        m=11-2\\left(\\frac{26}{7}\\right)
+        =
+        \\frac{77-52}{7}
+        =
+        \\frac{25}{7}
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{k=\\frac{26}{7},\\quad m=\\frac{25}{7}}
+        \\]
+    `
 },
 
-
 {
-    number:35,
-    level:"Challenge",
+    id: 35,
+    level: "Challenge",
+    question: `
+        A vector
 
-    question:
-        "If two vectors have the same magnitude, does that automatically mean they are equal?",
+        \\[
+        \\mathbf v=
+        \\begin{pmatrix}x+2\\\\2x-1\\end{pmatrix}
+        \\]
 
-    answer:
-        "No. They must also have the same direction.",
+        is parallel to
 
-    solution:`
-Equal vectors require two conditions:
+        \\[
+        \\begin{pmatrix}3\\\\5\\end{pmatrix}.
+        \\]
 
-\\[
-\\text{same magnitude}
-\\]
+        Find \\(x\\).
+    `,
+    answer: `\\(x=\\frac{13}{1}\\)`,
+    solution: `
+        Since the vectors are parallel,
 
-and
+        \\[
+        \\frac{x+2}{3}
+        =
+        \\frac{2x-1}{5}
+        \\]
 
-\\[
-\\text{same direction}.
-\\]
+        Cross multiply:
 
-Having the same magnitude alone is not enough.
+        \\[
+        5(x+2)=3(2x-1)
+        \\]
 
-Therefore, the statement is false.
-`
+        Expand:
+
+        \\[
+        5x+10=6x-3
+        \\]
+
+        Therefore,
+
+        \\[
+        x=13
+        \\]
+
+        Hence,
+
+        \\[
+        \\boxed{x=13}
+        \\]
+    `
 },
 
-
 {
-    number:36,
-    level:"Challenge",
+    id: 36,
+    level: "Challenge",
+    question: `
+        Given
 
-    question:
-        "If two vectors are parallel, does that automatically mean they are equal?",
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}1\\\\-2\\end{pmatrix},
+        \\qquad
+        \\mathbf b=
+        \\begin{pmatrix}3\\\\1\\end{pmatrix},
+        \\]
 
-    answer:
-        "No.",
+        find \\(k\\) such that
 
-    solution:`
-Parallel vectors can have different magnitudes.
+        \\[
+        2\\mathbf a+k\\mathbf b
+        \\]
 
-They can also point in the same direction or in opposite directions.
+        is parallel to
 
-Therefore, being parallel does not automatically make two vectors equal.
-`
+        \\[
+        \\begin{pmatrix}5\\\\1\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=\\frac{8}{3}\\)`,
+    solution: `
+        First calculate:
+
+        \\[
+        2\\mathbf a=
+        \\begin{pmatrix}2\\\\-4\\end{pmatrix}
+        \\]
+
+        Therefore,
+
+        \\[
+        2\\mathbf a+k\\mathbf b
+        =
+        \\begin{pmatrix}
+        2+3k\\\\
+        -4+k
+        \\end{pmatrix}
+        \\]
+
+        For parallelism,
+
+        \\[
+        \\frac{2+3k}{5}
+        =
+        \\frac{-4+k}{1}
+        \\]
+
+        Hence,
+
+        \\[
+        2+3k=5(-4+k)
+        \\]
+
+        \\[
+        2+3k=-20+5k
+        \\]
+
+        \\[
+        22=2k
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{k=11}
+        \\]
+    `
 },
 
-
 {
-    number:37,
-    level:"Challenge",
+    id: 37,
+    level: "Challenge",
+    question: `
+        The diagram represents two vectors:
 
-    question:
-        "Given \\(\\mathbf{a}=(3,-7)\\) and \\(\\mathbf{b}=(-3,7)\\), find their resultant and explain what it means.",
+        <div class="question-diagram">
+            <svg viewBox="0 0 420 220" width="100%" height="220"
+                 xmlns="http://www.w3.org/2000/svg">
+                <line x1="60" y1="170" x2="360" y2="170"
+                      stroke="currentColor" stroke-width="2"/>
+                <line x1="60" y1="170" x2="60" y2="30"
+                      stroke="currentColor" stroke-width="2"/>
 
-    answer:
-        "\\((0,0)\\); the two vectors cancel completely.",
+                <line x1="80" y1="150" x2="300" y2="70"
+                      stroke="#a78bfa" stroke-width="5"/>
+                <polygon points="300,70 286,69 294,82"
+                         fill="#a78bfa"/>
 
-    solution:`
-Add the horizontal components:
+                <line x1="80" y1="150" x2="180" y2="110"
+                      stroke="#ffffff" stroke-width="5"/>
+                <polygon points="180,110 166,108 172,121"
+                         fill="#ffffff"/>
 
-\\[
-3+(-3)=0.
-\\]
+                <text x="305" y="65" font-size="18"
+                      fill="currentColor">A</text>
+                <text x="184" y="105" font-size="18"
+                      fill="currentColor">B</text>
+                <text x="72" y="170" font-size="16"
+                      fill="currentColor">O</text>
+            </svg>
+        </div>
 
-Add the vertical components:
+        Vector \\(\\overrightarrow{OA}\\) is a scalar multiple of
+        \\(\\overrightarrow{OB}\\).
 
-\\[
--7+7=0.
-\\]
+        If
 
-Therefore,
+        \\[
+        \\overrightarrow{OB}
+        =
+        \\begin{pmatrix}2\\\\1\\end{pmatrix}
+        \\]
 
-\\[
-\\boxed{\\mathbf{a}+\\mathbf{b}=(0,0)}.
-\\]
+        and
 
-The resultant is the zero vector, meaning that the two movements completely cancel each other.
-`
+        \\[
+        \\overrightarrow{OA}
+        =
+        \\begin{pmatrix}6\\\\3\\end{pmatrix},
+        \\]
+
+        find the scalar multiple.
+    `,
+    answer: `\\(3\\)`,
+    solution: `
+        We compare the components:
+
+        \\[
+        \\begin{pmatrix}6\\\\3\\end{pmatrix}
+        =
+        k
+        \\begin{pmatrix}2\\\\1\\end{pmatrix}
+        \\]
+
+        From the first component:
+
+        \\[
+        6=2k
+        \\]
+
+        Therefore,
+
+        \\[
+        k=3
+        \\]
+
+        Check the second component:
+
+        \\[
+        3(1)=3
+        \\]
+
+        Correct.
+
+        Hence,
+
+        \\[
+        \\boxed{3}
+        \\]
+    `
 },
 
-
 {
-    number:38,
-    level:"Challenge",
+    id: 38,
+    level: "Challenge",
+    question: `
+        Given
 
-    question:
-        "Given \\(\\mathbf{a}=(4,6)\\) and \\(\\mathbf{b}=(-4,1)\\), a student says the resultant is \\((0,7)\\). Is the student correct?",
+        \\[
+        \\mathbf p=
+        \\begin{pmatrix}2\\\\3\\end{pmatrix},
+        \\qquad
+        \\mathbf q=
+        \\begin{pmatrix}4\\\\-1\\end{pmatrix},
+        \\]
 
-    answer:
-        "Yes.",
+        find \\(k\\) such that
 
-    solution:`
-Add the horizontal components:
+        \\[
+        k\\mathbf p-\\mathbf q
+        \\]
 
-\\[
-4+(-4)=0.
-\\]
+        is parallel to
 
-Add the vertical components:
+        \\[
+        \\begin{pmatrix}1\\\\1\\end{pmatrix}.
+        \\]
+    `,
+    answer: `\\(k=\\frac53\\)`,
+    solution: `
+        First form the vector:
 
-\\[
-6+1=7.
-\\]
+        \\[
+        k\\mathbf p-\\mathbf q
+        =
+        k\\begin{pmatrix}2\\\\3\\end{pmatrix}
+        -
+        \\begin{pmatrix}4\\\\-1\\end{pmatrix}
+        \\]
 
-Therefore,
+        Therefore,
 
-\\[
-\\boxed{(0,7)}.
-\\]
+        \\[
+        =
+        \\begin{pmatrix}
+        2k-4\\\\
+        3k+1
+        \\end{pmatrix}
+        \\]
 
-The student is correct.
-`
+        For this to be parallel to
+        \\(\\begin{pmatrix}1\\\\1\\end{pmatrix}\\),
+
+        \\[
+        2k-4=3k+1
+        \\]
+
+        Subtract \\(2k\\):
+
+        \\[
+        -4=k+1
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{k=-5}
+        \\]
+    `
 },
 
-
 {
-    number:39,
-    level:"Challenge",
+    id: 39,
+    level: "Challenge",
+    question: `
+        Find \\(k\\) if
 
-    question:
-        "Given \\(\\mathbf{a}=(5,-2)\\), \\(\\mathbf{b}=(-1,6)\\), and \\(\\mathbf{c}=(-4,-4)\\), find the resultant.",
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}k\\\\2k-1\\end{pmatrix}
+        \\]
 
-    answer:
-        "\\((0,0)\\)",
+        and
 
-    solution:`
-Add the horizontal components:
+        \\[
+        \\mathbf b=
+        \\begin{pmatrix}3\\\\5\\end{pmatrix}
+        \\]
 
-\\[
-5+(-1)+(-4)=0.
-\\]
+        are parallel, and \\(\\mathbf a\\) points in the
+        **same direction** as \\(\\mathbf b\\).
+    `,
+    answer: `\\(k=3\\)`,
+    solution: `
+        Since the vectors are parallel,
 
-Add the vertical components:
+        \\[
+        \\frac{k}{3}
+        =
+        \\frac{2k-1}{5}
+        \\]
 
-\\[
--2+6+(-4)=0.
-\\]
+        Cross multiply:
 
-Therefore,
+        \\[
+        5k=3(2k-1)
+        \\]
 
-\\[
-\\boxed{\\mathbf{a}+\\mathbf{b}+\\mathbf{c}=(0,0)}.
-\\]
+        Expand:
 
-The three vectors cancel completely.
-`
+        \\[
+        5k=6k-3
+        \\]
+
+        Therefore,
+
+        \\[
+        k=3
+        \\]
+
+        Check the vectors:
+
+        \\[
+        \\mathbf a=
+        \\begin{pmatrix}3\\\\5\\end{pmatrix}
+        =
+        \\mathbf b
+        \\]
+
+        They point in the same direction.
+
+        Therefore,
+
+        \\[
+        \\boxed{k=3}
+        \\]
+    `
 },
 
-
 {
-    number:40,
-    level:"Challenge",
+    id: 40,
+    level: "Challenge",
+    question: `
+        Let
 
-    question:
-        "Given \\(\\mathbf{a}=(x,4)\\) and \\(\\mathbf{b}=(-7,-1)\\), their resultant is \\((2,3)\\). Find \\(x\\).",
+        \\[
+        \\mathbf s=
+        \\begin{pmatrix}2\\\\-1\\end{pmatrix},
+        \\qquad
+        \\mathbf t=
+        \\begin{pmatrix}1\\\\3\\end{pmatrix}.
+        \\]
 
-    answer:
-        "\\(x=9\\)",
+        Find \\(k\\) such that
 
-    solution:`
-Add the horizontal components.
+        \\[
+        k\\mathbf s-4\\mathbf t
+        \\]
 
-The resultant horizontal component is 2, so
+        is parallel to
 
-\\[
-x+(-7)=2.
-\\]
+        \\[
+        \\begin{pmatrix}1\\\\-5\\end{pmatrix}.
+        \\]
 
-Therefore,
+        Then state the resulting vector.
+    `,
+    answer: `\\(k=\\frac{18}{7}\\), resulting vector \\(\\begin{pmatrix}-8/7\\\\40/7\\end{pmatrix}\\)`,
+    solution: `
+        First calculate:
 
-\\[
-x-7=2.
-\\]
+        \\[
+        k\\mathbf s
+        =
+        \\begin{pmatrix}2k\\\\-k\\end{pmatrix}
+        \\]
 
-Add 7 to both sides:
+        and
 
-\\[
-x=9.
-\\]
+        \\[
+        4\\mathbf t
+        =
+        \\begin{pmatrix}4\\\\12\\end{pmatrix}
+        \\]
 
-Check:
+        Therefore,
 
-\\[
-(9,4)+(-7,-1)
-\]
+        \\[
+        k\\mathbf s-4\\mathbf t
+        =
+        \\begin{pmatrix}
+        2k-4\\\\
+        -k-12
+        \\end{pmatrix}
+        \\]
 
-gives
+        For parallelism,
 
-\\[
-(9-7,4-1)=(2,3).
-\\]
+        \\[
+        \\frac{2k-4}{1}
+        =
+        \\frac{-k-12}{-5}
+        \\]
 
-Therefore,
+        Cross multiply:
 
-\\[
-\\boxed{x=9}.
-\\]
-`
+        \\[
+        -5(2k-4)=-k-12
+        \\]
+
+        Expand:
+
+        \\[
+        -10k+20=-k-12
+        \\]
+
+        Add \\(10k\\):
+
+        \\[
+        20=9k-12
+        \\]
+
+        Add 12:
+
+        \\[
+        32=9k
+        \\]
+
+        Therefore,
+
+        \\[
+        k=\\frac{32}{9}
+        \\]
+
+        Substitute this into the vector:
+
+        \\[
+        \\begin{pmatrix}
+        2\\left(\\frac{32}{9}\\right)-4\\\\
+        -\\frac{32}{9}-12
+        \\end{pmatrix}
+        \\]
+
+        First component:
+
+        \\[
+        \\frac{64}{9}-\\frac{36}{9}
+        =
+        \\frac{28}{9}
+        \\]
+
+        Second component:
+
+        \\[
+        -\\frac{32}{9}-\\frac{108}{9}
+        =
+        -\\frac{140}{9}
+        \\]
+
+        Therefore,
+
+        \\[
+        \\boxed{
+        k=\\frac{32}{9}
+        }
+        \\]
+
+        and the resulting vector is
+
+        \\[
+        \\boxed{
+        \\begin{pmatrix}
+        \\frac{28}{9}\\\\
+        -\\frac{140}{9}
+        \\end{pmatrix}
+        }
+        \\]
+
+        Notice that
+
+        \\[
+        \\begin{pmatrix}
+        \\frac{28}{9}\\\\
+        -\\frac{140}{9}
+        \\end{pmatrix}
+        =
+        \\frac{28}{9}
+        \\begin{pmatrix}1\\\\-5\\end{pmatrix},
+        \\]
+
+        confirming that the vectors are parallel.
+    `
 }
 
 ];
