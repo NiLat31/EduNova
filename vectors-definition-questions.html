@@ -2264,7 +2264,7 @@ const questions = [
 ========================================================= */
 
 {
-    id: 01,
+    id: 1,
     level: "Foundation",
     question: `
         Simplify the vector
@@ -5191,12 +5191,11 @@ async function renderQuestions(level="All"){
             "question-card";
 
         card.dataset.number =
-            q.number;
-
+            q.id;
 
         const isAnswered =
             answeredQuestions.has(
-                q.number
+                q.id
             );
 
 
@@ -5207,7 +5206,7 @@ async function renderQuestions(level="All"){
                 <div class="question-number">
 
                     <div class="number-box">
-                        ${String(q.number).padStart(2,"0")}
+                        ${String(q.id).padStart(2,"0")}
                     </div>
 
                     <div class="level-badge ${getLevelClass(q.level)}">
@@ -5228,7 +5227,7 @@ async function renderQuestions(level="All"){
 
             <button
                 class="answer-button ${isAnswered ? "open" : ""}"
-                onclick="toggleAnswer(${q.number},this)"
+                onclick="toggleAnswer(${q.id},this)"
                 type="button"
             >
 
@@ -5248,7 +5247,7 @@ async function renderQuestions(level="All"){
 
             <div
                 class="answer-area ${isAnswered ? "show" : ""}"
-                id="answer-${q.number}"
+                id="answer-${q.id}"
             >
 
                 <div class="answer-box">
