@@ -286,6 +286,33 @@ main{width:min(1120px,86%);margin:auto;padding:82px 0 105px}
     height:5px;
     animation-delay:2.3s;
 }
+    .completion{
+    cursor:pointer;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.completion:hover{
+    transform:translateY(-3px);
+    border-color:rgba(167,139,250,.55);
+    box-shadow:
+        0 22px 55px rgba(17,16,20,.18),
+        0 0 35px rgba(124,58,237,.10);
+}
+
+.completion.completed{
+    border-color:rgba(167,139,250,.65);
+}
+
+.completion.completed .completion-mark{
+    background:#22c55e;
+    box-shadow:
+        0 0 0 9px rgba(34,197,94,.12),
+        0 0 35px rgba(34,197,94,.25);
+}
+
+.completion.completed .next-btn{
+    background:#22c55e;
+}
 
 @keyframes purpleFloat{
     0%{
@@ -932,7 +959,7 @@ footer strong{color:#fff}
     <a class="questions-btn" href="definition-of-vectors-questions.html">Go to Practice Questions →</a>
 </div>
 
-<section class="completion" aria-label="Lesson completion">
+<section class="completion" id="completionCard" aria-label="Complete Topic 01">
 
     <div class="celebration-particles" aria-hidden="true">
         <span></span>
@@ -953,15 +980,15 @@ footer strong{color:#fff}
 
     <h2>You’ve completed Topic 01.</h2>
 
-    <p>
+    <p id="completionText">
         Excellent work. You have built the foundation of the Vectors chapter,
         from understanding direction and magnitude to writing vectors algebraically.
-        Your next step is vector geometry.
+        Click here to mark this topic as completed.
     </p>
 
-    <a class="next-btn" href="vector-geometry.html">
-        Continue to Vector Geometry →
-    </a>
+    <div class="next-btn" id="completionButton">
+        Mark Topic Complete →
+    </div>
 
 </section>
 </main>
@@ -1150,7 +1177,60 @@ async function init(){
         location.href = "index.html";
     });
 }
+const completionCard = document.getElementById("completionCard");
+const completionButton = document.getElementById("completionButton");
+const completionText = document.getElementById("completionText");
 
+completionCard.addEventListener("click", async () => {
+
+    if (completionCard.classList.contains("completed")) {
+        return;
+    }
+
+    completionButton.textContent = "Saving completion...";
+
+    try {
+
+        const { data: { user }, error: userError } =
+            await supabase.auth.getUser();
+
+        if (userError || !user) {
+            completionButton.textContent = "Please sign in to complete";
+            return;
+        }
+
+        const { error } = await supabase
+            .from("lesson_progress")
+            .upsert({
+                user_id: user.id,
+                chapter: "Vectors",
+                topic_number: 1,
+                completed: true
+            }, {
+                onConflict: "user_id,chapter,topic_number"
+            });
+
+        if (error) {
+            console.error("Completion error:", error);
+            completionButton.textContent = "Try Again →";
+            return;
+        }
+
+        completionCard.classList.add("completed");
+
+        completionButton.textContent = "✓ Topic Completed";
+
+        completionText.textContent =
+            "Excellent work. Topic 01 is now marked as completed. Your next step is Vector Geometry.";
+
+    } catch (error) {
+
+        console.error("Unexpected completion error:", error);
+        completionButton.textContent = "Try Again →";
+
+    }
+
+});
 document.addEventListener("DOMContentLoaded",init);
 </script>
 
