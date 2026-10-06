@@ -1,4332 +1,905 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>EduNova | Definition of Vectors</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:"DM Sans",sans-serif;
-    background:#f8f7fb;
-    color:#17151d;
-    line-height:1.7;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button{
-    font-family:inherit;
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.navbar{
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    height:72px;
-
-    background:#09090b;
-    color:#fff;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 7%;
-
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.logo{
-    font-family:"Playfair Display",serif;
-    font-size:1.55rem;
-    font-weight:700;
-    letter-spacing:.2px;
-}
-
-.logo span{
-    color:#a78bfa;
-}
-
-.nav-left,
-.nav-right{
-    display:flex;
-    align-items:center;
-}
-
-.back-link{
-    display:flex;
-    align-items:center;
-    gap:8px;
-
-    color:#cfcbd8;
-
-    font-size:.9rem;
-    font-weight:600;
-
-    transition:.25s ease;
-}
-
-.back-link:hover{
-    color:#fff;
-    transform:translateX(-2px);
-}
-
-.logout-btn{
-    border:1px solid rgba(255,255,255,.16);
-    background:rgba(255,255,255,.04);
-    color:#fff;
-
-    padding:9px 17px;
-    border-radius:9px;
-
-    cursor:pointer;
-
-    font-size:.82rem;
-    font-weight:600;
-
-    transition:.25s ease;
-}
-
-.logout-btn:hover{
-    border-color:#a78bfa;
-    background:rgba(167,139,250,.1);
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-    position:relative;
-    overflow:hidden;
-
-    min-height:460px;
-
-    background:#09090b;
-    color:#fff;
-
-    display:flex;
-    align-items:center;
-
-    padding:85px 7% 95px;
-}
-
-.hero-content{
-    position:relative;
-    z-index:5;
-
-    max-width:850px;
-}
-
-.hero-label{
-    display:inline-block;
-
-    color:#c4b5fd;
-
-    font-size:.78rem;
-    font-weight:700;
-
-    letter-spacing:2.2px;
-    text-transform:uppercase;
-
-    margin-bottom:22px;
-}
-
-.hero h1{
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(3rem,7vw,5.6rem);
-    line-height:1.03;
-
-    letter-spacing:-2px;
-
-    margin-bottom:25px;
-}
-
-.hero h1 span{
-    color:#a78bfa;
-}
-
-.hero p{
-    max-width:730px;
-
-    color:#b9b4c3;
-
-    font-size:1.05rem;
-    line-height:1.85;
-}
-
-
-/* =========================================================
-   HERO DECORATIONS
-========================================================= */
-
-.hero-grid{
-    position:absolute;
-    inset:0;
-
-    opacity:.18;
-
-    background-image:
-        linear-gradient(rgba(167,139,250,.18) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(167,139,250,.18) 1px,transparent 1px);
-
-    background-size:55px 55px;
-
-    mask-image:linear-gradient(
-        to right,
-        transparent,
-        black 30%,
-        black 70%,
-        transparent
-    );
-}
-
-.hero-ring{
-    position:absolute;
-
-    width:520px;
-    height:520px;
-
-    border:1px solid rgba(167,139,250,.18);
-    border-radius:50%;
-
-    right:-150px;
-    top:-160px;
-}
-
-.hero-ring::before,
-.hero-ring::after{
-    content:"";
-
-    position:absolute;
-
-    border:1px solid rgba(167,139,250,.12);
-    border-radius:50%;
-}
-
-.hero-ring::before{
-    inset:65px;
-}
-
-.hero-ring::after{
-    inset:130px;
-}
-
-.hero-vector{
-    position:absolute;
-
-    width:280px;
-    height:2px;
-
-    background:linear-gradient(
-        90deg,
-        transparent,
-        #a78bfa,
-        transparent
-    );
-
-    right:8%;
-    bottom:95px;
-
-    transform:rotate(-25deg);
-
-    opacity:.55;
-}
-
-.hero-vector::after{
-    content:"";
-
-    position:absolute;
-
-    right:0;
-    top:50%;
-
-    transform:translateY(-50%);
-
-    border-left:11px solid #a78bfa;
-    border-top:6px solid transparent;
-    border-bottom:6px solid transparent;
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-main{
-    width:min(1120px,86%);
-    margin:auto;
-
-    padding:82px 0 105px;
-}
-
-
-/* =========================================================
-   LESSON INTRO
-========================================================= */
-
-.lesson-intro{
-    max-width:850px;
-    margin-bottom:70px;
-}
-
-.eyebrow{
-    color:#7c3aed;
-
-    font-size:.78rem;
-    font-weight:800;
-
-    letter-spacing:2px;
-    text-transform:uppercase;
-
-    margin-bottom:12px;
-}
-
-.lesson-intro h2{
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(2rem,4vw,3.1rem);
-
-    line-height:1.2;
-
-    margin-bottom:18px;
-}
-
-.lesson-intro p{
-    color:#66616f;
-    font-size:1.02rem;
-    max-width:780px;
-}
-
-
-/* =========================================================
-   PARTS
-========================================================= */
-
-.part{
-    margin-bottom:92px;
-}
-
-.part-header{
-    display:flex;
-    align-items:flex-start;
-    gap:20px;
-
-    margin-bottom:35px;
-}
-
-.part-number{
-    flex:none;
-
-    width:48px;
-    height:48px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:13px;
-
-    background:#17131f;
-    color:#c4b5fd;
-
-    font-weight:800;
-    font-size:.9rem;
-}
-
-.part-header h2{
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(1.8rem,3.5vw,2.55rem);
-
-    line-height:1.2;
-}
-
-.part-header p{
-    color:#746f7c;
-    margin-top:7px;
-}
-
-
-/* =========================================================
-   CONTENT CARDS
-========================================================= */
-
-.info-card{
-    background:#fff;
-
-    border:1px solid #e8e4ed;
-    border-radius:18px;
-
-    padding:30px 32px;
-
-    box-shadow:0 12px 35px rgba(35,25,50,.04);
-
-    margin-bottom:22px;
-}
-
-.info-card h3{
-    font-size:1.12rem;
-    margin-bottom:10px;
-}
-
-.info-card p{
-    color:#625e69;
-}
-
-.info-card strong{
-    color:#24202a;
-}
-
-
-/* =========================================================
-   DEFINITION GRID
-========================================================= */
-
-.definition-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-
-    margin-bottom:22px;
-}
-
-.definition-card{
-    background:#fff;
-
-    border:1px solid #e8e4ed;
-    border-radius:18px;
-
-    padding:28px;
-
-    box-shadow:0 12px 35px rgba(35,25,50,.04);
-}
-
-.definition-card .mini-label{
-    color:#7c3aed;
-
-    font-size:.73rem;
-    font-weight:800;
-
-    letter-spacing:1.6px;
-    text-transform:uppercase;
-
-    margin-bottom:10px;
-}
-
-.definition-card h3{
-    font-family:"Playfair Display",serif;
-
-    font-size:1.5rem;
-
-    margin-bottom:9px;
-}
-
-.definition-card p{
-    color:#67626f;
-}
-
-
-/* =========================================================
-   MATH BOX
-========================================================= */
-
-.math-box{
-    background:#121016;
-    color:#fff;
-
-    border-radius:20px;
-
-    padding:34px;
-
-    margin:26px 0;
-
-    text-align:center;
-
-    position:relative;
-    overflow:hidden;
-}
-
-.math-box::before{
-    content:"";
-
-    position:absolute;
-
-    width:170px;
-    height:170px;
-
-    border:1px solid rgba(167,139,250,.2);
-    border-radius:50%;
-
-    right:-70px;
-    top:-80px;
-}
-
-.math-box::after{
-    content:"";
-
-    position:absolute;
-
-    width:100px;
-    height:100px;
-
-    border:1px solid rgba(167,139,250,.12);
-    border-radius:50%;
-
-    left:-55px;
-    bottom:-50px;
-}
-
-.math-expression{
-    position:relative;
-    z-index:2;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(1.55rem,4vw,2.3rem);
-
-    line-height:1.5;
-}
-
-.math-description{
-    position:relative;
-    z-index:2;
-
-    margin-top:10px;
-
-    color:#aaa4b5;
-
-    font-size:.9rem;
-}
-
-
-/* =========================================================
-   VECTOR NOTATION
-========================================================= */
-
-.vector-notation{
-    position:relative;
-
-    display:inline-flex;
-
-    align-items:flex-end;
-
-    justify-content:center;
-
-    padding:10px 4px 0;
-
-    margin:0 3px;
-
-    line-height:.9;
-
-    font-weight:700;
-}
-
-.vector-notation::before{
-    content:"";
-
-    position:absolute;
-
-    left:3px;
-    right:3px;
-
-    top:4px;
-
-    height:2px;
-
-    background:currentColor;
-
-    border-radius:3px;
-}
-
-.vector-notation::after{
-    content:"";
-
-    position:absolute;
-
-    right:1px;
-    top:0px;
-
-    width:0;
-    height:0;
-
-    border-left:7px solid currentColor;
-    border-top:4px solid transparent;
-    border-bottom:4px solid transparent;
-}
-
-
-/* =========================================================
-   KEY IDEA
-========================================================= */
-
-.key-idea{
-    background:#f0ecff;
-
-    border:1px solid #ddd4fb;
-    border-left:5px solid #7c3aed;
-
-    border-radius:14px;
-
-    padding:22px 24px;
-
-    margin:25px 0;
-}
-
-.key-idea .key-label{
-    color:#6d28d9;
-
-    font-size:.72rem;
-    font-weight:800;
-
-    letter-spacing:1.6px;
-    text-transform:uppercase;
-
-    margin-bottom:6px;
-}
-
-.key-idea p{
-    color:#514b5e;
-}
-
-
-/* =========================================================
-   VECTOR DIAGRAM
-========================================================= */
-
-.diagram-card{
-    background:#fff;
-
-    border:1px solid #e7e2ec;
-    border-radius:22px;
-
-    padding:28px;
-
-    box-shadow:0 12px 35px rgba(35,25,50,.045);
-
-    margin-top:28px;
-}
-
-.diagram-title{
-    font-size:1.05rem;
-    font-weight:700;
-
-    margin-bottom:18px;
-}
-
-.vector-diagram{
-    width:100%;
-    height:auto;
-
-    display:block;
-
-    border-radius:15px;
-
-    background:#faf9fc;
-}
-
-.vector-diagram text{
-    font-family:"DM Sans",sans-serif;
-}
-
-.diagram-grid{
-    stroke:#ebe7f1;
-    stroke-width:1;
-}
-
-.vector-main{
-    stroke:#7c3aed;
-    stroke-width:6;
-    stroke-linecap:round;
-}
-
-.direction-card{
-    fill:#fff;
-    stroke:#ddd5e8;
-    stroke-width:1.5;
-}
-
-.direction-card-title{
-    fill:#7c3aed;
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:2px;
-}
-
-.direction-card-value{
-    fill:#201b28;
-    font-size:25px;
-    font-weight:700;
-}
-
-.point-label{
-    fill:#4b4652;
-    font-size:15px;
-    font-weight:700;
-}
-
-.diagram-note{
-    color:#77717f;
-
-    text-align:center;
-
-    font-size:.9rem;
-
-    margin-top:17px;
-}
-
-
-/* =========================================================
-   WRITING VECTORS
-========================================================= */
-
-.writing-grid{
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:18px;
-
-    margin-top:25px;
-}
-
-.writing-card{
-    background:#fff;
-
-    border:1px solid #e7e2ec;
-
-    border-radius:17px;
-
-    padding:24px;
-}
-
-.writing-card h4{
-    margin-bottom:9px;
-}
-
-.writing-card p{
-    color:#6d6874;
-    font-size:.93rem;
-}
-
-
-/* =========================================================
-   ORDER MATTERS
-========================================================= */
-
-.order-box{
-    display:grid;
-
-    grid-template-columns:1fr auto 1fr;
-
-    align-items:center;
-
-    gap:20px;
-
-    margin-top:24px;
-}
-
-.order-item{
-    background:#fff;
-
-    border:1px solid #e7e2ec;
-
-    border-radius:16px;
-
-    padding:22px;
-
-    text-align:center;
-}
-
-.order-item .label{
-    color:#7c3aed;
-
-    font-size:.72rem;
-    font-weight:800;
-
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-
-    margin-bottom:10px;
-}
-
-.order-item .vector{
-    font-family:"Playfair Display",serif;
-    font-size:1.7rem;
-}
-
-.order-arrow{
-    color:#7c3aed;
-    font-size:1.8rem;
-    font-weight:700;
-}
-
-
-/* =========================================================
-   VECTOR ADDITION
-========================================================= */
-
-.addition-intro{
-    margin-bottom:28px;
-}
-
-.addition-intro p{
-    color:#625e69;
-    max-width:850px;
-}
-
-.addition-math{
-    margin-top:22px;
-}
-
-
-/* =========================================================
-   HEAD TO TAIL DIAGRAM
-========================================================= */
-
-.addition-diagram-card{
-    background:#fff;
-
-    border:1px solid #e7e2ec;
-
-    border-radius:22px;
-
-    overflow:hidden;
-
-    box-shadow:0 12px 35px rgba(35,25,50,.045);
-}
-
-.addition-diagram-header{
-    padding:27px 30px 0;
-}
-
-.addition-diagram-header h3{
-    font-size:1.1rem;
-    margin-bottom:6px;
-}
-
-.addition-diagram-header p{
-    color:#716c78;
-    font-size:.92rem;
-}
-
-.addition-svg-wrap{
-    padding:22px 25px 8px;
-}
-
-.addition-svg{
-    width:100%;
-    height:auto;
-
-    display:block;
-
-    background:#faf9fc;
-
-    border-radius:16px;
-}
-
-.addition-svg .grid-line{
-    stroke:#ebe7f1;
-    stroke-width:1;
-}
-
-.addition-svg .vector-ab{
-    stroke:#7c3aed;
-    stroke-width:7;
-    stroke-linecap:round;
-}
-
-.addition-svg .vector-bc{
-    stroke:#24202a;
-    stroke-width:7;
-    stroke-linecap:round;
-}
-
-.addition-svg .resultant{
-    stroke:#7c3aed;
-    stroke-width:6;
-    stroke-linecap:round;
-
-    stroke-dasharray:1;
-    stroke-dashoffset:1;
-
-    opacity:0;
-}
-
-.addition-svg .resultant-glow{
-    stroke:#c4b5fd;
-    stroke-width:12;
-    stroke-linecap:round;
-
-    stroke-dasharray:1;
-    stroke-dashoffset:1;
-
-    opacity:0;
-}
-
-.addition-svg .point{
-    fill:#fff;
-    stroke:#7c3aed;
-    stroke-width:4;
-}
-
-.addition-svg .point-b{
-    fill:#24202a;
-    stroke:#fff;
-    stroke-width:3;
-}
-
-.svg-point-label{
-    fill:#403a48;
-    font-size:15px;
-    font-weight:800;
-}
-
-.svg-vector-text{
-    fill:#27222f;
-    font-size:21px;
-    font-weight:700;
-}
-
-.svg-vector-text-purple{
-    fill:#6d28d9;
-    font-size:21px;
-    font-weight:700;
-}
-
-.svg-arrow-line{
-    stroke:#27222f;
-    stroke-width:2.5;
-    stroke-linecap:round;
-}
-
-.svg-arrow-line-purple{
-    stroke:#7c3aed;
-    stroke-width:2.5;
-    stroke-linecap:round;
-}
-
-.svg-arrow-head{
-    fill:#27222f;
-}
-
-.svg-arrow-head-purple{
-    fill:#7c3aed;
-}
-
-.resultant-label-box{
-    fill:#fff;
-    stroke:#ddd5e8;
-    stroke-width:1.5;
-}
-
-.resultant-label-text{
-    fill:#6d28d9;
-    font-size:22px;
-    font-weight:800;
-}
-
-#resultantLine,
-#resultantGlow{
-    transition:none;
-}
-
-.resultant-visible{
-    opacity:1 !important;
-
-    animation:drawResultant 1.15s cubic-bezier(.4,0,.2,1) forwards;
-}
-
-.resultant-glow-visible{
-    opacity:.42 !important;
-
-    animation:drawResultant 1.15s cubic-bezier(.4,0,.2,1) forwards;
-}
-
-@keyframes drawResultant{
-    from{
-        stroke-dashoffset:1;
-    }
-
-    to{
-        stroke-dashoffset:0;
-    }
-}
-
-.resultant-label{
-    opacity:0;
-
-    transform:translateY(8px);
-
-    transform-box:fill-box;
-    transform-origin:center;
-
-    transition:
-        opacity .45s ease,
-        transform .45s ease;
-}
-
-.resultant-label-visible{
-    opacity:1;
-
-    transform:translateY(-4px);
-}
-
-.resultant-endpoint{
-    opacity:0;
-    transform:scale(.5);
-
-    transform-box:fill-box;
-    transform-origin:center;
-
-    transition:
-        opacity .35s ease,
-        transform .35s ease;
-}
-
-.resultant-endpoint-visible{
-    opacity:1;
-
-    transform:scale(1);
-}
-
-.addition-controls{
-    display:flex;
-
-    justify-content:center;
-
-    gap:12px;
-
-    padding:20px 28px 16px;
-
-    flex-wrap:wrap;
-}
-
-.addition-button{
-    border:none;
-
-    background:#17131f;
-    color:#fff;
-
-    border-radius:10px;
-
-    padding:11px 20px;
-
-    font-size:.84rem;
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.25s ease;
-}
-
-.addition-button:hover{
-    background:#7c3aed;
-    transform:translateY(-1px);
-}
-
-.addition-button.secondary{
-    background:#f0ecf6;
-    color:#403a48;
-}
-
-.addition-button.secondary:hover{
-    background:#e4def0;
-}
-
-.addition-equation-card{
-    margin:5px 28px 24px;
-
-    padding:25px 22px;
-
-    background:#f5f2ff;
-
-    border:1px solid #ddd4fb;
-
-    border-radius:16px;
-
-    text-align:center;
-}
-
-.addition-equation{
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    flex-wrap:wrap;
-
-    gap:9px;
-
-    color:#201b28;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(1.45rem,4vw,2rem);
-
-    font-weight:700;
-}
-
-.addition-equation .vector-notation{
-    color:#6d28d9;
-}
-
-.addition-equation-note{
-    margin-top:10px;
-
-    color:#706a79;
-
-    font-family:"DM Sans",sans-serif;
-
-    font-size:.86rem;
-}
-
-.addition-caption{
-    padding:0 28px 28px;
-
-    text-align:center;
-
-    color:#77717f;
-
-    font-size:.9rem;
-}
-
-
-/* =========================================================
-   COMPONENT ADDITION
-========================================================= */
-
-.component-intro{
-    margin-bottom:28px;
-}
-
-.component-intro p{
-    color:#625e69;
-    max-width:850px;
-}
-
-.component-explanation{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:20px;
-
-    margin:28px 0;
-}
-
-.component-direction-card{
-    background:#fff;
-
-    border:1px solid #e7e2ec;
-
-    border-radius:18px;
-
-    padding:27px;
-
-    position:relative;
-}
-
-.component-direction-card.horizontal{
-    border-top:4px solid #7c3aed;
-}
-
-.component-direction-card.vertical{
-    border-top:4px solid #24202a;
-}
-
-.component-direction-card .component-tag{
-    font-size:.72rem;
-    font-weight:800;
-
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-
-    color:#7c3aed;
-
-    margin-bottom:9px;
-}
-
-.component-direction-card.vertical .component-tag{
-    color:#403a48;
-}
-
-.component-direction-card h3{
-    font-family:"Playfair Display",serif;
-
-    font-size:1.45rem;
-
-    margin-bottom:8px;
-}
-
-.component-direction-card p{
-    color:#696470;
-
-    font-size:.93rem;
-}
-
-.component-visual{
-    margin-top:17px;
-
-    height:95px;
-
-    position:relative;
-
-    border-radius:13px;
-
-    background:#faf9fc;
-
-    overflow:hidden;
-}
-
-.component-visual .horizontal-line{
-    position:absolute;
-
-    left:18%;
-    right:15%;
-    top:62%;
-
-    height:4px;
-
-    background:#7c3aed;
-
-    border-radius:4px;
-}
-
-.component-visual .horizontal-line::after{
-    content:"";
-
-    position:absolute;
-
-    right:-1px;
-    top:50%;
-
-    transform:translateY(-50%);
-
-    border-left:10px solid #7c3aed;
-    border-top:6px solid transparent;
-    border-bottom:6px solid transparent;
-}
-
-.component-visual .vertical-line{
-    position:absolute;
-
-    left:50%;
-    top:18%;
-    bottom:17%;
-
-    width:4px;
-
-    background:#24202a;
-
-    border-radius:4px;
-}
-
-.component-visual .vertical-line::after{
-    content:"";
-
-    position:absolute;
-
-    top:-1px;
-    left:50%;
-
-    transform:translateX(-50%) rotate(-90deg);
-
-    border-left:10px solid #24202a;
-    border-top:6px solid transparent;
-    border-bottom:6px solid transparent;
-}
-
-.component-axis-label{
-    position:absolute;
-
-    font-size:.72rem;
-    font-weight:800;
-
-    letter-spacing:.5px;
-}
-
-.component-axis-label.x{
-    right:11%;
-    top:67%;
-    color:#7c3aed;
-}
-
-.component-axis-label.y{
-    left:53%;
-    top:8%;
-    color:#403a48;
-}
-
-
-/* =========================================================
-   COMPONENT CONNECTION
-========================================================= */
-
-.component-connection{
-    background:#121016;
-
-    color:#fff;
-
-    border-radius:20px;
-
-    padding:34px 30px;
-
-    margin:28px 0;
-
-    text-align:center;
-}
-
-.component-connection h3{
-    font-family:"Playfair Display",serif;
-
-    font-size:1.45rem;
-
-    margin-bottom:11px;
-}
-
-.component-connection p{
-    color:#aaa4b5;
-
-    max-width:720px;
-
-    margin:0 auto 23px;
-
-    font-size:.93rem;
-}
-
-.component-connection-equation{
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    flex-wrap:wrap;
-
-    gap:9px;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(1.45rem,4vw,2.1rem);
-}
-
-.component-connection-equation .vector-notation{
-    color:#c4b5fd;
-}
-
-
-/* =========================================================
-   COMPONENT FORMULA
-========================================================= */
-
-.component-formula-card{
-    background:#fff;
-
-    border:1px solid #e7e2ec;
-
-    border-radius:20px;
-
-    padding:32px;
-
-    margin-top:25px;
-
-    box-shadow:0 12px 35px rgba(35,25,50,.04);
-
-    text-align:center;
-}
-
-.component-formula-card h3{
-    font-family:"Playfair Display",serif;
-
-    font-size:1.55rem;
-
-    margin-bottom:10px;
-}
-
-.component-formula-card > p{
-    color:#6d6874;
-
-    max-width:750px;
-
-    margin:0 auto 26px;
-}
-
-.component-inputs{
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    flex-wrap:wrap;
-
-    gap:13px;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:1.45rem;
-
-    margin-bottom:24px;
-}
-
-.component-expression{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:6px;
-
-    color:#29242f;
-}
-
-.component-expression .vector-notation{
-    color:#6d28d9;
-}
-
-.component-plus{
-    color:#7c3aed;
-
-    font-size:1.7rem;
-    font-weight:700;
-}
-
-.component-result{
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    flex-wrap:wrap;
-
-    gap:8px;
-
-    padding:22px;
-
-    border-radius:14px;
-
-    background:#f2effb;
-
-    color:#5b21b6;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(1.25rem,3.2vw,1.65rem);
-
-    font-weight:700;
-}
-
-.component-result .vector-notation{
-    color:#6d28d9;
-}
-
-
-/* =========================================================
-   WORKED EXAMPLE
-========================================================= */
-
-.example-card{
-    background:#fff;
-
-    border:1px solid #e7e2ec;
-
-    border-radius:20px;
-
-    padding:32px;
-
-    margin-top:28px;
-
-    box-shadow:0 12px 35px rgba(35,25,50,.04);
-}
-
-.example-label{
-    color:#7c3aed;
-
-    font-size:.72rem;
-    font-weight:800;
-
-    letter-spacing:1.7px;
-    text-transform:uppercase;
-
-    margin-bottom:8px;
-}
-
-.example-card h3{
-    font-family:"Playfair Display",serif;
-
-    font-size:1.55rem;
-
-    margin-bottom:12px;
-}
-
-.example-card p{
-    color:#68636f;
-
-    margin-bottom:20px;
-}
-
-.example-steps{
-    display:grid;
-
-    gap:11px;
-}
-
-.example-step{
-    display:flex;
-
-    align-items:flex-start;
-
-    gap:13px;
-
-    padding:15px 17px;
-
-    background:#faf9fc;
-
-    border-radius:12px;
-}
-
-.example-step-number{
-    flex:none;
-
-    width:27px;
-    height:27px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:#7c3aed;
-    color:#fff;
-
-    font-size:.72rem;
-    font-weight:800;
-}
-
-.example-step p{
-    margin:0;
-
-    color:#4e4955;
-
-    font-size:.94rem;
-}
-
-
-/* =========================================================
-   PARALLEL VECTORS
-========================================================= */
-
-.parallel-card{
-    background:#fff;
-
-    border:1px solid #e7e2ec;
-
-    border-radius:22px;
-
-    padding:28px;
-
-    box-shadow:0 12px 35px rgba(35,25,50,.04);
-}
-
-.parallel-svg{
-    width:100%;
-    height:auto;
-
-    display:block;
-
-    background:#faf9fc;
-
-    border-radius:16px;
-}
-
-.parallel-svg .parallel-line-purple{
-    stroke:#7c3aed;
-    stroke-width:6;
-    stroke-linecap:round;
-}
-
-.parallel-svg .parallel-line-black{
-    stroke:#24202a;
-    stroke-width:6;
-    stroke-linecap:round;
-}
-
-.parallel-svg .parallel-arrow-purple{
-    fill:#7c3aed;
-}
-
-.parallel-svg .parallel-arrow-black{
-    fill:#24202a;
-}
-
-.parallel-label{
-    fill:#302a38;
-    font-size:22px;
-    font-weight:800;
-}
-
-.parallel-note{
-    margin-top:17px;
-
-    text-align:center;
-
-    color:#746f7c;
-
-    font-size:.9rem;
-}
-
-/* =========================
-   QUESTIONS CTA
-========================= */
-
-.questions-cta{
-    margin:70px 0 20px;
-
-    background:
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(167,139,250,.18),
-            transparent 28%
-        ),
-        linear-gradient(
-            135deg,
-            #111014,
-            #09090b
-        );
-
-    border:1px solid rgba(167,139,250,.18);
-    border-radius:24px;
-
-    padding:42px;
-
-    position:relative;
-    overflow:hidden;
-
-    box-shadow:0 18px 45px rgba(0,0,0,.12);
-}
-
-.questions-cta::before{
-    content:"";
-
-    position:absolute;
-
-    width:190px;
-    height:190px;
-
-    border:1px solid rgba(167,139,250,.16);
-    border-radius:50%;
-
-    right:-65px;
-    top:-70px;
-}
-
-.questions-cta-content{
-    position:relative;
-    z-index:2;
-
-    max-width:700px;
-}
-
-.questions-label{
-    color:#c4b5fd;
-
-    font-size:.74rem;
-    font-weight:800;
-
-    letter-spacing:.15em;
-
-    margin-bottom:12px;
-}
-
-.questions-cta h2{
-    color:white;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:2rem;
-
-    margin:0 0 10px;
-
-    letter-spacing:-.025em;
-}
-
-.questions-cta p{
-    color:#bbb7c4;
-
-    margin:0 0 25px;
-
-    max-width:620px;
-}
-
-.questions-btn{
-    display:inline-flex;
-
-    align-items:center;
-    gap:12px;
-
-    background:#7c3aed;
-    color:white;
-
-    text-decoration:none;
-
-    padding:12px 18px;
-
-    border-radius:10px;
-
-    font-weight:700;
-
-    transition:.2s;
-}
-
-.questions-btn span{
-    font-size:1.1rem;
-
-    transition:.2s;
-}
-
-.questions-btn:hover{
-    background:#6d28d9;
-
-    transform:translateY(-2px);
-}
-
-.questions-btn:hover span{
-    transform:translateX(4px);
-}
-/* =========================================================
-   CONGRATULATIONS
-========================================================= */
-
-.completion{
-    position:relative;
-
-    overflow:hidden;
-
-    margin-top:100px;
-
-    padding:65px 30px;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(196,181,253,.5),
-            transparent 48%
-        ),
-        linear-gradient(
-            135deg,
-            #fff,
-            #f1edff
-        );
-
-    border:1px solid #dcd2f7;
-
-    border-radius:30px;
-
-    text-align:center;
-
-    box-shadow:0 20px 60px rgba(92,62,140,.1);
-}
-
-.completion-orbit{
-    position:absolute;
-
-    border:1px solid rgba(124,58,237,.14);
-
-    border-radius:50%;
-
-    pointer-events:none;
-}
-
-.orbit-one{
-    width:420px;
-    height:420px;
-
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    animation:orbitPulse 5s ease-in-out infinite;
-}
-
-.orbit-two{
-    width:600px;
-    height:600px;
-
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    animation:orbitPulse 7s ease-in-out infinite reverse;
-}
-
-@keyframes orbitPulse{
-    0%,100%{
-        opacity:.35;
-        transform:translate(-50%,-50%) scale(1);
-    }
-
-    50%{
-        opacity:.7;
-        transform:translate(-50%,-50%) scale(1.04);
-    }
-}
-
-.completion-particles{
-    position:absolute;
-    inset:0;
-
-    pointer-events:none;
-}
-
-.completion-particles span{
-    position:absolute;
-
-    width:5px;
-    height:5px;
-
-    border-radius:50%;
-
-    background:#8b5cf6;
-
-    opacity:.35;
-
-    animation:particleFloat 4s ease-in-out infinite;
-}
-
-.completion-particles span:nth-child(1){
-    left:14%;
-    top:27%;
-    animation-delay:0s;
-}
-
-.completion-particles span:nth-child(2){
-    left:82%;
-    top:23%;
-    animation-delay:1s;
-}
-
-.completion-particles span:nth-child(3){
-    left:19%;
-    top:76%;
-    animation-delay:1.7s;
-}
-
-.completion-particles span:nth-child(4){
-    left:79%;
-    top:72%;
-    animation-delay:.7s;
-}
-
-.completion-particles span:nth-child(5){
-    left:31%;
-    top:15%;
-    animation-delay:2.2s;
-}
-
-.completion-particles span:nth-child(6){
-    left:69%;
-    top:82%;
-    animation-delay:1.2s;
-}
-
-@keyframes particleFloat{
-    0%,100%{
-        transform:translateY(0) scale(1);
-    }
-
-    50%{
-        transform:translateY(-13px) scale(1.4);
-    }
-}
-
-.completion-content{
-    position:relative;
-    z-index:4;
-}
-
-.completion-check{
-    width:82px;
-    height:82px;
-
-    margin:0 auto 24px;
-
-    position:relative;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.completion-check-ring{
-    position:absolute;
-    inset:0;
-
-    border-radius:50%;
-
-    border:3px solid #7c3aed;
-
-    animation:checkRing 1.4s ease-out infinite;
-}
-
-@keyframes checkRing{
-    0%{
-        transform:scale(.82);
-        opacity:.8;
-    }
-
-    70%{
-        transform:scale(1.08);
-        opacity:.1;
-    }
-
-    100%{
-        transform:scale(1.08);
-        opacity:0;
-    }
-}
-
-.check-circle{
-    width:66px;
-    height:66px;
-
-    border-radius:50%;
-
-    background:#7c3aed;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    box-shadow:0 10px 30px rgba(124,58,237,.28);
-}
-
-.check-circle svg{
-    width:31px;
-    height:31px;
-}
-
-.completion h2{
-    position:relative;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(2.2rem,5vw,3.7rem);
-
-    line-height:1.1;
-
-    color:#201827;
-
-    margin-bottom:12px;
-}
-
-.completion h2 span{
-    color:#7c3aed;
-}
-
-.completion-message{
-    max-width:660px;
-
-    margin:0 auto;
-
-    color:#625b6d;
-
-    font-size:1rem;
-
-    line-height:1.8;
-}
-
-.completion-status{
-    display:inline-flex;
-
-    align-items:center;
-    gap:8px;
-
-    margin-top:23px;
-
-    padding:8px 14px;
-
-    background:#fff;
-
-    border:1px solid #ded5f2;
-
-    border-radius:999px;
-
-    color:#5b21b6;
-
-    font-size:.78rem;
-    font-weight:700;
-}
-
-.status-dot{
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:#7c3aed;
-
-    box-shadow:0 0 0 5px rgba(124,58,237,.1);
-}
-
-.practice-button{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:9px;
-
-    margin-top:25px;
-
-    padding:12px 20px;
-
-    border-radius:10px;
-
-    background:#17131f;
-    color:#fff;
-
-    font-size:.84rem;
-    font-weight:700;
-
-    transition:.25s ease;
-}
-
-.practice-button:hover{
-    background:#7c3aed;
-    transform:translateY(-2px);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    padding:40px 7%;
-
-    background:#09090b;
-
-    color:#77717f;
-
-    text-align:center;
-
-    font-size:.8rem;
-}
-
-footer strong{
-    color:#fff;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:#f8f7fb;color:#17151d;line-height:1.7}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+button:focus-visible,a:focus-visible{outline:3px solid #a78bfa;outline-offset:3px}
+
+.navbar{height:72px;position:sticky;top:0;z-index:1000;background:#09090b;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 7%;border-bottom:1px solid rgba(255,255,255,.08)}
+.logo{font-family:"Playfair Display",serif;font-size:1.55rem;font-weight:700}
+.logo span{color:#a78bfa}
+.nav-left,.nav-right{display:flex;align-items:center;gap:18px}
+.back-link{color:#cfcbd8;font-size:.9rem;font-weight:600;transition:.25s}
+.back-link:hover{color:#fff;transform:translateX(-2px)}
+.logout-btn{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);color:#fff;padding:9px 17px;border-radius:9px;cursor:pointer;font-size:.82rem;font-weight:600;transition:.25s}
+.logout-btn:hover{border-color:#a78bfa;background:rgba(167,139,250,.1)}
+
+.hero{position:relative;overflow:hidden;min-height:460px;background:#09090b;color:#fff;display:flex;align-items:center;padding:85px 7% 95px}
+.hero-content{position:relative;z-index:5;max-width:850px}
+.hero-label{display:inline-block;color:#c4b5fd;font-size:.78rem;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;margin-bottom:22px}
+.hero h1{font-family:"Playfair Display",serif;font-size:clamp(3rem,7vw,5.6rem);line-height:1.03;letter-spacing:-2px;margin-bottom:25px}
+.hero h1 span{color:#a78bfa}
+.hero p{max-width:730px;color:#b9b4c3;font-size:1.05rem;line-height:1.85}
+.hero-grid{position:absolute;inset:0;opacity:.18;background-image:linear-gradient(rgba(167,139,250,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(167,139,250,.18) 1px,transparent 1px);background-size:55px 55px;mask-image:linear-gradient(to right,transparent,black 30%,black 70%,transparent)}
+.hero-ring{position:absolute;width:520px;height:520px;border:1px solid rgba(167,139,250,.18);border-radius:50%;right:-150px;top:-160px}
+.hero-ring:before,.hero-ring:after{content:"";position:absolute;border:1px solid rgba(167,139,250,.12);border-radius:50%}
+.hero-ring:before{inset:65px}.hero-ring:after{inset:130px}
+.hero-vector{position:absolute;width:280px;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent);right:8%;bottom:95px;transform:rotate(-25deg);opacity:.55}
+.hero-vector:after{content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);border-left:11px solid #a78bfa;border-top:6px solid transparent;border-bottom:6px solid transparent}
+
+main{width:min(1120px,86%);margin:auto;padding:82px 0 105px}
+.lesson-intro{max-width:850px;margin-bottom:65px}
+.eyebrow,.part-kicker{color:#7c3aed;font-size:.78rem;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+.lesson-intro h2{font-family:"Playfair Display",serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin:12px 0 18px}
+.lesson-intro p{color:#625d68;font-size:1.02rem;max-width:800px}
+
+.part{margin-top:82px}
+.part-header{display:flex;gap:20px;align-items:flex-start;margin-bottom:30px}
+.part-number{width:52px;height:52px;flex:0 0 52px;border-radius:15px;background:#7c3aed;color:#fff;display:grid;place-items:center;font-weight:800;font-size:.95rem;box-shadow:0 10px 24px rgba(124,58,237,.18)}
+.part-header h2{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.15}
+.part-header p{color:#716b78;margin-top:5px}
+
+.info-card,.addition-card,.component-card,.parallel-card,.algebra-card{background:#fff;border:1px solid #e6e1eb;border-radius:22px;padding:30px;box-shadow:0 12px 35px rgba(35,25,50,.045)}
+.info-card + .info-card{margin-top:20px}
+.info-card h3,.addition-card h3,.component-card h3,.parallel-card h3,.algebra-card h3{font-size:1.35rem;margin-bottom:10px}
+.info-card p,.addition-card p,.component-card p,.parallel-card p,.algebra-card p{color:#625d68}
+.definition-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:25px}
+.definition-box{padding:23px;border:1px solid #e7e2ec;border-radius:17px;background:#faf9fc}
+.definition-box strong{display:block;font-size:1.05rem;margin-bottom:7px}
+.definition-box span{color:#746f7c;font-size:.93rem}
+
+.callout{margin-top:22px;padding:23px 25px;border-radius:17px;background:#111014;color:#fff}
+.callout .callout-label{color:#c4b5fd;text-transform:uppercase;letter-spacing:1.5px;font-size:.72rem;font-weight:800;margin-bottom:7px}
+.callout p{color:#e7e2eb}
+.callout strong{color:#fff}
+
+.diagram-card{margin-top:24px;background:#faf9fc;border:1px solid #e7e2ec;border-radius:20px;padding:20px;overflow:hidden}
+.diagram-card svg{display:block;width:100%;height:auto}
+.svg-label{font-family:"DM Sans",sans-serif;font-weight:700;fill:#312b39}
+.svg-muted{font-family:"DM Sans",sans-serif;fill:#817b88;font-size:15px}
+
+.order-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;margin-top:22px}
+.order-item{padding:25px;border-radius:18px;background:#faf9fc;text-align:center;border:1px solid #e6e1eb}
+.order-item .big{font-family:"Playfair Display",serif;font-size:2.3rem;color:#7c3aed}
+.order-symbol{font-size:2rem;font-weight:800;color:#a78bfa}
+
+.addition-card{margin-top:22px}
+.addition-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.step{padding:20px;border:1px solid #e8e3ed;border-radius:17px;background:#faf9fc}
+.step-num{width:30px;height:30px;border-radius:50%;background:#7c3aed;color:#fff;display:grid;place-items:center;font-size:.78rem;font-weight:800;margin-bottom:12px}
+.step strong{display:block;margin-bottom:5px}
+.step p{font-size:.92rem}
+.interactive-add{margin-top:24px}
+.interactive-add svg{width:100%;display:block;background:#111014;border-radius:18px}
+.action-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+.primary-btn,.secondary-btn{border-radius:10px;padding:11px 17px;font-weight:700;cursor:pointer}
+.primary-btn{border:0;background:#7c3aed;color:#fff}
+.secondary-btn{border:1px solid #ddd6e5;background:#fff;color:#302a38}
+.primary-btn:hover{background:#6d28d9}.secondary-btn:hover{border-color:#a78bfa}
+
+.component-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+.component-card .tag{display:inline-block;padding:5px 9px;border-radius:999px;background:#f0eaff;color:#6d28d9;font-size:.7rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.component-card h3{margin-bottom:7px}
+.component-equation{margin-top:18px;padding:17px;background:#111014;color:#fff;border-radius:14px;text-align:center;font-size:1.12rem}
+.component-rule{margin-top:22px;padding:22px;border-left:4px solid #7c3aed;background:#f2eff7;border-radius:0 15px 15px 0}
+
+.example{margin-top:22px;border-radius:20px;background:#111014;color:#fff;padding:30px}
+.example-label{color:#c4b5fd;text-transform:uppercase;font-size:.72rem;font-weight:800;letter-spacing:1.5px}
+.example h3{margin:7px 0 9px;font-size:1.45rem}
+.example>p{color:#c9c4d0}
+.example-steps{margin-top:20px;display:grid;gap:11px}
+.example-step{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid rgba(255,255,255,.1);border-radius:13px;background:rgba(255,255,255,.035)}
+.example-step-number{width:27px;height:27px;flex:0 0 27px;border-radius:50%;background:#7c3aed;display:grid;place-items:center;font-size:.75rem;font-weight:800}
+.example-step p{color:#e6e2e9;font-size:.94rem}
+
+.explorer{margin-top:24px;border:1px solid #e5dfeb;border-radius:22px;background:#fff;padding:28px}
+.explorer-controls{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.mode-btn{border:1px solid #ddd6e5;background:#faf9fc;color:#332d3c;padding:10px 15px;border-radius:10px;font-weight:700;cursor:pointer}
+.mode-btn.active{background:#7c3aed;color:#fff;border-color:#7c3aed}
+.explorer-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+.explorer svg{width:100%;display:block;background:#faf9fc;border-radius:16px}
+.explorer-copy{padding:10px 0}
+.explorer-copy h4{font-size:1.35rem;margin-bottom:8px}
+.explorer-copy p{color:#6f6975}
+.explorer-equation{margin:17px 0;padding:16px;border-radius:14px;background:#111014;color:#fff;text-align:center;font-size:1.2rem;font-weight:700}
+.explorer-note{padding:15px 16px;border-radius:13px;background:#f0ebf7;color:#4e4757;font-size:.9rem}
+
+.parallel-card{margin-top:22px}
+.parallel-svg{width:100%;display:block;background:#faf9fc;border-radius:17px}
+.parallel-formula{margin-top:22px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.formula-box{padding:20px;border-radius:16px;background:#111014;color:#fff;text-align:center}
+.formula-box .formula{font-size:1.15rem;font-weight:700;margin-bottom:5px}
+.formula-box p{color:#bdb7c5;font-size:.86rem}
+.parallel-example{margin-top:20px;padding:22px;border-radius:17px;background:#f2eff7}
+.parallel-example strong{color:#4c1d95}
+
+.algebra-section{margin-top:82px}
+.algebra-card{padding:0;overflow:hidden}
+.algebra-top{padding:32px 32px 20px}
+.algebra-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #e7e2ec}
+.algebra-controls{padding:28px;background:#faf9fc;border-right:1px solid #e7e2ec}
+.slider-row{margin:18px 0}
+.slider-row label{display:flex;justify-content:space-between;font-weight:700;margin-bottom:7px}
+.slider-row input{width:100%;accent-color:#7c3aed}
+.slider-value{color:#7c3aed}
+.column-vector{display:grid;grid-template-columns:auto 48px auto;align-items:center;justify-content:center;margin:24px auto;font-size:1.1rem;font-weight:700}
+.column-bracket{font-size:4.2rem;font-weight:300;line-height:.7;color:#7c3aed}
+.column-entries{display:grid;gap:8px;text-align:center;min-width:52px}
+.algebra-equals{text-align:center;font-size:1.2rem;font-weight:800}
+.ijk-form{margin-top:20px;text-align:center;font-size:1.15rem;font-weight:700;padding:17px;background:#111014;color:#fff;border-radius:14px}
+.algebra-diagram{padding:25px;display:flex;align-items:center;justify-content:center;min-height:430px}
+.algebra-diagram svg{width:100%;max-width:500px;background:#fff;border:1px solid #e7e2ec;border-radius:18px}
+.algebra-result{margin-top:15px;text-align:center;color:#6d6773;font-size:.9rem}
+.algebra-explain{padding:24px 32px;background:#111014;color:#fff}
+.algebra-explain p{color:#c9c4d0}
+.algebra-explain strong{color:#fff}
+
+.questions-cta{margin:75px 0 22px;padding:48px 38px;border-radius:26px;background:radial-gradient(circle at 85% 20%,rgba(167,139,250,.2),transparent 28%),linear-gradient(135deg,#111014,#09090b);border:1px solid rgba(167,139,250,.2);color:#fff;text-align:center;position:relative;overflow:hidden}
+.questions-cta h2{font-family:"Playfair Display",serif;font-size:2.3rem;margin-bottom:10px}
+.questions-cta p{color:#c8c2cf;max-width:650px;margin:0 auto 23px}
+.questions-btn{display:inline-block;background:#a78bfa;color:#16121d;padding:12px 20px;border-radius:10px;font-weight:800}
+.questions-btn:hover{background:#c4b5fd}
+
+.completion{margin-top:30px;padding:42px 34px;border-radius:25px;background:#fff;border:1px solid #e6e1eb;text-align:center;position:relative;overflow:hidden}
+.completion:before{content:"";position:absolute;width:250px;height:250px;border:1px solid rgba(124,58,237,.12);border-radius:50%;right:-90px;top:-120px}
+.completion-kicker{color:#7c3aed;font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+.completion h2{font-family:"Playfair Display",serif;font-size:2.5rem;margin:8px 0 10px}
+.completion p{color:#6b6571;max-width:650px;margin:0 auto}
+.completion-mark{width:62px;height:62px;margin:0 auto 17px;border-radius:50%;background:#111014;color:#c4b5fd;display:grid;place-items:center;font-size:1.5rem;font-weight:800}
+.next-btn{display:inline-block;margin-top:22px;border-radius:10px;background:#7c3aed;color:#fff;padding:12px 20px;font-weight:800}
+.next-btn:hover{background:#6d28d9}
+
+footer{background:#09090b;color:#a7a1af;text-align:center;padding:30px 7%;font-size:.85rem}
+footer strong{color:#fff}
 
 @media(max-width:850px){
-
-    .navbar{
-        padding:0 5%;
-    }
-
-    .hero{
-        padding:75px 7% 80px;
-    }
-
-    .hero-vector{
-        opacity:.25;
-        right:-40px;
-    }
-
-    main{
-        width:90%;
-        padding-top:65px;
-    }
-
-    .definition-grid,
-    .component-explanation,
-    .writing-grid{
-        grid-template-columns:1fr;
-    }
-
-    .order-box{
-        grid-template-columns:1fr;
-    }
-
-    .order-arrow{
-        transform:rotate(90deg);
-
-        display:flex;
-        justify-content:center;
-    }
-
-    .addition-svg-wrap{
-        padding-left:12px;
-        padding-right:12px;
-    }
-
-    .addition-equation-card{
-        margin-left:16px;
-        margin-right:16px;
-    }
-
-    .component-formula-card,
-    .example-card{
-        padding:25px 20px;
-    }
-
+    .definition-grid,.addition-steps,.parallel-formula{grid-template-columns:1fr}
+    .component-grid,.explorer-grid,.algebra-layout{grid-template-columns:1fr}
+    .algebra-controls{border-right:0;border-bottom:1px solid #e7e2ec}
+    .algebra-diagram{min-height:320px}
+    .hero{min-height:430px}
+    .hero-ring{right:-260px}
 }
-
-@media(max-width:600px){
-
-    .navbar{
-        height:64px;
-    }
-
-    .logo{
-        font-size:1.3rem;
-    }
-
-    .back-link{
-        font-size:.75rem;
-    }
-
-    .logout-btn{
-        padding:8px 12px;
-        font-size:.74rem;
-    }
-
-    .hero{
-        min-height:430px;
-    }
-
-    .hero h1{
-        letter-spacing:-1.2px;
-    }
-
-    .hero p{
-        font-size:.94rem;
-    }
-
-    .info-card,
-    .definition-card,
-    .diagram-card,
-    .parallel-card{
-        padding:23px 20px;
-    }
-
-    .part-header{
-        gap:13px;
-    }
-
-    .part-number{
-        width:41px;
-        height:41px;
-    }
-
-    .math-box{
-        padding:27px 18px;
-    }
-
-    .addition-svg-wrap{
-        padding:15px 8px 5px;
-    }
-
-    .addition-controls{
-        padding-left:16px;
-        padding-right:16px;
-    }
-
-    .addition-caption{
-        padding-left:18px;
-        padding-right:18px;
-    }
-
-    .completion{
-        padding:55px 20px;
-        border-radius:24px;
-    }
-
-    .orbit-two{
-        width:470px;
-        height:470px;
-    }
-
+@media(max-width:620px){
+    .navbar{padding:0 5%;height:66px}
+    .back-link{font-size:.78rem}
+    .logout-btn{padding:8px 11px}
+    .logo{font-size:1.3rem}
+    main{width:90%;padding-top:58px}
+    .hero{padding:70px 5% 80px}
+    .hero h1{font-size:3rem}
+    .part-header{gap:13px}
+    .part-number{width:45px;height:45px;flex-basis:45px}
+    .info-card,.addition-card,.component-card,.parallel-card,.explorer{padding:22px}
+    .order-grid{grid-template-columns:1fr}
+    .order-symbol{transform:rotate(90deg)}
+    .algebra-top,.algebra-explain{padding:25px 22px}
+    .questions-cta{padding:36px 22px}
+    .completion{padding:35px 22px}
 }
-
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
-button:focus-visible,
-a:focus-visible{
-    outline:3px solid #a78bfa;
-    outline-offset:3px;
-}
-
 </style>
-   <script>
-window.MathJax = {
-    tex: {
-        inlineMath: [
-            ['\\(', '\\)']
-        ],
-        displayMath: [
-            ['\\[', '\\]']
-        ]
-    },
-
-    svg: {
-        fontCache: 'global'
-    }
-};
-</script>
-
-<script
-    async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-</script>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
-
 <nav class="navbar">
-
     <div class="nav-left">
-
-        <a href="dashboard.html" class="logo">
-            Edu<span>Nova</span>
-        </a>
-
+        <a class="back-link" href="dashboard.html">← Dashboard</a>
     </div>
-
+    <div class="logo">Edu<span>Nova</span></div>
     <div class="nav-right">
-
-        <a href="vectors.html" class="back-link">
-            ← VECTORS
-        </a>
-
-        <button class="logout-btn" onclick="logout()">
-            Log out
-        </button>
-
+        <button class="logout-btn" id="logoutBtn">Log out</button>
     </div>
-
 </nav>
 
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="hero">
-
+<header class="hero">
     <div class="hero-grid"></div>
-
     <div class="hero-ring"></div>
-
     <div class="hero-vector"></div>
 
-
     <div class="hero-content">
-
-        <div class="hero-label">
-            VECTORS • TOPIC 01 / 04
-        </div>
-
-        <h1>
-            Definition of <span>Vectors.</span>
-        </h1>
-
+        <div class="hero-label">VECTORS • TOPIC 01 / 04</div>
+        <h1>Definition of <span>Vectors.</span></h1>
         <p>
-            A vector describes both a size and a direction.
-            In this lesson, you will learn how vectors are written,
-            how to read vector diagrams, how vectors are added,
-            and how their horizontal and vertical components work.
+            Understand what vectors are, how direction and magnitude work,
+            how vectors can be added and compared, and how the same vector
+            can be written geometrically or algebraically.
         </p>
-
     </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
+</header>
 
 <main>
 
-
-<!-- =====================================================
-     LESSON INTRO
-===================================================== -->
-
 <section class="lesson-intro">
-
-    <div class="eyebrow">
-        Start here
-    </div>
-
-    <h2>
-        Understanding vectors from the ground up.
-    </h2>
-
+    <div class="eyebrow">Start here</div>
+    <h2>A vector tells you how far, and in which direction.</h2>
     <p>
-        Before working with vector equations and calculations,
-        it is important to understand exactly what a vector
-        represents and how its direction is shown.
+        A vector is more than a number. It describes a movement with both
+        <strong>magnitude</strong> and <strong>direction</strong>. In this lesson,
+        we will build that idea from diagrams all the way to algebraic notation.
     </p>
-
 </section>
 
-
-
-<!-- =====================================================
-     PART 1
-===================================================== -->
-
+<!-- PART 1 -->
 <section class="part">
-
     <div class="part-header">
+        <div class="part-number">01</div>
+        <div>
+            <h2>What is a vector?</h2>
+            <p>The two ingredients that completely describe a vector.</p>
+        </div>
+    </div>
 
-        <div class="part-number">
-            01
+    <div class="info-card">
+        <h3>A vector has magnitude and direction.</h3>
+        <p>
+            The <strong>magnitude</strong> tells us the size or length of the vector.
+            The <strong>direction</strong> tells us where the vector points.
+            We usually represent a vector with a directed line segment, so the arrowhead
+            shows its direction.
+        </p>
+
+        <div class="definition-grid">
+            <div class="definition-box">
+                <strong>Magnitude</strong>
+                <span>How long the vector is.</span>
+            </div>
+            <div class="definition-box">
+                <strong>Direction</strong>
+                <span>Which way the vector points.</span>
+            </div>
+            <div class="definition-box">
+                <strong>Vector</strong>
+                <span>Magnitude + direction together.</span>
+            </div>
         </div>
 
-        <div>
-            <h2>
-                What is a vector?
-            </h2>
+        <div class="diagram-card">
+            <svg viewBox="0 0 900 260" role="img" aria-label="A vector with magnitude and direction labelled">
+                <defs>
+                    <marker id="arrowPurple" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+                        <path d="M0,0 L10,5 L0,10 Z" fill="#7c3aed"></path>
+                    </marker>
+                </defs>
+                <line x1="150" y1="155" x2="700" y2="85" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" marker-end="url(#arrowPurple)"/>
+                <line x1="150" y1="185" x2="700" y2="115" stroke="#b7a8c8" stroke-width="2" stroke-dasharray="7 8"/>
+                <text x="420" y="68" text-anchor="middle" class="svg-label" font-size="22">magnitude = length</text>
+                <text x="690" y="65" class="svg-label" font-size="20">direction</text>
+                <text x="140" y="220" class="svg-muted">tail</text>
+                <text x="700" y="150" class="svg-muted">head</text>
+            </svg>
+        </div>
 
+        <div class="callout">
+            <div class="callout-label">Keep in mind</div>
             <p>
+                <strong>A scalar has magnitude only.</strong>
                 A vector has both magnitude and direction.
             </p>
         </div>
-
     </div>
 
-
-
-    <div class="definition-grid">
-
-        <div class="definition-card">
-
-            <div class="mini-label">
-                Magnitude
-            </div>
-
-            <h3>
-                How much?
-            </h3>
-
-            <p>
-                The magnitude tells us the size or length of
-                the vector. It is always a non-negative quantity.
-            </p>
-
-        </div>
-
-
-        <div class="definition-card">
-
-            <div class="mini-label">
-                Direction
-            </div>
-
-            <h3>
-                Which way?
-            </h3>
-
-            <p>
-                The direction tells us where the vector points.
-                This is what makes a vector different from a scalar.
-            </p>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="math-box">
-
-        <div class="math-expression">
-            Vector = Magnitude + Direction
-        </div>
-
-        <div class="math-description">
-            Both pieces of information are needed to completely describe a vector.
-        </div>
-
-    </div>
-
-
-
-    <div class="key-idea">
-
-        <div class="key-label">
-            Key idea
-        </div>
-
+    <div class="info-card">
+        <h3>Equal vectors</h3>
         <p>
-            A scalar has magnitude only, while a vector has
-            <strong>both magnitude and direction</strong>.
+            Two vectors are equal when they have the <strong>same magnitude</strong>
+            and the <strong>same direction</strong>. They do not need to start at
+            the same point.
         </p>
 
-    </div>
-
-
-
-    <!-- =================================================
-         READING VECTOR DIAGRAM
-    ================================================= -->
-
-    <div class="diagram-card">
-
-        <div class="diagram-title">
-            Reading a vector diagram
-        </div>
-
-
-        <svg
-            id="vectorDiagram"
-            class="vector-diagram"
-            viewBox="0 0 900 470"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-
-            <defs>
-
-                <pattern
-                    id="vectorGrid"
-                    width="45"
-                    height="45"
-                    patternUnits="userSpaceOnUse"
-                >
-
-                    <path
-                        d="M 45 0 L 0 0 0 45"
-                        fill="none"
-                        class="diagram-grid"
-                    />
-
-                </pattern>
-
-
-                <!-- FIXED VECTOR ARROW MARKER -->
-
-                <marker
-                    id="arrowPurpleVector"
-                    viewBox="0 0 10 10"
-                    refX="9"
-                    refY="5"
-                    markerWidth="8"
-                    markerHeight="8"
-                    orient="auto-start-reverse"
-                >
-
-                    <path
-                        d="M 0 0 L 10 5 L 0 10 z"
-                        fill="#7c3aed"
-                    />
-
-                </marker>
-
-            </defs>
-
-
-            <rect
-                x="0"
-                y="0"
-                width="900"
-                height="470"
-                fill="url(#vectorGrid)"
-            />
-
-
-            <!-- Direction card -->
-
-            <rect
-                id="uq81cb"
-                x="280"
-                y="25"
-                width="340"
-                height="88"
-                rx="10"
-                class="direction-card"
-            />
-
-            <text
-                x="450"
-                y="53"
-                text-anchor="middle"
-                class="direction-card-title"
-            >
-                DIRECTION
-            </text>
-
-            <text
-                x="450"
-                y="88"
-                text-anchor="middle"
-                class="direction-card-value"
-            >
-                A → B
-            </text>
-
-
-            <!-- Main vector -->
-
-            <line
-                id="ye3qhy"
-                x1="180"
-                y1="350"
-                x2="670"
-                y2="170"
-                class="vector-main"
-                marker-end="url(#arrowPurpleVector)"
-            />
-
-
-            <!-- Points -->
-
-            <circle
-                cx="180"
-                cy="350"
-                r="7"
-                fill="#7c3aed"
-            />
-
-            <circle
-                cx="670"
-                cy="170"
-                r="7"
-                fill="#7c3aed"
-            />
-
-
-            <text
-                x="158"
-                y="385"
-                class="point-label"
-            >
-                A
-            </text>
-
-            <text
-                x="680"
-                y="165"
-                class="point-label"
-            >
-                B
-            </text>
-
-
-            <!-- Magnitude label -->
-
-            <rect
-                x="347"
-                y="247"
-                width="156"
-                height="55"
-                rx="10"
-                fill="#fff"
-                stroke="#ddd5e8"
-            />
-
-            <text
-                x="425"
-                y="280"
-                text-anchor="middle"
-                class="point-label"
-            >
-                magnitude
-            </text>
-
-        </svg>
-
-
-        <p class="diagram-note">
-            The arrow points from A to B, showing the vector's direction.
-        </p>
-
-    </div>
-
-
-
-    <!-- =================================================
-         HOW VECTORS ARE WRITTEN
-    ================================================= -->
-
-    <div class="info-card" style="margin-top:24px;">
-
-        <h3>
-            How are vectors written?
-        </h3>
-
-        <p>
-            A vector from point A to point B is written as
-            <span class="vector-notation">AB</span>.
-            The arrow above the letters shows the direction
-            from the first point to the second.
-        </p>
-
-    </div>
-
-
-
-    <div class="writing-grid">
-
-        <div class="writing-card">
-
-            <h4>
-                Direction matters
-            </h4>
-
-            <p>
-                <span class="vector-notation">AB</span>
-                points from A to B.
-                Reversing the order changes the direction.
-            </p>
-
-        </div>
-
-
-        <div class="writing-card">
-
-            <h4>
-                Same length, different direction
-            </h4>
-
-            <p>
-                Two vectors can have the same magnitude
-                while pointing in different directions.
-            </p>
-
-        </div>
-
-
-        <div class="writing-card">
-
-            <h4>
-                Equal vectors
-            </h4>
-
-            <p>
-                Equal vectors have the same magnitude
-                and the same direction, even if they are
-                located in different places.
-            </p>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =================================================
-         ORDER MATTERS
-    ================================================= -->
-
-    <div class="info-card" style="margin-top:24px;">
-
-        <h3>
-            Why does the order matter?
-        </h3>
-
-        <p>
-            Compare these two vectors. They have the same
-            two endpoints, but their directions are opposite.
-        </p>
-
-
-        <div class="order-box">
-
+        <div class="order-grid">
             <div class="order-item">
-
-                <div class="label">
-                    From A to B
-                </div>
-
-                <div class="vector">
-                    <span class="vector-notation">AB</span>
-                </div>
-
+                <div class="big">a</div>
+                <p>same magnitude</p>
             </div>
-
-
-            <div class="order-arrow">
-                ≠
-            </div>
-
-
+            <div class="order-symbol">=</div>
             <div class="order-item">
-
-                <div class="label">
-                    From B to A
-                </div>
-
-                <div class="vector">
-                    <span class="vector-notation">BA</span>
-                </div>
-
+                <div class="big">b</div>
+                <p>same magnitude and same direction</p>
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-
-<!-- =====================================================
-     PART 2
-===================================================== -->
-
+<!-- PART 2 -->
 <section class="part">
-
     <div class="part-header">
-
-        <div class="part-number">
-            02
-        </div>
-
+        <div class="part-number">02</div>
         <div>
-            <h2>
-                Adding vectors.
-            </h2>
-
-            <p>
-                Vectors can be combined to create a resultant vector.
-            </p>
+            <h2>Adding vectors.</h2>
+            <p>Use the head-to-tail method to build a resultant.</p>
         </div>
-
     </div>
 
-
-
-    <div class="addition-intro">
-
+    <div class="addition-card">
+        <h3>Head-to-tail addition</h3>
         <p>
-            When vectors are added, we combine their movements.
-            A useful way to visualise this is the
-            <strong>head-to-tail method</strong>.
+            To add two vectors, place the tail of the second vector at the head
+            of the first. The resultant vector joins the original starting point
+            to the final endpoint.
         </p>
 
-
-        <div class="math-box addition-math">
-
-            <div class="math-expression">
-
-                <span class="vector-notation">a</span>
-
-                <span> + </span>
-
-                <span class="vector-notation">b</span>
-
-                <span> = resultant</span>
-
+        <div class="addition-steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <strong>Start with a.</strong>
+                <p>Draw vector <strong>a</strong> from the starting point.</p>
             </div>
-
-            <div class="math-description">
-                The resultant connects the starting point to the final point.
+            <div class="step">
+                <div class="step-num">2</div>
+                <strong>Move b.</strong>
+                <p>Place the tail of <strong>b</strong> at the head of <strong>a</strong>.</p>
             </div>
-
+            <div class="step">
+                <div class="step-num">3</div>
+                <strong>Draw the resultant.</strong>
+                <p>The resultant is the vector from start to finish.</p>
+            </div>
         </div>
 
+        <div class="interactive-add">
+            <svg viewBox="0 0 900 360" role="img" aria-label="Interactive vector addition diagram">
+                <defs>
+                    <marker id="addArrowA" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+                        <path d="M0,0 L10,5 L0,10 Z" fill="#a78bfa"></path>
+                    </marker>
+                    <marker id="addArrowB" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+                        <path d="M0,0 L10,5 L0,10 Z" fill="#fff"></path>
+                    </marker>
+                    <marker id="addArrowR" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+                        <path d="M0,0 L10,5 L0,10 Z" fill="#c4b5fd"></path>
+                    </marker>
+                </defs>
+                <line x1="120" y1="270" x2="400" y2="190" stroke="#a78bfa" stroke-width="7" stroke-linecap="round" marker-end="url(#addArrowA)"/>
+                <line x1="400" y1="190" x2="690" y2="105" stroke="#fff" stroke-width="7" stroke-linecap="round" marker-end="url(#addArrowB)"/>
+                <line id="resultantLine" x1="120" y1="270" x2="690" y2="105" stroke="#c4b5fd" stroke-width="4" stroke-dasharray="12 10" stroke-linecap="round" marker-end="url(#addArrowR)" opacity="0"/>
+                <text x="260" y="228" fill="#c4b5fd" font-size="24" font-weight="700">a</text>
+                <text x="535" y="145" fill="#fff" font-size="24" font-weight="700">b</text>
+                <text id="resultantLabel" x="410" y="125" text-anchor="middle" fill="#c4b5fd" font-size="22" font-weight="700" opacity="0">a + b</text>
+                <circle cx="120" cy="270" r="6" fill="#fff"/>
+                <circle cx="400" cy="190" r="6" fill="#fff"/>
+                <circle cx="690" cy="105" r="6" fill="#fff"/>
+            </svg>
+            <div class="action-row">
+                <button class="primary-btn" id="showResultantBtn" type="button">Show Resultant</button>
+                <button class="secondary-btn" id="resetAdditionBtn" type="button">Reset</button>
+            </div>
+        </div>
     </div>
 
+    <div class="callout">
+        <div class="callout-label">Key idea</div>
+        <p>
+            Vector addition is about combining movements. The resultant gives
+            the single movement that has the same overall effect.
+        </p>
+    </div>
+</section>
 
+<!-- PART 3 -->
+<section class="part">
+    <div class="part-header">
+        <div class="part-number">03</div>
+        <div>
+            <h2>Adding vectors using components.</h2>
+            <p>Break a vector into simpler horizontal and vertical movements.</p>
+        </div>
+    </div>
 
-    <!-- =================================================
-         HEAD TO TAIL
-    ================================================= -->
-
-    <div class="addition-diagram-card">
-
-        <div class="addition-diagram-header">
-
-            <h3>
-                Head-to-tail addition
-            </h3>
-
+    <div class="component-grid">
+        <div class="component-card">
+            <div class="tag">Horizontal component</div>
+            <h3>Left and right</h3>
             <p>
-                Move the second vector so that its tail starts
-                at the head of the first vector.
+                The horizontal component tells us how far the vector moves
+                along the horizontal axis.
             </p>
-
+            <div class="component-equation">x-component → left / right</div>
         </div>
 
+        <div class="component-card">
+            <div class="tag">Vertical component</div>
+            <h3>Up and down</h3>
+            <p>
+                The vertical component tells us how far the vector moves
+                along the vertical axis.
+            </p>
+            <div class="component-equation">y-component → up / down</div>
+        </div>
+    </div>
 
-        <div class="addition-svg-wrap">
+    <div class="info-card" style="margin-top:22px">
+        <h3>Component addition</h3>
+        <p>
+            If <strong>a = (x₁, y₁)</strong> and <strong>b = (x₂, y₂)</strong>,
+            add corresponding components.
+        </p>
+        <div class="component-equation" style="margin-top:18px">
+            a + b = (x₁ + x₂, y₁ + y₂)
+        </div>
+    </div>
 
-            <svg
-                class="addition-svg"
-                viewBox="0 0 760 470"
-                xmlns="http://www.w3.org/2000/svg"
-            >
+    <div class="example">
+        <div class="example-label">Worked example</div>
+        <h3>Add the components.</h3>
+        <p>Suppose <strong>a = (3, 2)</strong> and <strong>b = (4, −1)</strong>.</p>
+        <div class="example-steps">
+            <div class="example-step">
+                <div class="example-step-number">1</div>
+                <p>Add the horizontal components: <strong>3 + 4 = 7</strong>.</p>
+            </div>
+            <div class="example-step">
+                <div class="example-step-number">2</div>
+                <p>Add the vertical components: <strong>2 + (−1) = 1</strong>.</p>
+            </div>
+            <div class="example-step">
+                <div class="example-step-number">3</div>
+                <p>Therefore, <strong>a + b = (7, 1)</strong>.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- PART 4 -->
+<section class="part">
+    <div class="part-header">
+        <div class="part-number">04</div>
+        <div>
+            <h2>Equal and opposite vectors.</h2>
+            <p>Same length, but direction determines whether vectors are equal or opposite.</p>
+        </div>
+    </div>
+
+    <div class="explorer">
+        <h3>Explore the difference</h3>
+        <p>
+            Vector <strong>a</strong> is fixed. Use the buttons to make vector
+            <strong>b</strong> equal to <strong>a</strong>, or opposite to it.
+        </p>
+
+        <div class="explorer-controls">
+            <button class="mode-btn active" data-mode="equal" type="button">Equal vectors</button>
+            <button class="mode-btn" data-mode="opposite" type="button">Opposite vectors</button>
+        </div>
+
+        <div class="explorer-grid">
+            <svg viewBox="0 0 760 330" role="img" aria-label="Interactive equal and opposite vector diagram">
                 <defs>
-
-                    <marker
-                        id="arrowAB"
-                        viewBox="0 0 10 10"
-                        refX="9"
-                        refY="5"
-                        markerWidth="9"
-                        markerHeight="9"
-                        orient="auto"
-                    >
-
-                        <path
-                            d="M 0 0 L 10 5 L 0 10 z"
-                            fill="#7c3aed"
-                        />
-
+                    <marker id="explorerArrowPurple" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+                        <path d="M0,0 L10,5 L0,10 Z" fill="#7c3aed"></path>
                     </marker>
-
-
-                    <marker
-                        id="arrowBC"
-                        viewBox="0 0 10 10"
-                        refX="9"
-                        refY="5"
-                        markerWidth="9"
-                        markerHeight="9"
-                        orient="auto"
-                    >
-
-                        <path
-                            d="M 0 0 L 10 5 L 0 10 z"
-                            fill="#24202a"
-                        />
-
+                    <marker id="explorerArrowDark" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+                        <path d="M0,0 L10,5 L0,10 Z" fill="#24202a"></path>
                     </marker>
-
-
-                    <marker
-                        id="arrowAC"
-                        viewBox="0 0 10 10"
-                        refX="9"
-                        refY="5"
-                        markerWidth="9"
-                        markerHeight="9"
-                        orient="auto"
-                    >
-
-                        <path
-                            d="M 0 0 L 10 5 L 0 10 z"
-                            fill="#7c3aed"
-                        />
-
-                    </marker>
-
                 </defs>
-
-
-                <!-- Background grid -->
-
-                <line
-                    x1="80"
-                    y1="80"
-                    x2="680"
-                    y2="80"
-                    class="grid-line"
-                />
-
-                <line
-                    x1="80"
-                    y1="170"
-                    x2="680"
-                    y2="170"
-                    class="grid-line"
-                />
-
-                <line
-                    x1="80"
-                    y1="260"
-                    x2="680"
-                    y2="260"
-                    class="grid-line"
-                />
-
-                <line
-                    x1="80"
-                    y1="350"
-                    x2="680"
-                    y2="350"
-                    class="grid-line"
-                />
-
-                <line
-                    x1="140"
-                    y1="50"
-                    x2="140"
-                    y2="410"
-                    class="grid-line"
-                />
-
-                <line
-                    x1="260"
-                    y1="50"
-                    x2="260"
-                    y2="410"
-                    class="grid-line"
-                />
-
-                <line
-                    x1="380"
-                    y1="50"
-                    x2="380"
-                    y2="410"
-                    class="grid-line"
-                />
-
-                <line
-                    x1="500"
-                    y1="50"
-                    x2="500"
-                    y2="410"
-                    class="grid-line"
-                />
-
-                <line
-                    x1="620"
-                    y1="50"
-                    x2="620"
-                    y2="410"
-                    class="grid-line"
-                />
-
-
-                <!-- =================================================
-                     FIRST VECTOR AB
-                ================================================= -->
-
-                <line
-                    x1="180"
-                    y1="370"
-                    x2="500"
-                    y2="370"
-                    class="vector-ab"
-                    marker-end="url(#arrowAB)"
-                />
-
-
-                <!-- AB label, safely above the vector -->
-
-                <g>
-
-                    <line
-                        x1="280"
-                        y1="315"
-                        x2="370"
-                        y2="315"
-                        class="svg-arrow-line-purple"
-                    />
-
-                    <path
-                        d="M 370 315 L 361 310 L 361 320 Z"
-                        class="svg-arrow-head-purple"
-                    />
-
-                    <text
-                        x="325"
-                        y="342"
-                        text-anchor="middle"
-                        class="svg-vector-text-purple"
-                    >
-                        AB
-                    </text>
-
-                </g>
-
-
-
-                <!-- =================================================
-                     SECOND VECTOR BC
-                ================================================= -->
-
-                <line
-                    x1="500"
-                    y1="370"
-                    x2="500"
-                    y2="130"
-                    class="vector-bc"
-                    marker-end="url(#arrowBC)"
-                />
-
-
-                <!-- BC label, safely to the right -->
-
-                <g>
-
-                    <line
-                        x1="545"
-                        y1="215"
-                        x2="625"
-                        y2="215"
-                        class="svg-arrow-line"
-                    />
-
-                    <path
-                        d="M 625 215 L 616 210 L 616 220 Z"
-                        class="svg-arrow-head"
-                    />
-
-                    <text
-                        x="585"
-                        y="242"
-                        text-anchor="middle"
-                        class="svg-vector-text"
-                    >
-                        BC
-                    </text>
-
-                </g>
-
-
-
-                <!-- =================================================
-                     RESULTANT AC
-                ================================================= -->
-
-                <line
-                    id="resultantGlow"
-                    x1="180"
-                    y1="370"
-                    x2="500"
-                    y2="130"
-                    pathLength="1"
-                    class="resultant-glow"
-                    marker-end="url(#arrowAC)"
-                />
-
-
-                <line
-                    id="resultantLine"
-                    x1="180"
-                    y1="370"
-                    x2="500"
-                    y2="130"
-                    pathLength="1"
-                    class="resultant"
-                    marker-end="url(#arrowAC)"
-                />
-
-
-
-                <!-- Resultant label -->
-
-                <g
-                    id="resultantLabel"
-                    class="resultant-label"
-                >
-
-                    <rect
-                        x="270"
-                        y="175"
-                        width="110"
-                        height="68"
-                        rx="11"
-                        class="resultant-label-box"
-                    />
-
-                    <line
-                        x1="300"
-                        y1="198"
-                        x2="350"
-                        y2="198"
-                        class="svg-arrow-line-purple"
-                    />
-
-                    <path
-                        d="M 350 198 L 341 193 L 341 203 Z"
-                        class="svg-arrow-head-purple"
-                    />
-
-                    <text
-                        x="325"
-                        y="226"
-                        text-anchor="middle"
-                        class="resultant-label-text"
-                    >
-                        AC
-                    </text>
-
-                </g>
-
-
-
-                <!-- Points -->
-
-                <circle
-                    cx="180"
-                    cy="370"
-                    r="8"
-                    class="point"
-                />
-
-                <circle
-                    cx="500"
-                    cy="370"
-                    r="8"
-                    class="point-b"
-                />
-
-                <circle
-                    id="resultantEndpoint"
-                    cx="500"
-                    cy="130"
-                    r="8"
-                    class="point resultant-endpoint"
-                />
-
-
-                <!-- Point labels -->
-
-                <text
-                    x="150"
-                    y="407"
-                    class="svg-point-label"
-                >
-                    A
-                </text>
-
-                <text
-                    x="515"
-                    y="405"
-                    class="svg-point-label"
-                >
-                    B
-                </text>
-
-                <text
-                    x="515"
-                    y="125"
-                    class="svg-point-label"
-                >
-                    C
-                </text>
-
+                <line x1="105" y1="100" x2="390" y2="100" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" marker-end="url(#explorerArrowPurple)"/>
+                <line id="explorerVectorB" x1="210" y1="235" x2="495" y2="235" stroke="#24202a" stroke-width="7" stroke-linecap="round" marker-end="url(#explorerArrowDark)"/>
+                <text x="245" y="78" fill="#7c3aed" font-size="25" font-weight="800">a</text>
+                <text id="explorerVectorBLabel" x="350" y="275" fill="#24202a" font-size="25" font-weight="800">b</text>
+                <text x="250" y="130" fill="#817b88" font-size="16">same magnitude</text>
+                <text id="explorerDirectionText" x="360" y="305" text-anchor="middle" fill="#817b88" font-size="16">same direction</text>
             </svg>
 
-        </div>
-
-
-        <div class="addition-controls">
-
-            <button
-                id="additionButton"
-                class="addition-button"
-                onclick="showAdditionResult()"
-            >
-                Show Resultant
-            </button>
-
-            <button
-                class="addition-button secondary"
-                onclick="resetAddition()"
-            >
-                Reset
-            </button>
-
-        </div>
-
-
-        <!-- =================================================
-             STANDARD VECTOR EQUATION
-        ================================================= -->
-
-        <div class="addition-equation-card">
-
-            <div class="addition-equation">
-
-                <span class="vector-notation">
-                    AB
-                </span>
-
-                <span>+</span>
-
-                <span class="vector-notation">
-                    BC
-                </span>
-
-                <span>=</span>
-
-                <span class="vector-notation">
-                    AC
-                </span>
-
+            <div class="explorer-copy">
+                <h4 id="explorerTitle">Equal vectors</h4>
+                <p id="explorerDescription">
+                    The two vectors have the same magnitude and the same direction.
+                    Their positions do not matter.
+                </p>
+                <div class="explorer-equation" id="explorerEquation">a = b</div>
+                <div class="explorer-note" id="explorerNote">
+                    <strong>Remember:</strong> Equal vectors must have the same magnitude
+                    and the same direction.
+                </div>
             </div>
-
-            <div class="addition-equation-note">
-                The second vector starts where the first vector ends.
-            </div>
-
         </div>
-
-
-        <div class="addition-caption">
-
-            The resultant vector
-            <span class="vector-notation">AC</span>
-            connects the starting point A directly to the final point C.
-
-        </div>
-
     </div>
 
+    <div class="info-card" style="margin-top:22px">
+        <h3>Opposite vectors</h3>
+        <p>
+            If vector <strong>b</strong> has the same magnitude as <strong>a</strong>
+            but points in exactly the opposite direction, then
+            <strong>b = −a</strong>.
+        </p>
+        <div class="component-equation" style="margin-top:18px">a + (−a) = 0</div>
+    </div>
 </section>
 
-
-
-<!-- =====================================================
-     PART 3
-===================================================== -->
-
+<!-- PART 5 -->
 <section class="part">
-
     <div class="part-header">
-
-        <div class="part-number">
-            03
-        </div>
-
+        <div class="part-number">05</div>
         <div>
-            <h2>
-                Adding vectors using components.
-            </h2>
-
-            <p>
-                Break each vector into horizontal and vertical parts.
-            </p>
+            <h2>Parallel vectors.</h2>
+            <p>Use an algebraic multiplier to describe vectors pointing along the same line.</p>
         </div>
-
     </div>
-
-
-
-    <div class="component-intro">
-
-        <p>
-            A vector does not have to be treated as one complicated
-            diagonal movement. We can split it into two simpler
-            movements: one horizontal and one vertical.
-        </p>
-
-    </div>
-
-
-
-    <!-- =================================================
-         HORIZONTAL / VERTICAL EXPLANATION
-    ================================================= -->
-
-    <div class="component-explanation">
-
-
-        <div class="component-direction-card horizontal">
-
-            <div class="component-tag">
-                Horizontal component
-            </div>
-
-            <h3>
-                Left and right
-            </h3>
-
-            <p>
-                The horizontal component describes how far the
-                vector moves along the horizontal direction.
-            </p>
-
-
-            <div class="component-visual">
-
-                <div class="horizontal-line"></div>
-
-                <span class="component-axis-label x">
-                    horizontal
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="component-direction-card vertical">
-
-            <div class="component-tag">
-                Vertical component
-            </div>
-
-            <h3>
-                Up and down
-            </h3>
-
-            <p>
-                The vertical component describes how far the
-                vector moves along the vertical direction.
-            </p>
-
-
-            <div class="component-visual">
-
-                <div class="vertical-line"></div>
-
-                <span class="component-axis-label y">
-                    vertical
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="key-idea">
-
-        <div class="key-label">
-            Think of it this way
-        </div>
-
-        <p>
-            A diagonal vector can be understood as a combination
-            of a <strong>horizontal movement</strong> and a
-            <strong>vertical movement</strong>.
-        </p>
-
-    </div>
-
-
-
-    <!-- =================================================
-         CONNECT TO A B C
-    ================================================= -->
-
-    <div class="component-connection">
-
-        <h3>
-            Now use the vectors we already know.
-        </h3>
-
-        <p>
-            From the previous section, we added the vectors
-            from A to B and from B to C. These are written as
-            <strong>AB</strong> and <strong>BC</strong>.
-            Each of these vectors can also be described using
-            its horizontal and vertical components.
-        </p>
-
-
-        <div class="component-connection-equation">
-
-            <span class="vector-notation">
-                AB
-            </span>
-
-            <span>+</span>
-
-            <span class="vector-notation">
-                BC
-            </span>
-
-            <span>=</span>
-
-            <span class="vector-notation">
-                AC
-            </span>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =================================================
-         COMPONENT NOTATION
-    ================================================= -->
-
-    <div class="component-formula-card">
-
-        <h3>
-            Writing the components
-        </h3>
-
-        <p>
-            We can now give each vector two components:
-            one horizontal component and one vertical component.
-            For example, suppose
-            <span class="vector-notation">AB</span>
-            has components
-            <strong>(x₁, y₁)</strong>
-            and
-            <span class="vector-notation">BC</span>
-            has components
-            <strong>(x₂, y₂)</strong>.
-        </p>
-
-
-        <div class="component-inputs">
-
-            <span class="component-expression">
-
-                <span class="vector-notation">
-                    AB
-                </span>
-
-                <span>=</span>
-
-                <span>
-                    (x₁, y₁)
-                </span>
-
-            </span>
-
-
-            <span class="component-plus">
-                +
-            </span>
-
-
-            <span class="component-expression">
-
-                <span class="vector-notation">
-                    BC
-                </span>
-
-                <span>=</span>
-
-                <span>
-                    (x₂, y₂)
-                </span>
-
-            </span>
-
-        </div>
-
-
-        <div class="component-result">
-
-            <span class="vector-notation">
-                AC
-            </span>
-
-            <span>=</span>
-
-            <span>
-                (x₁ + x₂, y₁ + y₂)
-            </span>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =================================================
-         WORKED EXAMPLE
-    ================================================= -->
-
-    <div class="example-card">
-
-        <div class="example-label">
-            Worked example
-        </div>
-
-        <h3>
-            Add the components
-        </h3>
-
-        <p>
-            Suppose
-            <strong>a = (3, 2)</strong>
-            and
-            <strong>b = (4, -1)</strong>.
-            Add the horizontal components together,
-            then add the vertical components together.
-        </p>
-
-
-        <div class="example-steps">
-
-
-            <div class="example-step">
-
-                <div class="example-step-number">
-                    1
-                </div>
-
-                <p>
-                    Add the horizontal components:
-                    <strong>3 + 4 = 7</strong>.
-                </p>
-
-            </div>
-
-
-            <div class="example-step">
-
-                <div class="example-step-number">
-                    2
-                </div>
-
-                <p>
-                    Add the vertical components:
-                    <strong>2 + (-1) = 1</strong>.
-                </p>
-
-            </div>
-
-
-            <div class="example-step">
-
-                <div class="example-step-number">
-                    3
-                </div>
-
-                <p>
-                    Therefore, the resultant is
-                    <strong>(7, 1)</strong>.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="key-idea">
-
-        <div class="key-label">
-            Component rule
-        </div>
-
-        <p>
-            When adding vectors, add their corresponding components:
-            <strong>horizontal with horizontal</strong> and
-            <strong>vertical with vertical</strong>.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PART 5
-===================================================== -->
-
-<section class="part">
-
-    <div class="part-header">
-
-        <div class="part-number">
-            05
-        </div>
-
-        <div>
-            <h2>
-                Parallel vectors.
-            </h2>
-
-            <p>
-                Vectors can point in the same or opposite directions.
-            </p>
-        </div>
-
-    </div>
-
-
 
     <div class="parallel-card">
+        <h3>What does parallel mean?</h3>
+        <p>
+            Two vectors are parallel when they have the same or opposite direction.
+            Their lengths can be different. Algebraically, one vector must be a
+            scalar multiple of the other.
+        </p>
 
-        <svg
-            class="parallel-svg"
-            viewBox="0 0 900 380"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-
-
-            <!-- Upper vector -->
-
-            <line
-                x1="170"
-                y1="110"
-                x2="690"
-                y2="110"
-                class="parallel-line-purple"
-            />
-
-            <path
-                d="M 690 110 L 676 102 L 676 118 Z"
-                class="parallel-arrow-purple"
-            />
-
-
-            <!-- Lower vector -->
-
-            <line
-                x1="170"
-                y1="265"
-                x2="690"
-                y2="265"
-                class="parallel-line-black"
-            />
-
-            <path
-                d="M 690 265 L 676 257 L 676 273 Z"
-                class="parallel-arrow-black"
-            />
-
-
-            <!-- Labels safely ABOVE the lines -->
-
-            <text
-                x="430"
-                y="80"
-                text-anchor="middle"
-                class="parallel-label"
-            >
-                a
-            </text>
-
-            <text
-                x="430"
-                y="235"
-                text-anchor="middle"
-                class="parallel-label"
-            >
-                b
-            </text>
-
-
-            <!-- Label arrows -->
-
-            <line
-                x1="400"
-                y1="58"
-                x2="460"
-                y2="58"
-                stroke="#7c3aed"
-                stroke-width="2.5"
-                stroke-linecap="round"
-            />
-
-            <path
-                d="M 460 58 L 451 53 L 451 63 Z"
-                fill="#7c3aed"
-            />
-
-
-            <line
-                x1="400"
-                y1="213"
-                x2="460"
-                y2="213"
-                stroke="#24202a"
-                stroke-width="2.5"
-                stroke-linecap="round"
-            />
-
-            <path
-                d="M 460 213 L 451 208 L 451 218 Z"
-                fill="#24202a"
-            />
-
+        <svg class="parallel-svg" viewBox="0 0 900 390" role="img" aria-label="Two parallel vectors">
+            <defs>
+                <marker id="parallelArrowPurple" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+                    <path d="M0,0 L10,5 L0,10 Z" fill="#7c3aed"></path>
+                </marker>
+                <marker id="parallelArrowBlack" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+                    <path d="M0,0 L10,5 L0,10 Z" fill="#24202a"></path>
+                </marker>
+            </defs>
+            <line x1="150" y1="115" x2="700" y2="115" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" marker-end="url(#parallelArrowPurple)"/>
+            <line x1="150" y1="275" x2="520" y2="275" stroke="#24202a" stroke-width="7" stroke-linecap="round" marker-end="url(#parallelArrowBlack)"/>
+            <text x="425" y="82" text-anchor="middle" class="svg-label" font-size="25">a</text>
+            <text x="335" y="242" text-anchor="middle" class="svg-label" font-size="25">b</text>
+            <text x="450" y="160" text-anchor="middle" class="svg-muted">same direction • different magnitude</text>
         </svg>
 
-
-        <p class="parallel-note">
-            These vectors are parallel because they have the same direction.
-            Parallel vectors may have different magnitudes.
-        </p>
-
-    </div>
-
-
-
-    <div class="info-card" style="margin-top:22px;">
-
-        <h3>
-            Same direction vs opposite direction
-        </h3>
-
-        <p>
-            If two parallel vectors point in the same direction,
-            they have the same direction. If one points exactly
-            opposite to the other, their directions are reversed.
-            The magnitude tells us how long each vector is.
-        </p>
-
-    </div>
-
-</section>
-
-<section class="questions-cta">
-
-    <div class="questions-cta-content">
-
-        <div class="questions-label">
-            PRACTICE • TOPIC 01
+        <div class="parallel-formula">
+            <div class="formula-box">
+                <div class="formula">b = λa</div>
+                <p>General algebraic test for parallel vectors.</p>
+            </div>
+            <div class="formula-box">
+                <div class="formula">λ &gt; 0</div>
+                <p>Same direction.</p>
+            </div>
+            <div class="formula-box">
+                <div class="formula">λ &lt; 0</div>
+                <p>Opposite direction.</p>
+            </div>
         </div>
 
-        <h2>Ready to test your understanding?</h2>
+        <div class="parallel-example">
+            <strong>Example:</strong> If <strong>a = (2, 3, 1)</strong> and
+            <strong>b = (6, 9, 3)</strong>, then
+            <strong>b = 3a</strong>. Therefore, the vectors are parallel and point
+            in the same direction.
+        </div>
 
-       <p>
-    Put your understanding of magnitude, direction, vector notation,
-    vector addition, components, equal and opposite vectors, and
-    parallel vectors to the test.
-</p>
-
-        <a href="vectors-definition-questions.html" class="questions-btn">
-            Go to Questions
-            <span>→</span>
-        </a>
-
+        <div class="callout">
+            <div class="callout-label">Component check</div>
+            <p>
+                For <strong>a = (x₁,y₁,z₁)</strong> and
+                <strong>b = (x₂,y₂,z₂)</strong>, the vectors are parallel when their
+                components have one common multiplier:
+                <strong>(x₂,y₂,z₂) = λ(x₁,y₁,z₁)</strong>.
+            </p>
+        </div>
     </div>
-
 </section>
 
-<!-- =====================================================
-     CONGRATULATIONS
-===================================================== -->
-
-<section class="completion">
-
-
-    <div class="completion-orbit orbit-one"></div>
-
-    <div class="completion-orbit orbit-two"></div>
-
-
-    <div class="completion-particles">
-
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-
+<!-- PART 6 -->
+<section class="part algebra-section">
+    <div class="part-header">
+        <div class="part-number">06</div>
+        <div>
+            <h2>Vectors algebraically.</h2>
+            <p>A vector can be written as a column vector or using i, j and k.</p>
+        </div>
     </div>
 
+    <div class="algebra-card">
+        <div class="algebra-top">
+            <h3>Two ways to write the same vector</h3>
+            <p>
+                In three dimensions, a vector can be written as a column of its
+                components, or as a combination of the unit vectors
+                <strong>i</strong>, <strong>j</strong> and <strong>k</strong>.
+            </p>
+        </div>
 
-    <div class="completion-content">
+        <div class="algebra-layout">
+            <div class="algebra-controls">
+                <h3>Build your vector</h3>
+                <p>Change x, y and z to see both forms update together.</p>
 
+                <div class="slider-row">
+                    <label for="xSlider"><span>x</span><span class="slider-value" id="xValue">2</span></label>
+                    <input id="xSlider" type="range" min="-5" max="5" step="1" value="2">
+                </div>
+                <div class="slider-row">
+                    <label for="ySlider"><span>y</span><span class="slider-value" id="yValue">3</span></label>
+                    <input id="ySlider" type="range" min="-5" max="5" step="1" value="3">
+                </div>
+                <div class="slider-row">
+                    <label for="zSlider"><span>z</span><span class="slider-value" id="zValue">1</span></label>
+                    <input id="zSlider" type="range" min="-5" max="5" step="1" value="1">
+                </div>
 
-        <div class="completion-check">
+                <div class="column-vector" aria-live="polite">
+                    <span class="column-bracket">(</span>
+                    <div class="column-entries">
+                        <span id="columnX">2</span>
+                        <span id="columnY">3</span>
+                        <span id="columnZ">1</span>
+                    </div>
+                    <span class="column-bracket">)</span>
+                </div>
 
-            <div class="completion-check-ring"></div>
+                <div class="algebra-equals">=</div>
 
-            <div class="check-circle">
-
-                <svg
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-
-                    <path
-                        d="M7 17L13 23L25 9"
-                        stroke="white"
-                        stroke-width="3.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-
-                </svg>
-
+                <div class="ijk-form" id="ijkForm">2i + 3j + k</div>
+                <div class="algebra-result" id="algebraResult">
+                    u = (2, 3, 1) = 2i + 3j + k
+                </div>
             </div>
 
+            <div class="algebra-diagram">
+                <svg viewBox="0 0 520 430" role="img" aria-label="Interactive three dimensional axes showing a vector">
+                    <defs>
+                        <marker id="axisArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" fill="#8c8594"></path>
+                        </marker>
+                        <marker id="vectorArrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+                            <path d="M0,0 L10,5 L0,10 Z" fill="#7c3aed"></path>
+                        </marker>
+                    </defs>
+
+                    <!-- oblique 3D axes -->
+                    <line x1="260" y1="310" x2="455" y2="310" stroke="#8c8594" stroke-width="3" marker-end="url(#axisArrow)"/>
+                    <line x1="260" y1="310" x2="155" y2="365" stroke="#8c8594" stroke-width="3" marker-end="url(#axisArrow)"/>
+                    <line x1="260" y1="310" x2="260" y2="80" stroke="#8c8594" stroke-width="3" marker-end="url(#axisArrow)"/>
+
+                    <text x="465" y="315" class="svg-label" font-size="18">i</text>
+                    <text x="142" y="378" class="svg-label" font-size="18">j</text>
+                    <text x="270" y="75" class="svg-label" font-size="18">k</text>
+
+                    <line x1="260" y1="310" x2="380" y2="230" stroke="#d9d3df" stroke-width="2" stroke-dasharray="6 7"/>
+                    <line id="algebraVector" x1="260" y1="310" x2="390" y2="160" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" marker-end="url(#vectorArrow)"/>
+
+                    <circle cx="260" cy="310" r="6" fill="#24202a"/>
+                    <circle id="algebraPoint" cx="390" cy="160" r="7" fill="#7c3aed"/>
+
+                    <text x="268" y="332" class="svg-muted">O</text>
+                    <text id="algebraVectorLabel" x="400" y="150" class="svg-label" font-size="20">u</text>
+                    <text x="385" y="350" text-anchor="middle" class="svg-muted">x-direction</text>
+                    <text x="105" y="300" class="svg-muted">y-direction</text>
+                    <text x="275" y="105" class="svg-muted">z-direction</text>
+                </svg>
+            </div>
         </div>
 
-
-        <h2>
-            Congratulations<span>!</span>
-        </h2>
-
-
-        <p class="completion-message">
-
-            You have completed the foundations of vectors.
-            You now understand magnitude and direction,
-            vector notation, vector addition, components,
-            and parallel vectors.
-
-        </p>
-
-
-        <div class="completion-status">
-
-            <span class="status-dot"></span>
-
-            Lesson completed
-
+        <div class="algebra-explain">
+            <p>
+                <strong>The key connection:</strong>
+                the first component tells us how much of <strong>i</strong> we have,
+                the second tells us how much of <strong>j</strong> we have, and the
+                third tells us how much of <strong>k</strong> we have.
+                Therefore,
+                <strong>u = (x, y, z) = xi + yj + zk</strong>.
+            </p>
         </div>
-
-
-        <a
-            href="vectors.html"
-            class="practice-button"
-        >
-            Back to Vectors
-            <span>→</span>
-        </a>
-
     </div>
-
 </section>
 
+<div class="questions-cta">
+    <h2>Ready to test your understanding?</h2>
+    <p>
+        Put the definitions, addition, components, equal and opposite vectors,
+        parallel vectors, and algebraic notation into practice.
+    </p>
+    <a class="questions-btn" href="definition-of-vectors-questions.html">Practise Questions →</a>
+</div>
+
+<section class="completion">
+    <div class="completion-mark">✓</div>
+    <div class="completion-kicker">Topic complete</div>
+    <h2>Vectors, now with direction.</h2>
+    <p>
+        You have built the foundation for the Vectors chapter.
+        Next, you can move from definitions and notation into vector geometry.
+    </p>
+    <a class="next-btn" href="vector-geometry.html">Continue to Vector Geometry →</a>
+</section>
 
 </main>
 
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
 <footer>
-
-    <strong>EduNova</strong>
-    • Mathematics, explained clearly.
-
+    <strong>EduNova</strong> • Mathematics, explained clearly.
 </footer>
 
-
-
-<!-- =====================================================
-     SUPABASE
-===================================================== -->
-
 <script>
-
-const SUPABASE_URL =
-    "https://majvqtbortonsrgdknms.supabase.co";
-
-const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
-
+const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
 const { createClient } = supabase;
-
-const supabaseClient =
-    createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-    );
-
-
-
-/* =========================================================
-   SESSION
-========================================================= */
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
 async function checkSession(){
-
-    const {
-        data: { session }
-    } = await supabaseClient.auth.getSession();
-
-
+    const { data:{ session } } = await supabaseClient.auth.getSession();
     if(!session){
-
         location.href = "index.html";
-
-        return;
-
+        return false;
     }
-
+    return true;
 }
-
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-async function logout(){
-
-    await supabaseClient.auth.signOut();
-
-    localStorage.clear();
-
-    location.href = "index.html";
-
-}
-
-
-
-/* =========================================================
-   LESSON COMPLETION
-========================================================= */
 
 async function markLessonComplete(){
+    const { data:{ session } } = await supabaseClient.auth.getSession();
+    if(!session) return;
 
-    const {
-        data: { session }
-    } = await supabaseClient.auth.getSession();
-
-
-    if(!session){
-
-        return;
-
-    }
-
-
-    const { error } =
-        await supabaseClient
-            .from("lesson_progress")
-            .upsert(
-                {
-                    user_id:session.user.id,
-                    chapter:"Vectors",
-                    topic_number:1,
-                    completed_at:new Date().toISOString()
-                },
-                {
-                    onConflict:
-                        "user_id,chapter,topic_number"
-                }
-            );
-
-
-    if(error){
-
-        console.error(
-            "Error marking lesson complete:",
-            error
+    const { error } = await supabaseClient
+        .from("lesson_progress")
+        .upsert(
+            {
+                user_id: session.user.id,
+                chapter: "Vectors",
+                topic_number: 1,
+                completed_at: new Date().toISOString()
+            },
+            { onConflict:"user_id,chapter,topic_number" }
         );
 
-    }
-
+    if(error) console.error("Error marking lesson complete:", error);
 }
 
+function setupAddition(){
+    const line = document.getElementById("resultantLine");
+    const label = document.getElementById("resultantLabel");
+    const show = document.getElementById("showResultantBtn");
+    const reset = document.getElementById("resetAdditionBtn");
 
+    show.addEventListener("click",()=>{
+        line.style.opacity = "1";
+        label.style.opacity = "1";
+        show.textContent = "Resultant shown ✓";
+    });
 
-/* =========================================================
-   HEAD-TO-TAIL ANIMATION
-========================================================= */
-
-function showAdditionResult(){
-
-    const line =
-        document.getElementById("resultantLine");
-
-    const glow =
-        document.getElementById("resultantGlow");
-
-    const label =
-        document.getElementById("resultantLabel");
-
-    const endpoint =
-        document.getElementById("resultantEndpoint");
-
-    const button =
-        document.getElementById("additionButton");
-
-
-    if(
-        !line ||
-        !glow ||
-        !label ||
-        !endpoint
-    ){
-
-        return;
-
-    }
-
-
-    line.classList.remove(
-        "resultant-visible"
-    );
-
-    glow.classList.remove(
-        "resultant-glow-visible"
-    );
-
-    label.classList.remove(
-        "resultant-label-visible"
-    );
-
-    endpoint.classList.remove(
-        "resultant-endpoint-visible"
-    );
-
-
-    void line.offsetWidth;
-
-
-    line.classList.add(
-        "resultant-visible"
-    );
-
-    glow.classList.add(
-        "resultant-glow-visible"
-    );
-
-
-    setTimeout(function(){
-
-        label.classList.add(
-            "resultant-label-visible"
-        );
-
-    },700);
-
-
-    setTimeout(function(){
-
-        endpoint.classList.add(
-            "resultant-endpoint-visible"
-        );
-
-    },850);
-
-
-    if(button){
-
-        button.textContent =
-            "Resultant Shown";
-
-    }
-
+    reset.addEventListener("click",()=>{
+        line.style.opacity = "0";
+        label.style.opacity = "0";
+        show.textContent = "Show Resultant";
+    });
 }
 
+function setupEqualOpposite(){
+    const buttons = document.querySelectorAll(".mode-btn");
+    const vector = document.getElementById("explorerVectorB");
+    const label = document.getElementById("explorerVectorBLabel");
+    const direction = document.getElementById("explorerDirectionText");
+    const title = document.getElementById("explorerTitle");
+    const description = document.getElementById("explorerDescription");
+    const equation = document.getElementById("explorerEquation");
+    const note = document.getElementById("explorerNote");
 
+    function setMode(mode){
+        buttons.forEach(btn=>btn.classList.toggle("active",btn.dataset.mode===mode));
 
-/* =========================================================
-   RESET ADDITION
-========================================================= */
-
-function resetAddition(){
-
-    const line =
-        document.getElementById("resultantLine");
-
-    const glow =
-        document.getElementById("resultantGlow");
-
-    const label =
-        document.getElementById("resultantLabel");
-
-    const endpoint =
-        document.getElementById("resultantEndpoint");
-
-    const button =
-        document.getElementById("additionButton");
-
-
-    if(line){
-
-        line.classList.remove(
-            "resultant-visible"
-        );
-
+        if(mode==="equal"){
+            vector.setAttribute("x1","210");
+            vector.setAttribute("x2","495");
+            label.textContent = "b";
+            direction.textContent = "same direction";
+            title.textContent = "Equal vectors";
+            description.textContent = "The two vectors have the same magnitude and the same direction. Their positions do not matter.";
+            equation.textContent = "a = b";
+            note.innerHTML = "<strong>Remember:</strong> Equal vectors must have the same magnitude and the same direction.";
+        }else{
+            vector.setAttribute("x1","495");
+            vector.setAttribute("x2","210");
+            label.textContent = "−a";
+            direction.textContent = "opposite direction";
+            title.textContent = "Opposite vectors";
+            description.textContent = "The vectors have the same magnitude, but one points exactly opposite to the other.";
+            equation.textContent = "b = −a";
+            note.innerHTML = "<strong>Remember:</strong> −a keeps the same magnitude as a but reverses its direction.";
+        }
     }
 
-
-    if(glow){
-
-        glow.classList.remove(
-            "resultant-glow-visible"
-        );
-
-    }
-
-
-    if(label){
-
-        label.classList.remove(
-            "resultant-label-visible"
-        );
-
-    }
-
-
-    if(endpoint){
-
-        endpoint.classList.remove(
-            "resultant-endpoint-visible"
-        );
-
-    }
-
-
-    if(button){
-
-        button.textContent =
-            "Show Resultant";
-
-    }
-
+    buttons.forEach(btn=>btn.addEventListener("click",()=>setMode(btn.dataset.mode)));
+    setMode("equal");
 }
 
+function setupAlgebraExplorer(){
+    const xSlider = document.getElementById("xSlider");
+    const ySlider = document.getElementById("ySlider");
+    const zSlider = document.getElementById("zSlider");
 
-/* =========================================================
-   EQUAL & OPPOSITE VECTOR INTERACTION
-========================================================= */
+    const xValue = document.getElementById("xValue");
+    const yValue = document.getElementById("yValue");
+    const zValue = document.getElementById("zValue");
 
-function setupEqualOppositeExplorer(){
+    const columnX = document.getElementById("columnX");
+    const columnY = document.getElementById("columnY");
+    const columnZ = document.getElementById("columnZ");
 
-    const buttons =
-        document.querySelectorAll(
-            ".vector-mode-btn"
-        );
+    const ijkForm = document.getElementById("ijkForm");
+    const result = document.getElementById("algebraResult");
+    const vector = document.getElementById("algebraVector");
+    const point = document.getElementById("algebraPoint");
+    const label = document.getElementById("algebraVectorLabel");
 
-    const vectorB =
-        document.getElementById(
-            "vectorExplorerB"
-        );
-
-    const vectorBLabel =
-        document.getElementById(
-            "vectorExplorerBLabel"
-        );
-
-    const directionText =
-        document.getElementById(
-            "vectorExplorerDirection"
-        );
-
-    const title =
-        document.getElementById(
-            "vectorExplorerTitle"
-        );
-
-    const description =
-        document.getElementById(
-            "vectorExplorerDescription"
-        );
-
-    const equation =
-        document.getElementById(
-            "vectorExplorerEquation"
-        );
-
-    const note =
-        document.getElementById(
-            "vectorExplorerNote"
-        );
-
-    if(
-        !buttons.length ||
-        !vectorB ||
-        !vectorBLabel ||
-        !directionText ||
-        !title ||
-        !description ||
-        !equation ||
-        !note
-    ){
-        return;
+    function signedTerm(value, symbol){
+        if(value===0) return "";
+        const abs = Math.abs(value);
+        const coefficient = abs===1 ? "" : abs;
+        return `${value<0?"−":""}${coefficient}${symbol}`;
     }
 
+    function buildIJK(x,y,z){
+        const terms = [
+            signedTerm(x,"i"),
+            signedTerm(y,"j"),
+            signedTerm(z,"k")
+        ].filter(Boolean);
 
-    const reducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-
-    function setVectorMode(mode){
-
-        buttons.forEach(
-            function(button){
-
-                button.classList.toggle(
-                    "active",
-                    button.dataset.vectorMode === mode
-                );
-
-            }
-        );
-
-
-        if(mode === "equal"){
-
-            vectorB.setAttribute(
-                "x1",
-                "210"
-            );
-
-            vectorB.setAttribute(
-                "x2",
-                "550"
-            );
-
-            vectorBLabel.textContent =
-                "b";
-
-            directionText.textContent =
-                "same direction";
-
-            title.textContent =
-                "Equal vectors";
-
-            description.textContent =
-                "The two vectors have the same magnitude and point in the same direction. Their positions on the diagram do not matter.";
-
-            equation.textContent =
-                "a = b";
-
-            note.innerHTML =
-                "<strong>Remember:</strong> Equal vectors must have both the same magnitude and the same direction.";
-
+        if(!terms.length) return "0";
+        let output = terms[0];
+        for(let i=1;i<terms.length;i++){
+            output += terms[i].startsWith("−") ? " − " + terms[i].slice(1) : " + " + terms[i];
         }
-
-        else{
-
-            vectorB.setAttribute(
-                "x1",
-                "550"
-            );
-
-            vectorB.setAttribute(
-                "x2",
-                "210"
-            );
-
-            vectorBLabel.textContent =
-                "−a";
-
-            directionText.textContent =
-                "opposite direction";
-
-            title.textContent =
-                "Opposite vectors";
-
-            description.textContent =
-                "The vectors have the same magnitude, but one points exactly opposite to the other.";
-
-            equation.textContent =
-                "b = −a";
-
-            note.innerHTML =
-                "<strong>Remember:</strong> Changing a vector to −a keeps its magnitude unchanged but reverses its direction.";
-
-        }
-
-
-        if(!reducedMotion){
-
-            vectorB.style.opacity =
-                "0.25";
-
-            requestAnimationFrame(
-                function(){
-
-                    vectorB.style.opacity =
-                        "1";
-
-                }
-            );
-
-        }
-
+        return output;
     }
 
+    function update(){
+        const x = Number(xSlider.value);
+        const y = Number(ySlider.value);
+        const z = Number(zSlider.value);
 
-    buttons.forEach(
-        function(button){
+        xValue.textContent = x;
+        yValue.textContent = y;
+        zValue.textContent = z;
 
-            button.addEventListener(
-                "click",
-                function(){
+        columnX.textContent = x;
+        columnY.textContent = y;
+        columnZ.textContent = z;
 
-                    setVectorMode(
-                        button.dataset.vectorMode
-                    );
+        const ijk = buildIJK(x,y,z);
+        ijkForm.textContent = ijk;
+        result.textContent = `u = (${x}, ${y}, ${z}) = ${ijk}`;
 
-                }
-            );
+        // Oblique projection from the origin.
+        const px = 260 + x*32 - y*19;
+        const py = 310 - z*38 + y*10 - x*2;
 
-        }
-    );
+        vector.setAttribute("x2", String(px));
+        vector.setAttribute("y2", String(py));
+        point.setAttribute("cx", String(px));
+        point.setAttribute("cy", String(py));
+        label.setAttribute("x", String(px + 10));
+        label.setAttribute("y", String(py - 10));
+    }
 
-
-    setVectorMode("equal");
-
+    [xSlider,ySlider,zSlider].forEach(slider=>slider.addEventListener("input",update));
+    update();
 }
-/* =========================================================
-   INITIALISE
-========================================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    async function(){
+async function init(){
+    const loggedIn = await checkSession();
+    if(!loggedIn) return;
 
-        await checkSession();
+    await markLessonComplete();
+    setupAddition();
+    setupEqualOpposite();
+    setupAlgebraExplorer();
 
-        await markLessonComplete();
+    document.getElementById("logoutBtn").addEventListener("click",async()=>{
+        await supabaseClient.auth.signOut();
+        localStorage.clear();
+        location.href = "index.html";
+    });
+}
 
-        resetAddition();
-
-        setupEqualOppositeExplorer();
-
-    }
-);
-
+document.addEventListener("DOMContentLoaded",init);
 </script>
 
-
 </body>
-
 </html>
