@@ -1014,7 +1014,10 @@ async function checkSession(){
 
 async function markLessonComplete(){
     const { data:{ session } } = await supabaseClient.auth.getSession();
-    if(!session) return;
+
+    if(!session){
+        return { success:false, error:"No active session." };
+    }
 
     const { error } = await supabaseClient
         .from("lesson_progress")
@@ -1028,9 +1031,13 @@ async function markLessonComplete(){
             { onConflict:"user_id,chapter,topic_number" }
         );
 
-    if(error) console.error("Error marking lesson complete:", error);
-}
+    if(error){
+        console.error("Error marking lesson complete:", error);
+        return { success:false, error };
+    }
 
+    return { success:true };
+}
 function setupAddition(){
     const line = document.getElementById("resultantLine");
     const label = document.getElementById("resultantLabel");
@@ -1166,7 +1173,6 @@ async function init(){
     const loggedIn = await checkSession();
     if(!loggedIn) return;
 
-    await markLessonComplete();
     setupAddition();
     setupEqualOpposite();
     setupAlgebraExplorer();
@@ -1177,60 +1183,44 @@ async function init(){
         location.href = "index.html";
     });
 }
-const completionCard = document.getElementById("completionCard");
-const completionButton = document.getElementById("completionButton");
-const completionText = document.getElementById("completionText");
+document.addEventListener("DOMContentLoaded", () => {
 
-completionCard.addEventListener("click", async () => {
+    const completionCard = document.getElementById("completionCard");
+    const completionButton = document.getElementById("completionButton");
+    const completionText = document.getElementById("completionText");
 
-    if (completionCard.classList.contains("completed")) {
-        return;
-    }
+    completionCard.addEventListener("click", async () => {
 
-    completionButton.textContent = "Saving completion...";
-
-    try {
-
-        const { data: { user }, error: userError } =
-            await supabaseClient.auth.getUser()
-
-        if (userError || !user) {
-            completionButton.textContent = "Please sign in to complete";
+        if(completionCard.classList.contains("completed")){
             return;
         }
 
-        const { error } = await supabaseClient
-    .from("lesson_progress")
-            .upsert({
-                user_id: user.id,
-                chapter: "Vectors",
-                topic_number: 1,
-                completed: true
-            }, {
-                onConflict: "user_id,chapter,topic_number"
-            });
+        completionButton.textContent = "Saving completion...";
 
-        if (error) {
-            console.error("Completion error:", error);
+        const result = await markLessonComplete();
+
+        if(!result.success){
             completionButton.textContent = "Try Again →";
+            console.error("Completion failed:", result.error);
             return;
         }
 
         completionCard.classList.add("completed");
 
-        completionButton.textContent = "✓ Topic Completed";
+       completionButton.textContent = "Practice Topic 01 →";
 
-        completionText.textContent =
-            "Excellent work. Topic 01 is now marked as completed. Your next step is Vector Geometry.";
+completionText.textContent =
+    "Excellent work. Topic 01 is now marked as completed. Now test your understanding with the practice questions.";
 
-    } catch (error) {
+completionButton.onclick = (event) => {
+    event.stopPropagation();
+    window.location.href = "definition-of-vectors-questions.html";
+};
 
-        console.error("Unexpected completion error:", error);
-        completionButton.textContent = "Try Again →";
-
-    }
+    });
 
 });
+
 document.addEventListener("DOMContentLoaded",init);
 </script>
 
