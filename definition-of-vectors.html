@@ -153,12 +153,12 @@ main{width:min(1120px,86%);margin:auto;padding:82px 0 105px}
 .questions-btn{display:inline-block;background:#a78bfa;color:#16121d;padding:12px 20px;border-radius:10px;font-weight:800}
 .questions-btn:hover{background:#c4b5fd}
 
-.completion{margin-top:30px;padding:42px 34px;border-radius:25px;background:#fff;border:1px solid #e6e1eb;text-align:center;position:relative;overflow:hidden}
-.completion:before{content:"";position:absolute;width:250px;height:250px;border:1px solid rgba(124,58,237,.12);border-radius:50%;right:-90px;top:-120px}
-.completion-kicker{color:#7c3aed;font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase}
-.completion h2{font-family:"Playfair Display",serif;font-size:2.5rem;margin:8px 0 10px}
-.completion p{color:#6b6571;max-width:650px;margin:0 auto}
-.completion-mark{width:62px;height:62px;margin:0 auto 17px;border-radius:50%;background:#111014;color:#c4b5fd;display:grid;place-items:center;font-size:1.5rem;font-weight:800}
+.completion{margin-top:30px;padding:52px 34px;border-radius:28px;background:linear-gradient(145deg,#0d0c10,#17131d);border:1px solid rgba(167,139,250,.28);text-align:center;position:relative;overflow:hidden;color:#fff;box-shadow:0 18px 45px rgba(17,16,20,.12)}
+.completion:before{content:"";position:absolute;width:300px;height:300px;border:1px solid rgba(167,139,250,.18);border-radius:50%;right:-120px;top:-155px}.completion:after{content:"";position:absolute;width:180px;height:180px;border:1px solid rgba(167,139,250,.10);border-radius:50%;left:-95px;bottom:-110px}
+.completion-kicker{color:#c4b5fd;font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+.completion h2{font-family:"Playfair Display",serif;font-size:2.7rem;margin:8px 0 10px;position:relative;z-index:1}
+.completion p{color:#d1ccd7;max-width:650px;margin:0 auto;position:relative;z-index:1}
+.completion-mark{width:70px;height:70px;margin:0 auto 17px;border-radius:50%;background:#7c3aed;color:#fff;display:grid;place-items:center;font-size:1.65rem;font-weight:900;box-shadow:0 0 0 9px rgba(124,58,237,.12);position:relative;z-index:1}
 .next-btn{display:inline-block;margin-top:22px;border-radius:10px;background:#7c3aed;color:#fff;padding:12px 20px;font-weight:800}
 .next-btn:hover{background:#6d28d9}
 
@@ -692,21 +692,24 @@ footer strong{color:#fff}
 </section>
 
 <div class="questions-cta">
+    <div class="completion-kicker" style="margin-bottom:10px;">VECTORS • TOPIC 01</div>
     <h2>Ready to test your understanding?</h2>
     <p>
-        Put the definitions, addition, components, equal and opposite vectors,
-        parallel vectors, and algebraic notation into practice.
+        You have learned the language of vectors. Now put definitions,
+        addition, components, equal and opposite vectors, parallel vectors,
+        and algebraic notation into practice.
     </p>
-    <a class="questions-btn" href="definition-of-vectors-questions.html">Practise Questions →</a>
+    <a class="questions-btn" href="definition-of-vectors-questions.html">Go to Practice Questions →</a>
 </div>
 
-<section class="completion">
+<section class="completion" aria-label="Lesson completion">
     <div class="completion-mark">✓</div>
-    <div class="completion-kicker">Topic complete</div>
-    <h2>Vectors, now with direction.</h2>
+    <div class="completion-kicker">Congratulations</div>
+    <h2>You’ve completed Topic 01.</h2>
     <p>
-        You have built the foundation for the Vectors chapter.
-        Next, you can move from definitions and notation into vector geometry.
+        Excellent work. You have built the foundation of the Vectors chapter,
+        from understanding direction and magnitude to writing vectors algebraically.
+        Your next step is vector geometry.
     </p>
     <a class="next-btn" href="vector-geometry.html">Continue to Vector Geometry →</a>
 </section>
