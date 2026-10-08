@@ -2181,52 +2181,41 @@ footer {
                         />
 
 
-                        <!-- opposite-side guide marks -->
+                       <!-- parallel-side marks -->
 
-                        <line
-                            id="parallelMarkAB"
-                            x1="315"
-                            y1="300"
-                            x2="325"
-                            y2="282"
-                            stroke="#7c3aed"
-                            stroke-width="3"
-                            stroke-linecap="round"
-                        />
+<!-- one tick: AB -->
+<line id="parallelMarkAB"
+      stroke="#7c3aed"
+      stroke-width="3"
+      stroke-linecap="round" />
 
-                        <line
-                            id="parallelMarkDC"
-                            x1="405"
-                            y1="145"
-                            x2="415"
-                            y2="127"
-                            stroke="#7c3aed"
-                            stroke-width="3"
-                            stroke-linecap="round"
-                        />
+<!-- one tick: DC -->
+<line id="parallelMarkDC"
+      stroke="#7c3aed"
+      stroke-width="3"
+      stroke-linecap="round" />
 
+<!-- two ticks: AD -->
+<line id="parallelMarkAD1"
+      stroke="#7c3aed"
+      stroke-width="3"
+      stroke-linecap="round" />
 
-                        <line
-                            id="parallelMarkAD"
-                            x1="212"
-                            y1="225"
-                            x2="230"
-                            y2="235"
-                            stroke="#7c3aed"
-                            stroke-width="3"
-                            stroke-linecap="round"
-                        />
+<line id="parallelMarkAD2"
+      stroke="#7c3aed"
+      stroke-width="3"
+      stroke-linecap="round" />
 
-                        <line
-                            id="parallelMarkBC"
-                            x1="502"
-                            y1="225"
-                            x2="520"
-                            y2="235"
-                            stroke="#7c3aed"
-                            stroke-width="3"
-                            stroke-linecap="round"
-                        />
+<!-- two ticks: BC -->
+<line id="parallelMarkBC1"
+      stroke="#7c3aed"
+      stroke-width="3"
+      stroke-linecap="round" />
+
+<line id="parallelMarkBC2"
+      stroke="#7c3aed"
+      stroke-width="3"
+      stroke-linecap="round" />
 
 
                         <!-- vectors -->
@@ -2669,8 +2658,8 @@ footer {
 
                     <text
                         id="additionBLabel"
-                        x="475"
-                        y="155"
+                        x="500"
+                        y="132"
                         class="svg-label"
                         font-size="24"
                     >
@@ -4082,6 +4071,18 @@ const diagonalAC =
 
 const shape =
     document.getElementById("parallelogramShape");
+  
+    const parallelMarkAB = document.getElementById("parallelMarkAB");
+
+    const parallelMarkDC = document.getElementById("parallelMarkDC");
+
+const parallelMarkAD1 = document.getElementById("parallelMarkAD1");
+
+    const parallelMarkAD2 = document.getElementById("parallelMarkAD2");
+
+const parallelMarkBC1 = document.getElementById("parallelMarkBC1");
+
+    const parallelMarkBC2 = document.getElementById("parallelMarkBC2");
 
 
 const labelA =
@@ -4147,7 +4148,64 @@ function svgPoint(event) {
 
 }
 
+function setSingleParallelMark(line, P1, P2) {
 
+    const mx = (P1.x + P2.x) / 2;
+    const my = (P1.y + P2.y) / 2;
+
+    const dx = P2.x - P1.x;
+    const dy = P2.y - P1.y;
+
+    const length = Math.hypot(dx, dy) || 1;
+
+    const nx = -dy / length;
+    const ny = dx / length;
+
+    const half = 10;
+
+    line.setAttribute("x1", mx - nx * half);
+    line.setAttribute("y1", my - ny * half);
+
+    line.setAttribute("x2", mx + nx * half);
+    line.setAttribute("y2", my + ny * half);
+}
+
+
+function setDoubleParallelMarks(line1, line2, P1, P2) {
+
+    const mx = (P1.x + P2.x) / 2;
+    const my = (P1.y + P2.y) / 2;
+
+    const dx = P2.x - P1.x;
+    const dy = P2.y - P1.y;
+
+    const length = Math.hypot(dx, dy) || 1;
+
+    const tx = dx / length;
+    const ty = dy / length;
+
+    const nx = -dy / length;
+    const ny = dx / length;
+
+    const half = 10;
+    const gap = 8;
+
+    const c1x = mx - tx * gap / 2;
+    const c1y = my - ty * gap / 2;
+
+    const c2x = mx + tx * gap / 2;
+    const c2y = my + ty * gap / 2;
+
+    line1.setAttribute("x1", c1x - nx * half);
+    line1.setAttribute("y1", c1y - ny * half);
+    line1.setAttribute("x2", c1x + nx * half);
+    line1.setAttribute("y2", c1y + ny * half);
+
+    line2.setAttribute("x1", c2x - nx * half);
+    line2.setAttribute("y1", c2y - ny * half);
+    line2.setAttribute("x2", c2x + nx * half);
+    line2.setAttribute("y2", c2y + ny * half);
+}
 function updateParallelogram() {
 
     const C = {
@@ -4208,6 +4266,13 @@ function updateParallelogram() {
     diagonalAC.setAttribute("y1", A.y);
     diagonalAC.setAttribute("x2", C.x);
     diagonalAC.setAttribute("y2", C.y);
+    /* parallel-side marks */
+
+setSingleParallelMark(parallelMarkAB, A, B);
+setSingleParallelMark(parallelMarkDC, D, C);
+
+setDoubleParallelMarks(parallelMarkAD1, parallelMarkAD2, A, D);
+setDoubleParallelMarks(parallelMarkBC1, parallelMarkBC2, B, C);
 
 
     /* points */
