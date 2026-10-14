@@ -88,7 +88,8 @@ footer{background:#111;color:#fff;padding:45px 7%;display:flex;justify-content:s
 
 <footer id="start"><div class="footer-logo">Edu<span>Nova</span></div><p>© 2026 EduNova. Mathematics, reimagined.</p></footer>
 
-<div class="modal-bg" id="modalBg" onclick="backdrop(event)"><div class="modal"><button class="close" onclick="closeAuth()">×</button><div class="label" id="modalLabel">JOIN EDUNOVA</div><h2 id="modalTitle">Create account.</h2><p class="modal-desc" id="modalDesc">Register to unlock the EduNova chapters and your personal learning dashboard.</p><div class="msg" id="msg"></div><form class="form" onsubmit="submitAuth(event)"><input id="user" type="text" placeholder="Username" required autocomplete="username"><input id="email" type="email" placeholder="Email address" required autocomplete="email"><input id="pass" type="password" placeholder="Password" required><input id="confirm" type="password" placeholder="Confirm password" required><button class="submit" id="submit" type="submit">CREATE ACCOUNT →</button></form><div class="switch"><span id="switchText">Already have an account?</span> <button id="switchBtn" onclick="switchMode()" type="button">LOG IN</button></div></div></div>
+<div class="modal-bg" id="modalBg" onclick="backdrop(event)"><div class="modal"><button class="close" onclick="closeAuth()">×</button><div class="label" id="modalLabel">JOIN EDUNOVA</div><h2 id="modalTitle">Create account.</h2><p class="modal-desc" id="modalDesc">Register to unlock the EduNova chapters and your personal learning dashboard.</p><div class="msg" id="msg"></div><form class="form" onsubmit="submitAuth(event)"><input id="user" type="text" placeholder="Username" required autocomplete="username"><input id="email" type="email" placeholder="Email address" required autocomplete="email"><input id="country" type="text" placeholder="Country" required autocomplete="country">
+<input id="pass" type="password" placeholder="Password" required><input id="pass" type="password" placeholder="Password" required><input id="confirm" type="password" placeholder="Confirm password" required><button class="submit" id="submit" type="submit">CREATE ACCOUNT →</button></form><div class="switch"><span id="switchText">Already have an account?</span> <button id="switchBtn" onclick="switchMode()" type="button">LOG IN</button></div></div></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   
@@ -165,10 +166,12 @@ function updateModal(){
 
     $("user").style.display = signup ? "block" : "none";
     $("email").style.display = "block";
+  $("country").style.display = signup ? "block" : "none";
     $("confirm").style.display = signup ? "block" : "none";
 
     $("user").required = signup;
     $("email").required = true;
+  $("country").required = signup;
     $("confirm").required = signup;
 }
 function message(t){
@@ -192,8 +195,9 @@ async function submitAuth(e){
 
     const button = $("submit");
     const username = $("user").value.trim();
-    const email = $("email").value.trim().toLowerCase();
-    const password = $("pass").value;
+const email = $("email").value.trim().toLowerCase();
+const country = $("country").value.trim();
+const password = $("pass").value;
 
     $("msg").classList.remove("show");
 
@@ -235,12 +239,14 @@ async function submitAuth(e){
             return message("Something went wrong. Please try again.");
         }
 
-        const { error: profileError } = await supabaseClient
-            .from("students")
-            .insert({
-                id: data.user.id,
-                username: username
-            });
+       const { error: profileError } = await supabaseClient
+    .from("students")
+    .insert({
+        id: data.user.id,
+        username: username,
+        email: email,
+        country: country
+    });
 
         if(profileError){
             console.error("Profile error:", profileError);
