@@ -305,7 +305,7 @@ async function checkSession(){
 
     const { data: student, error } = await supabaseClient
         .from("students")
-        .select("username, premium_access")
+        .select("username, email, country, premium_access")
         .eq("id", session.user.id)
         .single();
 
