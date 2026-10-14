@@ -864,6 +864,13 @@
         }
 
     </style>
+
+<!-- Premium access gate -->
+<style id="premium-access-gate">
+html:not(.premium-access-granted) body {
+    visibility: hidden;
+}
+</style>
 </head>
 
 
@@ -2686,6 +2693,8 @@
         );
 
     </script>
+
+<script src="premium-access.js"></script>
 
 </body>
 </html>

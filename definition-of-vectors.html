@@ -448,6 +448,13 @@ footer strong{color:#fff}
     .completion{padding:35px 22px}
 }
 </style>
+
+<!-- Premium access gate -->
+<style id="premium-access-gate">
+html:not(.premium-access-granted) body {
+    visibility: hidden;
+}
+</style>
 </head>
 
 <body>
@@ -1212,6 +1219,8 @@ completionButton.onclick = (event) => {
 
 document.addEventListener("DOMContentLoaded",init);
 </script>
+
+<script src="premium-access.js"></script>
 
 </body>
 </html>

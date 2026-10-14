@@ -1952,6 +1952,13 @@ footer {
 
 </style>
 
+
+<!-- Premium access gate -->
+<style id="premium-access-gate">
+html:not(.premium-access-granted) body {
+    visibility: hidden;
+}
+</style>
 </head>
 
 
@@ -5299,6 +5306,8 @@ document.addEventListener(
 );
 
 </script>
+
+<script src="premium-access.js"></script>
 
 </body>
 

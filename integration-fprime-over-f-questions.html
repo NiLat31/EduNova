@@ -602,6 +602,14 @@
             }
         }
     </style>
+
+<!-- Premium access gate -->
+<style id="premium-access-gate">
+html:not(.premium-access-granted) body {
+    visibility: hidden;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -1674,6 +1682,8 @@
         loadQuestion(0);
 
     </script>
+
+<script src="premium-access.js"></script>
 
 </body>
 </html>
