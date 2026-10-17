@@ -237,10 +237,20 @@ const password = $("pass").value;
         button.disabled = true;
         button.textContent = "CREATING ACCOUNT...";
 
-        const { data, error } = await supabaseClient.auth.signUp({
-            email: email,
-            password: password
-        });
+       
+const detectedCountry = await detectCountry();
+
+const { data, error } = await supabaseClient.auth.signUp({
+    email: email,
+    password: password,
+    options: {
+        data: {
+            username: username,
+            country: country || "Unknown",
+            detected_country: detectedCountry
+        }
+    }
+});
 
         if(error){
             button.disabled = false;
@@ -254,38 +264,21 @@ const password = $("pass").value;
             return message("Something went wrong. Please try again.");
         }
 
-      const detectedCountry = await detectCountry();
-
-
-const { error: profileError } = await supabaseClient
-    .from("students")
-    .insert({
-        id: data.user.id,
-        username: username,
-        email: email,
-        country: country,
-        detected_country: detectedCountry,
-        premium_access: false
-    });
-     
-if (profileError) {
-    console.error("Student profile error:", profileError);
-
+       
+if (!data.session) {
     button.disabled = false;
     button.textContent = "CREATE ACCOUNT →";
 
     return message(
-        "Profile error: " +
-        profileError.message +
-        " | Code: " +
-        profileError.code
+        "Account created! Please check your email to confirm your account, then log in."
     );
 }
 
-        localStorage.setItem("eduNovaUsername", username);
-        localStorage.setItem("eduNovaEmail", email);
+localStorage.setItem("eduNovaUsername", username);
+localStorage.setItem("eduNovaEmail", email);
 
-        location.href = "dashboard.html";
+location.href = "dashboard.html";
+
 
     }else{
 
@@ -324,16 +317,20 @@ if (profileError) {
     .eq("id", data.user.id)
     .single();
 
-        if(studentError || !student){
-            console.error("Student profile error:", studentError);
+       
+if (studentError || !student) {
+    console.error("Student profile load failed:", studentError);
 
-            button.disabled = false;
-            button.textContent = "LOG IN →";
+    button.disabled = false;
+    button.textContent = "LOG IN →";
 
-            return message(
-                "Your account was found, but your EduNova profile could not be loaded."
-            );
-        }
+    return message(
+        "Profile loading failed: " +
+        (studentError?.message || "No student profile found") +
+        (studentError?.code ? " | Code: " + studentError.code : "")
+    );
+}
+
       const detectedCountry = student.detected_country || await detectCountry();
 
 const { error: syncError } = await supabaseClient
