@@ -267,23 +267,20 @@ const { error: profileError } = await supabaseClient
         detected_country: detectedCountry,
         premium_access: false
     });
-      if (profileError) {
+     
+if (profileError) {
     console.error("Student profile error:", profileError);
-    alert("Profile error: " + profileError.message);
-    return;
+
+    button.disabled = false;
+    button.textContent = "CREATE ACCOUNT →";
+
+    return message(
+        "Profile error: " +
+        profileError.message +
+        " | Code: " +
+        profileError.code
+    );
 }
-
-
-        if(profileError){
-            console.error("Profile error:", profileError);
-
-            button.disabled = false;
-            button.textContent = "CREATE ACCOUNT →";
-
-            return message(
-                "Your account was created, but your student profile could not be saved."
-            );
-        }
 
         localStorage.setItem("eduNovaUsername", username);
         localStorage.setItem("eduNovaEmail", email);
