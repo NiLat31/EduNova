@@ -267,6 +267,11 @@ const { error: profileError } = await supabaseClient
         detected_country: detectedCountry,
         premium_access: false
     });
+      if (profileError) {
+    console.error("Student profile error:", profileError);
+    alert("Profile error: " + profileError.message);
+    return;
+}
 
 
         if(profileError){
