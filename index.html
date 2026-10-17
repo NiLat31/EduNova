@@ -256,6 +256,7 @@ const password = $("pass").value;
 
       const detectedCountry = await detectCountry();
 
+
 const { error: profileError } = await supabaseClient
     .from("students")
     .insert({
@@ -263,8 +264,10 @@ const { error: profileError } = await supabaseClient
         username: username,
         email: email,
         country: country,
-        detected_country: detectedCountry
+        detected_country: detectedCountry,
+        premium_access: false
     });
+
 
         if(profileError){
             console.error("Profile error:", profileError);
