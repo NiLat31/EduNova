@@ -428,7 +428,6 @@ footer{
 
   <div class="diagram">
     <svg viewBox="0 0 650 250" aria-label="Triangle showing AB and AC">
-      <line x1="100" y1="190" x2="500" y2="190" stroke="#ddd6e5" stroke-width="3"/>
       <line x1="100" y1="190" x2="430" y2="65" stroke="#7c3aed" stroke-width="6" stroke-linecap="round"/>
       <line x1="100" y1="190" x2="500" y2="190" stroke="#24202a" stroke-width="6" stroke-linecap="round"/>
       <circle cx="100" cy="190" r="7" fill="#7c3aed"/>
@@ -606,11 +605,42 @@ footer{
     Find \(\vec{OP}\).
   </p>
 
+  <!-- INSERTED SVG DIAGRAM HERE -->
+  <div class="diagram">
+    <svg viewBox="0 0 700 300" aria-label="Position vector triangle showing OA, OB, and OP">
+      <!-- Traveled paths from Origin O -->
+      <line x1="350" y1="260" x2="150" y2="90" stroke="#7c3aed" stroke-width="4" stroke-linecap="round"/>
+      <line x1="350" y1="260" x2="550" y2="90" stroke="#24202a" stroke-width="4" stroke-linecap="round"/>
+      <!-- Resultant vector line to ratio point P -->
+      <line x1="350" y1="260" x2="300" y2="90" stroke="#c5bdcf" stroke-dasharray="6,4" stroke-width="3"/>
+      
+      <!-- Base segment AB -->
+      <line x1="150" y1="90" x2="550" y2="90" stroke="#24202a" stroke-width="6" stroke-linecap="round"/>
+      
+      <!-- Points/Nodes -->
+      <circle cx="350" cy="260" r="7" fill="#24202a"/> <!-- O -->
+      <circle cx="150" cy="90" r="7" fill="#7c3aed"/>  <!-- A -->
+      <circle cx="550" cy="90" r="7" fill="#24202a"/>  <!-- B -->
+      <circle cx="300" cy="90" r="8" fill="#fff" stroke="#7c3aed" stroke-width="4"/> <!-- P -->
+
+      <!-- Text Labels -->
+      <text x="345" y="290" class="svg-label" font-size="20">O</text>
+      <text x="130" y="95" class="svg-label" font-size="20">A</text>
+      <text x="565" y="95" class="svg-label" font-size="20">B</text>
+      <text x="295" y="70" class="svg-label" font-size="20">P</text>
+      
+      <!-- Vector names -->
+      <text x="230" y="190" class="svg-label" font-size="20" fill="#7c3aed">a</text>
+      <text x="460" y="190" class="svg-label" font-size="20">b</text>
+    </svg>
+  </div>
+
+  <!-- POLISHED ANSWER GRID -->
   <div class="answer-grid">
-    <button class="answer-btn" data-answer="wrong">\(\frac35\mathbf a+\frac25\mathbf b\)</button>
-    <button class="answer-btn" data-answer="correct">\(\frac58\mathbf a+\frac38\mathbf b\)</button>
-    <button class="answer-btn" data-answer="wrong">\(\frac38\mathbf a+\frac58\mathbf b\)</button>
-    <button class="answer-btn" data-answer="wrong">\(\frac12(\mathbf a+\mathbf b)\)</button>
+    <button class="answer-btn" data-answer="wrong">\(\frac{3}{5}\mathbf a+\frac{2}{5}\mathbf b\)</button>
+    <button class="answer-btn" data-answer="correct">\(\frac{5}{8}\mathbf a+\frac{3}{8}\mathbf b\)</button>
+    <button class="answer-btn" data-answer="wrong">\(\frac{3}{8}\mathbf a+\frac{5}{8}\mathbf b\)</button>
+    <button class="answer-btn" data-answer="wrong">\(\frac{1}{2}(\mathbf a+\mathbf b)\)</button>
   </div>
 
   <div class="reveal">
@@ -684,13 +714,26 @@ footer{
     \(\vec{AD}=\mathbf b\). Find \(\vec{CB}\).
   </p>
 
+  <!-- IMPROVED SVG DIAGRAM -->
   <div class="diagram">
     <svg viewBox="0 0 700 300" aria-label="Parallelogram showing AB and AD">
+      <!-- Shaded background parallelogram -->
       <polygon points="120,220 470,220 570,80 220,80" fill="#7c3aed" fill-opacity=".035" stroke="#c5bdcf" stroke-width="2"/>
+      
+      <!-- Known Given Vectors -->
       <line x1="120" y1="220" x2="470" y2="220" stroke="#7c3aed" stroke-width="6" stroke-linecap="round"/>
       <line x1="120" y1="220" x2="220" y2="80" stroke="#24202a" stroke-width="6" stroke-linecap="round"/>
-      <circle cx="120" cy="220" r="7" fill="#7c3aed"/><circle cx="470" cy="220" r="7" fill="#24202a"/>
-      <circle cx="570" cy="80" r="7" fill="#24202a"/><circle cx="220" cy="80" r="7" fill="#24202a"/>
+      
+      <!-- NEW: Target vector CB highlighted with a dashed indicator line -->
+      <line x1="570" y1="80" x2="470" y2="220" stroke="#24202a" stroke-dasharray="6,4" stroke-width="3" stroke-linecap="round"/>
+      
+      <!-- Vertices / Nodes -->
+      <circle cx="120" cy="220" r="7" fill="#7c3aed"/>
+      <circle cx="470" cy="220" r="7" fill="#24202a"/>
+      <circle cx="570" cy="80" r="7" fill="#24202a"/>
+      <circle cx="220" cy="80" r="7" fill="#24202a"/>
+      
+      <!-- Text Labels -->
       <text x="104" y="247" class="svg-label" font-size="20">A</text>
       <text x="476" y="247" class="svg-label" font-size="20">B</text>
       <text x="578" y="77" class="svg-label" font-size="20">C</text>
@@ -778,11 +821,42 @@ footer{
     Find \(\vec{DP}\).
   </p>
 
+  <!-- INSERTED SVG DIAGRAM HERE -->
+  <div class="diagram">
+    <svg viewBox="0 0 700 300" aria-label="Parallelogram ABCD showing ratio point P and vector DP">
+      <!-- Background polygon -->
+      <polygon points="120,220 470,220 570,80 220,80" fill="#7c3aed" fill-opacity=".035" stroke="#c5bdcf" stroke-width="2"/>
+      
+      <!-- Given base paths -->
+      <line x1="120" y1="220" x2="470" y2="220" stroke="#24202a" stroke-width="6" stroke-linecap="round"/>
+      <line x1="120" y1="220" x2="220" y2="80" stroke="#7c3aed" stroke-width="6" stroke-linecap="round"/>
+      
+      <!-- Target path DP highlighted -->
+      <line x1="220" y1="80" x2="251.25" y2="220" stroke="#24202a" stroke-dasharray="6,4" stroke-width="3" stroke-linecap="round"/>
+      
+      <!-- Nodes (A, B, C, D, and ratio point P) -->
+      <circle cx="120" cy="220" r="7" fill="#24202a"/> <!-- A -->
+      <circle cx="470" cy="220" r="7" fill="#24202a"/> <!-- B -->
+      <circle cx="570" cy="80" r="7" fill="#24202a"/>  <!-- C -->
+      <circle cx="220" cy="80" r="7" fill="#7c3aed"/>  <!-- D -->
+      <circle cx="251.25" cy="220" r="8" fill="#fff" stroke="#7c3aed" stroke-width="4"/> <!-- P (3/8 along AB) -->
+
+      <!-- Labels -->
+      <text x="104" y="247" class="svg-label" font-size="20">A</text>
+      <text x="476" y="247" class="svg-label" font-size="20">B</text>
+      <text x="578" y="77" class="svg-label" font-size="20">C</text>
+      <text x="205" y="67" class="svg-label" font-size="20">D</text>
+      <text x="246" y="252" class="svg-label" font-size="20">P</text>
+      <text x="310" y="205" class="svg-label" font-size="20">a</text>
+      <text x="150" y="145" class="svg-label" font-size="20" fill="#7c3aed">b</text>
+    </svg>
+  </div>
+
   <div class="answer-grid">
     <button class="answer-btn" data-answer="wrong">\(\frac38\mathbf a+\mathbf b\)</button>
     <button class="answer-btn" data-answer="correct">\(\frac38\mathbf a-\mathbf b\)</button>
     <button class="answer-btn" data-answer="wrong">\(\frac58\mathbf a-\mathbf b\)</button>
-    <button class="answer-btn" data-answer="wrong">\(\mathbf a-\frac38\mathbf b\)</button>
+    <button class="answer-btn" data-answer="wrong">\mathbf a-\frac38\mathbf b\)</button>
   </div>
 
   <div class="reveal">
@@ -832,6 +906,10 @@ footer{
       <line x1="110" y1="235" x2="210" y2="85" stroke="#24202a" stroke-width="5" stroke-linecap="round"/>
       <line x1="520" y1="235" x2="620" y2="85" stroke="#24202a" stroke-width="5" stroke-linecap="round"/>
       <line x1="210" y1="85" x2="620" y2="85" stroke="#24202a" stroke-width="5" stroke-linecap="round"/>
+      
+      <!-- NEW: Target line CP highlighted with a dashed indicator -->
+      <line x1="620" y1="85" x2="264" y2="235" stroke="#24202a" stroke-dasharray="6,4" stroke-width="3" stroke-linecap="round"/>
+      
       <circle cx="110" cy="235" r="7" fill="#7c3aed"/>
       <circle cx="520" cy="235" r="7" fill="#24202a"/>
       <circle cx="620" cy="85" r="7" fill="#24202a"/>
@@ -873,15 +951,13 @@ footer{
         \[
         \vec{CP}=\vec{CA}+\vec{AP}
         =-\mathbf a-\mathbf b+\frac38\mathbf a
-        =\boxed{-\frac58\mathbf a-\mathbf b}.
+        =\boxed{\frac38\mathbf a-\mathbf a-\mathbf b}.
         \]
-        Therefore the equivalent simplified expression is
-        \(\boxed{-\frac58\mathbf a-\mathbf b}\).
+        Simplifying this expression gives the equivalent form \(\boxed{-\frac58\mathbf a-\mathbf b}\).
       </p>
     </div>
   </div>
 </section>
-
 <section class="finish" id="finishSection" aria-live="polite">
   <div class="finish-content">
     <div class="finish-mark" id="finishMark">✦</div>
