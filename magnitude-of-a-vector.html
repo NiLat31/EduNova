@@ -62,54 +62,14 @@ footer{background:#09090b;color:#fff;padding:25px 7%;display:flex;align-items:ce
 
 <section class="part"><div class="part-header"><div class="part-number">02</div><div><h2>Distance between two points</h2><p>The same idea gives the distance formula.</p></div></div><div class="card card-inner"><div class="formula-card" style="align-items:center"><div class="explain"><p>For points \(A(x_1,y_1)\) and \(B(x_2,y_2)\), the horizontal and vertical differences create a right-angled triangle.</p><div class="highlight">\[d^2=(x_1-x_2)^2+(y_1-y_2)^2\]<br>so<br>\[d=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}\]</div></div><div class="diagram-box"><svg viewBox="0 0 560 310"><defs><marker id="distanceArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L0,8 L9,4 z" fill="#7c3aed"/></marker></defs><line class="axis" x1="60" y1="255" x2="505" y2="255"/><line class="axis" x1="60" y1="255" x2="60" y2="45"/><line class="construction" x1="145" y1="220" x2="390" y2="220"/><line class="construction" x1="390" y1="220" x2="390" y2="90"/><line class="vector-line" x1="145" y1="220" x2="390" y2="90" marker-end="url(#distanceArrow)"/><circle cx="145" cy="220" r="5" fill="#17151d"/><circle cx="390" cy="90" r="5" fill="#7c3aed"/><text class="svg-label" x="125" y="245">A</text><text class="svg-label" x="400" y="85">B</text><text class="svg-label" x="230" y="242">x₂ − x₁</text><text class="svg-label" x="400" y="160">y₂ − y₁</text><text class="svg-label" x="255" y="145">d</text></svg></div></div></div></section>
 
-<section class="part"><div class="part-header"><div class="part-number">03</div><div><h2>Direction of a vector</h2><p>In two dimensions, direction is described by an angle measured from the positive x-axis.</p></div></div><div class="card quadrant-card"><div class="quadrant-wrap"><div class="quadrant-svg"><svg viewBox="0 0 720 500" role="img" aria-label="Four quadrant vector direction diagram">
-<defs>
-  <marker id="axisEnd" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a4550"/></marker>
-  <marker id="qPurple" markerWidth="11" markerHeight="11" refX="9" refY="4" orient="auto"><path d="M0,0 L0,8 L10,4 z" fill="#7c3aed"/></marker>
-</defs>
-
-<!-- clean coordinate axes -->
-<line class="axis" x1="55" y1="260" x2="665" y2="260" marker-end="url(#axisEnd)"/>
-<line class="axis" x1="360" y1="450" x2="360" y2="45" marker-end="url(#axisEnd)"/>
-<circle cx="360" cy="260" r="4" fill="#24202a"/>
-
-<!-- small, clear direction angles -->
-<!-- QI: theta -->
-<path d="M 416 260 A 56 56 0 0 0 404.7 226.2" fill="none" stroke="#ef4444" stroke-width="3.5" stroke-linecap="round"/>
-
-<!-- QII: 180° - theta -->
-<path d="M 416 260 A 56 56 0 0 0 315.3 226.2" fill="none" stroke="#c026d3" stroke-width="3.5" stroke-linecap="round"/>
-
-<!-- QIII: 180° + theta -->
-<path d="M 304 260 A 56 56 0 0 0 315.3 293.8" fill="none" stroke="#0ea5e9" stroke-width="3.5" stroke-linecap="round"/>
-
-<!-- QIV: -theta -->
-<path d="M 416 260 A 56 56 0 0 1 404.7 293.8" fill="none" stroke="#22c55e" stroke-width="3.5" stroke-linecap="round"/>
-
-<!-- vector directions -->
-<line class="vector-line" x1="360" y1="260" x2="540" y2="125" marker-end="url(#qPurple)"/>
-<line class="vector-line" x1="360" y1="260" x2="180" y2="125" marker-end="url(#qPurple)"/>
-<line class="vector-line" x1="360" y1="260" x2="180" y2="395" marker-end="url(#qPurple)"/>
-<line class="vector-line" x1="360" y1="260" x2="540" y2="395" marker-end="url(#qPurple)"/>
-
-<!-- quadrant labels -->
-<text class="svg-muted" x="470" y="125">I</text>
-<text class="svg-muted" x="230" y="125">II</text>
-<text class="svg-muted" x="220" y="400">III</text>
-<text class="svg-muted" x="470" y="400">IV</text>
-
-<!-- formula labels sit beside their small angle -->
-<text class="svg-label" x="414" y="215" font-size="16">θ</text>
-<text class="svg-label" x="286" y="205" font-size="16">180° − θ</text>
-<text class="svg-label" x="272" y="325" font-size="16">180° + θ</text>
-<text class="svg-label" x="414" y="315" font-size="16">−θ</text>
-
-<text class="svg-muted" x="650" y="247">x</text>
-<text class="svg-muted" x="370" y="60">y</text>
-<text class="svg-muted" x="343" y="280">O</text>
-</svg></div>
-<div class="direction-info"><h3>One reference angle. Four positions.</h3><p>First find the acute reference angle using the absolute values of the components.</p><div class="highlight">\[	heta=	an^{-1}\left(rac{|y|}{|x|}
-ight)\]</div><div class="rule-list" style="margin-top:15px"><div class="rule"><strong>Quadrant I</strong><span>Direction = \(	heta\)</span></div><div class="rule"><strong>Quadrant II</strong><span>Direction = \(180^\circ-	heta\)</span></div><div class="rule"><strong>Quadrant III</strong><span>Direction = \(180^\circ+	heta\)</span></div><div class="rule"><strong>Quadrant IV</strong><span>Direction = \(-	heta\)</span></div></div></div></div><div class="degree-callout"><strong>Important: use degrees.</strong><p>For this vectors topic, direction angles are measured in the degree system. Do not use radians for these direction-angle calculations. A vector with a negative \(j\)-component can be described with a negative angle measured clockwise from the positive \(i\)-axis.</p></div></div></section>
+<section class="part"><div class="part-header"><div class="part-number">03</div><div><h2>Direction of a vector</h2><p>In two dimensions, direction is described by an angle measured from the positive x-axis.</p></div></div><div class="card quadrant-card"><div class="quadrant-wrap"><div class="quadrant-svg"><svg viewBox="0 0 720 500" role="img" aria-label="Four quadrant vector direction diagram"><defs><marker id="axisEnd" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a4550"/></marker><marker id="qPurple" markerWidth="11" markerHeight="11" refX="9" refY="4" orient="auto"><path d="M0,0 L0,8 L10,4 z" fill="#7c3aed"/></marker></defs>
+<line class="axis" x1="55" y1="250" x2="665" y2="250" marker-end="url(#axisEnd)"/><line class="axis" x1="360" y1="450" x2="360" y2="50" marker-end="url(#axisEnd)"/><circle cx="360" cy="250" r="4" fill="#24202a"/>
+<!-- QI --> <line class="vector-line" x1="360" y1="250" x2="535" y2="115" marker-end="url(#qPurple)"/><text class="svg-label" x="540" y="108">θ</text><text class="svg-muted" x="470" y="205">I</text>
+<!-- QII --> <line class="vector-line" x1="360" y1="250" x2="185" y2="120" marker-end="url(#qPurple)"/><text class="svg-label" x="168" y="112">180° − θ</text><text class="svg-muted" x="205" y="205">II</text>
+<!-- QIII --> <line class="vector-line" x1="360" y1="250" x2="185" y2="380" marker-end="url(#qPurple)"/><text class="svg-label" x="150" y="408">180° + θ</text><text class="svg-muted" x="205" y="315">III</text>
+<!-- QIV --> <line class="vector-line" x1="360" y1="250" x2="535" y2="380" marker-end="url(#qPurple)"/><text class="svg-label" x="535" y="408">−θ</text><text class="svg-muted" x="485" y="315">IV</text>
+<text class="svg-muted" x="650" y="238">x</text><text class="svg-muted" x="370" y="58">y</text><text class="svg-muted" x="342" y="270">O</text></svg></div>
+<div class="direction-info"><h3>One reference angle. Four positions.</h3><p>First find the acute reference angle using the absolute values of the components.</p><div class="highlight">\[\theta=\tan^{-1}\left(\frac{|y|}{|x|}\right)\]</div><div class="rule-list" style="margin-top:15px"><div class="rule"><strong>Quadrant I</strong><span>Direction = \(\theta\)</span></div><div class="rule"><strong>Quadrant II</strong><span>Direction = \(180^\circ-\theta\)</span></div><div class="rule"><strong>Quadrant III</strong><span>Direction = \(180^\circ+\theta\)</span></div><div class="rule"><strong>Quadrant IV</strong><span>Direction = \(-\theta\)</span></div></div></div></div><div class="degree-callout"><strong>Important: use degrees.</strong><p>For this vectors topic, direction angles are measured in the degree system. Do not use radians for these direction-angle calculations. A vector with a negative \(j\)-component can be described with a negative angle measured clockwise from the positive \(i\)-axis.</p></div></div></section>
 
 <section class="part"><div class="part-header"><div class="part-number">04</div><div><h2>Worked direction example</h2><p>Use the components to locate the vector, then adjust the reference angle according to its quadrant.</p></div></div><div class="card card-inner"><div class="formula-card"><div class="diagram-box"><svg viewBox="0 0 560 330"><defs><marker id="workArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L0,8 L9,4 z" fill="#7c3aed"/></marker></defs><line class="axis" x1="55" y1="260" x2="510" y2="260"/><line class="axis" x1="285" y1="305" x2="285" y2="35"/><line class="construction" x1="285" y1="260" x2="110" y2="130"/><line class="construction" x1="110" y1="130" x2="285" y2="130"/><line class="vector-line" x1="285" y1="260" x2="110" y2="130" marker-end="url(#workArrow)"/><text class="svg-label" x="115" y="112">(−24, 10)</text><text class="svg-label" x="195" y="282">24</text><text class="svg-label" x="91" y="198">10</text><text class="svg-label" x="118" y="175">22.6°</text><text class="svg-label" x="285" y="282">O</text></svg></div><div class="explain"><p>For \(\vec{AB}=-24\mathbf{i}+10\mathbf{j}\), the vector lies in Quadrant II.</p><div class="highlight">\[\theta=\tan^{-1}\left(\frac{10}{24}\right)=22.6^\circ\]</div><p style="margin-top:17px">Because the vector is in Quadrant II:</p><div class="equation" style="background:#121016;color:#fff">\(180^\circ-22.6^\circ=\boxed{157.4^\circ}\)</div></div></div></div></section>
 
