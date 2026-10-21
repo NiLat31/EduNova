@@ -93,6 +93,92 @@ footer{padding:26px clamp(20px,5vw,76px);border-top:1px solid var(--line);displa
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @media(max-width:620px){.topbar{height:66px}.brand{font-size:22px}.top-link,.logout{padding:8px 10px;font-size:10px}.hero{padding-top:48px;min-height:260px}.hero-orbit{width:95px;height:95px;right:7%;bottom:16px;opacity:.7}.hero-orbit span{font-size:25px}.options{grid-template-columns:1fr}.question-card{padding:18px}.question-text{font-size:15px}.progress-panel{padding:17px}.finish-panel{padding:24px 20px}footer{align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+.keep-in-mind {
+  margin: 28px 0;
+  padding: 28px;
+  background: #faf7ff;
+  border: 1px solid #ddd0ff;
+  border-left: 5px solid #7c3aed;
+  border-radius: 18px;
+  font-size: 18px;
+  line-height: 1.85;
+}
+
+.keep-in-mind-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.keep-in-mind-heading h2 {
+  margin: 0;
+  font-size: 29px;
+}
+
+.keep-in-mind-icon {
+  color: #7c3aed;
+  font-size: 28px;
+}
+
+.keep-in-mind p,
+.keep-in-mind li {
+  font-size: 18px;
+  line-height: 1.85;
+}
+
+.keep-in-mind ul {
+  padding-left: 25px;
+}
+
+.keep-in-mind li {
+  margin: 10px 0;
+}
+
+.keep-in-mind-formula {
+  margin: 22px 0;
+  padding: 20px;
+  background: #211a2b;
+  color: white;
+  border-radius: 14px;
+  text-align: center;
+  font-size: 27px;
+  overflow-x: auto;
+}
+
+.keep-in-mind-formula mjx-container {
+  color: white !important;
+}
+
+.keep-in-mind-note {
+  margin-top: 20px;
+  padding: 15px 18px;
+  background: #eee7ff;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+@media (max-width: 620px) {
+  .keep-in-mind {
+    padding: 20px 17px;
+  }
+
+  .keep-in-mind-heading h2 {
+    font-size: 25px;
+  }
+
+  .keep-in-mind p,
+  .keep-in-mind li {
+    font-size: 17px;
+  }
+
+  .keep-in-mind-formula {
+    font-size: 22px;
+    padding: 15px 8px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -127,6 +213,33 @@ footer{padding:26px clamp(20px,5vw,76px);border-top:1px solid var(--line);displa
     <button class="level-btn" data-filter="Advanced">Advanced</button>
     <button class="level-btn" data-filter="Challenge">Challenge</button>
   </nav>
+
+  <section class="keep-in-mind">
+    <div class="keep-in-mind-heading">
+      <span class="keep-in-mind-icon">✦</span>
+      <h2>Keep in Mind</h2>
+    </div>
+
+    <p>A vector's magnitude is its length, and it is never negative.</p>
+
+    <div class="keep-in-mind-formula">
+      \[
+        |\vec v|=\sqrt{x^2+y^2}
+      \]
+    </div>
+
+    <ul>
+      <li><strong>Magnitude:</strong> Square both components, add them, then take the square root.</li>
+      <li><strong>Quadrants:</strong> Use the signs of the horizontal and vertical components to identify the quadrant.</li>
+      <li><strong>Unit vectors:</strong> Divide the vector by its magnitude to obtain a vector with magnitude exactly \(1\).</li>
+      <li><strong>Between two points:</strong> Subtract the starting coordinates from the destination coordinates.</li>
+      <li><strong>Direction angles:</strong> Use degrees and check the quadrant before deciding on the angle.</li>
+    </ul>
+
+    <p class="keep-in-mind-note">
+      Remember: a unit vector has magnitude \(1\), but its components do not have to equal \(1\).
+    </p>
+  </section>
 
   <section class="question-list" id="questionList" aria-label="Questions">
     <article class="question-card" data-q="0" data-level="Foundation">
