@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7c3aed">
+<title>EduNova | Magnitude of a Vector Questions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{--purple:#7c3aed;--purple-dark:#5b21b6;--purple-soft:#f3edff;--ink:#17131e;--muted:#716b7b;--paper:#fbfaf8;--line:#e9e4ef;--green:#16834a;--green-soft:#eaf8ef;--red:#c92a36;--red-soft:#fff0f1}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+.topbar{height:76px;padding:0 clamp(20px,5vw,76px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(251,250,248,.92);position:sticky;top:0;z-index:20;backdrop-filter:blur(12px)}
+.brand{font-family:'Playfair Display',serif;font-size:25px;font-weight:800;letter-spacing:-.8px}.brand span{color:var(--purple)}
+.top-actions{display:flex;align-items:center;gap:12px}
+.top-link,.logout{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--line);padding:10px 14px;border-radius:999px;background:white;cursor:pointer}
+.hero{position:relative;overflow:hidden;background:#17131e;color:white;padding:64px clamp(22px,7vw,100px) 58px;min-height:290px}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(167,139,250,.24);border-radius:50%;pointer-events:none}
+.hero:before{width:360px;height:360px;right:8%;top:-190px;animation:float 9s ease-in-out infinite}
+.hero:after{width:230px;height:230px;right:13%;top:-125px;border-color:rgba(167,139,250,.18);animation:float 7s ease-in-out infinite reverse}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:auto}
+.eyebrow{color:#c4b5fd;font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase}
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.2}
+h1{font-size:clamp(34px,5vw,58px);letter-spacing:-1.3px;max-width:720px;margin:13px 0}
+.hero p{max-width:620px;color:#d8d1e1;margin:0;font-size:15px}
+.hero-orbit{position:absolute;right:12%;bottom:22px;width:155px;height:155px;border:1px solid rgba(167,139,250,.4);border-radius:50%;display:grid;place-items:center;animation:orbit 18s linear infinite}
+.hero-orbit:before{content:"";position:absolute;inset:22px;border:1px dashed rgba(196,181,253,.5);border-radius:50%}
+.hero-orbit span{font-family:'Playfair Display',serif;font-size:36px;color:#c4b5fd;animation:orbit 18s linear infinite reverse}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(14px)}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+main{max-width:1000px;margin:0 auto;padding:36px 22px 76px}
+.progress-panel{background:white;border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin-top:-2px;box-shadow:0 8px 30px rgba(28,16,48,.035)}
+.progress-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
+.progress-track{height:7px;background:#eee9f4;border-radius:99px;overflow:hidden;margin-top:12px}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#7c3aed,#a78bfa);border-radius:99px;transition:width .3s ease}
+.level-nav{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 18px}
+.level-btn{border:1px solid var(--line);background:white;color:#5c5368;border-radius:999px;padding:9px 14px;font:700 11px 'DM Sans',sans-serif;letter-spacing:.7px;text-transform:uppercase;cursor:pointer;transition:.2s}
+.level-btn.active,.level-btn:hover{background:var(--purple);border-color:var(--purple);color:white}
+.question-list{display:grid;gap:16px}
+.question-card{background:white;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 5px 20px rgba(28,16,48,.025);transition:border-color .2s,transform .2s}
+.question-card:hover{border-color:#d5c4f8}
+.q-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.q-number{font-size:11px;font-weight:800;letter-spacing:1.3px;color:var(--purple);text-transform:uppercase}
+.level-tag{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#76698b;background:var(--purple-soft);padding:5px 9px;border-radius:99px}
+.question-text{font-size:16px;font-weight:600;margin:0 0 16px}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.option{display:flex;align-items:center;gap:10px;text-align:left;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:500 14px 'DM Sans',sans-serif;cursor:pointer;min-height:48px;transition:.18s}
+.option:hover:not(:disabled){border-color:#b69af1;background:#fcfaff}
+.option .letter{width:25px;height:25px;flex:0 0 25px;display:grid;place-items:center;border-radius:8px;background:#f3f0f7;color:#655775;font-size:11px;font-weight:800}
+.option.correct{border-color:#62bd85;background:var(--green-soft);color:#155e36}
+.option.correct .letter{background:#c9f0d6;color:#155e36}
+.option.wrong{border-color:#f19aa1;background:var(--red-soft);color:#9f1d29}
+.option.wrong .letter{background:#ffd9dd;color:#9f1d29}
+.option:disabled{cursor:default}
+.feedback{display:none;margin-top:13px;padding:12px 14px;border-radius:11px;font-size:13px;font-weight:600}
+.feedback.show{display:block}
+.feedback.good{background:var(--green-soft);color:#155e36}
+.feedback.bad{background:var(--red-soft);color:#9f1d29}
+.solution-toggle{margin-top:12px;border:0;background:transparent;color:var(--purple-dark);font:700 12px 'DM Sans',sans-serif;padding:7px 0;cursor:pointer}
+.solution{display:none;margin-top:10px;padding:15px 16px;background:#faf7ff;border-left:3px solid #a78bfa;border-radius:0 10px 10px 0;font-size:14px}
+.solution.open{display:block}
+.solution p:first-child{margin-top:0}.solution p:last-child{margin-bottom:0}
+.finish-panel{margin-top:34px;padding:30px;border-radius:20px;background:#17131e;color:white;position:relative;overflow:hidden}
+.finish-panel:after{content:"";position:absolute;width:230px;height:230px;border:1px solid rgba(167,139,250,.25);border-radius:50%;right:-80px;top:-120px}
+.finish-panel h2{font-size:28px;margin:0 0 10px;position:relative;z-index:1}
+.finish-panel p{color:#d5cddd;max-width:650px;margin:0 0 18px;position:relative;z-index:1}
+.finish-row{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:1}
+.primary-btn,.secondary-btn{border:0;border-radius:999px;padding:13px 19px;font:800 11px 'DM Sans',sans-serif;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:transform .2s,background .2s}
+.primary-btn{background:#a78bfa;color:#20132f}.primary-btn:hover{background:#c4b5fd;transform:translateY(-2px)}
+.secondary-btn{background:transparent;color:white;border:1px solid #61566e}.secondary-btn:hover{background:#292231}
+#completion{display:none;margin-top:22px;text-align:center;padding:32px 20px;border:1px solid #d9f0df;background:linear-gradient(135deg,#f1fff5,#fff);border-radius:20px;animation:rise .6s ease both}
+#completion.show{display:block}
+#completion .check{width:66px;height:66px;margin:0 auto 15px;border-radius:50%;display:grid;place-items:center;background:#d8f8e2;color:#167b43;font-size:30px;animation:pop .55s cubic-bezier(.2,1.5,.4,1) both}
+#completion h2{font-size:30px;margin:0 0 8px;color:#175c35}
+#completion p{color:#496456;margin:0 auto 18px;max-width:550px}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pop{from{transform:scale(.4) rotate(-18deg)}to{transform:scale(1) rotate(0)}}
+footer{padding:26px clamp(20px,5vw,76px);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px}
+.footer-brand{font-family:'Playfair Display',serif;font-size:17px;color:var(--ink);font-weight:700}.footer-brand span{display:block;font:11px 'DM Sans',sans-serif;color:var(--muted);margin-top:2px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#211a2b;color:white;padding:12px 18px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:calc(100vw - 30px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:620px){.topbar{height:66px}.brand{font-size:22px}.top-link,.logout{padding:8px 10px;font-size:10px}.hero{padding-top:48px;min-height:260px}.hero-orbit{width:95px;height:95px;right:7%;bottom:16px;opacity:.7}.hero-orbit span{font-size:25px}.options{grid-template-columns:1fr}.question-card{padding:18px}.question-text{font-size:15px}.progress-panel{padding:17px}.finish-panel{padding:24px 20px}footer{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html" aria-label="EduNova home">Edu<span>Nova</span></a>
+  <div class="top-actions">
+    <a class="top-link" href="magnitude-of-a-vector.html">← Back to Lesson</a>
+    <button class="logout" id="logoutBtn" type="button">Log out</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">EduNova · Vectors · Practice</div>
+    <h1>Magnitude of a Vector</h1>
+    <p>Build your confidence one question at a time. Start with the foundations, then work towards direction, unit vectors, and multi-step challenges.</p>
+  </div>
+  <div class="hero-orbit" aria-hidden="true"><span>‖v‖</span></div>
+</section>
+
+<main>
+  <section class="progress-panel" aria-label="Practice progress">
+    <div class="progress-top"><span>Your progress</span><span id="progressText">0 of 12 answered</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </section>
+
+  <nav class="level-nav" aria-label="Filter questions by difficulty">
+    <button class="level-btn active" data-filter="All">All questions</button>
+    <button class="level-btn" data-filter="Foundation">Foundation</button>
+    <button class="level-btn" data-filter="Developing">Developing</button>
+    <button class="level-btn" data-filter="Intermediate">Intermediate</button>
+    <button class="level-btn" data-filter="Advanced">Advanced</button>
+    <button class="level-btn" data-filter="Challenge">Challenge</button>
+  </nav>
+
+  <section class="question-list" id="questionList" aria-label="Questions">
+    <article class="question-card" data-q="0" data-level="Foundation">
+      <div class="q-top"><span class="q-number">Question 01</span><span class="level-tag">Foundation</span></div>
+      <p class="question-text">Find the magnitude of \(\vec v=3\mathbf i+4\mathbf j\).</p>
+      <div class="options">
+        <button class="option" data-choice="0"><span class="letter">A</span>\(7\)</button>
+        <button class="option" data-choice="1"><span class="letter">B</span>\(5\)</button>
+        <button class="option" data-choice="2"><span class="letter">C</span>\(\sqrt{7}\)</button>
+        <button class="option" data-choice="3"><span class="letter">D</span>\(25\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p><strong>Step 1:</strong> Square the components and add them.</p><p>\[|\vec v|=\sqrt{3^2+4^2}=\sqrt{9+16}=\boxed{5}\]</p></div>
+    </article>
+
+    <article class="question-card" data-q="1" data-level="Foundation">
+      <div class="q-top"><span class="q-number">Question 02</span><span class="level-tag">Foundation</span></div>
+      <p class="question-text">The points are \(A(2,1)\) and \(B(8,9)\). Find the distance \(AB\).</p>
+      <div class="options">
+        <button class="option" data-choice="0"><span class="letter">A</span>\(10\)</button>
+        <button class="option" data-choice="1"><span class="letter">B</span>\(14\)</button>
+        <button class="option" data-choice="2"><span class="letter">C</span>\(\sqrt{14}\)</button>
+        <button class="option" data-choice="3"><span class="letter">D</span>\(8\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>The horizontal change is \(8-2=6\), and the vertical change is \(9-1=8\).</p><p>\[AB=\sqrt{6^2+8^2}=\sqrt{100}=\boxed{10}\]</p></div>
+    </article>
+
+    <article class="question-card" data-q="2" data-level="Developing">
+      <div class="q-top"><span class="q-number">Question 03</span><span class="level-tag">Developing</span></div>
+      <p class="question-text">A vector has components \((-5,12)\). What is its magnitude?</p>
+      <div class="options">
+        <button class="option" data-choice="0"><span class="letter">A</span>\(7\)</button>
+        <button class="option" data-choice="1"><span class="letter">B</span>\(\sqrt{119}\)</button>
+        <button class="option" data-choice="2"><span class="letter">C</span>\(13\)</button>
+        <button class="option" data-choice="3"><span class="letter">D</span>\(17\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>A negative component is squared too, so its square is positive.</p><p>\[|\vec v|=\sqrt{(-5)^2+12^2}=\sqrt{25+144}=\boxed{13}\]</p></div>
+    </article>
+
+    <article class="question-card" data-q="3" data-level="Developing">
+      <div class="q-top"><span class="q-number">Question 04</span><span class="level-tag">Developing</span></div>
+      <p class="question-text">The vector \(\vec v=-8\mathbf i+6\mathbf j\) lies in which quadrant, and what is its magnitude?</p>
+      <div class="options">
+        <button class="option" data-choice="0"><span class="letter">A</span>Quadrant I, \(10\)</button>
+        <button class="option" data-choice="1"><span class="letter">B</span>Quadrant II, \(10\)</button>
+        <button class="option" data-choice="2"><span class="letter">C</span>Quadrant III, \(14\)</button>
+        <button class="option" data-choice="3"><span class="letter">D</span>Quadrant IV, \(2\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>The \(x\)-component is negative and the \(y\)-component is positive, so the vector lies in Quadrant II.</p><p>\[|\vec v|=\sqrt{(-8)^2+6^2}=\sqrt{100}=\boxed{10}\]</p></div>
+    </article>
+
+    <article class="question-card" data-q="4" data-level="Intermediate">
+      <div class="q-top"><span class="q-number">Question 05</span><span class="level-tag">Intermediate</span></div>
+      <p class="question-text">Find the magnitude of the vector from \(P(-3,4)\) to \(Q(5,-2)\).</p>
+      <div class="options">
+        <button class="option" data-choice="0"><span class="letter">A</span>\(8\)</button>
+        <button class="option" data-choice="1"><span class="letter">B</span>\(2\sqrt{13}\)</button>
+        <button class="option" data-choice="2"><span class="letter">C</span>\(14\)</button>
+        <button class="option" data-choice="3"><span class="letter">D</span>\(10\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>\(\overrightarrow{PQ}=(5-(-3),-2-4)=(8,-6)\).</p><p>\[|\overrightarrow{PQ}|=\sqrt{8^2+(-6)^2}=\sqrt{100}=\boxed{10}\]</p></div>
+    </article>
+
+    <article class="question-card" data-q="5" data-level="Intermediate">
+      <div class="q-top"><span class="q-number">Question 06</span><span class="level-tag">Intermediate</span></div>
+      <p class="question-text">A vector has magnitude \(17\) and components \((x,8)\), where \(x&lt;0\). Find \(x\).</p>
+      <div class="options">
+        <button class="option" data-choice="0"><span class="letter">A</span>\(-15\)</button>
+        <button class="option" data-choice="1"><span class="letter">B</span>\(15\)</button>
+        <button class="option" data-choice="2"><span class="letter">C</span>\(-9\)</button>
+        <button class="option" data-choice="3"><span class="letter">D</span>\(-\sqrt{353}\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>\[\sqrt{x^2+8^2}=17\Rightarrow x^2+64=289\]</p><p>\(x^2=225\), so \(x=\pm15\). Since \(x&lt;0\), \(\boxed{x=-15}\).</p></div>
+    </article>
+
+    <article class="question-card" data-q="6" data-level="Advanced">
+      <div class="q-top"><span class="q-number">Question 07</span><span class="level-tag">Advanced</span></div>
+      <p class="question-text">For \(\vec v=-24\mathbf i+10\mathbf j\), find the reference angle \(\alpha\) to 1 decimal place.</p>
+      <div class="options">
+        <button class="option" data-choice="0"><span class="letter">A</span>\(157.4^\circ\)</button>
+        <button class="option" data-choice="1"><span class="letter">B</span>\(22.6^\circ\)</button>
+        <button class="option" data-choice="2"><span class="letter">C</span>\(67.4^\circ\)</button>
+        <button class="option" data-choice="3"><span class="letter">D</span>\(337.4^\circ\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>The reference angle is the acute angle between the vector and the nearest horizontal axis.</p><p>\[\alpha=\tan^{-1}\left(\frac{|10|}{|-24|}\right)=\tan^{-1}\left(\frac{10}{24}\right)\approx\boxed{22.6^\circ}\]</p><p>The vector's direction angle measured anticlockwise from the positive \(x\)-axis is \(180^\circ-22.6^\circ=157.4^\circ\). That is not the reference angle.</p></div>
+    </article>
+
+    <article class="question-card" data-q="7" data-level="Advanced">
+      <div class="q-top"><span class="q-number">Question 08</span><span class="level-tag">Advanced</span></div>
+      <p class="question-text">Find the unit vector in the direction of \(\vec v=5\mathbf i-12\mathbf j\).</p>
+      <div class="options">
+        <button class="option" data-choice="0"><span class="letter">A</span>\(\frac5{13}\mathbf i-\frac{12}{13}\mathbf j\)</button>
+        <button class="option" data-choice="1"><span class="letter">B</span>\(5\mathbf i-12\mathbf j\)</button>
+        <button class="option" data-choice="2"><span class="letter">C</span>\(\frac5{12}\mathbf i-\frac{12}{5}\mathbf j\)</button>
+        <button class="option" data-choice="3"><span class="letter">D</span>\(\frac1{13}\mathbf i+\frac1{13}\mathbf j\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>First, \(|\vec v|=\sqrt{5^2+(-12)^2}=13\).</p><p>\[\hat u=\frac{\vec v}{|\vec v|}=\boxed{\frac5{13}\mathbf i-\frac{12}{13}\mathbf j}\]</p></div>
+    </article>
+
+    <article class="question-card" data-q="8" data-level="Advanced">
+      <div class="q-top"><span class="q-number">Question 09</span><span class="level-tag">Advanced</span></div>
+      <p class="question-text">A vector has direction angle \(210^\circ\) and magnitude \(8\). Which are its components, to 2 decimal places?</p>
+      <div class="options">
+        <button class="option" data-choice="0"><span class="letter">A</span>\((6.93,4.00)\)</button>
+        <button class="option" data-choice="1"><span class="letter">B</span>\((-4.00,-6.93)\)</button>
+        <button class="option" data-choice="2"><span class="letter">C</span>\((-6.93,-4.00)\)</button>
+        <button class="option" data-choice="3"><span class="letter">D</span>\((4.00,-6.93)\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>Using degree angles, \(x=r\cos\theta\) and \(y=r\sin\theta\).</p><p>\[x=8\cos210^\circ\approx-6.93,\quad y=8\sin210^\circ=-4\]</p><p>So the components are \(\boxed{(-6.93,-4.00)}\), in Quadrant III.</p></div>
+    </article>
+
+    <article class="question-card" data-q="9" data-level="Challenge">
+      <div class="q-top"><span class="q-number">Question 10</span><span class="level-tag">Challenge</span></div>
+      <p class="question-text">The vector \(\vec v=a\mathbf i+12\mathbf j\) has magnitude \(13\), with \(a&gt;0\). Find the unit vector in its direction.</p>
+      <div class="options">
+        <button class="option" data-choice="0"><span class="letter">A</span>\(\frac5{13}\mathbf i+\frac{12}{13}\mathbf j\)</button>
+        <button class="option" data-choice="1"><span class="letter">B</span>\(\frac{12}{13}\mathbf i+\frac5{13}\mathbf j\)</button>
+        <button class="option" data-choice="2"><span class="letter">C</span>\(5\mathbf i+12\mathbf j\)</button>
+        <button class="option" data-choice="3"><span class="letter">D</span>\(-\frac5{13}\mathbf i+\frac{12}{13}\mathbf j\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>\(\sqrt{a^2+12^2}=13\Rightarrow a^2=25\). Since \(a&gt;0\), \(a=5\).</p><p>Thus \(\vec v=5\mathbf i+12\mathbf j\), so its unit vector is \(\boxed{\frac5{13}\mathbf i+\frac{12}{13}\mathbf j}\).</p></div>
+    </article>
+
+    <article class="question-card" data-q="10" data-level="Challenge">
+      <div class="q-top"><span class="q-number">Question 11</span><span class="level-tag">Challenge</span></div>
+      <p class="question-text">A vector \(\vec w\) has magnitude \(1\) and points in the same direction as \( -\frac{12}{13}\mathbf i+\frac5{13}\mathbf j\). Find \(7\vec w\).</p>
+      <div class="options">
+        <button class="option" data-choice="0"><span class="letter">A</span>\(-12\mathbf i+5\mathbf j\)</button>
+        <button class="option" data-choice="1"><span class="letter">B</span>\(-\frac{12}{7}\mathbf i+\frac57\mathbf j\)</button>
+        <button class="option" data-choice="2"><span class="letter">C</span>\(-\frac{84}{13}\mathbf i+\frac{35}{13}\mathbf j\)</button>
+        <button class="option" data-choice="3"><span class="letter">D</span>\(-84\mathbf i+35\mathbf j\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>The given vector already has magnitude 1, so it is the unit vector \(\vec w\).</p><p>\[7\vec w=7\left(-\frac{12}{13}\mathbf i+\frac5{13}\mathbf j\right)=\boxed{-\frac{84}{13}\mathbf i+\frac{35}{13}\mathbf j}\]</p></div>
+    </article>
+
+    <article class="question-card" data-q="11" data-level="Challenge">
+      <div class="q-top"><span class="q-number">Question 12</span><span class="level-tag">Challenge</span></div>
+      <p class="question-text">A vector has magnitude \(10\) and direction angle \(150^\circ\). Another vector has the same direction but magnitude \(3\). Find the second vector in component form, to 2 decimal places.</p>
+      <div class="options">
+        <button class="option" data-choice="0"><span class="letter">A</span>\(\left(-\frac{3\sqrt3}{2},\frac32\right)\)</button>
+        <button class="option" data-choice="1"><span class="letter">B</span>\(\left(\frac{3\sqrt3}{2},-\frac32\right)\)</button>
+        <button class="option" data-choice="2"><span class="letter">C</span>\((-3,0)\)</button>
+        <button class="option" data-choice="3"><span class="letter">D</span>\((-2.60,-1.50)\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>For magnitude \(r=3\) and direction angle \(150^\circ\), the components are \(x=r\cos150^\circ\), \(y=r\sin150^\circ\).</p><p>\[x=3\left(-\frac{\sqrt3}{2}\right)=-\frac{3\sqrt3}{2}\approx-2.60,\quad y=3\left(\frac12\right)=1.50\]</p><p>The answer is \(\boxed{\left(-\frac{3\sqrt3}{2},\frac32\right)}\), equivalent to approximately \((-2.60,1.50)\).</p></div>
+    </article>
+  </section>
+
+  <section class="finish-panel">
+    <h2>Ready to wrap up?</h2>
+    <p>Try all 12 questions and review any solutions you need. When you're ready, finish the practice to record this topic as completed in EduNova.</p>
+    <div class="finish-row">
+      <button class="primary-btn" id="finishBtn" type="button">Finish practice ✓</button>
+      <button class="secondary-btn" id="reviewBtn" type="button">Review unanswered</button>
+    </div>
+  </section>
+
+  <section id="completion" aria-live="polite">
+    <div class="check">✓</div>
+    <h2>Excellent work!</h2>
+    <p id="completionMessage">You've reached the end of this practice set.</p>
+    <a class="primary-btn" href="magnitude-of-a-vector.html" style="display:inline-block">Return to lesson ↗</a>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-brand">EduNova<span>Mathematics made clear.</span></div>
+  <div>© 2026 EduNova. All rights reserved.</div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/*
+  IMPORTANT:
+  Replace these two placeholders with the SAME Supabase project URL and anon/publishable
+  key used by your existing EduNova lesson page. Never put a service_role key here.
+*/
+const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+const ANSWERS = [1,0,2,1,3,0,1,0,2,0,2,0];
+const LEVELS = ["Foundation","Foundation","Developing","Developing","Intermediate","Intermediate","Advanced","Advanced","Advanced","Challenge","Challenge","Challenge"];
+const answered = new Map();
+let currentFilter = "All";
+let supabase = null;
+let currentUser = null;
+
+const $ = (selector, root=document) => root.querySelector(selector);
+const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
+
+function showToast(message){
+  const toast = $("#toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(()=>toast.classList.remove("show"), 3000);
+}
+
+function updateProgress(){
+  const count = answered.size;
+  $("#progressText").textContent = `${count} of ${ANSWERS.length} answered`;
+  $("#progressFill").style.width = `${count / ANSWERS.length * 100}%`;
+}
+
+function handleChoice(card, selected){
+  const index = Number(card.dataset.q);
+  if(answered.has(index)) return;
+  const correct = selected === ANSWERS[index];
+  answered.set(index, {selected, correct});
+  const buttons = $$(".option", card);
+  buttons.forEach((button, i)=>{
+    button.disabled = true;
+    if(i === ANSWERS[index]) button.classList.add("correct");
+    if(i === selected && !correct) button.classList.add("wrong");
+  });
+  const feedback = $(".feedback", card);
+  feedback.className = `feedback show ${correct ? "good" : "bad"}`;
+  feedback.textContent = correct
+    ? "Correct! Nicely reasoned. ✓"
+    : "Not quite. The correct answer is highlighted in green. Open the solution to see why.";
+  updateProgress();
+}
+
+function setFilter(filter){
+  currentFilter = filter;
+  $$(".level-btn").forEach(btn=>btn.classList.toggle("active", btn.dataset.filter === filter));
+  $$(".question-card").forEach(card=>{
+    card.hidden = filter !== "All" && card.dataset.level !== filter;
+  });
+}
+
+function showSolutionsForUnanswered(){
+  const unanswered = $$(".question-card").filter(card=>!answered.has(Number(card.dataset.q)));
+  if(!unanswered.length){
+    showToast("Every question has been answered. Great work!");
+    return;
+  }
+  setFilter("All");
+  unanswered[0].scrollIntoView({behavior:"smooth",block:"center"});
+  unanswered[0].style.borderColor = "#a78bfa";
+  setTimeout(()=>unanswered[0].style.borderColor = "", 1800);
+  showToast(`${unanswered.length} question${unanswered.length===1?"":"s"} still to try.`);
+}
+
+async function finishPractice(){
+  const totalCorrect = [...answered.values()].filter(item=>item.correct).length;
+  const completePanel = $("#completion");
+  $("#completionMessage").textContent =
+    `You answered ${answered.size} of 12 questions and got ${totalCorrect} correct` +
+    (answered.size < 12 ? ". You can keep practising whenever you're ready." : ". Your practice set is complete.") +
+    (currentUser ? " Your topic completion will be saved to your EduNova account." : " Sign in to EduNova to save your progress.");
+  completePanel.classList.add("show");
+  completePanel.scrollIntoView({behavior:"smooth",block:"center"});
+
+  if(!supabase || !currentUser){
+    showToast("Practice finished. Sign in through EduNova to save lesson progress.");
+    return;
+  }
+  const finishBtn = $("#finishBtn");
+  finishBtn.disabled = true;
+  finishBtn.textContent = "Saving progress…";
+  try{
+    const {error} = await supabase
+      .from("lesson_progress")
+      .upsert({
+        user_id: currentUser.id,
+        chapter: "Vectors",
+        topic_number: 3,
+        completed_at: new Date().toISOString()
+      }, {onConflict:"user_id,chapter,topic_number"});
+    if(error) throw error;
+    finishBtn.textContent = "Progress saved ✓";
+    showToast("Your Vectors topic completion was saved.");
+  }catch(error){
+    console.error("Could not save lesson progress:", error);
+    finishBtn.disabled = false;
+    finishBtn.textContent = "Try saving again ↻";
+    showToast("Couldn't save progress. Check your connection and try again.");
+  }
+}
+
+async function initAuth(){
+  if(!window.supabase?.createClient) return;
+  supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const {data, error} = await supabase.auth.getSession();
+  if(error){ console.error("EduNova session error:", error); return; }
+  currentUser = data.session?.user || null;
+  if(!currentUser){
+    window.location.href = "index.html";
+    return;
+  }
+}
+
+document.addEventListener("click", event=>{
+  const option = event.target.closest(".option");
+  if(option){
+    handleChoice(option.closest(".question-card"), Number(option.dataset.choice));
+    return;
+  }
+  const toggle = event.target.closest(".solution-toggle");
+  if(toggle){
+    const solution = $(".solution", toggle.closest(".question-card"));
+    const open = solution.classList.toggle("open");
+    toggle.textContent = open ? "Hide solution −" : "Show solution +";
+    if(window.MathJax?.typesetPromise) MathJax.typesetPromise([solution]);
+    return;
+  }
+  const levelButton = event.target.closest(".level-btn");
+  if(levelButton){ setFilter(levelButton.dataset.filter); }
+});
+
+$("#finishBtn").addEventListener("click", finishPractice);
+$("#reviewBtn").addEventListener("click", showSolutionsForUnanswered);
+$("#logoutBtn").addEventListener("click", async ()=>{
+  if(!supabase){ showToast("Add your existing Supabase project settings first."); return; }
+  const {error} = await supabase.auth.signOut();
+  if(error){ showToast("Couldn't log out. Please try again."); return; }
+  window.location.href = "index.html";
+});
+
+initAuth();
+</script>
+<script src="premium-access.js"></script>
+</body>
+</html>
