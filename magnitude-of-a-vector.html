@@ -71,7 +71,47 @@ footer{background:#09090b;color:#fff;padding:25px 7%;display:flex;align-items:ce
 <text class="svg-muted" x="650" y="238">x</text><text class="svg-muted" x="370" y="58">y</text><text class="svg-muted" x="342" y="270">O</text></svg></div>
 <div class="direction-info"><h3>One reference angle. Four positions.</h3><p>First find the acute reference angle using the absolute values of the components.</p><div class="highlight">\[\theta=\tan^{-1}\left(\frac{|y|}{|x|}\right)\]</div><div class="rule-list" style="margin-top:15px"><div class="rule"><strong>Quadrant I</strong><span>Direction = \(\theta\)</span></div><div class="rule"><strong>Quadrant II</strong><span>Direction = \(180^\circ-\theta\)</span></div><div class="rule"><strong>Quadrant III</strong><span>Direction = \(180^\circ+\theta\)</span></div><div class="rule"><strong>Quadrant IV</strong><span>Direction = \(-\theta\)</span></div></div></div></div><div class="degree-callout"><strong>Important: use degrees.</strong><p>For this vectors topic, direction angles are measured in the degree system. Do not use radians for these direction-angle calculations. A vector with a negative \(j\)-component can be described with a negative angle measured clockwise from the positive \(i\)-axis.</p></div></div></section>
 
-<section class="part"><div class="part-header"><div class="part-number">04</div><div><h2>Worked direction example</h2><p>Use the components to locate the vector, then adjust the reference angle according to its quadrant.</p></div></div><div class="card card-inner"><div class="formula-card"><div class="diagram-box"><svg viewBox="0 0 560 330"><defs><marker id="workArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L0,8 L9,4 z" fill="#7c3aed"/></marker></defs><line class="axis" x1="55" y1="260" x2="510" y2="260"/><line class="axis" x1="285" y1="305" x2="285" y2="35"/><line class="construction" x1="285" y1="260" x2="110" y2="130"/><line class="construction" x1="110" y1="130" x2="285" y2="130"/><line class="vector-line" x1="285" y1="260" x2="110" y2="130" marker-end="url(#workArrow)"/><text class="svg-label" x="115" y="112">(−24, 10)</text><text class="svg-label" x="195" y="282">24</text><text class="svg-label" x="91" y="198">10</text><text class="svg-label" x="118" y="175">22.6°</text><text class="svg-label" x="285" y="282">O</text></svg></div><div class="explain"><p>For \(\vec{AB}=-24\mathbf{i}+10\mathbf{j}\), the vector lies in Quadrant II.</p><div class="highlight">\[\theta=\tan^{-1}\left(\frac{10}{24}\right)=22.6^\circ\]</div><p style="margin-top:17px">Because the vector is in Quadrant II:</p><div class="equation" style="background:#121016;color:#fff">\(180^\circ-22.6^\circ=\boxed{157.4^\circ}\)</div></div></div></div></section>
+<section class="part"><div class="part-header"><div class="part-number">04</div><div><h2>Worked direction example</h2><p>Use the components to locate the vector, then adjust the reference angle according to its quadrant.</p></div></div><div class="card card-inner"><div class="formula-card"><div class="diagram-box"><svg viewBox="0 0 560 330">
+  <defs>
+    <marker id="workArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L9,4 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <line class="axis" x1="55" y1="260" x2="510" y2="260"/>
+  <line class="axis" x1="285" y1="305" x2="285" y2="35"/>
+
+  <!-- Construction lines -->
+  <line class="construction" x1="285" y1="260" x2="110" y2="260"/>
+  <line class="construction" x1="110" y1="260" x2="110" y2="130"/>
+
+  <!-- Vector -->
+  <line class="vector-line"
+        x1="285" y1="260"
+        x2="110" y2="130"
+        marker-end="url(#workArrow)"/>
+
+  <!-- Coordinate -->
+  <text class="svg-label" x="112" y="112">(−24, 10)</text>
+
+  <!-- Horizontal component -->
+  <text class="svg-label" x="190" y="282">24</text>
+
+  <!-- Vertical component -->
+  <text class="svg-label" x="82" y="198">10</text>
+
+  <!-- Reference angle -->
+  <path d="M243 260 A42 42 0 0 1 250 235"
+        fill="none"
+        stroke="#7c3aed"
+        stroke-width="2.5"
+        stroke-linecap="round"/>
+
+  <text class="svg-label" x="210" y="246">22.6°</text>
+
+  <!-- Origin -->
+  <text class="svg-label" x="293" y="282">O</text>
+</svg></div><div class="explain"><p>For \(\vec{AB}=-24\mathbf{i}+10\mathbf{j}\), the vector lies in Quadrant II.</p><div class="highlight">\[\theta=\tan^{-1}\left(\frac{10}{24}\right)=22.6^\circ\]</div><p style="margin-top:17px">Because the vector is in Quadrant II:</p><div class="equation" style="background:#121016;color:#fff">\(180^\circ-22.6^\circ=\boxed{157.4^\circ}\)</div></div></div></div></section>
 
 <section class="part"><div class="part-header"><div class="part-number">05</div><div><h2>Unit vectors</h2><p>A unit vector has the same direction as the original vector but a magnitude of exactly 1.</p></div></div><div class="unit-layout"><div class="dark-card"><h3>Keep the direction.</h3><p>Divide a vector by its magnitude to scale its length down to 1.</p><div class="dark-formula">\[\hat{u}=\frac{\vec v}{|\vec v|}\]</div><p style="margin-top:16px">For \(\vec{AB}=-24\mathbf{i}+10\mathbf{j}\), since \(|\vec{AB}|=26\):</p><div class="dark-formula">\[\hat{u}=\frac{1}{26}(-24\mathbf{i}+10\mathbf{j})\]</div></div><div class="note-card"><h3>Need another magnitude?</h3><p>Once you have the unit vector, multiply it by the magnitude you want.</p><div class="highlight">For a magnitude of \(182\):<br><br>\[182\hat{u}=\frac{182}{26}(-24\mathbf{i}+10\mathbf{j})\]<br>\[\boxed{-168\mathbf{i}+70\mathbf{j}}\]</div></div></div></section>
 
