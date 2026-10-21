@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#7c3aed">
+<meta name="theme-color" content="#17131e">
 <title>EduNova | Magnitude of a Vector Questions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 window.MathJax = {
@@ -17,391 +17,459 @@ window.MathJax = {
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <style>
-:root{--purple:#7c3aed;--purple-dark:#5b21b6;--purple-soft:#f3edff;--ink:#17131e;--muted:#716b7b;--paper:#fbfaf8;--line:#e9e4ef;--green:#16834a;--green-soft:#eaf8ef;--red:#c92a36;--red-soft:#fff0f1}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;line-height:1.65}
-a{color:inherit;text-decoration:none}
-.topbar{height:76px;padding:0 clamp(20px,5vw,76px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(251,250,248,.92);position:sticky;top:0;z-index:20;backdrop-filter:blur(12px)}
-.brand{font-family:'Playfair Display',serif;font-size:25px;font-weight:800;letter-spacing:-.8px}.brand span{color:var(--purple)}
-.top-actions{display:flex;align-items:center;gap:12px}
-.top-link,.logout{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--line);padding:10px 14px;border-radius:999px;background:white;cursor:pointer}
-.hero{position:relative;overflow:hidden;background:#17131e;color:white;padding:64px clamp(22px,7vw,100px) 58px;min-height:290px}
-.hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(167,139,250,.24);border-radius:50%;pointer-events:none}
-.hero:before{width:360px;height:360px;right:8%;top:-190px;animation:float 9s ease-in-out infinite}
-.hero:after{width:230px;height:230px;right:13%;top:-125px;border-color:rgba(167,139,250,.18);animation:float 7s ease-in-out infinite reverse}
-.hero-inner{position:relative;z-index:1;max-width:1100px;margin:auto}
-.eyebrow{color:#c4b5fd;font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase}
-h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.2}
-h1{font-size:clamp(34px,5vw,58px);letter-spacing:-1.3px;max-width:720px;margin:13px 0}
-.hero p{max-width:620px;color:#d8d1e1;margin:0;font-size:15px}
-.hero-orbit{position:absolute;right:12%;bottom:22px;width:155px;height:155px;border:1px solid rgba(167,139,250,.4);border-radius:50%;display:grid;place-items:center;animation:orbit 18s linear infinite}
-.hero-orbit:before{content:"";position:absolute;inset:22px;border:1px dashed rgba(196,181,253,.5);border-radius:50%}
-.hero-orbit span{font-family:'Playfair Display',serif;font-size:36px;color:#c4b5fd;animation:orbit 18s linear infinite reverse}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(14px)}}
-@keyframes orbit{to{transform:rotate(360deg)}}
-main{max-width:1000px;margin:0 auto;padding:36px 22px 76px}
-.progress-panel{background:white;border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin-top:-2px;box-shadow:0 8px 30px rgba(28,16,48,.035)}
-.progress-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
-.progress-track{height:7px;background:#eee9f4;border-radius:99px;overflow:hidden;margin-top:12px}
-.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#7c3aed,#a78bfa);border-radius:99px;transition:width .3s ease}
-.level-nav{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 18px}
-.level-btn{border:1px solid var(--line);background:white;color:#5c5368;border-radius:999px;padding:9px 14px;font:700 11px 'DM Sans',sans-serif;letter-spacing:.7px;text-transform:uppercase;cursor:pointer;transition:.2s}
-.level-btn.active,.level-btn:hover{background:var(--purple);border-color:var(--purple);color:white}
-.question-list{display:grid;gap:16px}
-.question-card{background:white;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 5px 20px rgba(28,16,48,.025);transition:border-color .2s,transform .2s}
-.question-card:hover{border-color:#d5c4f8}
-.q-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
-.q-number{font-size:11px;font-weight:800;letter-spacing:1.3px;color:var(--purple);text-transform:uppercase}
-.level-tag{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#76698b;background:var(--purple-soft);padding:5px 9px;border-radius:99px}
-.question-text{font-size:16px;font-weight:600;margin:0 0 16px}
-.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.option{display:flex;align-items:center;gap:10px;text-align:left;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:500 14px 'DM Sans',sans-serif;cursor:pointer;min-height:48px;transition:.18s}
-.option:hover:not(:disabled){border-color:#b69af1;background:#fcfaff}
-.option .letter{width:25px;height:25px;flex:0 0 25px;display:grid;place-items:center;border-radius:8px;background:#f3f0f7;color:#655775;font-size:11px;font-weight:800}
-.option.correct{border-color:#62bd85;background:var(--green-soft);color:#155e36}
-.option.correct .letter{background:#c9f0d6;color:#155e36}
-.option.wrong{border-color:#f19aa1;background:var(--red-soft);color:#9f1d29}
-.option.wrong .letter{background:#ffd9dd;color:#9f1d29}
-.option:disabled{cursor:default}
-.feedback{display:none;margin-top:13px;padding:12px 14px;border-radius:11px;font-size:13px;font-weight:600}
-.feedback.show{display:block}
-.feedback.good{background:var(--green-soft);color:#155e36}
-.feedback.bad{background:var(--red-soft);color:#9f1d29}
-.solution-toggle{margin-top:12px;border:0;background:transparent;color:var(--purple-dark);font:700 12px 'DM Sans',sans-serif;padding:7px 0;cursor:pointer}
-.solution{display:none;margin-top:10px;padding:15px 16px;background:#faf7ff;border-left:3px solid #a78bfa;border-radius:0 10px 10px 0;font-size:14px}
-.solution.open{display:block}
-.solution p:first-child{margin-top:0}.solution p:last-child{margin-bottom:0}
-.finish-panel{margin-top:34px;padding:30px;border-radius:20px;background:#17131e;color:white;position:relative;overflow:hidden}
-.finish-panel:after{content:"";position:absolute;width:230px;height:230px;border:1px solid rgba(167,139,250,.25);border-radius:50%;right:-80px;top:-120px}
-.finish-panel h2{font-size:28px;margin:0 0 10px;position:relative;z-index:1}
-.finish-panel p{color:#d5cddd;max-width:650px;margin:0 0 18px;position:relative;z-index:1}
-.finish-row{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:1}
-.primary-btn,.secondary-btn{border:0;border-radius:999px;padding:13px 19px;font:800 11px 'DM Sans',sans-serif;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:transform .2s,background .2s}
-.primary-btn{background:#a78bfa;color:#20132f}.primary-btn:hover{background:#c4b5fd;transform:translateY(-2px)}
-.secondary-btn{background:transparent;color:white;border:1px solid #61566e}.secondary-btn:hover{background:#292231}
-#completion{display:none;margin-top:22px;text-align:center;padding:32px 20px;border:1px solid #d9f0df;background:linear-gradient(135deg,#f1fff5,#fff);border-radius:20px;animation:rise .6s ease both}
-#completion.show{display:block}
-#completion .check{width:66px;height:66px;margin:0 auto 15px;border-radius:50%;display:grid;place-items:center;background:#d8f8e2;color:#167b43;font-size:30px;animation:pop .55s cubic-bezier(.2,1.5,.4,1) both}
-#completion h2{font-size:30px;margin:0 0 8px;color:#175c35}
-#completion p{color:#496456;margin:0 auto 18px;max-width:550px}
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pop{from{transform:scale(.4) rotate(-18deg)}to{transform:scale(1) rotate(0)}}
-footer{padding:26px clamp(20px,5vw,76px);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px}
-.footer-brand{font-family:'Playfair Display',serif;font-size:17px;color:var(--ink);font-weight:700}.footer-brand span{display:block;font:11px 'DM Sans',sans-serif;color:var(--muted);margin-top:2px}
-.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#211a2b;color:white;padding:12px 18px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:calc(100vw - 30px);text-align:center}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:620px){.topbar{height:66px}.brand{font-size:22px}.top-link,.logout{padding:8px 10px;font-size:10px}.hero{padding-top:48px;min-height:260px}.hero-orbit{width:95px;height:95px;right:7%;bottom:16px;opacity:.7}.hero-orbit span{font-size:25px}.options{grid-template-columns:1fr}.question-card{padding:18px}.question-text{font-size:15px}.progress-panel{padding:17px}.finish-panel{padding:24px 20px}footer{align-items:flex-start;flex-direction:column}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
-
-.keep-in-mind {
-  margin: 28px 0;
-  padding: 28px;
-  background: #faf7ff;
-  border: 1px solid #ddd0ff;
-  border-left: 5px solid #7c3aed;
-  border-radius: 18px;
-  font-size: 18px;
-  line-height: 1.85;
+:root {
+  --purple: #7c3aed;
+  --purple-light: #a78bfa;
+  --purple-pale: #f3edff;
+  --ink: #17131e;
+  --muted: #756d80;
+  --paper: #fbfaf8;
+  --line: #e8e2ef;
+  --green: #167847;
+  --green-bg: #e8f8ee;
+  --red: #b42332;
+  --red-bg: #fff0f1;
 }
-
-.keep-in-mind-heading {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.7; font-size: 17px; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+.site-head { background: var(--ink); color: #fff; }
+.topbar { min-height: 78px; padding: 14px clamp(20px, 5vw, 78px); display:flex; align-items:center; justify-content:space-between; gap:18px; background:var(--ink); }
+.brand { font-family:'Playfair Display',serif; font-size:27px; font-weight:600; letter-spacing:-.8px; color:#fff; white-space:nowrap; }
+.brand span, .footer-logo span { color:var(--purple-light); }
+.top-actions { display:flex; align-items:center; gap:10px; }
+.top-link, .logout { font-size:12px; font-weight:700; letter-spacing:.7px; text-transform:uppercase; border:1px solid #4b4356; padding:10px 15px; border-radius:999px; background:transparent; color:#fff; cursor:pointer; transition:background .2s,border-color .2s; }
+.top-link:hover, .logout:hover { background:#292231; border-color:#8b79a5; }
+.hero { position:relative; overflow:hidden; background:var(--ink); color:#fff; padding:54px clamp(22px, 7vw, 100px) 68px; min-height:320px; border-top:1px solid rgba(255,255,255,.06); }
+.hero-inner { position:relative; z-index:2; max-width:1100px; margin:auto; }
+.eyebrow { color:#c4b5fd; font-size:13px; font-weight:800; letter-spacing:2.2px; text-transform:uppercase; }
+h1,h2,h3 { font-family:'Playfair Display',serif; line-height:1.2; }
+h1 { font-size:clamp(39px, 5.3vw, 66px); letter-spacing:-1.4px; max-width:760px; margin:14px 0 15px; }
+.hero p { max-width:680px; color:#ddd5e8; margin:0; font-size:18px; line-height:1.8; }
+.hero-orbit { position:absolute; right:clamp(35px, 13vw, 180px); top:50%; transform:translateY(-44%); width:190px; height:190px; border:1px solid rgba(167,139,250,.45); border-radius:50%; display:grid; place-items:center; animation:orbit 22s linear infinite; }
+.hero-orbit:before { content:""; position:absolute; inset:23px; border:1px dashed rgba(196,181,253,.48); border-radius:50%; }
+.hero-orbit:after { content:""; position:absolute; width:10px; height:10px; top:22px; right:25px; border-radius:50%; background:#c4b5fd; box-shadow:0 0 22px rgba(196,181,253,.8); }
+.hero-orbit span { font-family:'Playfair Display',serif; font-size:39px; color:#c4b5fd; animation:orbit 22s linear infinite reverse; }
+.hero-ring { position:absolute; width:420px; height:420px; right:-180px; top:-265px; border:1px solid rgba(167,139,250,.2); border-radius:50%; }
+.hero-ring:after { content:""; position:absolute; inset:38px; border:1px solid rgba(167,139,250,.15); border-radius:50%; }
+@keyframes orbit { to { rotate:360deg; } }
+main { max-width:1080px; margin:0 auto; padding:38px 24px 82px; }
+.progress-panel { background:#fff; border:1px solid var(--line); border-radius:20px; padding:23px 25px; box-shadow:0 9px 34px rgba(28,16,48,.045); }
+.progress-top { display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:14px; font-weight:800; color:#635a70; letter-spacing:.6px; text-transform:uppercase; }
+.solved-count { color:var(--purple-dark, #5b21b6); font-size:15px; }
+.progress-track { height:10px; background:#eee9f4; border-radius:99px; overflow:hidden; margin-top:14px; }
+.progress-fill { height:100%; width:0; background:linear-gradient(90deg,#7c3aed,#b49aff); border-radius:99px; transition:width .3s ease; }
+.keep-in-mind { margin:28px 0; padding:27px 30px; background:#faf7ff; border:1px solid #ddd0ff; border-left:5px solid var(--purple); border-radius:18px; font-size:18px; line-height:1.8; }
+.keep-heading { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+.keep-heading h2 { margin:0; font-size:30px; }
+.keep-star { color:var(--purple); font-size:29px; }
+.keep-in-mind p { margin:10px 0; font-size:18px; }
+.keep-in-mind ul { padding-left:25px; margin:12px 0; }
+.keep-in-mind li { margin:8px 0; font-size:18px; }
+.keep-formula { margin:20px 0; padding:18px; background:#211a2b; color:white; border-radius:14px; text-align:center; font-size:27px; overflow-x:auto; }
+.keep-formula mjx-container { color:white !important; }
+.keep-note { margin-top:17px !important; padding:14px 17px; background:#eee7ff; border-radius:11px; font-weight:700; }
+.level-nav { display:flex; gap:9px; flex-wrap:wrap; margin:28px 0 20px; }
+.level-btn { border:1px solid var(--line); background:#fff; color:#5c5368; border-radius:999px; padding:10px 15px; font:800 12px 'DM Sans',sans-serif; letter-spacing:.5px; text-transform:uppercase; cursor:pointer; transition:.2s; }
+.level-btn.active,.level-btn:hover { background:var(--purple); border-color:var(--purple); color:white; }
+.question-list { display:grid; gap:18px; }
+.question-card { background:#fff; border:1px solid var(--line); border-radius:20px; padding:27px; box-shadow:0 5px 22px rgba(28,16,48,.025); transition:border-color .2s,transform .2s; }
+.question-card:hover { border-color:#d5c4f8; }
+.question-card[hidden] { display:none !important; }
+.q-top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; }
+.q-number { font-size:13px; font-weight:800; letter-spacing:1.2px; color:var(--purple); text-transform:uppercase; }
+.level-tag { font-size:12px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color:#6b5b84; background:var(--purple-pale); padding:6px 11px; border-radius:99px; }
+.question-text { font-size:19px; font-weight:600; line-height:1.8; margin:0 0 19px; }
+.options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.option { display:flex; align-items:center; gap:12px; text-align:left; padding:15px 16px; border:1px solid var(--line); border-radius:13px; background:#fff; color:var(--ink); font:600 16px/1.65 'DM Sans',sans-serif; cursor:pointer; min-height:58px; transition:background .18s,border-color .18s,transform .18s; }
+.option:hover:not(:disabled) { border-color:#b69af1; background:#fcfaff; transform:translateY(-1px); }
+.option .letter { width:30px; height:30px; flex:0 0 30px; display:grid; place-items:center; border-radius:9px; background:#f3f0f7; color:#655775; font-size:13px; font-weight:800; }
+.option.correct { border-color:#62bd85; background:var(--green-bg); color:#155e36; }
+.option.correct .letter { background:#c9f0d6; color:#155e36; }
+.option.wrong { border-color:#f19aa1; background:var(--red-bg); color:#9f1d29; }
+.option.wrong .letter { background:#ffd9dd; color:#9f1d29; }
+.option:disabled { cursor:default; }
+.feedback { display:none; margin-top:16px; padding:14px 16px; border-radius:12px; font-size:16px; font-weight:700; }
+.feedback.show { display:block; }
+.feedback.good { background:var(--green-bg); color:#155e36; }
+.feedback.bad { background:var(--red-bg); color:#9f1d29; }
+.solution-toggle { margin-top:14px; border:1px solid #d9cafa; background:#faf7ff; color:#5b21b6; border-radius:999px; font:800 13px 'DM Sans',sans-serif; padding:10px 15px; cursor:pointer; }
+.solution-toggle:hover { background:#eee7ff; }
+.solution { display:none; margin-top:13px; padding:18px 20px; background:#faf7ff; border-left:4px solid #a78bfa; border-radius:0 12px 12px 0; font-size:17px; line-height:1.8; overflow-x:auto; }
+.solution.open { display:block; }
+.solution p:first-child { margin-top:0; }
+.solution p:last-child { margin-bottom:0; }
+.finish-panel { margin-top:38px; padding:32px; border-radius:22px; background:var(--ink); color:#fff; position:relative; overflow:hidden; }
+.finish-panel:after { content:""; position:absolute; width:260px; height:260px; border:1px solid rgba(167,139,250,.25); border-radius:50%; right:-80px; top:-140px; }
+.finish-panel h2 { font-size:32px; margin:0 0 11px; position:relative; z-index:1; }
+.finish-panel p { color:#ddd5e8; max-width:700px; margin:0 0 20px; font-size:17px; position:relative; z-index:1; }
+.finish-row { display:flex; gap:12px; flex-wrap:wrap; position:relative; z-index:1; }
+.primary-btn,.secondary-btn { border-radius:999px; padding:14px 20px; font:800 13px 'DM Sans',sans-serif; letter-spacing:.7px; text-transform:uppercase; cursor:pointer; transition:transform .2s,background .2s; }
+.primary-btn { border:0; background:#b49aff; color:#21132f; }
+.primary-btn:hover { background:#d0c0ff; transform:translateY(-2px); }
+.secondary-btn { background:transparent; color:white; border:1px solid #61566e; }
+.secondary-btn:hover { background:#292231; }
+#completion { display:none; margin-top:23px; text-align:center; padding:36px 22px; border:1px solid #d9f0df; background:linear-gradient(135deg,#f1fff5,#fff); border-radius:22px; animation:rise .6s ease both; }
+#completion.show { display:block; }
+#completion .check { width:70px; height:70px; margin:0 auto 16px; border-radius:50%; display:grid; place-items:center; background:#d8f8e2; color:#167b43; font-size:32px; animation:pop .55s cubic-bezier(.2,1.5,.4,1) both; }
+#completion h2 { font-size:33px; margin:0 0 9px; color:#175c35; }
+#completion p { color:#496456; margin:0 auto 20px; max-width:620px; font-size:17px; }
+.site-footer { padding:30px clamp(22px,5vw,78px); background:var(--ink); color:#d8d1e1; display:flex; align-items:center; justify-content:space-between; gap:18px; border-top:1px solid rgba(255,255,255,.07); }
+.footer-logo { font-family:'Playfair Display',serif; font-size:25px; font-weight:600; letter-spacing:-.5px; color:#fff; }
+.footer-tagline { display:block; color:#c7bdD4; font-size:13px; margin-top:3px; }
+.copyright { font-size:13px; color:#c7bfd0; }
+.toast { position:fixed; bottom:22px; left:50%; transform:translate(-50%,20px); background:#211a2b; color:white; padding:14px 19px; border:1px solid #51465f; border-radius:13px; font-size:15px; opacity:0; pointer-events:none; transition:.25s; z-index:50; max-width:calc(100vw - 30px); text-align:center; box-shadow:0 8px 28px #17131e30; }
+.toast.show { opacity:1; transform:translate(-50%,0); }
+@keyframes rise { from {opacity:0;transform:translateY(14px)} to {opacity:1;transform:translateY(0)} }
+@keyframes pop { from {transform:scale(.4) rotate(-18deg)} to {transform:scale(1) rotate(0)} }
+@media(max-width:760px) {
+  .hero-orbit { right:25px; width:130px; height:130px; opacity:.55; }
+  .hero-orbit span { font-size:29px; }
+  .hero p { max-width:560px; }
 }
-
-.keep-in-mind-heading h2 {
-  margin: 0;
-  font-size: 29px;
+@media(max-width:620px) {
+  .topbar { min-height:70px; padding:12px 16px; }
+  .brand { font-size:24px; }
+  .top-actions { gap:6px; }
+  .top-link,.logout { padding:8px 10px; font-size:10px; letter-spacing:.2px; }
+  .hero { padding-top:42px; min-height:300px; }
+  .hero-orbit { width:95px; height:95px; right:20px; top:auto; bottom:18px; transform:none; opacity:.45; }
+  .hero-orbit:before { inset:12px; }
+  .hero-orbit span { font-size:23px; }
+  main { padding:25px 14px 55px; }
+  .progress-panel { padding:18px; }
+  .progress-top { font-size:12px; }
+  .keep-in-mind { padding:21px 17px; }
+  .keep-heading h2 { font-size:26px; }
+  .keep-in-mind p,.keep-in-mind li { font-size:17px; }
+  .keep-formula { font-size:22px; padding:14px 8px; }
+  .options { grid-template-columns:1fr; }
+  .question-card { padding:20px 17px; }
+  .question-text { font-size:18px; }
+  .option { font-size:16px; padding:13px; }
+  .finish-panel { padding:25px 20px; }
+  .site-footer { align-items:flex-start; flex-direction:column; padding:26px 20px; }
 }
-
-.keep-in-mind-icon {
-  color: #7c3aed;
-  font-size: 28px;
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition-duration:.01ms !important; }
 }
-
-.keep-in-mind p,
-.keep-in-mind li {
-  font-size: 18px;
-  line-height: 1.85;
-}
-
-.keep-in-mind ul {
-  padding-left: 25px;
-}
-
-.keep-in-mind li {
-  margin: 10px 0;
-}
-
-.keep-in-mind-formula {
-  margin: 22px 0;
-  padding: 20px;
-  background: #211a2b;
-  color: white;
-  border-radius: 14px;
-  text-align: center;
-  font-size: 27px;
-  overflow-x: auto;
-}
-
-.keep-in-mind-formula mjx-container {
-  color: white !important;
-}
-
-.keep-in-mind-note {
-  margin-top: 20px;
-  padding: 15px 18px;
-  background: #eee7ff;
-  border-radius: 10px;
-  font-weight: 600;
-}
-
-@media (max-width: 620px) {
-  .keep-in-mind {
-    padding: 20px 17px;
-  }
-
-  .keep-in-mind-heading h2 {
-    font-size: 25px;
-  }
-
-  .keep-in-mind p,
-  .keep-in-mind li {
-    font-size: 17px;
-  }
-
-  .keep-in-mind-formula {
-    font-size: 22px;
-    padding: 15px 8px;
-  }
-}
-
 </style>
 </head>
 <body>
-<header class="topbar">
-  <a class="brand" href="index.html" aria-label="EduNova home">Edu<span>Nova</span></a>
-  <div class="top-actions">
-    <a class="top-link" href="magnitude-of-a-vector.html">← Back to Lesson</a>
-    <button class="logout" id="logoutBtn" type="button">Log out</button>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">EduNova · Vectors · Practice</div>
-    <h1>Magnitude of a Vector</h1>
-    <p>Build your confidence one question at a time. Start with the foundations, then work towards direction, unit vectors, and multi-step challenges.</p>
-  </div>
-  <div class="hero-orbit" aria-hidden="true"><span>‖v‖</span></div>
-</section>
+<div class="site-head">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="EduNova home">Edu<span>Nova</span></a>
+    <div class="top-actions">
+      <a class="top-link" href="magnitude-of-a-vector.html">← Back to Lesson</a>
+      <button class="logout" id="logoutBtn" type="button">Log out</button>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">EduNova · Vectors · Practice</div>
+      <h1>Magnitude of a Vector</h1>
+      <p>Twenty carefully chosen problems. Follow the clues, watch the signs, and let each calculation earn its answer.</p>
+    </div>
+    <div class="hero-orbit" aria-hidden="true"><span>‖v‖</span></div>
+    <div class="hero-ring" aria-hidden="true"></div>
+  </section>
+</div>
 
 <main>
   <section class="progress-panel" aria-label="Practice progress">
-    <div class="progress-top"><span>Your progress</span><span id="progressText">0 of 12 answered</span></div>
+    <div class="progress-top"><span>Questions solved</span><span class="solved-count" id="progressText">0 of 20 solved</span></div>
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
   </section>
 
-  <nav class="level-nav" aria-label="Filter questions by difficulty">
-    <button class="level-btn active" data-filter="All">All questions</button>
-    <button class="level-btn" data-filter="Foundation">Foundation</button>
-    <button class="level-btn" data-filter="Developing">Developing</button>
-    <button class="level-btn" data-filter="Intermediate">Intermediate</button>
-    <button class="level-btn" data-filter="Advanced">Advanced</button>
-    <button class="level-btn" data-filter="Challenge">Challenge</button>
-  </nav>
-
   <section class="keep-in-mind">
-    <div class="keep-in-mind-heading">
-      <span class="keep-in-mind-icon">✦</span>
-      <h2>Keep in Mind</h2>
-    </div>
-
-    <p>A vector's magnitude is its length, and it is never negative.</p>
-
-    <div class="keep-in-mind-formula">
-      \[
-        |\vec v|=\sqrt{x^2+y^2}
-      \]
-    </div>
-
+    <div class="keep-heading"><span class="keep-star">✦</span><h2>Keep in Mind</h2></div>
+    <p>These questions test calculations and decisions, not definitions. Keep these tools close:</p>
+    <div class="keep-formula">\[|\vec v|=\sqrt{x^2+y^2}\]</div>
     <ul>
-      <li><strong>Magnitude:</strong> Square both components, add them, then take the square root.</li>
-      <li><strong>Quadrants:</strong> Use the signs of the horizontal and vertical components to identify the quadrant.</li>
-      <li><strong>Unit vectors:</strong> Divide the vector by its magnitude to obtain a vector with magnitude exactly \(1\).</li>
-      <li><strong>Between two points:</strong> Subtract the starting coordinates from the destination coordinates.</li>
-      <li><strong>Direction angles:</strong> Use degrees and check the quadrant before deciding on the angle.</li>
+      <li>Square negative components too. Their squares are positive.</li>
+      <li>For a vector from \(A\) to \(B\), calculate \(B-A\), not \(A-B\).</li>
+      <li>For a unit vector, divide every component by the magnitude.</li>
+      <li>For direction angles, check the quadrant before choosing signs.</li>
     </ul>
-
-    <p class="keep-in-mind-note">
-      Remember: a unit vector has magnitude \(1\), but its components do not have to equal \(1\).
-    </p>
+    <p class="keep-note">A unit vector has magnitude exactly \(1\). Its components do not have to be \(1\).</p>
   </section>
+
+  <nav class="level-nav" aria-label="Filter questions by difficulty">
+    <button class="level-btn active" data-filter="All" type="button">All questions</button>
+    <button class="level-btn" data-filter="Foundation" type="button">Foundation</button>
+    <button class="level-btn" data-filter="Developing" type="button">Developing</button>
+    <button class="level-btn" data-filter="Intermediate" type="button">Intermediate</button>
+    <button class="level-btn" data-filter="Advanced" type="button">Advanced</button>
+    <button class="level-btn" data-filter="Challenge" type="button">Challenge</button>
+  </nav>
 
   <section class="question-list" id="questionList" aria-label="Questions">
     <article class="question-card" data-q="0" data-level="Foundation">
       <div class="q-top"><span class="q-number">Question 01</span><span class="level-tag">Foundation</span></div>
-      <p class="question-text">Find the magnitude of \(\vec v=3\mathbf i+4\mathbf j\).</p>
+      <p class="question-text">Find the magnitude of \(\vec v=6\mathbf i-8\mathbf j\).</p>
       <div class="options">
-        <button class="option" data-choice="0"><span class="letter">A</span>\(7\)</button>
-        <button class="option" data-choice="1"><span class="letter">B</span>\(5\)</button>
-        <button class="option" data-choice="2"><span class="letter">C</span>\(\sqrt{7}\)</button>
-        <button class="option" data-choice="3"><span class="letter">D</span>\(25\)</button>
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(14\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(10\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(\sqrt{28}\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(100\)</button>
       </div>
       <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
-      <div class="solution"><p><strong>Step 1:</strong> Square the components and add them.</p><p>\[|\vec v|=\sqrt{3^2+4^2}=\sqrt{9+16}=\boxed{5}\]</p></div>
+      <div class="solution"><p>Square both components, including the negative one:</p><p>\[|\vec v|=\sqrt{6^2+(-8)^2}=\sqrt{36+64}=\boxed{10}\]</p></div>
     </article>
 
     <article class="question-card" data-q="1" data-level="Foundation">
       <div class="q-top"><span class="q-number">Question 02</span><span class="level-tag">Foundation</span></div>
-      <p class="question-text">The points are \(A(2,1)\) and \(B(8,9)\). Find the distance \(AB\).</p>
+      <p class="question-text">A vector has components \((-7,24)\). What is its magnitude?</p>
       <div class="options">
-        <button class="option" data-choice="0"><span class="letter">A</span>\(10\)</button>
-        <button class="option" data-choice="1"><span class="letter">B</span>\(14\)</button>
-        <button class="option" data-choice="2"><span class="letter">C</span>\(\sqrt{14}\)</button>
-        <button class="option" data-choice="3"><span class="letter">D</span>\(8\)</button>
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(25\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(17\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(\sqrt{527}\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(31\)</button>
       </div>
       <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
-      <div class="solution"><p>The horizontal change is \(8-2=6\), and the vertical change is \(9-1=8\).</p><p>\[AB=\sqrt{6^2+8^2}=\sqrt{100}=\boxed{10}\]</p></div>
+      <div class="solution"><p>The sign disappears when the component is squared:</p><p>\[|\vec v|=\sqrt{(-7)^2+24^2}=\sqrt{49+576}=\boxed{25}\]</p></div>
     </article>
 
-    <article class="question-card" data-q="2" data-level="Developing">
-      <div class="q-top"><span class="q-number">Question 03</span><span class="level-tag">Developing</span></div>
-      <p class="question-text">A vector has components \((-5,12)\). What is its magnitude?</p>
+    <article class="question-card" data-q="2" data-level="Foundation">
+      <div class="q-top"><span class="q-number">Question 03</span><span class="level-tag">Foundation</span></div>
+      <p class="question-text">Point \(A(-2,5)\) is joined to \(B(4,-3)\). Find the length \(AB\).</p>
       <div class="options">
-        <button class="option" data-choice="0"><span class="letter">A</span>\(7\)</button>
-        <button class="option" data-choice="1"><span class="letter">B</span>\(\sqrt{119}\)</button>
-        <button class="option" data-choice="2"><span class="letter">C</span>\(13\)</button>
-        <button class="option" data-choice="3"><span class="letter">D</span>\(17\)</button>
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(8\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(14\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(10\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(\sqrt{52}\)</button>
       </div>
       <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
-      <div class="solution"><p>A negative component is squared too, so its square is positive.</p><p>\[|\vec v|=\sqrt{(-5)^2+12^2}=\sqrt{25+144}=\boxed{13}\]</p></div>
+      <div class="solution"><p>Coordinate changes are \(4-(-2)=6\) and \(-3-5=-8\).</p><p>\[AB=\sqrt{6^2+(-8)^2}=\sqrt{100}=\boxed{10}\]</p></div>
     </article>
 
     <article class="question-card" data-q="3" data-level="Developing">
       <div class="q-top"><span class="q-number">Question 04</span><span class="level-tag">Developing</span></div>
-      <p class="question-text">The vector \(\vec v=-8\mathbf i+6\mathbf j\) lies in which quadrant, and what is its magnitude?</p>
+      <p class="question-text">A vector has magnitude \(13\) and components \((x,12)\), where \(x&lt;0\). Find \(x\).</p>
       <div class="options">
-        <button class="option" data-choice="0"><span class="letter">A</span>Quadrant I, \(10\)</button>
-        <button class="option" data-choice="1"><span class="letter">B</span>Quadrant II, \(10\)</button>
-        <button class="option" data-choice="2"><span class="letter">C</span>Quadrant III, \(14\)</button>
-        <button class="option" data-choice="3"><span class="letter">D</span>Quadrant IV, \(2\)</button>
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(5\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(-12\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(-5\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(-1\)</button>
       </div>
       <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
-      <div class="solution"><p>The \(x\)-component is negative and the \(y\)-component is positive, so the vector lies in Quadrant II.</p><p>\[|\vec v|=\sqrt{(-8)^2+6^2}=\sqrt{100}=\boxed{10}\]</p></div>
+      <div class="solution"><p>\[\sqrt{x^2+12^2}=13\Rightarrow x^2+144=169\Rightarrow x^2=25\]</p><p>Thus \(x=\pm5\). Since \(x&lt;0\), the answer is \(\boxed{-5}\).</p></div>
     </article>
 
-    <article class="question-card" data-q="4" data-level="Intermediate">
-      <div class="q-top"><span class="q-number">Question 05</span><span class="level-tag">Intermediate</span></div>
-      <p class="question-text">Find the magnitude of the vector from \(P(-3,4)\) to \(Q(5,-2)\).</p>
+    <article class="question-card" data-q="4" data-level="Developing">
+      <div class="q-top"><span class="q-number">Question 05</span><span class="level-tag">Developing</span></div>
+      <p class="question-text">The vector \(\vec v=-9\mathbf i-12\mathbf j\) points into which quadrant, and what is its magnitude?</p>
       <div class="options">
-        <button class="option" data-choice="0"><span class="letter">A</span>\(8\)</button>
-        <button class="option" data-choice="1"><span class="letter">B</span>\(2\sqrt{13}\)</button>
-        <button class="option" data-choice="2"><span class="letter">C</span>\(14\)</button>
-        <button class="option" data-choice="3"><span class="letter">D</span>\(10\)</button>
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>Quadrant II, \(15\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>Quadrant III, \(15\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>Quadrant III, \(21\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>Quadrant IV, \(3\)</button>
       </div>
       <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
-      <div class="solution"><p>\(\overrightarrow{PQ}=(5-(-3),-2-4)=(8,-6)\).</p><p>\[|\overrightarrow{PQ}|=\sqrt{8^2+(-6)^2}=\sqrt{100}=\boxed{10}\]</p></div>
+      <div class="solution"><p>Both components are negative, so the vector is in Quadrant III.</p><p>\[|\vec v|=\sqrt{(-9)^2+(-12)^2}=\sqrt{225}=\boxed{15}\]</p></div>
     </article>
 
-    <article class="question-card" data-q="5" data-level="Intermediate">
-      <div class="q-top"><span class="q-number">Question 06</span><span class="level-tag">Intermediate</span></div>
-      <p class="question-text">A vector has magnitude \(17\) and components \((x,8)\), where \(x&lt;0\). Find \(x\).</p>
+    <article class="question-card" data-q="5" data-level="Developing">
+      <div class="q-top"><span class="q-number">Question 06</span><span class="level-tag">Developing</span></div>
+      <p class="question-text">A vector has components \((x,-8)\), magnitude \(17\), and \(x&gt;0\). Find \(x\).</p>
       <div class="options">
-        <button class="option" data-choice="0"><span class="letter">A</span>\(-15\)</button>
-        <button class="option" data-choice="1"><span class="letter">B</span>\(15\)</button>
-        <button class="option" data-choice="2"><span class="letter">C</span>\(-9\)</button>
-        <button class="option" data-choice="3"><span class="letter">D</span>\(-\sqrt{353}\)</button>
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(15\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(-15\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(9\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(\sqrt{353}\)</button>
       </div>
       <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
-      <div class="solution"><p>\[\sqrt{x^2+8^2}=17\Rightarrow x^2+64=289\]</p><p>\(x^2=225\), so \(x=\pm15\). Since \(x&lt;0\), \(\boxed{x=-15}\).</p></div>
+      <div class="solution"><p>\[x^2+(-8)^2=17^2\Rightarrow x^2=289-64=225\]</p><p>So \(x=\pm15\). The condition \(x&gt;0\) gives \(\boxed{x=15}\).</p></div>
     </article>
 
-    <article class="question-card" data-q="6" data-level="Advanced">
-      <div class="q-top"><span class="q-number">Question 07</span><span class="level-tag">Advanced</span></div>
-      <p class="question-text">For \(\vec v=-24\mathbf i+10\mathbf j\), find the reference angle \(\alpha\) to 1 decimal place.</p>
+    <article class="question-card" data-q="6" data-level="Intermediate">
+      <div class="q-top"><span class="q-number">Question 07</span><span class="level-tag">Intermediate</span></div>
+      <p class="question-text">Find the magnitude of \(\vec v=-20\mathbf i+21\mathbf j\).</p>
       <div class="options">
-        <button class="option" data-choice="0"><span class="letter">A</span>\(157.4^\circ\)</button>
-        <button class="option" data-choice="1"><span class="letter">B</span>\(22.6^\circ\)</button>
-        <button class="option" data-choice="2"><span class="letter">C</span>\(67.4^\circ\)</button>
-        <button class="option" data-choice="3"><span class="letter">D</span>\(337.4^\circ\)</button>
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(1\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(29\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(41\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(\sqrt{41}\)</button>
       </div>
       <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
-      <div class="solution"><p>The reference angle is the acute angle between the vector and the nearest horizontal axis.</p><p>\[\alpha=\tan^{-1}\left(\frac{|10|}{|-24|}\right)=\tan^{-1}\left(\frac{10}{24}\right)\approx\boxed{22.6^\circ}\]</p><p>The vector's direction angle measured anticlockwise from the positive \(x\)-axis is \(180^\circ-22.6^\circ=157.4^\circ\). That is not the reference angle.</p></div>
+      <div class="solution"><p>\[|\vec v|=\sqrt{(-20)^2+21^2}=\sqrt{400+441}=\sqrt{841}=\boxed{29}\]</p></div>
     </article>
 
-    <article class="question-card" data-q="7" data-level="Advanced">
-      <div class="q-top"><span class="q-number">Question 08</span><span class="level-tag">Advanced</span></div>
-      <p class="question-text">Find the unit vector in the direction of \(\vec v=5\mathbf i-12\mathbf j\).</p>
+    <article class="question-card" data-q="7" data-level="Intermediate">
+      <div class="q-top"><span class="q-number">Question 08</span><span class="level-tag">Intermediate</span></div>
+      <p class="question-text">Find the unit vector in the direction of \(\vec v=8\mathbf i-15\mathbf j\).</p>
       <div class="options">
-        <button class="option" data-choice="0"><span class="letter">A</span>\(\frac5{13}\mathbf i-\frac{12}{13}\mathbf j\)</button>
-        <button class="option" data-choice="1"><span class="letter">B</span>\(5\mathbf i-12\mathbf j\)</button>
-        <button class="option" data-choice="2"><span class="letter">C</span>\(\frac5{12}\mathbf i-\frac{12}{5}\mathbf j\)</button>
-        <button class="option" data-choice="3"><span class="letter">D</span>\(\frac1{13}\mathbf i+\frac1{13}\mathbf j\)</button>
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(\frac8{15}\mathbf i-\frac{15}{8}\mathbf j\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(\frac8{17}\mathbf i-\frac{15}{17}\mathbf j\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(8\mathbf i-15\mathbf j\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(\frac8{23}\mathbf i-\frac{15}{23}\mathbf j\)</button>
       </div>
       <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
-      <div class="solution"><p>First, \(|\vec v|=\sqrt{5^2+(-12)^2}=13\).</p><p>\[\hat u=\frac{\vec v}{|\vec v|}=\boxed{\frac5{13}\mathbf i-\frac{12}{13}\mathbf j}\]</p></div>
+      <div class="solution"><p>The magnitude is \(\sqrt{8^2+(-15)^2}=17\).</p><p>\[\hat u=\frac{\vec v}{|\vec v|}=\boxed{\frac8{17}\mathbf i-\frac{15}{17}\mathbf j}\]</p></div>
     </article>
 
-    <article class="question-card" data-q="8" data-level="Advanced">
-      <div class="q-top"><span class="q-number">Question 09</span><span class="level-tag">Advanced</span></div>
-      <p class="question-text">A vector has direction angle \(210^\circ\) and magnitude \(8\). Which are its components, to 2 decimal places?</p>
+    <article class="question-card" data-q="8" data-level="Intermediate">
+      <div class="q-top"><span class="q-number">Question 09</span><span class="level-tag">Intermediate</span></div>
+      <p class="question-text">A vector is \((-6,8)\). Which option gives its unit vector?</p>
       <div class="options">
-        <button class="option" data-choice="0"><span class="letter">A</span>\((6.93,4.00)\)</button>
-        <button class="option" data-choice="1"><span class="letter">B</span>\((-4.00,-6.93)\)</button>
-        <button class="option" data-choice="2"><span class="letter">C</span>\((-6.93,-4.00)\)</button>
-        <button class="option" data-choice="3"><span class="letter">D</span>\((4.00,-6.93)\)</button>
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(\left(-\frac35,\frac45\right)\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(\left(-\frac65,\frac85\right)\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(\left(\frac35,\frac45\right)\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(\left(-\frac38,\frac46\right)\)</button>
       </div>
       <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
-      <div class="solution"><p>Using degree angles, \(x=r\cos\theta\) and \(y=r\sin\theta\).</p><p>\[x=8\cos210^\circ\approx-6.93,\quad y=8\sin210^\circ=-4\]</p><p>So the components are \(\boxed{(-6.93,-4.00)}\), in Quadrant III.</p></div>
+      <div class="solution"><p>The magnitude is \(10\), so divide both components by \(10\):</p><p>\[\hat u=\left(-\frac6{10},\frac8{10}\right)=\boxed{\left(-\frac35,\frac45\right)}\]</p></div>
     </article>
 
-    <article class="question-card" data-q="9" data-level="Challenge">
-      <div class="q-top"><span class="q-number">Question 10</span><span class="level-tag">Challenge</span></div>
-      <p class="question-text">The vector \(\vec v=a\mathbf i+12\mathbf j\) has magnitude \(13\), with \(a&gt;0\). Find the unit vector in its direction.</p>
+    <article class="question-card" data-q="9" data-level="Intermediate">
+      <div class="q-top"><span class="q-number">Question 10</span><span class="level-tag">Intermediate</span></div>
+      <p class="question-text">A vector has components \((2k,k)\) and magnitude \(5\sqrt5\), where \(k&gt;0\). Find \(k\).</p>
       <div class="options">
-        <button class="option" data-choice="0"><span class="letter">A</span>\(\frac5{13}\mathbf i+\frac{12}{13}\mathbf j\)</button>
-        <button class="option" data-choice="1"><span class="letter">B</span>\(\frac{12}{13}\mathbf i+\frac5{13}\mathbf j\)</button>
-        <button class="option" data-choice="2"><span class="letter">C</span>\(5\mathbf i+12\mathbf j\)</button>
-        <button class="option" data-choice="3"><span class="letter">D</span>\(-\frac5{13}\mathbf i+\frac{12}{13}\mathbf j\)</button>
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(2\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(5\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(10\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(\sqrt5\)</button>
       </div>
       <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
-      <div class="solution"><p>\(\sqrt{a^2+12^2}=13\Rightarrow a^2=25\). Since \(a&gt;0\), \(a=5\).</p><p>Thus \(\vec v=5\mathbf i+12\mathbf j\), so its unit vector is \(\boxed{\frac5{13}\mathbf i+\frac{12}{13}\mathbf j}\).</p></div>
+      <div class="solution"><p>\[\sqrt{(2k)^2+k^2}=\sqrt{5k^2}=k\sqrt5\quad(k&gt;0)\]</p><p>Since \(k\sqrt5=5\sqrt5\), \(\boxed{k=5}\).</p></div>
     </article>
 
-    <article class="question-card" data-q="10" data-level="Challenge">
-      <div class="q-top"><span class="q-number">Question 11</span><span class="level-tag">Challenge</span></div>
-      <p class="question-text">A vector \(\vec w\) has magnitude \(1\) and points in the same direction as \( -\frac{12}{13}\mathbf i+\frac5{13}\mathbf j\). Find \(7\vec w\).</p>
+    <article class="question-card" data-q="10" data-level="Advanced">
+      <div class="q-top"><span class="q-number">Question 11</span><span class="level-tag">Advanced</span></div>
+      <p class="question-text">A vector has magnitude \(6\) and direction angle \(330^\circ\). Find its components to 2 decimal places.</p>
       <div class="options">
-        <button class="option" data-choice="0"><span class="letter">A</span>\(-12\mathbf i+5\mathbf j\)</button>
-        <button class="option" data-choice="1"><span class="letter">B</span>\(-\frac{12}{7}\mathbf i+\frac57\mathbf j\)</button>
-        <button class="option" data-choice="2"><span class="letter">C</span>\(-\frac{84}{13}\mathbf i+\frac{35}{13}\mathbf j\)</button>
-        <button class="option" data-choice="3"><span class="letter">D</span>\(-84\mathbf i+35\mathbf j\)</button>
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\((3.00,-5.20)\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\((-5.20,3.00)\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\((5.20,-3.00)\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\((5.20,3.00)\)</button>
       </div>
       <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
-      <div class="solution"><p>The given vector already has magnitude 1, so it is the unit vector \(\vec w\).</p><p>\[7\vec w=7\left(-\frac{12}{13}\mathbf i+\frac5{13}\mathbf j\right)=\boxed{-\frac{84}{13}\mathbf i+\frac{35}{13}\mathbf j}\]</p></div>
+      <div class="solution"><p>\[x=6\cos330^\circ=3\sqrt3\approx5.20,\quad y=6\sin330^\circ=-3\]</p><p>The angle is in Quadrant IV, so \(x&gt;0\) and \(y&lt;0\). Answer: \(\boxed{(5.20,-3.00)}\).</p></div>
     </article>
 
-    <article class="question-card" data-q="11" data-level="Challenge">
-      <div class="q-top"><span class="q-number">Question 12</span><span class="level-tag">Challenge</span></div>
-      <p class="question-text">A vector has magnitude \(10\) and direction angle \(150^\circ\). Another vector has the same direction but magnitude \(3\). Find the second vector in component form, to 2 decimal places.</p>
+    <article class="question-card" data-q="11" data-level="Advanced">
+      <div class="q-top"><span class="q-number">Question 12</span><span class="level-tag">Advanced</span></div>
+      <p class="question-text">A vector has magnitude \(4\) and direction angle \(135^\circ\). Find its exact components.</p>
       <div class="options">
-        <button class="option" data-choice="0"><span class="letter">A</span>\(\left(-\frac{3\sqrt3}{2},\frac32\right)\)</button>
-        <button class="option" data-choice="1"><span class="letter">B</span>\(\left(\frac{3\sqrt3}{2},-\frac32\right)\)</button>
-        <button class="option" data-choice="2"><span class="letter">C</span>\((-3,0)\)</button>
-        <button class="option" data-choice="3"><span class="letter">D</span>\((-2.60,-1.50)\)</button>
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\((-2\sqrt2,2\sqrt2)\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\((2\sqrt2,-2\sqrt2)\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\((-2,2)\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\((2\sqrt2,2\sqrt2)\)</button>
       </div>
       <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
-      <div class="solution"><p>For magnitude \(r=3\) and direction angle \(150^\circ\), the components are \(x=r\cos150^\circ\), \(y=r\sin150^\circ\).</p><p>\[x=3\left(-\frac{\sqrt3}{2}\right)=-\frac{3\sqrt3}{2}\approx-2.60,\quad y=3\left(\frac12\right)=1.50\]</p><p>The answer is \(\boxed{\left(-\frac{3\sqrt3}{2},\frac32\right)}\), equivalent to approximately \((-2.60,1.50)\).</p></div>
+      <div class="solution"><p>\(\cos135^\circ=-\frac{\sqrt2}{2}\) and \(\sin135^\circ=\frac{\sqrt2}{2}\).</p><p>\[(x,y)=\left(4\cos135^\circ,4\sin135^\circ\right)=\boxed{(-2\sqrt2,2\sqrt2)}\]</p></div>
+    </article>
+
+    <article class="question-card" data-q="12" data-level="Advanced">
+      <div class="q-top"><span class="q-number">Question 13</span><span class="level-tag">Advanced</span></div>
+      <p class="question-text">A vector has magnitude \(10\) and direction angle \(240^\circ\). Which components are correct?</p>
+      <div class="options">
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\((5,-5\sqrt3)\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\((-5,-5\sqrt3)\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\((-5\sqrt3,-5)\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\((-5,5\sqrt3)\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>\(\cos240^\circ=-\frac12\) and \(\sin240^\circ=-\frac{\sqrt3}{2}\).</p><p>\[(x,y)=\left(10\cos240^\circ,10\sin240^\circ\right)=\boxed{(-5,-5\sqrt3)}\]</p></div>
+    </article>
+
+    <article class="question-card" data-q="13" data-level="Advanced">
+      <div class="q-top"><span class="q-number">Question 14</span><span class="level-tag">Advanced</span></div>
+      <p class="question-text">For \(A(1,-4)\) and \(B(-5,4)\), find the unit vector in the direction from \(A\) to \(B\).</p>
+      <div class="options">
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(\left(\frac35,-\frac45\right)\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(\left(-\frac35,\frac45\right)\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\((-6,8)\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(\left(-\frac65,\frac85\right)\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>\(\overrightarrow{AB}=(-5-1,4-(-4))=(-6,8)\), whose magnitude is \(10\).</p><p>\[\hat u=\frac1{10}(-6,8)=\boxed{\left(-\frac35,\frac45\right)}\]</p></div>
+    </article>
+
+    <article class="question-card" data-q="14" data-level="Advanced">
+      <div class="q-top"><span class="q-number">Question 15</span><span class="level-tag">Advanced</span></div>
+      <p class="question-text">The vector \(\vec v=(3k,4k)\) has magnitude \(25\), with \(k&gt;0\). Find \(k\).</p>
+      <div class="options">
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(25\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(4\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(5\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(\frac{25}{7}\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>\[|\vec v|=\sqrt{9k^2+16k^2}=5|k|\]</p><p>Since \(k&gt;0\), \(5k=25\), so \(\boxed{k=5}\).</p></div>
+    </article>
+
+    <article class="question-card" data-q="15" data-level="Advanced">
+      <div class="q-top"><span class="q-number">Question 16</span><span class="level-tag">Advanced</span></div>
+      <p class="question-text">The vector \(\vec v=(-5,y)\) has magnitude \(13\), and \(y&gt;0\). Find \(y\).</p>
+      <div class="options">
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(8\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(-12\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(12\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(\sqrt{194}\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>\[(-5)^2+y^2=13^2\Rightarrow y^2=169-25=144\]</p><p>Since \(y&gt;0\), \(\boxed{y=12}\).</p></div>
+    </article>
+
+    <article class="question-card" data-q="16" data-level="Challenge">
+      <div class="q-top"><span class="q-number">Question 17</span><span class="level-tag">Challenge</span></div>
+      <p class="question-text">A vector has magnitude \(13\), horizontal component \(-5\), and lies above the \(x\)-axis. What is the vector?</p>
+      <div class="options">
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(-5\mathbf i-12\mathbf j\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(5\mathbf i+12\mathbf j\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(-5\mathbf i+12\mathbf j\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(-5\mathbf i+8\mathbf j\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>\[(-5)^2+y^2=13^2\Rightarrow y^2=144\Rightarrow y=\pm12\]</p><p>Above the \(x\)-axis means \(y&gt;0\), so \(\boxed{\vec v=-5\mathbf i+12\mathbf j}\).</p></div>
+    </article>
+
+    <article class="question-card" data-q="17" data-level="Challenge">
+      <div class="q-top"><span class="q-number">Question 18</span><span class="level-tag">Challenge</span></div>
+      <p class="question-text">Given \(\vec v=-8\mathbf i+15\mathbf j\), find \(3\vec v\) and its magnitude.</p>
+      <div class="options">
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(-24\mathbf i+45\mathbf j\), magnitude \(51\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(-24\mathbf i+45\mathbf j\), magnitude \(17\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(-8\mathbf i+15\mathbf j\), magnitude \(51\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(-24\mathbf i+45\mathbf j\), magnitude \(23\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>\(3\vec v=-24\mathbf i+45\mathbf j\). The original magnitude is \(\sqrt{64+225}=17\).</p><p>Multiplying a vector by \(3\) multiplies its magnitude by \(3\), so \(|3\vec v|=3(17)=\boxed{51}\).</p></div>
+    </article>
+
+    <article class="question-card" data-q="18" data-level="Challenge">
+      <div class="q-top"><span class="q-number">Question 19</span><span class="level-tag">Challenge</span></div>
+      <p class="question-text">Find the distance between \(P(3,7)\) and \(Q(-1,-5)\).</p>
+      <div class="options">
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\(16\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\(4\sqrt{10}\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\(\sqrt{160}\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\(4\sqrt8\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>The coordinate changes are \(-1-3=-4\) and \(-5-7=-12\).</p><p>\[PQ=\sqrt{(-4)^2+(-12)^2}=\sqrt{160}=\boxed{4\sqrt{10}}\]</p></div>
+    </article>
+
+    <article class="question-card" data-q="19" data-level="Challenge">
+      <div class="q-top"><span class="q-number">Question 20</span><span class="level-tag">Challenge</span></div>
+      <p class="question-text">A vector has magnitude \(12\) and direction angle \(150^\circ\). A second vector points in the same direction but has magnitude \(5\). Find the second vector's components, to 2 decimal places.</p>
+      <div class="options">
+        <button class="option" data-choice="0" type="button"><span class="letter">A</span>\((-4.33,2.50)\)</button>
+        <button class="option" data-choice="1" type="button"><span class="letter">B</span>\((-2.50,4.33)\)</button>
+        <button class="option" data-choice="2" type="button"><span class="letter">C</span>\((4.33,-2.50)\)</button>
+        <button class="option" data-choice="3" type="button"><span class="letter">D</span>\((-4.33,-2.50)\)</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div><button class="solution-toggle" type="button">Show solution +</button>
+      <div class="solution"><p>Same direction means the second vector has direction angle \(150^\circ\) too. Use its magnitude \(5\):</p><p>\[x=5\cos150^\circ=-\frac{5\sqrt3}{2}\approx-4.33,\quad y=5\sin150^\circ=2.50\]</p><p>So the answer is \(\boxed{(-4.33,2.50)}\).</p></div>
     </article>
   </section>
 
   <section class="finish-panel">
     <h2>Ready to wrap up?</h2>
-    <p>Try all 12 questions and review any solutions you need. When you're ready, finish the practice to record this topic as completed in EduNova.</p>
+    <p>Answer the questions, review any steps you need, then finish the practice to record this topic as completed in EduNova.</p>
     <div class="finish-row">
       <button class="primary-btn" id="finishBtn" type="button">Finish practice ✓</button>
       <button class="secondary-btn" id="reviewBtn" type="button">Review unanswered</button>
@@ -416,158 +484,179 @@ footer{padding:26px clamp(20px,5vw,76px);border-top:1px solid var(--line);displa
   </section>
 </main>
 
-<footer>
-  <div class="footer-brand">EduNova<span>Mathematics made clear.</span></div>
-  <div>© 2026 EduNova. All rights reserved.</div>
+<footer class="site-footer">
+  <div class="footer-brand">
+    <div class="footer-logo">Edu<span>Nova</span></div>
+    <span class="footer-tagline">Mathematics made clear.</span>
+  </div>
+  <div class="copyright">© 2026 EduNova. All rights reserved.</div>
 </footer>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
-/*
-  IMPORTANT:
-  Replace these two placeholders with the SAME Supabase project URL and anon/publishable
-  key used by your existing EduNova lesson page. Never put a service_role key here.
-*/
+/* Use the same public project URL and publishable/anon key as the rest of EduNova. */
 const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
 
-const ANSWERS = [1,0,2,1,3,0,1,0,2,0,2,0];
-const LEVELS = ["Foundation","Foundation","Developing","Developing","Intermediate","Intermediate","Advanced","Advanced","Advanced","Challenge","Challenge","Challenge"];
+/* Correct option indexes, A=0, B=1, C=2, D=3. */
+const ANSWERS = [1,0,2,2,1,0,1,1,0,1,2,0,1,1,2,2,2,0,1,0];
 const answered = new Map();
-let currentFilter = "All";
-let supabase = null;
+let supabaseClient = null;
 let currentUser = null;
 
 const $ = (selector, root=document) => root.querySelector(selector);
 const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
 
-function showToast(message){
+function showToast(message) {
   const toast = $("#toast");
   toast.textContent = message;
   toast.classList.add("show");
   clearTimeout(showToast.timer);
-  showToast.timer = setTimeout(()=>toast.classList.remove("show"), 3000);
+  showToast.timer = setTimeout(() => toast.classList.remove("show"), 3200);
 }
 
-function updateProgress(){
+function updateProgress() {
   const count = answered.size;
-  $("#progressText").textContent = `${count} of ${ANSWERS.length} answered`;
+  $("#progressText").textContent = `${count} of ${ANSWERS.length} solved`;
   $("#progressFill").style.width = `${count / ANSWERS.length * 100}%`;
 }
 
-function handleChoice(card, selected){
+function handleChoice(card, selected) {
   const index = Number(card.dataset.q);
-  if(answered.has(index)) return;
+  if (!Number.isInteger(index) || answered.has(index)) return;
+
   const correct = selected === ANSWERS[index];
-  answered.set(index, {selected, correct});
-  const buttons = $$(".option", card);
-  buttons.forEach((button, i)=>{
+  answered.set(index, { selected, correct });
+
+  $$(".option", card).forEach((button, i) => {
     button.disabled = true;
-    if(i === ANSWERS[index]) button.classList.add("correct");
-    if(i === selected && !correct) button.classList.add("wrong");
+    if (i === ANSWERS[index]) button.classList.add("correct");
+    if (i === selected && !correct) button.classList.add("wrong");
   });
+
   const feedback = $(".feedback", card);
   feedback.className = `feedback show ${correct ? "good" : "bad"}`;
   feedback.textContent = correct
     ? "Correct! Nicely reasoned. ✓"
     : "Not quite. The correct answer is highlighted in green. Open the solution to see why.";
+
   updateProgress();
 }
 
-function setFilter(filter){
-  currentFilter = filter;
-  $$(".level-btn").forEach(btn=>btn.classList.toggle("active", btn.dataset.filter === filter));
-  $$(".question-card").forEach(card=>{
+function setFilter(filter) {
+  $$(".level-btn").forEach(btn => btn.classList.toggle("active", btn.dataset.filter === filter));
+  $$(".question-card").forEach(card => {
     card.hidden = filter !== "All" && card.dataset.level !== filter;
   });
 }
 
-function showSolutionsForUnanswered(){
-  const unanswered = $$(".question-card").filter(card=>!answered.has(Number(card.dataset.q)));
-  if(!unanswered.length){
-    showToast("Every question has been answered. Great work!");
+function reviewUnanswered() {
+  const unanswered = $$(".question-card").filter(card => !answered.has(Number(card.dataset.q)));
+  if (!unanswered.length) {
+    showToast("You've answered all 20 questions. Great work!");
     return;
   }
   setFilter("All");
-  unanswered[0].scrollIntoView({behavior:"smooth",block:"center"});
-  unanswered[0].style.borderColor = "#a78bfa";
-  setTimeout(()=>unanswered[0].style.borderColor = "", 1800);
-  showToast(`${unanswered.length} question${unanswered.length===1?"":"s"} still to try.`);
+  unanswered[0].scrollIntoView({ behavior: "smooth", block: "center" });
+  unanswered[0].style.borderColor = "#7c3aed";
+  setTimeout(() => unanswered[0].style.borderColor = "", 1800);
+  showToast(`${unanswered.length} question${unanswered.length === 1 ? "" : "s"} still to try.`);
 }
 
-async function finishPractice(){
-  const totalCorrect = [...answered.values()].filter(item=>item.correct).length;
+async function finishPractice() {
+  const totalCorrect = [...answered.values()].filter(item => item.correct).length;
   const completePanel = $("#completion");
   $("#completionMessage").textContent =
-    `You answered ${answered.size} of 12 questions and got ${totalCorrect} correct` +
-    (answered.size < 12 ? ". You can keep practising whenever you're ready." : ". Your practice set is complete.") +
-    (currentUser ? " Your topic completion will be saved to your EduNova account." : " Sign in to EduNova to save your progress.");
+    `You solved ${answered.size} of 20 questions and answered ${totalCorrect} correctly.` +
+    (answered.size < 20 ? " You can continue practising and review any solutions above." : " Your practice set is complete.") +
+    (currentUser ? " EduNova will now try to save your topic completion." : " Sign in through EduNova to save your progress.");
   completePanel.classList.add("show");
-  completePanel.scrollIntoView({behavior:"smooth",block:"center"});
+  completePanel.scrollIntoView({ behavior: "smooth", block: "center" });
 
-  if(!supabase || !currentUser){
+  if (!supabaseClient || !currentUser) {
     showToast("Practice finished. Sign in through EduNova to save lesson progress.");
     return;
   }
+
   const finishBtn = $("#finishBtn");
   finishBtn.disabled = true;
   finishBtn.textContent = "Saving progress…";
-  try{
-    const {error} = await supabase
+  try {
+    const { error } = await supabaseClient
       .from("lesson_progress")
       .upsert({
         user_id: currentUser.id,
         chapter: "Vectors",
         topic_number: 3,
         completed_at: new Date().toISOString()
-      }, {onConflict:"user_id,chapter,topic_number"});
-    if(error) throw error;
+      }, { onConflict: "user_id,chapter,topic_number" });
+    if (error) throw error;
     finishBtn.textContent = "Progress saved ✓";
     showToast("Your Vectors topic completion was saved.");
-  }catch(error){
+  } catch (error) {
     console.error("Could not save lesson progress:", error);
     finishBtn.disabled = false;
     finishBtn.textContent = "Try saving again ↻";
-    showToast("Couldn't save progress. Check your connection and try again.");
+    showToast("Couldn't save progress. Check your connection and lesson_progress table settings.");
   }
 }
 
-async function initAuth(){
-  if(!window.supabase?.createClient) return;
-  supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  const {data, error} = await supabase.auth.getSession();
-  if(error){ console.error("EduNova session error:", error); return; }
-  currentUser = data.session?.user || null;
-  if(!currentUser){
-    window.location.href = "index.html";
+async function initAuth() {
+  if (!window.supabase || typeof window.supabase.createClient !== "function") {
+    console.error("Supabase library did not load.");
     return;
   }
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  try {
+    const { data, error } = await supabaseClient.auth.getSession();
+    if (error) throw error;
+    currentUser = data.session ? data.session.user : null;
+    if (!currentUser) {
+      window.location.href = "index.html";
+      return;
+    }
+  } catch (error) {
+    console.error("EduNova session error:", error);
+    showToast("Could not verify your EduNova session. Please refresh the page.");
+  }
 }
 
-document.addEventListener("click", event=>{
+document.addEventListener("click", event => {
   const option = event.target.closest(".option");
-  if(option){
-    handleChoice(option.closest(".question-card"), Number(option.dataset.choice));
+  if (option) {
+    const card = option.closest(".question-card");
+    if (card) handleChoice(card, Number(option.dataset.choice));
     return;
   }
+
   const toggle = event.target.closest(".solution-toggle");
-  if(toggle){
+  if (toggle) {
     const solution = $(".solution", toggle.closest(".question-card"));
-    const open = solution.classList.toggle("open");
-    toggle.textContent = open ? "Hide solution −" : "Show solution +";
-    if(window.MathJax?.typesetPromise) MathJax.typesetPromise([solution]);
+    if (!solution) return;
+    const isOpen = solution.classList.toggle("open");
+    toggle.textContent = isOpen ? "Hide solution −" : "Show solution +";
+    if (window.MathJax && typeof MathJax.typesetPromise === "function") {
+      MathJax.typesetPromise([solution]).catch(error => console.error("MathJax typeset error:", error));
+    }
     return;
   }
+
   const levelButton = event.target.closest(".level-btn");
-  if(levelButton){ setFilter(levelButton.dataset.filter); }
+  if (levelButton) setFilter(levelButton.dataset.filter);
 });
 
 $("#finishBtn").addEventListener("click", finishPractice);
-$("#reviewBtn").addEventListener("click", showSolutionsForUnanswered);
-$("#logoutBtn").addEventListener("click", async ()=>{
-  if(!supabase){ showToast("Add your existing Supabase project settings first."); return; }
-  const {error} = await supabase.auth.signOut();
-  if(error){ showToast("Couldn't log out. Please try again."); return; }
+$("#reviewBtn").addEventListener("click", reviewUnanswered);
+$("#logoutBtn").addEventListener("click", async () => {
+  if (!supabaseClient) {
+    showToast("EduNova sign-in could not be reached. Please refresh and try again.");
+    return;
+  }
+  const { error } = await supabaseClient.auth.signOut();
+  if (error) {
+    showToast("Couldn't log out. Please try again.");
+    return;
+  }
   window.location.href = "index.html";
 });
 
