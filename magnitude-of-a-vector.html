@@ -113,9 +113,105 @@ footer{background:#09090b;color:#fff;padding:25px 7%;display:flex;align-items:ce
   <text class="svg-label" x="293" y="282">O</text>
 </svg></div><div class="explain"><p>For \(\vec{AB}=-24\mathbf{i}+10\mathbf{j}\), the vector lies in Quadrant II.</p><div class="highlight">\[\theta=\tan^{-1}\left(\frac{10}{24}\right)=22.6^\circ\]</div><p style="margin-top:17px">Because the vector is in Quadrant II:</p><div class="equation" style="background:#121016;color:#fff">\(180^\circ-22.6^\circ=\boxed{157.4^\circ}\)</div></div></div></div></section>
 
-<section class="part"><div class="part-header"><div class="part-number">05</div><div><h2>Unit vectors</h2><p>A unit vector has the same direction as the original vector but a magnitude of exactly 1.</p></div></div><div class="unit-layout"><div class="dark-card"><h3>Keep the direction.</h3><p>Divide a vector by its magnitude to scale its length down to 1.</p><div class="dark-formula">\[\hat{u}=\frac{\vec v}{|\vec v|}\]</div><p style="margin-top:16px">For \(\vec{AB}=-24\mathbf{i}+10\mathbf{j}\), since \(|\vec{AB}|=26\):</p><div class="dark-formula">\[\hat{u}=\frac{1}{26}(-24\mathbf{i}+10\mathbf{j})\]</div></div><div class="note-card"><h3>Need another magnitude?</h3><p>Once you have the unit vector, multiply it by the magnitude you want.</p><div class="highlight">For a magnitude of \(182\):<br><br>\[182\hat{u}=\frac{182}{26}(-24\mathbf{i}+10\mathbf{j})\]<br>\[\boxed{-168\mathbf{i}+70\mathbf{j}}\]</div></div></div></section>
+ <section class="part">
+  <div class="part-header">
+    <div class="part-number">05</div>
+    <div>
+      <h2>Unit vectors</h2>
+      <p>A unit vector is a vector whose magnitude is exactly one unit.</p>
+    </div>
+  </div>
 
-<section class="practice-section"><h2>Ready to Practice?</h2><p>Now that you can find magnitude, identify direction in every quadrant, and construct a unit vector, test the ideas with the practice questions.</p><a href="magnitude-of-a-vector-questions.html" class="practice-button">START QUESTIONS <span>→</span></a></section>
+  <div class="card card-inner">
+    <h3>What does “one unit” actually mean?</h3>
+    <p>Every vector has two important properties:</p>
+    <ul>
+      <li><strong>Direction:</strong> where the vector points.</li>
+      <li><strong>Magnitude:</strong> the length of the vector.</li>
+    </ul>
+    <p>A <strong>unit vector</strong> is simply a vector with a magnitude of exactly <strong>1 unit</strong>. It can point in any direction. Its defining feature is its length, not the values of its components.</p>
+
+    <div class="highlight">
+      <strong>Remember:</strong> A unit vector does not have to have components equal to 1. Its overall magnitude must equal 1.
+    </div>
+  </div>
+
+  <div class="card card-inner" style="margin-top:20px">
+    <h3>1. Compare the lengths</h3>
+    <p>Imagine three arrows pointing in the same direction. Their lengths are different, but their direction stays the same.</p>
+
+    <div style="margin:24px 0; padding:18px; background:#faf8ff; border:1px solid #e9ddff; border-radius:16px">
+      <svg viewBox="0 0 340 190" width="100%" role="img" aria-label="Three arrows pointing in the same direction with magnitudes 5 units, 2 units, and 1 unit">
+        <defs>
+          <marker id="unitArrowPurple" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#7c3aed"/>
+          </marker>
+          <marker id="unitArrowGreen" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#16a34a"/>
+          </marker>
+        </defs>
+        <text x="12" y="23" font-size="12" fill="#51465f" font-weight="600">Magnitude = 5 units</text>
+        <line x1="16" y1="43" x2="250" y2="43" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" marker-end="url(#unitArrowPurple)"/>
+        <text x="12" y="76" font-size="12" fill="#51465f" font-weight="600">Magnitude = 2 units</text>
+        <line x1="16" y1="96" x2="110" y2="96" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" marker-end="url(#unitArrowPurple)"/>
+        <text x="12" y="129" font-size="12" fill="#166534" font-weight="600">Magnitude = 1 unit</text>
+        <line x1="16" y1="149" x2="63" y2="149" stroke="#16a34a" stroke-width="4" stroke-linecap="round" marker-end="url(#unitArrowGreen)"/>
+        <text x="80" y="153" font-size="11" fill="#166534">Unit vector ✓</text>
+        <text x="12" y="180" font-size="10" fill="#786d85">Illustration of relative lengths</text>
+      </svg>
+    </div>
+
+    <p>The first arrow is 5 units long, the second is 2 units long, and the third is exactly 1 unit long. <strong>Only the third arrow is a unit vector.</strong></p>
+  </div>
+
+  <div class="card card-inner" style="margin-top:20px">
+    <h3>2. How do we find a unit vector?</h3>
+    <p>Consider the vector:</p>
+    <div class="highlight">\[\vec v=3\mathbf i+4\mathbf j\]</div>
+    <p>First, calculate its magnitude:</p>
+    <div class="equation">\[|\vec v|=\sqrt{3^2+4^2}=5\]</div>
+    <p>Its length is 5 units, so it is not yet a unit vector. We divide the entire vector by its magnitude to reduce its length to 1 while preserving its direction.</p>
+    <div class="highlight">\[\hat u=\frac{\vec v}{|\vec v|}\]</div>
+    <p>Substitute the vector and its magnitude:</p>
+    <div class="equation">\[\hat u=\frac{3\mathbf i+4\mathbf j}{5}\]</div>
+    <p>Therefore:</p>
+    <div class="highlight">\[\boxed{\hat u=\frac35\mathbf i+\frac45\mathbf j}\]</div>
+  </div>
+
+  <div class="card card-inner" style="margin-top:20px">
+    <h3>3. Prove that its magnitude is exactly 1</h3>
+    <p>We can check that our new vector really has a magnitude of 1:</p>
+    <div class="equation">\[|\hat u|=\sqrt{\left(\frac35\right)^2+\left(\frac45\right)^2}\]</div>
+    <div class="equation">\[=\sqrt{\frac9{25}+\frac{16}{25}}\]</div>
+    <div class="equation">\[=\sqrt{\frac{25}{25}}=\boxed{1}\]</div>
+    <p>This proves that \(\hat u\) is a unit vector. Dividing by the magnitude changes the length but keeps the direction unchanged.</p>
+  </div>
+
+  <div class="card card-inner" style="margin-top:20px">
+    <h3>4. Apply this to our vector</h3>
+    <p>For our earlier example:</p>
+    <div class="highlight">\[\vec{AB}=-24\mathbf i+10\mathbf j\]</div>
+    <p>Its magnitude is 26 units. Divide each component by 26:</p>
+    <div class="equation">\[\hat u=\frac{-24\mathbf i+10\mathbf j}{26}\]</div>
+    <div class="highlight">\[\boxed{\hat u=-\frac{12}{13}\mathbf i+\frac5{13}\mathbf j}\]</div>
+    <p>The new vector still points into Quadrant II, but its magnitude is now exactly 1.</p>
+  </div>
+
+  <div class="card card-inner" style="margin-top:20px">
+    <h3>5. What if we need a different magnitude?</h3>
+    <p>A unit vector gives us the direction with a standard length of 1. We can multiply it by any positive number to obtain a vector of the required magnitude in the same direction.</p>
+    <p>For example, to obtain a vector with magnitude 182:</p>
+    <div class="equation">\[182\hat u=182\left(-\frac{12}{13}\mathbf i+\frac5{13}\mathbf j\right)\]</div>
+    <div class="highlight">\[\boxed{-168\mathbf i+70\mathbf j}\]</div>
+    <p>The direction is preserved, and the magnitude becomes 182 units.</p>
+  </div>
+
+  <div class="note-card" style="margin-top:20px">
+    <h3>The key idea</h3>
+    <p>A unit vector has a magnitude of exactly 1. It preserves the direction of the original vector while giving us a standard length that we can scale whenever needed.</p>
+    <div class="dark-formula">\[\boxed{\hat u=\frac{\vec v}{|\vec v|}}\]</div>
+  </div>
+</section>
 
 <section class="completion-section" id="completionSection">
 <span class="completion-particle" style="left:8%;top:30%;--x:35px;--duration:4.2s;--delay:.2s"></span><span class="completion-particle" style="left:15%;top:65%;--x:-25px;--duration:5.1s;--delay:1s"></span><span class="completion-particle" style="left:23%;top:18%;--x:45px;--duration:4.7s;--delay:.6s"></span><span class="completion-particle" style="left:31%;top:76%;--x:-40px;--duration:5.4s;--delay:1.4s"></span><span class="completion-particle" style="left:42%;top:20%;--x:30px;--duration:4.9s;--delay:.3s"></span><span class="completion-particle" style="left:56%;top:72%;--x:-35px;--duration:5.2s;--delay:1.1s"></span><span class="completion-particle" style="left:67%;top:25%;--x:40px;--duration:4.5s;--delay:.7s"></span><span class="completion-particle" style="left:76%;top:70%;--x:-30px;--duration:5.5s;--delay:1.6s"></span><span class="completion-particle" style="left:86%;top:35%;--x:25px;--duration:4.4s;--delay:.5s"></span>
