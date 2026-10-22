@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1314,7 +1313,9 @@ function hideLoading() {
    SESSION AND STUDENT PROFILE
 ========================================= */
 
-async function checkSession() {
+const loadingStartedAt = Date.now();
+    
+    async function checkSession() {
     try {
         const {
             data: { session },
@@ -1359,9 +1360,12 @@ async function checkSession() {
          * Show an error message and allow the student to retry.
          */
         showDashboardError();
-    } finally {
-        hideLoading();
-    }
+   } finally {
+    const elapsed = Date.now() - loadingStartedAt;
+    const remaining = Math.max(0, 1500 - elapsed);
+
+    setTimeout(hideLoading, remaining);
+}
 }
 
 /* =========================================
