@@ -423,7 +423,7 @@ nav a:hover{
 
 .hero-integral{
     position:absolute;
-    left:275px;
+    left:290px;
     top:230px;
     font:150px/1 "Playfair Display";
     color:#fff;
@@ -867,13 +867,42 @@ section{
 }
 
 
+
 /* =========================================================
-   AUTHOR
+   AUTHOR | REFINED FOUNDER DESIGN
 ========================================================= */
 
 .author{
-    background:#e52b20;
+    background:
+        radial-gradient(ellipse at 5% 10%, rgba(255,255,255,.09), transparent 35%),
+        radial-gradient(ellipse at 100% 100%, rgba(90,0,0,.2), transparent 45%),
+        linear-gradient(125deg, #b91f18 0%, #e52b20 48%, #c82119 100%);
     color:#fff;
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+}
+
+.author::before{
+    content:"N";
+    position:absolute;
+    z-index:-1;
+    right:-15px;
+    top:-100px;
+    font:clamp(280px,42vw,560px)/1 "Playfair Display",serif;
+    color:rgba(255,255,255,.045);
+    pointer-events:none;
+    user-select:none;
+}
+
+.author::after{
+    content:"";
+    position:absolute;
+    left:7%;
+    top:0;
+    width:90px;
+    height:3px;
+    background:rgba(255,255,255,.75);
 }
 
 .author-layout{
@@ -881,22 +910,48 @@ section{
     grid-template-columns:.9fr 1.1fr;
     gap:85px;
     align-items:center;
+    position:relative;
+    z-index:1;
 }
 
 .author .label{
     color:#fff;
-    opacity:.75;
+    opacity:.85;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.author .label::before{
+    content:"";
+    width:25px;
+    height:1px;
+    background:rgba(255,255,255,.8);
 }
 
 .author .title{
     color:#fff;
+    max-width:480px;
+    text-wrap:balance;
+    text-shadow:0 8px 35px rgba(70,0,0,.15);
+}
+
+.author-text{
+    position:relative;
+    padding:35px 0 35px 35px;
+    border-left:1px solid rgba(255,255,255,.3);
 }
 
 .author-text p{
-    color:rgba(255,255,255,.88);
+    color:rgba(255,255,255,.91);
     font-size:15px;
-    line-height:1.8;
+    line-height:1.95;
     margin-bottom:20px;
+    max-width:590px;
+}
+
+.author-text p:last-of-type{
+    margin-bottom:0;
 }
 
 .author-name{
@@ -905,19 +960,229 @@ section{
     margin-top:30px;
     display:flex;
     flex-direction:column;
-    gap:6px;
+    gap:8px;
 }
 
 .author-name strong{
-    font:27px "Playfair Display";
+    font:clamp(27px,3vw,35px)/1.2 "Playfair Display",serif;
+    letter-spacing:-.5px;
 }
 
 .author-name span{
-    font-size:12px;
-    opacity:.8;
+    font-size:11px;
+    line-height:1.8;
+    letter-spacing:.5px;
+    opacity:.85;
 }
 
+@media(max-width:760px){
+    .author-layout{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
 
+    .author-text{
+        padding:25px 0 0;
+        border-left:0;
+        border-top:1px solid rgba(255,255,255,.3);
+    }
+
+    .author::before{
+        right:-25px;
+        top:-35px;
+        font-size:300px;
+    }
+}
+
+  
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+    background:#0d0d0d;
+    color:#f5f4f1;
+    position:relative;
+    overflow:hidden;
+}
+
+.contact::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    border:1px solid rgba(229,43,32,.12);
+    border-radius:50%;
+    right:-180px;
+    top:-180px;
+    pointer-events:none;
+}
+
+.contact-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:90px;
+    align-items:start;
+    max-width:1250px;
+    margin:0 auto;
+}
+
+.contact-intro .title{
+    margin-bottom:25px;
+}
+
+.contact-intro>p{
+    color:#999;
+    font-size:15px;
+    line-height:1.9;
+    max-width:400px;
+}
+
+.contact-note{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:35px;
+    color:#888;
+    font-size:10px;
+    letter-spacing:1.7px;
+}
+
+.contact-note-dot{
+    width:8px;
+    height:8px;
+    background:#e52b20;
+    border-radius:50%;
+    box-shadow:0 0 18px rgba(229,43,32,.6);
+    animation:contactPulse 2s ease-in-out infinite;
+}
+
+.contact-form{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:32px;
+    background:linear-gradient(145deg,#151515,#101010);
+    border:1px solid rgba(255,255,255,.09);
+    box-shadow:0 25px 70px rgba(0,0,0,.18);
+    animation:contactRise .8s ease both;
+}
+
+.contact-form label{
+    margin-top:8px;
+    color:#aaa;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.7px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:15px 16px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:2px;
+    background:#0b0b0b;
+    color:#fff;
+    font:14px "DM Sans",sans-serif;
+    outline:none;
+    transition:border-color .25s,background .25s;
+}
+
+.contact-form textarea{
+    resize:vertical;
+    min-height:130px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+    color:#666;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+    border-color:#e52b20;
+    background:#101010;
+}
+
+.contact-submit{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    margin-top:10px;
+    padding:16px 19px;
+    border:1px solid #e52b20;
+    border-radius:2px;
+    background:#e52b20;
+    color:#fff;
+    font:700 11px "DM Sans",sans-serif;
+    letter-spacing:1.5px;
+    cursor:pointer;
+    transition:background .25s,color .25s,transform .25s;
+}
+
+.contact-submit span{
+    font-size:19px;
+}
+
+.contact-submit:hover{
+    background:#fff;
+    color:#111;
+    border-color:#fff;
+    transform:translateY(-2px);
+}
+
+.contact-submit:disabled{
+    opacity:.65;
+    cursor:wait;
+    transform:none;
+}
+
+.contact-status{
+    min-height:20px;
+    color:#aaa;
+    font-size:12px;
+    line-height:1.6;
+}
+
+@keyframes contactRise{
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes contactPulse{
+    50%{
+        opacity:.45;
+        transform:scale(.8);
+    }
+}
+
+@media(max-width:760px){
+    .contact-layout{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .contact-form{
+        padding:23px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    .contact-form,
+    .contact-note-dot{
+        animation:none;
+    }
+}
+
+  
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -1811,6 +2076,79 @@ footer p{
 
 </section>
 
+  
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section class="contact" id="contact">
+
+    <div class="contact-layout">
+
+        <div class="contact-intro">
+            <div class="label">GET IN TOUCH</div>
+
+            <h2 class="title">
+                Let's talk<br>
+                mathematics.
+            </h2>
+
+            <p>
+                Have a question, suggestion, or idea for EduNova?
+                Send a message and get in touch.
+            </p>
+
+            <div class="contact-note">
+                <span class="contact-note-dot"></span>
+                <span>QUESTIONS · IDEAS · FEEDBACK</span>
+            </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+
+            <label for="contactName">YOUR NAME</label>
+            <input
+                id="contactName"
+                name="name"
+                type="text"
+                placeholder="Enter your name"
+                maxlength="100"
+                required
+            >
+
+            <label for="contactEmail">EMAIL ADDRESS</label>
+            <input
+                id="contactEmail"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                maxlength="254"
+                required
+            >
+
+            <label for="contactMessage">YOUR MESSAGE</label>
+            <textarea
+                id="contactMessage"
+                name="message"
+                placeholder="Write your message here..."
+                rows="5"
+                maxlength="3000"
+                required
+            ></textarea>
+
+            <button class="contact-submit" id="contactSubmit" type="submit">
+                SEND MESSAGE <span aria-hidden="true">↗</span>
+            </button>
+
+            <p class="contact-status" id="contactStatus" role="status" aria-live="polite"></p>
+
+        </form>
+
+    </div>
+
+</section>
+
+
 
 <!-- =========================================================
      FOOTER
@@ -2603,6 +2941,24 @@ document.addEventListener(
 );
 
 </script>
+create table public.contact_messages (
+    id bigint generated always as identity primary key,
+    name text not null check (char_length(name) between 1 and 100),
+    email text not null check (char_length(email) between 3 and 254),
+    message text not null check (char_length(message) between 1 and 3000),
+    created_at timestamptz not null default now()
+);
 
+alter table public.contact_messages enable row level security;
+
+create policy "Anyone can submit a contact message"
+on public.contact_messages
+for insert
+to anon, authenticated
+with check (
+    char_length(trim(name)) between 1 and 100
+    and char_length(trim(email)) between 3 and 254
+    and char_length(trim(message)) between 1 and 3000
+);
 </body>
 </html>
