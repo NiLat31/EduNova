@@ -1,289 +1,1293 @@
+
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111111">
+<meta name="description" content="Your personal EduNova Grade 12 Advanced Mathematics learning dashboard.">
 <title>EduNova | My Mathematics Dashboard</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
 <style>
-    .feedback-link{
-    text-decoration:none;
-    color:#111;
-    font-size:11px;
-    font-weight:700;
+:root {
+    --red: #e52b20;
+    --red-dark: #c91f17;
+    --ink: #111111;
+    --paper: #f7f6f2;
+    --white: #ffffff;
+    --muted: #737373;
+    --line: #e2e0da;
+    --green: #72d6a0;
+    --purple: #9e83ff;
+    --shadow: 0 20px 55px rgba(17,17,17,.07);
 }
 
-.feedback-link:hover{
-    color:#e52b20;
-}
-    .feedback-banner{
-    margin-top:55px;
-    background:#111;
-    color:#fff;
-    padding:32px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:30px;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.feedback-label{
-    color:#e52b20;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:2px;
-    margin-bottom:9px;
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 95px;
 }
 
-.feedback-banner strong{
-    display:block;
-    font:600 28px "Playfair Display";
-    margin-bottom:8px;
+body {
+    min-height: 100vh;
+    font-family: "DM Sans", sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
 }
 
-.feedback-banner p{
-    color:#aaa;
-    font-size:12px;
-    line-height:1.7;
-    max-width:520px;
+button, a {
+    -webkit-tap-highlight-color: transparent;
 }
 
-.feedback-button{
-    flex-shrink:0;
-    text-decoration:none;
-    background:#e52b20;
-    color:#fff;
-    padding:14px 20px;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:1px;
-    transition:.3s;
+button {
+    font-family: inherit;
 }
 
-.feedback-button:hover{
-    background:#fff;
-    color:#111;
-}
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:"DM Sans";background:#f7f6f2;color:#111}nav{height:82px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ddd}.logo,.hero h1,.title,.card h2{font-family:"Playfair Display"}.logo{font-size:28px;font-weight:700}.logo span,h1 span,.label{color:#e52b20}.nav{display:flex;gap:18px;align-items:center}.home{text-decoration:none;color:#111;font-size:11px;font-weight:700}.logout,.start{border:0;background:#111;color:#fff;padding:11px 17px;font:700 10px "DM Sans";cursor:pointer}.logout:hover,.start:hover{background:#e52b20}.hero{background:#111;color:#fff;padding:90px 7% 65px;position:relative;overflow:hidden}.hero:after{content:"∑";position:absolute;right:5%;top:-80px;font:300 300px "Playfair Display";color:#202020}.label{font-size:11px;font-weight:700;letter-spacing:3px;margin-bottom:17px;position:relative;z-index:2}h1{font:600 clamp(45px,6vw,76px)/1.02 "Playfair Display";letter-spacing:-3px;position:relative;z-index:2}.hero p{max-width:590px;color:#aaa;margin-top:20px;font-size:15px;line-height:1.8;position:relative;z-index:2}main{padding:85px 7% 110px}.head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:45px}.title{font-size:clamp(38px,4.5vw,60px);line-height:1.04;letter-spacing:-2px}.head p{max-width:400px;color:#666;font-size:14px;line-height:1.8}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{background:#fff;border:1px solid #ddd;padding:30px;min-height:245px;display:flex;flex-direction:column;transition:.3s}.card:hover{transform:translateY(-5px);box-shadow:0 18px 35px rgba(0,0,0,.07)}.top{display:flex;justify-content:space-between}.symbol{width:58px;height:58px;border:1px solid #ddd;background:#f7f6f2;display:flex;align-items:center;justify-content:center;font:600 24px "Playfair Display"}.number{color:#e52b20;font-size:10px;font-weight:700;letter-spacing:1.5px}.card h2{font-size:29px;line-height:1.05;margin:28px 0 10px}.card p{color:#666;font-size:13px;line-height:1.7}.start{margin-top:auto;align-self:flex-start}.strip{margin-top:55px;background:#e52b20;color:#fff;padding:30px;display:flex;justify-content:space-between;gap:25px;align-items:center}.strip strong{font:25px "Playfair Display"}.strip p{font-size:12px;line-height:1.6;max-width:500px;color:rgba(255,255,255,.85)}footer{background:#111;color:#fff;padding:40px 7%;display:flex;justify-content:space-between}.fl{font:600 24px "Playfair Display"}.fl span{color:#e52b20}footer p{color:#888;font-size:11px}
-@media(max-width:800px).feedback-banner{
-    flex-direction:column;
-    align-items:flex-start;
-}{nav{height:auto;padding:18px 5%;gap:15px}.hero{padding:70px 5% 55px}main{padding:70px 5% 85px}.head{flex-direction:column;align-items:flex-start}.grid{grid-template-columns:1fr}.strip,footer{flex-direction:column;align-items:flex-start}footer{text-align:center;align-items:center}}
-/* =========================================
-   EDUNOVA PREMIUM
-========================================= */
-
-.premium-section{
-    width:100%;
-    margin:55px 0 0;
+a {
+    color: inherit;
 }
 
-.premium-card{
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:40px;
-    background:#111;
-    color:#fff;
-    padding:42px 48px;
-    border-radius:18px;
-    border-left:6px solid #e52b20;
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--red);
+    outline-offset: 4px;
 }
 
-.premium-content{
-    position:relative;
-    z-index:2;
-    max-width:760px;
+::selection {
+    background: var(--red);
+    color: white;
 }
 
-.premium-label{
-    display:inline-block;
-    color:#e52b20;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:2px;
-    margin-bottom:14px;
+/* NAVIGATION */
+
+nav {
+    min-height: 80px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(247,246,242,.94);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(16px);
 }
 
-.premium-card h2{
-    margin:0 0 14px;
-    font:600 32px/1.2 "Playfair Display";
-    color:#fff;
+.logo {
+    font: 700 29px/1 "Playfair Display", serif;
+    letter-spacing: -1.3px;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
-.premium-card p{
-    margin:0 0 25px;
-    max-width:650px;
-    color:#aaa;
-    font-size:13px;
-    line-height:1.7;
+.logo span,
+.footer-logo span {
+    color: var(--red);
 }
 
-.premium-button{
-    border:0;
-    background:#e52b20;
-    color:#fff;
-    padding:13px 22px;
-    border-radius:7px;
-    font:700 10px "DM Sans";
-    letter-spacing:1px;
-    cursor:pointer;
-    transition:.25s;
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 23px;
 }
 
-.premium-button span{
-    margin-left:8px;
+.nav-link {
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .7px;
+    transition: color .2s ease;
 }
 
-.premium-button:hover{
-    background:#fff;
-    color:#111;
-    transform:translateY(-2px);
+.nav-link:hover {
+    color: var(--red);
 }
 
-.premium-mark{
-    position:absolute;
-    right:45px;
-    top:50%;
-    transform:translateY(-50%);
-    width:150px;
-    height:150px;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.logout {
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: white;
+    padding: 12px 17px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .25s, color .25s, transform .25s;
 }
 
-.premium-mark:before{
-    content:"";
-    position:absolute;
-    width:105px;
-    height:105px;
-    border:1px solid rgba(229,43,32,.35);
-    border-radius:50%;
+.logout:hover {
+    background: var(--red);
+    border-color: var(--red);
+    transform: translateY(-2px);
 }
 
-.premium-mark span{
-    position:relative;
-    font-size:40px;
-    color:#e52b20;
+/* HERO */
+
+.hero {
+    min-height: 405px;
+    padding: 85px 7% 78px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background: var(--ink);
+    color: white;
+    isolation: isolate;
 }
 
-@media(max-width:700px){
+.hero::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 480px;
+    height: 480px;
+    right: 4%;
+    top: -145px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 50%;
+    animation: orbit 36s linear infinite;
+}
 
-    .premium-card{
-        padding:32px 28px;
+.hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 340px;
+    height: 340px;
+    right: 8.5%;
+    top: -75px;
+    border: 1px solid rgba(229,43,32,.35);
+    border-radius: 50%;
+    animation: orbit 26s linear infinite reverse;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 850px;
+    position: relative;
+    z-index: 2;
+    animation: enterUp .8s both;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--red);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 23px;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 2px;
+    background: var(--red);
+}
+
+.hero h1 {
+    font: 600 clamp(44px, 6.3vw, 78px)/1.05 "Playfair Display", serif;
+    letter-spacing: -2.5px;
+    overflow-wrap: anywhere;
+}
+
+.hero h1 span {
+    color: var(--red);
+}
+
+.hero-description {
+    max-width: 590px;
+    margin-top: 22px;
+    color: #b7b7b7;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.hero-bottom {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+.hero-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--red);
+    color: white;
+    padding: 14px 19px;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    transition: background .25s, transform .25s;
+}
+
+.hero-action:hover {
+    background: white;
+    color: var(--ink);
+    transform: translateY(-3px);
+}
+
+.hero-note {
+    color: #858585;
+    font-size: 11px;
+}
+
+.math-decoration {
+    position: absolute;
+    right: 12%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 205px;
+    height: 205px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    animation: floatMath 5s ease-in-out infinite;
+}
+
+.math-ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 50%;
+}
+
+.math-ring.inner {
+    inset: 25px;
+    border-color: rgba(229,43,32,.55);
+}
+
+.math-symbol {
+    color: var(--red);
+    font: 500 83px/1 "Playfair Display", serif;
+}
+
+.math-caption {
+    position: absolute;
+    bottom: 16px;
+    right: -25px;
+    color: #777;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* PAGE CONTENT */
+
+main {
+    padding: 85px 7% 95px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 35px;
+    margin-bottom: 38px;
+}
+
+.section-label {
+    color: var(--red);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.7px;
+    margin-bottom: 14px;
+}
+
+.section-title {
+    font: 600 clamp(38px, 4.5vw, 58px)/1.06 "Playfair Display", serif;
+    letter-spacing: -1.7px;
+}
+
+.section-description {
+    max-width: 395px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+    padding-bottom: 3px;
+}
+
+.chapter-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 19px;
+    color: #666;
+    font-size: 11px;
+}
+
+.count-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 0 0 0 4px rgba(229,43,32,.10);
+}
+
+/* CHAPTER CARDS */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.card {
+    --card-accent: var(--red);
+    min-height: 260px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 29px 30px 27px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    isolation: isolate;
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+    animation: enterUp .65s both;
+}
+
+.card:nth-child(2) { animation-delay: .05s; }
+.card:nth-child(3) { animation-delay: .10s; }
+.card:nth-child(4) { animation-delay: .15s; }
+.card:nth-child(5) { animation-delay: .20s; }
+.card:nth-child(6) { animation-delay: .25s; }
+.card:nth-child(7) { animation-delay: .30s; }
+.card:nth-child(8) { animation-delay: .35s; }
+
+.card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 130px;
+    height: 130px;
+    right: -65px;
+    bottom: -75px;
+    border-radius: 50%;
+    background: var(--card-accent);
+    opacity: 0;
+    transition: opacity .3s, transform .4s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #c9c5bd;
+    box-shadow: var(--shadow);
+}
+
+.card:hover::after {
+    opacity: .07;
+    transform: scale(1.8);
+}
+
+.card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.symbol {
+    width: 59px;
+    height: 59px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    color: var(--card-accent);
+    font: 600 24px/1 "Playfair Display", serif;
+    transition: background .25s, color .25s, transform .25s;
+}
+
+.card:hover .symbol {
+    background: var(--card-accent);
+    color: white;
+    transform: rotate(-4deg);
+}
+
+.number {
+    color: #8c8c8c;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
+
+.card h2 {
+    margin: 26px 0 10px;
+    font: 600 clamp(23px, 2.5vw, 29px)/1.17 "Playfair Display", serif;
+    letter-spacing: -.5px;
+}
+
+.card p {
+    max-width: 470px;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.85;
+    margin-bottom: 25px;
+}
+
+.start {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    margin-top: auto;
+    padding: 12px 15px;
+    border: 0;
+    background: var(--ink);
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .25s, gap .25s, transform .25s;
+}
+
+.start:hover {
+    background: var(--red);
+    gap: 17px;
+    transform: translateY(-2px);
+}
+
+.start:active {
+    transform: translateY(0);
+}
+
+.card:nth-child(2) { --card-accent: #b84c80; }
+.card:nth-child(3) { --card-accent: #377bc4; }
+.card:nth-child(4) { --card-accent: #2c9b80; }
+.card:nth-child(5) { --card-accent: #a05ac9; }
+.card:nth-child(6) { --card-accent: #7659da; }
+.card:nth-child(7) { --card-accent: #d28a34; }
+.card:nth-child(8) { --card-accent: #3e86a6; }
+
+/* PREMIUM PANEL */
+
+.premium-section {
+    margin-top: 68px;
+}
+
+.premium-card {
+    position: relative;
+    min-height: 285px;
+    padding: 43px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    overflow: hidden;
+    background: var(--ink);
+    color: white;
+    border-left: 5px solid var(--red);
+    isolation: isolate;
+}
+
+.premium-card::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 340px;
+    height: 340px;
+    right: -70px;
+    top: -105px;
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 50%;
+}
+
+.premium-card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 245px;
+    height: 245px;
+    right: -22px;
+    top: -58px;
+    border: 1px solid rgba(229,43,32,.35);
+    border-radius: 50%;
+}
+
+.premium-content {
+    max-width: 730px;
+    position: relative;
+    z-index: 2;
+}
+
+.premium-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--red);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.3px;
+    margin-bottom: 16px;
+}
+
+.premium-label::before {
+    content: "✦";
+    font-size: 15px;
+}
+
+.premium-card.active .premium-label {
+    color: var(--green);
+}
+
+.premium-card.active .premium-label::before {
+    content: "✓";
+}
+
+.premium-card h2 {
+    margin-bottom: 13px;
+    max-width: 650px;
+    font: 600 clamp(27px, 3.2vw, 37px)/1.2 "Playfair Display", serif;
+    letter-spacing: -.6px;
+}
+
+.premium-card p {
+    max-width: 630px;
+    margin-bottom: 24px;
+    color: #aaa;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.premium-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 17px;
+    padding: 14px 19px;
+    background: var(--red);
+    color: white;
+    border: 0;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .25s, color .25s, gap .25s, transform .25s;
+}
+
+.premium-button:hover {
+    background: white;
+    color: var(--ink);
+    gap: 23px;
+    transform: translateY(-2px);
+}
+
+.premium-mark {
+    position: absolute;
+    z-index: 0;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    height: 160px;
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: orbit 40s linear infinite;
+}
+
+.premium-mark::before {
+    content: "";
+    position: absolute;
+    width: 112px;
+    height: 112px;
+    border: 1px solid rgba(229,43,32,.5);
+    border-radius: 50%;
+}
+
+.premium-mark span {
+    color: var(--red);
+    font: 400 44px "Playfair Display", serif;
+    animation: counterOrbit 40s linear infinite;
+}
+
+.premium-card.active {
+    border-left-color: var(--green);
+}
+
+.premium-card.active .premium-mark::before {
+    border-color: rgba(114,214,160,.45);
+}
+
+.premium-card.active .premium-mark span {
+    color: var(--green);
+}
+
+/* FEEDBACK */
+
+.feedback-banner {
+    margin-top: 25px;
+    padding: 35px 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    background: #eeece6;
+    border: 1px solid #e4e1d9;
+}
+
+.feedback-content {
+    max-width: 620px;
+}
+
+.feedback-label {
+    color: var(--red);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    margin-bottom: 12px;
+}
+
+.feedback-banner strong {
+    display: block;
+    margin-bottom: 9px;
+    font: 600 clamp(24px, 3vw, 31px)/1.2 "Playfair Display", serif;
+}
+
+.feedback-banner p {
+    max-width: 520px;
+    color: #707070;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.feedback-button {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 20px;
+    background: var(--ink);
+    color: white;
+    text-decoration: none;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: background .25s, gap .25s, transform .25s;
+}
+
+.feedback-button:hover {
+    background: var(--red);
+    gap: 20px;
+    transform: translateY(-2px);
+}
+
+/* CLOSING STRIP */
+
+.strip {
+    position: relative;
+    overflow: hidden;
+    margin-top: 60px;
+    padding: 31px 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: var(--red);
+    color: white;
+}
+
+.strip strong {
+    font: 600 clamp(22px, 3vw, 29px)/1.2 "Playfair Display", serif;
+}
+
+.strip p {
+    max-width: 450px;
+    color: rgba(255,255,255,.85);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 37px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: var(--ink);
+    color: white;
+}
+
+.footer-logo {
+    font: 600 25px/1 "Playfair Display", serif;
+}
+
+.footer-tagline {
+    margin-top: 8px;
+    color: #888;
+    font-size: 10px;
+}
+
+footer > p {
+    color: #888;
+    font-size: 10px;
+    text-align: right;
+    line-height: 1.8;
+}
+
+/* LOADING AND MOTION */
+
+body.loading .page-content {
+    opacity: .55;
+    pointer-events: none;
+}
+
+.loading-message {
+    position: fixed;
+    z-index: 100;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper);
+    transition: opacity .3s ease, visibility .3s ease;
+}
+
+.loading-message.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loading-inner {
+    text-align: center;
+}
+
+.loading-logo {
+    font: 700 34px "Playfair Display", serif;
+}
+
+.loading-logo span {
+    color: var(--red);
+}
+
+.loading-caption {
+    margin-top: 14px;
+    color: #777;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.loading-line {
+    width: 145px;
+    height: 2px;
+    margin: 22px auto 0;
+    overflow: hidden;
+    background: #dedbd3;
+}
+
+.loading-line::after {
+    content: "";
+    display: block;
+    width: 45%;
+    height: 100%;
+    background: var(--red);
+    animation: loadingSlide 1s ease-in-out infinite;
+}
+
+@keyframes orbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes counterOrbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+@keyframes floatMath {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -10px; }
+}
+
+@keyframes enterUp {
+    from {
+        opacity: 0;
+        transform: translateY(17px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes loadingSlide {
+    0% { transform: translateX(-110%); }
+    100% { transform: translateX(330%); }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    nav {
+        padding: 0 5%;
     }
 
-    .premium-card h2{
-        font-size:26px;
+    .hero {
+        padding: 75px 5%;
     }
 
-    .premium-mark{
-        display:none;
+    main {
+        padding: 70px 5% 80px;
     }
 
-}</style></head><body>
-<nav><div class="logo">Edu<span>Nova</span></div><div class="nav">
-    <a class="home" href="index.html">← HOME</a>
+    .math-decoration {
+        right: 5%;
+        opacity: .6;
+        scale: .8;
+    }
 
-    <a class="feedback-link" href="feedback.html">
-        FEEDBACK
-    </a>
+    .premium-card {
+        padding: 36px 32px;
+    }
 
-    <button class="logout" onclick="logout()">LOG OUT</button>
-</div></nav>
-<header class="hero"><div class="label">YOUR EDUNOVA DASHBOARD</div><h1>Hi, <span id="username">Student</span>.</h1><p>Your signed-in curriculum is different from the public home page. Here you can enter the full eight-chapter learning space.</p></header>
-<main><div class="head"><div><div class="label">YOUR CHAPTERS</div><h2 class="title">Go deeper.</h2></div><p>Choose a chapter to begin. These are the detailed signed-in versions of the curriculum.</p></div>
-<div class="grid">
-<div class="card"><div class="top"><div class="symbol">eˣ</div><div class="number">01 / 08</div></div><h2>Logarithm &amp; Exponential</h2><p>Exponential functions, logarithms, inverse relationships and applications.</p><button class="start" onclick="coming('Logarithm & Exponential')">START CHAPTER →</button></div>
-<div class="card"><div class="top"><div class="symbol">θ</div><div class="number">02 / 08</div></div><h2>Trigonometry</h2><p>Identities, equations, graphs and deeper relationships between angles and ratios.</p><button class="start" onclick="coming('Trigonometry')">START CHAPTER →</button></div>
-<div class="card"><div class="top"><div class="symbol">d/dx</div><div class="number">03 / 08</div></div><h2>Differentiation</h2><p>Derivatives, rates of change, stationary points and function behavior.</p><button class="start" onclick="coming('Differentiation')">START CHAPTER →</button></div>
-<div class="card"><div class="top"><div class="symbol">P(X)</div><div class="number">04 / 08</div></div><h2>Discrete-Random Variable</h2><p>Probability distributions, expected value, variance and random variables.</p><button class="start" onclick="coming('Discrete-Random Variable')">START CHAPTER →</button></div>
-<div class="card"><div class="top"><div class="symbol">∫</div><div class="number">05 / 08</div></div><h2>Integration</h2><p>Antiderivatives, definite integrals, area and the connection to differentiation.</p><button class="start" onclick="location.href='integration.html'">
-    START CHAPTER →
-</button></div>
-<div class="card"><div class="top"><div class="symbol">→v</div><div class="number">06 / 08</div></div><h2>Vectors</h2><p>Magnitude, direction, vector equations and the geometry of mathematical space.</p><button class="start" onclick="location.href='vectors.html'">
-    START CHAPTER →
-</button></div>
-<div class="card"><div class="top"><div class="symbol">i</div><div class="number">07 / 08</div></div><h2>Complex Numbers</h2><p>The complex plane, modulus, argument and algebraic relationships.</p><button class="start" onclick="coming('Complex Numbers')">START CHAPTER →</button></div>
-<div class="card"><div class="top"><div class="symbol">μ σ</div><div class="number">08 / 08</div></div><h2>Normal Distribution</h2><p>The normal model, standardization, probabilities, mean and standard deviation.</p><button class="start" onclick="coming('Normal Distribution')">START CHAPTER →</button></div>
+    .premium-mark {
+        right: 4%;
+        scale: .8;
+    }
+}
+
+@media (max-width: 700px) {
+    nav {
+        min-height: 72px;
+        padding: 15px 5%;
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
+
+    .nav {
+        gap: 13px;
+    }
+
+    .nav-link {
+        font-size: 9px;
+    }
+
+    .logout {
+        padding: 11px 12px;
+        font-size: 9px;
+    }
+
+    .hero {
+        min-height: 360px;
+        padding: 65px 5%;
+    }
+
+    .hero h1 {
+        letter-spacing: -1.5px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+    }
+
+    .math-decoration {
+        right: -45px;
+        top: 20px;
+        transform: none;
+        scale: .58;
+        opacity: .25;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 17px;
+        margin-bottom: 28px;
+    }
+
+    .section-description {
+        max-width: 520px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .card {
+        min-height: 245px;
+        padding: 25px;
+    }
+
+    .card h2 {
+        margin-top: 22px;
+    }
+
+    .premium-card {
+        min-height: 0;
+        padding: 32px 25px;
+    }
+
+    .premium-mark {
+        right: -35px;
+        top: 20px;
+        transform: none;
+        scale: .65;
+        opacity: .25;
+    }
+
+    .premium-content {
+        width: 100%;
+    }
+
+    .feedback-banner {
+        padding: 28px 25px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 23px;
+    }
+
+    .strip {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 28px 25px;
+        gap: 12px;
+    }
+
+    footer {
+        padding: 30px 5%;
+    }
+}
+
+@media (max-width: 430px) {
+    nav {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .nav {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .hero {
+        padding-top: 54px;
+    }
+
+    .hero h1 {
+        font-size: clamp(40px, 12vw, 53px);
+    }
+
+    main {
+        padding-top: 55px;
+    }
+
+    .card {
+        padding: 23px 21px;
+    }
+
+    .premium-card h2 {
+        font-size: 27px;
+    }
+
+    footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    footer > p {
+        text-align: left;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body class="loading">
+
+<div class="loading-message" id="loadingMessage" role="status" aria-live="polite">
+    <div class="loading-inner">
+        <div class="loading-logo">Edu<span>Nova</span></div>
+        <div class="loading-caption">PREPARING YOUR LEARNING SPACE</div>
+        <div class="loading-line"></div>
+    </div>
 </div>
 
-<!-- =========================================
-     EDUNOVA PREMIUM
-========================================= -->
+<div class="page-content">
 
-<section class="premium-section" id="premiumSection">
+<nav>
+    <a class="logo" href="index.html" aria-label="EduNova home">Edu<span>Nova</span></a>
 
-    <div class="premium-card">
+    <div class="nav">
+        <a class="nav-link" href="index.html">← HOME</a>
+        <a class="nav-link" href="feedback.html">FEEDBACK</a>
+        <button class="logout" id="logoutButton" type="button" onclick="logout()">LOG OUT ↗</button>
+    </div>
+</nav>
 
-        <div class="premium-content">
+<header class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">YOUR EDUNOVA DASHBOARD</div>
 
-            <div class="premium-label" id="premiumLabel">
-                EDUNOVA PREMIUM
+        <h1>Welcome back,<br><span id="username">Student</span>.</h1>
+
+        <p class="hero-description">
+            Mathematics is more than memorizing formulas.
+            It is learning to see the connections, understand the reasoning,
+            and solve problems with confidence. Your next step starts here.
+        </p>
+
+        <div class="hero-bottom">
+            <a class="hero-action" href="#chapters">
+                EXPLORE YOUR CHAPTERS <span aria-hidden="true">↓</span>
+            </a>
+            <span class="hero-note">Eight chapters. One mathematical journey.</span>
+        </div>
+    </div>
+
+    <div class="math-decoration" aria-hidden="true">
+        <div class="math-ring"></div>
+        <div class="math-ring inner"></div>
+        <div class="math-symbol">∫</div>
+        <div class="math-caption">THINK · EXPLORE · UNDERSTAND</div>
+    </div>
+</header>
+
+<main>
+    <section id="chapters" aria-labelledby="chaptersTitle">
+        <div class="section-heading">
+            <div>
+                <div class="section-label">YOUR CURRICULUM</div>
+                <h2 class="section-title" id="chaptersTitle">Go deeper.</h2>
+
+                <div class="chapter-count">
+                    <span class="count-dot"></span>
+                    <span>08 CHAPTERS IN YOUR LEARNING SPACE</span>
+                </div>
             </div>
 
-            <h2 id="premiumTitle">
-                Unlock Your Full Semester 2 Experience
-            </h2>
-
-            <p id="premiumText">
-                Get access to the complete Grade 12 Advanced Mathematics
-                learning experience, including practice questions,
-                worked solutions, and more.
+            <p class="section-description">
+                Choose a chapter to enter its learning space.
+                Explore concepts, work through examples, and build your
+                understanding one step at a time.
             </p>
-
-            <button class="premium-button" id="premiumButton">
-                GET PREMIUM <span>→</span>
-            </button>
-
         </div>
 
-        <div class="premium-mark">
-            <span>✦</span>
+        <div class="grid">
+
+            <article class="card">
+                <div class="card-top">
+                    <div class="symbol" aria-hidden="true">eˣ</div>
+                    <div class="number">01 / 08</div>
+                </div>
+                <h2>Logarithm &amp; Exponential</h2>
+                <p>Explore exponential functions, logarithms, inverse relationships, and their applications.</p>
+                <button class="start" type="button" onclick="coming('Logarithm &amp; Exponential')">
+                    START CHAPTER <span aria-hidden="true">→</span>
+                </button>
+            </article>
+
+            <article class="card">
+                <div class="card-top">
+                    <div class="symbol" aria-hidden="true">θ</div>
+                    <div class="number">02 / 08</div>
+                </div>
+                <h2>Trigonometry</h2>
+                <p>Discover identities, equations, graphs, and the relationships between angles and ratios.</p>
+                <button class="start" type="button" onclick="coming('Trigonometry')">
+                    START CHAPTER <span aria-hidden="true">→</span>
+                </button>
+            </article>
+
+            <article class="card">
+                <div class="card-top">
+                    <div class="symbol" aria-hidden="true">d/dx</div>
+                    <div class="number">03 / 08</div>
+                </div>
+                <h2>Differentiation</h2>
+                <p>Understand derivatives, rates of change, stationary points, and the behavior of functions.</p>
+                <button class="start" type="button" onclick="coming('Differentiation')">
+                    START CHAPTER <span aria-hidden="true">→</span>
+                </button>
+            </article>
+
+            <article class="card">
+                <div class="card-top">
+                    <div class="symbol" aria-hidden="true">P(X)</div>
+                    <div class="number">04 / 08</div>
+                </div>
+                <h2>Discrete-Random Variable</h2>
+                <p>Study probability distributions, expected value, variance, and discrete random variables.</p>
+                <button class="start" type="button" onclick="coming('Discrete-Random Variable')">
+                    START CHAPTER <span aria-hidden="true">→</span>
+                </button>
+            </article>
+
+            <article class="card">
+                <div class="card-top">
+                    <div class="symbol" aria-hidden="true">∫</div>
+                    <div class="number">05 / 08</div>
+                </div>
+                <h2>Integration</h2>
+                <p>Explore antiderivatives, definite integrals, area, and the connection to differentiation.</p>
+                <button class="start" type="button" onclick="location.href='integration.html'">
+                    START CHAPTER <span aria-hidden="true">→</span>
+                </button>
+            </article>
+
+            <article class="card">
+                <div class="card-top">
+                    <div class="symbol" aria-hidden="true">→v</div>
+                    <div class="number">06 / 08</div>
+                </div>
+                <h2>Vectors</h2>
+                <p>Explore magnitude, direction, vector equations, and the geometry of mathematical space.</p>
+                <button class="start" type="button" onclick="location.href='vectors.html'">
+                    START CHAPTER <span aria-hidden="true">→</span>
+                </button>
+            </article>
+
+            <article class="card">
+                <div class="card-top">
+                    <div class="symbol" aria-hidden="true">i</div>
+                    <div class="number">07 / 08</div>
+                </div>
+                <h2>Complex Numbers</h2>
+                <p>Investigate the complex plane, modulus, argument, and algebraic relationships.</p>
+                <button class="start" type="button" onclick="coming('Complex Numbers')">
+                    START CHAPTER <span aria-hidden="true">→</span>
+                </button>
+            </article>
+
+            <article class="card">
+                <div class="card-top">
+                    <div class="symbol" aria-hidden="true">μ σ</div>
+                    <div class="number">08 / 08</div>
+                </div>
+                <h2>Normal Distribution</h2>
+                <p>Understand the normal model, standardization, probabilities, mean, and standard deviation.</p>
+                <button class="start" type="button" onclick="coming('Normal Distribution')">
+                    START CHAPTER <span aria-hidden="true">→</span>
+                </button>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- PREMIUM SECTION: original Supabase access logic is preserved -->
+
+    <section class="premium-section" id="premiumSection" aria-labelledby="premiumTitle">
+        <div class="premium-card" id="premiumCard">
+
+            <div class="premium-content">
+                <div class="premium-label" id="premiumLabel">EDUNOVA PREMIUM</div>
+
+                <h2 id="premiumTitle">Unlock Your Full Semester 2 Experience</h2>
+
+                <p id="premiumText">
+                    Get access to the complete Grade 12 Advanced Mathematics
+                    learning experience, including practice questions,
+                    worked solutions, and more.
+                </p>
+
+                <button class="premium-button" id="premiumButton" type="button">
+                    GET PREMIUM <span aria-hidden="true">→</span>
+                </button>
+            </div>
+
+            <div class="premium-mark" aria-hidden="true">
+                <span>✦</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FEEDBACK LINKS: both original routes are preserved -->
+
+    <section class="feedback-banner" aria-labelledby="feedbackTitle">
+        <div class="feedback-content">
+            <div class="feedback-label">YOUR VOICE MATTERS</div>
+            <strong id="feedbackTitle">Help us improve EduNova.</strong>
+            <p>
+                Every suggestion helps us make the lessons clearer,
+                the practice more useful, and your learning experience better.
+                Tell us what you think.
+            </p>
         </div>
 
-    </div>
+        <a href="feedback.html" class="feedback-button">
+            GIVE FEEDBACK <span aria-hidden="true">→</span>
+        </a>
+    </section>
 
-</section>
-
-<div class="feedback-banner">
-
-    <div>
-        <div class="feedback-label">YOUR VOICE MATTERS</div>
-
-        <strong>Help us improve EduNova.</strong>
-
+    <section class="strip" aria-label="EduNova learning philosophy">
+        <strong>Eight chapters. One journey.</strong>
         <p>
-            Tell us what you liked, what could be clearer,
-            or what you would like us to add.
+            Mathematics made clear. Learn the ideas, understand the steps,
+            and build your confidence through practice.
         </p>
-    </div>
-
-    <a href="feedback.html" class="feedback-button">
-        GIVE FEEDBACK →
-    </a>
-
-</div>
-
-<div class="strip">
-    <strong>Eight chapters. One journey.</strong>
-    <p>
-        The detailed lessons and activities can be added
-        to these chapter spaces as EduNova develops.
-    </p>
-</div>
-
+    </section>
 </main>
-<footer><div class="fl">Edu<span>Nova</span></div><p>© 2026 EduNova. Mathematics, reimagined.</p></footer>
+
+<footer>
+    <div>
+        <div class="footer-logo">Edu<span>Nova</span></div>
+        <div class="footer-tagline">Mathematics made clear.</div>
+    </div>
+    <p>© 2026 EduNova.<br>Mathematics, reimagined.</p>
+</footer>
+
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+"use strict";
+
+/* =========================================
+   SUPABASE CONFIGURATION
+   Keep the same project and publishable key.
+========================================= */
+
 const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
 
 const { createClient } = supabase;
 
@@ -292,93 +1296,212 @@ const supabaseClient = createClient(
     SUPABASE_PUBLISHABLE_KEY
 );
 
-async function checkSession(){
+/* =========================================
+   LOADING SCREEN
+========================================= */
 
-    const {
-        data: { session }
-    } = await supabaseClient.auth.getSession();
+function hideLoading() {
+    const loadingMessage = document.getElementById("loadingMessage");
 
-    if(!session){
-        location.href = "index.html";
+    if (loadingMessage) {
+        loadingMessage.classList.add("hidden");
+    }
+
+    document.body.classList.remove("loading");
+}
+
+/* =========================================
+   SESSION AND STUDENT PROFILE
+========================================= */
+
+async function checkSession() {
+    try {
+        const {
+            data: { session },
+            error: sessionError
+        } = await supabaseClient.auth.getSession();
+
+        if (sessionError || !session) {
+            location.replace("index.html");
+            return;
+        }
+
+        const { data: student, error } = await supabaseClient
+            .from("students")
+            .select("username, email, country, premium_access")
+            .eq("id", session.user.id)
+            .single();
+
+        if (error || !student) {
+            await supabaseClient.auth.signOut();
+
+            localStorage.removeItem("eduNovaUsername");
+            localStorage.removeItem("eduNovaEmail");
+
+            location.replace("index.html");
+            return;
+        }
+
+        const usernameElement = document.getElementById("username");
+
+        if (usernameElement) {
+            usernameElement.textContent = student.username || "Student";
+        }
+
+        /* Set the premium display from the database value. */
+        updatePremiumDisplay(student.premium_access === true);
+
+    } catch (error) {
+        console.error("EduNova dashboard could not load:", error);
+
+        /*
+         * Do not sign out just because of a temporary network error.
+         * Show an error message and allow the student to retry.
+         */
+        showDashboardError();
+    } finally {
+        hideLoading();
+    }
+}
+
+/* =========================================
+   PREMIUM DISPLAY
+   The database remains the source of truth.
+========================================= */
+
+function updatePremiumDisplay(hasPremium) {
+    const premiumCard = document.getElementById("premiumCard");
+    const premiumLabel = document.getElementById("premiumLabel");
+    const premiumTitle = document.getElementById("premiumTitle");
+    const premiumText = document.getElementById("premiumText");
+    const premiumButton = document.getElementById("premiumButton");
+
+    if (
+        !premiumCard ||
+        !premiumLabel ||
+        !premiumTitle ||
+        !premiumText ||
+        !premiumButton
+    ) {
         return;
     }
 
-    const { data: student, error } = await supabaseClient
-        .from("students")
-        .select("username, email, country, premium_access")
-        .eq("id", session.user.id)
-        .single();
+    if (hasPremium) {
+        premiumCard.classList.add("active");
 
-    if(error || !student){
-        await supabaseClient.auth.signOut();
+        premiumLabel.textContent = "PREMIUM ACTIVE";
+
+        premiumTitle.textContent =
+            "Your Semester 2 Access Is Active";
+
+        premiumText.textContent =
+            "You have full access to the EduNova Semester 2 learning experience. Keep learning, practicing, and building your mathematics skills.";
+
+        premiumButton.innerHTML =
+            'CONTINUE LEARNING <span aria-hidden="true">→</span>';
+
+        premiumButton.onclick = function () {
+            window.location.href = "dashboard.html";
+        };
+
+    } else {
+        premiumCard.classList.remove("active");
+
+        premiumLabel.textContent = "EDUNOVA PREMIUM";
+
+        premiumTitle.textContent =
+            "Unlock Your Full Semester 2 Experience";
+
+        premiumText.textContent =
+            "Get access to the complete Grade 12 Advanced Mathematics learning experience, including practice questions, worked solutions, and more.";
+
+        premiumButton.innerHTML =
+            'GET PREMIUM <span aria-hidden="true">→</span>';
+
+        premiumButton.onclick = function () {
+            window.location.href = "premium.html";
+        };
+    }
+}
+
+/* =========================================
+   DASHBOARD ERROR MESSAGE
+========================================= */
+
+function showDashboardError() {
+    const usernameElement = document.getElementById("username");
+
+    if (usernameElement) {
+        usernameElement.textContent = "Student";
+    }
+
+    const premiumTitle = document.getElementById("premiumTitle");
+    const premiumText = document.getElementById("premiumText");
+
+    if (premiumTitle) {
+        premiumTitle.textContent = "Unable to load your account details";
+    }
+
+    if (premiumText) {
+        premiumText.textContent =
+            "Please check your internet connection and reload this page. Your premium status has not been changed.";
+    }
+}
+
+/* =========================================
+   LOG OUT
+========================================= */
+
+async function logout() {
+    const logoutButton = document.getElementById("logoutButton");
+
+    if (logoutButton) {
+        logoutButton.disabled = true;
+        logoutButton.textContent = "LOGGING OUT...";
+    }
+
+    try {
+        const { error } = await supabaseClient.auth.signOut();
+
+        if (error) {
+            throw error;
+        }
+
         localStorage.removeItem("eduNovaUsername");
         localStorage.removeItem("eduNovaEmail");
+
         location.href = "index.html";
-        return;
+
+    } catch (error) {
+        console.error("EduNova logout failed:", error);
+
+        if (logoutButton) {
+            logoutButton.disabled = false;
+            logoutButton.textContent = "LOG OUT ↗";
+        }
+
+        alert("We could not log you out. Please check your connection and try again.");
     }
-
-    document.getElementById("username").textContent = student.username;
-    const premiumSection = document.getElementById("premiumSection");
-const premiumCard = premiumSection.querySelector(".premium-card");
-const premiumLabel = document.getElementById("premiumLabel");
-const premiumTitle = document.getElementById("premiumTitle");
-const premiumText = document.getElementById("premiumText");
-const premiumButton = document.getElementById("premiumButton");
-
-if(student.premium_access === true){
-
-    premiumCard.classList.add("active");
-
-    premiumLabel.textContent = "PREMIUM ACTIVE";
-
-    premiumTitle.textContent =
-        "Your Semester 2 Access Is Active";
-
-    premiumText.textContent =
-        "You have full access to the EduNova Semester 2 learning experience. Keep learning, practicing, and building your mathematics skills.";
-
-    premiumButton.innerHTML =
-        'CONTINUE LEARNING <span>→</span>';
-
-    premiumButton.onclick = function(){
-        window.location.href = "dashboard.html";
-    };
-
-}else{
-
-    premiumLabel.textContent = "EDUNOVA PREMIUM";
-
-    premiumTitle.textContent =
-        "Unlock Your Full Semester 2 Experience";
-
-    premiumText.textContent =
-        "Get access to the complete Grade 12 Advanced Mathematics learning experience, including practice questions, worked solutions, and more.";
-
-    premiumButton.innerHTML =
-        'GET PREMIUM <span>→</span>';
-
-    premiumButton.onclick = function(){
-        window.location.href = "premium.html";
-    };
-
-}
 }
 
-async function logout(){
+/* =========================================
+   CHAPTERS THAT ARE NOT CONNECTED YET
+   Existing behavior is preserved.
+========================================= */
 
-    await supabaseClient.auth.signOut();
-
-    localStorage.removeItem("eduNovaUsername");
-    localStorage.removeItem("eduNovaEmail");
-
-    location.href = "index.html";
+function coming(name) {
+    alert(
+        name +
+        " is being prepared for EduNova. The chapter content is coming soon! 📚"
+    );
 }
 
-function coming(n){
-    alert(n + " is being prepared for EduNova. The chapter content is coming soon! 📚");
-}
+/* =========================================
+   INITIALIZE
+========================================= */
 
 document.addEventListener("DOMContentLoaded", checkSession);
 </script>
+
 </body>
 </html>
