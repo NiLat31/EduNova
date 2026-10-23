@@ -1,0 +1,3025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09090b">
+<meta name="description" content="EduNova Vectors: Position Vectors Practice.">
+<title>EduNova | Position Vectors Practice</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --purple:#7c3aed;
+    --purple-soft:#a78bfa;
+    --purple-pale:#f3efff;
+    --ink:#18151f;
+    --deep:#09090b;
+    --paper:#f7f6f2;
+    --white:#fff;
+    --muted:#747078;
+    --line:#ded9e5;
+    --green:#72d6a0;
+    --green-dark:#183b2a;
+    --red:#e52b20;
+    --red-pale:#fff1ef;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:90px;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    overflow-x:hidden;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+::selection{
+    background:var(--purple);
+    color:#fff;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar{
+    min-height:78px;
+    padding:0 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+    background:rgba(247,246,242,.95);
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:50;
+    backdrop-filter:blur(15px);
+}
+
+.back-link,
+.logout-btn{
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.back-link{
+    text-decoration:none;
+}
+
+.back-link:hover{
+    color:var(--purple);
+}
+
+.logo{
+    font:700 27px/1 "Playfair Display",serif;
+    letter-spacing:-1px;
+    text-decoration:none;
+}
+
+.logo span{
+    color:var(--purple);
+}
+
+.logout-btn{
+    border:1px solid var(--ink);
+    background:var(--ink);
+    color:#fff;
+    padding:11px 16px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.logout-btn:hover{
+    background:var(--purple);
+    border-color:var(--purple);
+    transform:translateY(-2px);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:410px;
+    padding:78px 7% 72px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    background:var(--deep);
+    color:#fff;
+    isolation:isolate;
+}
+
+.hero-grid{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    opacity:.23;
+    background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:54px 54px;
+    mask-image:linear-gradient(90deg,#000 0%,#000 60%,transparent 100%);
+}
+
+.hero-orbit{
+    position:absolute;
+    width:430px;
+    height:430px;
+    right:2%;
+    top:-15px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:50%;
+    animation:spin 30s linear infinite;
+}
+
+.hero-orbit::before{
+    content:"";
+    position:absolute;
+    inset:48px;
+    border:1px solid rgba(124,58,237,.45);
+    border-radius:50%;
+}
+
+.hero-orbit::after{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:8px;
+    right:46px;
+    top:80px;
+    background:var(--purple);
+    border-radius:50%;
+    box-shadow:0 0 25px rgba(124,58,237,.9);
+}
+
+.hero-content{
+    max-width:760px;
+    position:relative;
+    z-index:2;
+    animation:enterUp .8s both;
+}
+
+.eyebrow{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    color:var(--purple-soft);
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:3px;
+    margin-bottom:20px;
+}
+
+.eyebrow::before{
+    content:"";
+    width:27px;
+    height:2px;
+    background:var(--purple);
+}
+
+.hero h1{
+    font:600 clamp(46px,6vw,76px)/1.02 "Playfair Display",serif;
+    letter-spacing:-3px;
+}
+
+.hero h1 span{
+    color:var(--purple-soft);
+}
+
+.hero p{
+    max-width:650px;
+    margin-top:21px;
+    color:#aaa7af;
+    font-size:14px;
+    line-height:1.9;
+}
+
+.hero-meta{
+    margin-top:28px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+}
+
+.hero-chip{
+    padding:9px 12px;
+    border:1px solid rgba(255,255,255,.13);
+    color:#aaa7af;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:1.3px;
+}
+
+.hero-chip.active{
+    color:#fff;
+    border-color:rgba(124,58,237,.55);
+    background:rgba(124,58,237,.1);
+}
+
+.hero-symbol{
+    position:absolute;
+    right:12%;
+    top:50%;
+    transform:translateY(-50%);
+    width:220px;
+    height:220px;
+    display:grid;
+    place-items:center;
+    pointer-events:none;
+}
+
+.hero-symbol .circle{
+    position:absolute;
+    inset:0;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:50%;
+}
+
+.hero-symbol .circle.two{
+    inset:30px;
+    border-color:rgba(124,58,237,.45);
+}
+
+.hero-symbol .vector{
+    width:110px;
+    height:4px;
+    background:var(--purple-soft);
+    transform:rotate(-32deg);
+    box-shadow:0 0 18px rgba(167,139,250,.35);
+}
+
+.hero-symbol .vector::after{
+    content:"";
+    position:absolute;
+    right:-2px;
+    top:-6px;
+    border-left:13px solid var(--purple-soft);
+    border-top:8px solid transparent;
+    border-bottom:8px solid transparent;
+}
+
+.hero-symbol .origin{
+    position:absolute;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#fff;
+}
+
+.hero-symbol .label{
+    position:absolute;
+    right:2px;
+    bottom:5px;
+    color:#67636b;
+    font-size:8px;
+    letter-spacing:2px;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    width:86%;
+    max-width:1180px;
+    margin:auto;
+    padding:78px 0 100px;
+}
+
+.practice-intro{
+    max-width:850px;
+    margin-bottom:60px;
+}
+
+.section-label{
+    color:var(--purple);
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2.8px;
+    margin-bottom:13px;
+}
+
+.practice-intro h2{
+    font:600 clamp(37px,5vw,59px)/1.05 "Playfair Display",serif;
+    letter-spacing:-1.8px;
+}
+
+.practice-intro p{
+    max-width:790px;
+    margin-top:20px;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.95;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-panel{
+    margin-bottom:50px;
+    padding:22px 25px;
+    background:#fff;
+    border:1px solid var(--line);
+}
+
+.progress-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:13px;
+}
+
+.progress-label{
+    color:#77717b;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:1.8px;
+}
+
+.progress-count{
+    font:600 18px "Playfair Display",serif;
+}
+
+.progress-track{
+    width:100%;
+    height:5px;
+    background:#ece8ef;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,var(--purple),var(--purple-soft));
+    transition:width .45s ease;
+}
+
+/* =========================
+   QUESTION CARDS
+========================= */
+
+.question{
+    position:relative;
+    margin-top:25px;
+    padding:35px;
+    background:#fff;
+    border:1px solid var(--line);
+    overflow:hidden;
+    transition:.35s;
+}
+
+.question:hover{
+    box-shadow:0 18px 50px rgba(24,21,31,.055);
+}
+
+.question::before{
+    content:attr(data-number);
+    position:absolute;
+    right:-12px;
+    top:-45px;
+    font:180px "Playfair Display",serif;
+    color:rgba(124,58,237,.035);
+    pointer-events:none;
+}
+
+.question-head{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:flex-start;
+    gap:17px;
+    margin-bottom:24px;
+}
+
+.question-number{
+    width:43px;
+    height:43px;
+    flex:0 0 43px;
+    display:grid;
+    place-items:center;
+    background:var(--ink);
+    color:#fff;
+    font-size:10px;
+    font-weight:700;
+}
+
+.question-tag{
+    color:var(--purple);
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:6px;
+}
+
+.question-head h2{
+    font:600 27px/1.2 "Playfair Display",serif;
+}
+
+.question-body{
+    position:relative;
+    z-index:2;
+    max-width:850px;
+}
+
+.question-body p{
+    color:#55515a;
+    font-size:14px;
+    line-height:1.95;
+}
+
+.question-equation{
+    margin-top:18px;
+    padding:21px;
+    background:#faf9fb;
+    border:1px solid #ebe6ef;
+    font-size:20px;
+    text-align:center;
+}
+
+.answer-area{
+    position:relative;
+    z-index:2;
+    margin-top:25px;
+    padding-top:23px;
+    border-top:1px solid #eeeaf0;
+}
+
+.answer-label{
+    display:block;
+    color:#85808a;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:1.7px;
+    margin-bottom:9px;
+}
+
+.answer-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.answer-input{
+    width:100%;
+    max-width:390px;
+    padding:13px 15px;
+    border:1px solid #d8d2dd;
+    background:#fbfafc;
+    color:var(--ink);
+    outline:none;
+    font-size:13px;
+    transition:.2s;
+}
+
+.answer-input:focus{
+    border-color:var(--purple);
+    box-shadow:0 0 0 3px rgba(124,58,237,.08);
+}
+
+.check-btn{
+    border:1px solid var(--ink);
+    background:var(--ink);
+    color:#fff;
+    padding:13px 17px;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.check-btn:hover{
+    background:var(--purple);
+    border-color:var(--purple);
+    transform:translateY(-2px);
+}
+
+.feedback{
+    display:none;
+    margin-top:14px;
+    padding:14px 16px;
+    font-size:11px;
+    line-height:1.75;
+}
+
+.feedback.correct{
+    display:block;
+    background:#edf9f2;
+    border-left:3px solid var(--green);
+    color:#28543c;
+}
+
+.feedback.wrong{
+    display:block;
+    background:var(--red-pale);
+    border-left:3px solid var(--red);
+    color:#7a2c25;
+}
+
+.question.correct{
+    border-color:rgba(114,214,160,.8);
+}
+
+.question.incorrect{
+    border-color:rgba(229,43,32,.35);
+}
+
+.answer-display{
+    margin-top:10px;
+    color:#77717b;
+    font-size:10px;
+}
+
+/* =========================
+   MULTIPLE CHOICE
+========================= */
+
+.choice-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:20px;
+}
+
+.choice{
+    position:relative;
+}
+
+.choice input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+}
+
+.choice label{
+    display:block;
+    padding:15px 17px;
+    background:#fbfafc;
+    border:1px solid #ddd7e2;
+    cursor:pointer;
+    color:#4e4952;
+    font-size:12px;
+    transition:.2s;
+}
+
+.choice label:hover{
+    border-color:var(--purple);
+    transform:translateY(-1px);
+}
+
+.choice input:checked + label{
+    background:var(--purple-pale);
+    border-color:var(--purple);
+    color:var(--purple);
+    font-weight:700;
+}
+
+.choice.correct-choice label{
+    background:#edf9f2;
+    border-color:var(--green);
+    color:#24583c;
+}
+
+.choice.wrong-choice label{
+    background:var(--red-pale);
+    border-color:var(--red);
+    color:#792d27;
+}
+
+/* =========================
+   VECTOR INPUT
+========================= */
+
+.vector-input{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+.vector-input input{
+    width:95px;
+    padding:13px 12px;
+    border:1px solid #d8d2dd;
+    background:#fbfafc;
+    font-size:13px;
+    outline:none;
+    text-align:center;
+}
+
+.vector-input input:focus{
+    border-color:var(--purple);
+}
+
+.vector-symbol{
+    font:600 20px "Playfair Display",serif;
+}
+
+/* =========================
+   DIAGRAM QUESTION
+========================= */
+
+.mini-diagram{
+    margin-top:23px;
+    padding:12px;
+    background:#fbfafc;
+    border:1px solid #ebe6ef;
+}
+
+.mini-diagram svg{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+.diagram-axis{
+    stroke:#aaa5ae;
+    stroke-width:1;
+}
+
+.diagram-grid{
+    stroke:#e8e3eb;
+    stroke-width:1;
+}
+
+.diagram-point{
+    fill:var(--purple);
+}
+
+.diagram-origin{
+    fill:var(--ink);
+}
+
+.diagram-vector{
+    stroke:var(--purple);
+    stroke-width:4;
+    stroke-linecap:round;
+}
+
+.diagram-text{
+    font-family:"DM Sans",sans-serif;
+    font-size:12px;
+    font-weight:700;
+    fill:#29252d;
+}
+
+/* =========================
+   CHALLENGE SECTION
+========================= */
+
+.challenge-banner{
+    margin-top:75px;
+    padding:42px;
+    background:var(--ink);
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+}
+
+.challenge-banner::after{
+    content:"?";
+    position:absolute;
+    right:20px;
+    bottom:-65px;
+    font:230px "Playfair Display",serif;
+    color:rgba(124,58,237,.1);
+}
+
+.challenge-banner-content{
+    position:relative;
+    z-index:2;
+}
+
+.challenge-banner .section-label{
+    color:var(--purple-soft);
+}
+
+.challenge-banner h2{
+    font:600 40px/1.1 "Playfair Display",serif;
+}
+
+.challenge-banner p{
+    max-width:650px;
+    margin-top:12px;
+    color:#aaa7af;
+    font-size:12px;
+    line-height:1.8;
+}
+
+/* =========================
+   FINAL RESULT
+========================= */
+
+.result-section{
+    margin-top:30px;
+    padding:65px 30px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 45%,rgba(124,58,237,.18),transparent 34%),
+        #09090b;
+    color:#fff;
+    text-align:center;
+    opacity:.35;
+    transform:translateY(22px);
+    transition:.7s ease;
+}
+
+.result-section.ready{
+    opacity:1;
+    transform:none;
+}
+
+.result-ring{
+    width:90px;
+    height:90px;
+    margin:0 auto 25px;
+    position:relative;
+    display:grid;
+    place-items:center;
+}
+
+.result-ring::before,
+.result-ring::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(167,139,250,.4);
+    inset:0;
+    animation:spin 13s linear infinite;
+}
+
+.result-ring::after{
+    inset:12px;
+    border-color:rgba(124,58,237,.55);
+    animation-direction:reverse;
+    animation-duration:8s;
+}
+
+.result-icon{
+    width:52px;
+    height:52px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:var(--purple);
+    font-size:22px;
+    box-shadow:0 0 30px rgba(124,58,237,.35);
+}
+
+.result-section h2{
+    font:600 clamp(35px,5vw,55px)/1.05 "Playfair Display",serif;
+}
+
+.result-section h2 span{
+    color:var(--purple-soft);
+}
+
+.result-message{
+    max-width:650px;
+    margin:17px auto 0;
+    color:#aaa7af;
+    font-size:12px;
+    line-height:1.9;
+}
+
+.result-stats{
+    display:flex;
+    justify-content:center;
+    width:max-content;
+    max-width:100%;
+    margin:30px auto;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.result-stat{
+    min-width:145px;
+    padding:16px 23px;
+    border-right:1px solid rgba(255,255,255,.1);
+}
+
+.result-stat:last-child{
+    border-right:0;
+}
+
+.result-stat strong{
+    display:block;
+    font:600 25px "Playfair Display",serif;
+}
+
+.result-stat span{
+    display:block;
+    margin-top:5px;
+    color:#77727b;
+    font-size:9px;
+    letter-spacing:1px;
+}
+
+.finish-button{
+    margin-top:5px;
+    padding:15px 23px;
+    border:0;
+    background:var(--purple);
+    color:#fff;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.finish-button:hover:not(:disabled){
+    background:#fff;
+    color:var(--ink);
+    transform:translateY(-2px);
+}
+
+.finish-button:disabled{
+    opacity:.65;
+    cursor:default;
+}
+
+.back-lesson{
+    display:inline-block;
+    margin-top:20px;
+    color:#aaa7af;
+    font-size:10px;
+    text-decoration:none;
+}
+
+.back-lesson:hover{
+    color:#fff;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:36px 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:var(--deep);
+    color:#fff;
+}
+
+.footer-brand{
+    font:600 25px "Playfair Display",serif;
+}
+
+.footer-brand span{
+    color:var(--purple);
+}
+
+.footer-tagline{
+    margin-top:6px;
+    color:#77727b;
+    font-size:9px;
+}
+
+.footer-right{
+    color:#77727b;
+    font-size:9px;
+    text-align:right;
+    line-height:1.7;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes spin{
+    from{transform:rotate(0)}
+    to{transform:rotate(360deg)}
+}
+
+@keyframes enterUp{
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+@media(max-width:800px){
+
+    .navbar{
+        padding:0 5%;
+    }
+
+    .hero{
+        padding:65px 6%;
+    }
+
+    .hero-symbol{
+        right:-60px;
+        opacity:.25;
+    }
+
+    main{
+        width:90%;
+    }
+
+    .choice-grid{
+        grid-template-columns:1fr;
+    }
+
+    .question{
+        padding:27px;
+    }
+
+    .result-stats{
+        width:100%;
+    }
+
+    .result-stat{
+        min-width:33.33%;
+        padding:13px 8px;
+    }
+
+    .result-stat strong{
+        font-size:20px;
+    }
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        min-height:70px;
+        padding:14px 5%;
+        flex-wrap:wrap;
+    }
+
+    .logo{
+        order:-1;
+        width:100%;
+        text-align:center;
+    }
+
+    .hero{
+        min-height:400px;
+        padding:58px 6%;
+    }
+
+    .hero h1{
+        letter-spacing:-1.5px;
+    }
+
+    .hero-symbol{
+        right:-90px;
+        top:35px;
+        transform:none;
+        scale:.65;
+    }
+
+    main{
+        padding:60px 0 80px;
+    }
+
+    .question{
+        padding:23px;
+    }
+
+    .question-head{
+        gap:12px;
+    }
+
+    .question-head h2{
+        font-size:23px;
+    }
+
+    .challenge-banner{
+        padding:32px 25px;
+    }
+
+    .challenge-banner h2{
+        font-size:32px;
+    }
+
+    footer{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:17px;
+    }
+
+    .footer-right{
+        text-align:left;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none!important;
+        transition:none!important;
+        scroll-behavior:auto!important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="position-vectors.html" class="back-link">← BACK TO LESSON</a>
+
+    <a href="dashboard.html" class="logo">
+        Edu<span>Nova</span>
+    </a>
+
+    <button class="logout-btn" id="logoutBtn" type="button">
+        LOG OUT ↗
+    </button>
+</nav>
+
+<header class="hero">
+
+    <div class="hero-grid"></div>
+    <div class="hero-orbit"></div>
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            VECTORS • PRACTICE
+        </div>
+
+        <h1>
+            Position Vectors <span>Lab.</span>
+        </h1>
+
+        <p>
+            Start with the direct ideas. Then the questions begin to connect
+            position vectors with magnitude, unit vectors, angles and geometry.
+            By the end, you will have to decide which vector idea the problem
+            is asking you to use.
+        </p>
+
+        <div class="hero-meta">
+            <span class="hero-chip active">POSITION</span>
+            <span class="hero-chip">DISPLACEMENT</span>
+            <span class="hero-chip">MIXED VECTORS</span>
+            <span class="hero-chip">CHALLENGE</span>
+        </div>
+
+    </div>
+
+    <div class="hero-symbol" aria-hidden="true">
+
+        <div class="circle"></div>
+        <div class="circle two"></div>
+
+        <div class="origin"></div>
+
+        <div class="vector"></div>
+
+        <div class="label">
+            A → B
+        </div>
+
+    </div>
+
+</header>
+
+<main>
+
+<section class="practice-intro">
+
+    <div class="section-label">
+        PRACTICE • POSITION VECTORS
+    </div>
+
+    <h2>
+        First understand it.<br>
+        Then control it.
+    </h2>
+
+    <p>
+        The first questions are deliberately direct. As you move forward,
+        the questions stop announcing which technique you need. You will
+        have to read the situation, identify the mathematics and carry it
+        through yourself.
+    </p>
+
+</section>
+
+<section class="progress-panel">
+
+    <div class="progress-top">
+
+        <div class="progress-label">
+            YOUR PROGRESS
+        </div>
+
+        <div class="progress-count" id="progressCount">
+            0 / 14
+        </div>
+
+    </div>
+
+    <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DIRECT QUESTIONS
+===================================================== -->
+
+<section>
+
+<div class="section-label">
+    STAGE I • DIRECT POSITION VECTORS
+</div>
+
+
+<!-- QUESTION 1 -->
+
+<article class="question" data-number="01" id="q1">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            01
+        </div>
+
+        <div>
+            <div class="question-tag">
+                POSITION VECTOR
+            </div>
+
+            <h2>
+                Find the position vector of A.
+            </h2>
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            Point \(A\) has coordinates
+            \(A=(7,-3)\).
+            Find \(\overrightarrow{OA}\).
+        </p>
+
+    </div>
+
+    <div class="vector-input">
+
+        <input id="q1x" type="number" placeholder="i component">
+        <span class="vector-symbol">i +</span>
+        <input id="q1y" type="number" placeholder="j component">
+        <span class="vector-symbol">j</span>
+
+        <button class="check-btn" onclick="checkQ1()">
+            CHECK
+        </button>
+
+    </div>
+
+    <div class="feedback" id="feedback1"></div>
+
+</article>
+
+
+<!-- QUESTION 2 -->
+
+<article class="question" data-number="02" id="q2">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            02
+        </div>
+
+        <div>
+            <div class="question-tag">
+                COORDINATES
+            </div>
+
+            <h2>
+                Recover the point.
+            </h2>
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            A point \(B\) has position vector
+            \[
+            \overrightarrow{OB}=-4\mathbf{i}+9\mathbf{j}.
+            \]
+            What are the coordinates of \(B\)?
+        </p>
+
+    </div>
+
+    <div class="answer-row">
+
+        <input
+            class="answer-input"
+            id="q2"
+            type="text"
+            placeholder="Example: (-4, 9)"
+        >
+
+        <button class="check-btn" onclick="checkQ2()">
+            CHECK
+        </button>
+
+    </div>
+
+    <div class="feedback" id="feedback2"></div>
+
+</article>
+
+
+<!-- QUESTION 3 -->
+
+<article class="question" data-number="03" id="q3">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            03
+        </div>
+
+        <div>
+            <div class="question-tag">
+                DISPLACEMENT
+            </div>
+
+            <h2>
+                Find the vector from A to B.
+            </h2>
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            Given
+            \(A=(3,5)\)
+            and
+            \(B=(11,1)\),
+            find
+            \(\overrightarrow{AB}\).
+        </p>
+
+    </div>
+
+    <div class="vector-input">
+
+        <input id="q3x" type="number" placeholder="i component">
+        <span class="vector-symbol">i +</span>
+        <input id="q3y" type="number" placeholder="j component">
+        <span class="vector-symbol">j</span>
+
+        <button class="check-btn" onclick="checkQ3()">
+            CHECK
+        </button>
+
+    </div>
+
+    <div class="feedback" id="feedback3"></div>
+
+</article>
+
+
+<!-- QUESTION 4 -->
+
+<article class="question" data-number="04" id="q4">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            04
+        </div>
+
+        <div>
+            <div class="question-tag">
+                DISTANCE
+            </div>
+
+            <h2>
+                How far apart are the points?
+            </h2>
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            \(A=(-2,4)\) and \(B=(7,10)\).
+            Find the distance \(AB\).
+        </p>
+
+    </div>
+
+    <div class="answer-row">
+
+        <input
+            class="answer-input"
+            id="q4"
+            type="number"
+            step="any"
+            placeholder="Distance"
+        >
+
+        <button class="check-btn" onclick="checkQ4()">
+            CHECK
+        </button>
+
+    </div>
+
+    <div class="feedback" id="feedback4"></div>
+
+</article>
+
+</section>
+
+
+<!-- =====================================================
+     STAGE II
+===================================================== -->
+
+<section class="challenge-banner">
+
+    <div class="challenge-banner-content">
+
+        <div class="section-label">
+            STAGE II • THE IDEAS START CONNECTING
+        </div>
+
+        <h2>
+            The questions won't tell you what to use.
+        </h2>
+
+        <p>
+            From here onward, the problem may involve more than one idea from
+            the vectors chapter. Read carefully, choose your mathematics,
+            and build the answer yourself.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- QUESTION 5 -->
+
+<article class="question" data-number="05" id="q5">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            05
+        </div>
+
+        <div>
+            <div class="question-tag">
+                MAGNITUDE
+            </div>
+
+            <h2>
+                A vector is given.
+            </h2>
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            Given
+            \[
+            \mathbf{v}=9\mathbf{i}+12\mathbf{j},
+            \]
+            find \(|\mathbf{v}|\).
+        </p>
+
+    </div>
+
+    <div class="answer-row">
+
+        <input
+            class="answer-input"
+            id="q5"
+            type="number"
+            step="any"
+            placeholder="Magnitude"
+        >
+
+        <button class="check-btn" onclick="checkQ5()">
+            CHECK
+        </button>
+
+    </div>
+
+    <div class="feedback" id="feedback5"></div>
+
+</article>
+
+
+<!-- QUESTION 6 -->
+
+<article class="question" data-number="06" id="q6">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            06
+        </div>
+
+        <div>
+            <div class="question-tag">
+                UNIT VECTOR
+            </div>
+
+            <h2>
+                Turn the vector into a unit vector.
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            Find the unit vector in the direction of
+            \[
+            \mathbf{v}=6\mathbf{i}+8\mathbf{j}.
+            \]
+        </p>
+
+    </div>
+
+    <div class="vector-input">
+
+        <input id="q6x" type="number" placeholder="i coefficient">
+        <span class="vector-symbol">i +</span>
+
+        <input id="q6y" type="number" placeholder="j coefficient">
+        <span class="vector-symbol">j</span>
+
+        <button class="check-btn" onclick="checkQ6()">
+            CHECK
+        </button>
+
+    </div>
+
+    <div class="feedback" id="feedback6"></div>
+
+</article>
+
+
+<!-- QUESTION 7 -->
+
+<article class="question" data-number="07" id="q7">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            07
+        </div>
+
+        <div>
+            <div class="question-tag">
+                POSITION + MAGNITUDE
+            </div>
+
+            <h2>
+                A point is located in the plane.
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            The position vector of \(P\) is
+            \[
+            \overrightarrow{OP}=5\mathbf{i}-12\mathbf{j}.
+            \]
+            Find the distance from \(O\) to \(P\).
+        </p>
+
+    </div>
+
+    <div class="answer-row">
+
+        <input
+            class="answer-input"
+            id="q7"
+            type="number"
+            step="any"
+            placeholder="Distance"
+        >
+
+        <button class="check-btn" onclick="checkQ7()">
+            CHECK
+        </button>
+
+    </div>
+
+    <div class="feedback" id="feedback7"></div>
+
+</article>
+
+
+<!-- QUESTION 8 -->
+
+<article class="question" data-number="08" id="q8">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            08
+        </div>
+
+        <div>
+            <div class="question-tag">
+                DIRECTION
+            </div>
+
+            <h2>
+                Compare two vectors.
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            Consider
+            \[
+            \mathbf{a}=3\mathbf{i}+4\mathbf{j}
+            \]
+            and
+            \[
+            \mathbf{b}=6\mathbf{i}+8\mathbf{j}.
+            \]
+            Which statement is true?
+        </p>
+
+    </div>
+
+    <div class="choice-grid" id="q8choices">
+
+        <div class="choice">
+            <input type="radio" name="q8" id="q8a" value="a">
+            <label for="q8a">
+                A. They have different directions.
+            </label>
+        </div>
+
+        <div class="choice">
+            <input type="radio" name="q8" id="q8b" value="b">
+            <label for="q8b">
+                B. They point in the same direction.
+            </label>
+        </div>
+
+        <div class="choice">
+            <input type="radio" name="q8" id="q8c" value="c">
+            <label for="q8c">
+                C. They are perpendicular.
+            </label>
+        </div>
+
+        <div class="choice">
+            <input type="radio" name="q8" id="q8d" value="d">
+            <label for="q8d">
+                D. Their magnitudes are equal.
+            </label>
+        </div>
+
+    </div>
+
+    <button
+        class="check-btn"
+        style="margin-top:20px"
+        onclick="checkQ8()"
+    >
+        CHECK
+    </button>
+
+    <div class="feedback" id="feedback8"></div>
+
+</article>
+
+
+<!-- QUESTION 9 -->
+
+<article class="question" data-number="09" id="q9">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            09
+        </div>
+
+        <div>
+            <div class="question-tag">
+                POSITION + DISPLACEMENT
+            </div>
+
+            <h2>
+                Follow the journey.
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            A particle moves from
+            \(P=(-6,4)\)
+            to
+            \(Q=(2,-8)\).
+            Find the magnitude of the displacement vector
+            \(\overrightarrow{PQ}\).
+        </p>
+
+    </div>
+
+    <div class="answer-row">
+
+        <input
+            class="answer-input"
+            id="q9"
+            type="number"
+            step="any"
+            placeholder="Magnitude"
+        >
+
+        <button class="check-btn" onclick="checkQ9()">
+            CHECK
+        </button>
+
+    </div>
+
+    <div class="feedback" id="feedback9"></div>
+
+</article>
+
+
+<!-- QUESTION 10 -->
+
+<article class="question" data-number="10" id="q10">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            10
+        </div>
+
+        <div>
+            <div class="question-tag">
+                VECTOR GEOMETRY
+            </div>
+
+            <h2>
+                A missing vertex.
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            \(A=(1,2)\), \(B=(7,2)\), and \(D=(1,6)\)
+            are three vertices of parallelogram \(ABCD\).
+            Find the coordinates of \(C\).
+        </p>
+
+        <div class="mini-diagram">
+
+            <svg viewBox="0 0 620 270" aria-label="Parallelogram diagram">
+
+                <line x1="70" y1="220" x2="550" y2="220" class="diagram-axis"/>
+                <line x1="90" y1="250" x2="90" y2="35" class="diagram-axis"/>
+
+                <polygon
+                    points="150,190 450,190 510,80 210,80"
+                    fill="rgba(124,58,237,.06)"
+                    stroke="#7c3aed"
+                    stroke-width="2"
+                />
+
+                <circle cx="150" cy="190" r="6" class="diagram-origin"/>
+                <circle cx="450" cy="190" r="7" class="diagram-point"/>
+                <circle cx="210" cy="80" r="7" class="diagram-point"/>
+                <circle cx="510" cy="80" r="7" class="diagram-point"/>
+
+                <text x="137" y="212" class="diagram-text">A</text>
+                <text x="442" y="212" class="diagram-text">B</text>
+                <text x="198" y="70" class="diagram-text">D</text>
+                <text x="517" y="70" class="diagram-text">C</text>
+
+            </svg>
+
+        </div>
+
+    </div>
+
+    <div class="answer-row">
+
+        <input
+            class="answer-input"
+            id="q10"
+            type="text"
+            placeholder="Example: (7, 6)"
+        >
+
+        <button class="check-btn" onclick="checkQ10()">
+            CHECK
+        </button>
+
+    </div>
+
+    <div class="feedback" id="feedback10"></div>
+
+</article>
+
+
+<!-- =====================================================
+     STAGE III
+===================================================== -->
+
+<section class="challenge-banner">
+
+    <div class="challenge-banner-content">
+
+        <div class="section-label">
+            STAGE III • MIXED VECTOR THINKING
+        </div>
+
+        <h2>
+            Now the labels disappear.
+        </h2>
+
+        <p>
+            There is no “position vector” label, no “magnitude” label,
+            and no recipe. The mathematics is still there. You have to see it.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- QUESTION 11 -->
+
+<article class="question" data-number="11" id="q11">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            11
+        </div>
+
+        <div>
+            <div class="question-tag">
+                MIXED
+            </div>
+
+            <h2>
+                Two points, one direction.
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            \(A=(-3,7)\) and \(B=(9,-2)\).
+            Find the unit vector in the direction from \(A\) to \(B\).
+        </p>
+
+    </div>
+
+    <div class="vector-input">
+
+        <input id="q11x" type="text" placeholder="i coefficient">
+        <span class="vector-symbol">i +</span>
+
+        <input id="q11y" type="text" placeholder="j coefficient">
+        <span class="vector-symbol">j</span>
+
+        <button class="check-btn" onclick="checkQ11()">
+            CHECK
+        </button>
+
+    </div>
+
+    <div class="feedback" id="feedback11"></div>
+
+</article>
+
+
+<!-- QUESTION 12 -->
+
+<article class="question" data-number="12" id="q12">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            12
+        </div>
+
+        <div>
+            <div class="question-tag">
+                MIXED
+            </div>
+
+            <h2>
+                The hidden route.
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            A particle is at
+            \(P=(4,-1)\).
+            Its displacement vector is
+            \[
+            7\mathbf{i}+5\mathbf{j}.
+            \]
+            What are the coordinates of its final position \(Q\)?
+        </p>
+
+    </div>
+
+    <div class="answer-row">
+
+        <input
+            class="answer-input"
+            id="q12"
+            type="text"
+            placeholder="Coordinates of Q"
+        >
+
+        <button class="check-btn" onclick="checkQ12()">
+            CHECK
+        </button>
+
+    </div>
+
+    <div class="feedback" id="feedback12"></div>
+
+</article>
+
+
+<!-- QUESTION 13 -->
+
+<article class="question" data-number="13" id="q13">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            13
+        </div>
+
+        <div>
+            <div class="question-tag">
+                MIXED • ANGLES
+            </div>
+
+            <h2>
+                Same direction or not?
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            Consider
+            \[
+            \mathbf{u}=4\mathbf{i}-3\mathbf{j}
+            \]
+            and
+            \[
+            \mathbf{v}=-8\mathbf{i}+6\mathbf{j}.
+            \]
+            What is the angle between the two vectors?
+        </p>
+
+    </div>
+
+    <div class="choice-grid" id="q13choices">
+
+        <div class="choice">
+            <input type="radio" name="q13" id="q13a" value="0">
+            <label for="q13a">
+                A. \(0^\circ\)
+            </label>
+        </div>
+
+        <div class="choice">
+            <input type="radio" name="q13" id="q13b" value="90">
+            <label for="q13b">
+                B. \(90^\circ\)
+            </label>
+        </div>
+
+        <div class="choice">
+            <input type="radio" name="q13" id="q13c" value="180">
+            <label for="q13c">
+                C. \(180^\circ\)
+            </label>
+        </div>
+
+        <div class="choice">
+            <input type="radio" name="q13" id="q13d" value="45">
+            <label for="q13d">
+                D. \(45^\circ\)
+            </label>
+        </div>
+
+    </div>
+
+    <button
+        class="check-btn"
+        style="margin-top:20px"
+        onclick="checkQ13()"
+    >
+        CHECK
+    </button>
+
+    <div class="feedback" id="feedback13"></div>
+
+</article>
+
+
+<!-- QUESTION 14 -->
+
+<article class="question" data-number="14" id="q14">
+
+    <div class="question-head">
+
+        <div class="question-number">
+            14
+        </div>
+
+        <div>
+            <div class="question-tag">
+                FINAL CHALLENGE
+            </div>
+
+            <h2>
+                Everything comes together.
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="question-body">
+
+        <p>
+            Points \(A\) and \(B\) have position vectors
+            \[
+            \overrightarrow{OA}
+            =3\mathbf{i}+4\mathbf{j}
+            \]
+            and
+            \[
+            \overrightarrow{OB}
+            =15\mathbf{i}-12\mathbf{j}.
+            \]
+        </p>
+
+        <p style="margin-top:18px;">
+            Find the <strong>unit vector in the direction from A to B</strong>.
+        </p>
+
+    </div>
+
+    <div class="vector-input">
+
+        <input id="q14x" type="text" placeholder="i coefficient">
+        <span class="vector-symbol">i +</span>
+
+        <input id="q14y" type="text" placeholder="j coefficient">
+        <span class="vector-symbol">j</span>
+
+        <button class="check-btn" onclick="checkQ14()">
+            CHECK
+        </button>
+
+    </div>
+
+    <div class="feedback" id="feedback14"></div>
+
+</article>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<section class="result-section" id="resultSection">
+
+    <div class="result-ring">
+        <div class="result-icon">
+            ✓
+        </div>
+    </div>
+
+    <h2>
+        Vector thinking <span>unlocked.</span>
+    </h2>
+
+    <p class="result-message">
+        You have worked through position vectors, displacement, distance,
+        magnitude, unit vectors, direction and vector geometry. Your next
+        step is to make this knowledge automatic.
+    </p>
+
+    <div class="result-stats">
+
+        <div class="result-stat">
+            <strong id="finalScore">
+                0 / 14
+            </strong>
+            <span>
+                SCORE
+            </span>
+        </div>
+
+        <div class="result-stat">
+            <strong>
+                14
+            </strong>
+            <span>
+                QUESTIONS
+            </span>
+        </div>
+
+        <div class="result-stat">
+            <strong>
+                MIXED
+            </strong>
+            <span>
+                FINAL STAGE
+            </span>
+        </div>
+
+    </div>
+
+    <button
+        class="finish-button"
+        id="finishButton"
+        type="button"
+    >
+        ✓ FINISH PRACTICE
+    </button>
+
+    <div
+        id="saveMessage"
+        style="margin-top:15px;color:#77727b;font-size:10px;line-height:1.7;"
+    ></div>
+
+    <a
+        href="position-vectors.html"
+        class="back-lesson"
+    >
+        ← RETURN TO POSITION VECTORS
+    </a>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div>
+
+        <div class="footer-brand">
+            Edu<span>Nova</span>
+        </div>
+
+        <div class="footer-tagline">
+            Mathematics made clear.
+        </div>
+
+    </div>
+
+    <div class="footer-right">
+        © 2026 EduNova. All rights reserved.
+    </div>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+"use strict";
+
+/* =========================================================
+   SUPABASE
+========================================================= */
+
+const SUPABASE_URL =
+    "https://majvqtbortonsrgdknms.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+const LESSON_CHAPTER = "Vectors";
+const LESSON_TOPIC_NUMBER = 4;
+
+
+/* =========================================================
+   SESSION
+========================================================= */
+
+async function checkSession(){
+
+    const {
+        data:{session},
+        error
+    } =
+    await supabaseClient.auth.getSession();
+
+    if(error){
+
+        console.error(
+            "Session error:",
+            error
+        );
+
+        return;
+    }
+
+    if(!session){
+
+        window.location.href =
+            "index.html";
+
+        return;
+    }
+}
+
+checkSession();
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+let answered = new Set();
+
+const totalQuestions = 14;
+
+const progressCount =
+    document.getElementById(
+        "progressCount"
+    );
+
+const progressFill =
+    document.getElementById(
+        "progressFill"
+    );
+
+const resultSection =
+    document.getElementById(
+        "resultSection"
+    );
+
+const finalScore =
+    document.getElementById(
+        "finalScore"
+    );
+
+function updateProgress(){
+
+    const count =
+        answered.size;
+
+    progressCount.textContent =
+        `${count} / ${totalQuestions}`;
+
+    progressFill.style.width =
+        `${(count / totalQuestions) * 100}%`;
+
+    if(count >= 10){
+
+        resultSection.classList.add(
+            "ready"
+        );
+    }
+
+    finalScore.textContent =
+        `${score} / ${totalQuestions}`;
+}
+
+
+/* =========================================================
+   SCORE
+========================================================= */
+
+let score = 0;
+
+function markQuestion(
+    number,
+    correct,
+    message
+){
+
+    const card =
+        document.getElementById(
+            `q${number}`
+        );
+
+    const feedback =
+        document.getElementById(
+            `feedback${number}`
+        );
+
+    card.classList.remove(
+        "correct",
+        "incorrect"
+    );
+
+    feedback.className =
+        "feedback";
+
+    feedback.textContent =
+        message;
+
+    if(correct){
+
+        card.classList.add(
+            "correct"
+        );
+
+        feedback.classList.add(
+            "correct"
+        );
+
+        if(!answered.has(number)){
+
+            score++;
+            answered.add(number);
+
+        }
+
+    }else{
+
+        card.classList.add(
+            "incorrect"
+        );
+
+        feedback.classList.add(
+            "wrong"
+        );
+
+        /*
+         * A wrong attempt does NOT lock the question.
+         * The student can think again and retry.
+         */
+
+    }
+
+    updateProgress();
+}
+
+
+/* =========================================================
+   NORMALIZE INPUT
+========================================================= */
+
+function cleanNumber(value){
+
+    return Number(
+        String(value)
+            .trim()
+            .replace(/−/g,"-")
+    );
+}
+
+function cleanCoordinate(value){
+
+    return String(value)
+        .trim()
+        .replace(/\s+/g,"")
+        .replace(/[{}[\]]/g,"")
+        .replace(/−/g,"-");
+}
+
+function coordinateEquals(
+    value,
+    x,
+    y
+){
+
+    const cleaned =
+        cleanCoordinate(value);
+
+    const expected =
+        `(${x},${y})`;
+
+    return cleaned === expected;
+}
+
+function fractionEquals(
+    value,
+    numerator,
+    denominator
+){
+
+    const cleaned =
+        String(value)
+            .trim()
+            .replace(/\s+/g,"");
+
+    const target =
+        `${numerator}/${denominator}`;
+
+    return cleaned === target;
+}
+
+
+/* =========================================================
+   QUESTION 1
+========================================================= */
+
+function checkQ1(){
+
+    const x =
+        cleanNumber(
+            document.getElementById(
+                "q1x"
+            ).value
+        );
+
+    const y =
+        cleanNumber(
+            document.getElementById(
+                "q1y"
+            ).value
+        );
+
+    markQuestion(
+        1,
+        x === 7 && y === -3,
+        x === 7 && y === -3
+            ? "Correct. The coordinates become the i and j components of the position vector."
+            : "Not correct yet."
+    );
+}
+
+
+/* =========================================================
+   QUESTION 2
+========================================================= */
+
+function checkQ2(){
+
+    const value =
+        document.getElementById(
+            "q2"
+        ).value;
+
+    markQuestion(
+        2,
+        coordinateEquals(
+            value,
+            -4,
+            9
+        ),
+        coordinateEquals(
+            value,
+            -4,
+            9
+        )
+            ? "Correct. The coefficients of i and j give the x- and y-coordinates."
+            : "Not correct yet."
+    );
+}
+
+
+/* =========================================================
+   QUESTION 3
+========================================================= */
+
+function checkQ3(){
+
+    const x =
+        cleanNumber(
+            document.getElementById(
+                "q3x"
+            ).value
+        );
+
+    const y =
+        cleanNumber(
+            document.getElementById(
+                "q3y"
+            ).value
+        );
+
+    markQuestion(
+        3,
+        x === 8 && y === -4,
+        x === 8 && y === -4
+            ? "Correct."
+            : "Not correct yet."
+    );
+}
+
+
+/* =========================================================
+   QUESTION 4
+========================================================= */
+
+function checkQ4(){
+
+    const value =
+        cleanNumber(
+            document.getElementById(
+                "q4"
+            ).value
+        );
+
+    markQuestion(
+        4,
+        value === Math.sqrt(117),
+        value === Math.sqrt(117)
+            ? "Correct. The distance is √117 units."
+            : "Not correct yet."
+    );
+}
+
+
+/* =========================================================
+   QUESTION 5
+========================================================= */
+
+function checkQ5(){
+
+    const value =
+        cleanNumber(
+            document.getElementById(
+                "q5"
+            ).value
+        );
+
+    markQuestion(
+        5,
+        value === 15,
+        value === 15
+            ? "Correct."
+            : "Not correct yet."
+    );
+}
+
+
+/* =========================================================
+   QUESTION 6
+========================================================= */
+
+function checkQ6(){
+
+    const x =
+        String(
+            document.getElementById(
+                "q6x"
+            ).value
+        ).trim();
+
+    const y =
+        String(
+            document.getElementById(
+                "q6y"
+            ).value
+        ).trim();
+
+    const correct =
+        (
+            (x === "3/5" || x === "0.6") &&
+            (y === "4/5" || y === "0.8")
+        );
+
+    markQuestion(
+        6,
+        correct,
+        correct
+            ? "Correct. The original vector has magnitude 10, so each component is divided by 10."
+            : "Not correct yet."
+    );
+}
+
+
+/* =========================================================
+   QUESTION 7
+========================================================= */
+
+function checkQ7(){
+
+    const value =
+        cleanNumber(
+            document.getElementById(
+                "q7"
+            ).value
+        );
+
+    markQuestion(
+        7,
+        value === 13,
+        value === 13
+            ? "Correct."
+            : "Not correct yet."
+    );
+}
+
+
+/* =========================================================
+   QUESTION 8
+========================================================= */
+
+function checkQ8(){
+
+    const selected =
+        document.querySelector(
+            'input[name="q8"]:checked'
+        );
+
+    const correct =
+        selected &&
+        selected.value === "b";
+
+    markQuestion(
+        8,
+        correct,
+        correct
+            ? "Correct. One vector is a positive multiple of the other, so they have the same direction."
+            : "Not correct yet."
+    );
+
+    document.querySelectorAll(
+        "#q8choices .choice"
+    ).forEach(
+        choice => {
+
+            choice.classList.remove(
+                "correct-choice",
+                "wrong-choice"
+            );
+
+        }
+    );
+
+    if(selected){
+
+        selected
+            .closest(".choice")
+            .classList.add(
+                correct
+                    ? "correct-choice"
+                    : "wrong-choice"
+            );
+    }
+}
+
+
+/* =========================================================
+   QUESTION 9
+========================================================= */
+
+function checkQ9(){
+
+    const value =
+        cleanNumber(
+            document.getElementById(
+                "q9"
+            ).value
+        );
+
+    markQuestion(
+        9,
+        value === 20,
+        value === 20
+            ? "Correct."
+            : "Not correct yet."
+    );
+}
+
+
+/* =========================================================
+   QUESTION 10
+========================================================= */
+
+function checkQ10(){
+
+    const value =
+        document.getElementById(
+            "q10"
+        ).value;
+
+    const correct =
+        coordinateEquals(
+            value,
+            7,
+            6
+        );
+
+    markQuestion(
+        10,
+        correct,
+        correct
+            ? "Correct. The fourth vertex completes the parallelogram."
+            : "Not correct yet."
+    );
+}
+
+
+/* =========================================================
+   QUESTION 11
+========================================================= */
+
+function checkQ11(){
+
+    const x =
+        String(
+            document.getElementById(
+                "q11x"
+            ).value
+        ).trim();
+
+    const y =
+        String(
+            document.getElementById(
+                "q11y"
+            ).value
+        ).trim();
+
+    /*
+     * B - A = (12,-9)
+     * magnitude = 15
+     * unit vector = (4/5,-3/5)
+     */
+
+    const correct =
+        (
+            (x === "4/5" || x === "0.8") &&
+            (y === "-3/5" || y === "-0.6")
+        );
+
+    markQuestion(
+        11,
+        correct,
+        correct
+            ? "Correct."
+            : "Not correct yet."
+    );
+}
+
+
+/* =========================================================
+   QUESTION 12
+========================================================= */
+
+function checkQ12(){
+
+    const value =
+        document.getElementById(
+            "q12"
+        ).value;
+
+    const correct =
+        coordinateEquals(
+            value,
+            11,
+            4
+        );
+
+    markQuestion(
+        12,
+        correct,
+        correct
+            ? "Correct. The displacement is added to the starting position."
+            : "Not correct yet."
+    );
+}
+
+
+/* =========================================================
+   QUESTION 13
+========================================================= */
+
+function checkQ13(){
+
+    const selected =
+        document.querySelector(
+            'input[name="q13"]:checked'
+        );
+
+    const correct =
+        selected &&
+        selected.value === "180";
+
+    markQuestion(
+        13,
+        correct,
+        correct
+            ? "Correct. One vector is a negative multiple of the other, so they point in opposite directions."
+            : "Not correct yet."
+    );
+
+    document.querySelectorAll(
+        "#q13choices .choice"
+    ).forEach(
+        choice => {
+
+            choice.classList.remove(
+                "correct-choice",
+                "wrong-choice"
+            );
+
+        }
+    );
+
+    if(selected){
+
+        selected
+            .closest(".choice")
+            .classList.add(
+                correct
+                    ? "correct-choice"
+                    : "wrong-choice"
+            );
+    }
+}
+
+
+/* =========================================================
+   QUESTION 14
+========================================================= */
+
+function checkQ14(){
+
+    const x =
+        String(
+            document.getElementById(
+                "q14x"
+            ).value
+        ).trim();
+
+    const y =
+        String(
+            document.getElementById(
+                "q14y"
+            ).value
+        ).trim();
+
+    /*
+     * OB - OA
+     * = (15-3, -12-4)
+     * = (12,-16)
+     *
+     * magnitude = 20
+     *
+     * unit vector = (3/5,-4/5)
+     */
+
+    const correct =
+        (
+            (x === "3/5" || x === "0.6") &&
+            (y === "-4/5" || y === "-0.8")
+        );
+
+    markQuestion(
+        14,
+        correct,
+        correct
+            ? "Correct. You combined position vectors, displacement and magnitude to build the unit vector."
+            : "Not correct yet."
+    );
+}
+
+
+/* =========================================================
+   FINISH PRACTICE
+========================================================= */
+
+const finishButton =
+    document.getElementById(
+        "finishButton"
+    );
+
+const saveMessage =
+    document.getElementById(
+        "saveMessage"
+    );
+
+finishButton.addEventListener(
+    "click",
+    async function(){
+
+        if(answered.size < totalQuestions){
+
+            saveMessage.textContent =
+                "Complete all 14 questions before finishing the practice.";
+
+            return;
+        }
+
+        finishButton.disabled = true;
+        finishButton.textContent =
+            "SAVING...";
+
+        const {
+            data:{session},
+            error:sessionError
+        } =
+        await supabaseClient.auth.getSession();
+
+        if(
+            sessionError ||
+            !session
+        ){
+
+            window.location.href =
+                "index.html";
+
+            return;
+        }
+
+        const {
+            error
+        } =
+        await supabaseClient
+            .from("lesson_progress")
+            .upsert(
+                {
+                    user_id:
+                        session.user.id,
+
+                    chapter:
+                        LESSON_CHAPTER,
+
+                    topic_number:
+                        LESSON_TOPIC_NUMBER,
+
+                    completed_at:
+                        new Date().toISOString()
+                },
+                {
+                    onConflict:
+                        "user_id,chapter,topic_number"
+                }
+            );
+
+        if(error){
+
+            console.error(
+                "Progress save error:",
+                error
+            );
+
+            finishButton.disabled =
+                false;
+
+            finishButton.textContent =
+                "✓ FINISH PRACTICE";
+
+            saveMessage.textContent =
+                "We couldn't save your progress right now. Please try again.";
+
+            return;
+        }
+
+        finishButton.textContent =
+            "✓ PRACTICE COMPLETED";
+
+        saveMessage.textContent =
+            "Your Vector Position practice has been saved.";
+
+        resultSection.classList.add(
+            "ready"
+        );
+
+        resultSection.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    }
+);
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+document
+    .getElementById("logoutBtn")
+    .addEventListener(
+        "click",
+        async function(){
+
+            await supabaseClient.auth.signOut();
+
+            window.location.href =
+                "index.html";
+
+        }
+    );
+
+
+/* =========================================================
+   INITIAL STATE
+========================================================= */
+
+updateProgress();
+
+setTimeout(
+    function(){
+
+        resultSection.classList.add(
+            "ready"
+        );
+
+    },
+    400
+);
+
+</script>
+
+<script src="premium-access.js"></script>
+
+</body>
+</html>
