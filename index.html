@@ -1429,6 +1429,40 @@ footer p{
     background:#e52b20;
 }
 
+.google-btn {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 14px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #ffffff;
+    color: #202124;
+    border: 1px solid #dadce0;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.google-btn:hover {
+    background: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+}
+
+.google-btn:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+.google-btn svg {
+    flex-shrink: 0;
+}
+
 .switch{
     text-align:center;
     margin-top:18px;
@@ -2464,6 +2498,23 @@ footer p{
 </button>
 
 </form>
+  
+<button
+    type="button"
+    id="googleSignIn"
+    class="google-btn"
+    onclick="signInWithGoogle()"
+>
+    <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 3.01 13.22l7.98 6.19C12.9 13.72 18.03 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.74 7.18l7.27 5.64c4.25-3.92 6.71-9.7 6.71-17.29z"/>
+        <path fill="#FBBC05" d="M10.99 28.59A14.4 14.4 0 0 1 10.22 24c0-1.59.27-3.13.76-4.59L3.01 13.22A23.9 23.9 0 0 0 0 24c0 3.87.93 7.52 2.58 10.78l8.41-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.91-5.8l-7.27-5.64c-2.02 1.35-4.6 2.15-8.64 2.15-5.97 0-11.1-4.22-13.01-9.91l-8.41 6.19C6.51 43.62 14.62 48 24 48z"/>
+    </svg>
+    Continue with Google
+</button>
+
+  <div class="switch">
 
 
 <div class="switch">
@@ -3121,6 +3172,33 @@ async function navState(){
     }
 
 }
+
+
+async function signInWithGoogle() {
+    const button = $("googleSignIn");
+
+    button.disabled = true;
+    button.textContent = "Connecting to Google...";
+
+    try {
+        const { error } =
+            await supabaseClient.auth.signInWithOAuth({
+                provider: "google",
+                options: {
+                    redirectTo: "https://nilat31.github.io/EduNova/"
+                }
+            });
+
+        if (error) {
+            throw error;
+        }
+    } catch (error) {
+        button.disabled = false;
+        button.textContent = "Continue with Google";
+        message("Google sign-in failed: " + error.message);
+    }
+}
+
 
 
 document.addEventListener(
