@@ -3132,6 +3132,106 @@ async function navState(){
         await supabaseClient.auth.getSession();
 
 
+    if(!session){
+        return;
+    }
+
+
+    const user =
+        session.user;
+
+
+    const detectedCountry =
+        await detectCountry();
+
+
+    const {
+        data: student,
+        error: studentError
+    } =
+        await supabaseClient
+            .from("students")
+            .select(
+                "username, email, country, detected_country"
+            )
+            .eq(
+                "id",
+                user.id
+            )
+            .single();
+
+
+    if(studentError || !student){
+
+        console.error(
+            "Student profile load failed:",
+            studentError
+        );
+
+        return;
+    }
+
+
+    const username =
+        student.username ||
+        user.user_metadata?.username ||
+        user.user_metadata?.full_name ||
+        "student_" + user.id.substring(0,8);
+
+
+    const {
+        error: syncError
+    } =
+        await supabaseClient
+            .from("students")
+            .update({
+
+                email:
+                    user.email,
+
+                detected_country:
+                    student.detected_country ||
+                    detectedCountry
+
+            })
+            .eq(
+                "id",
+                user.id
+            );
+
+
+    if(syncError){
+
+        console.warn(
+            "Student tracking sync failed:",
+            syncError
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "eduNovaUsername",
+        username
+    );
+
+
+    localStorage.setItem(
+        "eduNovaEmail",
+        user.email || ""
+    );
+
+
+    $("authNav").style.display =
+        "none";
+
+
+    $("dashLink").style.display =
+        "block";
+
+}
+
+
     if(session){
 
         const {
