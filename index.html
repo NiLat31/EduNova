@@ -3232,48 +3232,6 @@ async function navState(){
 }
 
 
-    if(session){
-
-        const {
-            data: student
-        } =
-            await supabaseClient
-                .from("students")
-                .select("username")
-                .eq(
-                    "id",
-                    session.user.id
-                )
-                .single();
-
-
-        if(student){
-
-            localStorage.setItem(
-                "eduNovaUsername",
-                student.username
-            );
-
-            localStorage.setItem(
-                "eduNovaEmail",
-                session.user.email
-            );
-
-
-            $("authNav").style.display =
-                "none";
-
-
-            $("dashLink").style.display =
-                "block";
-
-        }
-
-    }
-
-}
-
-
 async function signInWithGoogle() {
     const button = $("googleSignIn");
 
