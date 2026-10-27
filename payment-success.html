@@ -1,39 +1,47 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Payment Successful | EduNova</title>
+    <title>Confirming Payment | EduNova</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
             background: #f7f7f7;
             font-family: Arial, sans-serif;
         }
 
         .success-card {
-            width: min(90%, 520px);
+            width: 100%;
+            max-width: 520px;
             background: white;
-            padding: 50px 35px;
+            padding: 45px 30px;
             border-radius: 20px;
             text-align: center;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
         }
 
         .check {
-            font-size: 60px;
+            font-size: 54px;
             margin-bottom: 20px;
+            color: #16803d;
         }
 
         h1 {
             margin: 0 0 15px;
-            font-size: 32px;
+            font-size: 30px;
             color: #111;
         }
 
@@ -46,47 +54,89 @@
         .status {
             margin-top: 25px;
             font-weight: 600;
-            color: #111;
+            line-height: 1.6;
+            color: #333;
+            overflow-wrap: anywhere;
         }
 
-        .dashboard-button {
-            display: none;
-            margin-top: 25px;
-            padding: 14px 24px;
+        .button {
+            display: inline-block;
+            margin: 12px 5px 0;
+            padding: 14px 22px;
+            border: none;
+            border-radius: 8px;
             background: #111;
             color: white;
             text-decoration: none;
-            border-radius: 8px;
+            font-size: 14px;
             font-weight: 600;
+            cursor: pointer;
+        }
+
+        .button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .secondary-button {
+            background: #eee;
+            color: #222;
+        }
+
+        [hidden] {
+            display: none !important;
         }
     </style>
 </head>
 
 <body>
+    <main class="success-card">
+        <div class="check" id="check" aria-hidden="true">●</div>
 
-    <div class="success-card">
+        <h1 id="heading">Confirming your payment</h1>
 
-        <div class="check">✓</div>
-
-        <h1>Payment Successful</h1>
-
-        <p>
-            Thank you for purchasing EduNova Premium.
+        <p id="description">
+            Please wait while EduNova verifies your payment and Premium access.
         </p>
 
-        <div class="status" id="status">
-            Confirming your payment...
+        <div
+            class="status"
+            id="status"
+            role="status"
+            aria-live="polite"
+        >
+            Connecting securely...
         </div>
 
-        <a
-            href="dashboard.html"
-            class="dashboard-button"
-            id="dashboard-button"
-        >
-            GO TO DASHBOARD
-        </a>
+        <div>
+            <button
+                type="button"
+                class="button"
+                id="retry-button"
+                hidden
+            >
+                TRY AGAIN
+            </button>
 
-    </div>
+            <a
+                href="dashboard.html"
+                class="button"
+                id="dashboard-button"
+                hidden
+            >
+                GO TO DASHBOARD
+            </a>
+
+            <a
+                href="index.html"
+                class="button secondary-button"
+                id="home-button"
+                hidden
+            >
+                BACK TO EDUNOVA
+            </a>
+        </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -103,37 +153,98 @@
                 SUPABASE_PUBLISHABLE_KEY
             );
 
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const orderId = params.get("token");
+
+        const heading =
+            document.getElementById("heading");
+
+        const description =
+            document.getElementById("description");
+
+        const status =
+            document.getElementById("status");
+
+        const check =
+            document.getElementById("check");
+
+        const retryButton =
+            document.getElementById("retry-button");
+
+        const dashboardButton =
+            document.getElementById("dashboard-button");
+
+        const homeButton =
+            document.getElementById("home-button");
+
+        let isProcessing = false;
+        let isConfirmed = false;
+
+        function showRetry(message) {
+            status.textContent = message;
+            retryButton.hidden = false;
+            homeButton.hidden = false;
+        }
+
         async function confirmPayment() {
-
-            const status =
-                document.getElementById("status");
-
-            const dashboardButton =
-                document.getElementById("dashboard-button");
-
-            const params =
-                new URLSearchParams(window.location.search);
-
-            const orderId =
-                params.get("token");
-
-            if (!orderId) {
-                status.textContent =
-                    "We couldn't find the PayPal order.";
+            if (isProcessing || isConfirmed) {
                 return;
             }
 
-            try {
+            if (!orderId) {
+                heading.textContent = "Order not found";
+                description.textContent =
+                    "EduNova could not find the PayPal order ID in this page's address.";
 
+                status.textContent =
+                    "Please return to the Premium page and contact support if you already paid.";
+
+                homeButton.hidden = false;
+                return;
+            }
+
+            isProcessing = true;
+            retryButton.disabled = true;
+            retryButton.hidden = true;
+            dashboardButton.hidden = true;
+            homeButton.hidden = true;
+
+            heading.textContent = "Confirming your payment";
+            description.textContent =
+                "Please wait while EduNova verifies your payment and Premium access.";
+
+            check.textContent = "…";
+            check.style.color = "#555";
+            status.textContent = "Checking your account...";
+
+            try {
                 const {
-                    data: { session }
+                    data: { session },
+                    error: sessionError
                 } = await supabaseClient.auth.getSession();
 
+                if (sessionError) {
+                    throw new Error(
+                        "We couldn't check your login session."
+                    );
+                }
+
                 if (!session) {
-                    status.textContent =
-                        "Please log in again to activate your Premium access.";
+                    heading.textContent = "Login required";
+                    description.textContent =
+                        "Your payment can be checked after you sign in to EduNova.";
+
+                    showRetry(
+                        "Please log in to EduNova in another tab, then return here and try again."
+                    );
+
                     return;
                 }
+
+                status.textContent =
+                    "Verifying your payment with PayPal...";
 
                 const { data, error } =
                     await supabaseClient.functions.invoke(
@@ -146,35 +257,75 @@
                     );
 
                 if (error) {
-                    console.error(error);
+                    console.error(
+                        "Payment confirmation request failed:",
+                        error
+                    );
+
                     throw new Error(
-                        "Payment confirmation failed."
+                        "EduNova couldn't confirm the payment with the server."
                     );
                 }
 
-                if (!data || !data.premium_access) {
+                if (
+                    !data ||
+                    data.success !== true ||
+                    data.premium_access !== true
+                ) {
                     throw new Error(
-                        "Premium access could not be activated."
+                        data?.error ||
+                        "Premium access has not been confirmed."
                     );
                 }
+
+                isConfirmed = true;
+
+                heading.textContent = "Premium activated!";
+                document.title = "Premium Activated | EduNova";
+
+                description.textContent =
+                    "Thank you for choosing EduNova Premium.";
 
                 status.textContent =
-                    "Your Premium access is now active!";
+                    "Your payment has been verified and your Premium access is active.";
 
-                dashboardButton.style.display =
-                    "inline-block";
+                check.textContent = "✓";
+                check.style.color = "#16803d";
+
+                dashboardButton.hidden = false;
+                homeButton.hidden = true;
 
             } catch (error) {
+                console.error(
+                    "Payment confirmation error:",
+                    error
+                );
 
-                console.error(error);
+                heading.textContent =
+                    "Confirmation incomplete";
 
-                status.textContent =
-                    "We couldn't confirm your payment. Please try again.";
+                description.textContent =
+                    "We couldn't finish verifying your payment.";
+
+                check.textContent = "!";
+                check.style.color = "#b45309";
+
+                showRetry(
+                    "Your payment status may need another check. If you already paid, don't pay again. Try confirmation again or contact EduNova support."
+                );
+
+            } finally {
+                isProcessing = false;
+                retryButton.disabled = false;
             }
         }
 
+        retryButton.addEventListener(
+            "click",
+            confirmPayment
+        );
+
         confirmPayment();
     </script>
-
 </body>
 </html>
