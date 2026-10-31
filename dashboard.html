@@ -217,6 +217,55 @@ nav {
     line-height: 1.9;
 }
 
+    .hero-features {
+    margin-top: 24px;
+    display: grid;
+    gap: 12px;
+    max-width: 650px;
+}
+
+.hero-feature-line {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    color: #c5c5c5;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.hero-feature {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.hero-feature-icon {
+    color: var(--red);
+    font-size: 15px;
+}
+
+.hero-feature a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .2s;
+}
+
+.hero-feature a:hover {
+    color: white;
+}
+
+.hero-feature.soon {
+    color: #858585;
+}
+
+.hero-feature.soon small {
+    color: var(--red);
+    font-size: 9px;
+    letter-spacing: .4px;
+}
+    
 .hero-bottom {
     margin-top: 32px;
     display: flex;
@@ -1070,7 +1119,51 @@ body.loading .page-content {
             It is learning to see the connections, understand the reasoning,
             and solve problems with confidence. Your next step starts here.
         </p>
+<div class="hero-features">
 
+    <div class="hero-feature-line">
+        <span class="hero-feature">
+            <span class="hero-feature-icon">▦</span>
+            <a href="#chapters">Complete Semester 2 Syllabus</a>
+        </span>
+
+        <span class="hero-feature">
+            <span class="hero-feature-icon">✦</span>
+            <a href="#premiumSection">Premium Access</a>
+        </span>
+    </div>
+
+    <div class="hero-feature-line">
+        <span class="hero-feature">
+            <span class="hero-feature-icon">✓</span>
+            Practice Questions &amp; Worked Solutions
+        </span>
+
+        <span class="hero-feature">
+            <span class="hero-feature-icon">✉</span>
+            <a href="feedback.html">Student Feedback</a>
+        </span>
+    </div>
+
+    <div class="hero-feature-line">
+        <span class="hero-feature">
+            <span class="hero-feature-icon">▤</span>
+            Learning Progress <small>COMING SOON</small>
+        </span>
+
+        <span class="hero-feature soon">
+            <span class="hero-feature-icon">♛</span>
+            Leaderboard <small>COMING SOON</small>
+        </span>
+
+        <span class="hero-feature soon">
+            <span class="hero-feature-icon">◷</span>
+            Mock Exams <small>COMING SOON</small>
+        </span>
+    </div>
+
+</div>
+        
         <div class="hero-bottom">
             <a class="hero-action" href="#chapters">
                 EXPLORE YOUR CHAPTERS <span aria-hidden="true">↓</span>
