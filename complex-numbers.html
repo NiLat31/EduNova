@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduNova | Complex Numbers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{
+  --accent:#B85C38;
+  --accent-bright:#D97745;
+  --accent-light:#F2C6A8;
+  --paper:#FFF8F3;
+  --ink:#35251F;
+  --muted:#806F67;
+  --line:#E8DAD1;
+  --dark:#211915;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"DM Sans",sans-serif;background:var(--paper);color:var(--ink)}
+nav{height:82px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:var(--paper)}
+.logo{font-family:"Playfair Display",serif;font-size:28px;font-weight:700;color:var(--ink);text-decoration:none}
+.logo span,.footer-logo span{color:var(--accent)}
+.nav{display:flex;gap:12px;align-items:center}
+.nav a{text-decoration:none;color:var(--ink);font-size:10px;font-weight:700;letter-spacing:1px;padding:11px 15px}
+.nav a:hover{color:var(--accent)}
+.logout{border:0;background:var(--dark);color:#fff;padding:11px 17px;font:700 10px "DM Sans";cursor:pointer}
+.logout:hover{background:var(--accent)}
+.hero{background:var(--dark);color:#fff;padding:82px 7% 76px;position:relative;overflow:hidden;min-height:330px;display:flex;align-items:center}
+.hero-copy{position:relative;z-index:2;max-width:700px}
+.label{color:var(--accent-bright);font-size:11px;font-weight:700;letter-spacing:3px;margin-bottom:18px}
+.hero h1{font:600 clamp(48px,7vw,88px)/1 "Playfair Display";letter-spacing:-3px}
+.hero p{max-width:630px;color:#c9bbb4;margin-top:24px;font-size:15px;line-height:1.85}
+.hero-art{position:absolute;right:7%;top:50%;transform:translateY(-50%);width:min(390px,38vw);height:auto;opacity:.92}
+.hero-i{position:absolute;right:8%;top:-110px;font:italic 400 390px "Playfair Display";color:rgba(217,119,69,.10);line-height:1}
+main{padding:78px 7% 100px}
+.intro{display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:38px}
+.intro h2{font:600 clamp(36px,4.5vw,56px)/1.05 "Playfair Display";letter-spacing:-1.7px}
+.intro p{max-width:440px;color:var(--muted);font-size:14px;line-height:1.8}
+.topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.topic{background:#fff;border:1px solid var(--line);padding:29px;min-height:230px;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
+.topic:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(75,42,27,.08);border-color:var(--accent-light)}
+.topic-top{display:flex;justify-content:space-between;align-items:start}
+.topic-number{color:var(--accent);font-size:10px;font-weight:700;letter-spacing:2px}
+.topic-symbol{width:55px;height:55px;border:1px solid var(--line);background:var(--paper);color:var(--accent);display:flex;align-items:center;justify-content:center;font:italic 600 25px "Playfair Display"}
+.topic h3{font:600 25px/1.15 "Playfair Display";margin:25px 0 10px}
+.topic p{color:var(--muted);font-size:13px;line-height:1.75;max-width:530px;margin-bottom:24px}
+.open-topic{margin-top:auto;align-self:flex-start;text-decoration:none;background:var(--dark);color:#fff;padding:12px 17px;font:700 10px "DM Sans";letter-spacing:.5px;transition:background .2s}
+.open-topic:hover{background:var(--accent)}
+.topic.completed{border-color:var(--accent)}
+.topic.completed .topic-symbol{background:var(--accent);color:white;border-color:var(--accent)}
+.topic.completed .topic-number{color:var(--accent)}
+.topic.completed .open-topic{background:var(--accent)}
+.topic.completed .open-topic:hover{background:var(--dark)}
+.strip{margin-top:48px;background:var(--accent);color:#fff;padding:30px 32px;display:flex;justify-content:space-between;align-items:center;gap:25px}
+.strip strong{font:25px "Playfair Display"}
+.strip p{font-size:12px;line-height:1.7;max-width:520px;color:rgba(255,255,255,.9)}
+footer{background:var(--dark);color:#fff;padding:38px 7%;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.footer-logo{font:700 24px "Playfair Display"}
+footer p{color:#a99a92;font-size:11px}
+.policy-links{font-size:12px;display:flex;gap:14px;flex-wrap:wrap}
+.policy-links a{color:inherit;text-decoration:none}
+.policy-links a:hover{color:var(--accent-light)}
+@media(max-width:800px){
+ nav{height:auto;min-height:76px;padding:16px 5%;gap:12px}
+ .nav{gap:2px}.nav a{padding:9px 7px;font-size:9px}
+ .hero{padding:65px 5% 58px;min-height:310px}
+ .hero-art{right:-45px;width:270px;opacity:.38}
+ .hero-i{right:0}
+ main{padding:65px 5% 80px}
+ .intro{flex-direction:column;align-items:flex-start}
+ .topics{grid-template-columns:1fr}
+ .strip{flex-direction:column;align-items:flex-start}
+ footer{flex-direction:column;text-align:center}
+}
+@media(max-width:420px){
+ .logo{font-size:24px}.nav a{font-size:8px;padding:8px 5px}.logout{padding:9px 10px;font-size:8px}
+ .topic{padding:24px}.topic h3{font-size:23px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Edu<span>Nova</span></a>
+  <div class="nav">
+    <a href="index.html">← HOME</a>
+    <a href="dashboard.html">DASHBOARD</a>
+    <button class="logout" onclick="logout()">LOG OUT</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-copy">
+    <div class="label">CHAPTER 08 • COMPLEX NUMBERS</div>
+    <h1>Complex Numbers.</h1>
+    <p>Explore the world beyond the real number line. Understand the imaginary unit, perform operations with complex numbers, investigate roots, and discover their geometric representation.</p>
+  </div>
+  <div class="hero-i" aria-hidden="true">i</div>
+  <svg class="hero-art" viewBox="0 0 420 330" role="img" aria-label="Complex plane showing the point z equals a plus bi">
+    <defs>
+      <marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#D97745" stroke-width="1.2"/></marker>
+    </defs>
+    <g stroke="#806F67" stroke-width="1.3" opacity=".8">
+      <path d="M35 165 H390" marker-end="url(#arrow)"/>
+      <path d="M205 300 V20" marker-end="url(#arrow)"/>
+    </g>
+    <g fill="#D8C4B8" font-family="DM Sans" font-size="13">
+      <text x="378" y="187">Re</text><text x="217" y="27">Im</text>
+      <text x="217" y="183">0</text><text x="350" y="184">a</text><text x="216" y="72">b</text>
+    </g>
+    <path d="M205 165 L335 75" stroke="#D97745" stroke-width="2.5" fill="none"/>
+    <path d="M335 75 V165 M205 165 H335" stroke="#D97745" stroke-width="1.2" stroke-dasharray="5 5" opacity=".8"/>
+    <circle cx="335" cy="75" r="6.5" fill="#F2C6A8" stroke="#D97745" stroke-width="2"/>
+    <text x="348" y="67" fill="#F2C6A8" font-family="Playfair Display" font-size="21" font-style="italic">z = a + bi</text>
+    <text x="245" y="112" fill="#D97745" font-family="Playfair Display" font-size="18" font-style="italic">z</text>
+  </svg>
+</header>
+
+<main>
+  <div class="intro">
+    <div>
+      <div class="label">CHAPTER TOPICS</div>
+      <h2>Explore the essentials.</h2>
+    </div>
+    <p>Work through the seven lessons in order, from the definition of a complex number to its polar representation.</p>
+  </div>
+
+  <div class="topics">
+    <article class="topic" data-topic-number="1">
+      <div class="topic-top"><div class="topic-number">01 / 07</div><div class="topic-symbol">z</div></div>
+      <h3>Definition of a Complex Number</h3>
+      <p>Understand the form of a complex number, the real and imaginary parts, and the role of the imaginary unit.</p>
+      <a href="complex-number-definition.html" class="open-topic">OPEN LESSON →</a>
+    </article>
+
+    <article class="topic" data-topic-number="2">
+      <div class="topic-top"><div class="topic-number">02 / 07</div><div class="topic-symbol">± ×</div></div>
+      <h3>Operations with Complex Numbers</h3>
+      <p>Learn how to add, subtract, and multiply complex numbers using their algebraic form.</p>
+      <a href="complex-number-operations.html" class="open-topic">OPEN LESSON →</a>
+    </article>
+
+    <article class="topic" data-topic-number="3">
+      <div class="topic-top"><div class="topic-number">03 / 07</div><div class="topic-symbol">z̄</div></div>
+      <h3>Division of Complex Numbers</h3>
+      <p>Divide complex numbers and understand how conjugates and their properties simplify the process.</p>
+      <a href="complex-number-division.html" class="open-topic">OPEN LESSON →</a>
+    </article>
+
+    <article class="topic" data-topic-number="4">
+      <div class="topic-top"><div class="topic-number">04 / 07</div><div class="topic-symbol">√z</div></div>
+      <h3>Square Root of a Complex Number</h3>
+      <p>Determine square roots of complex numbers and express the results in the form a + bi.</p>
+      <a href="square-root-complex-number.html" class="open-topic">OPEN LESSON →</a>
+    </article>
+
+    <article class="topic" data-topic-number="5">
+      <div class="topic-top"><div class="topic-number">05 / 07</div><div class="topic-symbol">zⁿ</div></div>
+      <h3>Complex Roots</h3>
+      <p>Investigate complex roots and understand how they arise when solving equations.</p>
+      <a href="complex-roots.html" class="open-topic">OPEN LESSON →</a>
+    </article>
+
+    <article class="topic" data-topic-number="6">
+      <div class="topic-top"><div class="topic-number">06 / 07</div><div class="topic-symbol">P(x)</div></div>
+      <h3>Complex Roots of Polynomial Equations</h3>
+      <p>Explore polynomial equations with complex roots and the relationships between their solutions.</p>
+      <a href="complex-roots-polynomial-equations.html" class="open-topic">OPEN LESSON →</a>
+    </article>
+
+    <article class="topic" data-topic-number="7">
+      <div class="topic-top"><div class="topic-number">07 / 07</div><div class="topic-symbol">r∠θ</div></div>
+      <h3>Polar Form</h3>
+      <p>Represent complex numbers using modulus and argument, and connect algebra with geometry.</p>
+      <a href="complex-numbers-polar-form.html" class="open-topic">OPEN LESSON →</a>
+    </article>
+  </div>
+
+  <div class="strip">
+    <strong>Beyond the real number line.</strong>
+    <p>Seven lessons to help you understand complex numbers algebraically and geometrically, one idea at a time.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">Edu<span>Nova</span></div>
+  <p>© 2026 EduNova. Mathematics made clear.</p>
+  <div class="policy-links">
+    <a href="terms.html">Terms of Use</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+</footer>
+
+<script>
+const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+const { createClient } = supabase;
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+async function loadComplexNumbersProgress() {
+  const { data: { session }, error: sessionError } = await supabaseClient.auth.getSession();
+
+  if (sessionError) {
+    console.error("Session error:", sessionError);
+    return;
+  }
+
+  if (!session) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  const { data, error } = await supabaseClient
+    .from("lesson_progress")
+    .select("topic_number")
+    .eq("user_id", session.user.id)
+    .eq("chapter", "Complex Numbers");
+
+  if (error) {
+    console.error("Progress loading error:", error);
+    return;
+  }
+
+  const completedTopics = new Set((data || []).map(row => Number(row.topic_number)));
+
+  document.querySelectorAll(".topic[data-topic-number]").forEach(card => {
+    if (completedTopics.has(Number(card.dataset.topicNumber))) {
+      card.classList.add("completed");
+    }
+  });
+}
+
+async function logout() {
+  await supabaseClient.auth.signOut();
+  localStorage.removeItem("eduNovaUsername");
+  localStorage.removeItem("eduNovaEmail");
+  window.location.href = "index.html";
+}
+
+document.addEventListener("DOMContentLoaded", loadComplexNumbersProgress);
+</script>
+</body>
+</html>
