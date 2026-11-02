@@ -25,20 +25,19 @@ window.MathJax = {
 
 <style>
 :root {
- --red:#E00000;
- --red-dark:#B90000;
- --red-light:#FFF0F0;
- --red-border:#E00000;
- --orange:#D97745;
- --paper:#FFF9F6;
- --white:#FFFFFF;
- --ink:#211915;
- --muted:#76665F;
- --line:#E9DCD5;
- --dark:#171311;
- --green:#16834A;
- --green-dark:#106638;
- --shadow:0 15px 40px rgba(50,25,15,.07);
+    --red: #B85C38;
+    --red-dark: #934329;
+    --red-light: #FDF0E9;
+    --red-border: #B85C38;
+    --orange: #D97745;
+    --paper: #FFF8F3;
+    --white: #FFFFFF;
+    --ink: #35251F;
+    --muted: #76665F;
+    --line: #E9DCD5;
+    --dark: #211915;
+    --green: #16834A;
+    --green-dark: #106638;
 }
 
 * {
@@ -1010,6 +1009,33 @@ footer {
   animation-iteration-count:1!important;
   transition-duration:.01ms!important;
  }
+}
+ /* MathJax sizing and overflow fix */
+mjx-container {
+    max-width: 100% !important;
+}
+
+mjx-container[display="true"] {
+    display: block !important;
+    max-width: 100% !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 0.8em 0 !important;
+}
+
+.formula {
+    font-size: 15px;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.formula mjx-container {
+    font-size: 1em !important;
+}
+
+.diagram-caption mjx-container {
+    font-size: 1em !important;
 }
 </style>
 </head>
