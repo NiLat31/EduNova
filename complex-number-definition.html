@@ -1,1711 +1,1961 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Learn complex numbers, the imaginary unit, powers of i, the Argand diagram, modulus and argument.">
 <title>EduNova | Definition of a Complex Number</title>
-<meta name="description" content="Learn the definition of complex numbers, imaginary numbers, modulus and argument through clear explanations and interactive diagrams.">
 
-<link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 window.MathJax = {
-  tex: {
-    inlineMath: [['\\(', '\\)']],
-    displayMath: [['\\[', '\\]']]
-  },
-  svg: { fontCache: 'global' }
+ tex: {
+  inlineMath: [["\\(","\\)"], ["$","$"]],
+  displayMath: [["\\[","\\]"]]
+ },
+ svg: { fontCache: "global" }
 };
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
 <style>
 :root {
-  --accent: #B85C38;
-  --accent-dark: #914326;
-  --accent-light: #FCE8DC;
-  --paper: #FFF9F5;
-  --surface: #FFFFFF;
-  --ink: #241B17;
-  --muted: #6B625D;
-  --line: #E9DCD3;
-  --green: #24834B;
-  --green-bg: #E9F7EE;
-  --blue: #2874B8;
-  --blue-bg: #EAF3FC;
-  --purple: #8054B5;
-  --purple-bg: #F2ECFA;
-  --yellow: #A66B0A;
-  --yellow-bg: #FFF5D9;
-  --red: #B64035;
-  --red-bg: #FCECEA;
+ --red:#E00000;
+ --red-dark:#B90000;
+ --red-light:#FFF0F0;
+ --red-border:#E00000;
+ --orange:#D97745;
+ --paper:#FFF9F6;
+ --white:#FFFFFF;
+ --ink:#211915;
+ --muted:#76665F;
+ --line:#E9DCD5;
+ --dark:#171311;
+ --green:#16834A;
+ --green-dark:#106638;
+ --shadow:0 15px 40px rgba(50,25,15,.07);
 }
 
 * {
-  box-sizing: border-box;
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
 }
 
 html {
-  scroll-behavior: smooth;
+ scroll-behavior:smooth;
 }
 
 body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: "DM Sans", sans-serif;
-  font-size: 17px;
-  line-height: 1.75;
-}
-
-button {
-  font: inherit;
+ font-family:"DM Sans",sans-serif;
+ background:var(--paper);
+ color:var(--ink);
+ line-height:1.8;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+ color:inherit;
+ text-decoration:none;
+}
+
+button {
+ font:inherit;
+}
+
+/* NAVIGATION */
+
+nav {
+ min-height:76px;
+ padding:0 7%;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:20px;
+ border-bottom:1px solid var(--line);
+ background:rgba(255,249,246,.96);
+ position:sticky;
+ top:0;
+ z-index:50;
+ backdrop-filter:blur(14px);
+}
+
+.logo {
+ font:700 29px "Playfair Display",serif;
+ color:var(--ink);
+ letter-spacing:.1px;
+}
+
+.logo span,
+.footer-logo span {
+ color:var(--red);
+}
+
+.nav-actions {
+ display:flex;
+ align-items:center;
+ gap:22px;
+}
+
+.nav-actions a {
+ font-size:11px;
+ font-weight:900;
+ letter-spacing:.7px;
+ transition:.2s;
+}
+
+.nav-actions a:hover {
+ color:var(--red);
+}
+
+.logout {
+ border:0;
+ background:var(--dark);
+ color:#fff;
+ padding:11px 17px;
+ border-radius:7px;
+ font-size:10px;
+ font-weight:900;
+ cursor:pointer;
+ transition:.2s;
+}
+
+.logout:hover {
+ background:var(--red);
 }
 
 /* HERO */
 
 .hero {
-  position: relative;
-  overflow: hidden;
-  background: #100E0D;
-  color: white;
-  padding: 24px 7% 76px;
+ min-height:470px;
+ position:relative;
+ overflow:hidden;
+ background:#15110F;
+ color:white;
+ padding:85px 7%;
+ display:flex;
+ align-items:center;
+ isolation:isolate;
 }
 
 .hero::before {
-  content: "";
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  border: 1px solid rgba(184,92,56,.24);
-  border-radius: 50%;
-  right: -120px;
-  top: 50px;
-  box-shadow: 0 0 0 45px rgba(184,92,56,.035),
-              0 0 0 90px rgba(184,92,56,.025);
+ content:"";
+ position:absolute;
+ width:500px;
+ height:500px;
+ border-radius:50%;
+ right:3%;
+ top:50%;
+ transform:translateY(-50%);
+ background:radial-gradient(circle,rgba(224,0,0,.19),transparent 68%);
+ z-index:-1;
 }
 
-.hero-nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  position: relative;
-  z-index: 2;
+.hero-grid {
+ position:absolute;
+ inset:0;
+ opacity:.15;
+ background-image:
+  linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);
+ background-size:48px 48px;
+ mask-image:linear-gradient(90deg,transparent,black 40%,black);
 }
 
-.logo {
-  font-family: "Playfair Display", serif;
-  font-size: 29px;
-  font-weight: 800;
-  letter-spacing: -.7px;
+.hero-copy {
+ position:relative;
+ z-index:4;
+ max-width:720px;
 }
 
-.logo span {
-  color: #E18A61;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  font-size: 14px;
-  color: #E8E0DC;
-}
-
-.nav-links a:hover {
-  color: #E99A75;
-}
-
-.hero-content {
-  max-width: 1200px;
-  margin: 78px auto 0;
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1.25fr .75fr;
-  align-items: center;
-  gap: 40px;
-}
-
-.eyebrow {
-  color: #E99A75;
-  text-transform: uppercase;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 2px;
+.hero-label {
+ color:#FF5B5B;
+ font-size:11px;
+ font-weight:900;
+ letter-spacing:3px;
+ margin-bottom:22px;
 }
 
 .hero h1 {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(42px, 6vw, 68px);
-  line-height: 1.12;
-  margin: 16px 0;
-  max-width: 700px;
+ font:600 clamp(46px,7vw,82px)/1.04 "Playfair Display",serif;
+ letter-spacing:-2px;
+ max-width:720px;
 }
 
 .hero h1 span {
-  color: #E18A61;
+ color:#FF5B5B;
 }
 
-.hero-description {
-  max-width: 650px;
-  color: #D4CBC5;
-  font-size: 18px;
-}
-
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.hero-tag {
-  border: 1px solid rgba(255,255,255,.18);
-  background: rgba(255,255,255,.06);
-  border-radius: 30px;
-  padding: 7px 15px;
-  color: #E8DDD6;
-  font-size: 13px;
+.hero-copy p {
+ max-width:640px;
+ color:#CFC5C0;
+ margin-top:25px;
+ font-size:16px;
+ line-height:1.9;
 }
 
 .hero-art {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 250px;
+ position:absolute;
+ right:5%;
+ top:50%;
+ transform:translateY(-50%);
+ width:min(420px,39vw);
+ z-index:2;
+ animation:heroFloat 7s ease-in-out infinite;
 }
 
-.hero-i {
-  font-family: "Playfair Display", serif;
-  font-size: 220px;
-  font-style: italic;
-  color: rgba(225,138,97,.8);
-  text-shadow: 0 0 65px rgba(184,92,56,.25);
+.hero-orbit {
+ transform-origin:210px 165px;
+ animation:orbit 22s linear infinite;
+}
+
+.hero-pulse {
+ animation:pulse 3s ease-in-out infinite;
+}
+
+.hero-symbol {
+ position:absolute;
+ color:rgba(255,255,255,.07);
+ font:italic 400 350px "Playfair Display",serif;
+ right:8%;
+ top:-100px;
+ z-index:0;
+}
+
+@keyframes heroFloat {
+ 0%,100% { transform:translateY(-50%); }
+ 50% { transform:translateY(calc(-50% - 13px)); }
+}
+
+@keyframes orbit {
+ to { transform:rotate(360deg); }
+}
+
+@keyframes pulse {
+ 0%,100% { opacity:.65; }
+ 50% { opacity:1; }
 }
 
 /* MAIN LAYOUT */
 
 main {
-  max-width: 1050px;
-  margin: 0 auto;
-  padding: 55px 24px 80px;
+ width:min(1140px,88%);
+ margin:auto;
+ padding:80px 0 95px;
 }
 
-.lesson-intro {
-  margin-bottom: 42px;
+.intro {
+ display:flex;
+ align-items:end;
+ justify-content:space-between;
+ gap:35px;
+ margin-bottom:48px;
 }
 
-.lesson-intro h2,
-.section-heading {
-  font-family: "Playfair Display", serif;
-  font-size: 34px;
-  line-height: 1.25;
-  margin: 0 0 13px;
+.eyebrow,
+.section-label {
+ color:var(--red);
+ font-size:11px;
+ font-weight:900;
+ letter-spacing:2.2px;
+ text-transform:uppercase;
 }
 
-.lesson-intro p {
-  color: var(--muted);
-  max-width: 800px;
+.intro h2,
+.part-heading h2,
+.completion-content h2 {
+ font-family:"Playfair Display",serif;
 }
 
-.lesson-section {
-  margin: 55px 0;
-  scroll-margin-top: 25px;
+.intro h2 {
+ font-size:clamp(35px,4.5vw,53px);
+ line-height:1.15;
+ margin-top:10px;
 }
 
-.section-number {
-  color: var(--accent);
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+.intro p {
+ max-width:450px;
+ color:var(--muted);
+ font-size:14px;
 }
 
-h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 25px;
-  line-height: 1.35;
-  margin: 28px 0 12px;
+/* LESSON SECTIONS */
+
+.part {
+ margin-bottom:85px;
+ scroll-margin-top:105px;
 }
 
-p {
-  margin: 12px 0;
+.part-heading {
+ display:flex;
+ align-items:flex-start;
+ gap:18px;
+ margin-bottom:30px;
 }
 
-ul, ol {
-  padding-left: 25px;
+.part-number {
+ flex:none;
+ width:53px;
+ height:53px;
+ display:grid;
+ place-items:center;
+ background:var(--dark);
+ color:white;
+ font-size:15px;
+ font-weight:900;
+ border-radius:14px;
+ border-bottom:4px solid var(--red);
 }
 
-li {
-  margin: 7px 0;
+.part-heading h2 {
+ font-size:clamp(29px,3.6vw,42px);
+ line-height:1.2;
 }
 
-/* FORMULAS */
-
-.formula {
-  background: #FFF;
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--accent);
-  border-radius: 12px;
-  padding: 15px 20px;
-  margin: 18px 0;
-  overflow-x: auto;
-  text-align: center;
-  font-size: 17px;
+.part-heading p {
+ color:var(--muted);
+ font-size:14px;
+ margin-top:7px;
 }
 
-.formula mjx-container {
-  font-size: 100% !important;
+.card {
+ background:white;
+ border:1px solid var(--line);
+ border-radius:20px;
+ box-shadow:var(--shadow);
+ padding:34px;
+ margin-top:23px;
 }
 
-.formula mjx-container[display="true"] {
-  margin: .35em 0 !important;
+.card h3 {
+ font:600 25px/1.3 "Playfair Display",serif;
+ margin-bottom:16px;
 }
 
-.formula.compact {
-  padding: 10px 15px;
-  font-size: 15px;
+.card p {
+ color:#51433D;
+ font-size:15px;
+ margin:12px 0;
 }
 
-/* INFORMATION BOXES */
+.card ul {
+ padding-left:24px;
+ color:#51433D;
+ margin:13px 0;
+ font-size:15px;
+}
+
+.card li {
+ padding:5px 0;
+}
+
+/* COLOURED INFORMATION BOXES */
 
 .info-box {
-  padding: 17px 21px;
-  border-radius: 12px;
-  margin: 22px 0;
-  border: 1px solid transparent;
+ position:relative;
+ overflow:hidden;
+ background:#FFFFFF;
+ border:2px solid var(--red);
+ border-radius:15px;
+ padding:23px 25px 23px 29px;
+ margin:25px 0;
+ box-shadow:0 8px 22px rgba(224,0,0,.07);
 }
 
-.info-box strong:first-child {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 14px;
-  letter-spacing: .7px;
-  text-transform: uppercase;
+.info-box::before {
+ content:"";
+ position:absolute;
+ top:0;
+ left:0;
+ bottom:0;
+ width:7px;
+ background:var(--red);
 }
 
-.remember {
-  background: var(--green-bg);
-  border-color: #BCE2C8;
-  color: #174E2E;
+.info-box::after {
+ content:"";
+ position:absolute;
+ width:100px;
+ height:100px;
+ right:-48px;
+ top:-53px;
+ border:17px solid rgba(224,0,0,.045);
+ border-radius:50%;
+ pointer-events:none;
 }
 
-.pay-attention {
-  background: var(--yellow-bg);
-  border-color: #F0D99B;
-  color: #684407;
+.info-heading {
+ display:flex;
+ align-items:center;
+ gap:11px;
+ color:var(--red);
+ font-size:12px;
+ font-weight:900;
+ letter-spacing:1.5px;
+ margin-bottom:11px;
+ text-transform:uppercase;
 }
 
-.note {
-  background: var(--blue-bg);
-  border-color: #C5DCF3;
-  color: #174D7C;
+.info-heading .info-icon {
+ width:30px;
+ height:30px;
+ display:grid;
+ place-items:center;
+ border-radius:9px;
+ background:var(--red);
+ color:white;
+ font-size:15px;
 }
 
-.warning {
-  background: var(--red-bg);
-  border-color: #F0C5C0;
-  color: #782C25;
+.info-box p,
+.info-box li {
+ color:#211915;
+ font-size:14px;
+ font-weight:700;
+ line-height:1.85;
 }
 
-.tip {
-  background: var(--purple-bg);
-  border-color: #D9C8EF;
-  color: #53347B;
+.info-box p {
+ margin:6px 0;
 }
 
-/* EXAMPLES */
+.info-box ul {
+ padding-left:22px;
+ margin-top:7px;
+}
+
+.info-box li {
+ padding:3px 0;
+}
+
+.info-box strong {
+ color:#111;
+ font-weight:900;
+}
+
+.info-box.remember {
+ border-color:#C33A00;
+ box-shadow:0 8px 22px rgba(195,58,0,.07);
+}
+
+.info-box.remember::before {
+ background:#C33A00;
+}
+
+.info-box.remember .info-heading {
+ color:#C33A00;
+}
+
+.info-box.remember .info-icon {
+ background:#C33A00;
+}
+
+.info-box.key-info {
+ border-color:#9F0000;
+ box-shadow:0 8px 22px rgba(159,0,0,.08);
+}
+
+.info-box.key-info::before {
+ background:#9F0000;
+}
+
+.info-box.key-info .info-heading {
+ color:#9F0000;
+}
+
+.info-box.key-info .info-icon {
+ background:#9F0000;
+}
+
+.info-box.tip {
+ border-color:#E00000;
+ background:#FFFCFC;
+}
+
+.info-box.tip .info-heading {
+ color:var(--red);
+}
+
+/* FORMULAS AND EXAMPLES */
+
+.formula {
+ background:var(--dark);
+ color:white;
+ border-radius:13px;
+ padding:20px;
+ text-align:center;
+ margin:19px 0;
+ font-size:1.12rem;
+ overflow-x:auto;
+}
+
+.formula.light {
+ background:#FFF7F3;
+ color:var(--ink);
+ border:1px solid #E8D4CA;
+}
+
+.two-col {
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:19px;
+ align-items:stretch;
+}
+
+.mini-card {
+ padding:25px;
+ background:#FFFCFA;
+ border:1px solid var(--line);
+ border-radius:16px;
+}
+
+.mini-card h4 {
+ font:600 21px "Playfair Display",serif;
+ margin-bottom:10px;
+}
 
 .example {
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 22px 25px;
-  margin: 22px 0;
+ margin-top:22px;
+ padding:25px;
+ background:#FFFCFA;
+ border:1px solid var(--line);
+ border-radius:16px;
 }
 
-.example-title {
-  color: var(--accent-dark);
-  font-weight: 800;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
+.example h4 {
+ font:600 21px "Playfair Display",serif;
+ margin-bottom:12px;
 }
 
-/* INTERACTIVE PANELS */
-
-.interactive-panel {
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 25px;
-  margin: 25px 0;
-  box-shadow: 0 8px 25px rgba(50,30,20,.045);
+.steps {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:14px;
+ margin-top:17px;
 }
 
-.panel-heading {
-  font-family: "Playfair Display", serif;
-  font-size: 24px;
-  margin: 0 0 7px;
+.step {
+ background:white;
+ border:1px solid var(--line);
+ border-radius:14px;
+ padding:19px;
 }
 
-.panel-description {
-  color: var(--muted);
-  font-size: 15px;
-  margin-top: 0;
+.step-no {
+ width:31px;
+ height:31px;
+ border-radius:9px;
+ background:var(--red-light);
+ color:var(--red);
+ display:grid;
+ place-items:center;
+ font-size:13px;
+ font-weight:900;
+ margin-bottom:12px;
 }
 
-.graph-wrap {
-  width: 100%;
-  max-width: 600px;
-  margin: 15px auto;
+.step p {
+ font-size:14px;
 }
 
-.graph-wrap svg {
-  width: 100%;
-  height: auto;
-  display: block;
-  background: #FFFCFA;
-  border: 1px solid #EFE5DF;
-  border-radius: 12px;
+.decimal-table {
+ width:100%;
+ border-collapse:collapse;
+ margin:19px 0;
+ border-radius:12px;
+ overflow:hidden;
 }
 
-.graph-controls {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 20px;
+.decimal-table th,
+.decimal-table td {
+ padding:14px;
+ text-align:center;
+ border:1px solid var(--line);
 }
 
-.control label {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 700;
-  font-size: 14px;
-  margin-bottom: 6px;
+.decimal-table th {
+ background:var(--dark);
+ color:white;
+ font-size:13px;
 }
 
-input[type="range"] {
-  width: 100%;
-  accent-color: var(--accent);
-  cursor: pointer;
+.decimal-table td {
+ background:white;
+ font-weight:700;
 }
 
-.result-strip {
-  background: #FFF3EB;
-  border: 1px solid #F1D2C1;
-  border-radius: 12px;
-  padding: 15px;
-  text-align: center;
-  margin-top: 18px;
-  font-weight: 700;
-  color: #743A22;
+/* DIAGRAMS */
+
+.diagram {
+ background:#FFFCFA;
+ border:1px solid var(--line);
+ border-radius:17px;
+ padding:20px;
+ margin-top:20px;
+ overflow:hidden;
 }
 
-.quadrant-buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin: 20px 0;
+.diagram svg {
+ display:block;
+ width:100%;
+ height:auto;
 }
 
-.quadrant-button {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #FFF;
-  padding: 12px 8px;
-  cursor: pointer;
-  font-weight: 800;
-  color: var(--ink);
-  transition: .2s;
+.diagram-caption {
+ text-align:center;
+ color:var(--muted);
+ font-size:13px;
+ margin-top:12px;
 }
 
-.quadrant-button:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+.quad-layout {
+ display:grid;
+ grid-template-columns:1.15fr .85fr;
+ gap:22px;
+ align-items:center;
 }
 
-.quadrant-button.active {
-  color: white;
-  border-color: transparent;
+.quad-rules {
+ display:grid;
+ gap:12px;
 }
 
-.quadrant-button[data-q="1"].active { background: #27834B; }
-.quadrant-button[data-q="2"].active { background: #2874B8; }
-.quadrant-button[data-q="3"].active { background: #8054B5; }
-.quadrant-button[data-q="4"].active { background: #C16A2E; }
-
-.quadrant-result {
-  border-radius: 12px;
-  padding: 18px;
-  background: #FFF9F5;
-  border: 1px solid var(--line);
-  min-height: 120px;
+.quad-rule {
+ padding:16px;
+ border:1px solid var(--line);
+ background:#FFFCFA;
+ border-radius:13px;
 }
 
-.quadrant-result h4 {
-  margin: 0 0 8px;
-  font-size: 17px;
+.quad-rule strong {
+ display:block;
+ color:var(--red);
+ font-size:12px;
+ letter-spacing:.8px;
 }
 
-.quadrant-result .formula {
-  margin-bottom: 0;
+.quad-rule span {
+ font-size:14px;
 }
 
-.graph-legend {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.legend-dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 5px;
+.part-divider {
+ height:1px;
+ background:var(--line);
+ margin:75px 0;
 }
 
 /* COMPLETION */
 
-.completion-card {
-  text-align: center;
-  background: #17110E;
-  color: white;
-  border-radius: 20px;
-  padding: 40px 25px;
-  margin-top: 65px;
+.completion-section {
+ position:relative;
+ overflow:hidden;
+ isolation:isolate;
+ background:#171311;
+ color:white;
+ border-radius:28px;
+ padding:75px 28px;
+ text-align:center;
+ margin-top:80px;
+ border:1px solid rgba(255,255,255,.08);
+ box-shadow:0 25px 65px rgba(30,15,10,.17);
 }
 
-.completion-card h2 {
-  font-family: "Playfair Display", serif;
-  font-size: 31px;
-  margin: 0 0 10px;
+.completion-section::before,
+.completion-section::after {
+ content:"";
+ position:absolute;
+ z-index:-1;
+ border:1px solid rgba(255,255,255,.11);
+ border-radius:50%;
+ width:360px;
+ height:360px;
+ top:-220px;
+ left:-120px;
 }
 
-.completion-card p {
-  color: #D7CBC4;
+.completion-section::after {
+ width:480px;
+ height:480px;
+ left:auto;
+ right:-170px;
+ top:auto;
+ bottom:-300px;
 }
 
-.primary-button,
+.completion-glow {
+ position:absolute;
+ z-index:-1;
+ width:400px;
+ height:400px;
+ border-radius:50%;
+ left:50%;
+ top:50%;
+ transform:translate(-50%,-50%);
+ background:radial-gradient(circle,rgba(224,0,0,.18),transparent 70%);
+}
+
+.completion-content {
+ position:relative;
+ z-index:2;
+ max-width:760px;
+ margin:auto;
+}
+
+.completion-mark {
+ width:82px;
+ height:82px;
+ display:grid;
+ place-items:center;
+ border:1px solid rgba(255,255,255,.3);
+ border-radius:50%;
+ margin:0 auto 25px;
+ color:#FF7777;
+ font-size:36px;
+ background:rgba(255,255,255,.04);
+ box-shadow:0 0 0 12px rgba(255,255,255,.025);
+}
+
+.completion-content h2 {
+ font-size:clamp(35px,5vw,54px);
+ line-height:1.15;
+ margin-bottom:16px;
+}
+
+.completion-content h2 span {
+ color:#FF5555;
+}
+
+.completion-content p {
+ color:#CFC5C0;
+ font-size:15px;
+ max-width:610px;
+ margin:0 auto 25px;
+}
+
+.complete-button {
+ border:1px solid rgba(255,255,255,.15);
+ background:var(--red);
+ color:white;
+ padding:17px 30px;
+ border-radius:10px;
+ font-size:12px;
+ font-weight:900;
+ letter-spacing:1.2px;
+ cursor:pointer;
+ transition:.25s;
+ box-shadow:0 8px 25px rgba(224,0,0,.22);
+}
+
+.complete-button:hover {
+ background:#FF2424;
+ transform:translateY(-3px);
+ box-shadow:0 12px 30px rgba(224,0,0,.3);
+}
+
+.complete-button:disabled {
+ opacity:.8;
+ cursor:wait;
+ transform:none;
+}
+
+.practice-unlocked {
+ display:none;
+ max-width:560px;
+ margin:30px auto 0;
+ padding:27px;
+ background:rgba(22,131,74,.13);
+ border:1px solid rgba(100,220,145,.5);
+ border-radius:17px;
+}
+
+.practice-unlocked.show {
+ display:block;
+ animation:congratulations .7s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.practice-unlocked h3 {
+ font:700 clamp(25px,4vw,35px) "Playfair Display",serif;
+ color:#8BE0A9;
+ margin-bottom:10px;
+}
+
+.practice-unlocked p {
+ color:#D7EBDD;
+ margin-bottom:19px;
+}
+
 .practice-button {
-  display: inline-block;
-  border: 0;
-  border-radius: 10px;
-  padding: 13px 24px;
-  margin: 12px 7px 0;
-  font-weight: 800;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.primary-button {
-  background: #D77A50;
-  color: white;
-}
-
-.primary-button:hover {
-  background: #B85C38;
-  transform: translateY(-2px);
-}
-
-.practice-button {
-  background: #27834B;
-  color: white;
+ display:inline-flex;
+ align-items:center;
+ gap:12px;
+ background:var(--green);
+ color:white;
+ padding:15px 24px;
+ border-radius:9px;
+ font-size:12px;
+ font-weight:900;
+ letter-spacing:.8px;
+ transition:.2s;
 }
 
 .practice-button:hover {
-  background: #1D693B;
-  transform: translateY(-2px);
+ background:var(--green-dark);
+ transform:translateY(-2px);
 }
 
-.practice-button[hidden] {
-  display: none;
+.completed .completion-mark {
+ color:white;
+ background:var(--green);
+ border-color:#65D48C;
+ box-shadow:0 0 0 12px rgba(70,210,125,.1),0 0 35px rgba(70,210,125,.2);
+ animation:successPop .55s ease both;
 }
 
-#completion-message {
-  min-height: 25px;
-  font-size: 14px;
-  margin-top: 12px;
+.completed .complete-button {
+ background:var(--green-dark);
+ box-shadow:0 8px 25px rgba(22,131,74,.22);
+}
+
+@keyframes congratulations {
+ 0% {opacity:0;transform:translateY(30px) scale(.97)}
+ 70% {opacity:1;transform:translateY(-4px) scale(1.01)}
+ 100% {opacity:1;transform:translateY(0) scale(1)}
+}
+
+@keyframes successPop {
+ 0% {transform:scale(.5) rotate(-20deg)}
+ 70% {transform:scale(1.15) rotate(5deg)}
+ 100% {transform:scale(1) rotate(0)}
+}
+
+.confetti-piece {
+ position:fixed;
+ z-index:1000;
+ top:-20px;
+ width:9px;
+ height:15px;
+ pointer-events:none;
+ animation:confettiFall 2.8s ease-in forwards;
+}
+
+@keyframes confettiFall {
+ to {
+  transform:translate3d(var(--drift),105vh,0) rotate(760deg);
+  opacity:0;
+ }
 }
 
 /* FOOTER */
 
 footer {
-  background: #100E0D;
-  color: #D8CDC7;
-  padding: 28px 20px;
-  text-align: center;
+ background:#171311;
+ color:white;
+ padding:36px 7%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:22px;
+ flex-wrap:wrap;
+ border-top:1px solid rgba(255,255,255,.08);
 }
 
-.footer-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-bottom: 10px;
-  font-size: 14px;
+.footer-brand {
+ display:flex;
+ align-items:center;
+ gap:15px;
 }
 
-.footer-links a:hover {
-  color: #E99A75;
+.footer-logo {
+ font:700 28px "Playfair Display",serif;
+ color:white;
+ letter-spacing:.1px;
 }
 
-.footer-copy {
-  font-size: 13px;
-  color: #9E918A;
+.footer-logo span {
+ color:#FF5555;
 }
 
-@media(max-width: 760px) {
-  body { font-size: 16px; }
+.footer-tagline {
+ color:#A99A92;
+ font-size:11px;
+ margin-top:2px;
+}
 
-  .hero {
-    padding: 20px 6% 55px;
-  }
+.policy-links {
+ display:flex;
+ gap:17px;
+ font-size:11px;
+ margin-top:12px;
+ color:#C7B8B0;
+}
 
-  .hero-content {
-    grid-template-columns: 1fr;
-    margin-top: 55px;
-  }
+.policy-links a:hover {
+ color:#FF7777;
+}
 
-  .hero-art {
-    display: none;
-  }
+.footer-right {
+ color:#A99A92;
+ font-size:11px;
+}
 
-  .hero h1 {
-    font-size: 43px;
-  }
+/* RESPONSIVE */
 
-  .nav-links {
-    gap: 12px;
-    font-size: 12px;
-  }
+@media(max-width:850px) {
+ .hero-art {
+  right:-80px;
+  width:310px;
+  opacity:.28;
+ }
+ .hero {
+  min-height:390px;
+ }
+ .intro {
+  display:block;
+ }
+ .intro p {
+  margin-top:17px;
+ }
+ .quad-layout {
+  grid-template-columns:1fr;
+ }
+}
 
-  .logo {
-    font-size: 24px;
-  }
+@media(max-width:650px) {
+ nav {
+  padding:0 5%;
+  min-height:68px;
+ }
+ .logo {
+  font-size:24px;
+ }
+ .nav-actions {
+  gap:10px;
+ }
+ .nav-actions a {
+  font-size:9px;
+ }
+ .logout {
+  padding:9px 11px;
+  font-size:9px;
+ }
+ .hero {
+  padding:65px 6%;
+  min-height:370px;
+ }
+ .hero h1 {
+  letter-spacing:-1px;
+ }
+ .hero-copy p {
+  font-size:14px;
+ }
+ main {
+  width:90%;
+  padding:60px 0 75px;
+ }
+ .part-heading h2 {
+  font-size:29px;
+ }
+ .two-col,
+ .steps {
+  grid-template-columns:1fr;
+ }
+ .card {
+  padding:22px;
+ }
+ .info-box {
+  padding:20px 18px 20px 24px;
+ }
+ .completion-section {
+  padding:55px 19px;
+ }
+ footer {
+  flex-direction:column;
+  text-align:center;
+ }
+ .footer-brand {
+  justify-content:center;
+ }
+ .policy-links {
+  justify-content:center;
+ }
+}
 
-  main {
-    padding: 40px 17px 60px;
-  }
+@media(max-width:390px) {
+ .nav-actions {
+  gap:7px;
+ }
+ .nav-actions a {
+  font-size:8px;
+ }
+ .logout {
+  padding:8px;
+ }
+ .decimal-table th,
+ .decimal-table td {
+  padding:9px 5px;
+  font-size:11px;
+ }
+}
 
-  .lesson-intro h2,
-  .section-heading {
-    font-size: 29px;
-  }
-
-  .graph-controls {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .quadrant-buttons {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .interactive-panel {
-    padding: 17px;
-  }
-
-  .formula {
-    padding: 12px;
-    font-size: 15px;
-  }
+@media(prefers-reduced-motion:reduce) {
+ *,
+ *::before,
+ *::after {
+  scroll-behavior:auto!important;
+  animation-duration:.01ms!important;
+  animation-iteration-count:1!important;
+  transition-duration:.01ms!important;
+ }
 }
 </style>
 </head>
 
 <body>
 
+<nav>
+ <a href="index.html" class="logo">Edu<span>Nova</span></a>
+
+ <div class="nav-actions">
+  <a href="complex-numbers.html">← CHAPTER</a>
+  <a href="dashboard.html">DASHBOARD</a>
+  <button class="logout" id="logoutBtn" type="button">LOG OUT</button>
+ </div>
+</nav>
+
 <header class="hero">
-  <nav class="hero-nav">
-    <a class="logo" href="index.html">Edu<span>Nova</span></a>
+ <div class="hero-grid"></div>
+ <div class="hero-symbol" aria-hidden="true">i</div>
 
-    <div class="nav-links">
-      <a href="complex-numbers.html">Chapter 9</a>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="#" id="logout-button">Log out</a>
-    </div>
-  </nav>
+ <div class="hero-copy">
+  <div class="hero-label">CHAPTER 09 • COMPLEX NUMBERS • TOPIC 01</div>
+  <h1>Definition of a <span>Complex Number.</span></h1>
+  <p>
+   Step beyond the real number line. Discover the imaginary unit,
+   simplify powers of \(i\), represent complex numbers on the
+   Argand diagram, and explore their modulus and argument.
+  </p>
+ </div>
 
-  <div class="hero-content">
-    <div>
-      <div class="eyebrow">Chapter 9 · Complex Numbers · Lesson 9.1</div>
-      <h1>Definition of a <span>Complex Number</span></h1>
-      <p class="hero-description">
-        Discover the imaginary unit, understand how complex numbers are represented,
-        and explore their modulus and argument through interactive diagrams.
-      </p>
-      <div class="hero-meta">
-        <span class="hero-tag">Lesson 9.1</span>
-        <span class="hero-tag">Interactive learning</span>
-        <span class="hero-tag">Argand diagram</span>
-      </div>
-    </div>
+ <svg class="hero-art" viewBox="0 0 420 330" role="img" aria-label="A complex number represented on the Argand plane">
+  <defs>
+   <marker id="heroArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+    <path d="M0 0 L6 3 L0 6" fill="none" stroke="#FF5555" stroke-width="1.2"/>
+   </marker>
+  </defs>
 
-    <div class="hero-art" aria-hidden="true">
-      <div class="hero-i">i</div>
-    </div>
-  </div>
+  <g stroke="#A99A92" stroke-width="1.4" opacity=".8">
+   <path d="M35 165 H390" marker-end="url(#heroArrow)"/>
+   <path d="M205 300 V20" marker-end="url(#heroArrow)"/>
+  </g>
+
+  <g fill="#D8C4B8" font-family="DM Sans" font-size="13">
+   <text x="378" y="187">Re</text>
+   <text x="217" y="27">Im</text>
+   <text x="217" y="183">O</text>
+  </g>
+
+  <g class="hero-orbit">
+   <circle cx="205" cy="165" r="112" fill="none" stroke="#E00000" stroke-width="1" stroke-dasharray="5 9" opacity=".65"/>
+   <circle cx="205" cy="165" r="145" fill="none" stroke="#D97745" stroke-width="1" stroke-dasharray="2 12" opacity=".5"/>
+  </g>
+
+  <path d="M205 165 L335 75" stroke="#FF5555" stroke-width="3" fill="none"/>
+  <path d="M335 75 V165 M205 165 H335" stroke="#D97745" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <circle class="hero-pulse" cx="335" cy="75" r="7" fill="#FFFFFF" stroke="#FF5555" stroke-width="3"/>
+
+  <text x="345" y="66" fill="#FFFFFF" font-family="Playfair Display" font-size="19" font-style="italic">z = x + iy</text>
+  <text x="250" y="112" fill="#FF7777" font-family="Playfair Display" font-size="18" font-style="italic">z</text>
+ </svg>
 </header>
 
 <main>
 
-  <section class="lesson-intro">
-    <div class="section-number">Part 1</div>
-    <h2>Understanding Complex Numbers</h2>
-    <p>
-      Before exploring complex numbers, we need to understand why mathematicians
-      introduced a new type of number and how it extends the real number system.
-    </p>
-  </section>
+<section class="intro">
+ <div>
+  <div class="eyebrow">LESSON 9.1</div>
+  <h2>Two parts. One new number system.</h2>
+ </div>
+ <p>
+  Start with the imaginary unit and the algebraic form. Then move
+  to the geometry of complex numbers through modulus and argument.
+ </p>
+</section>
 
-  <section class="lesson-section">
-    <h3>1. Why do we need complex numbers?</h3>
+<div class="info-box">
+ <div class="info-heading">
+  <span class="info-icon">!</span>
+  PAY ATTENTION
+ </div>
+ <p>
+  <strong>Degrees are used in Vectors, while radians are used in Complex Numbers.</strong>
+  In this lesson, measure arguments in radians unless a question
+  specifically asks for degrees.
+ </p>
+</div>
 
-    <p>Consider the following quadratic equation:</p>
+<!-- PART ONE -->
 
-    <div class="formula">
-      \[
-      x^2+6x+13=0
-      \]
+<section class="part" id="part1">
+
+ <div class="part-heading">
+  <div class="part-number">01</div>
+  <div>
+   <div class="section-label">PART ONE</div>
+   <h2>Definition of Complex Numbers</h2>
+   <p>From the real number line to the complex plane.</p>
+  </div>
+ </div>
+
+ <article class="card">
+  <h3>1. Why do we need complex numbers?</h3>
+
+  <p>Consider the quadratic equation:</p>
+
+  <div class="formula">
+   \[x^2+6x+13=0\]
+  </div>
+
+  <p>Using the discriminant,</p>
+
+  <div class="formula light">
+   \[\Delta=b^2-4ac=6^2-4(1)(13)=36-52=-16\]
+  </div>
+
+  <p>
+   The discriminant is negative. Therefore, the equation has no
+   real roots because the square root of a negative real number
+   is not a real number.
+  </p>
+
+  <p>
+   To extend our number system and solve equations like this,
+   we introduce a new number called the <strong>imaginary unit</strong>.
+  </p>
+ </article>
+
+ <article class="card">
+  <h3>2. The imaginary unit</h3>
+
+  <p>The imaginary unit, denoted by \(i\), is defined by:</p>
+
+  <div class="formula">
+   \[\boxed{i=\sqrt{-1}\qquad\text{and}\qquad i^2=-1}\]
+  </div>
+
+  <p>This allows us to express square roots of negative numbers using \(i\).</p>
+
+  <div class="two-col">
+   <div class="mini-card">
+    <h4>Example 1</h4>
+    <p>\(\sqrt{-49}\)</p>
+    <div class="formula light">
+     \[\sqrt{-49}=\sqrt{49}\sqrt{-1}=\boxed{7i}\]
+    </div>
+   </div>
+
+   <div class="mini-card">
+    <h4>Example 2</h4>
+    <p>\(\sqrt{-16}\)</p>
+    <div class="formula light">
+     \[\sqrt{-16}=\sqrt{16}\sqrt{-1}=\boxed{4i}\]
+    </div>
+   </div>
+  </div>
+
+  <div class="info-box">
+   <div class="info-heading">
+    <span class="info-icon">!</span>
+    IMPORTANT DISTINCTION
+   </div>
+   <p>
+    The principal square root is \(\sqrt{-49}=7i\).
+    However, the equation \(z^2=-49\) has two solutions:
+    \(z=\pm7i\). Do not confuse a square-root symbol with
+    solving a quadratic equation.
+   </p>
+  </div>
+ </article>
+
+ <article class="card">
+  <h3>3. Simplifying expressions involving \(i\)</h3>
+
+  <p>
+   Before simplifying longer expressions, notice what happens
+   when we calculate the first four powers of \(i\):
+  </p>
+
+  <div class="two-col">
+   <div class="mini-card">
+    <div class="formula light">\[i^1=i\]</div>
+    <div class="formula light">\[i^2=-1\]</div>
+   </div>
+   <div class="mini-card">
+    <div class="formula light">\[i^3=i^2\cdot i=-i\]</div>
+    <div class="formula light">\[i^4=i^2\cdot i^2=1\]</div>
+   </div>
+  </div>
+
+  <p>After the fourth power, the same pattern repeats because \(i^4=1\).</p>
+
+  <div class="formula">
+   \[i,\quad -1,\quad -i,\quad 1,\quad i,\quad -1,\quad -i,\quad 1,\ldots\]
+  </div>
+
+  <p>
+   To simplify a large power of \(i\), divide its exponent by
+   <strong>4</strong> and use the remainder.
+  </p>
+
+  <table class="decimal-table">
+   <thead>
+    <tr>
+     <th>Decimal part</th>
+     <th>Remainder</th>
+     <th>Resulting power</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr><td>.00</td><td>0</td><td>\(i^0=1\)</td></tr>
+    <tr><td>.25</td><td>1</td><td>\(i^1=i\)</td></tr>
+    <tr><td>.50</td><td>2</td><td>\(i^2=-1\)</td></tr>
+    <tr><td>.75</td><td>3</td><td>\(i^3=-i\)</td></tr>
+   </tbody>
+  </table>
+
+  <div class="info-box remember">
+   <div class="info-heading">
+    <span class="info-icon">R</span>
+    REMEMBER
+   </div>
+   <p>When multiplying powers with the same base, we add their exponents:</p>
+   <div class="formula light">
+    \[a^m\times a^n=a^{m+n}\]
+   </div>
+   <p>
+    Therefore, \(i^{2024}\times i^2=i^{2024+2}=i^{2026}\).
+    This explains why we can split the exponent into \(2024+2\).
+   </p>
+  </div>
+
+  <div class="example">
+   <h4>Example 1: Simplify \(i^{2026}\)</h4>
+
+   <div class="steps">
+    <div class="step">
+     <div class="step-no">1</div>
+     <p>Divide the exponent by 4.</p>
+     <div class="formula light">\[2026\div4=506.5\]</div>
     </div>
 
-    <p>Using the discriminant:</p>
-
-    <div class="formula">
-      \[
-      \Delta=b^2-4ac=6^2-4(1)(13)=-16
-      \]
+    <div class="step">
+     <div class="step-no">2</div>
+     <p>The decimal part is .50, so the remainder is 2.</p>
+     <div class="formula light">\[2026=2024+2\]</div>
     </div>
 
-    <p>
-      Since the discriminant is negative, the equation has no real roots.
-      This leads us to introduce a new number, called the <strong>imaginary unit</strong>.
-    </p>
+    <div class="step">
+     <div class="step-no">3</div>
+     <p>Use \(i^4=1\).</p>
+     <div class="formula light">
+      \[\begin{aligned}
+      i^{2026}&=(i^4)^{506}i^2\\
+      &=1^{506}(-1)\\
+      &=\boxed{-1}
+      \end{aligned}\]
+     </div>
+    </div>
+   </div>
+  </div>
 
-    <div class="info-box note">
-      <strong>The imaginary unit</strong>
-      The imaginary unit is represented by \(i\), where:
-      <div class="formula">
-        \[
-        \boxed{i=\sqrt{-1}\qquad\text{and}\qquad i^2=-1}
-        \]
-      </div>
+  <div class="example">
+   <h4>Example 2: Simplify \(i^{537}\)</h4>
+
+   <div class="steps">
+    <div class="step">
+     <div class="step-no">1</div>
+     <p>Divide the exponent by 4.</p>
+     <div class="formula light">\[537\div4=134.25\]</div>
     </div>
 
-    <h3>2. Square roots of negative numbers</h3>
-
-    <p>For example:</p>
-
-    <div class="formula">
-      \[
-      \sqrt{-49}=\sqrt{49}\sqrt{-1}=7i
-      \]
+    <div class="step">
+     <div class="step-no">2</div>
+     <p>The decimal part is .25, so the remainder is 1.</p>
+     <div class="formula light">\[537=536+1\]</div>
     </div>
 
-    <div class="info-box pay-attention">
-      <strong>Pay attention</strong>
-      The principal square root of \(-49\) is \(7i\). However, the equation
-      \(z^2=-49\) has two solutions:
-      \[
-      z=\pm 7i
-      \]
+    <div class="step">
+     <div class="step-no">3</div>
+     <p>Use \(i^4=1\).</p>
+     <div class="formula light">
+      \[\begin{aligned}
+      i^{537}&=(i^4)^{134}i\\
+      &=1^{134}i\\
+      &=\boxed{i}
+      \end{aligned}\]
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <div class="info-box">
+   <div class="info-heading">
+    <span class="info-icon">!</span>
+    CHECK THE REMAINDER
+   </div>
+   <p>
+    Because the exponent is an integer, dividing it by 4 can only
+    give decimal parts .00, .25, .50 or .75. Match the remainder
+    carefully with the table before simplifying.
+   </p>
+  </div>
+ </article>
+
+ <article class="card">
+  <h3>4. Real and imaginary parts</h3>
+
+  <p>A complex number is written in the form:</p>
+
+  <div class="formula">
+   \[\boxed{z=x+iy}\]
+  </div>
+
+  <p>where \(x\) and \(y\) are real numbers, and \(i\) is the imaginary unit.</p>
+
+  <div class="two-col">
+   <div class="mini-card">
+    <h4>Real part</h4>
+    <p>The real part is the value of \(x\).</p>
+    <div class="formula light">\[\operatorname{Re}(z)=x\]</div>
+   </div>
+
+   <div class="mini-card">
+    <h4>Imaginary part</h4>
+    <p>The imaginary part is the coefficient of \(i\), which is \(y\).</p>
+    <div class="formula light">\[\operatorname{Im}(z)=y\]</div>
+   </div>
+  </div>
+
+  <div class="example">
+   <h4>Example</h4>
+   <p>For \(z=5-3i\):</p>
+   <div class="formula light">
+    \[\operatorname{Re}(z)=5,\qquad \operatorname{Im}(z)=-3\]
+   </div>
+   <p>Notice that the imaginary part is \(-3\), not \(-3i\).</p>
+  </div>
+ </article>
+
+ <article class="card">
+  <h3>5. Equality of complex numbers</h3>
+
+  <p>
+   Two complex numbers are equal if and only if their real parts
+   are equal and their imaginary parts are equal.
+  </p>
+
+  <div class="formula">
+   \[a+bi=c+di\iff a=c\quad\text{and}\quad b=d\]
+  </div>
+
+  <div class="example">
+   <h4>Example</h4>
+   <p>Given that \(3x+(y-2)i=9+5i\), find \(x\) and \(y\).</p>
+   <div class="formula light">
+    \[\begin{aligned}3x&=9\\x&=\boxed{3}\end{aligned}
+    \qquad
+    \begin{aligned}y-2&=5\\y&=\boxed{7}\end{aligned}\]
+   </div>
+  </div>
+ </article>
+
+ <article class="card">
+  <h3>6. The Argand diagram</h3>
+
+  <p>
+   A complex number can be represented geometrically as a point
+   on a plane called the <strong>Argand diagram</strong>
+   (or complex plane).
+  </p>
+
+  <ul>
+   <li>The horizontal axis represents the real part.</li>
+   <li>The vertical axis represents the imaginary part.</li>
+   <li>The complex number \(z=x+iy\) is represented by the point \((x,y)\).</li>
+  </ul>
+
+  <div class="diagram">
+   <svg viewBox="0 0 680 440" role="img" aria-label="Argand diagram showing z equals 3 plus 2i at coordinate 3 comma 2">
+    <defs>
+     <marker id="argArrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0 0 L7 3 L0 6" fill="#76665F"/>
+     </marker>
+    </defs>
+
+    <g stroke="#E8DAD1" stroke-width="1">
+     <path d="M70 40V390 M130 40V390 M190 40V390 M250 40V390 M310 40V390 M370 40V390 M430 40V390 M490 40V390 M550 40V390 M610 40V390"/>
+     <path d="M70 70H610 M70 130H610 M70 190H610 M70 250H610 M70 310H610 M70 370H610"/>
+    </g>
+
+    <path d="M55 250H635 M370 405V25" stroke="#76665F" stroke-width="2" marker-end="url(#argArrow)"/>
+    <path d="M370 250L490 130" stroke="#E00000" stroke-width="4" stroke-linecap="round"/>
+    <path d="M490 130V250H370" stroke="#D97745" stroke-width="2" stroke-dasharray="6 6"/>
+    <circle cx="490" cy="130" r="7" fill="#E00000"/>
+
+    <g fill="#76665F" font-family="DM Sans" font-size="13">
+     <text x="640" y="255">Real</text>
+     <text x="382" y="28">Imaginary</text>
+     <text x="352" y="270">O</text>
+     <text x="482" y="273">3</text>
+     <text x="345" y="135">2</text>
+    </g>
+
+    <text x="505" y="118" fill="#E00000" font-family="Playfair Display" font-size="21" font-weight="700">z = 3 + 2i</text>
+    <text x="422" y="282" fill="#76665F" font-family="DM Sans" font-size="13">Real part = 3</text>
+    <text x="505" y="190" fill="#76665F" font-family="DM Sans" font-size="13">Imaginary part = 2</text>
+   </svg>
+
+   <div class="diagram-caption">
+    The point representing \(z=3+2i\) has coordinates \((3,2)\).
+   </div>
+  </div>
+ </article>
+
+ <div class="info-box key-info">
+  <div class="info-heading">
+   <span class="info-icon">✓</span>
+   KEY INFORMATION • PART 1
+  </div>
+  <p><strong>Complex number:</strong> \(z=x+iy\), where \(x,y\in\mathbb R\) and \(i^2=-1\).</p>
+  <p><strong>Real part:</strong> \(\operatorname{Re}(z)=x\).</p>
+  <p><strong>Imaginary part:</strong> \(\operatorname{Im}(z)=y\).</p>
+  <p><strong>Equality:</strong> \(a+bi=c+di\) exactly when \(a=c\) and \(b=d\).</p>
+  <p><strong>Argand diagram:</strong> \(z=x+iy\) is represented by the point \((x,y)\).</p>
+  <p><strong>Powers of \(i\):</strong> \(i,-1,-i,1\), then the cycle repeats every four powers.</p>
+ </div>
+
+</section>
+
+<div class="part-divider"></div>
+
+<!-- PART TWO -->
+
+<section class="part" id="part2">
+
+ <div class="part-heading">
+  <div class="part-number">02</div>
+  <div>
+   <div class="section-label">PART TWO</div>
+   <h2>Modulus and Argument</h2>
+   <p>Describe a complex number using its distance and direction.</p>
+  </div>
+ </div>
+
+ <article class="card">
+  <h3>1. The modulus of a complex number</h3>
+
+  <p>
+   The <strong>modulus</strong> of a complex number is the distance
+   of its point from the origin on the Argand diagram. It is always
+   non-negative.
+  </p>
+
+  <p>For \(z=x+iy\), Pythagoras' theorem gives:</p>
+
+  <div class="formula">
+   \[\boxed{|z|=\sqrt{x^2+y^2}}\]
+  </div>
+
+  <div class="diagram">
+   <svg viewBox="0 0 620 340" role="img" aria-label="Modulus represented as the distance from the origin to a complex point">
+    <defs>
+     <marker id="modArrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0 0 L7 3 L0 6" fill="#E00000"/>
+     </marker>
+    </defs>
+
+    <path d="M55 270H575 M125 315V30" stroke="#76665F" stroke-width="2"/>
+    <path d="M125 270L405 90" stroke="#E00000" stroke-width="4" marker-end="url(#modArrow)"/>
+    <path d="M405 90V270H125" stroke="#D97745" stroke-width="2" stroke-dasharray="6 6"/>
+    <circle cx="405" cy="90" r="7" fill="#E00000"/>
+
+    <text x="240" y="160" fill="#E00000" font-family="Playfair Display" font-size="22">|z|</text>
+
+    <g fill="#76665F" font-family="DM Sans" font-size="14">
+     <text x="112" y="292">O</text>
+     <text x="590" y="275">Re</text>
+     <text x="135" y="28">Im</text>
+     <text x="245" y="294">x</text>
+     <text x="415" y="185">y</text>
+     <text x="420" y="83" fill="#E00000" font-weight="700">z = x + iy</text>
+    </g>
+   </svg>
+
+   <div class="diagram-caption">
+    The modulus is the length of the line segment joining the origin to the point \(z\).
+   </div>
+  </div>
+
+  <div class="example">
+   <h4>Example</h4>
+   <p>Find the modulus of \(z=3+4i\).</p>
+   <div class="formula light">
+    \[\begin{aligned}
+    |z|&=\sqrt{3^2+4^2}\\
+    &=\sqrt{9+16}\\
+    &=\boxed{5}
+    \end{aligned}\]
+   </div>
+  </div>
+ </article>
+
+ <article class="card">
+  <h3>2. The argument of a complex number</h3>
+
+  <p>
+   The <strong>argument</strong> of a non-zero complex number is
+   the angle measured from the positive real axis to the line
+   joining the origin to the point representing the complex number.
+  </p>
+
+  <ul>
+   <li>Anticlockwise rotation is positive.</li>
+   <li>Clockwise rotation is negative.</li>
+   <li>Arguments in this lesson are measured in radians.</li>
+  </ul>
+
+  <div class="formula">
+   \[\theta=\operatorname{Arg}(z)\]
+  </div>
+
+  <p>The principal argument is conventionally chosen in the interval:</p>
+
+  <div class="formula light">
+   \[\boxed{-\pi<\operatorname{Arg}(z)\leq\pi}\]
+  </div>
+
+  <div class="info-box">
+   <div class="info-heading">
+    <span class="info-icon">!</span>
+    PAY ATTENTION
+   </div>
+   <p>
+    Always check the range mentioned in the exam question.
+    If a question specifies a different interval for the argument,
+    use the interval given in that question.
+   </p>
+   <p>
+    The standard principal range includes \(+\pi\) but excludes
+    \(-\pi\), because these two angles point in exactly the same
+    direction. Only one endpoint is included.
+   </p>
+  </div>
+
+  <p>
+   The argument of \(z=0\) is <strong>undefined</strong>, because
+   the zero complex number has no direction from the origin.
+  </p>
+ </article>
+
+ <article class="card">
+  <h3>3. Finding the argument in each quadrant</h3>
+
+  <p>
+   First find the acute reference angle using the positive magnitudes
+   of the real and imaginary components:
+  </p>
+
+  <div class="formula">
+   \[\alpha=\tan^{-1}\left(\frac{y}{x}\right),\qquad x>0,\ y>0\]
+  </div>
+
+  <p>
+   The signs of the real and imaginary parts tell us the quadrant.
+   The argument must then be adjusted according to that quadrant.
+  </p>
+
+  <div class="quad-layout">
+   <div class="diagram">
+    <svg viewBox="0 0 560 440" role="img" aria-label="Four quadrants of the Argand plane">
+     <defs>
+      <marker id="quadArrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+       <path d="M0 0 L7 3 L0 6" fill="#76665F"/>
+      </marker>
+     </defs>
+
+     <path d="M45 220H520 M280 410V25" stroke="#76665F" stroke-width="2" marker-end="url(#quadArrow)"/>
+
+     <path d="M280 220L420 90" stroke="#E00000" stroke-width="3"/>
+     <path d="M280 220L140 90" stroke="#E00000" stroke-width="3"/>
+     <path d="M280 220L140 350" stroke="#E00000" stroke-width="3"/>
+     <path d="M280 220L420 350" stroke="#E00000" stroke-width="3"/>
+
+     <g fill="#E00000" font-family="Playfair Display" font-size="20" font-weight="700">
+      <text x="385" y="75">I</text>
+      <text x="145" y="75">II</text>
+      <text x="145" y="380">III</text>
+      <text x="390" y="380">IV</text>
+     </g>
+
+     <g fill="#76665F" font-family="DM Sans" font-size="13">
+      <text x="525" y="225">Re</text>
+      <text x="290" y="24">Im</text>
+      <text x="265" y="240">O</text>
+     </g>
+
+     <path d="M335 220 A55 55 0 0 0 320 181" fill="none" stroke="#D97745" stroke-width="2"/>
+     <path d="M225 220 A55 55 0 0 1 240 181" fill="none" stroke="#D97745" stroke-width="2"/>
+     <path d="M225 220 A55 55 0 0 0 240 259" fill="none" stroke="#D97745" stroke-width="2"/>
+     <path d="M335 220 A55 55 0 0 1 320 259" fill="none" stroke="#D97745" stroke-width="2"/>
+    </svg>
+   </div>
+
+   <div class="quad-rules">
+    <div class="quad-rule">
+     <strong>QUADRANT I</strong>
+     <span>\(z=x+iy\)</span>
+     <div class="formula light">
+      \[\theta=\operatorname{Arg}(z)=\tan^{-1}\left(\frac yx\right)\]
+     </div>
     </div>
 
-    <h3>3. Powers of the imaginary unit</h3>
-
-    <p>
-      The powers of \(i\) follow a repeating cycle. Let's calculate the first
-      four powers:
-    </p>
-
-    <div class="formula">
-      \[
-      \begin{aligned}
-      i^1&=i\\
-      i^2&=-1\\
-      i^3&=-i\\
-      i^4&=1
-      \end{aligned}
-      \]
+    <div class="quad-rule">
+     <strong>QUADRANT II</strong>
+     <span>\(z=-x+iy\)</span>
+     <div class="formula light">
+      \[\theta=\operatorname{Arg}(z)=\pi-\tan^{-1}\left(\frac yx\right)\]
+     </div>
     </div>
 
-    <div class="info-box remember">
-      <strong>Remember</strong>
-      The powers of \(i\) repeat every four powers:
-      \[
-      i,\;-1,\;-i,\;1
-      \]
+    <div class="quad-rule">
+     <strong>QUADRANT III</strong>
+     <span>\(z=-x-iy\)</span>
+     <div class="formula light">
+      \[\theta=\operatorname{Arg}(z)=-\pi+\tan^{-1}\left(\frac yx\right)\]
+     </div>
     </div>
 
-    <p>
-      To calculate a large power of \(i\), divide its exponent by \(4\)
-      and use the remainder.
-    </p>
-
-    <div class="example">
-      <div class="example-title">Example 1</div>
-      Evaluate \(i^{2026}\).
-
-      <div class="formula">
-        \[
-        2026=4(506)+2
-        \]
-        \[
-        i^{2026}=i^2=\boxed{-1}
-        \]
-      </div>
+    <div class="quad-rule">
+     <strong>QUADRANT IV</strong>
+     <span>\(z=x-iy\)</span>
+     <div class="formula light">
+      \[\theta=\operatorname{Arg}(z)=-\tan^{-1}\left(\frac yx\right)\]
+     </div>
     </div>
+   </div>
+  </div>
 
-    <div class="example">
-      <div class="example-title">Example 2</div>
-      Evaluate \(i^{537}\).
+  <div class="info-box remember">
+   <div class="info-heading">
+    <span class="info-icon">R</span>
+    REMEMBER
+   </div>
+   <p>
+    The inverse tangent gives the reference angle. It does not
+    automatically identify the correct quadrant. Always inspect
+    the signs of the real and imaginary parts before choosing
+    the argument formula.
+   </p>
+  </div>
+ </article>
 
-      <div class="formula">
-        \[
-        537=4(134)+1
-        \]
-        \[
-        i^{537}=i^1=\boxed{i}
-        \]
-      </div>
+ <article class="card">
+  <h3>4. Worked examples</h3>
+
+  <div class="example">
+   <h4>Example 1: \(z=-3+3i\) (Quadrant II)</h4>
+
+   <p>Both component magnitudes are 3, so the reference angle is:</p>
+
+   <div class="formula light">
+    \[\alpha=\tan^{-1}\left(\frac33\right)=\frac{\pi}{4}\]
+   </div>
+
+   <p>Since the point is in Quadrant II:</p>
+
+   <div class="formula light">
+    \[\operatorname{Arg}(z)=\pi-\frac{\pi}{4}=\boxed{\frac{3\pi}{4}}\]
+   </div>
+  </div>
+
+  <div class="example">
+   <h4>Example 2: \(z=-3-3i\) (Quadrant III)</h4>
+
+   <p>
+    The reference angle is again \(\frac{\pi}{4}\).
+    Since the point is in Quadrant III, the principal argument is negative:
+   </p>
+
+   <div class="formula light">
+    \[\operatorname{Arg}(z)=-\pi+\frac{\pi}{4}=\boxed{-\frac{3\pi}{4}}\]
+   </div>
+  </div>
+ </article>
+
+ <article class="card">
+  <h3>5. Special cases on the axes</h3>
+
+  <p>
+   If a complex number lies directly on one of the axes, use its
+   position rather than the quadrant formulas.
+  </p>
+
+  <div class="two-col">
+   <div class="mini-card">
+    <h4>Positive real axis</h4>
+    <div class="formula light">
+     \[z=x,\ x>0\quad\Rightarrow\quad\operatorname{Arg}(z)=0\]
     </div>
+   </div>
 
-    <div class="info-box warning">
-      <strong>Important</strong>
-      When dividing the exponent by \(4\), use the remainder, not the quotient.
+   <div class="mini-card">
+    <h4>Positive imaginary axis</h4>
+    <div class="formula light">
+     \[z=iy,\ y>0\quad\Rightarrow\quad\operatorname{Arg}(z)=\frac{\pi}{2}\]
     </div>
+   </div>
 
-    <h3>4. The general form of a complex number</h3>
-
-    <p>
-      A complex number is a number that can be expressed in the form:
-    </p>
-
-    <div class="formula">
-      \[
-      \boxed{z=x+iy}
-      \]
+   <div class="mini-card">
+    <h4>Negative real axis</h4>
+    <div class="formula light">
+     \[z=-x,\ x>0\quad\Rightarrow\quad\operatorname{Arg}(z)=\pi\]
     </div>
+   </div>
 
-    <ul>
-      <li>\(x\) is the real part of the complex number.</li>
-      <li>\(y\) is the imaginary part of the complex number.</li>
-      <li>\(i\) is the imaginary unit.</li>
-    </ul>
-
-    <div class="formula">
-      \[
-      \operatorname{Re}(z)=x
-      \qquad
-      \operatorname{Im}(z)=y
-      \]
+   <div class="mini-card">
+    <h4>Negative imaginary axis</h4>
+    <div class="formula light">
+     \[z=-iy,\ y>0\quad\Rightarrow\quad\operatorname{Arg}(z)=-\frac{\pi}{2}\]
     </div>
-
-    <div class="info-box remember">
-      <strong>Remember</strong>
-      The imaginary part is the coefficient of \(i\), not the entire term \(iy\).
-      For example, if \(z=5-3i\), then:
-      \[
-      \operatorname{Re}(z)=5,\qquad \operatorname{Im}(z)=-3
-      \]
-    </div>
-
-    <h3>5. Equality of complex numbers</h3>
-
-    <p>
-      Two complex numbers are equal if and only if their real parts are equal
-      and their imaginary parts are equal.
-    </p>
-
-    <div class="formula">
-      \[
-      a+bi=c+di
-      \]
-      \[
-      \boxed{a=c\quad\text{and}\quad b=d}
-      \]
-    </div>
-
-    <div class="example">
-      <div class="example-title">Example</div>
-      If \(z_1=4+7i\) and \(z_2=a+bi\), and \(z_1=z_2\), find \(a\) and \(b\).
-
-      <div class="formula">
-        \[
-        \boxed{a=4,\qquad b=7}
-        \]
-      </div>
-    </div>
-  </section>
-
-  <section class="lesson-section">
-    <div class="section-number">Interactive exploration</div>
-    <h2 class="section-heading">The Argand Diagram</h2>
-
-    <p>
-      A complex number can be represented geometrically as a point on a plane.
-      This plane is called the <strong>Argand diagram</strong>.
-    </p>
-
-    <ul>
-      <li>The horizontal axis represents the real part.</li>
-      <li>The vertical axis represents the imaginary part.</li>
-      <li>The complex number \(z=x+iy\) is represented by the point \((x,y)\).</li>
-    </ul>
-
-    <div class="interactive-panel">
-      <h3 class="panel-heading">Explore the Argand Diagram</h3>
-      <p class="panel-description">
-        Move the sliders to change the real and imaginary parts.
-        Watch the point move on the diagram.
-      </p>
-
-      <div class="graph-wrap">
-        <svg id="argand-graph" viewBox="0 0 500 390" role="img"
-             aria-label="Interactive Argand diagram">
-          <defs>
-            <marker id="axis-arrow" markerWidth="7" markerHeight="7"
-                    refX="5" refY="3" orient="auto">
-              <path d="M0,0 L6,3 L0,6" fill="#554A44"/>
-            </marker>
-            <marker id="vector-arrow" markerWidth="8" markerHeight="8"
-                    refX="6" refY="3" orient="auto">
-              <path d="M0,0 L7,3 L0,6" fill="#B85C38"/>
-            </marker>
-          </defs>
-
-          <g id="argand-grid"></g>
-          <line x1="45" y1="195" x2="465" y2="195"
-                stroke="#554A44" stroke-width="2"
-                marker-end="url(#axis-arrow)"/>
-          <line x1="250" y1="355" x2="250" y2="25"
-                stroke="#554A44" stroke-width="2"
-                marker-end="url(#axis-arrow)"/>
-
-          <text x="470" y="188" font-size="13" fill="#554A44">Re</text>
-          <text x="262" y="25" font-size="13" fill="#554A44">Im</text>
-          <text x="260" y="211" font-size="11" fill="#777">0</text>
-
-          <line id="argand-horizontal" x1="250" y1="195"
-                x2="340" y2="195" stroke="#2874B8"
-                stroke-width="2" stroke-dasharray="5 4"/>
-          <line id="argand-vertical" x1="340" y1="195"
-                x2="340" y2="135" stroke="#24834B"
-                stroke-width="2" stroke-dasharray="5 4"/>
-
-          <line id="argand-vector" x1="250" y1="195"
-                x2="340" y2="135" stroke="#B85C38"
-                stroke-width="3" marker-end="url(#vector-arrow)"/>
-
-          <circle id="argand-point" cx="340" cy="135" r="7"
-                  fill="#B85C38" stroke="white" stroke-width="2"/>
-          <text id="argand-point-label" x="350" y="125"
-                font-size="15" font-weight="bold" fill="#914326">z</text>
-        </svg>
-      </div>
-
-      <div class="graph-legend">
-        <span><span class="legend-dot" style="background:#2874B8"></span>Real part</span>
-        <span><span class="legend-dot" style="background:#24834B"></span>Imaginary part</span>
-        <span><span class="legend-dot" style="background:#B85C38"></span>Complex number</span>
-      </div>
-
-      <div class="graph-controls">
-        <div class="control">
-          <label for="real-slider">
-            Real part (x)
-            <span id="real-value">3</span>
-          </label>
-          <input id="real-slider" type="range" min="-5" max="5" step="1" value="3">
-        </div>
-
-        <div class="control">
-          <label for="imag-slider">
-            Imaginary part (y)
-            <span id="imag-value">2</span>
-          </label>
-          <input id="imag-slider" type="range" min="-5" max="5" step="1" value="2">
-        </div>
-      </div>
-
-      <div class="result-strip" id="argand-result">
-        z = 3 + 2i
-      </div>
-    </div>
-  </section>
-
-  <section class="lesson-section">
-    <div class="section-number">Part 2</div>
-    <h2 class="section-heading">Modulus and Argument</h2>
-
-    <h3>6. The modulus of a complex number</h3>
-
-    <p>
-      The modulus of a complex number is the distance between its point on the
-      Argand diagram and the origin.
-    </p>
-
-    <div class="formula">
-      \[
-      \boxed{|z|=\sqrt{x^2+y^2}}
-      \]
-    </div>
-
-    <p>
-      This formula comes directly from Pythagoras' theorem.
-    </p>
-
-    <div class="example">
-      <div class="example-title">Example</div>
-      Find the modulus of \(z=3+4i\).
-
-      <div class="formula">
-        \[
-        |z|=\sqrt{3^2+4^2}
-        \]
-        \[
-        |z|=\sqrt{9+16}=\boxed{5}
-        \]
-      </div>
-    </div>
-
-    <div class="interactive-panel">
-      <h3 class="panel-heading">Explore Modulus and Argument</h3>
-      <p class="panel-description">
-        Change the coordinates and observe how the length and direction
-        of the complex number change.
-      </p>
-
-      <div class="graph-wrap">
-        <svg id="modulus-graph" viewBox="0 0 500 390"
-             role="img" aria-label="Interactive modulus and argument graph">
-          <defs>
-            <marker id="mod-arrow" markerWidth="8" markerHeight="8"
-                    refX="6" refY="3" orient="auto">
-              <path d="M0,0 L7,3 L0,6" fill="#B85C38"/>
-            </marker>
-          </defs>
-
-          <g id="modulus-grid"></g>
-          <line x1="45" y1="195" x2="465" y2="195"
-                stroke="#554A44" stroke-width="2"/>
-          <line x1="250" y1="355" x2="250" y2="25"
-                stroke="#554A44" stroke-width="2"/>
-
-          <text x="470" y="188" font-size="13" fill="#554A44">Re</text>
-          <text x="262" y="25" font-size="13" fill="#554A44">Im</text>
-
-          <path id="argument-arc" d="" fill="none"
-                stroke="#2874B8" stroke-width="3"/>
-
-          <line id="mod-vector" x1="250" y1="195"
-                x2="340" y2="135" stroke="#B85C38"
-                stroke-width="3" marker-end="url(#mod-arrow)"/>
-
-          <circle id="mod-point" cx="340" cy="135" r="7"
-                  fill="#B85C38" stroke="white" stroke-width="2"/>
-          <text id="mod-point-label" x="350" y="125"
-                font-size="14" fill="#914326" font-weight="bold">z</text>
-          <text id="mod-arc-label" x="300" y="175"
-                font-size="13" fill="#2874B8">Arg(z)</text>
-        </svg>
-      </div>
-
-      <div class="graph-controls">
-        <div class="control">
-          <label for="mod-x-slider">
-            Real part (x)
-            <span id="mod-x-value">3</span>
-          </label>
-          <input id="mod-x-slider" type="range" min="-5" max="5" value="3">
-        </div>
-
-        <div class="control">
-          <label for="mod-y-slider">
-            Imaginary part (y)
-            <span id="mod-y-value">4</span>
-          </label>
-          <input id="mod-y-slider" type="range" min="-5" max="5" value="4">
-        </div>
-      </div>
-
-      <div class="result-strip" id="modulus-result">
-        |z| = 5
-      </div>
-      <div class="result-strip" id="argument-result">
-        Arg(z) ≈ 53.13°
-      </div>
-    </div>
-
-    <h3>7. The argument of a complex number</h3>
-
-    <p>
-      The argument of a complex number is the angle measured from the positive
-      real axis to the line joining the origin to the point representing the
-      complex number.
-    </p>
-
-    <p>
-      We use the notation \(\operatorname{Arg}(z)\) for the principal argument.
-      Positive angles are measured anticlockwise, while negative angles are
-      measured clockwise.
-    </p>
-
-    <div class="info-box remember">
-      <strong>Remember</strong>
-      The principal argument is defined in the interval:
-      \[
-      \boxed{-\pi < \operatorname{Arg}(z)\leq \pi}
-      \]
-      The argument of \(z=0\) is undefined.
-    </div>
-
-    <h3>8. Direction of angles in the four quadrants</h3>
-
-    <p>
-      The direction of the angle depends on the quadrant in which the complex
-      number lies. Select a quadrant below to see its angle drawn on the
-      Argand diagram.
-    </p>
-
-    <div class="interactive-panel">
-      <h3 class="panel-heading">Interactive Quadrant Selector</h3>
-      <p class="panel-description">
-        Select one quadrant at a time. The diagram will show the direction
-        of the angle from the positive real axis.
-      </p>
-
-      <div class="quadrant-buttons">
-        <button class="quadrant-button active" data-q="1">Quadrant I</button>
-        <button class="quadrant-button" data-q="2">Quadrant II</button>
-        <button class="quadrant-button" data-q="3">Quadrant III</button>
-        <button class="quadrant-button" data-q="4">Quadrant IV</button>
-      </div>
-
-      <div class="graph-wrap">
-        <svg id="quadrant-graph" viewBox="0 0 500 390"
-             role="img" aria-label="Quadrant angle direction diagram">
-          <defs>
-            <marker id="q-arrow" markerWidth="8" markerHeight="8"
-                    refX="6" refY="3" orient="auto">
-              <path d="M0,0 L7,3 L0,6" fill="currentColor"/>
-            </marker>
-          </defs>
-
-          <g id="quadrant-grid"></g>
-
-          <line x1="40" y1="195" x2="465" y2="195"
-                stroke="#554A44" stroke-width="2"/>
-          <line x1="250" y1="355" x2="250" y2="25"
-                stroke="#554A44" stroke-width="2"/>
-
-          <text x="470" y="188" font-size="13" fill="#554A44">Re</text>
-          <text x="262" y="25" font-size="13" fill="#554A44">Im</text>
-          <text x="260" y="211" font-size="11" fill="#777">0</text>
-
-          <path id="quadrant-arc" d="" fill="none"
-                stroke="#27834B" stroke-width="3"/>
-          <line id="quadrant-vector" x1="250" y1="195"
-                x2="330" y2="115" stroke="#27834B"
-                stroke-width="3" marker-end="url(#q-arrow)"/>
-          <circle id="quadrant-point" cx="330" cy="115" r="6"
-                  fill="#27834B"/>
-          <text id="quadrant-angle-label" x="290" y="175"
-                font-size="15" font-weight="bold" fill="#27834B">θ</text>
-        </svg>
-      </div>
-
-      <div class="quadrant-result" id="quadrant-explanation">
-        <h4 style="color:#27834B">Quadrant I</h4>
-        <p>Both the real and imaginary parts are positive.</p>
-        <div class="formula">
-          \[
-          \theta=\operatorname{Arg}(z)
-          =\tan^{-1}\left(\frac{y}{x}\right)
-          \]
-        </div>
-      </div>
-    </div>
-
-    <div class="info-box pay-attention">
-      <strong>Pay attention</strong>
-      In the quadrant formulas below, \(x\) and \(y\) represent positive
-      magnitudes. The signs of the real and imaginary parts are shown separately.
-    </div>
-
-    <h3>9. Argument formulas in each quadrant</h3>
-
-    <div class="example">
-      <div class="example-title">Quadrant I</div>
-      \[
-      z=x+iy
-      \]
-      \[
-      \boxed{\theta=\operatorname{Arg}(z)
-      =\tan^{-1}\left(\frac{y}{x}\right)}
-      \]
-      The angle is positive and measured anticlockwise.
-    </div>
-
-    <div class="example">
-      <div class="example-title">Quadrant II</div>
-      \[
-      z=-x+iy
-      \]
-      \[
-      \boxed{\theta=\operatorname{Arg}(z)
-      =\pi-\tan^{-1}\left(\frac{y}{x}\right)}
-      \]
-      The angle is positive and measured anticlockwise.
-    </div>
-
-    <div class="example">
-      <div class="example-title">Quadrant III</div>
-      \[
-      z=-x-iy
-      \]
-      \[
-      \boxed{\theta=\operatorname{Arg}(z)
-      =-\pi+\tan^{-1}\left(\frac{y}{x}\right)}
-      \]
-      The principal angle is negative and measured clockwise.
-    </div>
-
-    <div class="example">
-      <div class="example-title">Quadrant IV</div>
-      \[
-      z=x-iy
-      \]
-      \[
-      \boxed{\theta=\operatorname{Arg}(z)
-      =-\tan^{-1}\left(\frac{y}{x}\right)}
-      \]
-      The angle is negative and measured clockwise.
-    </div>
-
-    <h3>10. Worked examples</h3>
-
-    <div class="example">
-      <div class="example-title">Example 1</div>
-      Find the principal argument of \(z=-3+3i\).
-
-      <p>The point lies in Quadrant II.</p>
-
-      <div class="formula">
-        \[
-        \theta=\operatorname{Arg}(z)
-        =\pi-\tan^{-1}\left(\frac{3}{3}\right)
-        \]
-        \[
-        =\pi-\frac{\pi}{4}
-        =\boxed{\frac{3\pi}{4}}
-        \]
-      </div>
-    </div>
-
-    <div class="example">
-      <div class="example-title">Example 2</div>
-      Find the principal argument of \(z=-3-3i\).
-
-      <p>The point lies in Quadrant III.</p>
-
-      <div class="formula">
-        \[
-        \theta=\operatorname{Arg}(z)
-        =-\pi+\tan^{-1}\left(\frac{3}{3}\right)
-        \]
-        \[
-        =-\pi+\frac{\pi}{4}
-        =\boxed{-\frac{3\pi}{4}}
-        \]
-      </div>
-    </div>
-
-    <h3>11. Arguments on the axes</h3>
-
-    <p>
-      When a complex number lies directly on one of the coordinate axes,
-      we do not use the quadrant formulas.
-    </p>
-
-    <div class="formula">
-      \[
-      \begin{array}{c|c}
-      \text{Position} & \operatorname{Arg}(z)\\
-      \hline
-      \text{Positive real axis} & 0\\
-      \text{Positive imaginary axis} & \frac{\pi}{2}\\
-      \text{Negative real axis} & \pi\\
-      \text{Negative imaginary axis} & -\frac{\pi}{2}
-      \end{array}
-      \]
-    </div>
-
-    <div class="info-box warning">
-      <strong>Important</strong>
-      The complex number \(z=0\) has no defined argument because it does not
-      have a direction from the origin.
-    </div>
-  </section>
-
-  <section class="completion-card">
-    <h2>Lesson 9.1 Completed?</h2>
-    <p>
-      Review the key ideas, then mark this lesson as complete to unlock
-      the practice questions.
-    </p>
-
-    <button class="primary-button" id="finish-lesson">
-      Finish Lesson
-    </button>
-
-    <a class="practice-button"
-       id="practice-button"
-       href="complex-number-definition-questions.html"
-       hidden>
-      Start Practice Questions
-    </a>
-
-    <div id="completion-message"></div>
-  </section>
+   </div>
+  </div>
+
+  <div class="info-box">
+   <div class="info-heading">
+    <span class="info-icon">!</span>
+    REMEMBER THE ORIGIN
+   </div>
+   <p>For \(z=0\), the argument is undefined. The origin has no direction.</p>
+  </div>
+ </article>
+
+ <div class="info-box key-info">
+  <div class="info-heading">
+   <span class="info-icon">✓</span>
+   KEY INFORMATION • PART 2
+  </div>
+  <p><strong>Modulus:</strong> \(|z|=\sqrt{x^2+y^2}\), the distance from the origin.</p>
+  <p><strong>Argument:</strong> the angle measured from the positive real axis.</p>
+  <p><strong>Direction:</strong> anticlockwise is positive; clockwise is negative.</p>
+  <p><strong>Principal argument:</strong> \(-\pi<\operatorname{Arg}(z)\leq\pi\).</p>
+  <p><strong>Quadrants:</strong> identify the signs of the real and imaginary parts before selecting the formula.</p>
+  <p><strong>Special case:</strong> the argument of zero is undefined.</p>
+ </div>
+
+</section>
+
+<!-- COMPLETION -->
+
+<section class="completion-section" id="completionSection">
+ <div class="completion-glow"></div>
+
+ <div class="completion-content">
+  <div class="completion-mark" id="completionMark">✦</div>
+
+  <div class="eyebrow" style="color:#FF7777;margin-bottom:15px">
+   COMPLEX NUMBERS • TOPIC 01 / 07
+  </div>
+
+  <h2>Every new idea brings you <span>one step further.</span></h2>
+
+  <p>
+   You've explored the imaginary unit, powers of \(i\), the Argand
+   diagram, modulus and argument. Complete this lesson to save
+   your progress and unlock the practice questions.
+  </p>
+
+  <button class="complete-button" id="completeButton" type="button">
+   ✓ FINISH LESSON
+  </button>
+
+  <div class="practice-unlocked" id="practiceUnlocked" aria-live="polite">
+   <h3>Excellent work. Lesson completed!</h3>
+   <p>
+    Your progress has been saved. You have reached the end of this
+    lesson. Now it is time to test your understanding.
+   </p>
+   <a class="practice-button" href="complex-number-definition-questions.html">
+    START PRACTICE <span>→</span>
+   </a>
+  </div>
+
+  <p id="saveMessage" role="status" aria-live="polite" style="margin-top:15px;font-size:12px"></p>
+ </div>
+</section>
 
 </main>
 
 <footer>
-  <div class="footer-links">
-    <a href="terms.html">Terms of Use</a>
-    <a href="privacy.html">Privacy Policy</a>
+ <div>
+  <div class="footer-logo">Edu<span>Nova</span></div>
+  <div class="footer-tagline">Mathematics made clear.</div>
+  <div class="policy-links">
+   <a href="terms.html">Terms of Use</a>
+   <a href="privacy.html">Privacy Policy</a>
   </div>
-  <div class="footer-copy">
-    © EduNova. Mathematics made clear.
-  </div>
+ </div>
+
+ <div class="footer-right">© 2026 EduNova. All rights reserved.</div>
 </footer>
 
 <script>
-/* =========================================
-   SUPABASE CONFIGURATION
-========================================= */
-
 const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
 
 const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
+ SUPABASE_URL,
+ SUPABASE_PUBLISHABLE_KEY
 );
 
-let currentUser = null;
+const completeButton = document.getElementById("completeButton");
+const completionSection = document.getElementById("completionSection");
+const practiceUnlocked = document.getElementById("practiceUnlocked");
+const saveMessage = document.getElementById("saveMessage");
 
-async function checkSession() {
-  const { data, error } = await supabaseClient.auth.getSession();
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+ await supabaseClient.auth.signOut();
+ window.location.href = "index.html";
+});
 
-  if (error || !data.session) {
-    window.location.href = "index.html";
-    return;
-  }
+function createConfetti() {
+ const colours = ["#E00000", "#FF7777", "#FFFFFF", "#D97745", "#8BE0A9"];
+ const amount = 90;
 
-  currentUser = data.session.user;
-  await checkLessonProgress();
+ for (let i = 0; i < amount; i++) {
+  const piece = document.createElement("span");
+  piece.className = "confetti-piece";
+
+  piece.style.left = Math.random() * 100 + "vw";
+  piece.style.background = colours[Math.floor(Math.random() * colours.length)];
+  piece.style.animationDelay = Math.random() * .8 + "s";
+  piece.style.animationDuration = 2 + Math.random() * 1.5 + "s";
+  piece.style.setProperty("--drift", (Math.random() * 260 - 130) + "px");
+
+  document.body.appendChild(piece);
+  setTimeout(() => piece.remove(), 4200);
+ }
 }
 
-document.getElementById("logout-button").addEventListener("click", async (event) => {
-  event.preventDefault();
-  await supabaseClient.auth.signOut();
+function showCompletedState(animate = false) {
+ completionSection.classList.add("completed");
+ completeButton.disabled = true;
+ completeButton.textContent = "✓ LESSON COMPLETED";
+ practiceUnlocked.classList.add("show");
+ saveMessage.textContent = "Your lesson progress is saved.";
+
+ if (animate) {
+  createConfetti();
+  completionSection.scrollIntoView({
+   behavior: "smooth",
+   block: "center"
+  });
+ }
+}
+
+async function checkSessionAndProgress() {
+ const { data: { session }, error: sessionError } =
+  await supabaseClient.auth.getSession();
+
+ if (sessionError) {
+  console.error("Session error:", sessionError);
+  return;
+ }
+
+ if (!session) {
   window.location.href = "index.html";
-});
+  return;
+ }
 
+ const { data, error } = await supabaseClient
+  .from("lesson_progress")
+  .select("*")
+  .eq("user_id", session.user.id)
+  .eq("chapter", "Complex Numbers")
+  .eq("topic_number", 1)
+  .maybeSingle();
 
-/* =========================================
-   GRID DRAWING
-========================================= */
+ if (error) {
+  console.error("Error checking lesson progress:", error);
+  return;
+ }
 
-function drawGrid(groupId) {
-  const group = document.getElementById(groupId);
-  if (!group) return;
-
-  let content = "";
-
-  for (let n = -5; n <= 5; n++) {
-    if (n === 0) continue;
-
-    const px = 250 + n * 40;
-    const py = 195 - n * 30;
-
-    content += `
-      <line x1="${px}" y1="35" x2="${px}" y2="355"
-        stroke="#EDE3DD" stroke-width="1"/>
-      <line x1="45" y1="${py}" x2="455" y2="${py}"
-        stroke="#EDE3DD" stroke-width="1"/>
-      <text x="${px}" y="211" text-anchor="middle"
-        font-size="10" fill="#857970">${n}</text>
-      <text x="237" y="${py + 4}" text-anchor="end"
-        font-size="10" fill="#857970">${n}</text>
-    `;
-  }
-
-  group.innerHTML = content;
+ if (data) {
+  showCompletedState(false);
+ }
 }
 
-drawGrid("argand-grid");
-drawGrid("modulus-grid");
-drawGrid("quadrant-grid");
+async function completeLesson() {
+ completeButton.disabled = true;
+ completeButton.textContent = "SAVING...";
+ saveMessage.textContent = "Saving your progress...";
 
+ const { data: { session }, error: sessionError } =
+  await supabaseClient.auth.getSession();
 
-/* =========================================
-   ARGAND DIAGRAM
-========================================= */
+ if (sessionError || !session) {
+  saveMessage.textContent =
+   "Your session could not be verified. Please log in again.";
 
-const realSlider = document.getElementById("real-slider");
-const imagSlider = document.getElementById("imag-slider");
+  completeButton.disabled = false;
+  completeButton.textContent = "✓ FINISH LESSON";
 
-function formatComplex(x, y) {
-  if (x === 0 && y === 0) return "z = 0";
-
-  let result = "z = ";
-
-  if (x !== 0) result += x;
-
-  if (y > 0) {
-    result += (x !== 0 ? " + " : "") + (y === 1 ? "" : y) + "i";
-  } else if (y < 0) {
-    result += (y === -1 ? "-" : " - " + Math.abs(y)) + "i";
+  if (!session) {
+   setTimeout(() => {
+    window.location.href = "index.html";
+   }, 1200);
   }
+  return;
+ }
 
-  return result;
-}
-
-function updateArgand() {
-  const x = Number(realSlider.value);
-  const y = Number(imagSlider.value);
-
-  const px = 250 + x * 40;
-  const py = 195 - y * 30;
-
-  document.getElementById("real-value").textContent = x;
-  document.getElementById("imag-value").textContent = y;
-
-  const point = document.getElementById("argand-point");
-  const vector = document.getElementById("argand-vector");
-  const horizontal = document.getElementById("argand-horizontal");
-  const vertical = document.getElementById("argand-vertical");
-  const label = document.getElementById("argand-point-label");
-
-  point.setAttribute("cx", px);
-  point.setAttribute("cy", py);
-
-  vector.setAttribute("x2", px);
-  vector.setAttribute("y2", py);
-
-  horizontal.setAttribute("x2", px);
-  horizontal.setAttribute("y2", 195);
-
-  vertical.setAttribute("x1", px);
-  vertical.setAttribute("x2", px);
-  vertical.setAttribute("y1", 195);
-  vertical.setAttribute("y2", py);
-
-  label.setAttribute("x", Math.min(px + 10, 440));
-  label.setAttribute("y", Math.max(py - 10, 40));
-
-  document.getElementById("argand-result").textContent =
-    formatComplex(x, y);
-}
-
-realSlider.addEventListener("input", updateArgand);
-imagSlider.addEventListener("input", updateArgand);
-updateArgand();
-
-
-/* =========================================
-   MODULUS AND ARGUMENT EXPLORER
-========================================= */
-
-const modXSlider = document.getElementById("mod-x-slider");
-const modYSlider = document.getElementById("mod-y-slider");
-
-function updateModulus() {
-  const x = Number(modXSlider.value);
-  const y = Number(modYSlider.value);
-
-  const px = 250 + x * 40;
-  const py = 195 - y * 30;
-
-  const modulus = Math.sqrt(x * x + y * y);
-
-  document.getElementById("mod-x-value").textContent = x;
-  document.getElementById("mod-y-value").textContent = y;
-
-  const vector = document.getElementById("mod-vector");
-  const point = document.getElementById("mod-point");
-  const label = document.getElementById("mod-point-label");
-
-  vector.setAttribute("x2", px);
-  vector.setAttribute("y2", py);
-
-  point.setAttribute("cx", px);
-  point.setAttribute("cy", py);
-
-  label.setAttribute("x", Math.min(px + 10, 440));
-  label.setAttribute("y", Math.max(py - 10, 40));
-
-  document.getElementById("modulus-result").textContent =
-    `|z| = ${modulus.toFixed(2)}`;
-
-  if (x === 0 && y === 0) {
-    document.getElementById("argument-result").textContent =
-      "Arg(z) is undefined when z = 0";
-    document.getElementById("argument-arc").setAttribute("d", "");
-    document.getElementById("mod-arc-label").textContent = "";
-    return;
-  }
-
-  const angle = Math.atan2(y, x);
-  const degrees = angle * 180 / Math.PI;
-
-  document.getElementById("argument-result").textContent =
-    `Arg(z) = ${degrees.toFixed(2)}° (${angle.toFixed(3)} radians)`;
-
-  const radius = 38;
-  const startX = 250 + radius;
-  const startY = 195;
-  const endX = 250 + radius * Math.cos(angle);
-  const endY = 195 - radius * Math.sin(angle);
-
-  const sweep = angle < 0 ? 0 : 1;
-
-  const arc = `M ${startX} ${startY} A ${radius} ${radius} 0 0 ${sweep} ${endX} ${endY}`;
-
-  document.getElementById("argument-arc").setAttribute("d", arc);
-
-  const labelX = 250 + 52 * Math.cos(angle / 2);
-  const labelY = 195 - 52 * Math.sin(angle / 2);
-
-  const angleLabel = document.getElementById("mod-arc-label");
-  angleLabel.setAttribute("x", labelX);
-  angleLabel.setAttribute("y", labelY);
-  angleLabel.textContent = "Arg(z)";
-}
-
-modXSlider.addEventListener("input", updateModulus);
-modYSlider.addEventListener("input", updateModulus);
-updateModulus();
-
-
-/* =========================================
-   QUADRANT SELECTOR
-========================================= */
-
-const quadrantData = {
-  1: {
-    title: "Quadrant I",
-    color: "#27834B",
-    description: "Both the real and imaginary parts are positive.",
-    formula: "\\theta=\\operatorname{Arg}(z)=\\tan^{-1}\\left(\\frac{y}{x}\\right)",
-    x: 3,
-    y: 3
-  },
-  2: {
-    title: "Quadrant II",
-    color: "#2874B8",
-    description: "The real part is negative and the imaginary part is positive.",
-    formula: "\\theta=\\operatorname{Arg}(z)=\\pi-\\tan^{-1}\\left(\\frac{y}{x}\\right)",
-    x: -3,
-    y: 3
-  },
-  3: {
-    title: "Quadrant III",
-    color: "#8054B5",
-    description: "Both the real and imaginary parts are negative.",
-    formula: "\\theta=\\operatorname{Arg}(z)=-\\pi+\\tan^{-1}\\left(\\frac{y}{x}\\right)",
-    x: -3,
-    y: -3
-  },
-  4: {
-    title: "Quadrant IV",
-    color: "#C16A2E",
-    description: "The real part is positive and the imaginary part is negative.",
-    formula: "\\theta=\\operatorname{Arg}(z)=-\\tan^{-1}\\left(\\frac{y}{x}\\right)",
-    x: 3,
-    y: -3
-  }
-};
-
-function showQuadrant(q) {
-  const data = quadrantData[q];
-
-  document.querySelectorAll(".quadrant-button").forEach(button => {
-    button.classList.toggle("active", Number(button.dataset.q) === q);
+ const { error } = await supabaseClient
+  .from("lesson_progress")
+  .upsert({
+   user_id: session.user.id,
+   chapter: "Complex Numbers",
+   topic_number: 1,
+   completed_at: new Date().toISOString()
+  }, {
+   onConflict: "user_id,chapter,topic_number"
   });
 
-  const px = 250 + data.x * 40;
-  const py = 195 - data.y * 30;
+ if (error) {
+  console.error("Error saving lesson progress:", error);
+  saveMessage.textContent =
+   "We couldn't save your progress. Please try again.";
 
-  const vector = document.getElementById("quadrant-vector");
-  const point = document.getElementById("quadrant-point");
-  const arc = document.getElementById("quadrant-arc");
-  const angleLabel = document.getElementById("quadrant-angle-label");
+  completeButton.disabled = false;
+  completeButton.textContent = "✓ FINISH LESSON";
+  return;
+ }
 
-  vector.setAttribute("x2", px);
-  vector.setAttribute("y2", py);
-  vector.setAttribute("stroke", data.color);
-  vector.style.color = data.color;
-
-  point.setAttribute("cx", px);
-  point.setAttribute("cy", py);
-  point.setAttribute("fill", data.color);
-
-  const angle = Math.atan2(data.y, data.x);
-  const radius = 65;
-
-  const startX = 250 + radius;
-  const startY = 195;
-  const endX = 250 + radius * Math.cos(angle);
-  const endY = 195 - radius * Math.sin(angle);
-
-  const sweep = angle < 0 ? 0 : 1;
-
-  arc.setAttribute(
-    "d",
-    `M ${startX} ${startY} A ${radius} ${radius} 0 0 ${sweep} ${endX} ${endY}`
-  );
-  arc.setAttribute("stroke", data.color);
-
-  angleLabel.setAttribute(
-    "x",
-    250 + 83 * Math.cos(angle / 2)
-  );
-  angleLabel.setAttribute(
-    "y",
-    195 - 83 * Math.sin(angle / 2)
-  );
-  angleLabel.setAttribute("fill", data.color);
-  angleLabel.textContent = "θ";
-
-  const explanation = document.getElementById("quadrant-explanation");
-
-  explanation.innerHTML = `
-    <h4 style="color:${data.color}">${data.title}</h4>
-    <p>${data.description}</p>
-    <div class="formula">\\[${data.formula}\\]</div>
-  `;
-
-  if (window.MathJax && MathJax.typesetPromise) {
-    MathJax.typesetPromise([explanation]);
-  }
+ showCompletedState(true);
 }
 
-document.querySelectorAll(".quadrant-button").forEach(button => {
-  button.addEventListener("click", () => {
-    showQuadrant(Number(button.dataset.q));
-  });
-});
+completeButton.addEventListener("click", completeLesson);
 
-showQuadrant(1);
+document.addEventListener("DOMContentLoaded", () => {
+ checkSessionAndProgress();
 
-
-/* =========================================
-   LESSON COMPLETION
-========================================= */
-
-async function checkLessonProgress() {
-  if (!currentUser) return;
-
-  const { data, error } = await supabaseClient
-    .from("lesson_progress")
-    .select("completed_at")
-    .eq("user_id", currentUser.id)
-    .eq("chapter", "Complex Numbers")
-    .eq("topic_number", 1)
-    .maybeSingle();
-
-  if (error) {
-    console.error("Could not check lesson progress:", error);
-    return;
-  }
-
-  if (data && data.completed_at) {
-    showCompleted();
-  }
-}
-
-function showCompleted() {
-  document.getElementById("finish-lesson").textContent = "Lesson Completed ✓";
-  document.getElementById("finish-lesson").style.background = "#27834B";
-  document.getElementById("practice-button").hidden = false;
-  document.getElementById("completion-message").textContent =
-    "Your lesson completion has been recorded.";
-}
-
-document.getElementById("finish-lesson").addEventListener("click", async () => {
-  const button = document.getElementById("finish-lesson");
-  const message = document.getElementById("completion-message");
-
-  if (!currentUser) {
-    message.textContent = "Please log in before completing this lesson.";
-    return;
-  }
-
-  button.disabled = true;
-  button.textContent = "Saving...";
-  message.textContent = "";
-
-  const { error } = await supabaseClient
-    .from("lesson_progress")
-    .upsert({
-      user_id: currentUser.id,
-      chapter: "Complex Numbers",
-      topic_number: 1,
-      completed_at: new Date().toISOString()
-    }, {
-      onConflict: "user_id,chapter,topic_number"
-    });
-
-  if (error) {
-    console.error("Completion save error:", error);
-    message.textContent =
-      "We couldn't save your progress. Please try again.";
-    button.disabled = false;
-    button.textContent = "Try Again";
-    return;
-  }
-
-  showCompleted();
-  button.disabled = false;
-});
-
-
-/* =========================================
-   INITIAL PAGE SETUP
-========================================= */
-
-checkSession();
-
-window.addEventListener("load", () => {
-  if (window.MathJax && MathJax.typesetPromise) {
-    MathJax.typesetPromise();
-  }
+ if (window.MathJax && window.MathJax.typesetPromise) {
+  window.MathJax.typesetPromise();
+ }
 });
 </script>
+
+<script src="premium-access.js"></script>
 
 </body>
 </html>
