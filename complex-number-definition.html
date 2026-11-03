@@ -695,7 +695,7 @@ main {
  left:50%;
  top:50%;
  transform:translate(-50%,-50%);
- background:radial-gradient(circle,rgba(224,0,0,.18),transparent 70%);
+background:radial-gradient(circle,rgba(217,119,69,.18),transparent 70%);
 }
 
 .completion-content {
@@ -713,7 +713,7 @@ main {
  border:1px solid rgba(255,255,255,.3);
  border-radius:50%;
  margin:0 auto 25px;
- color:#FF7777;
+color:#F2A47F;
  font-size:36px;
  background:rgba(255,255,255,.04);
  box-shadow:0 0 0 12px rgba(255,255,255,.025);
@@ -726,7 +726,7 @@ main {
 }
 
 .completion-content h2 span {
- color:#FF5555;
+ color:#D97745;
 }
 
 .completion-content p {
@@ -738,7 +738,7 @@ main {
 
 .complete-button {
  border:1px solid rgba(255,255,255,.15);
- background:var(--red);
+background:#B85C38;
  color:white;
  padding:17px 30px;
  border-radius:10px;
@@ -747,13 +747,13 @@ main {
  letter-spacing:1.2px;
  cursor:pointer;
  transition:.25s;
- box-shadow:0 8px 25px rgba(224,0,0,.22);
+ box-shadow:0 8px 25px rgba(184,92,56,.22);
 }
 
 .complete-button:hover {
- background:#FF2424;
+ background:#D97745;
  transform:translateY(-3px);
- box-shadow:0 12px 30px rgba(224,0,0,.3);
+ box-shadow:0 12px 30px rgba(184,92,56,.3);
 }
 
 .complete-button:disabled {
@@ -852,54 +852,48 @@ main {
 /* FOOTER */
 
 footer {
- background:#171311;
- color:white;
- padding:36px 7%;
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:22px;
- flex-wrap:wrap;
- border-top:1px solid rgba(255,255,255,.08);
-}
-
-.footer-brand {
- display:flex;
- align-items:center;
- gap:15px;
+    background: #09090b;
+    color: #928b87;
+    text-align: center;
+    padding: 38px 7% 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
 
 .footer-logo {
- font:700 28px "Playfair Display",serif;
- color:white;
- letter-spacing:.1px;
+    font: 700 1.55rem "Playfair Display", serif;
+    color: #fff;
+    text-decoration: none;
 }
 
 .footer-logo span {
- color:#FF5555;
+    color: #D97745;
 }
 
 .footer-tagline {
- color:#A99A92;
- font-size:11px;
- margin-top:2px;
+    font-size: .82rem;
+    color: #aaa29e;
+    margin: 0;
 }
 
 .policy-links {
- display:flex;
- gap:17px;
- font-size:11px;
- margin-top:12px;
- color:#C7B8B0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 12px;
+    font-size: 12px;
+}
+
+.policy-links a {
+    color: #aaa29e;
+    text-decoration: none;
+    transition: color .2s;
 }
 
 .policy-links a:hover {
- color:#FF7777;
-}
-
-.footer-right {
- color:#A99A92;
- font-size:11px;
+    color: #fff;
 }
 
 /* RESPONSIVE */
@@ -1759,56 +1753,66 @@ footer {
 
 <!-- COMPLETION -->
 
-<section class="completion-section" id="completionSection">
- <div class="completion-glow"></div>
+<section class="completion" id="completionSection">
 
- <div class="completion-content">
-  <div class="completion-mark" id="completionMark">✦</div>
+    <div id="completionPrompt">
+        <div class="completion-kicker">Lesson 9.1 · Final step</div>
 
-  <div class="eyebrow" style="color:#FF7777;margin-bottom:15px">
-   COMPLEX NUMBERS • TOPIC 01 / 07
-  </div>
+        <h2>Finished the lesson?</h2>
 
-  <h2>Every new idea brings you <span>one step further.</span></h2>
+        <p>
+            When you are ready, mark this lesson as done.
+            Your practice button will appear here.
+        </p>
 
-  <p>
-   You've explored the imaginary unit, powers of \(i\), the Argand
-   diagram, modulus and argument. Complete this lesson to save
-   your progress and unlock the practice questions.
-  </p>
+        <button class="finish-btn" onclick="finishLesson()">
+            Done ✓
+        </button>
+    </div>
 
-  <button class="complete-button" id="completeButton" type="button">
-   ✓ FINISH LESSON
-  </button>
+    <div id="completionSuccess" style="display:none;">
 
-  <div class="practice-unlocked" id="practiceUnlocked" aria-live="polite">
-   <h3>Excellent work. Lesson completed!</h3>
-   <p>
-    Your progress has been saved. You have reached the end of this
-    lesson. Now it is time to test your understanding.
-   </p>
-   <a class="practice-button" href="complex-number-definition-questions.html">
-    START PRACTICE <span>→</span>
-   </a>
-  </div>
+        <div class="success-check">✓</div>
 
-  <p id="saveMessage" role="status" aria-live="polite" style="margin-top:15px;font-size:12px"></p>
- </div>
+        <div class="completion-kicker">
+            Lesson 9.1 · Completed
+        </div>
+
+        <h2>
+            Congratulations<span style="color:var(--accent)">!</span>
+        </h2>
+
+        <p>
+            You have completed the foundations of complex numbers:
+            the imaginary unit, algebraic form, powers of \(i\),
+            modulus, and argument.
+            You are ready to put these ideas into practice.
+        </p>
+
+        <a class="practice-button"
+           href="complex-numbers-practice.html">
+            Continue to practice →
+        </a>
+
+        <p id="finishStatus" style="font-size:.8rem;margin-top:13px"></p>
+
+    </div>
+
 </section>
 
 </main>
 
 <footer>
- <div>
-  <div class="footer-logo">Edu<span>Nova</span></div>
-  <div class="footer-tagline">Mathematics made clear.</div>
-  <div class="policy-links">
-   <a href="terms.html">Terms of Use</a>
-   <a href="privacy.html">Privacy Policy</a>
-  </div>
- </div>
+    <a href="dashboard.html" class="footer-logo">
+        Edu<span>Nova</span>
+    </a>
 
- <div class="footer-right">© 2026 EduNova. All rights reserved.</div>
+    <p class="footer-tagline">Mathematics made clear.</p>
+
+    <div class="policy-links">
+        <a href="terms.html">Terms of Use</a>
+        <a href="privacy.html">Privacy Policy</a>
+    </div>
 </footer>
 
 <script>
