@@ -562,11 +562,14 @@ async function finishLesson(){
     const client=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
     const {data:{user},error:authError}=await client.auth.getUser();
     if(authError||!user) throw new Error('Please log in again to save your progress.');
-    const {error}=await client.from('lesson_progress').upsert(
-      {user_id:user.id,lesson_id:'complex-numbers-9-1',completed:true,completed_at:new Date().toISOString()},
-      {onConflict:'user_id,lesson_id'}
-    );
-    if(error) throw error;
+    const {error}=await client.from('lesson_progress').insert({
+  user_id: user.id,
+  chapter: 'Complex Numbers',
+  topic_number: 1,
+  completed_at: new Date().toISOString()
+});
+
+if(error) throw error;
     status.textContent='Your lesson completion has been saved.';
    document.querySelector('.completion').classList.add('completed');
 
