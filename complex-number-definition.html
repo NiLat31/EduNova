@@ -3,244 +3,469 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EduNova | Complex Numbers</title>
+<meta name="description" content="Learn the definition of complex numbers, the imaginary unit, powers of i, the Argand diagram, modulus and argument.">
+<title>EduNova | Definition of a Complex Number</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+window.MathJax={tex:{inlineMath:[["\\(","\\)"],["$","$"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <style>
 :root{
-  --accent:#B85C38;
-  --accent-bright:#D97745;
-  --accent-light:#F2C6A8;
-  --paper:#FFF8F3;
-  --ink:#35251F;
-  --muted:#806F67;
-  --line:#E8DAD1;
-  --dark:#211915;
+ --accent:#B85C38;--accent-bright:#D97745;--accent-light:#F2C6A8;
+ --paper:#FFF8F3;--ink:#35251F;--muted:#806F67;--line:#E8DAD1;
+ --dark:#211915;--soft:#F8EDE5;--green:#16834A;--green-dark:#116638;
+ --shadow:0 16px 42px rgba(75,42,27,.07)
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"DM Sans",sans-serif;background:var(--paper);color:var(--ink)}
-nav{height:82px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:var(--paper)}
-.logo{font-family:"Playfair Display",serif;font-size:28px;font-weight:700;color:var(--ink);text-decoration:none}
-.logo span,.footer-logo span{color:var(--accent)}
-.nav{display:flex;gap:12px;align-items:center}
-.nav a{text-decoration:none;color:var(--ink);font-size:10px;font-weight:700;letter-spacing:1px;padding:11px 15px}
-.nav a:hover{color:var(--accent)}
-.logout{border:0;background:var(--dark);color:#fff;padding:11px 17px;font:700 10px "DM Sans";cursor:pointer}
-.logout:hover{background:var(--accent)}
-.hero{background:var(--dark);color:#fff;padding:82px 7% 76px;position:relative;overflow:hidden;min-height:330px;display:flex;align-items:center}
-.hero-copy{position:relative;z-index:2;max-width:700px}
-.label{color:var(--accent-bright);font-size:11px;font-weight:700;letter-spacing:3px;margin-bottom:18px}
-.hero h1{font:600 clamp(48px,7vw,88px)/1 "Playfair Display";letter-spacing:-3px}
-.hero p{max-width:630px;color:#c9bbb4;margin-top:24px;font-size:15px;line-height:1.85}
-.hero-art{position:absolute;right:7%;top:50%;transform:translateY(-50%);width:min(390px,38vw);height:auto;opacity:.92}
-.hero-i{position:absolute;right:8%;top:-110px;font:italic 400 390px "Playfair Display";color:rgba(217,119,69,.10);line-height:1}
-main{padding:78px 7% 100px}
-.intro{display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:38px}
-.intro h2{font:600 clamp(36px,4.5vw,56px)/1.05 "Playfair Display";letter-spacing:-1.7px}
-.intro p{max-width:440px;color:var(--muted);font-size:14px;line-height:1.8}
-.topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.topic{background:#fff;border:1px solid var(--line);padding:29px;min-height:230px;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
-.topic:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(75,42,27,.08);border-color:var(--accent-light)}
-.topic-top{display:flex;justify-content:space-between;align-items:start}
-.topic-number{color:var(--accent);font-size:10px;font-weight:700;letter-spacing:2px}
-.topic-symbol{width:55px;height:55px;border:1px solid var(--line);background:var(--paper);color:var(--accent);display:flex;align-items:center;justify-content:center;font:italic 600 25px "Playfair Display"}
-.topic h3{font:600 25px/1.15 "Playfair Display";margin:25px 0 10px}
-.topic p{color:var(--muted);font-size:13px;line-height:1.75;max-width:530px;margin-bottom:24px}
-.open-topic{margin-top:auto;align-self:flex-start;text-decoration:none;background:var(--dark);color:#fff;padding:12px 17px;font:700 10px "DM Sans";letter-spacing:.5px;transition:background .2s}
-.open-topic:hover{background:var(--accent)}
-.topic.completed{border-color:var(--accent)}
-.topic.completed .topic-symbol{background:var(--accent);color:white;border-color:var(--accent)}
-.topic.completed .topic-number{color:var(--accent)}
-.topic.completed .open-topic{background:var(--accent)}
-.topic.completed .open-topic:hover{background:var(--dark)}
-.strip{margin-top:48px;background:var(--accent);color:#fff;padding:30px 32px;display:flex;justify-content:space-between;align-items:center;gap:25px}
-.strip strong{font:25px "Playfair Display"}
-.strip p{font-size:12px;line-height:1.7;max-width:520px;color:rgba(255,255,255,.9)}
-footer{background:var(--dark);color:#fff;padding:38px 7%;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
-.footer-logo{font:700 24px "Playfair Display"}
-footer p{color:#a99a92;font-size:11px}
-.policy-links{font-size:12px;display:flex;gap:14px;flex-wrap:wrap}
-.policy-links a{color:inherit;text-decoration:none}
-.policy-links a:hover{color:var(--accent-light)}
-@media(max-width:800px){
- nav{height:auto;min-height:76px;padding:16px 5%;gap:12px}
- .nav{gap:2px}.nav a{padding:9px 7px;font-size:9px}
- .hero{padding:65px 5% 58px;min-height:310px}
- .hero-art{right:-45px;width:270px;opacity:.38}
- .hero-i{right:0}
- main{padding:65px 5% 80px}
- .intro{flex-direction:column;align-items:flex-start}
- .topics{grid-template-columns:1fr}
- .strip{flex-direction:column;align-items:flex-start}
- footer{flex-direction:column;text-align:center}
-}
-@media(max-width:420px){
- .logo{font-size:24px}.nav a{font-size:8px;padding:8px 5px}.logout{padding:9px 10px;font-size:8px}
- .topic{padding:24px}.topic h3{font-size:23px}
-}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:var(--paper);color:var(--ink);line-height:1.75}
+a{color:inherit;text-decoration:none}button{font:inherit}
+nav{height:76px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(255,248,243,.96);position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
+.logo{font:700 28px "Playfair Display",serif;color:var(--ink);letter-spacing:.1px}.logo span,.footer-logo span{color:var(--accent)}
+.nav-actions{display:flex;align-items:center;gap:18px}.nav-actions a{font-size:11px;font-weight:800;letter-spacing:.7px}.nav-actions a:hover{color:var(--accent)}
+.logout{border:0;background:var(--dark);color:#fff;padding:10px 16px;border-radius:7px;font-size:10px;font-weight:800;cursor:pointer}.logout:hover{background:var(--accent)}
+.hero{position:relative;overflow:hidden;min-height:410px;background:var(--dark);color:#fff;padding:80px 7%;display:flex;align-items:center}
+.hero-copy{position:relative;z-index:3;max-width:720px}.hero-label{color:var(--accent-bright);font-size:11px;font-weight:800;letter-spacing:3px;margin-bottom:20px}
+.hero h1{font:600 clamp(45px,7vw,78px)/1.04 "Playfair Display",serif;letter-spacing:-2px;max-width:700px}.hero h1 span{color:var(--accent-light)}
+.hero p{max-width:650px;color:#c9bbb4;margin-top:22px;font-size:15px;line-height:1.9}
+.hero-i{position:absolute;right:7%;top:-120px;font:italic 400 500px "Playfair Display";color:rgba(217,119,69,.09);line-height:1}
+.hero-art{position:absolute;right:7%;top:50%;transform:translateY(-50%);width:min(390px,38vw);opacity:.9}
+.hero-grid{position:absolute;inset:0;opacity:.16;background-image:linear-gradient(rgba(217,119,69,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(217,119,69,.22) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(90deg,transparent,black 45%,black)}
+main{width:min(1120px,86%);margin:auto;padding:75px 0 90px}
+.intro{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:46px}
+.eyebrow,.section-label{color:var(--accent);font-size:10px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase}
+.intro h2,.part-heading h2,.completion-content h2{font-family:"Playfair Display",serif}
+.intro h2{font-size:clamp(34px,4vw,52px);line-height:1.1;margin-top:9px}
+.intro p{max-width:440px;color:var(--muted);font-size:13px}
+.part{margin:0 0 82px;scroll-margin-top:100px}
+.part-heading{display:flex;gap:17px;align-items:flex-start;margin-bottom:28px}
+.part-number{flex:none;width:48px;height:48px;display:grid;place-items:center;background:var(--dark);color:var(--accent-light);font-size:13px;font-weight:800;border-radius:12px}
+.part-heading h2{font-size:clamp(28px,3.5vw,40px);line-height:1.15}
+.part-heading p{color:var(--muted);font-size:13px;margin-top:5px}
+.card{background:#fff;border:1px solid var(--line);border-radius:19px;box-shadow:var(--shadow);padding:28px;margin-top:20px}
+.card h3{font:600 23px/1.25 "Playfair Display",serif;margin-bottom:12px}
+.card p{color:#66564e;margin:10px 0}
+.card ul{padding-left:22px;color:#66564e;margin:10px 0}
+.card li{padding:3px 0}
+.attention,.remember,.key-info{border-radius:14px;padding:19px 21px;margin:22px 0;border:1px solid}
+.attention{background:#FFF1E9;border-color:#E8B99F;border-left:5px solid var(--accent)}
+.remember{background:#FFF8F1;border-color:#EBD6C7;border-left:5px solid #C58A56}
+.key-info{background:#F9EEE7;border-color:#E6C7B5;border-left:5px solid var(--accent-bright)}
+.box-title{font-size:10px;font-weight:900;letter-spacing:1.7px;margin-bottom:7px;color:var(--accent)}
+.attention p,.remember p,.key-info p{margin:4px 0;color:var(--ink)}
+.formula{background:var(--dark);color:#fff;border-radius:12px;padding:17px 20px;text-align:center;margin:17px 0;font-size:1.08rem;overflow-x:auto}
+.formula.light{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+.mini-card{padding:22px;background:#FFFCFA;border:1px solid var(--line);border-radius:15px}
+.mini-card h4{font:600 19px "Playfair Display",serif;margin-bottom:8px}
+.example{margin-top:20px;padding:23px;background:#FFFCFA;border:1px solid var(--line);border-radius:15px}
+.example h4{font:600 20px "Playfair Display",serif;margin-bottom:9px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:15px}
+.step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.step-no{width:27px;height:27px;border-radius:8px;background:var(--soft);color:var(--accent);display:grid;place-items:center;font-size:12px;font-weight:900;margin-bottom:9px}
+.step p{font-size:13px;margin:5px 0}
+.decimal-table{width:100%;border-collapse:collapse;margin:16px 0;border-radius:12px;overflow:hidden}
+.decimal-table th,.decimal-table td{padding:11px 14px;text-align:center;border:1px solid var(--line)}
+.decimal-table th{background:var(--dark);color:#fff;font-size:12px}
+.decimal-table td{background:#fff;font-weight:700}
+.diagram{background:#FFFCFA;border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:18px}
+.diagram svg{display:block;width:100%;height:auto}
+.diagram-caption{text-align:center;color:var(--muted);font-size:12px;margin-top:8px}
+.quad-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center}
+.quad-rules{display:grid;gap:10px}
+.quad-rule{padding:13px 15px;border:1px solid var(--line);background:#FFFCFA;border-radius:11px}
+.quad-rule strong{display:block;color:var(--accent);font-size:12px}
+.quad-rule span{font-size:14px}
+.part-divider{height:1px;background:var(--line);margin:72px 0}
+.completion-section{position:relative;overflow:hidden;background:var(--dark);color:#fff;border-radius:24px;padding:55px 25px;text-align:center;margin-top:60px}
+.completion-section:before,.completion-section:after{content:"";position:absolute;border:1px solid rgba(242,198,168,.17);border-radius:50%;width:300px;height:300px;top:-190px;left:-90px}
+.completion-section:after{left:auto;right:-100px;top:auto;bottom:-220px;width:390px;height:390px}
+.completion-content{position:relative;z-index:2;max-width:700px;margin:auto}
+.completion-mark{width:65px;height:65px;border:1px solid rgba(242,198,168,.5);border-radius:50%;display:grid;place-items:center;margin:0 auto 20px;color:var(--accent-light);font-size:28px}
+.completion-content h2{font-size:clamp(30px,4vw,43px);margin-bottom:10px}
+.completion-content h2 span{color:var(--accent-light)}
+.completion-content p{color:#c9bbb4;font-size:14px;max-width:570px;margin:0 auto 23px}
+.complete-button{border:0;background:var(--accent);color:#fff;padding:15px 25px;border-radius:9px;font-size:11px;font-weight:900;letter-spacing:1px;cursor:pointer;transition:.2s}
+.complete-button:hover{background:var(--accent-bright);transform:translateY(-2px)}
+.complete-button:disabled{opacity:.75;cursor:wait;transform:none}
+.practice-unlocked{display:none;margin:22px auto 0;max-width:440px;padding:17px;background:rgba(22,131,74,.13);border:1px solid rgba(75,200,130,.38);border-radius:14px}
+.practice-unlocked.show{display:block;animation:rise .45s ease both}
+.practice-unlocked p{margin:0 auto 13px;color:#d4eadb}
+.practice-button{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;padding:13px 21px;border-radius:9px;font-size:11px;font-weight:900;letter-spacing:.8px;transition:.2s}
+.practice-button:hover{background:var(--green-dark);transform:translateY(-2px)}
+.completed .completion-mark{background:var(--green);border-color:var(--green);color:white}
+.completed .complete-button{background:var(--green-dark)}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+footer{background:var(--dark);color:#fff;padding:34px 7%;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.footer-logo{font:700 24px "Playfair Display",serif}.footer-tagline{color:#a99a92;font-size:11px}
+.footer-right{color:#a99a92;font-size:11px}.policy-links{display:flex;gap:14px;font-size:11px;margin-top:8px}.policy-links a:hover{color:var(--accent-light)}
+@media(max-width:800px){nav{padding:0 5%;height:68px}.hero{padding:65px 6%;min-height:350px}.hero-art{right:-70px;width:280px;opacity:.28}.hero-i{right:0;font-size:380px}main{width:90%;padding:58px 0}.intro{display:block}.intro p{margin-top:14px}.two-col,.quad-layout{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.card{padding:21px}.part{margin-bottom:62px}footer{flex-direction:column;text-align:center}.policy-links{justify-content:center}}
+@media(max-width:430px){.logo{font-size:24px}.nav-actions{gap:9px}.nav-actions a{font-size:9px}.logout{padding:9px}.hero h1{letter-spacing:-1px}.decimal-table th,.decimal-table td{padding:9px 5px;font-size:12px}}
 </style>
 </head>
 <body>
 <nav>
-  <a href="index.html" class="logo">Edu<span>Nova</span></a>
-  <div class="nav">
-    <a href="index.html">← HOME</a>
-    <a href="dashboard.html">DASHBOARD</a>
-    <button class="logout" onclick="logout()">LOG OUT</button>
-  </div>
+ <a href="index.html" class="logo">Edu<span>Nova</span></a>
+ <div class="nav-actions">
+  <a href="complex-numbers.html">← CHAPTER</a>
+  <a href="dashboard.html">DASHBOARD</a>
+  <button class="logout" id="logoutBtn">LOG OUT</button>
+ </div>
 </nav>
 
 <header class="hero">
-  <div class="hero-copy">
-    <div class="label">CHAPTER 08 • COMPLEX NUMBERS</div>
-    <h1>Complex Numbers.</h1>
-    <p>Explore the world beyond the real number line. Understand the imaginary unit, perform operations with complex numbers, investigate roots, and discover their geometric representation.</p>
-  </div>
-  <div class="hero-i" aria-hidden="true">i</div>
-  <svg class="hero-art" viewBox="0 0 420 330" role="img" aria-label="Complex plane showing the point z equals a plus bi">
-    <defs>
-      <marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#D97745" stroke-width="1.2"/></marker>
-    </defs>
-    <g stroke="#806F67" stroke-width="1.3" opacity=".8">
-      <path d="M35 165 H390" marker-end="url(#arrow)"/>
-      <path d="M205 300 V20" marker-end="url(#arrow)"/>
-    </g>
-    <g fill="#D8C4B8" font-family="DM Sans" font-size="13">
-      <text x="378" y="187">Re</text><text x="217" y="27">Im</text>
-      <text x="217" y="183">0</text><text x="350" y="184">a</text><text x="216" y="72">b</text>
-    </g>
-    <path d="M205 165 L335 75" stroke="#D97745" stroke-width="2.5" fill="none"/>
-    <path d="M335 75 V165 M205 165 H335" stroke="#D97745" stroke-width="1.2" stroke-dasharray="5 5" opacity=".8"/>
-    <circle cx="335" cy="75" r="6.5" fill="#F2C6A8" stroke="#D97745" stroke-width="2"/>
-    <text x="348" y="67" fill="#F2C6A8" font-family="Playfair Display" font-size="21" font-style="italic">z = a + bi</text>
-    <text x="245" y="112" fill="#D97745" font-family="Playfair Display" font-size="18" font-style="italic">z</text>
-  </svg>
+ <div class="hero-grid"></div><div class="hero-i" aria-hidden="true">i</div>
+ <div class="hero-copy">
+  <div class="hero-label">CHAPTER 09 • COMPLEX NUMBERS • TOPIC 01</div>
+  <h1>Definition of a <span>Complex Number.</span></h1>
+  <p>Step beyond the real number line. Discover the imaginary unit, simplify powers of \(i\), represent complex numbers on the Argand diagram, and explore their modulus and argument.</p>
+ </div>
+ <svg class="hero-art" viewBox="0 0 420 330" role="img" aria-label="A complex number represented on the Argand plane">
+  <defs><marker id="heroArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#D97745" stroke-width="1.2"/></marker></defs>
+  <g stroke="#806F67" stroke-width="1.4" opacity=".85"><path d="M35 165 H390" marker-end="url(#heroArrow)"/><path d="M205 300 V20" marker-end="url(#heroArrow)"/></g>
+  <g fill="#D8C4B8" font-family="DM Sans" font-size="13"><text x="378" y="187">Re</text><text x="217" y="27">Im</text><text x="217" y="183">O</text></g>
+  <path d="M205 165 L335 75" stroke="#D97745" stroke-width="3" fill="none"/>
+  <path d="M335 75 V165 M205 165 H335" stroke="#D97745" stroke-width="1.3" stroke-dasharray="5 5"/>
+  <circle cx="335" cy="75" r="7" fill="#F2C6A8" stroke="#D97745" stroke-width="2"/>
+  <text x="345" y="66" fill="#F2C6A8" font-family="Playfair Display" font-size="20" font-style="italic">z = x + iy</text>
+  <text x="250" y="112" fill="#D97745" font-family="Playfair Display" font-size="18" font-style="italic">z</text>
+ </svg>
 </header>
 
 <main>
-  <div class="intro">
-    <div>
-      <div class="label">CHAPTER TOPICS</div>
-      <h2>Explore the essentials.</h2>
+ <section class="intro">
+  <div><div class="eyebrow">LESSON 9.1</div><h2>Two parts. One new number system.</h2></div>
+  <p>Start with the imaginary unit and the algebraic form. Then move to the geometry of complex numbers through modulus and argument.</p>
+ </section>
+
+ <div class="attention">
+  <div class="box-title">⚠ PAY ATTENTION</div>
+  <p><strong>Degrees are used in Vectors, while radians are used in Complex Numbers.</strong> In this lesson, measure arguments in radians unless a question specifically asks for degrees.</p>
+ </div>
+
+ <section class="part" id="part1">
+  <div class="part-heading"><div class="part-number">01</div><div><div class="section-label">PART ONE</div><h2>Definition of Complex Numbers</h2><p>From the real number line to the complex plane.</p></div></div>
+
+  <article class="card">
+   <h3>1. Why do we need complex numbers?</h3>
+   <p>Consider the quadratic equation:</p>
+   <div class="formula">\[x^2+6x+13=0\]</div>
+   <p>Using the discriminant,</p>
+   <div class="formula light">\[\Delta=b^2-4ac=6^2-4(1)(13)=36-52=-16\]</div>
+   <p>The discriminant is negative. Therefore, the equation has no real roots because the square root of a negative real number is not a real number.</p>
+   <p>To extend our number system and solve equations like this, we introduce a new number called the <strong>imaginary unit</strong>.</p>
+  </article>
+
+  <article class="card">
+   <h3>2. The imaginary unit</h3>
+   <p>The imaginary unit, denoted by \(i\), is defined by the property:</p>
+   <div class="formula">\[\boxed{i=\sqrt{-1}\qquad\text{and}\qquad i^2=-1}\]</div>
+   <p>This allows us to express square roots of negative numbers using \(i\).</p>
+   <div class="two-col">
+    <div class="mini-card"><h4>Example 1</h4><p>\(\sqrt{-49}\)</p><div class="formula light">\[\sqrt{-49}=\sqrt{49}\sqrt{-1}=\boxed{7i}\]</div></div>
+    <div class="mini-card"><h4>Example 2</h4><p>\(\sqrt{-16}\)</p><div class="formula light">\[\sqrt{-16}=\sqrt{16}\sqrt{-1}=\boxed{4i}\]</div></div>
+   </div>
+   <div class="attention"><div class="box-title">⚠ IMPORTANT DISTINCTION</div><p>The principal square root is \(\sqrt{-49}=7i\). However, the equation \(z^2=-49\) has two solutions: \(z=\pm7i\). Do not confuse a square-root symbol with solving a quadratic equation.</p></div>
+  </article>
+
+  <article class="card">
+   <h3>3. Simplifying expressions involving \(i\)</h3>
+   <p>Before simplifying longer expressions, notice what happens when we calculate the first four powers of \(i\):</p>
+   <div class="two-col">
+    <div class="mini-card"><div class="formula light">\[i^1=i\]</div><div class="formula light">\[i^2=-1\]</div></div>
+    <div class="mini-card"><div class="formula light">\[i^3=i^2\cdot i=-i\]</div><div class="formula light">\[i^4=i^2\cdot i^2=1\]</div></div>
+   </div>
+   <p>After the fourth power, the same pattern repeats because \(i^4=1\).</p>
+   <div class="formula">\[i,\quad -1,\quad -i,\quad 1,\quad i,\quad -1,\quad -i,\quad 1,\ldots\]</div>
+   <p>So, to simplify a large power of \(i\), divide its exponent by <strong>4</strong> and use the decimal part of the answer.</p>
+   <table class="decimal-table">
+    <thead><tr><th>Decimal part</th><th>Remainder</th><th>Resulting power</th></tr></thead>
+    <tbody>
+     <tr><td>.00</td><td>0</td><td>\(i^0=1\)</td></tr>
+     <tr><td>.25</td><td>1</td><td>\(i^1=i\)</td></tr>
+     <tr><td>.50</td><td>2</td><td>\(i^2=-1\)</td></tr>
+     <tr><td>.75</td><td>3</td><td>\(i^3=-i\)</td></tr>
+    </tbody>
+   </table>
+   <div class="remember"><div class="box-title">REMEMBER</div><p>When multiplying powers with the same base, we add their exponents:</p><div class="formula light">\[a^m\times a^n=a^{m+n}\]</div><p>Therefore, \(i^{2024}\times i^2=i^{2024+2}=i^{2026}\). This explains why we can split the exponent into \(2024+2\).</p></div>
+
+   <div class="example">
+    <h4>Example 1: Simplify \(i^{2026}\)</h4>
+    <div class="steps">
+     <div class="step"><div class="step-no">1</div><p>Divide the exponent by 4.</p><div class="formula light">\[2026\div4=506.5\]</div></div>
+     <div class="step"><div class="step-no">2</div><p>The decimal part is .50, so the remainder is 2. Split the exponent:</p><div class="formula light">\[2026=2024+2\]</div></div>
+     <div class="step"><div class="step-no">3</div><p>Use \(i^4=1\).</p><div class="formula light">\[\begin{aligned}i^{2026}&=(i^4)^{506}i^2\\&=1^{506}(-1)\\&=\boxed{-1}\end{aligned}\]</div></div>
     </div>
-    <p>Work through the seven lessons in order, from the definition of a complex number to its polar representation.</p>
+   </div>
+   <div class="example">
+    <h4>Example 2: Simplify \(i^{537}\)</h4>
+    <div class="steps">
+     <div class="step"><div class="step-no">1</div><p>Divide the exponent by 4.</p><div class="formula light">\[537\div4=134.25\]</div></div>
+     <div class="step"><div class="step-no">2</div><p>The decimal part is .25, so the remainder is 1.</p><div class="formula light">\[537=536+1\]</div></div>
+     <div class="step"><div class="step-no">3</div><p>Use \(i^4=1\).</p><div class="formula light">\[\begin{aligned}i^{537}&=(i^4)^{134}i\\&=1^{134}i\\&=\boxed{i}\end{aligned}\]</div></div>
+    </div>
+   </div>
+   <div class="attention"><div class="box-title">⚠ CHECK THE DECIMAL PART</div><p>Because the exponent is an integer, dividing it by 4 can only give decimal parts .00, .25, .50 or .75. Match the decimal part carefully with the table before simplifying.</p></div>
+  </article>
+
+  <article class="card">
+   <h3>4. Real and imaginary parts</h3>
+   <p>A complex number is written in the form:</p>
+   <div class="formula">\[\boxed{z=x+iy}\]</div>
+   <p>where \(x\) and \(y\) are real numbers, and \(i\) is the imaginary unit.</p>
+   <div class="two-col">
+    <div class="mini-card"><h4>Real part</h4><p>The real part is the value of \(x\).</p><div class="formula light">\[\operatorname{Re}(z)=x\]</div></div>
+    <div class="mini-card"><h4>Imaginary part</h4><p>The imaginary part is the coefficient of \(i\), which is \(y\).</p><div class="formula light">\[\operatorname{Im}(z)=y\]</div></div>
+   </div>
+   <div class="example"><h4>Example</h4><p>For \(z=5-3i\):</p><div class="formula light">\[\operatorname{Re}(z)=5,\qquad \operatorname{Im}(z)=-3\]</div><p>Notice that the imaginary part is \(-3\), not \(-3i\).</p></div>
+  </article>
+
+  <article class="card">
+   <h3>5. Equality of complex numbers</h3>
+   <p>Two complex numbers are equal if and only if their real parts are equal and their imaginary parts are equal.</p>
+   <div class="formula">\[a+bi=c+di\iff a=c\quad\text{and}\quad b=d\]</div>
+   <div class="example"><h4>Example</h4><p>Given that \(3x+(y-2)i=9+5i\), find \(x\) and \(y\).</p><div class="formula light">\[\begin{aligned}3x&=9\\x&=\boxed{3}\end{aligned}\qquad\begin{aligned}y-2&=5\\y&=\boxed{7}\end{aligned}\]</div></div>
+  </article>
+
+  <article class="card">
+   <h3>6. The Argand diagram</h3>
+   <p>A complex number can be represented geometrically as a point on a plane called the <strong>Argand diagram</strong> (or complex plane).</p>
+   <ul><li>The horizontal axis represents the real part.</li><li>The vertical axis represents the imaginary part.</li><li>The complex number \(z=x+iy\) is represented by the point \((x,y)\).</li></ul>
+   <div class="diagram">
+    <svg viewBox="0 0 680 440" role="img" aria-label="Argand diagram showing z equals 3 plus 2i at coordinate 3 comma 2">
+     <defs><marker id="argArrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6" fill="#806F67"/></marker></defs>
+     <g stroke="#E8DAD1" stroke-width="1"><path d="M70 40V390 M130 40V390 M190 40V390 M250 40V390 M310 40V390 M370 40V390 M430 40V390 M490 40V390 M550 40V390 M610 40V390"/><path d="M70 70H610 M70 130H610 M70 190H610 M70 250H610 M70 310H610 M70 370H610"/></g>
+     <path d="M55 250H635 M370 405V25" stroke="#806F67" stroke-width="2" marker-end="url(#argArrow)"/>
+     <path d="M370 250L490 130" stroke="#B85C38" stroke-width="4" stroke-linecap="round"/>
+     <path d="M490 130V250H370" stroke="#D97745" stroke-width="2" stroke-dasharray="6 6"/>
+     <circle cx="490" cy="130" r="7" fill="#B85C38"/>
+     <g fill="#806F67" font-family="DM Sans" font-size="13"><text x="640" y="255">Real</text><text x="382" y="28">Imaginary</text><text x="352" y="270">O</text><text x="482" y="273">3</text><text x="345" y="135">2</text></g>
+     <text x="505" y="118" fill="#B85C38" font-family="Playfair Display" font-size="21" font-weight="700">z = 3 + 2i</text>
+     <text x="422" y="282" fill="#806F67" font-family="DM Sans" font-size="13">Real part = 3</text>
+     <text x="505" y="190" fill="#806F67" font-family="DM Sans" font-size="13">Imaginary part = 2</text>
+    </svg>
+    <div class="diagram-caption">The point representing \(z=3+2i\) has coordinates \((3,2)\).</div>
+   </div>
+  </article>
+
+  <div class="key-info">
+   <div class="box-title">KEY INFORMATION • PART 1</div>
+   <p><strong>Complex number:</strong> \(z=x+iy\), where \(x,y\in\mathbb R\) and \(i^2=-1\).</p>
+   <p><strong>Real part:</strong> \(\operatorname{Re}(z)=x\).</p>
+   <p><strong>Imaginary part:</strong> \(\operatorname{Im}(z)=y\).</p>
+   <p><strong>Equality:</strong> \(a+bi=c+di\) exactly when \(a=c\) and \(b=d\).</p>
+   <p><strong>Argand diagram:</strong> \(z=x+iy\) is represented by the point \((x,y)\).</p>
+   <p><strong>Powers of \(i\):</strong> \(i,\,-1,\,-i,\,1\), then the cycle repeats every four powers.</p>
   </div>
+ </section>
 
-  <div class="topics">
-    <article class="topic" data-topic-number="1">
-      <div class="topic-top"><div class="topic-number">01 / 07</div><div class="topic-symbol">z</div></div>
-      <h3>Definition of a Complex Number</h3>
-      <p>Understand the form of a complex number, the real and imaginary parts, and the role of the imaginary unit.</p>
-      <a href="complex-number-definition.html" class="open-topic">OPEN LESSON →</a>
-    </article>
+ <div class="part-divider"></div>
 
-    <article class="topic" data-topic-number="2">
-      <div class="topic-top"><div class="topic-number">02 / 07</div><div class="topic-symbol">± ×</div></div>
-      <h3>Operations with Complex Numbers</h3>
-      <p>Learn how to add, subtract, and multiply complex numbers using their algebraic form.</p>
-      <a href="complex-number-operations.html" class="open-topic">OPEN LESSON →</a>
-    </article>
+ <section class="part" id="part2">
+  <div class="part-heading"><div class="part-number">02</div><div><div class="section-label">PART TWO</div><h2>Modulus and Argument</h2><p>Describe a complex number using its distance and direction.</p></div></div>
 
-    <article class="topic" data-topic-number="3">
-      <div class="topic-top"><div class="topic-number">03 / 07</div><div class="topic-symbol">z̄</div></div>
-      <h3>Division of Complex Numbers</h3>
-      <p>Divide complex numbers and understand how conjugates and their properties simplify the process.</p>
-      <a href="complex-number-division.html" class="open-topic">OPEN LESSON →</a>
-    </article>
+  <article class="card">
+   <h3>1. The modulus of a complex number</h3>
+   <p>The <strong>modulus</strong> of a complex number is the distance of its point from the origin on the Argand diagram. It is always non-negative.</p>
+   <p>For \(z=x+iy\), Pythagoras' theorem gives:</p>
+   <div class="formula">\[\boxed{|z|=\sqrt{x^2+y^2}}\]</div>
+   <div class="diagram">
+    <svg viewBox="0 0 620 340" role="img" aria-label="Modulus represented as the distance from the origin to a complex point">
+     <defs><marker id="modArrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6" fill="#B85C38"/></marker></defs>
+     <path d="M55 270H575 M125 315V30" stroke="#806F67" stroke-width="2"/>
+     <path d="M125 270L405 90" stroke="#B85C38" stroke-width="4" marker-end="url(#modArrow)"/>
+     <path d="M405 90V270H125" stroke="#D97745" stroke-width="2" stroke-dasharray="6 6"/>
+     <circle cx="405" cy="90" r="7" fill="#B85C38"/>
+     <path d="M125 270L405 270L405 90" fill="none" stroke="#D8C4B8" stroke-width="2"/>
+     <text x="240" y="160" fill="#B85C38" font-family="Playfair Display" font-size="22">|z|</text>
+     <g fill="#806F67" font-family="DM Sans" font-size="14"><text x="112" y="292">O</text><text x="590" y="275">Re</text><text x="135" y="28">Im</text><text x="245" y="294">x</text><text x="415" y="185">y</text><text x="420" y="83" fill="#B85C38" font-weight="700">z = x + iy</text></g>
+    </svg>
+    <div class="diagram-caption">The modulus is the length of the line segment joining the origin to the point \(z\).</div>
+   </div>
+   <div class="example"><h4>Example</h4><p>Find the modulus of \(z=3+4i\).</p><div class="formula light">\[\begin{aligned}|z|&=\sqrt{3^2+4^2}\\&=\sqrt{9+16}\\&=\boxed{5}\end{aligned}\]</div></div>
+  </article>
 
-    <article class="topic" data-topic-number="4">
-      <div class="topic-top"><div class="topic-number">04 / 07</div><div class="topic-symbol">√z</div></div>
-      <h3>Square Root of a Complex Number</h3>
-      <p>Determine square roots of complex numbers and express the results in the form a + bi.</p>
-      <a href="square-root-complex-number.html" class="open-topic">OPEN LESSON →</a>
-    </article>
+  <article class="card">
+   <h3>2. The argument of a complex number</h3>
+   <p>The <strong>argument</strong> of a non-zero complex number is the angle measured from the positive real axis to the line joining the origin to the point representing the complex number.</p>
+   <ul><li>Anticlockwise rotation is positive.</li><li>Clockwise rotation is negative.</li><li>Arguments in this lesson are measured in radians.</li></ul>
+   <div class="formula">\[\theta=\operatorname{Arg}(z)\]</div>
+   <p>The principal argument is conventionally chosen in the interval:</p>
+   <div class="formula light">\[\boxed{-\pi<\operatorname{Arg}(z)\leq\pi}\]</div>
+   <div class="attention"><div class="box-title">⚠ PAY ATTENTION</div><p>Always check the range mentioned in the exam question. If a question specifies a different interval for the argument, use the interval given in that question.</p><p>The standard principal range includes \(+\pi\) but excludes \(-\pi\), because these two angles point in exactly the same direction. Only one endpoint is included.</p></div>
+   <p>The argument of \(z=0\) is <strong>undefined</strong>, because the zero complex number has no direction from the origin.</p>
+  </article>
 
-    <article class="topic" data-topic-number="5">
-      <div class="topic-top"><div class="topic-number">05 / 07</div><div class="topic-symbol">zⁿ</div></div>
-      <h3>Complex Roots</h3>
-      <p>Investigate complex roots and understand how they arise when solving equations.</p>
-      <a href="complex-roots.html" class="open-topic">OPEN LESSON →</a>
-    </article>
+  <article class="card">
+   <h3>3. Finding the argument in each quadrant</h3>
+   <p>First find the acute reference angle using the positive magnitudes of the real and imaginary components:</p>
+   <div class="formula">\[\alpha=\tan^{-1}\left(\frac{y}{x}\right),\qquad x>0,\ y>0\]</div>
+   <p>The signs of the real and imaginary parts tell us the quadrant. The argument must then be adjusted according to that quadrant.</p>
+   <div class="quad-layout">
+    <div class="diagram">
+     <svg viewBox="0 0 560 440" role="img" aria-label="Four quadrants of the Argand plane with positive and negative argument directions">
+      <defs><marker id="quadArrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6" fill="#806F67"/></marker></defs>
+      <path d="M45 220H520 M280 410V25" stroke="#806F67" stroke-width="2" marker-end="url(#quadArrow)"/>
+      <path d="M280 220L420 90" stroke="#B85C38" stroke-width="3"/><path d="M280 220L140 90" stroke="#B85C38" stroke-width="3"/><path d="M280 220L140 350" stroke="#B85C38" stroke-width="3"/><path d="M280 220L420 350" stroke="#B85C38" stroke-width="3"/>
+      <g fill="#B85C38" font-family="Playfair Display" font-size="20" font-weight="700"><text x="385" y="75">I</text><text x="145" y="75">II</text><text x="145" y="380">III</text><text x="390" y="380">IV</text></g>
+      <g fill="#806F67" font-family="DM Sans" font-size="13"><text x="525" y="225">Re</text><text x="290" y="24">Im</text><text x="265" y="240">O</text></g>
+      <path d="M335 220 A55 55 0 0 0 320 181" fill="none" stroke="#D97745" stroke-width="2"/>
+      <path d="M225 220 A55 55 0 0 1 240 181" fill="none" stroke="#D97745" stroke-width="2"/>
+      <path d="M225 220 A55 55 0 0 0 240 259" fill="none" stroke="#D97745" stroke-width="2"/>
+      <path d="M335 220 A55 55 0 0 1 320 259" fill="none" stroke="#D97745" stroke-width="2"/>
+     </svg>
+    </div>
+    <div class="quad-rules">
+     <div class="quad-rule"><strong>QUADRANT I</strong><span>\(z=x+iy\)</span><div class="formula light">\[\theta=\tan^{-1}\left(\frac yx\right)\]</div></div>
+     <div class="quad-rule"><strong>QUADRANT II</strong><span>\(z=-x+iy\)</span><div class="formula light">\[\theta=\pi-\tan^{-1}\left(\frac yx\right)\]</div></div>
+     <div class="quad-rule"><strong>QUADRANT III</strong><span>\(z=-x-iy\)</span><div class="formula light">\[\theta=-\pi+\tan^{-1}\left(\frac yx\right)\]</div></div>
+     <div class="quad-rule"><strong>QUADRANT IV</strong><span>\(z=x-iy\)</span><div class="formula light">\[\theta=-\tan^{-1}\left(\frac yx\right)\]</div></div>
+    </div>
+   </div>
+   <div class="remember"><div class="box-title">REMEMBER</div><p>The inverse tangent gives the reference angle. It does not automatically identify the correct quadrant. Always inspect the signs of the real and imaginary parts before choosing the argument formula.</p></div>
+  </article>
 
-    <article class="topic" data-topic-number="6">
-      <div class="topic-top"><div class="topic-number">06 / 07</div><div class="topic-symbol">P(x)</div></div>
-      <h3>Complex Roots of Polynomial Equations</h3>
-      <p>Explore polynomial equations with complex roots and the relationships between their solutions.</p>
-      <a href="complex-roots-polynomial-equations.html" class="open-topic">OPEN LESSON →</a>
-    </article>
+  <article class="card">
+   <h3>4. Worked examples</h3>
+   <div class="example">
+    <h4>Example 1: \(z=-3+3i\) (Quadrant II)</h4>
+    <p>Both component magnitudes are 3, so the reference angle is:</p>
+    <div class="formula light">\[\alpha=\tan^{-1}\left(\frac33\right)=\frac{\pi}{4}\]</div>
+    <p>Since the point is in Quadrant II:</p>
+    <div class="formula light">\[\operatorname{Arg}(z)=\pi-\frac{\pi}{4}=\boxed{\frac{3\pi}{4}}\]</div>
+   </div>
+   <div class="example">
+    <h4>Example 2: \(z=-3-3i\) (Quadrant III)</h4>
+    <p>The reference angle is again \(\frac{\pi}{4}\). Since the point is in Quadrant III, the principal argument is negative:</p>
+    <div class="formula light">\[\operatorname{Arg}(z)=-\pi+\frac{\pi}{4}=\boxed{-\frac{3\pi}{4}}\]</div>
+   </div>
+  </article>
 
-    <article class="topic" data-topic-number="7">
-      <div class="topic-top"><div class="topic-number">07 / 07</div><div class="topic-symbol">r∠θ</div></div>
-      <h3>Polar Form</h3>
-      <p>Represent complex numbers using modulus and argument, and connect algebra with geometry.</p>
-      <a href="complex-numbers-polar-form.html" class="open-topic">OPEN LESSON →</a>
-    </article>
+  <article class="card">
+   <h3>5. Special cases on the axes</h3>
+   <p>If a complex number lies directly on one of the axes, use its position rather than the quadrant formulas.</p>
+   <div class="two-col">
+    <div class="mini-card"><h4>Positive real axis</h4><div class="formula light">\[z=x,\ x>0\quad\Rightarrow\quad\theta=0\]</div></div>
+    <div class="mini-card"><h4>Positive imaginary axis</h4><div class="formula light">\[z=iy,\ y>0\quad\Rightarrow\quad\theta=\frac{\pi}{2}\]</div></div>
+    <div class="mini-card"><h4>Negative real axis</h4><div class="formula light">\[z=-x,\ x>0\quad\Rightarrow\quad\theta=\pi\]</div></div>
+    <div class="mini-card"><h4>Negative imaginary axis</h4><div class="formula light">\[z=-iy,\ y>0\quad\Rightarrow\quad\theta=-\frac{\pi}{2}\]</div></div>
+   </div>
+   <div class="attention"><div class="box-title">⚠ REMEMBER THE ORIGIN</div><p>For \(z=0\), the argument is undefined. The origin has no direction.</p></div>
+  </article>
+
+  <div class="key-info">
+   <div class="box-title">KEY INFORMATION • PART 2</div>
+   <p><strong>Modulus:</strong> \(|z|=\sqrt{x^2+y^2}\), the distance from the origin.</p>
+   <p><strong>Argument:</strong> the angle measured from the positive real axis.</p>
+   <p><strong>Direction:</strong> anticlockwise is positive; clockwise is negative.</p>
+   <p><strong>Principal argument:</strong> \(-\pi<\operatorname{Arg}(z)\leq\pi\).</p>
+   <p><strong>Quadrants:</strong> identify the signs of the real and imaginary parts before selecting the formula.</p>
+   <p><strong>Special case:</strong> the argument of zero is undefined.</p>
   </div>
+ </section>
 
-  <div class="strip">
-    <strong>Beyond the real number line.</strong>
-    <p>Seven lessons to help you understand complex numbers algebraically and geometrically, one idea at a time.</p>
+ <section class="completion-section" id="completionSection">
+  <div class="completion-content">
+   <div class="completion-mark" id="completionMark">✓</div>
+   <div class="eyebrow" style="color:var(--accent-light);margin-bottom:12px">COMPLEX NUMBERS • TOPIC 01 / 07</div>
+   <h2>You've reached the <span>final point.</span></h2>
+   <p>You've explored the imaginary unit, the Argand diagram, modulus and argument. Finish this lesson to save your progress and unlock the practice questions.</p>
+   <button class="complete-button" id="completeButton" type="button">✓ FINISH LESSON</button>
+   <div class="practice-unlocked" id="practiceUnlocked">
+    <p><strong>Lesson completed!</strong> Your progress has been saved. Ready to put these ideas into practice?</p>
+    <a class="practice-button" href="complex-number-definition-questions.html">START PRACTICE <span>→</span></a>
+   </div>
+   <p id="saveMessage" role="status" aria-live="polite" style="margin-top:13px;font-size:12px"></p>
   </div>
+ </section>
 </main>
 
 <footer>
-  <div class="footer-logo">Edu<span>Nova</span></div>
-  <p>© 2026 EduNova. Mathematics made clear.</p>
-  <div class="policy-links">
-    <a href="terms.html">Terms of Use</a>
-    <a href="privacy.html">Privacy Policy</a>
-  </div>
+ <div><div class="footer-logo">Edu<span>Nova</span></div><div class="footer-tagline">Mathematics made clear.</div><div class="policy-links"><a href="terms.html">Terms of Use</a><a href="privacy.html">Privacy Policy</a></div></div>
+ <div class="footer-right">© 2026 EduNova. All rights reserved.</div>
 </footer>
 
 <script>
-const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
-const { createClient } = supabase;
-const supabaseClient = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const SUPABASE_URL="https://majvqtbortonsrgdknms.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY="sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
 
-async function loadComplexNumbersProgress() {
-  const { data: { session }, error: sessionError } = await supabaseClient.auth.getSession();
+const completeButton=document.getElementById("completeButton");
+const completionSection=document.getElementById("completionSection");
+const practiceUnlocked=document.getElementById("practiceUnlocked");
+const saveMessage=document.getElementById("saveMessage");
 
-  if (sessionError) {
-    console.error("Session error:", sessionError);
-    return;
-  }
+document.getElementById("logoutBtn").addEventListener("click",async()=>{
+ await supabaseClient.auth.signOut();
+ window.location.href="index.html";
+});
 
-  if (!session) {
-    window.location.href = "index.html";
-    return;
-  }
-
-  const { data, error } = await supabaseClient
-    .from("lesson_progress")
-    .select("topic_number")
-    .eq("user_id", session.user.id)
-    .eq("chapter", "Complex Numbers");
-
-  if (error) {
-    console.error("Progress loading error:", error);
-    return;
-  }
-
-  const completedTopics = new Set((data || []).map(row => Number(row.topic_number)));
-
-  document.querySelectorAll(".topic[data-topic-number]").forEach(card => {
-    if (completedTopics.has(Number(card.dataset.topicNumber))) {
-      card.classList.add("completed");
-    }
-  });
+function showCompletedState(animate=false){
+ completionSection.classList.add("completed");
+ completeButton.disabled=true;
+ completeButton.textContent="✓ LESSON COMPLETED";
+ practiceUnlocked.classList.add("show");
+ saveMessage.textContent="Your lesson progress is saved.";
+ if(animate) completionSection.scrollIntoView({behavior:"smooth",block:"center"});
 }
 
-async function logout() {
-  await supabaseClient.auth.signOut();
-  localStorage.removeItem("eduNovaUsername");
-  localStorage.removeItem("eduNovaEmail");
-  window.location.href = "index.html";
+async function checkSessionAndProgress(){
+ const {data:{session},error:sessionError}=await supabaseClient.auth.getSession();
+ if(sessionError){console.error("Session error:",sessionError);return}
+ if(!session){window.location.href="index.html";return}
+
+ const {data,error}=await supabaseClient.from("lesson_progress")
+  .select("*")
+  .eq("user_id",session.user.id)
+  .eq("chapter","Complex Numbers")
+  .eq("topic_number",1)
+  .maybeSingle();
+
+ if(error){console.error("Error checking lesson progress:",error);return}
+ if(data) showCompletedState(false);
 }
 
-document.addEventListener("DOMContentLoaded", loadComplexNumbersProgress);
+async function completeLesson(){
+ completeButton.disabled=true;
+ completeButton.textContent="SAVING...";
+ saveMessage.textContent="Saving your progress...";
+
+ const {data:{session},error:sessionError}=await supabaseClient.auth.getSession();
+ if(sessionError||!session){
+  saveMessage.textContent="Your session could not be verified. Please log in again.";
+  completeButton.disabled=false;
+  completeButton.textContent="✓ FINISH LESSON";
+  if(!session) setTimeout(()=>window.location.href="index.html",1200);
+  return;
+ }
+
+ const {error}=await supabaseClient.from("lesson_progress").upsert({
+  user_id:session.user.id,
+  chapter:"Complex Numbers",
+  topic_number:1,
+  completed_at:new Date().toISOString()
+ },{onConflict:"user_id,chapter,topic_number"});
+
+ if(error){
+  console.error("Error saving lesson progress:",error);
+  saveMessage.textContent="We couldn't save your progress. Please try again.";
+  completeButton.disabled=false;
+  completeButton.textContent="✓ FINISH LESSON";
+  return;
+ }
+ showCompletedState(true);
+}
+
+completeButton.addEventListener("click",completeLesson);
+document.addEventListener("DOMContentLoaded",()=>{
+ checkSessionAndProgress();
+ if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();
+});
 </script>
+<script src="premium-access.js"></script>
 </body>
 </html>
