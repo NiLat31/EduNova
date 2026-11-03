@@ -578,10 +578,15 @@ document.querySelector('.completion p').textContent =
     document.getElementById('practiceButton').classList.add('show');
     btn.textContent='Lesson completed ✓';
    btn.disabled = true;
-  }catch(err){
-    console.error(err);
-    status.textContent='We could not save your completion automatically. Please check your progress table setup.';
-    btn.disabled=false;btn.textContent='Try saving again';
+   }catch(err){
+    console.error('EduNova saving error:', err);
+
+    status.textContent = 'Saving failed: ' + (
+      err.message || JSON.stringify(err)
+    );
+
+    btn.disabled = false;
+    btn.textContent = 'Try saving again';
   }
 }
 async function logout(){
