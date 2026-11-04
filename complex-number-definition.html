@@ -41,7 +41,34 @@ button{font:inherit}
 .hero h1 span{color:#D97745}
 .hero p{max-width:720px;color:#c5bfbc;font-size:1rem;line-height:1.85}
 .hero-grid{position:absolute;inset:0;opacity:.15;background-image:linear-gradient(rgba(217,119,69,.25) 1px,transparent 1px),linear-gradient(90deg,rgba(217,119,69,.25) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to right,transparent,black 30%,black 75%,transparent)}
-.hero-i{position:absolute;right:12%;top:50%;transform:translateY(-52%) rotate(-9deg);font:italic 300 19rem "Playfair Display",serif;color:rgba(217,119,69,.13);line-height:1;pointer-events:none}
+.hero-spiral {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.hero-spiral svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.spiral-path {
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  animation: drawSpiral 7s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 9px rgba(217,119,69,0.3));
+}
+
+@keyframes drawSpiral {
+  from { stroke-dashoffset: 1500; }
+  to { stroke-dashoffset: 0; }
+}
 main{width:min(1080px,88%);margin:auto;padding:64px 0 95px}
 .lesson-intro{max-width:850px;margin-bottom:42px}
 .eyebrow{color:var(--accent);font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:9px}
@@ -262,7 +289,15 @@ footer {
 }
 @media(max-width:700px){
  .navbar{height:64px;padding:0 5%}.logo{font-size:1.3rem}.nav-right{gap:10px}.back-link{font-size:.72rem}.logout-btn{padding:8px 10px;font-size:.7rem}
- .hero{min-height:360px;padding:65px 7%}.hero-i{right:3%;font-size:13rem;top:70%;opacity:.7}
+.hero{min-height:360px;padding:65px 7%}
+
+.hero-spiral {
+  width: 260px;
+  height: 260px;
+  right: -65px;
+  top: 70%;
+  opacity: 0.3;
+}
  main{width:90%;padding:48px 0 70px}.two-col{grid-template-columns:1fr}.formula-card{padding:19px 15px}.info-box{padding:18px}.graph-card{padding:15px 10px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
@@ -278,12 +313,34 @@ footer {
 </nav>
 
 <header class="hero">
-  <div class="hero-grid"></div><div class="hero-i">i</div>
-  <div class="hero-content">
-    <div class="hero-label">CHAPTER 09 · COMPLEX NUMBERS · TOPIC 01</div>
-    <h1>Definition of a <span>Complex Number.</span></h1>
-    <p>Explore the imaginary unit, the algebraic form of complex numbers, powers of \(i\), modulus, and argument. Build the foundations before moving to more advanced operations.</p>
-  </div>
+ <div class="hero-grid"></div>
+
+<div class="hero-spiral" aria-hidden="true">
+  <svg viewBox="0 0 500 500">
+    <defs>
+      <linearGradient id="spiralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#F2C6A8"/>
+        <stop offset="50%" stop-color="#D97745"/>
+        <stop offset="100%" stop-color="#B85C38"/>
+      </linearGradient>
+    </defs>
+
+    <path class="spiral-path"
+      d="M250 250
+         C250 240 260 235 270 240
+         C290 250 285 280 265 295
+         C230 320 185 295 175 255
+         C160 195 210 145 270 150
+         C350 155 390 225 365 300
+         C335 390 225 425 140 370
+         C40 305 55 165 150 95
+         C260 15 420 75 450 205"
+      fill="none"
+      stroke="url(#spiralGradient)"
+      stroke-width="8"
+      stroke-linecap="round"/>
+  </svg>
+</div>
 </header>
 
 <main>
