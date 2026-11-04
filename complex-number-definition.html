@@ -339,16 +339,7 @@ footer {
       </linearGradient>
     </defs>
 
-    <path class="spiral-path"
-      d="M250 250
-         C250 240 260 235 270 240
-         C290 250 285 280 265 295
-         C230 320 185 295 175 255
-         C160 195 210 145 270 150
-         C350 155 390 225 365 300
-         C335 390 225 425 140 370
-         C40 305 55 165 150 95
-         C260 15 420 75 450 205"
+   <path id="complexSpiral"
       fill="none"
       stroke="url(#spiralGradient)"
       stroke-width="8"
@@ -592,6 +583,24 @@ footer {
 </footer>
 
 <script>
+  // Logarithmic spiral based on a complex exponential
+(function createComplexSpiral() {
+  const path = document.getElementById('complexSpiral');
+  if (!path) return;
+
+  const a = 0.16;
+  const b = 0.55;
+  const points = [];
+
+  for (let t = 0; t <= 4 * Math.PI; t += 0.04) {
+    const r = 12 * Math.exp(a * t);
+    const x = 250 + r * Math.cos(b * t);
+    const y = 250 + r * Math.sin(b * t);
+    points.push(`${points.length ? 'L' : 'M'}${x.toFixed(2)} ${y.toFixed(2)}`);
+  }
+
+  path.setAttribute('d', points.join(' '));
+})();
 function selectQuadrant(q){
   const configs={
     1:{x:370,y:100,angle:-Math.PI/4,arcEnd:-Math.PI/4,form:'z=x+yi',range:'0 < θ < π/2',label:'Quadrant I'},
