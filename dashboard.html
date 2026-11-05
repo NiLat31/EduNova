@@ -1409,7 +1409,23 @@ function hideLoading() {
 ========================================= */
 
 const loadingStartedAt = Date.now();
-    
+    async function detectCountry(){
+    try{
+        const response = await fetch("https://ipapi.co/country_name/");
+
+        if(!response.ok){
+            throw new Error("Country detection failed");
+        }
+
+        const country = (await response.text()).trim();
+
+        return country || null;
+
+    }catch(error){
+        console.warn("Could not detect country:", error);
+        return null;
+    }
+}
     async function checkSession() {
     try {
         const {
@@ -1424,7 +1440,7 @@ const loadingStartedAt = Date.now();
 
         const { data: student, error } = await supabaseClient
             .from("students")
-            .select("username, email, country, premium_access")
+            .select("username, email, country, detected_country, premium_access")
             .eq("id", session.user.id)
             .single();
 
@@ -1446,6 +1462,28 @@ const loadingStartedAt = Date.now();
 
         /* Set the premium display from the database value. */
         updatePremiumDisplay(student.premium_access === true);
+        // Synchronize the detected country for Google and other sign-ins
+const detectedCountry =
+    student.detected_country || await detectCountry();
+
+if(detectedCountry){
+
+    const { error: countrySyncError } =
+        await supabaseClient
+            .from("students")
+            .update({
+    detected_country: detectedCountry
+})
+            .eq("id", session.user.id);
+
+    if(countrySyncError){
+        console.warn(
+            "Country synchronization failed:",
+            countrySyncError
+        );
+    }
+
+}
 
     } catch (error) {
         console.error("EduNova dashboard could not load:", error);
