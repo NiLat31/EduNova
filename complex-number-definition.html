@@ -45,32 +45,78 @@ button{font:inherit}
   position: absolute;
   width: 440px;
   height: 440px;
-  right: 5%;
+  right: 4%;
   top: 50%;
   transform: translateY(-50%);
-  opacity: 0.75;
+  opacity: .85;
   pointer-events: none;
-  animation: spiralExpand 8s ease-in-out infinite alternate;
+  perspective: 900px;
 }
 
-@keyframes spiralExpand {
-  0% {
-    transform: translateY(-50%) scale(0.65) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-50%) scale(1.15) rotate(35deg);
-  }
+.plane-scene {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  animation: planeFloat 5s ease-in-out infinite alternate;
 }
-.hero-spiral svg {
+
+.complex-plane {
   width: 100%;
   height: 100%;
   overflow: visible;
+  transform-style: preserve-3d;
+  animation: planeRotate 12s ease-in-out infinite alternate;
 }
 
-.spiral-path {
-  stroke-dasharray: 1500;
-  stroke-dashoffset: 0;
-  filter: drop-shadow(0 0 12px rgba(217,119,69,0.45));
+.plane-grid-lines {
+  fill: none;
+  stroke: rgba(217,119,69,.38);
+  stroke-width: 1.2;
+}
+
+.plane-axis {
+  fill: none;
+  stroke: #F2C6A8;
+  stroke-width: 2.5;
+}
+
+.plane-label {
+  fill: #F2C6A8;
+  font: 700 13px "DM Sans", sans-serif;
+}
+
+.plane-vector {
+  fill: none;
+  stroke: #D97745;
+  stroke-width: 4;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 7px rgba(217,119,69,.8));
+}
+
+.plane-point {
+  fill: #F2C6A8;
+  stroke: #D97745;
+  stroke-width: 3;
+}
+
+.plane-point-label {
+  fill: #F2C6A8;
+  font: 700 17px "DM Sans", sans-serif;
+}
+
+@keyframes planeRotate {
+  0% {
+    transform: rotateX(15deg) rotateY(-25deg) rotateZ(-8deg);
+  }
+  100% {
+    transform: rotateX(48deg) rotateY(25deg) rotateZ(8deg);
+  }
+}
+
+@keyframes planeFloat {
+  from { transform: translateY(-8px); }
+  to { transform: translateY(8px); }
 }
   
 main{width:min(1080px,88%);margin:auto;padding:64px 0 95px}
@@ -301,7 +347,7 @@ footer {
   height: 260px;
   right: -65px;
   top: 70%;
-  opacity: 0.3;
+  opacity: .3;
 }
  main{width:90%;padding:48px 0 70px}.two-col{grid-template-columns:1fr}.formula-card{padding:19px 15px}.info-box{padding:18px}.graph-card{padding:15px 10px}
 }
@@ -329,22 +375,51 @@ footer {
    </p>
  </div>
 
- <div class="hero-spiral" aria-hidden="true">
-  <svg viewBox="0 0 500 500">
-    <defs>
-      <linearGradient id="spiralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#F2C6A8"/>
-        <stop offset="50%" stop-color="#D97745"/>
-        <stop offset="100%" stop-color="#B85C38"/>
-      </linearGradient>
-    </defs>
+<div class="hero-spiral" aria-hidden="true">
+  <div class="plane-scene">
+    <svg class="complex-plane" viewBox="0 0 400 400">
+      <defs>
+        <linearGradient id="planeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#F2C6A8"/>
+          <stop offset="100%" stop-color="#D97745"/>
+        </linearGradient>
+        <filter id="planeShadow">
+          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
 
-   <path id="complexSpiral"
-      fill="none"
-      stroke="url(#spiralGradient)"
-      stroke-width="8"
-      stroke-linecap="round"/>
-  </svg>
+      <!-- Grid -->
+      <g class="plane-grid-lines">
+        <path d="
+          M60 60H340 M60 95H340 M60 130H340 M60 165H340
+          M60 200H340 M60 235H340 M60 270H340 M60 305H340 M60 340H340
+          M60 60V340 M95 60V340 M130 60V340 M165 60V340
+          M200 60V340 M235 60V340 M270 60V340 M305 60V340 M340 60V340
+        "/>
+      </g>
+
+      <!-- Axes -->
+      <path d="M45 200H355 M200 355V45"
+        class="plane-axis"/>
+
+      <path d="M355 200l-10 -6v12z M200 45l-6 10h12z"
+        fill="#F2C6A8"/>
+
+      <text x="360" y="205" class="plane-label">Re</text>
+      <text x="210" y="40" class="plane-label">Im</text>
+      <text x="185" y="220" class="plane-label">O</text>
+
+      <!-- Complex number -->
+      <path d="M200 200L270 130" class="plane-vector"/>
+      <circle cx="270" cy="130" r="7" class="plane-point"
+        filter="url(#planeShadow)"/>
+      <text x="282" y="123" class="plane-point-label">z</text>
+    </svg>
+  </div>
 </div>
 </header>
 
