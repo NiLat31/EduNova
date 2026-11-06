@@ -464,11 +464,52 @@ footer {
       <h3>Keep in mind</h3>
       <p>The imaginary part is the real coefficient \(b\), not the term \(bi\). For \(z=5-3i\), the real part is \(5\) and the imaginary part is \(-3\).</p>
     </div>
-    <div class="info-box example">
-      <h3>Worked example</h3>
-      <p>For \(z=-4+7i\):</p>
-      <div class="math-display">\[\operatorname{Re}(z)=-4,\qquad \operatorname{Im}(z)=7\]</div>
-    </div>
+   
+<div class="info-box example">
+  <h3>Worked example</h3>
+  <p>Simplify \(i^{2026}\).</p>
+
+  <p><strong>Method 1: Division and remainder</strong></p>
+
+  <div class="math-display">
+    \[
+    2026\div4=506.5
+    \]
+  </div>
+
+  <p>The decimal part is \(0.5\). Multiply it by 4 to find the remainder:</p>
+
+  <div class="math-display">
+    \[
+    0.5\times4=2
+    \]
+  </div>
+
+  <p>Therefore, the remainder is 2, so:</p>
+
+  <div class="math-display">
+    \[
+    \boxed{i^{2026}=i^2=-1}
+    \]
+  </div>
+
+  <p><strong>Method 2: Rewriting the exponent</strong></p>
+
+  <div class="math-display">
+    \[
+    \begin{aligned}
+    i^{2026}
+    &=i^{2024}\times i^2\\
+    &=(i^4)^{506}\times i^2\\
+    &=1^{506}\times(-1)\\
+    &=\boxed{-1}
+    \end{aligned}
+    \]
+  </div>
+
+  <p>Both methods give the same answer. Choose the method you find easier to apply.</p>
+</div>
+
   </section>
 
   <section class="lesson-section" id="powers">
@@ -491,6 +532,51 @@ footer {
       <h3>Keep in mind</h3>
       <p>The powers repeat every four. Therefore, the value of \(i^n\) depends on the remainder when \(n\) is divided by \(4\).</p>
     </div>
+    <div class="info-box keep">
+  <h3>Using the Decimal Method</h3>
+
+  <p>
+    When dividing an exponent by 4, we can use the decimal
+    part of the answer to find the remainder.
+  </p>
+
+  <div class="math-block">
+    \[
+    \begin{aligned}
+    0.00\times4&=0\\
+    0.25\times4&=1\\
+    0.50\times4&=2\\
+    0.75\times4&=3
+    \end{aligned}
+    \]
+  </div>
+
+  <p>
+    These values correspond to the possible remainders
+    when dividing an integer by 4.
+  </p>
+
+  <p>
+    <strong>Why?</strong> The decimal part represents the
+    fractional part of the quotient. Multiplying it by 4
+    gives the remainder.
+  </p>
+
+  <p>
+    For example, if the quotient is 506.5, its decimal
+    part is 0.5. Therefore:
+  </p>
+
+  <div class="math-block">
+    \[
+    0.5\times4=2
+    \]
+  </div>
+
+  <p>
+    The remainder is therefore 2.
+  </p>
+</div>
     <div class="info-box example">
       <h3>Worked example</h3>
       <p>Simplify \(i^{2026}\).</p>
