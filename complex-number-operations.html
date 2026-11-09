@@ -228,14 +228,14 @@ footer{background:#111214;color:#c5c5c8;padding:27px 0}
     <section class="lesson-card" id="conjugate">
       <div class="section-head"><div class="section-icon">03</div><div><h2>The complex conjugate</h2><p>A sign change that creates a useful real result.</p></div></div>
       <p>The conjugate of \(a+bi\) is \(a-bi\). The real part stays exactly the same, while the sign of the imaginary term changes.</p>
-      <div class="math-panel">\[\boxed{\overline{a+bi}=a-bi}\]</div>
+      <div class="math-panel">\[\boxed{(a+bi)^*=a-bi}\]</div>
       <div class="grid-two">
         <div class="mini-card"><h4>Number</h4><div class="math-panel">\[z=6+5i\]</div></div>
-        <div class="mini-card"><h4>Conjugate</h4><div class="math-panel">\[\overline z=6-5i\]</div></div>
+        <div class="mini-card"><h4>Conjugate</h4><div class="math-panel">\[z^*=6-5i\]</div></div>
       </div>
       <p>The special feature is what happens when a number is multiplied by its conjugate:</p>
       <div class="math-panel">\[\begin{aligned}(a+bi)(a-bi)&=a^2-abi+abi-b^2i^2\\&=a^2+b^2\end{aligned}\]</div>
-      <div class="note blue"><strong>Important result:</strong> \(z\overline z=a^2+b^2\), which is always real and non-negative. The middle terms cancel, and \(i^2=-1\).</div>
+      <div class="note blue"><strong>Important result:</strong> \(zz^*=a^2+b^2\), which is always real and non-negative. The middle terms cancel, and \(i^2=-1\).</div>
       <div class="example">
         <div class="example-label">Worked example 5 · Conjugate product</div>
         <div class="question">Find \((4+3i)(4-3i)\).</div>
@@ -319,7 +319,7 @@ footer{background:#111214;color:#c5c5c8;padding:27px 0}
         <span class="level-tag l2">LEVEL 2 · DEVELOPING</span>
         <div class="qhead"><span class="qnum">3</span><div class="qbody"><h3>Work with conjugates</h3><p>For each number, write its conjugate, then calculate the product of the number and its conjugate.</p>
           <p><strong>a.</strong> \(z=3-4i\)</p><p><strong>b.</strong> \(w=-5+2i\)</p>
-          <details><summary>Show answers</summary><p>a. \(\overline z=3+4i\), and \(z\overline z=25\).</p><p>b. \(\overline w=-5-2i\), and \(w\overline w=29\).</p></details>
+          <details><summary>Show answers</summary><p>a. \(z^*=3+4i\), and \(zz^*=25\).</p><p>b.\(w^*=-5-2i\), and \(ww^*=29\).</p></details>
         </div></div>
       </div>
 
@@ -334,7 +334,7 @@ footer{background:#111214;color:#c5c5c8;padding:27px 0}
       <div class="practice-card">
         <span class="level-tag l3">LEVEL 3 · APPLY</span>
         <div class="qhead"><span class="qnum">5</span><div class="qbody"><h3>Combine operations</h3><p>Let \(z_1=2-3i\) and \(z_2=4+i\). Find each simplified result.</p>
-          <p><strong>a.</strong> \(z_1+2z_2\)</p><p><strong>b.</strong> \(z_1z_2\)</p><p><strong>c.</strong> \(z_2-\overline{z_1}\)</p>
+          <p><strong>a.</strong> \(z_1+2z_2\)</p><p><strong>b.</strong> \(z_1z_2\)</p><p><strong>c.</strong> \(z_2-z_1^*\)</p>
           <details><summary>Show answers</summary><p>a. \(10-i\) &nbsp; b. \(11-10i\) &nbsp; c. \(2-2i\)</p></details>
         </div></div>
       </div>
@@ -362,7 +362,7 @@ footer{background:#111214;color:#c5c5c8;padding:27px 0}
 
       <div class="practice-card">
         <span class="level-tag l4">LEVEL 4 · EXTENSION</span>
-        <div class="qhead"><span class="qnum">9</span><div class="qbody"><h3>Prove the result is real</h3><p>For \(z=a+bi\), where \(a,b\) are real, show that \(z+\overline z\) and \(z\overline z\) are both real numbers.</p>
+        <div class="qhead"><span class="qnum">9</span><div class="qbody"><h3>Prove the result is real</h3><p>For \(z=a+bi\), where \(a,b\) are real, show that \(z+z^*\) and \(zz^*\) are both real numbers.</p>
           <details><summary>Show solution</summary><p>\(z+\overline z=(a+bi)+(a-bi)=2a\), which is real.</p><p>\(z\overline z=(a+bi)(a-bi)=a^2+b^2\), which is also real.</p></details>
         </div></div>
       </div>
