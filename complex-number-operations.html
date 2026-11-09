@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111111">
+<meta name="description" content="Learn how to add, subtract, multiply and divide complex numbers with clear explanations, worked examples and graduated practice.">
+<title>EduNova | Operations with Complex Numbers</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+:root{
+  --ink:#17191d;--muted:#666b73;--paper:#f7f7f8;--surface:#fff;--line:#e5e6e8;
+  --accent:#b85c38;--accent-dark:#91452b;--accent-soft:#fbede7;
+  --green:#24764d;--green-bg:#eaf6ee;--blue:#28658b;--blue-bg:#eaf3f8;
+  --gold:#8a641d;--gold-bg:#fff5df;--purple:#76518b;--purple-bg:#f4edf8;
+  --shadow:0 12px 36px rgba(18,22,28,.06);--radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:94px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.68}
+a{color:inherit}
+.topbar{height:66px;background:#101114;color:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar-inner{width:min(1160px,calc(100% - 44px));margin:auto;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:"Playfair Display",serif;font-size:25px;font-weight:700;letter-spacing:-.7px;text-decoration:none}
+.brand span{color:#df8b69}
+.topnav{display:flex;gap:24px;align-items:center;font-size:12px;font-weight:800;letter-spacing:1.2px}
+.topnav a{text-decoration:none;color:#d9d9dc}.topnav a:hover{color:#fff}
+.topnav .dash{border:1px solid #55575d;border-radius:30px;padding:8px 14px}
+.hero{background:#111214;color:white;position:relative;overflow:hidden}
+.hero-inner{width:min(1160px,calc(100% - 44px));margin:auto;padding:64px 0 66px;position:relative;z-index:1}
+.eyebrow{color:#e6a184;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+.hero h1{font-family:"Playfair Display",serif;font-size:clamp(39px,6vw,66px);line-height:1.08;letter-spacing:-1.7px;max-width:780px;margin:16px 0}
+.hero h1 em{color:#e6a184;font-weight:600}
+.hero p{color:#c5c6ca;max-width:660px;font-size:16px;margin:0}
+.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.pill{font-size:11px;color:#e8e8e9;border:1px solid #45464b;border-radius:30px;padding:7px 12px}
+.hero-art{position:absolute;right:7%;top:50%;transform:translateY(-50%);width:260px;height:260px;border:1px solid rgba(230,161,132,.2);border-radius:50%;display:grid;place-items:center;color:rgba(230,161,132,.75);font-family:"Playfair Display",serif;font-size:140px;font-style:italic;box-shadow:0 0 0 28px rgba(230,161,132,.025),0 0 0 58px rgba(230,161,132,.02)}
+.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid rgba(230,161,132,.22);border-radius:50%;inset:32px;transform:rotate(35deg) scaleX(.55)}
+.hero-art:after{transform:rotate(-35deg) scaleX(.55)}
+.layout{width:min(1160px,calc(100% - 44px));margin:34px auto 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:34px;align-items:start}
+.sidebar{position:sticky;top:90px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 16px;box-shadow:var(--shadow)}
+.side-label{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin:0 0 12px 9px}
+.side-link{display:flex;align-items:center;gap:10px;text-decoration:none;padding:9px;border-radius:9px;font-size:12px;font-weight:700;color:#555d65;margin:2px 0}
+.side-link:hover,.side-link.active{background:var(--accent-soft);color:var(--accent-dark)}
+.side-num{width:22px;height:22px;border-radius:7px;background:#f0f1f2;display:grid;place-items:center;font-size:10px;color:#666}
+.side-link.active .side-num{background:#f1d5c8;color:var(--accent-dark)}
+.content{min-width:0}
+.intro-card,.lesson-card,.example,.practice-card,.finish-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.intro-card{padding:25px 28px;margin-bottom:24px}
+.section-kicker{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;font-weight:800;color:var(--accent);margin-bottom:8px}
+h2{font-family:"Playfair Display",serif;font-size:30px;line-height:1.2;margin:0 0 14px;letter-spacing:-.5px}
+h3{font-size:18px;margin:0 0 10px}
+p{margin:9px 0;color:#444a51}
+.lead{font-size:16px;color:#3e444b}
+.lesson-card{padding:28px;margin:24px 0;scroll-margin-top:90px}
+.section-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
+.section-icon{flex:0 0 38px;height:38px;border-radius:12px;background:var(--accent-soft);color:var(--accent-dark);display:grid;place-items:center;font-weight:800}
+.section-head h2{font-size:27px;margin:0 0 5px}
+.section-head p{font-size:13px;color:var(--muted);margin:0}
+.math-panel{background:#f8f8f9;border:1px solid #ececef;border-radius:13px;padding:16px 18px;margin:15px 0;text-align:center;overflow-x:auto;color:#17191d}
+.rule{border-left:3px solid var(--accent);background:#fff8f5;padding:13px 16px;border-radius:0 11px 11px 0;margin:16px 0}
+.rule strong{color:var(--accent-dark)}
+.note{padding:14px 16px;border-radius:12px;margin:15px 0;font-size:13px}
+.note.green{background:var(--green-bg);border:1px solid #d6eadc;color:#275d40}
+.note.blue{background:var(--blue-bg);border:1px solid #d7e7f0;color:#275775}
+.note.gold{background:var(--gold-bg);border:1px solid #f0e2bd;color:#6c511e}
+.note.purple{background:var(--purple-bg);border:1px solid #e7d9ef;color:#68477a}
+.steps{counter-reset:step;display:grid;gap:10px;margin:14px 0}
+.step{display:grid;grid-template-columns:30px 1fr;gap:11px;align-items:start}
+.step:before{counter-increment:step;content:counter(step);width:27px;height:27px;border-radius:9px;background:#f2e2da;color:var(--accent-dark);display:grid;place-items:center;font-size:11px;font-weight:800}
+.step p{margin:1px 0}
+.example{padding:20px 22px;margin:18px 0;box-shadow:none;border-style:dashed;border-color:#d8dadd}
+.example-label{font-size:10px;font-weight:800;letter-spacing:1.4px;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+.example .question{font-weight:700;color:#24282d;margin-bottom:12px}
+.solution{border-top:1px solid #ececef;margin-top:13px;padding-top:12px}
+.solution summary{cursor:pointer;font-size:12px;font-weight:800;color:var(--accent-dark);list-style:none}
+.solution summary::-webkit-details-marker{display:none}
+.solution summary:after{content:"＋";float:right;font-size:16px}
+.solution[open] summary:after{content:"−"}
+.solution-body{padding-top:10px;font-size:14px}
+.solution-body p{margin:7px 0}
+.grid-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mini-card{border:1px solid var(--line);border-radius:13px;padding:15px;background:#fff}
+.mini-card h4{font-size:13px;margin:0 0 7px;color:var(--accent-dark)}
+.mini-card p{font-size:13px;margin:4px 0}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:12px 0}
+th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left}
+th{background:#f7f7f8;font-size:11px;text-transform:uppercase;letter-spacing:.7px}
+.practice-intro{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
+.level-tag{font-size:10px;font-weight:800;letter-spacing:1px;border-radius:20px;padding:5px 9px;display:inline-block;margin-bottom:8px}
+.l1{background:#eaf6ee;color:#24764d}.l2{background:#eaf3f8;color:#28658b}.l3{background:#fff5df;color:#8a641d}.l4{background:#f4edf8;color:#76518b}
+.practice-card{padding:21px 23px;margin:14px 0;box-shadow:none}
+.qhead{display:flex;gap:12px;align-items:flex-start}
+.qnum{flex:0 0 30px;height:30px;border-radius:9px;background:#f0f1f2;display:grid;place-items:center;font-weight:800;font-size:12px}
+.qbody{flex:1;min-width:0}
+.qbody p{margin:4px 0 10px}
+.answer-line{border:1px solid #dfe1e4;border-radius:9px;padding:10px 12px;background:#fafafa;color:#777;font-size:12px;margin:10px 0}
+.practice-card details{margin-top:10px}
+.practice-card details summary{cursor:pointer;color:var(--accent-dark);font-size:12px;font-weight:800}
+.practice-card details p{font-size:13px}
+.finish-card{padding:27px;text-align:center;margin:26px 0}
+.finish-card h2{font-size:28px}
+.finish-card p{max-width:580px;margin:8px auto 18px;color:var(--muted);font-size:14px}
+.primary-btn,.secondary-btn{border:0;border-radius:30px;padding:12px 20px;font:700 12px "DM Sans",sans-serif;letter-spacing:.3px;cursor:pointer;transition:.2s}
+.primary-btn{background:var(--accent);color:#fff}.primary-btn:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.secondary-btn{background:#f1f1f2;color:#333;text-decoration:none;display:inline-block}
+.status{font-size:12px;margin-top:12px;color:var(--muted);min-height:18px}
+.congrats{display:none;margin:18px auto 0;padding:18px;border-radius:13px;background:var(--green-bg);color:#245c3d;max-width:570px}
+.finish-card.completed .congrats{display:block}
+.finish-card.completed .finish-title{color:var(--green)}
+footer{background:#111214;color:#c5c5c8;padding:27px 0}
+.footer-inner{width:min(1160px,calc(100% - 44px));margin:auto;display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center}
+.footer-brand a{font-family:"Playfair Display",serif;font-size:24px;font-weight:700;text-decoration:none;color:white}
+.footer-brand a span{color:#df8b69}.footer-brand small{display:block;font-size:11px;color:#a8a8ad;margin-top:2px}
+.footer-links{display:flex;gap:18px;font-size:11px}.footer-links a{color:#c5c5c8;text-decoration:none}.footer-links a:hover{color:#fff}
+.copyright{text-align:right;font-size:10px;color:#8f9095}
+@media(max-width:900px){.hero-art{right:-45px;opacity:.45}.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;display:flex;gap:5px;overflow-x:auto;white-space:nowrap;padding:10px}.side-label{display:none}.side-link{flex:0 0 auto}.content{width:100%}}
+@media(max-width:620px){.topbar-inner,.hero-inner,.layout,.footer-inner{width:calc(100% - 28px)}.topnav{gap:10px;font-size:10px}.topnav a:not(.dash){display:none}.hero-inner{padding:48px 0}.hero-art{width:190px;height:190px;font-size:100px;right:-80px;opacity:.25}.hero h1{font-size:42px}.layout{margin-top:18px;gap:15px}.intro-card,.lesson-card{padding:21px 17px}.section-head h2{font-size:24px}h2{font-size:26px}.grid-two{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr;text-align:center}.footer-links{justify-content:center}.copyright{text-align:center}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="dashboard.html">Edu<span>Nova</span></a>
+    <nav class="topnav" aria-label="Main navigation">
+      <a href="dashboard.html">DASHBOARD</a>
+      <a href="complex-numbers.html">CHAPTER 09</a>
+      <a class="dash" href="dashboard.html">MY DASHBOARD ↗</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">CHAPTER 09 · COMPLEX NUMBERS · TOPIC 02</div>
+    <h1>Operations with<br><em>Complex Numbers</em></h1>
+    <p>Build a reliable method for combining, expanding and dividing complex numbers. The key is to keep real and imaginary parts organised, and remember what happens when \(i\) is squared.</p>
+    <div class="hero-meta">
+      <span class="pill">Addition & subtraction</span><span class="pill">Multiplication</span><span class="pill">Conjugates</span><span class="pill">Division</span>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true">i</div>
+</section>
+
+<div class="layout">
+  <aside class="sidebar" aria-label="Lesson contents">
+    <div class="side-label">In this lesson</div>
+    <a class="side-link active" href="#overview"><span class="side-num">00</span> Big picture</a>
+    <a class="side-link" href="#add-sub"><span class="side-num">01</span> Add & subtract</a>
+    <a class="side-link" href="#multiply"><span class="side-num">02</span> Multiply</a>
+    <a class="side-link" href="#conjugate"><span class="side-num">03</span> Conjugates</a>
+    <a class="side-link" href="#divide"><span class="side-num">04</span> Divide</a>
+    <a class="side-link" href="#practice"><span class="side-num">05</span> Practice</a>
+  </aside>
+
+  <main class="content">
+    <section class="intro-card" id="overview">
+      <div class="section-kicker">Start here</div>
+      <h2>One form. Two parts.</h2>
+      <p class="lead">Every complex number can be written as \(a+bi\), where \(a\) and \(b\) are real numbers and \(i^2=-1\).</p>
+      <div class="math-panel">\[\boxed{z=a+bi=\underbrace{a}_{\text{real part}}+\underbrace{b}_{\text{imaginary coefficient}}i}\]</div>
+      <div class="grid-two">
+        <div class="mini-card"><h4>Real part</h4><p>\(\operatorname{Re}(z)=a\). It is the number without \(i\).</p></div>
+        <div class="mini-card"><h4>Imaginary coefficient</h4><p>\(\operatorname{Im}(z)=b\). It is the coefficient of \(i\), not \(bi\) itself.</p></div>
+      </div>
+      <div class="note blue"><strong>Our target form:</strong> unless a question says otherwise, simplify your final answer into \(a+bi\). Keep the real term first and the \(i\)-term second.</div>
+      <p>For example, \(4-3i\) has real part \(4\) and imaginary coefficient \(-3\). The minus sign belongs to the coefficient.</p>
+    </section>
+
+    <section class="lesson-card" id="add-sub">
+      <div class="section-head"><div class="section-icon">01</div><div><h2>Addition and subtraction</h2><p>Combine like parts, just as you do with algebraic terms.</p></div></div>
+      <p>Think of a complex number as having two separate lanes: a real lane and an \(i\)-lane. Add or subtract within each lane. Do not mix the lanes.</p>
+      <div class="math-panel">\[\boxed{(a+bi)\pm(c+di)=(a\pm c)+(b\pm d)i}\]</div>
+      <div class="rule"><strong>Reliable routine</strong><br>Remove brackets carefully → collect the real terms → collect the coefficients of \(i\) → write the answer in \(a+bi\) form.</div>
+
+      <div class="example">
+        <div class="example-label">Worked example 1 · Addition</div>
+        <div class="question">Simplify \((7+4i)+(2-9i)\).</div>
+        <div class="math-panel">\[\begin{aligned}(7+4i)+(2-9i)&=(7+2)+(4i-9i)\\&=9-5i\end{aligned}\]</div>
+        <p>The real parts give \(9\), while the imaginary terms give \(-5i\).</p>
+      </div>
+      <div class="example">
+        <div class="example-label">Worked example 2 · Subtraction</div>
+        <div class="question">Simplify \((5-3i)-(8+6i)\).</div>
+        <details class="solution"><summary>Open the step-by-step solution</summary><div class="solution-body">
+          <p><strong>Step 1:</strong> The minus sign changes both terms in the second bracket.</p>
+          <div class="math-panel">\[5-3i-8-6i\]</div>
+          <p><strong>Step 2:</strong> Collect the real and imaginary terms.</p>
+          <div class="math-panel">\[(5-8)+(-3-6)i=\boxed{-3-9i}\]</div>
+          <p>Be especially careful not to change only the first sign inside the second bracket.</p>
+        </div></details>
+      </div>
+      <div class="note gold"><strong>Common slip:</strong> \((a+bi)-(c+di)\) is \(a+bi-c-di\), not \(a+bi-c+di\). The subtraction applies to the whole bracket.</div>
+    </section>
+
+    <section class="lesson-card" id="multiply">
+      <div class="section-head"><div class="section-icon">02</div><div><h2>Multiplication</h2><p>Expand first. Simplify powers of \(i\) afterwards.</p></div></div>
+      <p>Multiplication follows the distributive law. Each term in the first bracket multiplies each term in the second bracket. Once expanded, use the identity below.</p>
+      <div class="math-panel">\[\boxed{i^2=-1}\]</div>
+      <p>That identity turns the product of two imaginary terms into a real term:</p>
+      <div class="math-panel">\[(bi)(di)=bd\,i^2=-bd\]</div>
+      <div class="rule"><strong>Four-product method</strong><br>Real × real, real × imaginary, imaginary × real, imaginary × imaginary. Then replace \(i^2\) with \(-1\) and collect like terms.</div>
+      <div class="example">
+        <div class="example-label">Worked example 3 · Two brackets</div>
+        <div class="question">Simplify \((3+2i)(4-5i)\).</div>
+        <details class="solution" open><summary>Step-by-step solution</summary><div class="solution-body">
+          <p><strong>Expand all four products:</strong></p>
+          <div class="math-panel">\[\begin{aligned}(3+2i)(4-5i)&=12-15i+8i-10i^2\\&=12-7i-10(-1)\\&=\boxed{22-7i}\end{aligned}\]</div>
+          <p>Notice the last product is \(-10i^2=+10\). This is where the real part changes.</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-label">Worked example 4 · A square</div>
+        <div class="question">Simplify \((2-3i)^2\).</div>
+        <div class="math-panel">\[\begin{aligned}(2-3i)^2&=(2-3i)(2-3i)\\&=4-6i-6i+9i^2\\&=4-12i-9\\&=\boxed{-5-12i}\end{aligned}\]</div>
+        <p>A square means the bracket is multiplied by itself. Do not square each term separately.</p>
+      </div>
+      <div class="note green"><strong>Quick check:</strong> after expanding, the \(i^2\)-term must become real. Your final answer should contain no \(i^2\), \(i^3\), or higher powers of \(i\).</div>
+    </section>
+
+    <section class="lesson-card" id="conjugate">
+      <div class="section-head"><div class="section-icon">03</div><div><h2>The complex conjugate</h2><p>A sign change that creates a useful real result.</p></div></div>
+      <p>The conjugate of \(a+bi\) is \(a-bi\). The real part stays exactly the same, while the sign of the imaginary term changes.</p>
+      <div class="math-panel">\[\boxed{\overline{a+bi}=a-bi}\]</div>
+      <div class="grid-two">
+        <div class="mini-card"><h4>Number</h4><div class="math-panel">\[z=6+5i\]</div></div>
+        <div class="mini-card"><h4>Conjugate</h4><div class="math-panel">\[\overline z=6-5i\]</div></div>
+      </div>
+      <p>The special feature is what happens when a number is multiplied by its conjugate:</p>
+      <div class="math-panel">\[\begin{aligned}(a+bi)(a-bi)&=a^2-abi+abi-b^2i^2\\&=a^2+b^2\end{aligned}\]</div>
+      <div class="note blue"><strong>Important result:</strong> \(z\overline z=a^2+b^2\), which is always real and non-negative. The middle terms cancel, and \(i^2=-1\).</div>
+      <div class="example">
+        <div class="example-label">Worked example 5 · Conjugate product</div>
+        <div class="question">Find \((4+3i)(4-3i)\).</div>
+        <div class="math-panel">\[\begin{aligned}&=16-12i+12i-9i^2\\&=16+9\\&=\boxed{25}\end{aligned}\]</div>
+        <p>The imaginary terms cancel completely.</p>
+      </div>
+    </section>
+
+    <section class="lesson-card" id="divide">
+      <div class="section-head"><div class="section-icon">04</div><div><h2>Division</h2><p>Make the denominator real by using its conjugate.</p></div></div>
+      <p>Dividing directly by a complex number usually leaves \(i\) in the denominator. We avoid that by multiplying the numerator and denominator by the conjugate of the denominator. This does not change the value of the fraction, because we multiply by a form of \(1\).</p>
+      <div class="math-panel">\[\boxed{\frac{a+bi}{c+di}\times\frac{c-di}{c-di}}\]</div>
+      <p>The denominator becomes:</p>
+      <div class="math-panel">\[(c+di)(c-di)=c^2+d^2\]</div>
+      <div class="rule"><strong>Division method</strong><br>1. Identify the denominator. 2. Write its conjugate. 3. Multiply top and bottom by that conjugate. 4. Expand and use \(i^2=-1\). 5. Collect the result into \(x+yi\) form.</div>
+      <div class="example">
+        <div class="example-label">Worked example 6 · Division</div>
+        <div class="question">Write \(\dfrac{5+i}{2-3i}\) in the form \(x+yi\).</div>
+        <details class="solution" open><summary>Step-by-step solution</summary><div class="solution-body">
+          <p><strong>Step 1:</strong> The denominator is \(2-3i\), so its conjugate is \(2+3i\).</p>
+          <p><strong>Step 2:</strong> Multiply the numerator and denominator by \(2+3i\).</p>
+          <div class="math-panel">\[\frac{5+i}{2-3i}\times\frac{2+3i}{2+3i}\]</div>
+          <p><strong>Step 3:</strong> Expand the numerator and denominator separately.</p>
+          <div class="math-panel">\[\begin{aligned}\text{Numerator}&=(5+i)(2+3i)\\&=10+15i+2i+3i^2\\&=7+17i\\[3pt]\text{Denominator}&=(2-3i)(2+3i)\\&=4+9=13\end{aligned}\]</div>
+          <p><strong>Step 4:</strong> Divide each term by \(13\).</p>
+          <div class="math-panel">\[\boxed{\frac{5+i}{2-3i}=\frac7{13}+\frac{17}{13}i}\]</div>
+        </div></details>
+      </div>
+      <div class="note gold"><strong>Do not do this:</strong> multiplying only the denominator by its conjugate changes the value of the fraction. Whatever you do to the denominator, you must also do to the numerator.</div>
+      <div class="example">
+        <div class="example-label">Worked example 7 · A negative imaginary denominator</div>
+        <div class="question">Simplify \(\dfrac{3-2i}{1+i}\).</div>
+        <div class="math-panel">\[\begin{aligned}\frac{3-2i}{1+i}\times\frac{1-i}{1-i}
+&=\frac{(3-2i)(1-i)}{(1+i)(1-i)}\\
+&=\frac{3-3i-2i+2i^2}{1-i^2}\\
+&=\frac{1-5i}{2}\\
+&=\boxed{\frac12-\frac52i}\end{aligned}\]</div>
+      </div>
+    </section>
+
+    <section class="lesson-card" id="summary">
+      <div class="section-kicker">Your operation checklist</div>
+      <h2>Which tool should you use?</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Operation</th><th>Main idea</th><th>Watch out for</th></tr></thead>
+          <tbody>
+            <tr><td>Addition</td><td>Add real parts and imaginary coefficients separately.</td><td>Combining unlike parts.</td></tr>
+            <tr><td>Subtraction</td><td>Change the signs in the entire second bracket.</td><td>Forgetting to distribute the minus.</td></tr>
+            <tr><td>Multiplication</td><td>Expand all products, then use \(i^2=-1\).</td><td>Leaving an \(i^2\)-term in the answer.</td></tr>
+            <tr><td>Conjugate</td><td>Keep the real part; reverse the imaginary sign.</td><td>Changing both signs.</td></tr>
+            <tr><td>Division</td><td>Multiply top and bottom by the denominator's conjugate.</td><td>Changing only the denominator.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note green"><strong>Final check:</strong> Is your answer simplified? Is it in \(x+yi\) form? Have you replaced every \(i^2\) with \(-1\)?</div>
+    </section>
+
+    <section class="lesson-card" id="practice">
+      <div class="practice-intro">
+        <div><div class="section-kicker">Test your understanding</div><h2>Practice, step by step</h2><p>Start with clean calculations, then combine methods. Try each question before opening its answer.</p></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="level-tag l1">LEVEL 1 · FOUNDATION</span>
+        <div class="qhead"><span class="qnum">1</span><div class="qbody"><h3>Collect like parts</h3><p>Simplify each expression into \(x+yi\) form.</p>
+          <p><strong>a.</strong> \((8+3i)+(5-7i)\)</p><p><strong>b.</strong> \((11-4i)-(6+2i)\)</p><p><strong>c.</strong> \((-3+9i)+(7-5i)\)</p>
+          <details><summary>Show answers</summary><p>a. \(13-4i\) &nbsp; b. \(5-6i\) &nbsp; c. \(4+4i\)</p><p>For part b, remember that subtracting the second bracket changes both signs.</p></details>
+        </div></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="level-tag l1">LEVEL 1 · FOUNDATION</span>
+        <div class="qhead"><span class="qnum">2</span><div class="qbody"><h3>Multiply and simplify</h3><p>Expand each pair of brackets and use \(i^2=-1\).</p>
+          <p><strong>a.</strong> \((2+i)(3+4i)\)</p><p><strong>b.</strong> \((5-2i)(1+3i)\)</p><p><strong>c.</strong> \((4+i)^2\)</p>
+          <details><summary>Show answers</summary><p>a. \(2+11i\) &nbsp; b. \(11+13i\) &nbsp; c. \(15+8i\)</p></details>
+        </div></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="level-tag l2">LEVEL 2 · DEVELOPING</span>
+        <div class="qhead"><span class="qnum">3</span><div class="qbody"><h3>Work with conjugates</h3><p>For each number, write its conjugate, then calculate the product of the number and its conjugate.</p>
+          <p><strong>a.</strong> \(z=3-4i\)</p><p><strong>b.</strong> \(w=-5+2i\)</p>
+          <details><summary>Show answers</summary><p>a. \(\overline z=3+4i\), and \(z\overline z=25\).</p><p>b. \(\overline w=-5-2i\), and \(w\overline w=29\).</p></details>
+        </div></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="level-tag l2">LEVEL 2 · DEVELOPING</span>
+        <div class="qhead"><span class="qnum">4</span><div class="qbody"><h3>Division into standard form</h3><p>Write each answer in the form \(x+yi\).</p>
+          <p><strong>a.</strong> \(\dfrac{4+2i}{1-i}\)</p><p><strong>b.</strong> \(\dfrac{7-i}{2+i}\)</p>
+          <details><summary>Show answers</summary><p>a. \(1+3i\).</p><p>b. \(\dfrac{13}{5}-\dfrac95i\).</p></details>
+        </div></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="level-tag l3">LEVEL 3 · APPLY</span>
+        <div class="qhead"><span class="qnum">5</span><div class="qbody"><h3>Combine operations</h3><p>Let \(z_1=2-3i\) and \(z_2=4+i\). Find each simplified result.</p>
+          <p><strong>a.</strong> \(z_1+2z_2\)</p><p><strong>b.</strong> \(z_1z_2\)</p><p><strong>c.</strong> \(z_2-\overline{z_1}\)</p>
+          <details><summary>Show answers</summary><p>a. \(10-i\) &nbsp; b. \(11-10i\) &nbsp; c. \(2-2i\)</p></details>
+        </div></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="level-tag l3">LEVEL 3 · APPLY</span>
+        <div class="qhead"><span class="qnum">6</span><div class="qbody"><h3>Find the unknowns</h3><p>Given \((a+2i)+(3-bi)=7-4i\), where \(a,b\) are real, find \(a\) and \(b\).</p>
+          <details><summary>Show solution</summary><p>Collect the parts: \((a+3)+(2-b)i=7-4i\).</p><p>Equate real parts: \(a+3=7\), so \(a=4\).</p><p>Equate imaginary coefficients: \(2-b=-4\), so \(b=6\).</p></details>
+        </div></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="level-tag l4">LEVEL 4 · CHALLENGE</span>
+        <div class="qhead"><span class="qnum">7</span><div class="qbody"><h3>A quotient with a parameter</h3><p>Given \(\dfrac{a+bi}{1-2i}=3+i\), where \(a,b\) are real, find \(a\) and \(b\).</p>
+          <details><summary>Show solution</summary><p>Multiply both sides by \(1-2i\):</p><p>\(a+bi=(3+i)(1-2i)=3-6i+i-2i^2=5-5i\).</p><p>Therefore, \(a=5\) and \(b=-5\).</p></details>
+        </div></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="level-tag l4">LEVEL 4 · CHALLENGE</span>
+        <div class="qhead"><span class="qnum">8</span><div class="qbody"><h3>Build an expression</h3><p>Find the complex number \(z\) if \(2z-(3-4i)=5+6i\). Give your answer in \(x+yi\) form.</p>
+          <details><summary>Show solution</summary><p>Add \(3-4i\) to both sides: \(2z=8+2i\).</p><p>Divide both parts by \(2\): \(\boxed{z=4+i}\).</p></details>
+        </div></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="level-tag l4">LEVEL 4 · EXTENSION</span>
+        <div class="qhead"><span class="qnum">9</span><div class="qbody"><h3>Prove the result is real</h3><p>For \(z=a+bi\), where \(a,b\) are real, show that \(z+\overline z\) and \(z\overline z\) are both real numbers.</p>
+          <details><summary>Show solution</summary><p>\(z+\overline z=(a+bi)+(a-bi)=2a\), which is real.</p><p>\(z\overline z=(a+bi)(a-bi)=a^2+b^2\), which is also real.</p></details>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="finish-card" id="completion">
+      <div class="section-kicker">Topic 02 complete?</div>
+      <h2 class="finish-title">Ready to mark this lesson complete?</h2>
+      <p>Make sure you can explain why the conjugate is useful, simplify products using \(i^2=-1\), and turn a complex denominator into a real one.</p>
+      <button class="primary-btn" id="completeBtn" type="button">✓ COMPLETE LESSON</button>
+      <div class="status" id="saveStatus" role="status" aria-live="polite"></div>
+      <div class="congrats" id="congrats">
+        <h3>Congratulations! 🎉</h3>
+        <p>You have completed <strong>Operations with Complex Numbers</strong>. Your progress has been saved.</p>
+        <a class="secondary-btn" href="#practice">Review the practice questions ↑</a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><a href="dashboard.html">Edu<span>Nova</span></a><small>Mathematics made clear.</small></div>
+    <div class="footer-links"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div>
+    <div class="copyright">© 2026 EduNova. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+const completeBtn = document.getElementById("completeBtn");
+const saveStatus = document.getElementById("saveStatus");
+const completionCard = document.getElementById("completion");
+
+async function saveLessonCompletion() {
+  completeBtn.disabled = true;
+  completeBtn.textContent = "SAVING COMPLETION…";
+  saveStatus.textContent = "Checking your signed-in account…";
+
+  try {
+    const { data: { user }, error: userError } = await supabaseClient.auth.getUser();
+    if (userError) throw userError;
+    if (!user) {
+      saveStatus.textContent = "Please sign in to save your lesson progress.";
+      completeBtn.textContent = "SIGN IN TO SAVE";
+      completeBtn.disabled = false;
+      return;
+    }
+
+    const progressRecord = {
+      user_id: user.id,
+      chapter: "Complex Numbers",
+      topic_number: 2,
+      completed_at: new Date().toISOString()
+    };
+
+    const { data: existing, error: checkError } = await supabaseClient
+      .from("lesson_progress")
+      .select("id")
+      .eq("user_id", user.id)
+      .eq("chapter", "Complex Numbers")
+      .eq("topic_number", 2)
+      .maybeSingle();
+
+    if (checkError) throw checkError;
+
+    const saveRequest = existing
+      ? supabaseClient.from("lesson_progress").update({ completed_at: progressRecord.completed_at }).eq("id", existing.id)
+      : supabaseClient.from("lesson_progress").insert(progressRecord);
+
+    const { error: saveError } = await saveRequest;
+    if (saveError) throw saveError;
+
+    completionCard.classList.add("completed");
+    document.querySelector(".finish-title").textContent = "Congratulations! 🎉";
+    saveStatus.textContent = "Your lesson completion has been saved.";
+    completeBtn.textContent = "LESSON COMPLETED ✓";
+    completeBtn.disabled = true;
+  } catch (error) {
+    console.error("EduNova lesson completion error:", error);
+    saveStatus.textContent = "Saving failed: " + (error.message || "Please try again.");
+    completeBtn.textContent = "TRY SAVING AGAIN";
+    completeBtn.disabled = false;
+  }
+}
+completeBtn.addEventListener("click", saveLessonCompletion);
+
+// Highlight the contents link for the section currently in view.
+const sectionLinks = [...document.querySelectorAll(".side-link")];
+const observedSections = sectionLinks
+  .map(link => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      sectionLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id));
+    }
+  });
+}, { rootMargin: "-25% 0px -65% 0px" });
+observedSections.forEach(section => sectionObserver.observe(section));
+</script>
+</body>
+</html>
