@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#e52b20">
+<title>EduNova | Square Roots of Complex Numbers</title>
+<meta name="description" content="Learn how to find the square roots of complex numbers through clear explanations, worked examples and interactive practice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']]},
+  svg: {fontCache: 'global'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{--red:#e52b20;--red-dark:#b91f18;--red-soft:#fff0ee;--ink:#191919;--muted:#62666d;--paper:#f7f7f8;--line:#e7e7eb;--green:#198754;--blue:#287da0;--purple:#7553a6;--shadow:0 16px 45px rgba(24,24,27,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;font-size:17px;line-height:1.68}button,input{font:inherit}button{cursor:pointer}.topbar{position:sticky;top:0;z-index:20;background:#101114;backdrop-filter:blur(14px);border-bottom:1px solid #292a2e}.nav{max-width:1180px;margin:auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:inline-block;background:#fff;border-radius:10px;padding:5px 12px 7px;font:800 27px "Playfair Display",serif;color:#111;text-decoration:none;letter-spacing:-.7px;line-height:1.05}.brand-dark{color:#111}.brand-accent{color:#B85C38}.brand small{display:block;font:500 10px "DM Sans",sans-serif;color:#777;letter-spacing:1.5px;text-transform:uppercase;margin-top:1px}.navlinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.navlinks a{font-size:14px;color:#eee;text-decoration:none;font-weight:700}.navlinks a:hover{color:#B85C38}.nav-progress{height:3px;background:#f3d8d5}.nav-progress span{display:block;height:100%;width:0;background:var(--red);transition:width .3s}.wrap{max-width:1120px;margin:auto;padding:0 24px}.hero{position:relative;overflow:hidden;background:#101114;color:white;padding:78px 0 72px}.hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.11);border-radius:50%;width:430px;height:430px;right:-90px;top:-210px;animation:orbit 24s linear infinite}.hero:after{width:300px;height:300px;right:-25px;top:-145px;animation-direction:reverse;border-color:rgba(229,43,32,.4)}@keyframes orbit{to{transform:rotate(360deg)}}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:44px;position:relative;z-index:1}.eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800;color:#B85C38}.hero h1{font:700 clamp(38px,5.4vw,64px)/1.08 "Playfair Display",serif;margin:14px 0 18px;max-width:680px}.hero p{color:#d5d5d8;max-width:630px;font-size:18px;margin:0 0 27px}.hero-meta{display:flex;gap:10px;flex-wrap:wrap}.pill{border:1px solid #424349;color:#eee;border-radius:99px;padding:7px 13px;font-size:13px}.hero-art{min-height:280px;display:grid;place-items:center;position:relative}.complex-orbit{width:min(100%,350px);aspect-ratio:1;border:1px solid rgba(255,255,255,.2);border-radius:50%;position:relative;display:grid;place-items:center;background:radial-gradient(circle,rgba(229,43,32,.16),transparent 65%)}.complex-orbit:before,.complex-orbit:after{content:"";position:absolute;background:rgba(255,255,255,.35)}.complex-orbit:before{height:1px;width:90%;left:5%;top:50%}.complex-orbit:after{width:1px;height:90%;top:5%;left:50%}.orbit-ring{position:absolute;inset:17%;border:1px dashed rgba(255,255,255,.3);border-radius:50%;animation:orbit 18s linear infinite}.orbit-point{position:absolute;width:15px;height:15px;border-radius:50%;background:#ff756a;box-shadow:0 0 25px #ff756a;top:18%;left:70%;animation:float 3s ease-in-out infinite}.orbit-point.two{width:11px;height:11px;background:#fff;box-shadow:0 0 18px #fff;top:70%;left:22%;animation-delay:1s}@keyframes float{50%{transform:translateY(-13px)}}.hero-equation{position:relative;z-index:2;font:700 clamp(30px,4vw,48px) "Playfair Display",serif;color:#fff;text-shadow:0 4px 22px rgba(229,43,32,.3)}.hero-equation em{color:#B85C38;font-style:normal}.btn{border:0;border-radius:12px;padding:12px 19px;font-weight:800;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--red);color:#fff;box-shadow:0 8px 20px rgba(229,43,32,.2)}.btn-primary:hover{background:var(--red-dark)}.btn-light{background:#fff;color:#222}.btn-outline{background:#fff;border:1px solid var(--line);color:#333}.btn-small{padding:9px 13px;font-size:14px}.layout{display:grid;grid-template-columns:245px minmax(0,1fr);gap:34px;padding-top:42px;padding-bottom:90px}.sidebar{position:sticky;top:88px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 22px rgba(0,0,0,.03)}.side-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#888;font-weight:800;margin:0 0 12px}.side-link{display:flex;align-items:center;gap:10px;padding:9px 10px;margin:2px 0;border-radius:9px;color:#555;text-decoration:none;font-size:14px;font-weight:700}.side-link:hover,.side-link.active{background:var(--red-soft);color:#B85C38}.side-num{width:23px;height:23px;border-radius:7px;background:#f0f0f2;display:grid;place-items:center;font-size:11px}.side-link.active .side-num{background:var(--red);color:white}.side-note{margin-top:20px;padding:13px;background:#fff8f1;border-radius:12px;font-size:13px;color:#76522f}.content{min-width:0}.section{background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(22px,4vw,38px);margin-bottom:25px;box-shadow:0 5px 22px rgba(0,0,0,.025)}.section-kicker{font-size:12px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#B85C38}h2{font:700 clamp(27px,3vw,36px)/1.2 "Playfair Display",serif;margin:8px 0 14px}h3{font-size:20px;margin:24px 0 9px}p{margin:10px 0 15px}.lead{font-size:18px;color:#45474d}.mathbox{background:#fbf7f6;border:1px solid #f1d8d4;border-left:4px solid var(--red);border-radius:13px;padding:17px 20px;margin:18px 0;overflow-x:auto;text-align:center;font-size:19px}.callout{padding:16px 18px;border-radius:13px;background:#eef7fa;border:1px solid #d5eaf0;margin:17px 0}.callout strong{color:#21677e}.callout.good{background:#eff8f2;border-color:#d4eadb}.callout.warn{background:#fff8eb;border-color:#f1e0b9}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.mini-card{background:#fafafa;border:1px solid var(--line);border-radius:14px;padding:18px}.mini-card h3{margin:0 0 7px;font-size:17px}.step-list{counter-reset:steps;display:grid;gap:12px;margin:20px 0}.step{counter-increment:steps;display:grid;grid-template-columns:36px 1fr;gap:13px;align-items:start}.step:before{content:counter(steps);width:32px;height:32px;border-radius:10px;background:var(--red-soft);color:#B85C38;display:grid;place-items:center;font-weight:800}.step p{margin:2px 0}.worked{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:18px}.worked-head{background:#191a1e;color:white;padding:14px 18px;font-weight:800;display:flex;justify-content:space-between;gap:12px}.worked-body{padding:19px}.solution-step{padding:12px 14px;border-bottom:1px solid #eee}.solution-step:last-child{border:0}.solution-step b{color:#B85C38}.solution-step .math{overflow-x:auto;padding:4px 0;text-align:center;font-size:18px}.reveal{display:none}.reveal.show{display:block;animation:fade .35s ease}@keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}.interactive-panel{background:#18191d;color:white;border-radius:16px;padding:21px;margin:18px 0}.interactive-panel p{color:#d5d5d8}.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:13px}.practice-level{border:1px solid var(--line);border-radius:16px;margin:15px 0;overflow:hidden}.level-head{padding:15px 18px;background:#fafafa;display:flex;justify-content:space-between;align-items:center;gap:12px}.level-head strong{font-size:17px}.level-tag{font-size:11px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;padding:5px 9px;border-radius:30px;background:#f1eeee;color:#555}.question{padding:20px;border-top:1px solid var(--line)}.question p{font-weight:700}.answer-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:13px 0}.answer-row label{font-size:14px;color:#555;font-weight:700}.answer-row input{width:100px;padding:10px 11px;border:1px solid #d7d7dc;border-radius:9px;background:#fff}.feedback{min-height:26px;font-size:14px;font-weight:700;margin:7px 0}.feedback.correct{color:var(--green)}.feedback.incorrect{color:#B85C38}.solution-toggle{background:none;border:0;color:var(--blue);font-weight:800;padding:8px 0}.solution-box{display:none;background:#f7fafb;border-radius:12px;padding:15px;margin-top:10px}.solution-box.show{display:block}.solution-box p{font-weight:400}.choice-list{display:grid;gap:9px;margin:14px 0}.choice{border:1px solid #ddd;border-radius:10px;padding:11px 13px;text-align:left;background:white;color:#333}.choice.selected{border-color:var(--red);background:var(--red-soft)}.choice.correct-choice{border-color:var(--green);background:#eff8f2}.progress-wrap{background:#eee;border-radius:20px;height:9px;overflow:hidden;margin:13px 0}.progress-fill{height:100%;width:0;background:var(--red);transition:width .4s}.progress-text{font-size:13px;color:var(--muted);font-weight:700}.congrats{display:none;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#17181c,#2b2020);color:#fff;border-radius:20px;padding:45px 24px;margin-top:24px}.congrats.show{display:block;animation:fade .5s ease}.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}.confetti i{position:absolute;top:-20px;width:8px;height:14px;background:var(--c);left:var(--x);animation:fall var(--d) linear infinite;animation-delay:var(--delay);transform:rotate(20deg)}@keyframes fall{to{transform:translateY(390px) rotate(600deg);opacity:.1}}.congrats h2{font-size:38px;color:#fff}.congrats p{color:#ddd;max-width:550px;margin:12px auto 22px}.trophy{font-size:48px;display:inline-block;animation:bob 2s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-9px) rotate(5deg)}}footer{background:#111216;color:#ddd;padding:28px 24px}.footer-inner{max-width:1120px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer-brand{font:800 25px "Playfair Display",serif;color:#fff}.footer-brand span{color:#B85C38}.footer-tag{font-size:12px;color:#aaa}.footer-links{display:flex;gap:18px}.footer-links a{color:#ddd;text-decoration:none;font-size:13px}.footer-copy{font-size:12px;color:#aaa}.toast{position:fixed;bottom:20px;right:20px;background:#191a1e;color:white;padding:13px 18px;border-radius:12px;box-shadow:var(--shadow);z-index:50;opacity:0;transform:translateY(12px);transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:none}.small{font-size:14px;color:var(--muted)}.divider{height:1px;background:var(--line);margin:23px 0}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;display:flex;gap:5px;overflow-x:auto;white-space:nowrap;padding:10px}.side-title,.side-note{display:none}.side-link{flex:0 0 auto}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:230px}.complex-orbit{width:240px}.navlinks{gap:10px}.navlinks a{font-size:12px}}
+@media(max-width:560px){body{font-size:16px}.wrap{padding:0 17px}.nav{padding:10px 16px}.brand{font-size:23px}.navlinks a:nth-child(2),.navlinks a:nth-child(3){display:none}.hero{padding:53px 0}.hero p{font-size:16px}.section{padding:21px 17px;border-radius:15px}.two-col{grid-template-columns:1fr}.mathbox{font-size:17px;padding:14px 10px}.layout{padding-top:22px}.answer-row input{width:82px}.footer-inner{justify-content:center;text-align:center}.footer-links{justify-content:center;width:100%}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="nav">
+    <a class="brand" href="index.html"><span class="brand-dark">Edu</span><span class="brand-accent">Nova</span><small>Mathematics made clear.</small></a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="#lesson">Lesson</a>
+      <a href="#practice">Practice</a>
+    </nav>
+  </div>
+  <div class="nav-progress"><span id="readingProgress"></span></div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Chapter 09 · Complex Numbers · Topic 03</div>
+      <h1>Square Roots of <span style="color:#B85C38">Complex Numbers</span></h1>
+      <p>A complex number can have square roots too. Learn how to find them, understand why they come in pairs, and check your answers with confidence.</p>
+      <div class="hero-meta"><span class="pill">Clear explanations</span><span class="pill">Guided examples</span><span class="pill">Interactive practice</span></div>
+      <div style="margin-top:27px"><a class="btn btn-primary" href="#lesson">Start learning <span aria-hidden="true">↓</span></a></div>
+    </div>
+    <div class="hero-art" aria-label="Animated complex number plane illustration">
+      <div class="complex-orbit">
+        <div class="orbit-ring"></div><span class="orbit-point"></span><span class="orbit-point two"></span>
+        <div class="hero-equation">\( \sqrt{z} \) <em> = ?</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap layout" id="lesson">
+  <aside class="sidebar">
+    <p class="side-title">On this page</p>
+    <a class="side-link active" href="#idea"><span class="side-num">01</span> The big idea</a>
+    <a class="side-link" href="#method"><span class="side-num">02</span> The method</a>
+    <a class="side-link" href="#example"><span class="side-num">03</span> Worked example</a>
+    <a class="side-link" href="#shortcut"><span class="side-num">04</span> A useful shortcut</a>
+    <a class="side-link" href="#practice"><span class="side-num">05</span> Practice</a>
+    <div class="side-note">Take your time. Understanding each step matters more than finishing quickly.</div>
+  </aside>
+
+  <main class="content">
+    <section class="section" id="idea">
+      <div class="section-kicker">01 · The big idea</div>
+      <h2>What does a square root mean?</h2>
+      <p class="lead">Finding a square root means answering this question: <strong>which number gives the original number when we multiply it by itself?</strong></p>
+      <p>For example, the square roots of \(25\) are \(5\) and \(-5\), because both numbers produce \(25\) when squared.</p>
+      <div class="mathbox">\[5^2=25 \qquad (-5)^2=25\]</div>
+      <p>The same idea works with complex numbers. If we want the square roots of a complex number \(z\), we look for a complex number that gives \(z\) when squared.</p>
+      <div class="callout good"><strong>Remember:</strong> Unless the number is zero, its two square roots are opposites. If one root is \(u+vi\), the other is \(-u-vi\).</div>
+      <div class="two-col">
+        <div class="mini-card"><h3>One number</h3><div class="mathbox">\[w=u+vi\]</div><p class="small">This is the root we are trying to discover.</p></div>
+        <div class="mini-card"><h3>Square it</h3><div class="mathbox">\[w^2=z\]</div><p class="small">Our answer is correct when squaring it gives the original complex number.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="section-kicker">02 · Build the method</div>
+      <h2>Turn one complex equation into two real equations</h2>
+      <p>Suppose we want to find the square roots of \(a+bi\), where \(a\) and \(b\) are real numbers. We do not know the answer yet, so give its square root a name:</p>
+      <div class="mathbox">\[\sqrt{a+bi}=x+yi\]</div>
+      <p>Here, \(x\) is the real part and \(y\) is the coefficient of the imaginary part. Now square both sides.</p>
+      <div class="mathbox">\[(x+yi)^2=a+bi\]</div>
+      <p>Expand the left side carefully. Remember that \(i^2=-1\).</p>
+      <div class="mathbox">\[\begin{aligned}(x+yi)^2&=x^2+2xyi+y^2i^2\\&=x^2-y^2+2xyi\end{aligned}\]</div>
+      <p>Now compare the real parts with each other, and the imaginary parts with each other.</p>
+      <div class="two-col">
+        <div class="mini-card"><h3>Real parts</h3><div class="mathbox">\[\boxed{x^2-y^2=a}\]</div></div>
+        <div class="mini-card"><h3>Imaginary parts</h3><div class="mathbox">\[\boxed{2xy=b}\]</div></div>
+      </div>
+      <div class="callout"><strong>Why can we compare them?</strong> Two complex numbers are equal only when their real parts match and their imaginary coefficients match. For example, \(3+4i=3+4i\), but \(3+4i\ne3+5i\).</div>
+      <h3>Our solving plan</h3>
+      <div class="step-list">
+        <div class="step"><p><strong>Write the unknown root</strong><br>Let it be \(x+yi\), with \(x,y\in\mathbb R\).</p></div>
+        <div class="step"><p><strong>Square and expand</strong><br>Use \(i^2=-1\) to simplify the expression.</p></div>
+        <div class="step"><p><strong>Compare the two parts</strong><br>Obtain \(x^2-y^2=a\) and \(2xy=b\).</p></div>
+        <div class="step"><p><strong>Solve for \(x\) and \(y\)</strong><br>Use the equations together, then check the result by squaring.</p></div>
+        <div class="step"><p><strong>Give both roots</strong><br>If one root is \(x+yi\), the other is \(-x-yi\).</p></div>
+      </div>
+      <div class="interactive-panel">
+        <strong>Quick check: which pair of equations is correct?</strong>
+        <p>After expanding \((x+yi)^2=a+bi\), choose the correct comparison.</p>
+        <div class="choice-list" id="methodChoices">
+          <button class="choice" data-correct="false">\(x^2+y^2=a,\quad 2xy=b\)</button>
+          <button class="choice" data-correct="true">\(x^2-y^2=a,\quad 2xy=b\)</button>
+          <button class="choice" data-correct="false">\(x^2-y^2=b,\quad 2xy=a\)</button>
+        </div>
+        <div id="methodFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" id="example">
+      <div class="section-kicker">03 · Follow a complete solution</div>
+      <h2>Worked example</h2>
+      <p>Find the two square roots of:</p>
+      <div class="mathbox">\[7+24i\]</div>
+      <p>We will build the answer from the two equations rather than guess it.</p>
+      <div class="worked">
+        <div class="worked-head"><span>Solution, step by step</span><span style="color:#ff9a91">Example 01</span></div>
+        <div class="worked-body">
+          <div class="solution-step"><b>Step 1 · Set up the unknown</b><div class="math">Let one square root be \(x+yi\).</div><p>Then \((x+yi)^2=7+24i\).</p></div>
+          <div class="solution-step"><b>Step 2 · Expand</b><div class="math">\[x^2-y^2+2xyi=7+24i\]</div><p>Match the real and imaginary parts:</p><div class="math">\[x^2-y^2=7 \qquad 2xy=24\]</div></div>
+          <div class="solution-step"><b>Step 3 · Simplify the second equation</b><div class="math">\[2xy=24 \quad\Rightarrow\quad xy=12\]</div><p>So \(y=\dfrac{12}{x}\). We can substitute this into the first equation.</p></div>
+          <div class="solution-step"><b>Step 4 · Substitute and solve</b><div class="math">\[x^2-\left(\frac{12}{x}\right)^2=7\]</div><div class="math">\[x^2-\frac{144}{x^2}=7\]</div><p>Multiply every term by \(x^2\):</p><div class="math">\[x^4-144=7x^2\]</div><div class="math">\[x^4-7x^2-144=0\]</div><p>Factorise:</p><div class="math">\[(x^2-16)(x^2+9)=0\]</div><p>Therefore \(x^2=16\) or \(x^2=-9\). Since \(x\) is real, \(x^2=-9\) is impossible. Thus \(x=4\) or \(x=-4\).</p></div>
+          <div class="solution-step"><b>Step 5 · Find the matching value of \(y\)</b><p>Use \(xy=12\).</p><div class="math">If \(x=4\), then \(y=3\).</div><div class="math">If \(x=-4\), then \(y=-3\).</div><p>The two roots are therefore opposites.</p></div>
+          <div class="solution-step"><b>Step 6 · State and verify</b><div class="math">\[\boxed{4+3i\quad\text{and}\quad -4-3i}\]</div><p>Check the first root:</p><div class="math">\[(4+3i)^2=16+24i+9i^2=7+24i\]</div><p>It works. The negative root also works because squaring a negative gives the same result.</p></div>
+        </div>
+      </div>
+      <div class="callout good"><strong>Key lesson:</strong> We did not choose \(x=4\) randomly. The equations led us to \(x^2=16\), and the second equation told us which value of \(y\) belongs with each value of \(x\).</div>
+    </section>
+
+    <section class="section" id="shortcut">
+      <div class="section-kicker">04 · A useful shortcut</div>
+      <h2>A faster route when the numbers are manageable</h2>
+      <p>There is another way to organise the same mathematics. It can save time once you understand where it comes from.</p>
+      <p>For \(z=a+bi\), first calculate its modulus:</p>
+      <div class="mathbox">\[r=\sqrt{a^2+b^2}\]</div>
+      <p>If \(b\ne0\), the square root with positive real part is:</p>
+      <div class="mathbox">\[\boxed{x=\sqrt{\frac{r+a}{2}},\qquad y=\operatorname{sgn}(b)\sqrt{\frac{r-a}{2}}}\]</div>
+      <p>So the two roots are \(x+yi\) and \(-x-yi\). The sign of \(b\) determines the sign of \(y\) in the root with positive real part.</p>
+      <div class="callout warn"><strong>Do not memorise this before understanding the method.</strong> The shortcut is a compact form of the same two equations. It is especially useful for checking answers and handling larger coefficients.</div>
+      <h3>Try the shortcut with \(7+24i\)</h3>
+      <button class="btn btn-outline btn-small" id="showShortcut">Reveal the calculation</button>
+      <div class="reveal" id="shortcutReveal">
+        <div class="mathbox">\[r=\sqrt{7^2+24^2}=\sqrt{625}=25\]</div>
+        <div class="mathbox">\[x=\sqrt{\frac{25+7}{2}}=4,\qquad y=\sqrt{\frac{25-7}{2}}=3\]</div>
+        <p>Therefore the roots are \(4+3i\) and \(-4-3i\), exactly as before.</p>
+      </div>
+    </section>
+
+    <section class="section" id="practice">
+      <div class="section-kicker">05 · Your turn</div>
+      <h2>Practice makes the method yours</h2>
+      <p class="lead">For Questions 1–6, enter the values of \(x\) and \(y\) for the root written as \(x+yi\) with positive real part. The other root is its negative.</p>
+      <div class="progress-text"><span id="scoreText">0 of 7 activities completed</span></div>
+      <div class="progress-wrap"><div class="progress-fill" id="practiceProgress"></div></div>
+
+      <div class="practice-level">
+        <div class="level-head"><strong>Level 1 · Build confidence</strong><span class="level-tag">Foundation</span></div>
+        <div class="question" data-question="1" data-x="2" data-y="-1">
+          <p>1. Find the square roots of \(3-4i\). Enter \(x\) and \(y\) for \(x+yi\).</p>
+          <div class="answer-row"><label for="q1x">x =</label><input id="q1x" type="number" step="any"><label for="q1y">y =</label><input id="q1y" type="number" step="any"><button class="btn btn-primary btn-small check-answer">Check</button></div>
+          <div class="feedback" aria-live="polite"></div><button class="solution-toggle">Show complete solution ▾</button>
+          <div class="solution-box"><p>Let the root be \(x+yi\). Comparing parts gives \(x^2-y^2=3\) and \(2xy=-4\), so \(xy=-2\). The values \(x=2,y=-1\) satisfy both: \(4-1=3\) and \(2(2)(-1)=-4\).</p><div class="mathbox">\[\boxed{2-i\quad\text{and}\quad -2+i}\]</div></div>
+        </div>
+        <div class="question" data-question="2" data-x="4" data-y="-3">
+          <p>2. Find the square roots of \(7-24i\).</p>
+          <div class="answer-row"><label for="q2x">x =</label><input id="q2x" type="number" step="any"><label for="q2y">y =</label><input id="q2y" type="number" step="any"><button class="btn btn-primary btn-small check-answer">Check</button></div>
+          <div class="feedback" aria-live="polite"></div><button class="solution-toggle">Show complete solution ▾</button>
+          <div class="solution-box"><p>The equations are \(x^2-y^2=7\) and \(2xy=-24\). The pair \(x=4,y=-3\) gives \(16-9=7\) and \(2(4)(-3)=-24\).</p><div class="mathbox">\[\boxed{4-3i\quad\text{and}\quad -4+3i}\]</div></div>
+        </div>
+      </div>
+
+      <div class="practice-level">
+        <div class="level-head"><strong>Level 2 · Stretch your skills</strong><span class="level-tag">Intermediate</span></div>
+        <div class="question" data-question="3" data-x="11" data-y="6">
+          <p>3. Find the square roots of \(85+132i\).</p>
+          <div class="answer-row"><label for="q3x">x =</label><input id="q3x" type="number" step="any"><label for="q3y">y =</label><input id="q3y" type="number" step="any"><button class="btn btn-primary btn-small check-answer">Check</button></div>
+          <div class="feedback" aria-live="polite"></div><button class="solution-toggle">Show complete solution ▾</button>
+          <div class="solution-box"><p>We need \(x^2-y^2=85\) and \(2xy=132\), so \(xy=66\). The pair \(11,6\) works: \(121-36=85\) and \(2(11)(6)=132\).</p><div class="mathbox">\[\boxed{11+6i\quad\text{and}\quad -11-6i}\]</div></div>
+        </div>
+        <div class="question" data-question="4" data-x="20" data-y="8">
+          <p>4. Find the square roots of \(336+320i\).</p>
+          <div class="answer-row"><label for="q4x">x =</label><input id="q4x" type="number" step="any"><label for="q4y">y =</label><input id="q4y" type="number" step="any"><button class="btn btn-primary btn-small check-answer">Check</button></div>
+          <div class="feedback" aria-live="polite"></div><button class="solution-toggle">Show complete solution ▾</button>
+          <div class="solution-box"><p>The equations are \(x^2-y^2=336\) and \(2xy=320\), giving \(xy=160\). The pair \(20,8\) works because \(400-64=336\) and \(2(20)(8)=320\).</p><div class="mathbox">\[\boxed{20+8i\quad\text{and}\quad -20-8i}\]</div></div>
+        </div>
+      </div>
+
+      <div class="practice-level">
+        <div class="level-head"><strong>Level 3 · Work backwards</strong><span class="level-tag">Advanced</span></div>
+        <div class="question" data-question="5" data-type="coeff">
+          <p>5. The two square roots of \(55-48i\) are \(a-3i\) and \(b+ci\). Find \(a\), \(b\) and \(c\).</p>
+          <div class="answer-row"><label for="q5a">a =</label><input id="q5a" type="number" step="any"><label for="q5b">b =</label><input id="q5b" type="number" step="any"><label for="q5c">c =</label><input id="q5c" type="number" step="any"><button class="btn btn-primary btn-small check-answer">Check</button></div>
+          <div class="feedback" aria-live="polite"></div><button class="solution-toggle">Show complete solution ▾</button>
+          <div class="solution-box"><p>Square \(a-3i\): \(a^2-9-6ai=55-48i\). Comparing real parts gives \(a^2=64\); comparing imaginary coefficients gives \(-6a=-48\), so \(a=8\). The other square root is the negative: \(-8+3i\). Hence \(b=-8\) and \(c=3\).</p><div class="mathbox">\[\boxed{a=8,\quad b=-8,\quad c=3}\]</div></div>
+        </div>
+      </div>
+
+      <div class="practice-level">
+        <div class="level-head"><strong>Level 4 · Think like a mathematician</strong><span class="level-tag">Reasoning</span></div>
+        <div class="question" data-question="6" data-type="choice">
+          <p>6. A student expands \((x+yi)^2\) and writes \(x^2+y^2+2xyi\). What is the mistake?</p>
+          <div class="choice-list" id="errorChoices">
+            <button class="choice" data-correct="false">The middle term should be \(xyi\).</button>
+            <button class="choice" data-correct="true">They forgot that \(i^2=-1\), so \(y^2i^2=-y^2\).</button>
+            <button class="choice" data-correct="false">The real and imaginary parts should be swapped.</button>
+          </div>
+          <div class="feedback" id="errorFeedback" aria-live="polite"></div>
+          <div class="solution-box" id="errorSolution"><p>The expansion is \(x^2+2xyi+y^2i^2\). Since \(i^2=-1\), it becomes \(x^2-y^2+2xyi\). The student's error is treating \(i^2\) as \(+1\).</p></div>
+        </div>
+        <div class="question" data-question="7" data-type="choice">
+          <p>7. If \(w\) is a square root of a non-zero complex number \(z\), what is the other square root?</p>
+          <div class="choice-list" id="oppositeChoices">
+            <button class="choice" data-correct="false">The complex conjugate of \(w\), always.</button>
+            <button class="choice" data-correct="true">\(-w\), because \((-w)^2=w^2=z\).</button>
+            <button class="choice" data-correct="false">\(w+i\).</button>
+          </div>
+          <div class="feedback" id="oppositeFeedback" aria-live="polite"></div>
+          <div class="solution-box" id="oppositeSolution"><p>If \(w^2=z\), then \((-w)^2=(-1)^2w^2=w^2=z\). Thus the two roots are \(w\) and \(-w\). A conjugate is not generally the other root.</p></div>
+        </div>
+      </div>
+
+      <div class="callout good"><strong>Self-check tip:</strong> Once you have a proposed root \(x+yi\), square it. If the result is the original complex number, your root is correct. Then include its negative as the second root.</div>
+      <div class="congrats" id="congrats">
+        <div class="confetti" id="confetti"></div>
+        <div class="trophy">✦</div>
+        <h2>You've completed the lesson!</h2>
+        <p>You worked through the idea, the algebra and the reasoning. That's real mathematical progress. Keep practising until the method feels natural.</p>
+        <button class="btn btn-light" id="finishLesson">Mark lesson as complete</button>
+        <p class="small" style="color:#bbb;margin-top:15px">Your next step: revisit any solution you want to strengthen.</p>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:22px">
+        <span class="small">Chapter 09 · Topic 03</span>
+        <button class="btn btn-primary" id="completePractice">Finish practice</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div><div class="footer-brand">Edu<span>Nova</span></div><div class="footer-tag">Mathematics made clear.</div></div>
+    <div class="footer-links"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="dashboard.html">Dashboard</a></div>
+    <div class="footer-copy">© 2026 EduNova. All rights reserved.</div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $ = (s, root=document) => root.querySelector(s);
+const $$ = (s, root=document) => [...root.querySelectorAll(s)];
+function toast(message){const el=$("#toast");el.textContent=message;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2600)}
+function typeset(){if(window.MathJax?.typesetPromise) MathJax.typesetPromise()}
+$("#showShortcut").addEventListener("click",()=>{$("#shortcutReveal").classList.toggle("show");$("#showShortcut").textContent=$("#shortcutReveal").classList.contains("show")?"Hide the calculation":"Reveal the calculation";typeset()});
+$$(".solution-toggle").forEach(btn=>btn.addEventListener("click",()=>{const box=btn.nextElementSibling;box.classList.toggle("show");btn.textContent=box.classList.contains("show")?"Hide complete solution ▴":"Show complete solution ▾";typeset()}));
+
+let completed = new Set();
+const totalActivities = 7;
+function updateProgress(){
+  $("#scoreText").textContent=`${completed.size} of ${totalActivities} activities completed`;
+  $("#practiceProgress").style.width=`${completed.size/totalActivities*100}%`;
+  if(completed.size===totalActivities){$("#congrats").classList.add("show");makeConfetti();typeset()}
+}
+function markDone(n){completed.add(String(n));updateProgress()}
+$$(".question[data-x]").forEach(q=>{
+  $(".check-answer",q).addEventListener("click",()=>{
+    const x=Number($("input[id$='x']",q).value), y=Number($("input[id$='y']",q).value);
+    const feedback=$(".feedback",q);
+    if($("input[id$='x']",q).value.trim()==="" || $("input[id$='y']",q).value.trim()===""){feedback.textContent="Enter both values before checking.";feedback.className="feedback incorrect";return}
+    const ok=Math.abs(x-Number(q.dataset.x))<1e-9 && Math.abs(y-Number(q.dataset.y))<1e-9;
+    if(ok){feedback.textContent="Correct! Both equations are satisfied.";feedback.className="feedback correct";markDone(q.dataset.question)}
+    else{feedback.textContent="Not quite. Recheck the real-part equation and the sign in 2xy.";feedback.className="feedback incorrect"}
+  });
+});
+function setupChoice(containerId,feedbackId,solutionId,activity){
+  const container=$("#"+containerId), feedback=$("#"+feedbackId), solution=$("#"+solutionId);
+  $$(".choice",container).forEach(btn=>btn.addEventListener("click",()=>{
+    $$(".choice",container).forEach(b=>b.classList.remove("selected","correct-choice"));
+    btn.classList.add("selected");
+    if(btn.dataset.correct==="true"){btn.classList.add("correct-choice");feedback.textContent="Exactly right. Your reasoning is on track.";feedback.className="feedback correct";solution.classList.add("show");markDone(activity);typeset()}
+    else{feedback.textContent="Not quite. Think about the role of i² or the meaning of a square root.";feedback.className="feedback incorrect";solution.classList.remove("show")}
+  }));
+}
+setupChoice("methodChoices","methodFeedback", "methodChoices", "1");
+setupChoice("errorChoices","errorFeedback","errorSolution","6");
+setupChoice("oppositeChoices","oppositeFeedback","oppositeSolution","7");
+$$(".question[data-type='coeff'] .check-answer").forEach(()=>{});
+const coeffQuestion=$(".question[data-type='coeff']");
+$(".check-answer",coeffQuestion).addEventListener("click",()=>{
+  const vals=["q5a","q5b","q5c"].map(id=>$("#"+id).value.trim());
+  const feedback=$(".feedback",coeffQuestion);
+  if(vals.some(v=>v==="")){feedback.textContent="Enter all three values first.";feedback.className="feedback incorrect";return}
+  if(vals[0]==="8"&&vals[1]==="-8"&&vals[2]==="3"){feedback.textContent="Correct! You used the fact that the two roots are opposites.";feedback.className="feedback correct";markDone("5")}
+  else{feedback.textContent="Not quite. Square a − 3i first, then compare the two parts.";feedback.className="feedback incorrect"}
+});
+$("#completePractice").addEventListener("click",()=>{
+  $("#congrats").classList.add("show");
+  $("#congrats").scrollIntoView({behavior:"smooth",block:"center"});
+  makeConfetti();typeset();
+});
+function makeConfetti(){
+  const box=$("#confetti");if(box.dataset.made)return;box.dataset.made="1";
+  const colors=["#ff6b61","#ffd166","#70d6ff","#b8f2a1","#d6a5ff"];
+  for(let i=0;i<42;i++){const piece=document.createElement("i");piece.style.setProperty("--x",Math.random()*100+"%");piece.style.setProperty("--d",3+Math.random()*4+"s");piece.style.setProperty("--delay",Math.random()*-5+"s");piece.style.setProperty("--c",colors[i%colors.length]);box.appendChild(piece)}
+}
+$("#finishLesson").addEventListener("click",async()=>{
+  const btn=$("#finishLesson");btn.disabled=true;btn.textContent="Saving…";
+  const lesson={chapter:"Complex Numbers",topic_number:3,completed_at:new Date().toISOString()};
+  try{
+    // Add your existing Supabase URL, anon key and authenticated client setup here.
+    // This page intentionally does not invent credentials or mark a student complete without a valid session.
+    if(window.eduNovaSupabase){
+      const {data:{user}}=await window.eduNovaSupabase.auth.getUser();
+      if(user){
+        const {error}=await window.eduNovaSupabase.from("lesson_progress").upsert(
+          {user_id:user.id,chapter:lesson.chapter,topic_number:lesson.topic_number,completed_at:lesson.completed_at},
+          {onConflict:"user_id,chapter,topic_number"}
+        );
+        if(error) throw error;
+        toast("Lesson completion saved to your account.");
+      }else{localStorage.setItem("edunova_complex_topic_03_completed","true");toast("Completed on this device. Sign in to sync your progress.");}
+    }else{localStorage.setItem("edunova_complex_topic_03_completed","true");toast("Lesson completed on this device.");}
+    btn.textContent="Completed ✓";
+  }catch(error){console.error(error);btn.disabled=false;btn.textContent="Try saving again";toast("Could not sync progress. Your practice answers are still here.");}
+});
+window.addEventListener("scroll",()=>{
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  $("#readingProgress").style.width=(max>0?window.scrollY/max*100:0)+"%";
+  const sections=["idea","method","example","shortcut","practice"];
+  let current=sections[0];
+  for(const id of sections){if($("#"+id).getBoundingClientRect().top<170)current=id}
+  $$(".side-link").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+current));
+});
+typeset();
+</script>
+</body>
+</html>
