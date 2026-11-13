@@ -254,6 +254,15 @@ window.MathJax = {
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
+const { createClient } = supabase;
+
+const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+window.eduNovaSupabase = createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
 const $ = (s, root=document) => root.querySelector(s);
 const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 function toast(message){const el=$("#toast");el.textContent=message;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2600)}
