@@ -146,122 +146,127 @@ html {
            HERO DECORATION
         ========================= */
 
-        .hero-decoration {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 350px;
-            height: 350px;
-            opacity: 0.9;
-            pointer-events: none;
-            z-index: 1;
-        }
+       .hero-decoration {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 440px;
+    height: 340px;
+    pointer-events: none;
+    z-index: 1;
+}
 
+.scanner-core {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 125px;
+    height: 125px;
+    border: 1px solid rgba(229, 43, 32, 0.5);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(circle, rgba(229,43,32,0.2), rgba(229,43,32,0.03) 70%);
+    box-shadow: 0 0 35px rgba(229,43,32,0.18), inset 0 0 25px rgba(229,43,32,0.12);
+    animation: corePulse 3s ease-in-out infinite;
+}
 
-        .hero-decoration .circle {
-            position: absolute;
-            border: 1px solid rgba(255,255,255,0.13);
-            border-radius: 50%;
-        }
+.scanner-core span {
+    color: #ff5148;
+    font-family: "Playfair Display", serif;
+    font-size: 76px;
+    line-height: 1;
+    text-shadow: 0 0 25px rgba(229,43,32,0.65);
+}
 
+.scanner-ring {
+    position: absolute;
+    inset: -17px;
+    border: 1px solid rgba(229,43,32,0.22);
+    border-radius: 50%;
+    animation: ringRotate 12s linear infinite;
+}
 
-        .hero-decoration .circle.one {
-            width: 300px;
-            height: 300px;
-            right: 0;
-            top: 25px;
-        }
+.scanner-ring::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ff5148;
+    box-shadow: 0 0 14px #ff5148;
+}
 
+.function-card {
+    position: absolute;
+    padding: 13px 19px;
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 13px;
+    background: rgba(255,255,255,0.055);
+    color: #e8e8e8;
+    font-size: 17px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.16);
+    animation: cardFloat 4s ease-in-out infinite;
+}
 
-        .hero-decoration .circle.two {
-            width: 205px;
-            height: 205px;
-            right: 48px;
-            top: 72px;
-            border-color: rgba(224,0,0,0.55);
-        }
+.card-one {
+    top: 12px;
+    left: 5px;
+}
 
+.card-two {
+    top: 25px;
+    right: 0;
+    animation-delay: 0.7s;
+}
 
-        .hero-decoration .circle.three {
-            width: 105px;
-            height: 105px;
-            right: 98px;
-            top: 122px;
-            border-color: rgba(255,255,255,0.25);
-        }
+.card-three {
+    bottom: 22px;
+    left: 0;
+    animation-delay: 1.4s;
+}
 
+.card-four {
+    bottom: 12px;
+    right: 0;
+    animation-delay: 2.1s;
+}
 
-        .hero-decoration .math-symbol {
-            position: absolute;
-            font-family: "Playfair Display", serif;
-            color: rgba(255,255,255,0.16);
-            font-size: 45px;
-        }
+.scanner-beam {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(229,43,32,0.1), #ff5148, rgba(229,43,32,0.1), transparent);
+    box-shadow: 0 0 15px rgba(229,43,32,0.65);
+    transform: translateY(-50%);
+    animation: beamScan 4s ease-in-out infinite;
+}
 
+@keyframes corePulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.07); }
+}
 
-        .hero-decoration .symbol-one {
-            top: 0;
-            right: 150px;
-        }
+@keyframes ringRotate {
+    to { transform: rotate(360deg); }
+}
 
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+}
 
-        .hero-decoration .symbol-two {
-            bottom: 8px;
-            right: 5px;
-            color: rgba(224,0,0,0.35);
-        }
-
-
-        .hero-decoration .symbol-three {
-            top: 135px;
-            left: 10px;
-        }
-
-
-        .hero-decoration .dot {
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            background: #e00000;
-            border-radius: 50%;
-        }
-
-
-        .hero-decoration .dot-one {
-            right: 68px;
-            top: 65px;
-        }
-
-
-        .hero-decoration .dot-two {
-            right: 275px;
-            bottom: 65px;
-        }
-
-
-        .hero-decoration .line {
-            position: absolute;
-            height: 1px;
-            background: rgba(255,255,255,0.16);
-            transform-origin: left center;
-        }
-
-
-        .hero-decoration .line-one {
-            width: 130px;
-            right: 180px;
-            top: 90px;
-            transform: rotate(32deg);
-        }
-
-
-        .hero-decoration .line-two {
-            width: 105px;
-            right: 30px;
-            bottom: 100px;
-            transform: rotate(-35deg);
-        }
+@keyframes beamScan {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 1; }
+}
 
 
         /* =========================
