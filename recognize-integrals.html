@@ -2,844 +2,853 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09090b">
 
-    <title>Recognize Integrals | EduNova</title>
+<title>Recognize Integrals | EduNova</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
+<style>
 
-    <style>
+/* =========================================
+   FOUNDATION
+========================================= */
 
-    /* Hide premium content until access is verified */
-    html:not(.premium-access-granted) body {
-        visibility: hidden;
+html:not(.premium-access-granted) body {
+    visibility: hidden;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --red: #e52b20;
+    --red-light: #ff5146;
+    --black: #09090b;
+    --ink: #171719;
+    --muted: #707078;
+    --paper: #f7f7f8;
+    --white: #ffffff;
+    --border: #e8e8eb;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 95px;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.75;
+    overflow-x: hidden;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+nav {
+    height: 78px;
+    background: var(--black);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    letter-spacing: -.7px;
+}
+
+.logo span {
+    color: var(--red-light);
+}
+
+.back-link {
+    color: #dedee2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    transition: .25s;
+}
+
+.back-link:hover {
+    color: var(--red-light);
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--black);
+    color: white;
+    padding: 85px 7%;
+    min-height: 430px;
+    display: flex;
+    align-items: center;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: linear-gradient(90deg, black, transparent 95%);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 570px;
+    height: 570px;
+    right: -170px;
+    top: -270px;
+    border: 1px solid rgba(229,43,32,.23);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 45px rgba(229,43,32,.035),
+        0 0 0 90px rgba(229,43,32,.025);
+    z-index: -1;
+}
+
+.hero-inner {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    align-items: center;
+    gap: 35px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.chapter-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--red-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
+
+.chapter-label::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: var(--red);
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(48px, 6.5vw, 82px);
+    line-height: 1.04;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+}
+
+.hero h1 span {
+    color: var(--red-light);
+    display: block;
+}
+
+.hero p {
+    color: #bdbdc3;
+    font-size: 17px;
+    line-height: 1.9;
+    max-width: 540px;
+}
+
+.hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.hero-pill {
+    border: 1px solid rgba(255,255,255,.13);
+    background: rgba(255,255,255,.045);
+    color: #dedee2;
+    padding: 9px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
+
+/* =========================================
+   ANIMATED HERO MATHEMATICAL VISUAL
+========================================= */
+
+.hero-visual {
+    position: relative;
+    width: 100%;
+    max-width: 510px;
+    justify-self: end;
+    perspective: 1000px;
+}
+
+.hero-visual::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(229,43,32,.2);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow:
+        0 0 0 35px rgba(229,43,32,.025),
+        0 0 0 70px rgba(229,43,32,.018);
+}
+
+.hero-graph {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    animation: graphFloat 6s ease-in-out infinite;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,.25));
+}
+
+.hero-graph svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.hero-curve {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: curveDraw 3s ease forwards .4s;
+}
+
+.hero-orbit {
+    position: absolute;
+    width: 95%;
+    height: 65%;
+    left: 2%;
+    top: 18%;
+    border: 1px solid rgba(229,43,32,.25);
+    border-radius: 50%;
+    transform: rotate(-18deg);
+    animation: orbitRotate 24s linear infinite;
+    pointer-events: none;
+}
+
+.hero-orbit::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red-light);
+    box-shadow: 0 0 18px var(--red-light);
+    top: 10%;
+    left: 15%;
+}
+
+@keyframes curveDraw {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes graphFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes orbitRotate {
+    from { transform: rotate(-18deg); }
+    to { transform: rotate(342deg); }
+}
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+main {
+    max-width: 1160px;
+    margin: auto;
+    padding: 80px 30px;
+}
+
+section {
+    margin-bottom: 85px;
+    animation: sectionReveal .7s ease both;
+}
+
+@keyframes sectionReveal {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
     }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-
-    body {
-        font-family: "DM Sans", sans-serif;
-        background: #f7f7f7;
-        color: #111;
-        line-height: 1.7;
-    }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            height: 78px;
-            background: #111;
-            color: white;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 7%;
-
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-
-        .logo {
-            font-family: "Playfair Display", serif;
-            font-size: 28px;
-            color: white;
-            text-decoration: none;
-        }
-
-
-        .logo span {
-            color: #e00000;
-        }
-
-
-        .back-link {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.25s;
-        }
-
-
-        .back-link:hover {
-            color: #e00000;
-        }
-
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            background: #111;
-            color: white;
-            padding: 85px 7%;
-            position: relative;
-            overflow: hidden;
-        }
-
-
-        .hero-content {
-            max-width: 1100px;
-            margin: auto;
-            position: relative;
-            z-index: 2;
-        }
-
-
-        .hero small {
-            color: #e00000;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-
-        .hero h1 {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(42px, 6vw, 68px);
-            line-height: 1.1;
-            margin: 15px 0 20px;
-        }
-
-
-        .hero p {
-            color: #ccc;
-            max-width: 720px;
-            font-size: 18px;
-        }
-
-
-        /* =========================
-           HERO DECORATION
-        ========================= */
-
-        .hero-decoration {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 350px;
-            height: 350px;
-            opacity: 0.9;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-
-        .hero-decoration .circle {
-            position: absolute;
-            border: 1px solid rgba(255,255,255,0.13);
-            border-radius: 50%;
-        }
-
-
-        .hero-decoration .circle.one {
-            width: 300px;
-            height: 300px;
-            right: 0;
-            top: 25px;
-        }
-
-
-        .hero-decoration .circle.two {
-            width: 205px;
-            height: 205px;
-            right: 48px;
-            top: 72px;
-            border-color: rgba(224,0,0,0.55);
-        }
-
-
-        .hero-decoration .circle.three {
-            width: 105px;
-            height: 105px;
-            right: 98px;
-            top: 122px;
-            border-color: rgba(255,255,255,0.25);
-        }
-
-
-        .hero-decoration .math-symbol {
-            position: absolute;
-            font-family: "Playfair Display", serif;
-            color: rgba(255,255,255,0.16);
-            font-size: 45px;
-        }
-
-
-        .hero-decoration .symbol-one {
-            top: 0;
-            right: 150px;
-        }
-
-
-        .hero-decoration .symbol-two {
-            bottom: 8px;
-            right: 5px;
-            color: rgba(224,0,0,0.35);
-        }
-
-
-        .hero-decoration .symbol-three {
-            top: 135px;
-            left: 10px;
-        }
-
-
-        .hero-decoration .dot {
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            background: #e00000;
-            border-radius: 50%;
-        }
-
-
-        .hero-decoration .dot-one {
-            right: 68px;
-            top: 65px;
-        }
-
-
-        .hero-decoration .dot-two {
-            right: 275px;
-            bottom: 65px;
-        }
-
-
-        .hero-decoration .line {
-            position: absolute;
-            height: 1px;
-            background: rgba(255,255,255,0.16);
-            transform-origin: left center;
-        }
-
-
-        .hero-decoration .line-one {
-            width: 130px;
-            right: 180px;
-            top: 90px;
-            transform: rotate(32deg);
-        }
-
-
-        .hero-decoration .line-two {
-            width: 105px;
-            right: 30px;
-            bottom: 100px;
-            transform: rotate(-35deg);
-        }
-
-
-        /* =========================
-           MAIN
-        ========================= */
-
-        main {
-            max-width: 1100px;
-            margin: auto;
-            padding: 75px 30px;
-        }
-
-
-        section {
-            margin-bottom: 75px;
-        }
-
-
-        h2 {
-            font-family: "Playfair Display", serif;
-            font-size: 38px;
-            margin-bottom: 20px;
-        }
-
-
-        h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-
-
-        p {
-            margin-bottom: 18px;
-        }
-
-
-        /* =========================
-           KEEP IN MIND
-        ========================= */
-
-        .keep-box {
-            background: white;
-            border-left: 5px solid #e00000;
-            padding: 25px 28px;
-            margin: 30px 0;
-        }
-
-
-        .keep-box strong {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 17px;
-        }
-
-
-        /* =========================
-           FORMULA BOX
-        ========================= */
-
-        .formula-box {
-            background: #111;
-            color: white;
-            padding: 32px;
-            margin: 30px 0;
-            text-align: center;
-            overflow-x: auto;
-        }
-
-
-        .formula-box math {
-            font-size: 28px;
-        }
-
-
-        .formula-label {
-            color: #aaa;
-            font-size: 13px;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-
-        /* =========================
-           EXAMPLE
-        ========================= */
-
-        .example {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 32px;
-            margin: 30px 0;
-        }
-
-
-        .example-title {
-            color: #e00000;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 13px;
-            margin-bottom: 18px;
-        }
-
-
-        .step {
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-
-        .step:last-child {
-            border-bottom: none;
-        }
-
-
-        .step math {
-            font-size: 24px;
-        }
-
-
-        /* =========================
-           IMPORTANT BOX
-        ========================= */
-
-        .important-box {
-            background: #111;
-            color: white;
-            padding: 30px;
-            margin: 30px 0;
-        }
-
-
-        .important-box strong {
-            color: #e00000;
-        }
-
-
-        /* =========================
-           TRIG CYCLE
-        ========================= */
-
-        .cycle-card {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 45px 30px;
-            margin-top: 35px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-
-        .cycle-card h3 {
-            margin-bottom: 10px;
-        }
-
-
-        .cycle-intro {
-            max-width: 700px;
-            margin: 0 auto 25px;
-            color: #555;
-        }
-
-
-        .mode-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin: 25px 0 15px;
-            flex-wrap: wrap;
-        }
-
-
-        .mode-button {
-            background: white;
-            border: 2px solid #111;
-            color: #111;
-
-            padding: 13px 25px;
-
-            font-family: "DM Sans", sans-serif;
-            font-weight: 700;
-
-            cursor: pointer;
-
-            transition: 0.25s;
-        }
-
-
-        .mode-button:hover {
-            background: #111;
-            color: white;
-        }
-
-
-        .mode-button.active {
-            background: #e00000;
-            border-color: #e00000;
-            color: white;
-        }
-
-
-        .direction-text {
-            color: #e00000;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-
-
-        .cycle-wrapper {
-            position: relative;
-
-            width: 580px;
-            height: 580px;
-
-            max-width: 100%;
-
-            margin: 0 auto;
-        }
-
-
-        .cycle-ring {
-            position: absolute;
-
-            width: 350px;
-            height: 350px;
-
-            left: 50%;
-            top: 50%;
-
-            transform: translate(-50%, -50%);
-
-            border: 3px solid #111;
-            border-radius: 50%;
-        }
-
-
-        /* =========================
-           FUNCTION NODES
-        ========================= */
-
-        .function-node {
-            position: absolute;
-
-            width: 125px;
-            height: 125px;
-
-            border-radius: 50%;
-
-            background: white;
-            border: 3px solid #111;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            cursor: pointer;
-
-            z-index: 5;
-
-            transition: 0.25s;
-        }
-
-
-        .function-node:hover {
-            background: #111;
-            color: white;
-        }
-
-
-        .function-node.active {
-            background: #e00000;
-            border-color: #e00000;
-            color: white;
-        }
-
-
-        .function-node math {
-            font-size: 25px;
-        }
-
-
-        .sin-node {
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-        }
-
-
-        .cos-node {
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-
-        .minus-sin-node {
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-        }
-
-
-        .minus-cos-node {
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-
-        .sin-node:hover,
-        .sin-node.active {
-            transform: translateX(-50%) scale(1.08);
-        }
-
-
-        .cos-node:hover,
-        .cos-node.active {
-            transform: translateY(-50%) scale(1.08);
-        }
-
-
-        .minus-sin-node:hover,
-        .minus-sin-node.active {
-            transform: translateX(-50%) scale(1.08);
-        }
-
-
-        .minus-cos-node:hover,
-        .minus-cos-node.active {
-            transform: translateY(-50%) scale(1.08);
-        }
-
-
-        /* =========================
-           CENTRE
-        ========================= */
-
-        .cycle-centre {
-            position: absolute;
-
-            width: 130px;
-            height: 130px;
-
-            left: 50%;
-            top: 50%;
-
-            transform: translate(-50%, -50%);
-
-            background: #111;
-            color: white;
-
-            border-radius: 50%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-
-            z-index: 4;
-        }
-
-
-        .cycle-centre small {
-            color: #aaa;
-            font-size: 10px;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-
-        .cycle-centre strong {
-            font-size: 14px;
-        }
-
-
-        /* =========================
-           DIRECTION ARROWS
-        ========================= */
-
-        .arrow {
-            position: absolute;
-
-            width: 55px;
-            height: 55px;
-
-            color: #e00000;
-
-            z-index: 2;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 34px;
-            font-weight: 700;
-
-            transition: 0.3s;
-        }
-
-
-        .arrow-top-right {
-            left: 62%;
-            top: 22%;
-            transform: rotate(45deg);
-        }
-
-
-        .arrow-bottom-right {
-            right: 22%;
-            top: 61%;
-            transform: rotate(45deg);
-        }
-
-
-        .arrow-bottom-left {
-            left: 30%;
-            bottom: 21%;
-            transform: rotate(45deg);
-        }
-
-
-        .arrow-top-left {
-            left: 21%;
-            top: 36%;
-            transform: rotate(45deg);
-        }
-
-
-        .cycle-wrapper.integration .arrow {
-            transform: rotate(225deg);
-        }
-
-
-        /* =========================
-           CYCLE RESULT
-        ========================= */
-
-        .cycle-result {
-            background: #111;
-            color: white;
-
-            max-width: 620px;
-
-            margin: 20px auto 0;
-
-            padding: 25px;
-
-            min-height: 115px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-
-        .result-label {
-            color: #aaa;
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-
-        .cycle-result math {
-            font-size: 28px;
-        }
-
-
-        /* =========================
-           RECOGNITION TABLE
-        ========================= */
-
-        .table-wrapper {
-            overflow-x: auto;
-            margin-top: 30px;
-        }
-
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-        }
-
-
-        th {
-            background: #111;
-            color: white;
-            padding: 17px;
-            text-align: left;
-        }
-
-
-        td {
-            padding: 18px;
-            border-bottom: 1px solid #ddd;
-        }
-
-
-        td math {
-            font-size: 21px;
-        }
-
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-
-        /* =========================
-           SUMMARY
-        ========================= */
-
-        .summary-box {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 35px;
-        }
-
-
-        .summary-item {
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-
-        .summary-item:last-child {
-            border-bottom: none;
-        }
-
-
-        /* =========================
-           PRACTICE
-        ========================= */
-
-        .practice-section {
-            text-align: center;
-
-            background: white;
-            border: 1px solid #ddd;
-
-            padding: 55px 35px;
-
-            margin-top: 20px;
-
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-
-        .practice-section h2 {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
-
-
-        .practice-section p {
-            margin: 0 auto 30px;
-            color: #555;
-            max-width: 650px;
-        }
-
-
-        .practice-button {
-            display: inline-block;
-
-            background: #111;
-            color: white;
-
-            padding: 16px 30px;
-
-            font-weight: 700;
-            letter-spacing: 0.5px;
-
-            text-decoration: none;
-
-            transition: 0.3s;
-        }
-
-
-        .practice-button:hover {
-            background: #e00000;
-        }
+}
+
+h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(30px, 4vw, 42px);
+    line-height: 1.2;
+    margin-bottom: 22px;
+    letter-spacing: -.6px;
+}
+
+h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 18px;
+}
+
+section > p {
+    color: #45454b;
+    font-size: 16px;
+}
+
+/* =========================================
+   KEEP IN MIND
+========================================= */
+
+.keep-box {
+    background: white;
+    border-left: 5px solid var(--red);
+    padding: 27px 30px;
+    margin: 32px 0;
+    box-shadow: 0 8px 28px rgba(0,0,0,.035);
+}
+
+.keep-box strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 17px;
+    color: var(--red);
+}
+
+/* =========================================
+   FORMULA BOXES
+========================================= */
+
+.formula-box {
+    position: relative;
+    background: var(--black);
+    color: white;
+    padding: 38px 30px;
+    margin: 30px 0;
+    text-align: center;
+    overflow-x: auto;
+    border: 1px solid rgba(255,255,255,.07);
+    box-shadow: 0 12px 32px rgba(0,0,0,.08);
+}
+
+.formula-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55px;
+    height: 3px;
+    background: var(--red);
+}
+
+.formula-box math {
+    font-size: 28px;
+}
+
+.formula-label {
+    color: var(--red-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   WORKED EXAMPLES
+========================================= */
+
+.example {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 34px;
+    margin: 30px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,.035);
+}
+
+.example-title {
+    color: var(--red);
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.step {
+    padding: 18px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.step:last-child {
+    border-bottom: none;
+}
+
+.step math {
+    font-size: 24px;
+}
+
+/* =========================================
+   IMPORTANT BOX
+========================================= */
+
+.important-box {
+    background: var(--black);
+    color: white;
+    padding: 32px;
+    margin: 30px 0;
+    border-left: 4px solid var(--red);
+}
+
+.important-box strong {
+    color: var(--red-light);
+}
+
+/* =========================================
+   INTERACTIVE SIN-COS CYCLE
+========================================= */
+
+.cycle-card {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 45px 30px;
+    margin-top: 35px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,.045);
+}
+
+.cycle-card h3 {
+    margin-bottom: 10px;
+}
+
+.cycle-intro {
+    max-width: 700px;
+    margin: 0 auto 25px;
+    color: #555;
+}
+
+.mode-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0 15px;
+    flex-wrap: wrap;
+}
+
+.mode-button {
+    background: white;
+    border: 1px solid #222;
+    color: #111;
+    padding: 13px 25px;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.mode-button:hover {
+    background: #222;
+    color: white;
+}
+
+.mode-button.active {
+    background: var(--red);
+    border-color: var(--red);
+    color: white;
+    box-shadow: 0 6px 18px rgba(229,43,32,.2);
+}
+
+.direction-text {
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+}
+
+.cycle-wrapper {
+    position: relative;
+    width: 580px;
+    height: 580px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.cycle-ring {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #dedee2;
+    border-radius: 50%;
+    box-shadow: 0 0 0 14px rgba(229,43,32,.025);
+}
+
+/* FUNCTION NODES */
+
+.function-node {
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #171719;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: .25s;
+    box-shadow: 0 8px 22px rgba(0,0,0,.06);
+}
+
+.function-node:hover {
+    background: #171719;
+    color: white;
+    transform: scale(1.06);
+}
+
+.function-node.active {
+    background: var(--red);
+    border-color: var(--red);
+    color: white;
+    box-shadow: 0 8px 25px rgba(229,43,32,.25);
+}
+
+.function-node math {
+    font-size: 25px;
+}
+
+.sin-node {
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.cos-node {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.minus-sin-node {
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+
+.minus-cos-node {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sin-node:hover,
+.sin-node.active {
+    transform: translateX(-50%) scale(1.06);
+}
+
+.cos-node:hover,
+.cos-node.active {
+    transform: translateY(-50%) scale(1.06);
+}
+
+.minus-sin-node:hover,
+.minus-sin-node.active {
+    transform: translateX(-50%) scale(1.06);
+}
+
+.minus-cos-node:hover,
+.minus-cos-node.active {
+    transform: translateY(-50%) scale(1.06);
+}
+
+/* CYCLE CENTRE */
+
+.cycle-centre {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--black);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 4;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+.cycle-centre small {
+    color: #aaa;
+    font-size: 9px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.cycle-centre strong {
+    font-size: 12px;
+    color: var(--red-light);
+}
+
+/* DIRECTION ARROWS */
+
+.arrow {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    color: var(--red);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.arrow-top-right {
+    left: 62%;
+    top: 22%;
+    transform: rotate(45deg);
+}
+
+.arrow-bottom-right {
+    right: 22%;
+    top: 61%;
+    transform: rotate(45deg);
+}
+
+.arrow-bottom-left {
+    left: 30%;
+    bottom: 21%;
+    transform: rotate(45deg);
+}
+
+.arrow-top-left {
+    left: 21%;
+    top: 36%;
+    transform: rotate(45deg);
+}
+
+.cycle-wrapper.integration .arrow {
+    transform: rotate(225deg);
+}
+
+/* CYCLE RESULT */
+
+.cycle-result {
+    background: var(--black);
+    color: white;
+    max-width: 620px;
+    margin: 20px auto 0;
+    padding: 27px;
+    min-height: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 3px solid var(--red);
+}
+
+.result-label {
+    color: #aaa;
+    font-size: 10px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.cycle-result math {
+    font-size: 28px;
+}
+
+/* =========================================
+   RECOGNITION TABLE
+========================================= */
+
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 30px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,.035);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+}
+
+th {
+    background: var(--black);
+    color: white;
+    padding: 18px;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: .8px;
+}
+
+td {
+    padding: 19px;
+    border-bottom: 1px solid #eee;
+    color: #45454b;
+}
+
+td math {
+    font-size: 21px;
+}
+
+tbody tr {
+    transition: background .2s;
+}
+
+tbody tr:hover {
+    background: #fff7f6;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================================
+   SUMMARY
+========================================= */
+
+.summary-box {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.035);
+}
+
+.summary-item {
+    padding: 19px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.summary-item strong {
+    color: var(--red);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+/* =========================================
+   PRACTICE
+========================================= */
+
+.practice-section {
+    text-align: center;
+    background: white;
+    border: 1px solid var(--border);
+    padding: 60px 35px;
+    margin-top: 20px;
+    box-shadow: 0 12px 35px rgba(0,0,0,.045);
+}
+
+.practice-section h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.practice-section p {
+    margin: 0 auto 30px;
+    color: #555;
+    max-width: 650px;
+}
+
+.practice-button {
+    display: inline-block;
+    background: var(--black);
+    color: white;
+    padding: 16px 32px;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.practice-button:hover {
+    background: var(--red);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(229,43,32,.2);
+}
 
 /* =========================================
    COMPLETION
@@ -848,11 +857,12 @@
 .completion-section {
     position: relative;
     overflow: hidden;
-    background: #111;
+    background: var(--black);
     color: white;
-    padding: 65px 35px;
+    padding: 70px 35px;
     margin-top: 70px;
     text-align: center;
+    border-top: 3px solid var(--red);
 }
 
 .completion-content {
@@ -861,9 +871,9 @@
 }
 
 .completion-label {
-    color: #e00000;
-    font-size: 14px;
-    font-weight: 700;
+    color: var(--red-light);
+    font-size: 12px;
+    font-weight: 800;
     letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 15px;
@@ -879,24 +889,25 @@
     color: #ccc;
     max-width: 650px;
     margin: 0 auto 28px;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .complete-button {
-    background: #e00000;
+    background: var(--red);
     color: white;
     border: none;
-    padding: 16px 30px;
-    font-family: "DM Sans", sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    padding: 16px 32px;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .complete-button:hover {
     background: white;
-    color: #111;
+    color: var(--black);
+    transform: translateY(-2px);
 }
 
 .complete-button:disabled {
@@ -915,14 +926,7 @@
     display: block;
 }
 
-.completion-section.completed {
-    background: #111;
-}
-
-
-/* =========================================
-   CELEBRATION STRIPS
-========================================= */
+/* CELEBRATION */
 
 .party-strip {
     position: absolute;
@@ -933,218 +937,257 @@
     opacity: 0;
 }
 
-.party-strip:nth-child(1) {
-    left: 8%;
-    background: #e00000;
-}
-
-.party-strip:nth-child(2) {
-    left: 20%;
-    background: #fff;
-}
-
-.party-strip:nth-child(3) {
-    left: 32%;
-    background: #e00000;
-}
-
-.party-strip:nth-child(4) {
-    left: 44%;
-    background: #fff;
-}
-
-.party-strip:nth-child(5) {
-    left: 56%;
-    background: #e00000;
-}
-
-.party-strip:nth-child(6) {
-    left: 68%;
-    background: #fff;
-}
-
-.party-strip:nth-child(7) {
-    left: 80%;
-    background: #e00000;
-}
-
-.party-strip:nth-child(8) {
-    left: 92%;
-    background: #fff;
-}
+.party-strip:nth-child(1) { left: 8%; background: var(--red); }
+.party-strip:nth-child(2) { left: 20%; background: #fff; }
+.party-strip:nth-child(3) { left: 32%; background: var(--red); }
+.party-strip:nth-child(4) { left: 44%; background: #fff; }
+.party-strip:nth-child(5) { left: 56%; background: var(--red); }
+.party-strip:nth-child(6) { left: 68%; background: #fff; }
+.party-strip:nth-child(7) { left: 80%; background: var(--red); }
+.party-strip:nth-child(8) { left: 92%; background: #fff; }
 
 .completion-section.completed .party-strip {
     animation: celebrationDrop 1.2s ease-out forwards;
 }
 
-.completion-section.completed .party-strip:nth-child(1) {
-    animation-delay: 0.05s;
-}
-
-.completion-section.completed .party-strip:nth-child(2) {
-    animation-delay: 0.12s;
-}
-
-.completion-section.completed .party-strip:nth-child(3) {
-    animation-delay: 0.19s;
-}
-
-.completion-section.completed .party-strip:nth-child(4) {
-    animation-delay: 0.26s;
-}
-
-.completion-section.completed .party-strip:nth-child(5) {
-    animation-delay: 0.33s;
-}
-
-.completion-section.completed .party-strip:nth-child(6) {
-    animation-delay: 0.40s;
-}
-
-.completion-section.completed .party-strip:nth-child(7) {
-    animation-delay: 0.47s;
-}
-
-.completion-section.completed .party-strip:nth-child(8) {
-    animation-delay: 0.54s;
-}
+.completion-section.completed .party-strip:nth-child(1) { animation-delay: .05s; }
+.completion-section.completed .party-strip:nth-child(2) { animation-delay: .12s; }
+.completion-section.completed .party-strip:nth-child(3) { animation-delay: .19s; }
+.completion-section.completed .party-strip:nth-child(4) { animation-delay: .26s; }
+.completion-section.completed .party-strip:nth-child(5) { animation-delay: .33s; }
+.completion-section.completed .party-strip:nth-child(6) { animation-delay: .40s; }
+.completion-section.completed .party-strip:nth-child(7) { animation-delay: .47s; }
+.completion-section.completed .party-strip:nth-child(8) { animation-delay: .54s; }
 
 @keyframes celebrationDrop {
-
     0% {
         top: -90px;
         opacity: 0;
     }
-
     20% {
         opacity: 1;
     }
-
     100% {
         top: 110%;
         opacity: 0;
     }
+}
 
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    background: var(--black);
+    color: white;
+    padding: 45px 7%;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,.07);
+}
+
+footer .logo {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #aaa;
+    margin: 0;
+}
+
+.policy-links {
+    justify-content: center;
+}
+
+/* =========================================
+   INLINE MATHEMATICS
+========================================= */
+
+.inline-math {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.inline-math math {
+    font-size: 1em;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 850px) {
+
+    .hero {
+        padding: 70px 6%;
+    }
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-visual {
+        max-width: 470px;
+        justify-self: center;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 650px) {
+
+    nav {
+        height: 68px;
+        padding: 0 6%;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
+
+    .hero {
+        padding: 60px 6% 45px;
+    }
+
+    .hero h1 {
+        font-size: clamp(43px, 12vw, 62px);
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .hero-visual {
+        max-width: 370px;
+    }
+
+    .hero-pills {
+        gap: 7px;
+    }
+
+    .hero-pill {
+        font-size: 9px;
+        padding: 8px 10px;
+    }
+
+    main {
+        padding: 55px 20px;
+    }
+
+    section {
+        margin-bottom: 65px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    .formula-box {
+        padding: 30px 18px;
+    }
+
+    .formula-box math {
+        font-size: 23px;
+    }
+
+    .example {
+        padding: 25px 20px;
+    }
+
+    .cycle-card {
+        padding: 35px 12px;
+    }
+
+    .cycle-wrapper {
+        width: 450px;
+        height: 450px;
+        transform: scale(.78);
+        transform-origin: top center;
+        margin-bottom: -100px;
+    }
+
+    .cycle-ring {
+        width: 300px;
+        height: 300px;
+    }
+
+    .function-node {
+        width: 105px;
+        height: 105px;
+    }
+
+    .cycle-centre {
+        width: 110px;
+        height: 110px;
+    }
+
+    .summary-box {
+        padding: 25px 20px;
+    }
+
+    .summary-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .practice-section {
+        padding: 45px 22px;
+    }
+
+    .practice-section h2 {
+        font-size: 32px;
+    }
+
+    .completion-section {
+        padding: 55px 22px;
+    }
+
+    .completion-section h2 {
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 390px) {
+
+    .cycle-wrapper {
+        transform: scale(.67);
+        margin-bottom: -145px;
+    }
+
+    .back-link {
+        font-size: 11px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
 
-    .completion-section.completed .party-strip {
-        animation: none;
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
     }
 
+    .hero-curve {
+        stroke-dashoffset: 0;
+    }
 }
-        /* =========================
-           FOOTER
-        ========================= */
 
-        footer {
-            background: #111;
-            color: white;
-
-            padding: 45px 7%;
-
-            text-align: center;
-        }
-
-
-        footer .logo {
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-
-        footer p {
-            color: #aaa;
-            margin: 0;
-        }
-
-
-        /* =========================
-           INLINE MATH
-        ========================= */
-
-        .inline-math {
-            display: inline-block;
-            vertical-align: middle;
-            line-height: 1;
-        }
-
-
-        .inline-math math {
-            font-size: 1em;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 650px) {
-
-            .hero {
-                padding: 65px 7%;
-            }
-
-
-            .hero-decoration {
-                right: -110px;
-                opacity: 0.65;
-            }
-
-
-            main {
-                padding: 55px 20px;
-            }
-
-
-            h2 {
-                font-size: 32px;
-            }
-
-
-            .cycle-wrapper {
-                width: 450px;
-                height: 450px;
-                transform: scale(0.78);
-                transform-origin: top center;
-                margin-bottom: -100px;
-            }
-
-
-            .cycle-ring {
-                width: 300px;
-                height: 300px;
-            }
-
-
-            .function-node {
-                width: 105px;
-                height: 105px;
-            }
-
-
-            .cycle-centre {
-                width: 110px;
-                height: 110px;
-            }
-
-        }
-
-    </style>
-
+</style>
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     NAVIGATION
-========================= -->
+<!-- NAVIGATION -->
 
 <nav>
-
     <a href="dashboard.html" class="logo">
         Edu<span>Nova</span>
     </a>
@@ -1152,1876 +1195,1068 @@
     <a href="integration.html" class="back-link">
         ← Integration
     </a>
-
 </nav>
 
-
-<!-- =========================
-     HERO
-========================= -->
+<!-- HERO -->
 
 <header class="hero">
 
-    <div class="hero-content">
+    <div class="hero-inner">
 
-        <small>Integration • Lesson 2</small>
+        <div class="hero-content">
 
-        <h1>Recognize Integrals</h1>
+            <div class="chapter-label">
+                Integration · Lesson 02
+            </div>
 
-        <p>
-            Learn how to recognize common functions and choose
-            the correct integration rule before doing any calculations.
-        </p>
+            <h1>
+                Recognize
+                <span>Integrals.</span>
+            </h1>
 
-    </div>
+            <p>
+                Learn how to recognize common functions and choose
+                the correct integration rule before doing any calculations.
+            </p>
 
+            <div class="hero-pills">
+                <div class="hero-pill">BASIC RULES</div>
+                <div class="hero-pill">TRIGONOMETRY</div>
+                <div class="hero-pill">RECOGNITION</div>
+            </div>
 
-    <!-- HERO DECORATION -->
+        </div>
 
-    <div class="hero-decoration">
+        <div class="hero-visual">
 
-        <div class="circle one"></div>
-        <div class="circle two"></div>
-        <div class="circle three"></div>
+            <div class="hero-orbit"></div>
 
-        <span class="math-symbol symbol-one">∫</span>
-        <span class="math-symbol symbol-two">π</span>
-        <span class="math-symbol symbol-three">f</span>
+            <div class="hero-graph">
 
-        <span class="dot dot-one"></span>
-        <span class="dot dot-two"></span>
+                <svg viewBox="0 0 520 340"
+                     xmlns="http://www.w3.org/2000/svg">
 
-        <span class="line line-one"></span>
-        <span class="line line-two"></span>
+                    <defs>
+
+                        <linearGradient id="heroAreaGradient"
+                            x1="0" y1="0" x2="0" y2="1">
+
+                            <stop offset="0%"
+                                  stop-color="#e52b20"
+                                  stop-opacity=".4"/>
+
+                            <stop offset="100%"
+                                  stop-color="#e52b20"
+                                  stop-opacity=".015"/>
+
+                        </linearGradient>
+
+                        <filter id="heroGlow">
+                            <feGaussianBlur stdDeviation="5"
+                                            result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+
+                    </defs>
+
+                    <!-- Grid -->
+
+                    <g stroke="#ffffff"
+                       stroke-opacity=".09"
+                       stroke-width="1">
+
+                        <path d="
+                            M50 40 V290
+                            M110 40 V290
+                            M170 40 V290
+                            M230 40 V290
+                            M290 40 V290
+                            M350 40 V290
+                            M410 40 V290
+                            M470 40 V290
+                        "/>
+
+                        <path d="
+                            M50 50 H470
+                            M50 100 H470
+                            M50 150 H470
+                            M50 200 H470
+                            M50 250 H470
+                            M50 290 H470
+                        "/>
+
+                    </g>
+
+                    <!-- Axes -->
+
+                    <path d="M45 290 H485"
+                          stroke="#e8e8e8"
+                          stroke-opacity=".7"
+                          stroke-width="2"/>
+
+                    <path d="M50 300 V30"
+                          stroke="#e8e8e8"
+                          stroke-opacity=".7"
+                          stroke-width="2"/>
+
+                    <path d="M485 290 l-9 -5 v10 z"
+                          fill="#e8e8e8"/>
+
+                    <path d="M50 30 l-5 9 h10 z"
+                          fill="#e8e8e8"/>
+
+                    <!-- Decorative integral curve -->
+
+                    <path class="hero-area"
+                          d="
+                            M50 245
+                            C120 230 165 210 215 185
+                            C270 155 315 125 365 95
+                            C405 72 440 55 470 43
+                            L470 290
+                            L50 290 Z
+                          "
+                          fill="url(#heroAreaGradient)"/>
+
+                    <path class="hero-curve"
+                          d="
+                            M50 245
+                            C120 230 165 210 215 185
+                            C270 155 315 125 365 95
+                            C405 72 440 55 470 43
+                          "
+                          fill="none"
+                          stroke="#ff5146"
+                          stroke-width="4"
+                          stroke-linecap="round"
+                          filter="url(#heroGlow)"/>
+
+                    <!-- Points -->
+
+                    <g fill="#ffffff"
+                       stroke="#ff5146"
+                       stroke-width="3">
+
+                        <circle cx="50" cy="245" r="6"/>
+                        <circle cx="155" cy="215" r="6"/>
+                        <circle cx="260" cy="160" r="6"/>
+                        <circle cx="365" cy="95" r="6"/>
+                        <circle cx="470" cy="43" r="6"/>
+
+                    </g>
+
+                    <text x="380" y="30"
+                          fill="#ff7168"
+                          font-family="DM Sans, sans-serif"
+                          font-size="15"
+                          font-weight="700">
+                        f(x)
+                    </text>
+
+                    <text x="490" y="315"
+                          fill="#ffffff"
+                          font-family="DM Sans, sans-serif"
+                          font-size="15">x</text>
+
+                    <text x="30" y="30"
+                          fill="#ffffff"
+                          font-family="DM Sans, sans-serif"
+                          font-size="15">y</text>
+
+                </svg>
+
+            </div>
+
+        </div>
 
     </div>
 
 </header>
-
-
-<!-- =========================
-     MAIN
-========================= -->
+<!-- =========================================
+     LESSON CONTENT
+========================================= -->
 
 <main>
 
+    <!-- INTRODUCTION -->
 
-<!-- =========================
-     INTRODUCTION
-========================= -->
+    <section id="overview">
 
-<section>
+        <h2>Before You Integrate</h2>
 
-    <h2>Introduction</h2>
-
-    <p>
-        Before integrating a function, it is important to recognize
-        what type of function you are looking at.
-    </p>
-
-    <p>
-        Some integrals follow familiar rules. Once you recognize
-        the form of the function, you can apply the correct rule
-        directly.
-    </p>
-
-
-    <div class="keep-box">
-
-        <strong>Keep in mind</strong>
-
-        Recognition comes first.
-        Look at the function carefully before choosing an integration rule.
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     BASIC RULES
-========================= -->
-
-<section>
-
-    <h2>Basic Integration Rules</h2>
-
-    <p>
-        Start with these important rules.
-    </p>
-
-
-    <!-- x^n -->
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Power Rule
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <msup>
-                    <mi>x</mi>
-                    <mi>n</mi>
-                </msup>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mfrac>
-
-                    <msup>
-                        <mi>x</mi>
-                        <mrow>
-                            <mi>n</mi>
-                            <mo>+</mo>
-                            <mn>1</mn>
-                        </mrow>
-                    </msup>
-
-                    <mrow>
-                        <mi>n</mi>
-                        <mo>+</mo>
-                        <mn>1</mn>
-                    </mrow>
-
-                </mfrac>
-
-                <mo>+</mo>
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-        <p style="color:#aaa; margin-top:15px;">
-            where n ≠ −1
+        <p>
+            Before integrating a function, it is important to recognize
+            what type of function you are looking at.
         </p>
 
-    </div>
-
-
-    <!-- constant -->
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Constant Rule
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <mi>a</mi>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mi>a</mi>
-                <mi>x</mi>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-    </div>
-
-
-    <!-- ax+b -->
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Linear Function Raised to a Power
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <msup>
-
-                    <mrow>
-
-                        <mo>(</mo>
-
-                        <mi>a</mi>
-                        <mi>x</mi>
-
-                        <mo>+</mo>
-
-                        <mi>b</mi>
-
-                        <mo>)</mo>
-
-                    </mrow>
-
-                    <mi>n</mi>
-
-                </msup>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mfrac>
-
-                    <msup>
-
-                        <mrow>
-
-                            <mo>(</mo>
-
-                            <mi>a</mi>
-                            <mi>x</mi>
-
-                            <mo>+</mo>
-
-                            <mi>b</mi>
-
-                            <mo>)</mo>
-
-                        </mrow>
-
-                        <mrow>
-
-                            <mi>n</mi>
-
-                            <mo>+</mo>
-
-                            <mn>1</mn>
-
-                        </mrow>
-
-                    </msup>
-
-                    <mrow>
-
-                        <mi>a</mi>
-
-                        <mo>(</mo>
-
-                        <mi>n</mi>
-
-                        <mo>+</mo>
-
-                        <mn>1</mn>
-
-                        <mo>)</mo>
-
-                    </mrow>
-
-                </mfrac>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-        <p style="color:#aaa; margin-top:15px;">
-            where n ≠ −1
+        <p>
+            Some integrals follow familiar rules. Once you recognize the
+            form of the function, you can apply the correct rule directly.
         </p>
 
-    </div>
+        <div class="keep-box">
 
-</section>
+            <strong>Keep in mind</strong>
 
-
-<!-- =========================
-     EXPONENTIAL
-========================= -->
-
-<section>
-
-    <h2>
-        Recognizing
-        <span class="inline-math">
-            <math>
-                <msup>
-                    <mi>e</mi>
-                    <mrow>
-                        <mi>a</mi>
-                        <mi>x</mi>
-                    </mrow>
-                </msup>
-            </math>
-        </span>
-    </h2>
-
-    <p>
-        If the function contains an exponential term of the form
-        <span class="inline-math">
-            <math>
-                <msup>
-                    <mi>e</mi>
-                    <mrow>
-                        <mi>a</mi>
-                        <mi>x</mi>
-                    </mrow>
-                </msup>
-            </math>
-        </span>,
-        use the following rule.
-    </p>
-
-
-    <div class="formula-box">
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <msup>
-                    <mi>e</mi>
-                    <mrow>
-                        <mi>a</mi>
-                        <mi>x</mi>
-                    </mrow>
-                </msup>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mfrac>
-
-                    <mn>1</mn>
-
-                    <mi>a</mi>
-
-                </mfrac>
-
-                <msup>
-
-                    <mi>e</mi>
-
-                    <mrow>
-                        <mi>a</mi>
-                        <mi>x</mi>
-                    </mrow>
-
-                </msup>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-    </div>
-
-
-    <div class="example">
-
-        <div class="example-title">
-            Worked Example
-        </div>
-
-
-        <div class="step">
-
-            <p>Find:</p>
-
-            <math display="block">
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <msup>
-                        <mi>e</mi>
-                        <mrow>
-                            <mn>3</mn>
-                            <mi>x</mi>
-                        </mrow>
-                    </msup>
-
-                    <mi>dx</mi>
-
-                </mrow>
-
-            </math>
+            Recognition comes first. Look at the function carefully
+            before choosing an integration rule.
 
         </div>
 
+    </section>
 
-        <div class="step">
 
-            <p>
-                Here, <span class="inline-math"><math><mi>a</mi><mo>=</mo><mn>3</mn></math></span>.
+    <!-- BASIC INTEGRATION RULES -->
+
+    <section id="basic-rules">
+
+        <h2>Basic Integration Rules</h2>
+
+        <p>
+            These are some of the most important integration rules.
+            Recognizing their forms will help you decide which rule to use.
+        </p>
+
+
+        <div class="formula-box">
+
+            <div class="formula-label">Power Rule</div>
+
+            \[
+            \int x^n\,dx =
+            \frac{x^{n+1}}{n+1}+C
+            \]
+
+            <p style="color:#aaa; margin:15px 0 0;">
+                Where \(n\neq -1\).
             </p>
 
         </div>
 
 
-        <div class="step">
+        <div class="formula-box">
 
-            <math display="block">
+            <div class="formula-label">Constant Rule</div>
 
-                <mrow>
-
-                    <mo>=</mo>
-
-                    <mfrac>
-                        <mn>1</mn>
-                        <mn>3</mn>
-                    </mfrac>
-
-                    <msup>
-                        <mi>e</mi>
-                        <mrow>
-                            <mn>3</mn>
-                            <mi>x</mi>
-                        </mrow>
-                    </msup>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
+            \[
+            \int a\,dx=ax+C
+            \]
 
         </div>
 
-    </div>
 
-</section>
+        <div class="formula-box">
 
+            <div class="formula-label">
+                Linear Function Raised to a Power
+            </div>
 
-<!-- =========================
-     TRIG CYCLE
-========================= -->
+            \[
+            \int (ax+b)^n\,dx
+            =
+            \frac{(ax+b)^{n+1}}{a(n+1)}+C
+            \]
 
-<section>
+            <p style="color:#aaa; margin:15px 0 0;">
+                Where \(n\neq -1\).
+            </p>
 
-    <h2>Recognizing Trigonometric Integrals</h2>
+        </div>
 
-    <p>
-        Trigonometric functions can be recognized using a simple
-        four-function cycle.
-    </p>
-
-    <div class="important-box">
-
-        <strong>Remember:</strong>
-
-        Differentiation moves <strong>clockwise</strong> around the cycle,
-        while integration moves <strong>anti-clockwise</strong>.
-
-    </div>
+    </section>
 
 
-    <div class="cycle-card">
+    <!-- EXPONENTIAL FUNCTIONS -->
 
-        <h3>The Sin–Cos Cycle</h3>
+    <section id="exponential">
 
-        <p class="cycle-intro">
-            Choose differentiation or integration, then click a function
-            to see where it moves next.
+        <h2>Recognizing Exponential Integrals</h2>
+
+        <p>
+            When you see an exponential function with base \(e\),
+            such as \(e^{ax}\), you can recognize it using the
+            exponential integration rule.
         </p>
 
+        <div class="formula-box">
 
-        <div class="mode-buttons">
+            <div class="formula-label">Exponential Rule</div>
 
-            <button
-                class="mode-button active"
-                id="differentiateButton"
-                onclick="setMode('differentiate')">
+            \[
+            \int e^{ax}\,dx
+            =
+            \frac{1}{a}e^{ax}+C
+            \]
 
-                DIFFERENTIATION
+        </div>
 
-            </button>
+        <div class="example">
+
+            <div class="example-title">Worked Example</div>
+
+            <p>Evaluate:</p>
+
+            \[
+            \int e^{3x}\,dx
+            \]
+
+            <div class="step">
+
+                **Step 1: Recognize the function**
+
+                <p>
+                    The function is an exponential function
+                    with \(a=3\).
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                **Step 2: Apply the rule**
+
+                \[
+                \int e^{3x}\,dx
+                =
+                \frac{1}{3}e^{3x}+C
+                \]
+
+            </div>
+
+            <div class="step">
+
+                **Final Answer**
+
+                \[
+                \boxed{\frac{1}{3}e^{3x}+C}
+                \]
+
+            </div>
+
+        </div>
+
+    </section>
 
 
-            <button
-                class="mode-button"
-                id="integrateButton"
-                onclick="setMode('integrate')">
+    <!-- TRIGONOMETRIC INTEGRALS -->
 
-                INTEGRATION
+    <section id="trigonometric">
 
-            </button>
+        <h2>Recognizing Trigonometric Integrals</h2>
+
+        <p>
+            Trigonometric functions follow a cycle when differentiated
+            or integrated. Understanding this cycle helps you recognize
+            the correct result.
+        </p>
+
+        <div class="important-box">
+
+            <strong>Important:</strong>
+
+            <p style="margin:10px 0 0;">
+                Differentiation moves clockwise; integration moves
+                anti-clockwise.
+            </p>
 
         </div>
 
 
-        <div class="direction-text" id="directionText">
-            DIFFERENTIATION → CLOCKWISE
-        </div>
+        <!-- INTERACTIVE CYCLE -->
+
+        <div class="cycle-card">
+
+            <h3>The Sin–Cos Cycle</h3>
+
+            <p class="cycle-intro">
+                Choose a function and select differentiation or
+                integration to see what happens next.
+            </p>
 
 
-        <div class="cycle-wrapper" id="cycleWrapper">
+            <div class="mode-buttons">
 
-            <div class="cycle-ring"></div>
+                <button
+                    type="button"
+                    class="mode-button active"
+                    id="differentiateButton"
+                    onclick="setMode('differentiate')">
 
-
-            <div class="arrow arrow-top-right">
-                →
-            </div>
-
-            <div class="arrow arrow-bottom-right">
-                ↓
-            </div>
-
-            <div class="arrow arrow-bottom-left">
-                ←
-            </div>
-
-            <div class="arrow arrow-top-left">
-                ↑
-            </div>
-
-
-            <!-- SIN -->
-
-            <button
-                class="function-node sin-node active"
-                id="sinNode"
-                onclick="chooseFunction('sin')">
-
-                <math>
-
-                    <mrow>
-                        <mi>sin</mi>
-                        <mi>x</mi>
-                    </mrow>
-
-                </math>
-
-            </button>
-
-
-            <!-- COS -->
-
-            <button
-                class="function-node cos-node"
-                id="cosNode"
-                onclick="chooseFunction('cos')">
-
-                <math>
-
-                    <mrow>
-                        <mi>cos</mi>
-                        <mi>x</mi>
-                    </mrow>
-
-                </math>
-
-            </button>
-
-
-            <!-- -SIN -->
-
-            <button
-                class="function-node minus-sin-node"
-                id="minusSinNode"
-                onclick="chooseFunction('minusSin')">
-
-                <math>
-
-                    <mrow>
-
-                        <mo>−</mo>
-
-                        <mi>sin</mi>
-                        <mi>x</mi>
-
-                    </mrow>
-
-                </math>
-
-            </button>
-
-
-            <!-- -COS -->
-
-            <button
-                class="function-node minus-cos-node"
-                id="minusCosNode"
-                onclick="chooseFunction('minusCos')">
-
-                <math>
-
-                    <mrow>
-
-                        <mo>−</mo>
-
-                        <mi>cos</mi>
-                        <mi>x</mi>
-
-                    </mrow>
-
-                </math>
-
-            </button>
-
-
-            <!-- CENTRE -->
-
-            <div class="cycle-centre">
-
-                <small id="centreMode">
                     DIFFERENTIATION
-                </small>
 
-                <strong id="centreDirection">
-                    CLOCKWISE
-                </strong>
+                </button>
+
+                <button
+                    type="button"
+                    class="mode-button"
+                    id="integrateButton"
+                    onclick="setMode('integrate')">
+
+                    INTEGRATION
+
+                </button>
+
+            </div>
+
+
+            <div class="direction-text" id="directionText">
+                DIFFERENTIATION · CLOCKWISE
+            </div>
+
+
+            <div class="cycle-wrapper" id="cycleWrapper">
+
+                <div class="cycle-ring"></div>
+
+
+                <!-- DIRECTION ARROWS -->
+
+                <div class="arrow arrow-top-right">→</div>
+                <div class="arrow arrow-bottom-right">→</div>
+                <div class="arrow arrow-bottom-left">→</div>
+                <div class="arrow arrow-top-left">→</div>
+
+
+                <!-- FUNCTION BUTTONS -->
+
+                <button
+                    type="button"
+                    class="function-node sin-node"
+                    id="sinNode"
+                    onclick="chooseFunction('sin')">
+
+                    \(\sin x\)
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="function-node cos-node"
+                    id="cosNode"
+                    onclick="chooseFunction('cos')">
+
+                    \(\cos x\)
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="function-node minus-sin-node"
+                    id="minusSinNode"
+                    onclick="chooseFunction('minusSin')">
+
+                    \(-\sin x\)
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="function-node minus-cos-node"
+                    id="minusCosNode"
+                    onclick="chooseFunction('minusCos')">
+
+                    \(-\cos x\)
+
+                </button>
+
+
+                <!-- CENTRE -->
+
+                <div class="cycle-centre">
+
+                    <small id="centreMode">
+                        DIFFERENTIATE
+                    </small>
+
+                    <strong id="centreDirection">
+                        CLOCKWISE
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <div class="cycle-result" id="cycleResult">
+
+                <div class="result-label">
+                    Result
+                </div>
+
+                <div>
+                    Choose a function to begin.
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- RESULT -->
+        <h3 style="margin-top:55px;">
+            Trigonometric Integration Rules
+        </h3>
 
-        <div class="cycle-result">
+        <p>
+            When integrating cosine or sine functions with a
+            coefficient inside the angle, remember to include
+            the extra factor.
+        </p>
 
-            <div class="result-label">
-                Next function
+
+        <div class="formula-box">
+
+            <div class="formula-label">Cosine Rule</div>
+
+            \[
+            \int \cos(ax)\,dx
+            =
+            \frac{1}{a}\sin(ax)+C
+            \]
+
+        </div>
+
+
+        <div class="formula-box">
+
+            <div class="formula-label">Sine Rule</div>
+
+            \[
+            \int \sin(ax)\,dx
+            =
+            -\frac{1}{a}\cos(ax)+C
+            \]
+
+        </div>
+
+
+        <div class="example">
+
+            <div class="example-title">Worked Example</div>
+
+            <p>Evaluate:</p>
+
+            \[
+            \int \sin(4x)\,dx
+            \]
+
+            <div class="step">
+
+                **Step 1: Recognize the function**
+
+                <p>
+                    The function is sine, and the coefficient
+                    of \(x\) is \(4\).
+                </p>
+
             </div>
 
-            <div id="cycleResult">
+            <div class="step">
 
-                <math display="block">
+                **Step 2: Apply the sine integration rule**
 
-                    <mrow>
+                \[
+                \int \sin(4x)\,dx
+                =
+                -\frac{1}{4}\cos(4x)+C
+                \]
 
-                        <mi>sin</mi>
-                        <mi>x</mi>
+            </div>
 
-                        <mo>→</mo>
+            <div class="step">
 
-                        <mi>cos</mi>
-                        <mi>x</mi>
+                **Final Answer**
 
-                    </mrow>
-
-                </math>
+                \[
+                \boxed{-\frac{1}{4}\cos(4x)+C}
+                \]
 
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
 
+    <!-- RECIPROCAL OF X -->
 
-<!-- =========================
-     TRIG FORMULAS
-========================= -->
+    <section id="reciprocal">
 
-<section>
-
-    <h2>Common Trigonometric Rules</h2>
-
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Cosine
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <mi>cos</mi>
-                <mo>(</mo>
-                <mi>a</mi>
-                <mi>x</mi>
-                <mo>)</mo>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mfrac>
-
-                    <mn>1</mn>
-                    <mi>a</mi>
-
-                </mfrac>
-
-                <mi>sin</mi>
-                <mo>(</mo>
-                <mi>a</mi>
-                <mi>x</mi>
-                <mo>)</mo>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-    </div>
-
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Sine
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <mi>sin</mi>
-                <mo>(</mo>
-                <mi>a</mi>
-                <mi>x</mi>
-                <mo>)</mo>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mo>−</mo>
-
-                <mfrac>
-
-                    <mn>1</mn>
-                    <mi>a</mi>
-
-                </mfrac>
-
-                <mi>cos</mi>
-                <mo>(</mo>
-                <mi>a</mi>
-                <mi>x</mi>
-                <mo>)</mo>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-    </div>
-
-
-    <div class="example">
-
-        <div class="example-title">
-            Worked Example
-        </div>
-
-
-        <div class="step">
-
-            <p>Find:</p>
-
-            <math display="block">
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <mi>sin</mi>
-                    <mo>(</mo>
-                    <mn>4</mn>
-                    <mi>x</mi>
-                    <mo>)</mo>
-
-                    <mi>dx</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="step">
-
-            <p>
-                The function is sine, so integration moves
-                anti-clockwise from
-                <span class="inline-math">
-                    <math>
-                        <mi>sin</mi>
-                        <mi>x</mi>
-                    </math>
-                </span>
-                to
-                <span class="inline-math">
-                    <math>
-                        <mo>−</mo>
-                        <mi>cos</mi>
-                        <mi>x</mi>
-                    </math>
-                </span>.
-            </p>
-
-        </div>
-
-
-        <div class="step">
-
-            <math display="block">
-
-                <mrow>
-
-                    <mo>=</mo>
-
-                    <mo>−</mo>
-
-                    <mfrac>
-
-                        <mn>1</mn>
-                        <mn>4</mn>
-
-                    </mfrac>
-
-                    <mi>cos</mi>
-                    <mo>(</mo>
-                    <mn>4</mn>
-                    <mi>x</mi>
-                    <mo>)</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     1/x
-========================= -->
-
-<section>
-
-    <h2>
-        Recognizing
-        <span class="inline-math">
-            <math>
-                <mfrac>
-                    <mn>1</mn>
-                    <mi>x</mi>
-                </mfrac>
-            </math>
-        </span>
-    </h2>
-
-    <p>
-        The function
-        <span class="inline-math">
-            <math>
-                <mfrac>
-                    <mn>1</mn>
-                    <mi>x</mi>
-                </mfrac>
-            </math>
-        </span>
-        is a special case.
-        We cannot use the ordinary power rule because its power is
-        <span class="inline-math">
-            <math>
-                <mi>n</mi>
-                <mo>=</mo>
-                <mo>−</mo>
-                <mn>1</mn>
-            </math>
-        </span>.
-    </p>
-
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Special Rule
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <mfrac>
-
-                    <mn>1</mn>
-                    <mi>x</mi>
-
-                </mfrac>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mi>ln</mi>
-
-                <mo>|</mo>
-
-                <mi>x</mi>
-
-                <mo>|</mo>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-    </div>
-
-
-    <div class="example">
-
-        <div class="example-title">
-            Worked Example
-        </div>
-
-
-        <div class="step">
-
-            <p>Find:</p>
-
-            <math display="block">
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <mfrac>
-                        <mn>1</mn>
-                        <mi>x</mi>
-                    </mfrac>
-
-                    <mi>dx</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="step">
-
-            <math display="block">
-
-                <mrow>
-
-                    <mo>=</mo>
-
-                    <mi>ln</mi>
-
-                    <mo>|</mo>
-                    <mi>x</mi>
-                    <mo>|</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     a/(bx+d)
-========================= -->
-
-<section>
-
-    <h2>
-        Recognizing
-        <span class="inline-math">
-            <math>
-                <mfrac>
-                    <mi>a</mi>
-                    <mrow>
-                        <mi>b</mi>
-                        <mi>x</mi>
-                        <mo>+</mo>
-                        <mi>d</mi>
-                    </mrow>
-                </mfrac>
-            </math>
-        </span>
-    </h2>
-
-    <p>
-        Another important form is a constant divided by a linear
-        expression.
-    </p>
-
-
-    <div class="formula-box">
-
-        <div class="formula-label">
-            Linear Denominator Rule
-        </div>
-
-        <math display="block">
-
-            <mrow>
-
-                <mo>∫</mo>
-
-                <mfrac>
-
-                    <mi>a</mi>
-
-                    <mrow>
-
-                        <mi>b</mi>
-                        <mi>x</mi>
-
-                        <mo>+</mo>
-
-                        <mi>d</mi>
-
-                    </mrow>
-
-                </mfrac>
-
-                <mi>dx</mi>
-
-                <mo>=</mo>
-
-                <mfrac>
-
-                    <mi>a</mi>
-                    <mi>b</mi>
-
-                </mfrac>
-
-                <mi>ln</mi>
-
-                <mo>|</mo>
-
-                <mi>b</mi>
-                <mi>x</mi>
-
-                <mo>+</mo>
-
-                <mi>d</mi>
-
-                <mo>|</mo>
-
-                <mo>+</mo>
-
-                <mi>C</mi>
-
-            </mrow>
-
-        </math>
-
-    </div>
-
-
-    <div class="example">
-
-        <div class="example-title">
-            Worked Example
-        </div>
-
-
-        <div class="step">
-
-            <p>Find:</p>
-
-            <math display="block">
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <mfrac>
-
-                        <mn>6</mn>
-
-                        <mrow>
-
-                            <mn>2</mn>
-                            <mi>x</mi>
-
-                            <mo>+</mo>
-
-                            <mn>5</mn>
-
-                        </mrow>
-
-                    </mfrac>
-
-                    <mi>dx</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="step">
-
-            <p>
-                Here:
-            </p>
-
-            <math display="block">
-
-                <mrow>
-
-                    <mi>a</mi>
-                    <mo>=</mo>
-                    <mn>6</mn>
-
-                    <mo>,</mo>
-
-                    <mi>b</mi>
-                    <mo>=</mo>
-                    <mn>2</mn>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="step">
-
-            <p>
-                Therefore:
-            </p>
-
-            <math display="block">
-
-                <mrow>
-
-                    <mo>=</mo>
-
-                    <mfrac>
-
-                        <mn>6</mn>
-                        <mn>2</mn>
-
-                    </mfrac>
-
-                    <mi>ln</mi>
-
-                    <mo>|</mo>
-
-                    <mn>2</mn>
-                    <mi>x</mi>
-
-                    <mo>+</mo>
-
-                    <mn>5</mn>
-
-                    <mo>|</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="step">
-
-            <math display="block">
-
-                <mrow>
-
-                    <mo>=</mo>
-
-                    <mn>3</mn>
-
-                    <mi>ln</mi>
-
-                    <mo>|</mo>
-
-                    <mn>2</mn>
-                    <mi>x</mi>
-
-                    <mo>+</mo>
-
-                    <mn>5</mn>
-
-                    <mo>|</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     RECOGNITION TABLE
-========================= -->
-
-<section>
-
-    <h2>How to Recognize the Form</h2>
-
-    <div class="table-wrapper">
-
-        <table>
-
-            <thead>
-
-                <tr>
-                    <th>Function</th>
-                    <th>Recognize it as</th>
-                    <th>Use</th>
-                </tr>
-
-            </thead>
-
-
-            <tbody>
-
-                <tr>
-
-                    <td>
-
-                        <math>
-                            <msup>
-                                <mi>e</mi>
-                                <mrow>
-                                    <mi>a</mi>
-                                    <mi>x</mi>
-                                </mrow>
-                            </msup>
-                        </math>
-
-                    </td>
-
-                    <td>
-                        Exponential
-                    </td>
-
-                    <td>
-                        Exponential rule
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-
-                        <math>
-                            <mi>cos</mi>
-                            <mo>(</mo>
-                            <mi>a</mi>
-                            <mi>x</mi>
-                            <mo>)</mo>
-                        </math>
-
-                    </td>
-
-                    <td>
-                        Cosine
-                    </td>
-
-                    <td>
-                        Trigonometric rule
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-
-                        <math>
-                            <mi>sin</mi>
-                            <mo>(</mo>
-                            <mi>a</mi>
-                            <mi>x</mi>
-                            <mo>)</mo>
-                        </math>
-
-                    </td>
-
-                    <td>
-                        Sine
-                    </td>
-
-                    <td>
-                        Trigonometric rule
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-
-                        <math>
-
-                            <mfrac>
-                                <mn>1</mn>
-                                <mi>x</mi>
-                            </mfrac>
-
-                        </math>
-
-                    </td>
-
-                    <td>
-                        Reciprocal of x
-                    </td>
-
-                    <td>
-                        Natural logarithm rule
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-
-                        <math>
-
-                            <mfrac>
-
-                                <mi>a</mi>
-
-                                <mrow>
-
-                                    <mi>b</mi>
-                                    <mi>x</mi>
-
-                                    <mo>+</mo>
-
-                                    <mi>d</mi>
-
-                                </mrow>
-
-                            </mfrac>
-
-                        </math>
-
-                    </td>
-
-                    <td>
-                        Constant over linear function
-                    </td>
-
-                    <td>
-                        Logarithm rule
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     COMMON MISTAKES
-========================= -->
-
-<section>
-
-    <h2>Common Mistakes</h2>
-
-
-    <div class="important-box">
+        <h2>Recognizing \(\frac{1}{x}\)</h2>
 
         <p>
-            <strong>1. Forgetting the extra factor.</strong>
+            The function \(\frac{1}{x}\) is a special case because
+            its power is \(n=-1\). The ordinary power rule does not
+            apply when \(n=-1\).
         </p>
 
         <p>
-            When integrating
-            <span class="inline-math">
-                <math>
-                    <msup>
-                        <mi>e</mi>
-                        <mrow>
-                            <mi>a</mi>
-                            <mi>x</mi>
-                        </mrow>
-                    </msup>
-                </math>
-            </span>,
-            <span class="inline-math">
-                <math>
-                    <mi>sin</mi>
-                    <mo>(</mo>
-                    <mi>a</mi>
-                    <mi>x</mi>
-                    <mo>)</mo>
-                </math>
-            </span>,
-            or
-            <span class="inline-math">
-                <math>
-                    <mi>cos</mi>
-                    <mo>(</mo>
-                    <mi>a</mi>
-                    <mi>x</mi>
-                    <mo>)</mo>
-                </math>
-            </span>,
-            remember the factor
-            <span class="inline-math">
-                <math>
-                    <mfrac>
-                        <mn>1</mn>
-                        <mi>a</mi>
-                    </mfrac>
-                </math>
-            </span>.
+            Instead, we use the natural logarithm rule.
         </p>
 
 
-        <p>
-            <strong>2. Using the power rule for
-                <span class="inline-math">
-                    <math>
-                        <mfrac>
-                            <mn>1</mn>
-                            <mi>x</mi>
-                        </mfrac>
-                    </math>
-                </span>.
-            </strong>
-        </p>
+        <div class="formula-box">
 
-        <p>
-            The power rule does not work when
-            <span class="inline-math">
-                <math>
-                    <mi>n</mi>
-                    <mo>=</mo>
-                    <mo>−</mo>
-                    <mn>1</mn>
-                </math>
-            </span>.
-            Use the logarithm rule instead.
-        </p>
+            <div class="formula-label">Natural Logarithm Rule</div>
 
-
-        <p>
-            <strong>3. Forgetting \(+C\).</strong>
-        </p>
-
-        <p>
-            Always include the constant of integration when finding
-            an indefinite integral.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     SUMMARY
-========================= -->
-
-<section>
-
-    <h2>Lesson Summary</h2>
-
-
-    <div class="summary-box">
-
-        <div class="summary-item">
-
-            <strong>Power:</strong>
-
-            <math>
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <msup>
-                        <mi>x</mi>
-                        <mi>n</mi>
-                    </msup>
-
-                    <mi>dx</mi>
-
-                    <mo>=</mo>
-
-                    <mfrac>
-
-                        <msup>
-                            <mi>x</mi>
-                            <mrow>
-                                <mi>n</mi>
-                                <mo>+</mo>
-                                <mn>1</mn>
-                            </mrow>
-                        </msup>
-
-                        <mrow>
-                            <mi>n</mi>
-                            <mo>+</mo>
-                            <mn>1</mn>
-                        </mrow>
-
-                    </mfrac>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
+            \[
+            \int \frac{1}{x}\,dx
+            =
+            \ln|x|+C
+            \]
 
         </div>
 
 
-        <div class="summary-item">
+        <div class="example">
 
-            <strong>Exponential:</strong>
+            <div class="example-title">Worked Example</div>
 
-            <math>
+            <p>Evaluate:</p>
 
-                <mrow>
+            \[
+            \int \frac{1}{x}\,dx
+            \]
 
-                    <mo>∫</mo>
+            <div class="step">
 
-                    <msup>
+                **Step 1: Recognize the function**
 
-                        <mi>e</mi>
+                <p>
+                    The function is the reciprocal of \(x\).
+                </p>
 
-                        <mrow>
-                            <mi>a</mi>
-                            <mi>x</mi>
-                        </mrow>
-
-                    </msup>
-
-                    <mi>dx</mi>
-
-                    <mo>=</mo>
-
-                    <mfrac>
-                        <mn>1</mn>
-                        <mi>a</mi>
-                    </mfrac>
-
-                    <msup>
-
-                        <mi>e</mi>
-
-                        <mrow>
-                            <mi>a</mi>
-                            <mi>x</mi>
-                        </mrow>
-
-                    </msup>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="summary-item">
-
-            <strong>Sine:</strong>
-
-            <math>
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <mi>sin</mi>
-                    <mo>(</mo>
-                    <mi>a</mi>
-                    <mi>x</mi>
-                    <mo>)</mo>
-
-                    <mi>dx</mi>
-
-                    <mo>=</mo>
-
-                    <mo>−</mo>
-
-                    <mfrac>
-                        <mn>1</mn>
-                        <mi>a</mi>
-                    </mfrac>
-
-                    <mi>cos</mi>
-                    <mo>(</mo>
-                    <mi>a</mi>
-                    <mi>x</mi>
-                    <mo>)</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="summary-item">
-
-            <strong>Cosine:</strong>
-
-            <math>
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <mi>cos</mi>
-                    <mo>(</mo>
-                    <mi>a</mi>
-                    <mi>x</mi>
-                    <mo>)</mo>
-
-                    <mi>dx</mi>
-
-                    <mo>=</mo>
-
-                    <mfrac>
-                        <mn>1</mn>
-                        <mi>a</mi>
-                    </mfrac>
-
-                    <mi>sin</mi>
-                    <mo>(</mo>
-                    <mi>a</mi>
-                    <mi>x</mi>
-                    <mo>)</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-
-        <div class="summary-item">
-
-            <strong>Reciprocal:</strong>
-
-            <math>
-
-                <mrow>
-
-                    <mo>∫</mo>
-
-                    <mfrac>
-                        <mn>1</mn>
-                        <mi>x</mi>
-                    </mfrac>
-
-                    <mi>dx</mi>
-
-                    <mo>=</mo>
-
-                    <mi>ln</mi>
-
-                    <mo>|</mo>
-                    <mi>x</mi>
-                    <mo>|</mo>
-
-                    <mo>+</mo>
-
-                    <mi>C</mi>
-
-                </mrow>
-
-            </math>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     PRACTICE
-========================= -->
-
-<section class="practice-section">
-
-    <h2>Ready to Practice?</h2>
-
-    <p>
-        Test your understanding of recognizing common integrals
-        with interactive questions.
-    </p>
-
-    <a href="recognize-integrals-questions.html" class="practice-button">
-        START QUESTIONS →
-    </a>
-
-</section>
-
-
-<!-- =====================================
-     COMPLETION
-===================================== -->
-
-<section class="completion-section" id="completionSection">
-
-    <span class="party-strip"></span>
-    <span class="party-strip"></span>
-    <span class="party-strip"></span>
-    <span class="party-strip"></span>
-    <span class="party-strip"></span>
-    <span class="party-strip"></span>
-    <span class="party-strip"></span>
-    <span class="party-strip"></span>
-
-    <div class="completion-content">
-
-        <div class="completion-prompt">
-
-            <div class="completion-label">
-                LESSON 02 / 08
             </div>
 
-            <h2>
-                Lesson complete?
-            </h2>
+            <div class="step">
 
-            <p>
-                You have reached the end of the explanation.
-                Mark this lesson as complete to save your progress.
-            </p>
+                **Step 2: Apply the logarithm rule**
 
-            <button
-                class="complete-button"
-                id="completeButton"
-                type="button"
-            >
-                ✓ COMPLETE LESSON
-            </button>
+                \[
+                \int \frac{1}{x}\,dx
+                =
+                \ln|x|+C
+                \]
 
-        </div>
-
-        <div class="completed-message">
-
-            <div class="completion-label">
-                INTEGRATION • TOPIC 02
             </div>
 
-            <h2>
-                Congratulations!
-            </h2>
+            <div class="step">
 
-            <p>
-                You completed
-                <strong>Recognize Integrals</strong>.
-                Your progress has been saved.
-            </p>
+                **Final Answer**
+
+                \[
+                \boxed{\ln|x|+C}
+                \]
+
+            </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
+    <!-- CONSTANT OVER LINEAR FUNCTION -->
 
+    <section id="linear-denominator">
+
+        <h2>Recognizing \(\frac{a}{bx+d}\)</h2>
+
+        <p>
+            Another important form is a constant divided by a
+            linear expression. When you recognize this form,
+            you can use the logarithm rule.
+        </p>
+
+
+        <div class="formula-box">
+
+            <div class="formula-label">
+                Constant over Linear Function
+            </div>
+
+            \[
+            \int \frac{a}{bx+d}\,dx
+            =
+            \frac{a}{b}\ln|bx+d|+C
+            \]
+
+        </div>
+
+
+        <div class="example">
+
+            <div class="example-title">Worked Example</div>
+
+            <p>Evaluate:</p>
+
+            \[
+            \int \frac{6}{2x+5}\,dx
+            \]
+
+            <div class="step">
+
+                **Step 1: Recognize the function**
+
+                <p>
+                    The numerator is \(6\), and the denominator
+                    is the linear expression \(2x+5\).
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                **Step 2: Identify the constants**
+
+                \[
+                a=6,\qquad b=2
+                \]
+
+            </div>
+
+            <div class="step">
+
+                **Step 3: Apply the logarithm rule**
+
+                \[
+                \begin{aligned}
+                \int \frac{6}{2x+5}\,dx
+                &=
+                \frac{6}{2}\ln|2x+5|+C\\
+                &=
+                3\ln|2x+5|+C
+                \end{aligned}
+                \]
+
+            </div>
+
+            <div class="step">
+
+                **Final Answer**
+
+                \[
+                \boxed{3\ln|2x+5|+C}
+                \]
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RECOGNITION TABLE -->
+
+    <section id="recognition-table">
+
+        <h2>Recognizing the Correct Rule</h2>
+
+        <p>
+            Use this table to identify common functions and
+            the integration rule associated with each one.
+        </p>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Function</th>
+                        <th>Recognition</th>
+                        <th>Integration Rule</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>\(e^{ax}\)</td>
+
+                        <td>Exponential</td>
+
+                        <td>Exponential rule</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>\(\cos(ax)\)</td>
+
+                        <td>Cosine</td>
+
+                        <td>Trigonometric rule</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>\(\sin(ax)\)</td>
+
+                        <td>Sine</td>
+
+                        <td>Trigonometric rule</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>\(\frac{1}{x}\)</td>
+
+                        <td>Reciprocal of \(x\)</td>
+
+                        <td>Natural logarithm rule</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>\(\frac{a}{bx+d}\)</td>
+
+                        <td>Constant over linear function</td>
+
+                        <td>Logarithm rule</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMMON MISTAKES -->
+
+    <section id="common-mistakes">
+
+        <h2>Common Mistakes to Avoid</h2>
+
+        <div class="example">
+
+            <div class="step">
+
+                **1. Forgetting the extra factor**
+
+                <p>
+                    When integrating \(e^{ax}\), \(\sin(ax)\),
+                    or \(\cos(ax)\), remember the extra factor
+                    \(\frac{1}{a}\).
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                **2. Using the power rule for \(\frac{1}{x}\)**
+
+                <p>
+                    Remember that when \(n=-1\), the ordinary
+                    power rule cannot be used. Use the
+                    logarithm rule instead.
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                **3. Forgetting the constant of integration**
+
+                <p>
+                    Always remember to include \(+C\) in
+                    your indefinite integration answers.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LESSON SUMMARY -->
+
+    <section id="summary">
+
+        <h2>Lesson Summary</h2>
+
+        <p>
+            Before integrating, recognize the form of the function
+            and choose the appropriate rule.
+        </p>
+
+        <div class="summary-box">
+
+            <div class="summary-item">
+
+                <strong>Power Rule</strong>
+
+                \[
+                \int x^n\,dx
+                =
+                \frac{x^{n+1}}{n+1}+C
+                \]
+
+            </div>
+
+            <div class="summary-item">
+
+                <strong>Exponential Rule</strong>
+
+                \[
+                \int e^{ax}\,dx
+                =
+                \frac{1}{a}e^{ax}+C
+                \]
+
+            </div>
+
+            <div class="summary-item">
+
+                <strong>Sine Rule</strong>
+
+                \[
+                \int \sin(ax)\,dx
+                =
+                -\frac{1}{a}\cos(ax)+C
+                \]
+
+            </div>
+
+            <div class="summary-item">
+
+                <strong>Cosine Rule</strong>
+
+                \[
+                \int \cos(ax)\,dx
+                =
+                \frac{1}{a}\sin(ax)+C
+                \]
+
+            </div>
+
+            <div class="summary-item">
+
+                <strong>Reciprocal Rule</strong>
+
+                \[
+                \int \frac{1}{x}\,dx
+                =
+                \ln|x|+C
+                \]
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRACTICE -->
+
+    <section id="practice">
+
+        <div class="practice-section">
+
+            <h2>Ready to Practice?</h2>
+
+            <p>
+                Test your understanding of recognizing common
+                integrals with interactive questions.
+            </p>
+
+            <a href="recognize-integrals-questions.html"
+               class="practice-button">
+
+                START QUESTIONS →
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMPLETION -->
+
+    <section class="completion-section"
+             id="completionSection">
+
+        <!-- Celebration decorations -->
+
+        <div class="party-strip"></div>
+        <div class="party-strip"></div>
+        <div class="party-strip"></div>
+        <div class="party-strip"></div>
+        <div class="party-strip"></div>
+        <div class="party-strip"></div>
+        <div class="party-strip"></div>
+        <div class="party-strip"></div>
+
+
+        <div class="completion-content">
+
+            <div class="completion-prompt">
+
+                <div class="completion-label">
+                    LESSON 02 / 08
+                </div>
+
+                <h2>Lesson complete?</h2>
+
+                <p>
+                    You have reached the end of the explanation.
+                    Mark this lesson as complete to save your progress.
+                </p>
+
+                <button
+                    type="button"
+                    class="complete-button"
+                    id="completeButton">
+
+                    ✓ COMPLETE LESSON
+
+                </button>
+
+            </div>
+
+
+            <div class="completed-message">
+
+                <div class="completion-label">
+                    INTEGRATION • TOPIC 02
+                </div>
+
+                <h2>Congratulations!</h2>
+
+                <p>
+                    You completed Recognize Integrals.
+                    Your progress has been saved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
 
 </main>
-
-
-<!-- =========================
+<!-- =========================================
      FOOTER
-========================= -->
+========================================= -->
 
 <footer>
 
@@ -3029,311 +2264,326 @@
         Edu<span>Nova</span>
     </a>
 
-    <p>
-        Mathematics made clear.
-    </p>
+    <p>Mathematics made clear.</p>
 
-    <p style="margin-top:12px;">
+    <div class="policy-links"
+         style="display:flex; gap:22px; margin-top:20px; flex-wrap:wrap;">
+
+        <a href="terms.html"
+           style="color:#aaa; text-decoration:none; font-size:12px;">
+            Terms
+        </a>
+
+        <a href="privacy.html"
+           style="color:#aaa; text-decoration:none; font-size:12px;">
+            Privacy
+        </a>
+
+    </div>
+
+    <p style="font-size:12px; margin-top:22px;">
         © 2026 EduNova. All rights reserved.
     </p>
 
-
-<div class="policy-links" style="font-size:12px;display:flex;gap:14px;flex-wrap:wrap;margin-top:12px"><a href="terms.html" style="color:inherit;text-decoration:none">Terms of Use</a><a href="privacy.html" style="color:inherit;text-decoration:none">Privacy Policy</a></div>
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-<!-- =========================
-     SUPABASE
-========================= -->
+<!-- =========================================
+     MATHJAX
+========================================= -->
+
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+    },
+    svg: {
+        fontCache: 'global'
+    }
+};
+</script>
+
+<script
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+<!-- =========================================
+     INTERACTIVE SIN-COS CYCLE
+========================================= -->
+
+<script>
+
+let currentMode = "differentiate";
+let currentFunction = "sin";
+
+const cycleFunctions = {
+
+    sin: {
+        differentiate: "cos",
+        integrate: "minusCos",
+        math: "\\(\\sin x\\)",
+        name: "Sine"
+    },
+
+    cos: {
+        differentiate: "minusSin",
+        integrate: "sin",
+        math: "\\(\\cos x\\)",
+        name: "Cosine"
+    },
+
+    minusSin: {
+        differentiate: "minusCos",
+        integrate: "cos",
+        math: "\\(-\\sin x\\)",
+        name: "Negative sine"
+    },
+
+    minusCos: {
+        differentiate: "sin",
+        integrate: "minusSin",
+        math: "\\(-\\cos x\\)",
+        name: "Negative cosine"
+    }
+
+};
+
+
+const cycleNodeIds = {
+    sin: "sinNode",
+    cos: "cosNode",
+    minusSin: "minusSinNode",
+    minusCos: "minusCosNode"
+};
+
+
+function setMode(mode) {
+
+    currentMode = mode;
+
+    const differentiateButton =
+        document.getElementById("differentiateButton");
+
+    const integrateButton =
+        document.getElementById("integrateButton");
+
+    const directionText =
+        document.getElementById("directionText");
+
+    const centreMode =
+        document.getElementById("centreMode");
+
+    const centreDirection =
+        document.getElementById("centreDirection");
+
+    const cycleWrapper =
+        document.getElementById("cycleWrapper");
+
+
+    differentiateButton.classList.toggle(
+        "active",
+        mode === "differentiate"
+    );
+
+    integrateButton.classList.toggle(
+        "active",
+        mode === "integrate"
+    );
+
+
+    if (mode === "differentiate") {
+
+        directionText.textContent =
+            "DIFFERENTIATION · CLOCKWISE";
+
+        centreMode.textContent =
+            "DIFFERENTIATE";
+
+        centreDirection.textContent =
+            "CLOCKWISE";
+
+        cycleWrapper.classList.remove("integration");
+
+    } else {
+
+        directionText.textContent =
+            "INTEGRATION · ANTI-CLOCKWISE";
+
+        centreMode.textContent =
+            "INTEGRATE";
+
+        centreDirection.textContent =
+            "ANTI-CLOCKWISE";
+
+        cycleWrapper.classList.add("integration");
+
+    }
+
+
+    updateResult();
+
+}
+
+
+function chooseFunction(functionName) {
+
+    currentFunction = functionName;
+
+    updateResult();
+
+}
+
+
+function updateResult() {
+
+    const selected =
+        cycleFunctions[currentFunction];
+
+    const nextFunctionName =
+        selected[currentMode];
+
+    const nextFunction =
+        cycleFunctions[nextFunctionName];
+
+
+    // Highlight the selected function
+
+    Object.values(cycleNodeIds).forEach(id => {
+
+        document
+            .getElementById(id)
+            .classList.remove("active");
+
+    });
+
+
+    document
+        .getElementById(cycleNodeIds[currentFunction])
+        .classList.add("active");
+
+
+    // Update the result
+
+    const cycleResult =
+        document.getElementById("cycleResult");
+
+    const operation =
+        currentMode === "differentiate"
+            ? "DIFFERENTIATING"
+            : "INTEGRATING";
+
+
+    cycleResult.innerHTML = `
+
+        <div class="result-label">
+            ${operation} ${selected.name.toUpperCase()}
+        </div>
+
+        <div style="font-size:14px; color:#bbb; margin-bottom:12px;">
+            ${selected.math}
+        </div>
+
+        <div style="color:#ff5146; font-size:12px;
+                    font-weight:800; letter-spacing:1px;
+                    margin-bottom:10px;">
+            RESULT
+        </div>
+
+        <div>
+            ${nextFunction.math}
+        </div>
+
+    `;
+
+
+    // Render mathematical expressions
+
+    if (window.MathJax &&
+        window.MathJax.typesetPromise) {
+
+        window.MathJax.typesetPromise([cycleResult]);
+
+    }
+
+}
+
+
+// Initial cycle state
+
+chooseFunction("sin");
+
+</script>
+
+
+<!-- =========================================
+     SUPABASE LESSON COMPLETION
+========================================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-    const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+const SUPABASE_URL =
+    "https://majvqtbortonsrgdknms.supabase.co";
 
-    const supabaseClient = window.supabase.createClient(
+const SUPABASE_KEY =
+    "sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+const supabaseClient =
+    window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_KEY
     );
 
-</script>
-<script>
 
-    let mode = "differentiate";
+const LESSON_CHAPTER = "Integration";
+const LESSON_TOPIC_NUMBER = 2;
 
-    let selectedFunction = "sin";
 
+const completionSection =
+    document.getElementById("completionSection");
 
-    /* =========================
-       CYCLE RELATIONSHIPS
-    ========================= */
+const completeButton =
+    document.getElementById("completeButton");
 
-    const relationships = {
 
-        sin: {
-            differentiate: "cos",
-            integrate: "minusCos"
-        },
+function showCompletedState() {
 
-        cos: {
-            differentiate: "minusSin",
-            integrate: "sin"
-        },
+    completionSection.classList.add("completed");
 
-        minusSin: {
-            differentiate: "minusCos",
-            integrate: "cos"
-        },
+    completeButton.disabled = true;
 
-        minusCos: {
-            differentiate: "sin",
-            integrate: "minusSin"
-        }
+    completeButton.textContent =
+        "✓ LESSON COMPLETED";
 
-    };
+}
 
 
-    /* =========================
-       MATH DISPLAY
-       Returns MROW only
-    ========================= */
+async function checkLessonCompletion() {
 
-    const mathDisplay = {
-
-        sin: `
-            <mrow>
-                <mi>sin</mi>
-                <mi>x</mi>
-            </mrow>
-        `,
-
-        cos: `
-            <mrow>
-                <mi>cos</mi>
-                <mi>x</mi>
-            </mrow>
-        `,
-
-        minusSin: `
-            <mrow>
-                <mo>−</mo>
-                <mi>sin</mi>
-                <mi>x</mi>
-            </mrow>
-        `,
-
-        minusCos: `
-            <mrow>
-                <mo>−</mo>
-                <mi>cos</mi>
-                <mi>x</mi>
-            </mrow>
-        `
-
-    };
-
-
-    /* =========================
-       SET MODE
-    ========================= */
-
-    function setMode(newMode) {
-
-        mode = newMode;
-
-
-        const differentiateButton =
-            document.getElementById("differentiateButton");
-
-        const integrateButton =
-            document.getElementById("integrateButton");
-
-        const directionText =
-            document.getElementById("directionText");
-
-        const centreMode =
-            document.getElementById("centreMode");
-
-        const centreDirection =
-            document.getElementById("centreDirection");
-
-        const cycleWrapper =
-            document.getElementById("cycleWrapper");
-
-
-        if (mode === "differentiate") {
-
-            differentiateButton.classList.add("active");
-
-            integrateButton.classList.remove("active");
-
-            directionText.textContent =
-                "DIFFERENTIATION → CLOCKWISE";
-
-            centreMode.textContent =
-                "DIFFERENTIATION";
-
-            centreDirection.textContent =
-                "CLOCKWISE";
-
-            cycleWrapper.classList.remove("integration");
-
-        }
-
-        else {
-
-            integrateButton.classList.add("active");
-
-            differentiateButton.classList.remove("active");
-
-            directionText.textContent =
-                "INTEGRATION → ANTI-CLOCKWISE";
-
-            centreMode.textContent =
-                "INTEGRATION";
-
-            centreDirection.textContent =
-                "ANTI-CLOCKWISE";
-
-            cycleWrapper.classList.add("integration");
-
-        }
-
-
-        updateResult();
-
-    }
-
-
-    /* =========================
-       CHOOSE FUNCTION
-    ========================= */
-
-    function chooseFunction(functionName) {
-
-        selectedFunction = functionName;
-
-
-        document
-            .querySelectorAll(".function-node")
-            .forEach(function(node) {
-
-                node.classList.remove("active");
-
-            });
-
-
-        const ids = {
-
-            sin: "sinNode",
-
-            cos: "cosNode",
-
-            minusSin: "minusSinNode",
-
-            minusCos: "minusCosNode"
-
-        };
-
-
-        document
-            .getElementById(ids[functionName])
-            .classList.add("active");
-
-
-        updateResult();
-
-    }
-
-
-    /* =========================
-       UPDATE RESULT
-    ========================= */
-
-    function updateResult() {
-
-        const nextFunction =
-            relationships[selectedFunction][mode];
-
-
-        document.getElementById("cycleResult").innerHTML = `
-
-            <math display="block">
-
-                <mrow>
-
-                    ${mathDisplay[selectedFunction]}
-
-                    <mo>→</mo>
-
-                    ${mathDisplay[nextFunction]}
-
-                </mrow>
-
-            </math>
-
-        `;
-
-    }
-
-
-    /* =========================
-       INITIAL STATE
-    ========================= */
-
-    chooseFunction("sin");
-
-
-    /* =========================
-       FIX INLINE MATHEMATICS
-    ========================= */
-
-    document.querySelectorAll("p, h2").forEach(function(element) {
-
-        element.innerHTML = element.innerHTML.replace(
-            /\\\((.*?)\\\)/g,
-            function(match, content) {
-
-                if (content === "+C") {
-                    return "+C";
-                }
-
-                return match;
-
-            }
-        );
-
-    });
-
-</script>
-<script>
-
-    /* =========================================
-       LESSON COMPLETION
-    ========================================= */
-
-    const LESSON_CHAPTER = "Integration";
-    const LESSON_TOPIC_NUMBER = 2;
-
-
-    async function checkLessonCompletion() {
+    try {
 
         const {
-            data: { user }
+            data: {
+                user
+            },
+            error: userError
         } = await supabaseClient.auth.getUser();
 
 
-        if (!user) {
+        if (userError || !user) {
             return;
         }
 
 
-        const { data, error } = await supabaseClient
+        const {
+            data,
+            error
+        } = await supabaseClient
             .from("lesson_progress")
             .select("completed_at")
             .eq("user_id", user.id)
@@ -3343,141 +2593,137 @@
 
 
         if (error) {
-
-            console.error(
-                "Progress check error:",
-                error
-            );
-
-            return;
+            throw error;
         }
 
 
-        if (data) {
+        if (data && data.completed_at) {
 
             showCompletedState();
 
         }
 
+    } catch (error) {
+
+        console.error(
+            "Could not check lesson completion:",
+            error
+        );
+
     }
 
-
-    async function completeLesson() {
-
-        const button =
-            document.getElementById("completeButton");
+}
 
 
-        button.disabled = true;
+async function completeLesson() {
 
-        button.textContent = "SAVING...";
+    try {
+
+        completeButton.disabled = true;
+
+        completeButton.textContent =
+            "SAVING PROGRESS...";
 
 
         const {
-            data: { user }
+            data: {
+                user
+            },
+            error: userError
         } = await supabaseClient.auth.getUser();
 
 
-        if (!user) {
+        if (userError || !user) {
 
-            button.disabled = false;
+            alert(
+                "Please log in to save your lesson progress."
+            );
 
-            button.textContent =
+            completeButton.disabled = false;
+
+            completeButton.textContent =
                 "✓ COMPLETE LESSON";
-
-            alert("Please log in before completing this lesson.");
 
             return;
 
         }
 
 
-        const { error } = await supabaseClient
+        const {
+            error
+        } = await supabaseClient
             .from("lesson_progress")
             .upsert(
+
                 {
                     user_id: user.id,
                     chapter: LESSON_CHAPTER,
                     topic_number: LESSON_TOPIC_NUMBER,
                     completed_at: new Date().toISOString()
                 },
+
                 {
                     onConflict:
                         "user_id,chapter,topic_number"
                 }
+
             );
 
 
         if (error) {
-
-            console.error(
-                "Lesson completion error:",
-                error
-            );
-
-            button.disabled = false;
-
-            button.textContent =
-                "✓ COMPLETE LESSON";
-
-            alert(
-                "Something went wrong while saving your progress."
-            );
-
-            return;
-
+            throw error;
         }
 
 
         showCompletedState();
 
+
+    } catch (error) {
+
+        console.error(
+            "Could not save lesson completion:",
+            error
+        );
+
+        alert(
+            "Something went wrong while saving your progress. Please try again."
+        );
+
+
+        completeButton.disabled = false;
+
+        completeButton.textContent =
+            "✓ COMPLETE LESSON";
+
     }
 
-
-    function showCompletedState() {
-
-        const section =
-            document.getElementById("completionSection");
-
-        const button =
-            document.getElementById("completeButton");
+}
 
 
-        section.classList.add("completed");
+// Connect completion button
 
-        button.disabled = true;
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-        button.textContent =
-            "✓ LESSON COMPLETED";
+        completeButton.addEventListener(
+            "click",
+            completeLesson
+        );
+
+        checkLessonCompletion();
 
     }
-
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        () => {
-
-            const completeButton =
-                document.getElementById("completeButton");
-
-
-            if (completeButton) {
-
-                completeButton.addEventListener(
-                    "click",
-                    completeLesson
-                );
-
-            }
-
-
-            checkLessonCompletion();
-
-        }
-    );
+);
 
 </script>
-    <script src="premium-access.js"></script>
-</body>
 
+
+<!-- =========================================
+     PREMIUM ACCESS
+========================================= -->
+
+<script src="premium-access.js"></script>
+
+</body>
 </html>
