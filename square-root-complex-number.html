@@ -49,7 +49,7 @@ window.MathJax = {
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow">Chapter 09 · Complex Numbers · Topic 03</div>
+      <div class="eyebrow">Chapter 07 · Complex Numbers · Topic 03</div>
       <h1>Square Roots of <span style="color:#B85C38">Complex Numbers</span></h1>
       <p>A complex number can have square roots too. Learn how to find them, understand why they come in pairs, and check your answers with confidence.</p>
       <div class="hero-meta"><span class="pill">Clear explanations</span><span class="pill">Guided examples</span><span class="pill">Interactive practice</span></div>
@@ -247,7 +247,7 @@ window.MathJax = {
         <p class="small" style="color:#bbb;margin-top:15px">Your next step: revisit any solution you want to strengthen.</p>
       </div>
       <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:22px">
-        <span class="small">Chapter 09 · Topic 03</span>
+        <span class="small">Chapter 07 · Topic 03</span>
         <button class="btn btn-primary" id="completePractice">Finish practice</button>
       </div>
     </section>
@@ -299,15 +299,29 @@ $$(".question[data-x]").forEach(q=>{
   });
 });
 function setupChoice(containerId,feedbackId,solutionId,activity){
-  const container=$("#"+containerId), feedback=$("#"+feedbackId), solution=$("#"+solutionId);
+  const container=$("#"+containerId);
+  const feedback=$("#"+feedbackId);
+  const solution=solutionId ? $("#"+solutionId) : null;
+
   $$(".choice",container).forEach(btn=>btn.addEventListener("click",()=>{
     $$(".choice",container).forEach(b=>b.classList.remove("selected","correct-choice"));
     btn.classList.add("selected");
-    if(btn.dataset.correct==="true"){btn.classList.add("correct-choice");feedback.textContent="Exactly right. Your reasoning is on track.";feedback.className="feedback correct";solution.classList.add("show");markDone(activity);typeset()}
-    else{feedback.textContent="Not quite. Think about the role of i² or the meaning of a square root.";feedback.className="feedback incorrect";solution.classList.remove("show")}
+
+    if(btn.dataset.correct==="true"){
+      btn.classList.add("correct-choice");
+      feedback.textContent="Exactly right. Your reasoning is on track.";
+      feedback.className="feedback correct";
+      if(solution) solution.classList.add("show");
+      markDone(activity);
+      typeset();
+    }else{
+      feedback.textContent="Not quite. Think about the role of i² or the meaning of a square root.";
+      feedback.className="feedback incorrect";
+      if(solution) solution.classList.remove("show");
+    }
   }));
 }
-setupChoice("methodChoices","methodFeedback", "methodChoices", "1");
+setupChoice("methodChoices","methodFeedback",null,"1");
 setupChoice("errorChoices","errorFeedback","errorSolution","6");
 setupChoice("oppositeChoices","oppositeFeedback","oppositeSolution","7");
 $$(".question[data-type='coeff'] .check-answer").forEach(()=>{});
