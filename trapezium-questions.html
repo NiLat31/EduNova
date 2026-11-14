@@ -101,74 +101,287 @@
         }
 
 
-        /* =========================================
-           HERO
-        ========================================= */
+        
+/* =========================================
+   HERO
+========================================= */
 
-        .hero {
-            background: #111;
+.hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: #09090b;
+    color: white;
+    padding: 85px 7%;
+    min-height: 410px;
+    display: flex;
+    align-items: center;
+}
 
-            color: white;
+/* Subtle mathematical grid */
 
-            padding: 85px 7%;
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: linear-gradient(90deg, black, transparent 90%);
+}
 
-            position: relative;
-            overflow: hidden;
-        }
+/* Large circular decoration */
 
-        .hero::before {
-            content: "";
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 570px;
+    height: 570px;
+    right: -170px;
+    top: -270px;
+    border: 1px solid rgba(229,43,32,.23);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 45px rgba(229,43,32,.035),
+        0 0 0 90px rgba(229,43,32,.025);
+    z-index: -1;
+}
 
-            position: absolute;
+.hero-inner {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    align-items: center;
+    gap: 35px;
+    position: relative;
+    z-index: 2;
+}
 
-            width: 430px;
-            height: 430px;
+.hero-content {
+    max-width: 650px;
+}
 
-            border: 1px solid rgba(255,255,255,0.12);
+.chapter-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #ff5146;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
 
-            border-radius: 50%;
+.chapter-label::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: #e52b20;
+}
 
-            right: -100px;
-            top: -150px;
-        }
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(48px, 6.5vw, 82px);
+    line-height: 1.04;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+}
 
-        .hero-content {
-            max-width: 850px;
+.hero h1 span {
+    color: #ff5146;
+    display: block;
+}
 
-            position: relative;
-            z-index: 2;
-        }
+.hero p {
+    color: #bdbdc3;
+    font-size: 17px;
+    line-height: 1.9;
+    max-width: 540px;
+}
 
-        .chapter-label {
-            color: #e00000;
+.hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+}
 
-            font-size: 14px;
-            font-weight: 700;
+.hero-pill {
+    border: 1px solid rgba(255,255,255,.13);
+    background: rgba(255,255,255,.045);
+    color: #dedee2;
+    padding: 9px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
 
-            letter-spacing: 3px;
+/* Animated graph decoration */
 
-            text-transform: uppercase;
+.hero-visual {
+    position: relative;
+    width: 100%;
+    max-width: 510px;
+    justify-self: end;
+    perspective: 1000px;
+}
 
-            margin-bottom: 18px;
-        }
+.hero-visual::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(229,43,32,.2);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow:
+        0 0 0 35px rgba(229,43,32,.025),
+        0 0 0 70px rgba(229,43,32,.018);
+}
 
-        .hero h1 {
-            font-family: "Playfair Display", serif;
+.hero-graph {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    animation: graphFloat 6s ease-in-out infinite;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,.25));
+}
 
-            font-size: clamp(45px, 7vw, 75px);
+.hero-graph svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
 
-            line-height: 1.05;
+.hero-curve {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: curveDraw 3s ease forwards .4s;
+}
 
-            margin-bottom: 20px;
-        }
+.hero-area {
+    opacity: 0;
+    animation: areaAppear 1.4s ease forwards 2.2s;
+}
 
-        .hero p {
-            color: #d5d5d5;
+.hero-orbit {
+    position: absolute;
+    width: 95%;
+    height: 65%;
+    left: 2%;
+    top: 18%;
+    border: 1px solid rgba(229,43,32,.25);
+    border-radius: 50%;
+    transform: rotate(-18deg);
+    animation: orbitRotate 24s linear infinite;
+    pointer-events: none;
+}
 
-            font-size: 19px;
+.hero-orbit::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff5146;
+    box-shadow: 0 0 18px #ff5146;
+    top: 10%;
+    left: 15%;
+}
 
-            max-width: 700px;
-        }
+@keyframes curveDraw {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes areaAppear {
+    to { opacity: 1; }
+}
+
+@keyframes graphFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes orbitRotate {
+    from { transform: rotate(-18deg); }
+    to { transform: rotate(342deg); }
+}
+
+/* Responsive hero */
+
+@media (max-width: 850px) {
+    .hero {
+        padding: 70px 6%;
+    }
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-visual {
+        max-width: 470px;
+        justify-self: center;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 550px) {
+    .hero {
+        padding: 60px 6% 45px;
+    }
+
+    .hero h1 {
+        font-size: clamp(43px, 12vw, 62px);
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .hero-visual {
+        max-width: 370px;
+    }
+
+    .hero-pills {
+        gap: 7px;
+    }
+
+    .hero-pill {
+        font-size: 9px;
+        padding: 8px 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-graph,
+    .hero-curve,
+    .hero-area,
+    .hero-orbit {
+        animation: none;
+    }
+
+    .hero-curve {
+        stroke-dashoffset: 0;
+    }
+
+    .hero-area {
+        opacity: 1;
+    }
+}
+
 
 
         /* =========================================
@@ -697,27 +910,271 @@
          HERO
     ========================================= -->
 
-    <header class="hero">
+   
+<header class="hero">
+
+    <div class="hero-inner">
 
         <div class="hero-content">
 
             <div class="chapter-label">
-                Integration • Topic 01
+                Integration · Topic 01
             </div>
 
             <h1>
-                Practice Questions
+                Practice
+                <span>Questions.</span>
             </h1>
 
             <p>
                 Apply what you have learned about the Trapezium Rule.
-                Work through each question carefully and reveal the
-                solution when you are ready.
+                Work through each question carefully, test your
+                understanding and reveal the solutions when you
+                are ready.
             </p>
+
+            <div class="hero-pills">
+
+                <div class="hero-pill">
+                    09 QUESTIONS
+                </div>
+
+                <div class="hero-pill">
+                    ∫ INTEGRATION
+                </div>
+
+                <div class="hero-pill">
+                    ✦ STEP-BY-STEP SOLUTIONS
+                </div>
+
+            </div>
 
         </div>
 
-    </header>
+
+        <div class="hero-visual">
+
+            <div class="hero-orbit"></div>
+
+            <div class="hero-graph">
+
+                <svg viewBox="0 0 520 340"
+                     xmlns="http://www.w3.org/2000/svg">
+
+                    <defs>
+
+                        <linearGradient id="heroAreaGradient"
+                            x1="0" y1="0" x2="0" y2="1">
+
+                            <stop offset="0%"
+                                  stop-color="#e52b20"
+                                  stop-opacity=".42"/>
+
+                            <stop offset="100%"
+                                  stop-color="#e52b20"
+                                  stop-opacity=".015"/>
+
+                        </linearGradient>
+
+                        <filter id="heroGlow">
+                            <feGaussianBlur stdDeviation="5"
+                                            result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+
+                    </defs>
+
+
+                    <!-- Mathematical grid -->
+
+                    <g stroke="#ffffff" stroke-opacity=".09"
+                       stroke-width="1">
+
+                        <path d="
+                            M50 40 V290
+                            M110 40 V290
+                            M170 40 V290
+                            M230 40 V290
+                            M290 40 V290
+                            M350 40 V290
+                            M410 40 V290
+                            M470 40 V290
+                        "/>
+
+                        <path d="
+                            M50 50 H470
+                            M50 100 H470
+                            M50 150 H470
+                            M50 200 H470
+                            M50 250 H470
+                            M50 290 H470
+                        "/>
+
+                    </g>
+
+
+                    <!-- Axes -->
+
+                    <path d="M45 290 H485"
+                          stroke="#e8e8e8"
+                          stroke-opacity=".7"
+                          stroke-width="2"/>
+
+                    <path d="M50 300 V30"
+                          stroke="#e8e8e8"
+                          stroke-opacity=".7"
+                          stroke-width="2"/>
+
+
+                    <!-- Axis arrows -->
+
+                    <path d="M485 290 l-9 -5 v10 z"
+                          fill="#e8e8e8"/>
+
+                    <path d="M50 30 l-5 9 h10 z"
+                          fill="#e8e8e8"/>
+
+
+                    <!-- Area below curve -->
+
+                    <path class="hero-area"
+                          d="
+                            M50 245
+                            C120 230 165 210 215 185
+                            C270 155 315 125 365 95
+                            C405 72 440 55 470 43
+                            L470 290
+                            L50 290 Z
+                          "
+                          fill="url(#heroAreaGradient)"/>
+
+
+                    <!-- Trapezium divisions -->
+
+                    <g stroke="#ff5146"
+                       stroke-width="1.5"
+                       stroke-dasharray="5 7"
+                       opacity=".65">
+
+                        <path d="M50 245 V290"/>
+                        <path d="M155 215 V290"/>
+                        <path d="M260 160 V290"/>
+                        <path d="M365 95 V290"/>
+                        <path d="M470 43 V290"/>
+
+                    </g>
+
+
+                    <!-- Straight-line approximation -->
+
+                    <path d="
+                        M50 245
+                        L155 215
+                        L260 160
+                        L365 95
+                        L470 43
+                        L470 290
+                        L50 290 Z
+                    "
+                    fill="#e52b20"
+                    fill-opacity=".055"
+                    stroke="none"/>
+
+                    <path d="
+                        M50 245
+                        L155 215
+                        L260 160
+                        L365 95
+                        L470 43
+                    "
+                    fill="none"
+                    stroke="#ff5146"
+                    stroke-width="2.5"
+                    stroke-dasharray="6 6"
+                    opacity=".8"/>
+
+
+                    <!-- Original curve -->
+
+                    <path class="hero-curve"
+                          d="
+                            M50 245
+                            C120 230 165 210 215 185
+                            C270 155 315 125 365 95
+                            C405 72 440 55 470 43
+                          "
+                          fill="none"
+                          stroke="#ff5146"
+                          stroke-width="4"
+                          stroke-linecap="round"
+                          filter="url(#heroGlow)"/>
+
+
+                    <!-- Data points -->
+
+                    <g fill="#ffffff"
+                       stroke="#ff5146"
+                       stroke-width="3">
+
+                        <circle cx="50" cy="245" r="6"/>
+                        <circle cx="155" cy="215" r="6"/>
+                        <circle cx="260" cy="160" r="6"/>
+                        <circle cx="365" cy="95" r="6"/>
+                        <circle cx="470" cy="43" r="6"/>
+
+                    </g>
+
+
+                    <!-- Interval labels -->
+
+                    <g fill="#c9c9ce"
+                       font-family="DM Sans, sans-serif"
+                       font-size="12"
+                       text-anchor="middle">
+
+                        <text x="102" y="310">h</text>
+                        <text x="207" y="310">h</text>
+                        <text x="312" y="310">h</text>
+                        <text x="417" y="310">h</text>
+
+                    </g>
+
+
+                    <!-- Function label -->
+
+                    <text x="380" y="30"
+                          fill="#ff7168"
+                          font-family="DM Sans, sans-serif"
+                          font-size="15"
+                          font-weight="700">
+                        y = f(x)
+                    </text>
+
+
+                    <!-- Axis labels -->
+
+                    <text x="490" y="315"
+                          fill="#ffffff"
+                          font-family="DM Sans, sans-serif"
+                          font-size="15">x</text>
+
+                    <text x="30" y="30"
+                          fill="#ffffff"
+                          font-family="DM Sans, sans-serif"
+                          font-size="15">y</text>
+
+                </svg>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
 
 
     <!-- =========================================
