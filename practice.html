@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111111">
+<meta name="description" content="Access Grade 12 Advanced Mathematics practice questions and topic worksheets on EduNova.">
+
+<title>EduNova | Practice Questions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --red: #e52b20;
+    --dark: #111111;
+    --paper: #f7f7f8;
+    --muted: #777777;
+    --border: #e8e8e8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--dark);
+    min-height: 100vh;
+}
+
+header {
+    background: var(--dark);
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span,
+.footer-logo span {
+    color: var(--red);
+}
+
+.header-link {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid #444;
+    padding: 10px 17px;
+    border-radius: 7px;
+    transition: 0.2s;
+}
+
+.header-link:hover {
+    background: var(--red);
+    border-color: var(--red);
+}
+
+main {
+    width: min(1050px, 88%);
+    margin: 55px auto 80px;
+}
+
+.eyebrow {
+    color: var(--red);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 13px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 5vw, 49px);
+    line-height: 1.15;
+    margin-bottom: 13px;
+}
+
+.intro {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 650px;
+    margin-bottom: 36px;
+}
+
+.section-heading {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.chapter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.chapter {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.chapter[open] {
+    border-color: #e9aaa6;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.035);
+}
+
+.chapter summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 20px 23px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.chapter summary::-webkit-details-marker {
+    display: none;
+}
+
+.chapter-name {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.chapter-number {
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 800;
+    min-width: 25px;
+}
+
+.arrow {
+    color: #999;
+    font-size: 17px;
+    transition: transform 0.2s;
+}
+
+.chapter[open] .arrow {
+    transform: rotate(180deg);
+}
+
+.chapter-content {
+    border-top: 1px solid #eeeeee;
+    padding: 10px 23px 15px 62px;
+}
+
+.topic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.topic:last-child {
+    border-bottom: none;
+}
+
+.topic-title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.topic-label {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.pdf-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--red);
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.pdf-button:hover {
+    background: #bd1e16;
+    transform: translateY(-1px);
+}
+
+.coming-soon {
+    color: #999;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+footer {
+    background: var(--dark);
+    color: #aaa;
+    padding: 25px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 12px;
+}
+
+.footer-logo {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.footer-links {
+    display: flex;
+    gap: 18px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 17px 6%;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    main {
+        width: 90%;
+        margin-top: 38px;
+    }
+
+    .chapter summary {
+        padding: 18px 15px;
+        font-size: 13px;
+    }
+
+    .chapter-content {
+        padding: 10px 15px;
+    }
+
+    .topic {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .pdf-button {
+        width: 100%;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Edu<span>Nova</span></div>
+    <a href="dashboard.html" class="header-link">← Dashboard</a>
+</header>
+
+<main>
+
+    <div class="eyebrow">EduNova Learning Resources</div>
+
+    <h1>Practice Questions</h1>
+
+    <p class="intro">
+        Strengthen your mathematical understanding through topic-based
+        worksheets. Choose a chapter, select a lesson, and practise
+        what you have learned.
+    </p>
+
+    <div class="section-heading">Grade 12 Advanced Mathematics</div>
+
+    <div class="chapter-list">
+
+        <!-- CHAPTER 01 -->
+        <details class="chapter">
+            <summary>
+                <span class="chapter-name">
+                    <span class="chapter-number">01</span>
+                    Logarithm &amp; Exponential
+                </span>
+                <span class="arrow">⌄</span>
+            </summary>
+            <div class="chapter-content">
+                <p class="coming-soon">Lesson list coming soon.</p>
+            </div>
+        </details>
+
+        <!-- CHAPTER 02 -->
+        <details class="chapter">
+            <summary>
+                <span class="chapter-name">
+                    <span class="chapter-number">02</span>
+                    Trigonometry
+                </span>
+                <span class="arrow">⌄</span>
+            </summary>
+            <div class="chapter-content">
+                <p class="coming-soon">Lesson list coming soon.</p>
+            </div>
+        </details>
+
+        <!-- CHAPTER 03 -->
+        <details class="chapter">
+            <summary>
+                <span class="chapter-name">
+                    <span class="chapter-number">03</span>
+                    Differentiation
+                </span>
+                <span class="arrow">⌄</span>
+            </summary>
+            <div class="chapter-content">
+                <p class="coming-soon">Lesson list coming soon.</p>
+            </div>
+        </details>
+
+        <!-- CHAPTER 04 -->
+        <details class="chapter">
+            <summary>
+                <span class="chapter-name">
+                    <span class="chapter-number">04</span>
+                    Discrete Random Variable
+                </span>
+                <span class="arrow">⌄</span>
+            </summary>
+            <div class="chapter-content">
+                <p class="coming-soon">Lesson list coming soon.</p>
+            </div>
+        </details>
+
+        <!-- CHAPTER 05: INTEGRATION -->
+        <details class="chapter" open>
+            <summary>
+                <span class="chapter-name">
+                    <span class="chapter-number">05</span>
+                    Integration
+                </span>
+                <span class="arrow">⌄</span>
+            </summary>
+
+            <div class="chapter-content">
+
+                <div class="topic">
+                    <div>
+                        <div class="topic-title">Topic 01: Trapezium Rule</div>
+                        <div class="topic-label">Practice worksheet</div>
+                    </div>
+                    <a class="pdf-button" href="worksheets/trapezium-rule-questions.pdf" target="_blank" rel="noopener">
+                        View Worksheet ↗
+                    </a>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 02: Recognize Integrals</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 03: Integration Using Trigonometrical Relationships</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 04: Integration of 1/(x² + a²)</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 05: Integrating Functions in the Form f'(x)/f(x)</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 06: Integration Using Partial Fractions</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 07: Integration Using Substitution</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 08: Integration by Parts</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+            </div>
+        </details>
+
+        <!-- CHAPTER 06: VECTORS -->
+        <details class="chapter">
+            <summary>
+                <span class="chapter-name">
+                    <span class="chapter-number">06</span>
+                    Vectors
+                </span>
+                <span class="arrow">⌄</span>
+            </summary>
+
+            <div class="chapter-content">
+
+                <div class="topic">
+                    <div class="topic-title">Topic 01: Definition of Vectors</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 02: Vector Geometry</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 03: Magnitude of a Vector</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 04: Position Vectors</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+            </div>
+        </details>
+
+        <!-- CHAPTER 07: COMPLEX NUMBERS -->
+        <details class="chapter">
+            <summary>
+                <span class="chapter-name">
+                    <span class="chapter-number">07</span>
+                    Complex Numbers
+                </span>
+                <span class="arrow">⌄</span>
+            </summary>
+
+            <div class="chapter-content">
+
+                <div class="topic">
+                    <div class="topic-title">Topic 01: Definition of a Complex Number</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 02: Operations with Complex Numbers</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 03: Square Root of a Complex Number</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 04: Complex Roots</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 05: Complex Roots of Polynomial Equations</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 06: Polar Form</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+            </div>
+        </details>
+
+        <!-- CHAPTER 08: NORMAL DISTRIBUTION -->
+        <details class="chapter">
+            <summary>
+                <span class="chapter-name">
+                    <span class="chapter-number">08</span>
+                    Normal Distribution
+                </span>
+                <span class="arrow">⌄</span>
+            </summary>
+
+            <div class="chapter-content">
+
+                <div class="topic">
+                    <div class="topic-title">Topic 01: Introduction to Normal Distribution</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 02: Using N.D. Table to Calculate Probabilities</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Topic 03: Non-standardised Variable</div>
+                    <span class="coming-soon">Coming soon</span>
+                </div>
+
+            </div>
+        </details>
+
+    </div>
+
+</main>
+
+<footer>
+    <div>
+        <div class="footer-logo">Edu<span>Nova</span></div>
+        <div>Mathematics made clear.</div>
+    </div>
+
+    <div class="footer-links">
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+    </div>
+
+    <div>© 2026 EduNova. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
