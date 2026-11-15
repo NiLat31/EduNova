@@ -289,7 +289,202 @@ nav {
     font-size: 10px;
     letter-spacing: 2px;
 }
+/* FEATURES BUTTON */
 
+.features-trigger {
+    margin-top: 25px;
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px 18px;
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.06);
+    color: white;
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .25s, border-color .25s;
+}
+
+.features-trigger:hover,
+.features-trigger[aria-expanded="true"] {
+    background: var(--red);
+    border-color: var(--red);
+}
+
+.features-trigger-icon {
+    font-size: 18px;
+}
+
+.features-trigger-arrow {
+    transition: transform .25s;
+}
+
+.features-trigger:hover .features-trigger-arrow {
+    transform: translateX(5px);
+}
+
+/* SIDEBAR OVERLAY */
+
+.features-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 49;
+    background: rgba(0,0,0,.55);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s, visibility .3s;
+}
+
+.features-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* SIDEBAR */
+
+.features-sidebar {
+    position: fixed;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    width: min(370px, 88vw);
+    height: 100vh;
+    height: 100dvh;
+    padding: 35px 28px;
+    display: flex;
+    flex-direction: column;
+    background: #111111;
+    color: white;
+    transform: translateX(-105%);
+    transition: transform .38s cubic-bezier(.22,.8,.25,1);
+    box-shadow: 15px 0 50px rgba(0,0,0,.2);
+    overflow-y: auto;
+}
+
+.features-sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 29px;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.sidebar-brand {
+    font: 700 31px/1 "Playfair Display",serif;
+    letter-spacing: -1px;
+}
+
+.sidebar-brand span {
+    color: var(--red);
+}
+
+.sidebar-caption {
+    margin-top: 9px;
+    color: #858585;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.sidebar-close {
+    width: 39px;
+    height: 39px;
+    border: 1px solid rgba(255,255,255,.18);
+    background: transparent;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    transition: background .2s, border-color .2s;
+}
+
+.sidebar-close:hover {
+    background: var(--red);
+    border-color: var(--red);
+}
+
+.sidebar-section-label {
+    margin: 34px 0 16px;
+    color: var(--red);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar-link {
+    position: relative;
+    min-height: 53px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    border: 1px solid transparent;
+    color: #d0d0d0;
+    text-decoration: none;
+    font-size: 12px;
+    transition: background .2s, color .2s, border-color .2s;
+}
+
+.sidebar-link:hover {
+    background: rgba(229,43,32,.10);
+    border-color: rgba(229,43,32,.25);
+    color: white;
+}
+
+.sidebar-icon {
+    width: 22px;
+    color: var(--red);
+    font-size: 17px;
+    text-align: center;
+}
+
+.sidebar-arrow {
+    margin-left: auto;
+    color: #777;
+    transition: transform .2s, color .2s;
+}
+
+.sidebar-link:hover .sidebar-arrow {
+    color: var(--red);
+    transform: translateX(4px);
+}
+
+.coming-label {
+    position: absolute;
+    right: 37px;
+    bottom: 3px;
+    color: var(--red);
+    font-size: 7px;
+    letter-spacing: .6px;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    border-top: 1px solid rgba(255,255,255,.12);
+    color: #777;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.sidebar-footer span:first-child {
+    color: var(--red);
+    font-weight: 700;
+}
 /* PAGE CONTENT */
 
 main {
@@ -1070,6 +1265,12 @@ body.loading .page-content {
             It is learning to see the connections, understand the reasoning,
             and solve problems with confidence. Your next step starts here.
         </p>
+        <button class="features-trigger" id="featuresTrigger" type="button"
+    aria-expanded="false" aria-controls="featuresSidebar">
+    <span class="features-trigger-icon">☷</span>
+    <span>EXPLORE FEATURES</span>
+    <span class="features-trigger-arrow">→</span>
+</button>
         
         <div class="hero-bottom">
             <a class="hero-action" href="#chapters">
@@ -1086,6 +1287,89 @@ body.loading .page-content {
         <div class="math-caption">THINK · EXPLORE · UNDERSTAND</div>
     </div>
 </header>
+
+<!-- EDUNOVA FEATURES SIDEBAR -->
+
+<div class="features-overlay" id="featuresOverlay"></div>
+
+<aside class="features-sidebar" id="featuresSidebar"
+    aria-label="EduNova features" aria-hidden="true">
+
+    <div class="sidebar-header">
+        <div>
+            <div class="sidebar-brand">Edu<span>Nova</span></div>
+            <div class="sidebar-caption">YOUR LEARNING SPACE</div>
+        </div>
+
+        <button class="sidebar-close" id="sidebarClose"
+            type="button" aria-label="Close features menu">
+            ×
+        </button>
+    </div>
+
+    <div class="sidebar-section-label">LEARNING TOOLS</div>
+
+    <nav class="sidebar-links">
+
+        <a href="syllabus.html" class="sidebar-link">
+            <span class="sidebar-icon">▤</span>
+            <span>Syllabus</span>
+            <span class="sidebar-arrow">→</span>
+        </a>
+
+        <a href="premium.html" class="sidebar-link">
+            <span class="sidebar-icon">✦</span>
+            <span>Premium Access</span>
+            <span class="sidebar-arrow">→</span>
+        </a>
+
+        <a href="practice.html" class="sidebar-link">
+            <span class="sidebar-icon">✎</span>
+            <span>Practice Questions</span>
+            <span class="sidebar-arrow">→</span>
+        </a>
+
+        <a href="solutions.html" class="sidebar-link">
+            <span class="sidebar-icon">▧</span>
+            <span>Worked Solutions</span>
+            <span class="sidebar-arrow">→</span>
+        </a>
+
+        <a href="progress.html" class="sidebar-link">
+            <span class="sidebar-icon">↗</span>
+            <span>Learning Progress</span>
+            <span class="sidebar-arrow">→</span>
+            <span class="coming-label">COMING SOON</span>
+        </a>
+
+        <a href="leaderboard.html" class="sidebar-link">
+            <span class="sidebar-icon">♛</span>
+            <span>Leaderboard</span>
+            <span class="sidebar-arrow">→</span>
+            <span class="coming-label">COMING SOON</span>
+        </a>
+
+        <a href="mock-exams.html" class="sidebar-link">
+            <span class="sidebar-icon">◷</span>
+            <span>Mock Exams</span>
+            <span class="sidebar-arrow">→</span>
+            <span class="coming-label">COMING SOON</span>
+        </a>
+
+        <a href="feedback.html" class="sidebar-link">
+            <span class="sidebar-icon">✉</span>
+            <span>Student Feedback</span>
+            <span class="sidebar-arrow">→</span>
+        </a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+        <span>EDUNOVA</span>
+        <span>Mathematics made clear.</span>
+    </div>
+
+</aside>
 
 <main>
     <section id="chapters" aria-labelledby="chaptersTitle">
@@ -1539,7 +1823,81 @@ function coming(name) {
         " is being prepared for EduNova. The chapter content is coming soon! 📚"
     );
 }
+/* =========================================
+   FEATURES SIDEBAR
+========================================= */
 
+const featuresTrigger = document.getElementById("featuresTrigger");
+const featuresSidebar = document.getElementById("featuresSidebar");
+const featuresOverlay = document.getElementById("featuresOverlay");
+const sidebarClose = document.getElementById("sidebarClose");
+
+let sidebarOpen = false;
+
+function openFeaturesSidebar() {
+    if (sidebarOpen) return;
+
+    sidebarOpen = true;
+
+    featuresSidebar.classList.add("open");
+    featuresOverlay.classList.add("open");
+
+    featuresSidebar.setAttribute("aria-hidden", "false");
+    featuresTrigger.setAttribute("aria-expanded", "true");
+
+    document.body.style.overflow = "hidden";
+}
+
+function closeFeaturesSidebar() {
+    if (!sidebarOpen) return;
+
+    sidebarOpen = false;
+
+    featuresSidebar.classList.remove("open");
+    featuresOverlay.classList.remove("open");
+
+    featuresSidebar.setAttribute("aria-hidden", "true");
+    featuresTrigger.setAttribute("aria-expanded", "false");
+
+    document.body.style.overflow = "";
+}
+
+featuresTrigger.addEventListener("click", openFeaturesSidebar);
+
+sidebarClose.addEventListener("click", closeFeaturesSidebar);
+
+featuresOverlay.addEventListener("click", closeFeaturesSidebar);
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        closeFeaturesSidebar();
+    }
+});
+
+/* Hover support on desktop */
+
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+
+    let hoverTimer;
+
+    featuresTrigger.addEventListener("mouseenter", function() {
+        clearTimeout(hoverTimer);
+        openFeaturesSidebar();
+    });
+
+    featuresSidebar.addEventListener("mouseleave", function() {
+        hoverTimer = setTimeout(closeFeaturesSidebar, 350);
+    });
+
+    featuresOverlay.addEventListener("mouseenter", function() {
+        hoverTimer = setTimeout(closeFeaturesSidebar, 350);
+    });
+
+    featuresSidebar.addEventListener("mouseenter", function() {
+        clearTimeout(hoverTimer);
+    });
+
+}
 /* =========================================
    INITIALIZE
 ========================================= */
