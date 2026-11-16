@@ -1,0 +1,899 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09090B">
+<meta name="description" content="Interactive practice on complex roots of polynomial equations, from foundation to advanced questions.">
+
+<title>EduNova | Complex Roots Practice</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+:root {
+  --accent: #B85C38;
+  --bright: #D97745;
+  --paper: #F7F7F8;
+  --ink: #171717;
+  --muted: #77777F;
+  --border: #E8E5E3;
+  --green: #238653;
+  --red: #C74747;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+}
+
+header {
+  height: 72px;
+  padding: 0 7%;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  font-weight: 800;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  font-weight: 600;
+}
+
+.back-link {
+  color: #555;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.hero {
+  background: #09090B;
+  color: white;
+  padding: 65px 8% 58px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "z";
+  position: absolute;
+  right: 10%;
+  top: -65px;
+  font-family: 'Playfair Display', serif;
+  font-size: 290px;
+  font-style: italic;
+  color: rgba(217,119,69,.12);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 850px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  color: #E8A17C;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.15;
+  margin: 15px 0;
+}
+
+.hero p {
+  color: #B8B8BD;
+  max-width: 600px;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+main {
+  max-width: 900px;
+  margin: 38px auto 80px;
+  padding: 0 22px;
+}
+
+.progress-panel {
+  background: white;
+  padding: 22px 25px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 35px;
+}
+
+.progress-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 13px;
+}
+
+.progress-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .7px;
+}
+
+.score {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.progress-track {
+  height: 7px;
+  border-radius: 20px;
+  background: #F0ECEA;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), #E8A17C);
+  border-radius: 20px;
+  transition: width .4s ease;
+}
+
+.stage {
+  margin: 42px 0 20px;
+}
+
+.stage-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 7px;
+}
+
+.stage-number {
+  width: 34px;
+  height: 34px;
+  background: #F3E4DD;
+  color: var(--accent);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.stage h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  margin: 0;
+}
+
+.stage-description {
+  margin: 0 0 20px 46px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.question-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 17px 0;
+  box-shadow: 0 3px 14px rgba(0,0,0,.025);
+}
+
+.question-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 17px;
+}
+
+.question-number {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.difficulty {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #F5EFEC;
+  color: #9B573B;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.question-text {
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 11px;
+}
+
+.option {
+  border: 1px solid #E8E5E3;
+  background: #fff;
+  border-radius: 10px;
+  padding: 13px 15px;
+  text-align: left;
+  font-family: inherit;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.option:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: #FCF7F4;
+}
+
+.option:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.option.correct {
+  border-color: var(--green);
+  background: #EDF8F1;
+  color: #176B40;
+}
+
+.option.incorrect {
+  border-color: var(--red);
+  background: #FFF1F1;
+  color: #A83232;
+}
+
+.option-letter {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  background: #F3F0EE;
+  margin-right: 9px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.feedback {
+  display: none;
+  margin-top: 17px;
+  padding: 15px 17px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.feedback.show {
+  display: block;
+  animation: fadeIn .3s ease;
+}
+
+.feedback.good {
+  background: #EDF8F1;
+  color: #176B40;
+  border-left: 3px solid var(--green);
+}
+
+.feedback.bad {
+  background: #FFF3F1;
+  color: #963D36;
+  border-left: 3px solid var(--red);
+}
+
+.hint-button {
+  margin-top: 15px;
+  border: none;
+  background: transparent;
+  color: var(--accent);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hint {
+  display: none;
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: #F8F3F0;
+  border-radius: 9px;
+  color: #76513F;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.hint.show {
+  display: block;
+}
+
+.completion {
+  display: none;
+  text-align: center;
+  padding: 45px 25px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-top: 45px;
+  position: relative;
+  overflow: hidden;
+}
+
+.completion.show {
+  display: block;
+  animation: fadeIn .6s ease;
+}
+
+.completion-symbol {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+  background: #EDF8F1;
+  color: var(--green);
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.completion h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  margin: 10px 0;
+}
+
+.completion p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.final-score {
+  color: var(--accent);
+  font-size: 25px;
+  font-weight: 800;
+  margin: 20px 0;
+}
+
+.action-link {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 13px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  margin-top: 12px;
+  transition: .2s;
+}
+
+.action-link:hover {
+  background: #98472B;
+  transform: translateY(-2px);
+}
+
+footer {
+  background: #09090B;
+  color: #999;
+  padding: 28px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 11px;
+}
+
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  color: white;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.footer-tagline {
+  font-size: 10px;
+  color: #999;
+  margin-top: 3px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+}
+
+.footer-links a {
+  color: #BBB;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 620px) {
+  header {
+    padding: 0 5%;
+  }
+
+  .hero {
+    padding: 48px 7%;
+  }
+
+  .hero::after {
+    right: -25px;
+    font-size: 210px;
+  }
+
+  main {
+    padding: 0 14px;
+    margin-top: 25px;
+  }
+
+  .question-card {
+    padding: 19px;
+  }
+
+  .options {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">Edu<span>Nova</span></a>
+  <a href="complex-roots-polynomial-equations.html" class="back-link">
+    ← BACK TO LESSON
+  </a>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">CHAPTER 09 · COMPLEX NUMBERS · TOPIC 05</div>
+    <h1>Complex Roots of Polynomial Equations</h1>
+    <p>
+      Build your understanding step by step. Begin with the foundations,
+      develop your problem-solving skills, and finish with more challenging
+      polynomial equations.
+    </p>
+  </div>
+</section>
+
+<main>
+
+  <div class="progress-panel">
+    <div class="progress-top">
+      <span class="progress-label">YOUR PRACTICE PROGRESS</span>
+      <span class="score" id="scoreDisplay">0 / 9 correct</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <section class="stage">
+    <div class="stage-heading">
+      <div class="stage-number">01</div>
+      <h2>Foundation</h2>
+    </div>
+    <p class="stage-description">
+      Start by solving equations and recognising complex roots.
+    </p>
+
+    <div id="stage1"></div>
+  </section>
+
+  <section class="stage">
+    <div class="stage-heading">
+      <div class="stage-number">02</div>
+      <h2>Developing Skills</h2>
+    </div>
+    <p class="stage-description">
+      Work with conjugate roots, factors and cubic equations.
+    </p>
+
+    <div id="stage2"></div>
+  </section>
+
+  <section class="stage">
+    <div class="stage-heading">
+      <div class="stage-number">03</div>
+      <h2>Challenge</h2>
+    </div>
+    <p class="stage-description">
+      Apply your knowledge to higher-degree polynomial equations.
+    </p>
+
+    <div id="stage3"></div>
+  </section>
+
+  <section class="completion" id="completion">
+    <div class="completion-symbol">✓</div>
+    <div class="eyebrow">PRACTICE COMPLETED</div>
+    <h2>Excellent work!</h2>
+    <p>You have reached the end of this practice set.</p>
+    <div class="final-score" id="finalScore"></div>
+    <p id="finalMessage"></p>
+    <a href="complex-roots-polynomial-equations.html" class="action-link">
+      RETURN TO LESSON →
+    </a>
+  </section>
+
+</main>
+
+<footer>
+  <div>
+    <div class="footer-brand">EduNova</div>
+    <div class="footer-tagline">Mathematics made clear.</div>
+  </div>
+
+  <div class="footer-links">
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+
+  <div>© 2026 EduNova</div>
+</footer>
+
+<script>
+const questions = [
+  {
+    stage: 1,
+    difficulty: "Starter",
+    question: "Solve the equation $x^2+9=0$.",
+    options: [
+      "$x=\\pm 3$",
+      "$x=\\pm 3i$",
+      "$x=3i$ only",
+      "$x=\\pm 9i$"
+    ],
+    answer: 1,
+    explanation:
+      "Rearranging gives $x^2=-9$. Since $i^2=-1$, the two roots are $x=3i$ and $x=-3i$.",
+    hint:
+      "Remember that a negative square can be expressed using the imaginary unit $i$."
+  },
+  {
+    stage: 1,
+    difficulty: "Starter",
+    question: "Find the roots of $x^2-4x+13=0$.",
+    options: [
+      "$x=2\\pm 3i$",
+      "$x=-2\\pm 3i$",
+      "$x=4\\pm 3i$",
+      "$x=2\\pm i$"
+    ],
+    answer: 0,
+    explanation:
+      "Using the quadratic formula, $x=\\frac{4\\pm\\sqrt{16-52}}{2}=\\frac{4\\pm 6i}{2}=2\\pm 3i$.",
+    hint:
+      "Calculate the discriminant first. What happens when it is negative?"
+  },
+  {
+    stage: 1,
+    difficulty: "Starter",
+    question: "A polynomial with real coefficients has a root $-1+4i$. Which must also be a root?",
+    options: [
+      "$1+4i$",
+      "$1-4i$",
+      "$-1-4i$",
+      "$-4-i$"
+    ],
+    answer: 2,
+    explanation:
+      "For a polynomial with real coefficients, non-real complex roots occur in conjugate pairs. The conjugate of $-1+4i$ is $-1-4i$.",
+    hint:
+      "Think about the relationship between a complex number and its conjugate."
+  },
+
+  {
+    stage: 2,
+    difficulty: "Intermediate",
+    question: "Which expression is the factorisation of $x^2-6x+10$ over the complex numbers?",
+    options: [
+      "$(x-3-i)(x-3+i)$",
+      "$(x+3-i)(x+3+i)$",
+      "$(x-2-i)(x-2+i)$",
+      "$(x-3-2i)(x-3+2i)$"
+    ],
+    answer: 0,
+    explanation:
+      "The roots are $3\\pm i$. Therefore the factors are $(x-3-i)$ and $(x-3+i)$.",
+    hint:
+      "Find the roots using the quadratic formula, then write one factor for each root."
+  },
+  {
+    stage: 2,
+    difficulty: "Intermediate",
+    question: "A cubic polynomial with real coefficients has roots $2+i$ and $-1$. Find its third root.",
+    options: [
+      "$-2+i$",
+      "$2-i$",
+      "$-1-i$",
+      "$-2-i$"
+    ],
+    answer: 1,
+    explanation:
+      "Because the coefficients are real, the conjugate of $2+i$ must also be a root. The third root is therefore $2-i$.",
+    hint:
+      "The two non-real roots must form a conjugate pair."
+  },
+  {
+    stage: 2,
+    difficulty: "Intermediate",
+    question: "The equation $x^3-2x^2+4x-8=0$ can be factorised as $(x-2)(x^2+4)=0$. What are all its roots?",
+    options: [
+      "$2,\\ 2i,\\ -2i$",
+      "$-2,\\ 2i,\\ -2i$",
+      "$2,\\ 4i,\\ -4i$",
+      "$2,\\ i,\\ -i$"
+    ],
+    answer: 0,
+    explanation:
+      "The linear factor gives $x=2$. The quadratic factor gives $x^2=-4$, so $x=2i$ or $x=-2i$.",
+    hint:
+      "Solve each factor separately and remember to include every root."
+  },
+
+  {
+    stage: 3,
+    difficulty: "Advanced",
+    question: "A polynomial with real coefficients has roots $3+i$ and $3-i$. Its other two roots are $i$ and $-i$. Which is the polynomial?",
+    options: [
+      "$x^4-6x^3+11x^2-6x+10$",
+      "$x^4+6x^3+12x^2+12x+10$",
+      "$x^4-6x^3+10x^2-12x+10$",
+      "$x^4-3x^3+12x^2-6x+10$"
+    ],
+    answer: 0,
+    explanation:
+      "The polynomial is $(x-(3+i))(x-(3-i))(x-i)(x+i)$. This becomes $(x^2-6x+10)(x^2+1)$, which expands to $x^4-6x^3+11x^2-6x+10$. The correct option is the one with the coefficient of $x^2$ equal to 11.",
+    hint:
+      "Pair each complex root with its conjugate, form two quadratic factors, and multiply them."
+  },
+  {
+    stage: 3,
+    difficulty: "Advanced",
+    question: "The polynomial $x^3+x^2-x+15=0$ has a root $1+2i$. Find the other two roots.",
+    options: [
+      "$1-2i$ and $-3$",
+      "$1+2i$ and $3$",
+      "$-1-2i$ and $-3$",
+      "$1-2i$ and $3$"
+    ],
+    answer: 0,
+    explanation:
+      "The conjugate root is $1-2i$. The corresponding quadratic factor is $x^2-2x+5$. Dividing the cubic by this factor gives $x+3$, so the remaining root is $-3$.",
+    hint:
+      "First use the conjugate-root property, then divide the cubic by the quadratic factor."
+  },
+  {
+    stage: 3,
+    difficulty: "Advanced",
+    question: "The roots of $x^4-2x^3+6x^2-8x+8=0$ are obtained from $(x^2+4)(x^2-2x+2)=0$. Which complete set is correct?",
+    options: [
+      "$2i,\\ -2i,\\ 1+i,\\ 1-i$",
+      "$i,\\ -i,\\ 1+2i,\\ 1-2i$",
+      "$2,\\ -2,\\ 1+i,\\ 1-i$",
+      "$2i,\\ -2i,\\ 2+i,\\ 2-i$"
+    ],
+    answer: 0,
+    explanation:
+      "From $x^2+4=0$, the roots are $2i$ and $-2i$. From $x^2-2x+2=0$, the roots are $1+i$ and $1-i$.",
+    hint:
+      "Solve the two quadratic factors independently."
+  }
+];
+
+const answered = {};
+let correctCount = 0;
+
+function renderQuestions() {
+  questions.forEach((q, index) => {
+    const container = document.getElementById("stage" + q.stage);
+
+    const card = document.createElement("article");
+    card.className = "question-card";
+    card.id = "question-" + index;
+
+    card.innerHTML = `
+      <div class="question-top">
+        <span class="question-number">QUESTION ${String(index + 1).padStart(2, "0")}</span>
+        <span class="difficulty">${q.difficulty}</span>
+      </div>
+
+      <div class="question-text">${q.question}</div>
+
+      <div class="options">
+        ${q.options.map((option, optionIndex) => `
+          <button class="option" onclick="checkAnswer(${index}, ${optionIndex})">
+            <span class="option-letter">${String.fromCharCode(65 + optionIndex)}</span>
+            ${option}
+          </button>
+        `).join("")}
+      </div>
+
+      <div class="feedback" id="feedback-${index}"></div>
+
+      <button class="hint-button" onclick="toggleHint(${index})">
+        SHOW HINT
+      </button>
+
+      <div class="hint" id="hint-${index}">
+        ${q.hint}
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  if (window.MathJax) {
+    MathJax.typesetPromise();
+  }
+}
+
+function checkAnswer(questionIndex, selectedIndex) {
+  if (answered[questionIndex] !== undefined) return;
+
+  const q = questions[questionIndex];
+  const card = document.getElementById("question-" + questionIndex);
+  const buttons = card.querySelectorAll(".option");
+  const feedback = document.getElementById("feedback-" + questionIndex);
+
+  answered[questionIndex] = selectedIndex;
+
+  buttons.forEach((button, index) => {
+    button.disabled = true;
+
+    if (index === q.answer) {
+      button.classList.add("correct");
+    }
+
+    if (index === selectedIndex && selectedIndex !== q.answer) {
+      button.classList.add("incorrect");
+    }
+  });
+
+  const isCorrect = selectedIndex === q.answer;
+
+  if (isCorrect) {
+    correctCount++;
+    feedback.className = "feedback show good";
+    feedback.innerHTML = "<strong>Correct!</strong> " + q.explanation;
+  } else {
+    feedback.className = "feedback show bad";
+    feedback.innerHTML = "<strong>Not quite.</strong> " + q.explanation;
+  }
+
+  updateProgress();
+
+  if (Object.keys(answered).length === questions.length) {
+    showCompletion();
+  }
+
+  if (window.MathJax) {
+    MathJax.typesetPromise([feedback]);
+  }
+}
+
+function toggleHint(index) {
+  const hint = document.getElementById("hint-" + index);
+  hint.classList.toggle("show");
+}
+
+function updateProgress() {
+  const total = questions.length;
+  const completed = Object.keys(answered).length;
+
+  document.getElementById("scoreDisplay").textContent =
+    correctCount + " / " + total + " correct";
+
+  document.getElementById("progressFill").style.width =
+    (completed / total * 100) + "%";
+}
+
+function showCompletion() {
+  const completion = document.getElementById("completion");
+  completion.classList.add("show");
+
+  document.getElementById("finalScore").textContent =
+    correctCount + " / " + questions.length;
+
+  let message = "";
+
+  if (correctCount === questions.length) {
+    message = "A perfect result. You handled every question successfully!";
+  } else if (correctCount >= 7) {
+    message = "A strong performance. Review the questions you missed and keep building your skills.";
+  } else if (correctCount >= 4) {
+    message = "Good progress. Revisit the explanations and try the questions again.";
+  } else {
+    message = "This is a starting point. Review the foundations and work through the questions once more.";
+  }
+
+  document.getElementById("finalMessage").textContent = message;
+
+  completion.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+
+renderQuestions();
+</script>
+
+</body>
+</html>
