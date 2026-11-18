@@ -55,9 +55,25 @@ main{padding:78px 7% 100px}
 .topic.completed .topic-number{color:var(--accent)}
 .topic.completed .open-topic{background:var(--accent)}
 .topic.completed .open-topic:hover{background:var(--dark)}
-.strip{margin-top:48px;background:var(--accent);color:#fff;padding:30px 32px;display:flex;justify-content:space-between;align-items:center;gap:25px}
-.strip strong{font:25px "Playfair Display"}
-.strip p{font-size:12px;line-height:1.7;max-width:520px;color:rgba(255,255,255,.9)}
+.strip {
+    margin-top: 55px;
+    background: var(--accent);
+    color: #fff;
+    padding: 42px 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+}
+.strip strong {
+    font: 600 36px "Playfair Display";
+}
+.strip p {
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 850px;
+    color: rgba(255,255,255,.95);
+}
 footer{background:var(--dark);color:#fff;padding:38px 7%;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
 .footer-logo{font:700 24px "Playfair Display"}
 footer p{color:#a99a92;font-size:11px}
@@ -163,7 +179,8 @@ footer p{color:#a99a92;font-size:11px}
   <p>Represent complex numbers using modulus and argument, and connect algebra with geometry.</p>
   <a href="complex-numbers-polar-form.html" class="open-topic">OPEN LESSON →</a>
 </article>
-
+  </div>
+  
   <div class="strip">
     <strong>Beyond the real number line.</strong>
     <p>Five lessons to help you understand complex numbers algebraically and geometrically, one idea at a time.</p>
