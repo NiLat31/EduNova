@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#211915">
+<meta name="description" content="Learn about complex roots of polynomial equations, conjugate pairs, and the possible roots of cubic and quartic equations with EduNova.">
+
+<title>EduNova | Complex Roots of Polynomial Equations</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+:root {
+  --accent: #B85C38;
+  --accent-bright: #D97745;
+  --accent-light: #F2C6A8;
+  --paper: #FFF8F3;
+  --ink: #35251F;
+  --muted: #806F67;
+  --line: #E8DAD1;
+  --dark: #211915;
+  --white: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 35px;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+button {
+  font-family: inherit;
+}
+
+nav {
+  height: 76px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  font: 700 27px "Playfair Display", serif;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.logo span,
+.footer-logo span {
+  color: var(--accent);
+}
+
+.navlinks {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.navlinks a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.navlinks a:hover {
+  color: var(--accent);
+}
+
+.logout {
+  border: 0;
+  padding: 11px 17px;
+  background: var(--dark);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.logout:hover {
+  background: var(--accent);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 390px;
+  background: var(--dark);
+  color: white;
+  padding: 75px 7%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-copy {
+  max-width: 690px;
+  position: relative;
+  z-index: 3;
+  animation: heroEnter .9s ease both;
+}
+
+.label {
+  color: var(--accent-bright);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 19px;
+}
+
+.hero h1 {
+  font: 600 clamp(42px, 6vw, 72px)/1.08 "Playfair Display", serif;
+  letter-spacing: -2px;
+  max-width: 700px;
+}
+
+.hero p {
+  color: #C9BBB4;
+  font-size: 15px;
+  line-height: 1.9;
+  max-width: 570px;
+  margin-top: 23px;
+}
+
+.hero-art {
+  position: absolute;
+  right: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(440px, 43vw);
+  z-index: 1;
+  overflow: visible;
+}
+
+.hero-orbit {
+  transform-origin: 210px 165px;
+  animation: orbit 18s linear infinite;
+}
+
+.hero-pulse {
+  animation: pulse 2.8s ease-in-out infinite;
+}
+
+.hero-point {
+  animation: floatPoint 3s ease-in-out infinite;
+}
+
+.hero-point.second {
+  animation-delay: 1.3s;
+}
+
+.hero-glow {
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+.hero-decoration {
+  position: absolute;
+  font: italic 400 330px "Playfair Display", serif;
+  color: rgba(217,119,69,.07);
+  right: 12%;
+  top: -110px;
+  pointer-events: none;
+}
+
+@keyframes heroEnter {
+  from {opacity:0; transform:translateY(25px)}
+  to {opacity:1; transform:translateY(0)}
+}
+
+@keyframes orbit {
+  to {transform:rotate(360deg)}
+}
+
+@keyframes pulse {
+  0%,100% {r:7; opacity:1}
+  50% {r:11; opacity:.65}
+}
+
+@keyframes floatPoint {
+  0%,100% {transform:translateY(0)}
+  50% {transform:translateY(-8px)}
+}
+
+@keyframes glow {
+  from {opacity:.35}
+  to {opacity:.9}
+}
+
+/* MAIN */
+
+main {
+  max-width: 1150px;
+  margin: auto;
+  padding: 75px 35px 100px;
+}
+
+.section-heading {
+  margin-bottom: 26px;
+}
+
+.section-heading .label {
+  margin-bottom: 9px;
+}
+
+.section-heading h2 {
+  font: 600 clamp(30px, 4vw, 43px)/1.2 "Playfair Display", serif;
+  letter-spacing: -1px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 15px;
+  margin-top: 12px;
+  max-width: 750px;
+}
+
+.lesson-section {
+  margin-bottom: 75px;
+  scroll-margin-top: 35px;
+}
+
+.lesson-section h3 {
+  font: 600 25px/1.3 "Playfair Display", serif;
+  margin-bottom: 17px;
+}
+
+.lesson-section p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #55443C;
+  margin-bottom: 17px;
+}
+
+.lesson-section ul {
+  padding-left: 24px;
+  margin: 15px 0 22px;
+}
+
+.lesson-section li {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #55443C;
+  padding-left: 5px;
+  margin-bottom: 7px;
+}
+
+.math-box {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 25px;
+  margin: 23px 0;
+  text-align: center;
+  overflow-x: auto;
+  border-radius: 3px;
+}
+
+.math-box .math-label {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.math-box mjx-container {
+  font-size: 115% !important;
+}
+
+.info-box {
+  padding: 22px 25px;
+  margin: 23px 0;
+  border-left: 4px solid;
+  border-radius: 4px;
+}
+
+.info-box h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 9px;
+}
+
+.info-box p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.info-box ul {
+  margin-bottom: 0;
+}
+
+.remember {
+  background: #E8F1FA;
+  border-color: #4789C5;
+}
+
+.remember h4 {color:#28649A}
+.remember p,.remember li {color:#34536D}
+
+.keep {
+  background: #FFF3D9;
+  border-color: #D6A33E;
+}
+
+.keep h4 {color:#986719}
+.keep p,.keep li {color:#765B2D}
+
+.key {
+  background: #E7F3E9;
+  border-color: #55976A;
+}
+
+.key h4 {color:#397A4A}
+.key p,.key li {color:#42674A}
+
+.mistake {
+  background: #FCE9E7;
+  border-color: #D66B60;
+}
+
+.mistake h4 {color:#B7473C}
+.mistake p,.mistake li {color:#87443D}
+
+/* EXAMPLES */
+
+.example {
+  background: white;
+  border: 1px solid var(--line);
+  margin: 24px 0;
+  padding: 27px;
+  border-radius: 4px;
+}
+
+.example-label {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 13px;
+}
+
+.example h4 {
+  font: 600 20px "Playfair Display", serif;
+  margin-bottom: 16px;
+}
+
+.example p {
+  margin-bottom: 13px;
+}
+
+.solution {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  margin-top: 18px;
+}
+
+.solution-title {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.solution-step {
+  padding: 12px 15px;
+  background: #FFF8F3;
+  margin: 10px 0;
+  border-left: 3px solid var(--accent-light);
+  font-size: 15px;
+  overflow-x: auto;
+}
+
+/* ROOT COMBINATIONS */
+
+.combination-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 15px;
+  margin: 22px 0;
+}
+
+.combination {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 22px;
+  border-radius: 4px;
+}
+
+.combination .degree {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.combination h4 {
+  font: 600 19px "Playfair Display",serif;
+  margin-bottom: 12px;
+}
+
+.combination p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* PRACTICE */
+
+.practice-card {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 27px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.question-number {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.practice-card h4 {
+  font: 600 19px "Playfair Display",serif;
+  margin-bottom: 17px;
+}
+
+.options {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.option {
+  width: 100%;
+  text-align: left;
+  background: #FFF8F3;
+  border: 1px solid var(--line);
+  padding: 14px 17px;
+  font-size: 14px;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 3px;
+  transition: .2s;
+}
+
+.option:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: #FFF1E7;
+}
+
+.option.correct {
+  background: #E7F3E9;
+  border-color: #55976A;
+  color: #397A4A;
+}
+
+.option.incorrect {
+  background: #FCE9E7;
+  border-color: #D66B60;
+  color: #B7473C;
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.feedback {
+  display: none;
+  padding: 13px 16px;
+  margin-top: 15px;
+  font-size: 13px;
+  line-height: 1.7;
+  border-radius: 3px;
+}
+
+.feedback.show {
+  display: block;
+}
+
+.feedback.good {
+  background: #E7F3E9;
+  color: #397A4A;
+}
+
+.feedback.bad {
+  background: #FCE9E7;
+  color: #B7473C;
+}
+
+.practice-score {
+  background: var(--dark);
+  color: white;
+  padding: 23px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.practice-score strong {
+  font: 600 22px "Playfair Display",serif;
+}
+
+.practice-score span {
+  color: var(--accent-light);
+  font-weight: 700;
+}
+
+/* COMPLETION */
+
+.finish-area {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 45px 30px;
+  text-align: center;
+  margin-top: 70px;
+  border-radius: 5px;
+}
+
+.finish-area h2 {
+  font: 600 32px "Playfair Display",serif;
+  margin-bottom: 12px;
+}
+
+.finish-area p {
+  max-width: 560px;
+  margin: 0 auto 25px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.finish-button,
+.practice-button {
+  border: 0;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.finish-button:hover,
+.practice-button:hover {
+  background: var(--dark);
+  transform: translateY(-2px);
+}
+
+.finish-button:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
+.congratulations {
+  display: none;
+  padding: 35px 20px 10px;
+  position: relative;
+  animation: celebrate .8s ease both;
+}
+
+.congratulations::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 180px;
+  left: 0;
+  top: 10px;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, #D97745 3px, transparent 4px),
+    radial-gradient(circle, #E8B36C 3px, transparent 4px),
+    radial-gradient(circle, #75B98A 3px, transparent 4px),
+    radial-gradient(circle, #8BA9D8 3px, transparent 4px),
+    radial-gradient(circle, #C18BCF 3px, transparent 4px);
+  background-size: 85px 85px, 110px 110px, 95px 95px, 125px 125px, 100px 100px;
+  background-position: 5% 15%, 85% 20%, 25% 75%, 95% 80%, 65% 55%;
+  background-repeat: no-repeat;
+  animation: floatingDots 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+.congratulations > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes floatingDots {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: .65;
+  }
+  50% {
+    transform: translateY(-15px);
+    opacity: 1;
+  }
+}
+
+.congratulations.show {
+  display: block;
+}
+
+.congrats-symbol {
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 22px;
+  background: #E7F3E9;
+  color: #397A4A;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 37px;
+  animation: popIn .7s cubic-bezier(.2,1.6,.4,1) both;
+}
+
+.congratulations h2 {
+  color: var(--accent);
+  font-size: 36px;
+}
+
+.congratulations .practice-button {
+  margin-top: 12px;
+}
+
+@keyframes celebrate {
+  from {opacity:0; transform:translateY(20px)}
+  to {opacity:1; transform:translateY(0)}
+}
+
+@keyframes popIn {
+  from {transform:scale(.2); opacity:0}
+  to {transform:scale(1); opacity:1}
+}
+  /* CELEBRATION CONFETTI */
+
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.confetti-strip {
+  position: absolute;
+  top: -25px;
+  width: 9px;
+  height: 18px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: confettiFall 3.5s ease-out forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translate3d(0, -20px, 0) rotate(0deg);
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(var(--drift), 105vh, 0) rotate(850deg);
+    opacity: 0;
+  }
+}
+
+/* FOOTER */
+
+footer {
+  background: var(--dark);
+  color: white;
+  padding: 35px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  font: 700 25px "Playfair Display",serif;
+}
+
+.footer-tagline {
+  font-size: 11px;
+  color: #A99A92;
+  margin-top: 3px;
+}
+
+footer p {
+  color: #A99A92;
+  font-size: 11px;
+}
+
+.policy-links {
+  display: flex;
+  gap: 18px;
+}
+
+.policy-links a {
+  text-decoration: none;
+  color: #D8C4B8;
+  font-size: 11px;
+}
+
+.policy-links a:hover {
+  color: var(--accent-light);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px) {
+  nav {
+    padding: 0 5%;
+  }
+
+  .navlinks {
+    gap: 12px;
+  }
+
+  .hero {
+    padding: 65px 5%;
+    min-height: 350px;
+  }
+
+  .hero-art {
+    right: -80px;
+    width: 300px;
+    opacity: .3;
+  }
+
+  .hero-decoration {
+    right: 0;
+  }
+
+  main {
+    padding: 60px 5% 80px;
+  }
+
+  .combination-grid {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media(max-width:480px) {
+  nav {
+    min-height: 70px;
+    height: auto;
+    padding: 14px 4%;
+    gap: 10px;
+  }
+
+  .logo {
+    font-size: 23px;
+  }
+
+  .navlinks {
+    gap: 9px;
+  }
+
+  .navlinks a {
+    font-size: 9px;
+  }
+
+  .navlinks a:nth-child(2) {
+    display: none;
+  }
+
+  .logout {
+    padding: 9px;
+    font-size: 9px;
+  }
+
+  .hero {
+    min-height: 330px;
+  }
+
+  .hero h1 {
+    font-size: 43px;
+  }
+
+  .hero p {
+    font-size: 13px;
+  }
+
+  main {
+    padding: 50px 5% 70px;
+  }
+
+  .lesson-section {
+    margin-bottom: 58px;
+  }
+
+  .math-box,
+  .example,
+  .practice-card {
+    padding: 19px;
+  }
+
+  .finish-area {
+    padding: 35px 18px;
+  }
+
+  .policy-links {
+    justify-content: center;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Edu<span>Nova</span></a>
+
+  <div class="navlinks">
+    <a href="dashboard.html">DASHBOARD</a>
+    <a href="#lesson">LESSON</a>
+    <button class="logout" onclick="logout()">LOG OUT</button>
+  </div>
+</nav>
+
+<header class="hero">
+
+  <div class="hero-copy">
+    <div class="label">COMPLEX NUMBERS · TOPIC 04</div>
+
+    <h1>Complex Roots of Polynomial Equations.</h1>
+
+    <p>
+      Discover what happens when polynomial equations have
+      complex solutions. Learn why non-real roots appear in
+      conjugate pairs and explore the possible roots of cubic
+      and quartic equations.
+    </p>
+  </div>
+
+  <div class="hero-decoration" aria-hidden="true">z</div>
+
+  <svg class="hero-art" viewBox="0 0 420 330" aria-label="Animated complex conjugate roots">
+
+    <defs>
+      <radialGradient id="rootGlow">
+        <stop offset="0%" stop-color="#D97745" stop-opacity=".35"/>
+        <stop offset="100%" stop-color="#D97745" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <circle cx="210" cy="165" r="125" fill="none"
+      stroke="#806F67" stroke-width="1" stroke-dasharray="3 8" opacity=".5"/>
+
+    <g stroke="#806F67" stroke-width="1.3" opacity=".85">
+      <path d="M35 165 H390"/>
+      <path d="M210 300 V25"/>
+    </g>
+
+    <g fill="#D8C4B8" font-family="DM Sans" font-size="12">
+      <text x="380" y="185">Re</text>
+      <text x="222" y="32">Im</text>
+      <text x="220" y="181">0</text>
+    </g>
+
+    <circle cx="210" cy="165" r="60" fill="url(#rootGlow)" class="hero-glow"/>
+
+    <path d="M210 165 L310 65 L310 265 Z"
+      fill="none" stroke="#D97745" stroke-width="1.5"
+      stroke-dasharray="5 5" opacity=".65"/>
+
+    <path d="M210 165 L310 65"
+      stroke="#E5A477" stroke-width="2.5"/>
+
+    <path d="M210 165 L310 265"
+      stroke="#E5A477" stroke-width="2.5"/>
+
+    <circle cx="310" cy="65" r="22" fill="url(#rootGlow)" class="hero-glow"/>
+    <circle cx="310" cy="265" r="22" fill="url(#rootGlow)" class="hero-glow"/>
+
+    <g class="hero-point">
+      <circle cx="310" cy="65" r="7" fill="#F2C6A8" class="hero-pulse"/>
+      <text x="325" y="62" fill="#F2C6A8" font-size="16"
+        font-family="Playfair Display" font-style="italic">a + bi</text>
+    </g>
+
+    <g class="hero-point second">
+      <circle cx="310" cy="265" r="7" fill="#F2C6A8" class="hero-pulse"/>
+      <text x="325" y="275" fill="#F2C6A8" font-size="16"
+        font-family="Playfair Display" font-style="italic">a − bi</text>
+    </g>
+
+    <g class="hero-orbit">
+      <circle cx="210" cy="40" r="4" fill="#D97745"/>
+    </g>
+
+    <text x="225" y="112" fill="#D97745"
+      font-size="14" font-family="DM Sans">Conjugates</text>
+
+    <text x="222" y="155" fill="#D8C4B8"
+      font-size="11" font-family="DM Sans">Real axis</text>
+
+  </svg>
+</header>
+
+<main id="lesson">
+
+<!-- INTRODUCTION -->
+
+<section class="lesson-section">
+
+  <div class="section-heading">
+    <div class="label">01 · UNDERSTANDING THE IDEA</div>
+    <h2>How many roots does an equation have?</h2>
+    <p>
+      Before exploring complex roots, let's recall something
+      important about polynomial equations.
+    </p>
+  </div>
+
+  <p>
+    The degree of a polynomial tells us how many roots the
+    equation has, when complex roots are included and
+    repeated roots are counted according to their multiplicity.
+  </p>
+
+  <div class="math-box">
+    <div class="math-label">THE GENERAL RULE</div>
+    \[
+      \boxed{\text{Degree }n \Longrightarrow n\text{ roots}}
+    \]
+  </div>
+
+  <p>Consider these examples:</p>
+
+  <div class="combination-grid">
+
+    <div class="combination">
+      <div class="degree">DEGREE 2</div>
+      <h4>Quadratic equation</h4>
+      <p>Has two roots.</p>
+      <div class="math-box">
+        \[
+          ax^2+bx+c=0
+        \]
+      </div>
+    </div>
+
+    <div class="combination">
+      <div class="degree">DEGREE 3</div>
+      <h4>Cubic equation</h4>
+      <p>Has three roots.</p>
+      <div class="math-box">
+        \[
+          ax^3+bx^2+cx+d=0
+        \]
+      </div>
+    </div>
+
+    <div class="combination">
+      <div class="degree">DEGREE 4</div>
+      <h4>Quartic equation</h4>
+      <p>Has four roots.</p>
+      <div class="math-box">
+        \[
+          ax^4+bx^3+cx^2+dx+e=0
+        \]
+      </div>
+    </div>
+
+    <div class="combination">
+      <div class="degree">DEGREE 5</div>
+      <h4>Quintic equation</h4>
+      <p>Has five roots.</p>
+      <div class="math-box">
+        \[
+          ax^5+\cdots=0
+        \]
+      </div>
+    </div>
+
+  </div>
+
+  <div class="info-box key">
+    <h4>Key information</h4>
+    <p>
+      Every polynomial equation of degree \(n\) has exactly
+      \(n\) complex roots, counting repeated roots.
+      Some of these roots may be real, while others may be non-real.
+    </p>
+  </div>
+
+</section>
+
+<!-- REAL AND COMPLEX ROOTS -->
+
+<section class="lesson-section">
+
+  <div class="section-heading">
+    <div class="label">02 · REAL AND COMPLEX SOLUTIONS</div>
+    <h2>What if there are no real roots?</h2>
+  </div>
+
+  <p>
+    You have previously studied quadratic equations using
+    the discriminant:
+  </p>
+
+  <div class="math-box">
+    \[
+      \Delta=b^2-4ac
+    \]
+  </div>
+
+  <p>The discriminant helps us determine the nature of the roots:</p>
+
+  <div class="example">
+    <h4>Three possible situations</h4>
+
+    <div class="solution-step">
+      <strong>1. If \(\Delta>0\)</strong>
+      <p>There are two distinct real roots.</p>
+    </div>
+
+    <div class="solution-step">
+      <strong>2. If \(\Delta=0\)</strong>
+      <p>There is one repeated real root.</p>
+    </div>
+
+    <div class="solution-step">
+      <strong>3. If \(\Delta<0\)</strong>
+      <p>There are two non-real complex roots.</p>
+    </div>
+  </div>
+
+  <p>
+    For example, consider:
+  </p>
+
+  <div class="math-box">
+    \[
+      x^2+4=0
+    \]
+    \[
+      x^2=-4
+    \]
+    \[
+      x=\pm 2i
+    \]
+  </div>
+
+  <p>
+    This equation has no real solutions. However, it still
+    has two complex roots:
+  </p>
+
+  <div class="math-box">
+    \[
+      \boxed{x=2i\quad\text{and}\quad x=-2i}
+    \]
+  </div>
+
+  <div class="info-box remember">
+    <h4>Remember</h4>
+    <p>
+      A root does not have to be real. Complex numbers allow
+      us to include solutions that cannot be expressed using
+      real numbers alone.
+    </p>
+  </div>
+
+</section>
+
+<!-- CONJUGATE PAIRS -->
+
+<section class="lesson-section">
+
+  <div class="section-heading">
+    <div class="label">03 · AN IMPORTANT PROPERTY</div>
+    <h2>Complex roots come in pairs.</h2>
+  </div>
+
+  <p>
+    Here is one of the most important properties of polynomial
+    equations with real coefficients.
+  </p>
+
+  <div class="info-box key">
+    <h4>The conjugate root rule</h4>
+    <p>
+      If a polynomial equation has real coefficients and
+      \(a+bi\) is a non-real root, then \(a-bi\) must also
+      be a root.
+    </p>
+  </div>
+
+  <p>
+    Remember that these two complex numbers are conjugates:
+  </p>
+
+  <div class="math-box">
+    \[
+      z=a+bi
+    \]
+    \[
+      z^*=a-bi
+    \]
+  </div>
+
+  <p>
+    Notice that the real part stays the same, while the sign
+    of the imaginary part changes.
+  </p>
+
+  <div class="math-box">
+    <div class="math-label">AN EXAMPLE OF CONJUGATE ROOTS</div>
+    \[
+      2+3i
+      \qquad\longleftrightarrow\qquad
+      2-3i
+    \]
+  </div>
+
+  <p>
+    Therefore, if you are told that one root is \(2+3i\),
+    you immediately know that the other root is \(2-3i\).
+  </p>
+
+  <div class="example">
+    <div class="example-label">WORKED EXAMPLE 01</div>
+    <h4>Find the missing complex root.</h4>
+
+    <p>
+      A polynomial equation with real coefficients has
+      \(2-5i\) as one of its roots. Find its conjugate root.
+    </p>
+
+    <div class="solution">
+      <div class="solution-title">SOLUTION</div>
+
+      <div class="solution-step">
+        The real part is \(2\).
+      </div>
+
+      <div class="solution-step">
+        The imaginary part is \(-5i\).
+      </div>
+
+      <div class="solution-step">
+        Change the sign of the imaginary part.
+      </div>
+
+      <div class="math-box">
+        \[
+          \boxed{2+5i}
+        \]
+      </div>
+
+      <p>
+        Therefore, the missing root is \(2+5i\).
+      </p>
+    </div>
+  </div>
+
+  <div class="info-box keep">
+    <h4>Keep in mind</h4>
+    <p>
+      This conjugate-pair rule applies when the polynomial
+      has real coefficients. It does not automatically
+      apply to polynomials with non-real coefficients.
+    </p>
+  </div>
+
+</section>
+
+<!-- WHY CONJUGATE PAIRS -->
+
+<section class="lesson-section">
+
+  <div class="section-heading">
+    <div class="label">04 · UNDERSTANDING WHY</div>
+    <h2>Why do conjugate roots appear together?</h2>
+  </div>
+
+  <p>
+    Let's understand this using a simple example.
+  </p>
+
+  <p>Consider the quadratic equation:</p>
+
+  <div class="math-box">
+    \[
+      x^2-4x+13=0
+    \]
+  </div>
+
+  <p>Using the quadratic formula:</p>
+
+  <div class="math-box">
+    \[
+      x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+    \]
+  </div>
+
+  <p>Substitute \(a=1\), \(b=-4\), and \(c=13\):</p>
+
+  <div class="math-box">
+    \[
+      x=\frac{4\pm\sqrt{16-52}}{2}
+    \]
+    \[
+      x=\frac{4\pm\sqrt{-36}}{2}
+    \]
+    \[
+      x=\frac{4\pm6i}{2}
+    \]
+    \[
+      \boxed{x=2\pm3i}
+    \]
+  </div>
+
+  <p>
+    We obtain two roots:
+  </p>
+
+  <div class="math-box">
+    \[
+      \boxed{2+3i\quad\text{and}\quad2-3i}
+    \]
+  </div>
+
+  <p>
+    The two roots have the same real part and opposite
+    imaginary parts.
+  </p>
+
+  <div class="info-box remember">
+    <h4>Remember</h4>
+    <p>
+      Whenever you find a non-real root of a polynomial
+      with real coefficients, you can immediately identify
+      its conjugate without solving the equation again.
+    </p>
+  </div>
+
+</section>
+
+<!-- CUBIC EQUATIONS -->
+
+<section class="lesson-section">
+
+  <div class="section-heading">
+    <div class="label">05 · CUBIC EQUATIONS</div>
+    <h2>Possible roots of a cubic equation.</h2>
+  </div>
+
+  <p>
+    A cubic equation has degree three, so it has three
+    roots in total, counting multiplicity.
+  </p>
+
+  <p>
+    Since non-real complex roots come in conjugate pairs,
+    a cubic equation with real coefficients can have
+    the following possibilities:
+  </p>
+
+  <div class="combination-grid">
+
+    <div class="combination">
+      <div class="degree">POSSIBILITY 01</div>
+      <h4>Three real roots</h4>
+      <div class="math-box">
+        \[
+          1,\quad 2,\quad 3
+        \]
+      </div>
+      <p>All three roots are real.</p>
+    </div>
+
+    <div class="combination">
+      <div class="degree">POSSIBILITY 02</div>
+      <h4>One real root and one conjugate pair</h4>
+      <div class="math-box">
+        \[
+          1,\quad 2+3i,\quad 2-3i
+        \]
+      </div>
+      <p>One real root and two non-real roots.</p>
+    </div>
+
+  </div>
+
+  <div class="example">
+    <div class="example-label">WORKED EXAMPLE 02</div>
+    <h4>Find the remaining roots.</h4>
+
+    <p>
+      A cubic equation with real coefficients has one
+      root equal to \(1\) and another root equal to
+      \(3+2i\). Find its third root.
+    </p>
+
+    <div class="solution">
+      <div class="solution-title">SOLUTION</div>
+
+      <div class="solution-step">
+        The equation is cubic, so it has three roots.
+      </div>
+
+      <div class="solution-step">
+        One root is \(1\).
+      </div>
+
+      <div class="solution-step">
+        Another root is \(3+2i\).
+      </div>
+
+      <div class="solution-step">
+        Since the coefficients are real, the conjugate
+        \(3-2i\) must also be a root.
+      </div>
+
+      <div class="math-box">
+        \[
+          \boxed{1,\quad 3+2i,\quad 3-2i}
+        \]
+      </div>
+
+      <p>
+        These are all three roots of the cubic equation.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<!-- QUARTIC EQUATIONS -->
+
+<section class="lesson-section">
+
+  <div class="section-heading">
+    <div class="label">06 · QUARTIC EQUATIONS</div>
+    <h2>Possible roots of a quartic equation.</h2>
+  </div>
+
+  <p>
+    A quartic equation has degree four, meaning it has
+    four roots in total, counting multiplicity.
+  </p>
+
+  <p>
+    There are three possible combinations when its
+    coefficients are real:
+  </p>
+
+  <div class="combination-grid">
+
+    <div class="combination">
+      <div class="degree">POSSIBILITY 01</div>
+      <h4>Four real roots</h4>
+      <div class="math-box">
+        \[
+          1,\quad2,\quad3,\quad4
+        \]
+      </div>
+      <p>All four roots are real.</p>
+    </div>
+
+    <div class="combination">
+      <div class="degree">POSSIBILITY 02</div>
+      <h4>Two real roots and one pair</h4>
+      <div class="math-box">
+        \[
+          1,\quad2,\quad3+i,\quad3-i
+        \]
+      </div>
+      <p>Two real roots and two non-real roots.</p>
+    </div>
+
+    <div class="combination">
+      <div class="degree">POSSIBILITY 03</div>
+      <h4>Two pairs of complex roots</h4>
+      <div class="math-box">
+        \[
+          1+i,\quad1-i
+        \]
+        \[
+          2+3i,\quad2-3i
+        \]
+      </div>
+      <p>All four roots are non-real.</p>
+    </div>
+
+  </div>
+
+  <div class="info-box keep">
+    <h4>Keep in mind</h4>
+    <p>
+      A quartic equation with real coefficients cannot
+      have exactly one non-real root or exactly three
+      non-real roots. Non-real roots must occur in pairs.
+    </p>
+  </div>
+
+</section>
+
+<!-- COMMON MISTAKES -->
+
+<section class="lesson-section">
+
+  <div class="section-heading">
+    <div class="label">07 · IMPORTANT DETAILS</div>
+    <h2>Common mistakes to avoid.</h2>
+  </div>
+
+  <div class="info-box mistake">
+    <h4>1. Changing the real part</h4>
+    <p>
+      The conjugate of \(4+7i\) is \(4-7i\),
+      not \(-4-7i\).
+    </p>
+  </div>
+
+  <div class="info-box mistake">
+    <h4>2. Forgetting the coefficients must be real</h4>
+    <p>
+      The conjugate-pair rule is guaranteed for
+      polynomials with real coefficients.
+    </p>
+  </div>
+
+  <div class="info-box mistake">
+    <h4>3. Forgetting the total number of roots</h4>
+    <p>
+      A cubic equation has three roots, not two.
+      A quartic equation has four roots, not three.
+      Remember to count all roots, including repeated ones.
+    </p>
+  </div>
+
+  <div class="info-box mistake">
+    <h4>4. Confusing real roots with non-real roots</h4>
+    <p>
+      A complex number can have a zero imaginary part.
+      For example, \(5+0i=5\) is real.
+    </p>
+  </div>
+
+</section>
+
+<!-- SUMMARY -->
+
+<section class="lesson-section">
+
+  <div class="section-heading">
+    <div class="label">08 · LESSON RECAP</div>
+    <h2>What have we learned?</h2>
+  </div>
+
+  <div class="info-box key">
+    <h4>The essential facts</h4>
+    <ul>
+      <li>A polynomial equation of degree \(n\) has \(n\) complex roots, counting multiplicity.</li>
+      <li>Some roots may be real, while others may be non-real.</li>
+      <li>For polynomials with real coefficients, non-real complex roots come in conjugate pairs.</li>
+      <li>A cubic has either three real roots or one real root and one conjugate pair.</li>
+      <li>A quartic can have four real roots, two real roots and one pair, or two conjugate pairs.</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- PRACTICE -->
+
+<section class="lesson-section" id="practice">
+
+  <div class="section-heading">
+    <div class="label">09 · TEST YOUR UNDERSTANDING</div>
+    <h2>Let's put it into practice.</h2>
+    <p>
+      Answer the following questions to check your understanding
+      of complex roots and conjugate pairs.
+    </p>
+  </div>
+
+  <div class="practice-card" data-answer="1">
+
+    <div class="question-number">QUESTION 01</div>
+    <h4>
+      A polynomial equation with real coefficients has
+      \(4+7i\) as a root. What is its conjugate root?
+    </h4>
+
+    <div class="options">
+      <button class="option" data-value="0">A. \(-4+7i\)</button>
+      <button class="option" data-value="1">B. \(4-7i\)</button>
+      <button class="option" data-value="2">C. \(-4-7i\)</button>
+      <button class="option" data-value="3">D. \(7-4i\)</button>
+    </div>
+
+    <div class="feedback"></div>
+  </div>
+
+  <div class="practice-card" data-answer="2">
+
+    <div class="question-number">QUESTION 02</div>
+    <h4>
+      How many roots does a polynomial equation of degree
+      five have, counting multiplicity?
+    </h4>
+
+    <div class="options">
+      <button class="option" data-value="0">A. Three</button>
+      <button class="option" data-value="1">B. Four</button>
+      <button class="option" data-value="2">C. Five</button>
+      <button class="option" data-value="3">D. Six</button>
+    </div>
+
+    <div class="feedback"></div>
+  </div>
+
+  <div class="practice-card" data-answer="0">
+
+    <div class="question-number">QUESTION 03</div>
+    <h4>
+      A cubic equation with real coefficients has one
+      real root. What must be true about its other two roots?
+    </h4>
+
+    <div class="options">
+      <button class="option" data-value="0">
+        A. They form a non-real conjugate pair.
+      </button>
+      <button class="option" data-value="1">
+        B. They must both be positive.
+      </button>
+      <button class="option" data-value="2">
+        C. They must both be zero.
+      </button>
+      <button class="option" data-value="3">
+        D. They must be equal real roots.
+      </button>
+    </div>
+
+    <div class="feedback"></div>
+  </div>
+
+  <div class="practice-card" data-answer="3">
+
+    <div class="question-number">QUESTION 04</div>
+    <h4>
+      Which combination is possible for the roots of a
+      quartic equation with real coefficients?
+    </h4>
+
+    <div class="options">
+      <button class="option" data-value="0">
+        A. Three real roots and one non-real root.
+      </button>
+      <button class="option" data-value="1">
+        B. One real root and three non-real roots.
+      </button>
+      <button class="option" data-value="2">
+        C. One non-real root and three real roots.
+      </button>
+      <button class="option" data-value="3">
+        D. Two real roots and one non-real conjugate pair.
+      </button>
+    </div>
+
+    <div class="feedback"></div>
+  </div>
+
+  <div class="practice-card" data-answer="1">
+
+    <div class="question-number">QUESTION 05</div>
+    <h4>
+      A quartic equation with real coefficients has
+      \(2+5i\) and \(3-4i\) as two of its roots.
+      What are the remaining two roots?
+    </h4>
+
+    <div class="options">
+      <button class="option" data-value="0">
+        A. \(2+5i,\quad3+4i\)
+      </button>
+      <button class="option" data-value="1">
+        B. \(2-5i,\quad3+4i\)
+      </button>
+      <button class="option" data-value="2">
+        C. \(2+5i,\quad3-4i\)
+      </button>
+      <button class="option" data-value="3">
+        D. \(2-4i,\quad3+5i\)
+      </button>
+    </div>
+
+    <div class="feedback"></div>
+  </div>
+
+  <div class="practice-score">
+    <strong>Your practice score</strong>
+    <span id="score">0 / 5</span>
+  </div>
+
+</section>
+
+<!-- FINISH -->
+
+<section class="finish-area" id="finish">
+
+  <div id="finish-content">
+
+    <div class="label">LESSON COMPLETION</div>
+
+    <h2>Ready to finish?</h2>
+
+    <p>
+      You have explored complex roots, conjugate pairs,
+      and the possible roots of cubic and quartic equations.
+      Complete the lesson to save your progress.
+    </p>
+
+    <button class="finish-button" id="finishButton" onclick="finishLesson()">
+      COMPLETE LESSON →
+    </button>
+
+  </div>
+
+  <div class="congratulations" id="congratulations">
+
+    <div class="congrats-symbol">✓</div>
+
+    <div class="label">LESSON COMPLETED</div>
+
+    <h2>Excellent work!</h2>
+
+    <p>
+      You have successfully completed Complex Roots of
+      Polynomial Equations. Another step forward in your
+      understanding of complex numbers!
+    </p>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+
+  <div>
+    <div class="footer-logo">Edu<span>Nova</span></div>
+    <div class="footer-tagline">Mathematics made clear.</div>
+  </div>
+
+  <div class="policy-links">
+    <a href="terms.html">Terms of Use</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+
+  <p>© 2026 EduNova. All rights reserved.</p>
+
+</footer>
+
+<script>
+
+// SUPABASE CONFIGURATION
+
+const SUPABASE_URL = "https://majvqtbortonsrgdknms.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_J3xbJWRcBIei3PLPg9GG3Q_JAjemfD_";
+
+const { createClient } = supabase;
+
+const supabaseClient = createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+const CHAPTER = "Complex Numbers";
+const TOPIC_NUMBER = 4;
+
+
+// AUTHENTICATION
+
+async function checkSession() {
+
+  const { data, error } =
+    await supabaseClient.auth.getSession();
+
+  if (error) {
+    console.error("Session error:", error);
+    return null;
+  }
+
+  if (!data.session) {
+    window.location.href = "index.html";
+    return null;
+  }
+
+  return data.session;
+
+}
+
+
+// LOG OUT
+
+async function logout() {
+
+  await supabaseClient.auth.signOut();
+
+  localStorage.removeItem("eduNovaUsername");
+  localStorage.removeItem("eduNovaEmail");
+
+  window.location.href = "index.html";
+
+}
+
+
+// SAVE LESSON PROGRESS
+
+async function saveProgress() {
+
+  const session = await checkSession();
+
+  if (!session) {
+    return false;
+  }
+
+  const { error } = await supabaseClient
+    .from("lesson_progress")
+    .upsert({
+
+      user_id: session.user.id,
+
+      chapter: CHAPTER,
+
+      topic_number: TOPIC_NUMBER,
+
+      completed_at: new Date().toISOString()
+
+    }, {
+
+      onConflict: "user_id,chapter,topic_number"
+
+    });
+
+  if (error) {
+
+    console.error("Progress saving error:", error);
+
+    return false;
+
+  }
+
+  return true;
+
+}
+
+
+// LOAD EXISTING PROGRESS
+
+async function loadProgress() {
+
+  const session = await checkSession();
+
+  if (!session) return;
+
+  const { data, error } = await supabaseClient
+    .from("lesson_progress")
+    .select("topic_number")
+    .eq("user_id", session.user.id)
+    .eq("chapter", CHAPTER)
+    .eq("topic_number", TOPIC_NUMBER)
+    .maybeSingle();
+
+  if (error) {
+
+    console.error("Progress loading error:", error);
+
+    return;
+
+  }
+
+  if (data) {
+
+    document.getElementById("finish-content").style.display = "none";
+
+    document.getElementById("congratulations").classList.add("show");
+
+  }
+
+}
+
+// CELEBRATION EFFECT
+
+function launchCelebration() {
+
+  const container = document.createElement("div");
+
+  container.className = "confetti-container";
+
+  document.body.appendChild(container);
+
+  const colors = [
+    "#D97745",
+    "#E8B36C",
+    "#75B98A",
+    "#8BA9D8",
+    "#C18BCF",
+    "#E87979",
+    "#F2C6A8"
+  ];
+
+  for (let i = 0; i < 90; i++) {
+
+    const strip = document.createElement("span");
+
+    strip.className = "confetti-strip";
+
+    strip.style.left = Math.random() * 100 + "%";
+
+    strip.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
+
+    strip.style.animationDelay =
+      Math.random() * 1.2 + "s";
+
+    strip.style.animationDuration =
+      (2.8 + Math.random() * 1.5) + "s";
+
+    strip.style.setProperty(
+      "--drift",
+      (Math.random() * 240 - 120) + "px"
+    );
+
+    container.appendChild(strip);
+
+  }
+
+  setTimeout(() => {
+    container.remove();
+  }, 5500);
+
+}
+// FINISH LESSON
+
+async function finishLesson() {
+
+  const button = document.getElementById("finishButton");
+
+  button.disabled = true;
+  button.textContent = "SAVING PROGRESS...";
+
+  const saved = await saveProgress();
+
+  if (!saved) {
+
+    button.disabled = false;
+    button.textContent = "TRY AGAIN →";
+
+    alert("Your progress could not be saved. Please try again.");
+
+    return;
+
+  }
+
+  document.getElementById("finish-content").style.display = "none";
+
+  document.getElementById("congratulations").classList.add("show");
+launchCelebration();
+  document.getElementById("finish").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+}
+
+
+// INTERACTIVE PRACTICE
+
+const answers = {
+
+  1: "Correct! The real part stays the same, and the sign of the imaginary part changes.",
+
+  2: "Correct! A polynomial of degree five has five complex roots, counting multiplicity.",
+
+  3: "Correct! The other two roots must be a non-real conjugate pair.",
+
+  4: "Correct! Two real roots and one conjugate pair give four roots in total.",
+
+  5: "Correct! The missing roots are the conjugates 2 − 5i and 3 + 4i."
+
+};
+
+let correctAnswers = 0;
+let answeredQuestions = new Set();
+
+document.querySelectorAll(".practice-card").forEach((card, index) => {
+
+  const correctAnswer = Number(card.dataset.answer);
+
+  const feedback = card.querySelector(".feedback");
+
+  card.querySelectorAll(".option").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      if (answeredQuestions.has(index)) return;
+
+      const selected = Number(button.dataset.value);
+
+      answeredQuestions.add(index);
+
+      card.querySelectorAll(".option").forEach(option => {
+
+        option.disabled = true;
+
+        if (Number(option.dataset.value) === correctAnswer) {
+
+          option.classList.add("correct");
+
+        }
+
+      });
+
+      if (selected === correctAnswer) {
+
+        correctAnswers++;
+
+        feedback.textContent = answers[index + 1];
+
+        feedback.className = "feedback show good";
+
+      } else {
+
+        button.classList.add("incorrect");
+
+        feedback.textContent =
+          "Not quite. Review the highlighted correct answer and remember the rule explained in the lesson.";
+
+        feedback.className = "feedback show bad";
+
+      }
+
+      document.getElementById("score").textContent =
+        correctAnswers + " / 5";
+
+    });
+
+  });
+
+});
+
+
+// INITIALIZE
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  loadProgress();
+
+});
+
+</script>
+
+</body>
+</html>
