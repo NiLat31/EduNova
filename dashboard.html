@@ -916,42 +916,30 @@ main {
     line-height: 1.7;
 }
 
-.community-mark {
+.community-network {
     position: absolute;
-    right: 9%;
+    right: 7%;
     top: 50%;
     transform: translateY(-50%);
-    width: 130px;
-    height: 130px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(229,43,32,.25);
-    border-radius: 50%;
-    color: var(--red);
-    font: 400 55px "Playfair Display", serif;
+    width: 220px;
+    z-index: 1;
 }
 
-.community-mark::before {
-    content: "";
-    position: absolute;
-    inset: 15px;
-    border: 1px solid var(--line);
-    border-radius: 50%;
+.community-network svg {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 @media (max-width: 700px) {
-    .community-card {
-        padding: 32px 25px;
-    }
-
-    .community-mark {
+    .community-network {
         right: -35px;
         top: 15px;
         transform: none;
         opacity: .15;
     }
 }
+    
 /* FEEDBACK */
 
 .feedback-banner {
@@ -1669,7 +1657,37 @@ body.loading .page-content {
             </div>
         </div>
 
-        <div class="community-mark" aria-hidden="true">✦</div>
+       <div class="community-network" aria-hidden="true">
+    <svg viewBox="0 0 220 170" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <path d="M110 78 L43 35 M110 78 L177 35
+                 M110 78 L43 132 M110 78 L177 132"
+              stroke="#E52B20"
+              stroke-width="1.8"
+              stroke-dasharray="4 6"/>
+
+        <circle cx="43" cy="35" r="15" fill="#FCE8E6"/>
+        <circle cx="177" cy="35" r="15" fill="#FCE8E6"/>
+        <circle cx="43" cy="132" r="15" fill="#FCE8E6"/>
+        <circle cx="177" cy="132" r="15" fill="#FCE8E6"/>
+
+        <circle cx="43" cy="35" r="5" fill="#E52B20"/>
+        <circle cx="177" cy="35" r="5" fill="#E52B20"/>
+        <circle cx="43" cy="132" r="5" fill="#E52B20"/>
+        <circle cx="177" cy="132" r="5" fill="#E52B20"/>
+
+        <rect x="76" y="48" width="68" height="57"
+              rx="15" fill="#E52B20"/>
+
+        <path d="M91 105 L86 117 L104 105"
+              fill="#E52B20"/>
+
+        <circle cx="96" cy="76" r="3" fill="white"/>
+        <circle cx="110" cy="76" r="3" fill="white"/>
+        <circle cx="124" cy="76" r="3" fill="white"/>
+    </svg>
+</div>
     </div>
 </section>
     <!-- FEEDBACK LINKS: both original routes are preserved -->
