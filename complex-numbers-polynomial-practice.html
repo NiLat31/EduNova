@@ -505,7 +505,7 @@ footer {
     </div>
     <div class="progress">
       <div style="display:flex;justify-content:space-between">
-        <span>Your mastery</span><span id="progressText">0 / 8 completed</span>
+        <span>Your mastery</span><span id="progressText">0 / 11 completed</span>
       </div>
       <div class="progress-line"><div class="fill" id="fill"></div></div>
     </div>
@@ -662,12 +662,70 @@ footer {
       </div>
     </article>
 
+    
+    <article class="card" data-q="9">
+      <div class="q-head"><span class="num">09</span><div>
+        <p class="q-title">Reverse-engineering a cubic</p>
+        <div class="prompt">A monic cubic polynomial \(P(z)\) has real coefficients. Two of its roots are \(-1+2i\) and \(-1-2i\). If the coefficient of \(z\) is \(7\), find the third root and write \(P(z)\) in expanded form.</div>
+      </div></div>
+      <div class="actions">
+        <button class="small solbtn" onclick="toggleSolution(9)">Show worked solution</button>
+        <button class="small" aria-pressed="false" onclick="markMastered(9)">Mark as mastered</button>
+      </div>
+      <div class="solution" id="solution9">
+        <h3>Worked solution</h3>
+        <div class="step"><b>Step 1: Form the quadratic factor.</b><p>The two given roots produce:</p><p>\[(z+1-2i)(z+1+2i)=(z+1)^2+4=z^2+2z+5.\]</p></div>
+        <div class="step"><b>Step 2: Introduce the third root.</b><p>Let the third root be \(r\). Then:</p><p>\[P(z)=(z^2+2z+5)(z-r).\]</p><p>Expanding:</p><p>\[P(z)=z^3+(2-r)z^2+(5-2r)z-5r.\]</p></div>
+        <div class="step"><b>Step 3: Use the coefficient of \(z\).</b><p>\[5-2r=7\]</p><p>\[-2r=2\Rightarrow r=-1.\]</p></div>
+        <div class="step"><b>Step 4: Find the polynomial.</b><p>\[P(z)=(z^2+2z+5)(z+1).\]</p><p>\[P(z)=z^3+3z^2+7z+5.\]</p></div>
+        <div class="answer">Third root: \(\boxed{-1}\). Polynomial: \(\boxed{z^3+3z^2+7z+5}\).</div>
+      </div>
+    </article>
+
+    <article class="card" data-q="10">
+      <div class="q-head"><span class="num">10</span><div>
+        <p class="q-title">Determine unknown coefficients</p>
+        <div class="prompt">The polynomial \(P(z)=z^3+az^2+bz+6\), where \(a\) and \(b\) are real constants, has \(1+i\) as a root. Find the values of \(a\) and \(b\), then determine all the roots.</div>
+      </div></div>
+      <div class="actions">
+        <button class="small solbtn" onclick="toggleSolution(10)">Show worked solution</button>
+        <button class="small" aria-pressed="false" onclick="markMastered(10)">Mark as mastered</button>
+      </div>
+      <div class="solution" id="solution10">
+        <h3>Worked solution</h3>
+        <div class="step"><b>Step 1: Use the conjugate-root rule.</b><p>Since the coefficients are real, \(1-i\) is also a root.</p></div>
+        <div class="step"><b>Step 2: Form the quadratic factor.</b><p>\[(z-(1+i))(z-(1-i))=(z-1)^2+1=z^2-2z+2.\]</p></div>
+        <div class="step"><b>Step 3: Find the third root.</b><p>Let the third root be \(r\). Then:</p><p>\[P(z)=(z^2-2z+2)(z-r).\]</p><p>Comparing constant terms:</p><p>\[-2r=6\Rightarrow r=-3.\]</p></div>
+        <div class="step"><b>Step 4: Expand and compare coefficients.</b><p>\[P(z)=(z^2-2z+2)(z+3)\]</p><p>\[P(z)=z^3+z^2-4z+6.\]</p><p>Comparing with \(z^3+az^2+bz+6\):</p><p>\[a=1,\qquad b=-4.\]</p></div>
+        <div class="answer">Coefficients: \(\boxed{a=1,\ b=-4}\). Roots: \(\boxed{1+i,\ 1-i,\ -3}\).</div>
+      </div>
+    </article>
+
+    <article class="card" data-q="11">
+      <div class="q-head"><span class="num">11</span><div>
+        <p class="q-title">Factor a quartic using a complex root</p>
+        <div class="prompt">Solve \(z^4-5z^3+7z^2+3z-10=0\), given that \(2+i\) is one of its roots. Find all four roots.</div>
+      </div></div>
+      <div class="actions">
+        <button class="small solbtn" onclick="toggleSolution(11)">Show worked solution</button>
+        <button class="small" aria-pressed="false" onclick="markMastered(11)">Mark as mastered</button>
+      </div>
+      <div class="solution" id="solution11">
+        <h3>Worked solution</h3>
+        <div class="step"><b>Step 1: Identify the conjugate root.</b><p>Since the polynomial has real coefficients, \(2-i\) is also a root.</p></div>
+        <div class="step"><b>Step 2: Form the quadratic factor.</b><p>\[(z-(2+i))(z-(2-i))=(z-2)^2+1=z^2-4z+5.\]</p></div>
+        <div class="step"><b>Step 3: Divide the quartic by the quadratic factor.</b><p>\[z^4-5z^3+7z^2+3z-10\]</p><p>\[\div (z^2-4z+5)=z^2-z-2.\]</p></div>
+        <div class="step"><b>Step 4: Factor the remaining quadratic.</b><p>\[z^2-z-2=(z-2)(z+1).\]</p><p>Therefore:</p><p>\[P(z)=(z^2-4z+5)(z-2)(z+1).\]</p></div>
+        <div class="answer">All roots: \(\boxed{2+i,\ 2-i,\ 2,\ -1}\).</div>
+      </div>
+    </article>
+
   </section>
 
   <section class="finish" id="finish" aria-live="polite">
     <div style="font-size:42px">✦</div>
     <h2>Polynomial mastery unlocked.</h2>
-    <p>You have marked all eight challenges as mastered. You have worked with conjugate pairs, built factors, and solved cubic and quartic equations. A substantial step in complex-number thinking!</p>
+       <p>You have marked all eleven challenges as mastered. You have worked with conjugate pairs, built factors, and solved cubic and quartic equations. A substantial step in complex-number thinking!</p>
     <button class="primary" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to the top ↑</button>
   </section>
 </main>
@@ -716,8 +774,8 @@ function markMastered(n) {
     button.textContent = 'Mastered ✓';
   }
   const count = mastered.size;
-  document.getElementById('progressText').textContent = `${count} / 8 completed`;
-  document.getElementById('fill').style.width = `${count / 8 * 100}%`;
+  document.getElementById('progressText').textContent = `${count} / 11 completed`;
+  document.getElementById('fill').style.width = `${count / 11 * 100}%`;
   document.getElementById('finish').classList.toggle('show', count === 8);
 }
 
