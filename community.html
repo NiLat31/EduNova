@@ -33,17 +33,17 @@ body {
     background-image:
         radial-gradient(
             ellipse 650px 500px at 5% 12%,
-            rgba(229, 43, 32, .105),
+            rgba(229, 43, 32, .17),
             transparent 72%
         ),
         radial-gradient(
             ellipse 600px 550px at 95% 35%,
-            rgba(229, 43, 32, .085),
+            rgba(229, 43, 32, .14),
             transparent 70%
         ),
         radial-gradient(
             ellipse 700px 500px at 48% 90%,
-            rgba(229, 43, 32, .075),
+            rgba(229, 43, 32, .12),
             transparent 72%
         ),
         radial-gradient(
@@ -169,26 +169,37 @@ main {
     position: relative;
     isolation: isolate;
 }
-    main::before {
+   main::before {
     content: "";
     position: absolute;
     z-index: -1;
-    top: 8%;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: min(900px, 100%);
-    height: 700px;
+    width: 120%;
+    height: 100%;
+    min-height: 1100px;
     pointer-events: none;
 
-    background: radial-gradient(
-        ellipse,
-        rgba(229, 43, 32, .045),
-        transparent 68%
-    );
+    background:
+        radial-gradient(
+            ellipse at 15% 15%,
+            rgba(229, 43, 32, .13),
+            transparent 48%
+        ),
+        radial-gradient(
+            ellipse at 85% 42%,
+            rgba(229, 43, 32, .11),
+            transparent 48%
+        ),
+        radial-gradient(
+            ellipse at 50% 85%,
+            rgba(229, 43, 32, .10),
+            transparent 50%
+        );
 
-    filter: blur(45px);
+    filter: blur(55px);
 }
-
 .section-heading {
     display: flex;
     align-items: center;
@@ -219,7 +230,7 @@ main {
 
 .panel {
     position: relative;
-    background: rgba(255, 255, 255, .88);
+   background: rgba(255, 255, 255, .76);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(229, 43, 32, .09);
@@ -385,7 +396,7 @@ textarea.field {
 
 .post-card {
     position: relative;
-    background: rgba(255, 255, 255, .88);
+   background: rgba(255, 255, 255, .76);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(229, 43, 32, .09);
