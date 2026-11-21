@@ -64,6 +64,101 @@ body {
     font-family: "DM Sans", sans-serif;
     position: relative;
 }
+
+    /* =========================================
+   FLOATING MATHEMATICAL ATMOSPHERE
+========================================= */
+
+body > *:not(.ambient-math) {
+    position: relative;
+    z-index: 1;
+}
+
+.ambient-math {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 15% 25%, rgba(229,43,32,.045), transparent 25%),
+        radial-gradient(circle at 85% 70%, rgba(229,43,32,.04), transparent 28%);
+}
+
+.math-symbol {
+    position: absolute;
+    color: rgba(229, 43, 32, .17);
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    text-shadow:
+        0 0 12px rgba(229,43,32,.25),
+        0 0 28px rgba(229,43,32,.13);
+    animation: symbolFloat 13s ease-in-out infinite alternate;
+}
+
+.s1 { top: 12%; left: 8%; font-size: 35px; }
+.s2 { top: 27%; left: 88%; font-size: 29px; animation-delay: -4s; }
+.s3 { top: 55%; left: 5%; font-size: 43px; animation-delay: -7s; }
+.s4 { top: 76%; left: 91%; font-size: 34px; animation-delay: -2s; }
+.s5 { top: 88%; left: 25%; font-size: 30px; animation-delay: -9s; }
+.s6 { top: 42%; left: 94%; font-size: 27px; animation-delay: -5s; }
+.s7 { top: 65%; left: 20%; font-size: 25px; animation-delay: -3s; }
+.s8 { top: 18%; left: 65%; font-size: 31px; animation-delay: -8s; }
+.s9 { top: 91%; left: 72%; font-size: 28px; animation-delay: -6s; }
+.s10 { top: 38%; left: 42%; font-size: 24px; animation-delay: -10s; }
+
+@keyframes symbolFloat {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(-8deg);
+        opacity: .35;
+    }
+    50% {
+        opacity: .85;
+    }
+    100% {
+        transform: translate3d(12px, -25px, 0) rotate(8deg);
+        opacity: .45;
+    }
+}
+
+/* Tiny glowing particles */
+.ambient-math::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle, rgba(229,43,32,.55) 1px, transparent 2px),
+        radial-gradient(circle, rgba(229,43,32,.35) 1px, transparent 2px),
+        radial-gradient(circle, rgba(229,43,32,.45) 1.5px, transparent 2.5px);
+    background-size: 170px 190px, 230px 250px, 310px 280px;
+    background-position: 20px 30px, 90px 110px, 150px 60px;
+    opacity: .32;
+    animation: sparkleDrift 24s linear infinite;
+}
+
+@keyframes sparkleDrift {
+    from { background-position: 20px 30px, 90px 110px, 150px 60px; }
+    to { background-position: 190px 220px, 320px 360px, 430px 340px; }
+}
+
+@media (max-width: 700px) {
+    .math-symbol {
+        opacity: .55;
+        font-size: 23px;
+    }
+
+    .s10, .s6 {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .math-symbol,
+    .ambient-math::after {
+        animation: none;
+    }
+}
+    
 a {
     color: inherit;
     text-decoration: none;
@@ -603,6 +698,18 @@ footer {
 </head>
 
 <body>
+    <div class="ambient-math" aria-hidden="true">
+    <span class="math-symbol s1">π</span>
+    <span class="math-symbol s2">∑</span>
+    <span class="math-symbol s3">∞</span>
+    <span class="math-symbol s4">√</span>
+    <span class="math-symbol s5">∫</span>
+    <span class="math-symbol s6">x²</span>
+    <span class="math-symbol s7">θ</span>
+    <span class="math-symbol s8">Δ</span>
+    <span class="math-symbol s9">∂</span>
+    <span class="math-symbol s10">±</span>
+</div>
 
 <nav>
     <a class="logo" href="dashboard.html">Edu<span>Nova</span></a>
