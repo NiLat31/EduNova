@@ -835,7 +835,123 @@ main {
 .premium-card.active .premium-mark span {
     color: var(--green);
 }
+/* COMMUNITY SECTION */
 
+.community-section {
+    margin-top: 25px;
+}
+
+.community-card {
+    position: relative;
+    min-height: 245px;
+    padding: 40px 43px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--red);
+    isolation: isolate;
+}
+
+.community-content {
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+}
+
+.community-label {
+    color: var(--red);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.3px;
+    margin-bottom: 15px;
+}
+
+.community-card h2 {
+    margin-bottom: 13px;
+    font: 600 clamp(27px, 3.2vw, 37px)/1.2
+        "Playfair Display", serif;
+}
+
+.community-card p {
+    max-width: 600px;
+    margin-bottom: 21px;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.community-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 19px;
+    border: 0;
+    background: var(--red);
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .25s, transform .25s;
+}
+
+.community-button:hover:not(:disabled) {
+    background: var(--ink);
+    transform: translateY(-2px);
+}
+
+.community-button:disabled {
+    opacity: .65;
+    cursor: not-allowed;
+}
+
+.community-status {
+    margin-top: 13px;
+    color: #777;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.community-mark {
+    position: absolute;
+    right: 9%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(229,43,32,.25);
+    border-radius: 50%;
+    color: var(--red);
+    font: 400 55px "Playfair Display", serif;
+}
+
+.community-mark::before {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+}
+
+@media (max-width: 700px) {
+    .community-card {
+        padding: 32px 25px;
+    }
+
+    .community-mark {
+        right: -35px;
+        top: 15px;
+        transform: none;
+        opacity: .15;
+    }
+}
 /* FEEDBACK */
 
 .feedback-banner {
@@ -1520,7 +1636,42 @@ body.loading .page-content {
 
         </div>
     </section>
+<!-- COMMUNITY SECTION -->
+<section class="community-section" id="communitySection">
+    <div class="community-card">
+        <div class="community-content">
+            <div class="community-label">THE EDUNOVA COMMUNITY</div>
 
+            <h2>Learn together. Grow together.</h2>
+
+            <p id="communityText">
+                Join other EduNova students to share ideas, discuss
+                mathematics, explore practice resources, and learn together.
+            </p>
+
+            <button
+                class="community-button"
+                id="communityButton"
+                type="button"
+                onclick="handleCommunityAction()"
+                disabled
+            >
+                CHECKING MEMBERSHIP...
+            </button>
+
+            <div
+                class="community-status"
+                id="communityStatus"
+                role="status"
+                aria-live="polite"
+            >
+                Checking your community membership...
+            </div>
+        </div>
+
+        <div class="community-mark" aria-hidden="true">✦</div>
+    </div>
+</section>
     <!-- FEEDBACK LINKS: both original routes are preserved -->
 
     <section class="feedback-banner" aria-labelledby="feedbackTitle">
@@ -1599,7 +1750,132 @@ function hideLoading() {
 /* =========================================
    SESSION AND STUDENT PROFILE
 ========================================= */
+/* =========================================
+   COMMUNITY MEMBERSHIP
+========================================= */
 
+let currentCommunityUserId = null;
+let communityJoined = false;
+let communityCheckFailed = false;
+    
+async function loadCommunityMembership() {
+    const button = document.getElementById("communityButton");
+    const text = document.getElementById("communityText");
+    const status = document.getElementById("communityStatus");
+
+    if (!button || !status || !currentCommunityUserId) {
+        return;
+    }
+
+    button.disabled = true;
+    button.textContent = "CHECKING MEMBERSHIP...";
+    status.textContent = "Checking your community membership...";
+
+    try {
+        const { data, error } = await supabaseClient
+            .from("community_members")
+            .select("user_id")
+            .eq("user_id", currentCommunityUserId)
+            .maybeSingle();
+
+      if (error) {
+    throw error;
+}
+
+communityCheckFailed = false;
+communityJoined = !!data;
+        
+        if (communityJoined) {
+            button.disabled = false;
+            button.textContent = "ENTER COMMUNITY →";
+            status.textContent =
+                "You're already a member of the EduNova Community.";
+
+            text.textContent =
+                "Welcome to the community! Connect with other students, " +
+                "share ideas, and explore mathematics together.";
+
+        } else {
+            button.disabled = false;
+            button.textContent = "JOIN COMMUNITY →";
+            status.textContent =
+                "Membership is free during the current academic year.";
+
+            text.textContent =
+                "Join other EduNova students to share ideas, discuss " +
+                "mathematics, explore practice resources, and learn together.";
+        }
+
+   } catch (error) {
+    communityCheckFailed = true;
+
+    console.error("Community membership check failed:", error);
+        button.disabled = false;
+        button.textContent = "RETRY MEMBERSHIP CHECK";
+        status.textContent =
+            "We couldn't check your membership. Please try again.";
+    }
+}
+
+async function handleCommunityAction() {
+    const button = document.getElementById("communityButton");
+    const status = document.getElementById("communityStatus");
+
+    if (!button || !currentCommunityUserId) {
+        return;
+    }
+if (communityCheckFailed) {
+    await loadCommunityMembership();
+    return;
+}
+    if (communityJoined) {
+        window.location.href = "community.html";
+        return;
+    }
+
+    button.disabled = true;
+    button.textContent = "JOINING...";
+    status.textContent = "Adding you to the EduNova Community...";
+
+    try {
+        const { error } = await supabaseClient
+            .from("community_members")
+            .insert({
+                user_id: currentCommunityUserId
+            });
+
+        if (error) {
+            // Handle a duplicate membership safely.
+            if (error.code === "23505") {
+                await loadCommunityMembership();
+                return;
+            }
+
+            throw error;
+        }
+
+        communityJoined = true;
+
+        button.disabled = false;
+        button.textContent = "ENTER COMMUNITY →";
+
+        document.getElementById("communityText").textContent =
+            "Welcome to the community! Connect with other students, " +
+            "share ideas, and explore mathematics together.";
+
+        status.textContent =
+            "You're now a member of the EduNova Community!";
+
+    } catch (error) {
+        console.error("Community joining failed:", error);
+
+        button.disabled = false;
+        button.textContent = "TRY JOINING AGAIN";
+
+        status.textContent =
+            "We couldn't complete your membership. Please try again.";
+    }
+}
 const loadingStartedAt = Date.now();
     async function detectCountry(){
     try{
@@ -1645,7 +1921,9 @@ const loadingStartedAt = Date.now();
             location.replace("index.html");
             return;
         }
+currentCommunityUserId = session.user.id;
 
+await loadCommunityMembership();
         const usernameElement = document.getElementById("username");
 
         if (usernameElement) {
