@@ -701,24 +701,68 @@ footer {
       </div>
     </article>
 
-    <article class="card" data-q="11">
-      <div class="q-head"><span class="num">11</span><div>
-        <p class="q-title">Factor a quartic using a complex root</p>
-        <div class="prompt">Solve \(z^4-5z^3+7z^2+3z-10=0\), given that \(2+i\) is one of its roots. Find all four roots.</div>
-      </div></div>
-      <div class="actions">
-        <button class="small solbtn" onclick="toggleSolution(11)">Show worked solution</button>
-        <button class="small" aria-pressed="false" onclick="markMastered(11)">Mark as mastered</button>
+   
+<article class="card" data-q="11">
+  <div class="q-head">
+    <span class="num">11</span>
+    <div>
+      <p class="q-title">Reconstructing a cubic from its roots</p>
+      <div class="prompt">
+        A monic cubic polynomial \(P(z)\) has real coefficients.
+        One of its roots is \(2+i\), and the sum of all three roots is \(5\).
+
+        Find:
+        <ol>
+          <li>The other two roots.</li>
+          <li>The polynomial \(P(z)\) in expanded form.</li>
+        </ol>
       </div>
-      <div class="solution" id="solution11">
-        <h3>Worked solution</h3>
-        <div class="step"><b>Step 1: Identify the conjugate root.</b><p>Since the polynomial has real coefficients, \(2-i\) is also a root.</p></div>
-        <div class="step"><b>Step 2: Form the quadratic factor.</b><p>\[(z-(2+i))(z-(2-i))=(z-2)^2+1=z^2-4z+5.\]</p></div>
-        <div class="step"><b>Step 3: Divide the quartic by the quadratic factor.</b><p>\[z^4-5z^3+7z^2+3z-10\]</p><p>\[\div (z^2-4z+5)=z^2-z-2.\]</p></div>
-        <div class="step"><b>Step 4: Factor the remaining quadratic.</b><p>\[z^2-z-2=(z-2)(z+1).\]</p><p>Therefore:</p><p>\[P(z)=(z^2-4z+5)(z-2)(z+1).\]</p></div>
-        <div class="answer">All roots: \(\boxed{2+i,\ 2-i,\ 2,\ -1}\).</div>
-      </div>
-    </article>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="small solbtn" onclick="toggleSolution(11)">Show worked solution</button>
+    <button class="small" aria-pressed="false" onclick="markMastered(11)">Mark as mastered</button>
+  </div>
+
+  <div class="solution" id="solution11">
+    <h3>Worked solution</h3>
+
+    <div class="step">
+      <b>Step 1: Find the conjugate root.</b>
+      <p>Since the polynomial has real coefficients, the conjugate of \(2+i\) must also be a root.</p>
+      <p>\[z_2=2-i\]</p>
+    </div>
+
+    <div class="step">
+      <b>Step 2: Find the third root.</b>
+      <p>Let the third root be \(r\). Using the sum of the roots:</p>
+      <p>\[(2+i)+(2-i)+r=5\]</p>
+      <p>\[4+r=5\]</p>
+      <p>\[\boxed{r=1}\]</p>
+    </div>
+
+    <div class="step">
+      <b>Step 3: Construct the polynomial.</b>
+      <p>\[P(z)=(z-(2+i))(z-(2-i))(z-1)\]</p>
+      <p>Multiplying the conjugate factors:</p>
+      <p>\[P(z)=(z^2-4z+5)(z-1)\]</p>
+    </div>
+
+    <div class="step">
+      <b>Step 4: Expand.</b>
+      <p>\[P(z)=z^3-z^2-4z^2+4z+5z-5\]</p>
+      <p>\[P(z)=z^3-5z^2+9z-5\]</p>
+    </div>
+
+    <div class="answer">
+      Other roots: \(\boxed{2-i,\ 1}\)
+
+      Polynomial: \(\boxed{z^3-5z^2+9z-5}\)
+    </div>
+  </div>
+</article>
+
 
   </section>
 
