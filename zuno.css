@@ -1,1 +1,137 @@
+/* =========================================
+   EDUNOVA ZUNO
+   Character and Portal Styling
+========================================= */
 
+#zuno-system {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    pointer-events: none;
+    font-family: "DM Sans", sans-serif;
+}
+
+/* Character container */
+
+#zuno-character {
+    position: fixed;
+    right: 32px;
+    bottom: 28px;
+    width: 230px;
+    height: 260px;
+    pointer-events: auto;
+    z-index: 9002;
+    transition:
+        transform .65s cubic-bezier(.2,.8,.2,1),
+        opacity .4s ease;
+}
+
+#zuno-character canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Red circular portal */
+
+.zuno-portal {
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 28%,
+            #ff7770 0%,
+            #e52b20 35%,
+            #9e100d 75%,
+            #530806 100%);
+    border: 7px solid #171717;
+    box-shadow:
+        0 0 0 3px rgba(229,43,32,.35),
+        0 12px 35px rgba(0,0,0,.3),
+        inset 0 5px 15px rgba(255,255,255,.2);
+    overflow: hidden;
+}
+
+/* Portal zipper */
+
+.zuno-zipper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(
+        to right,
+        #777,
+        #f7d98b,
+        #fff0bd,
+        #8b642d
+    );
+    box-shadow: 0 0 5px rgba(255,220,150,.6);
+}
+
+.zuno-zipper-pull {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    width: 15px;
+    height: 23px;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    border: 2px solid #f4d28a;
+    background: linear-gradient(135deg,#fff0bd,#b8863b);
+    box-shadow: 0 2px 5px rgba(0,0,0,.35);
+}
+
+/* Character entrance */
+
+.zuno-enter {
+    animation: zunoEnter .9s cubic-bezier(.16,1,.3,1) both;
+}
+
+.zuno-exit {
+    animation: zunoExit .7s ease-in both;
+}
+
+@keyframes zunoEnter {
+    from {
+        opacity: 0;
+        transform: translateY(90px) scale(.65);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes zunoExit {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(80px) scale(.6);
+    }
+}
+
+/* Responsive positioning */
+
+@media (max-width: 600px) {
+    #zuno-character {
+        right: 10px;
+        bottom: 12px;
+        width: 180px;
+        height: 210px;
+    }
+
+    .zuno-portal {
+        width: 150px;
+        height: 150px;
+    }
+}
