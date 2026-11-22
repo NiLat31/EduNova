@@ -460,3 +460,82 @@
     border: 2px solid white;
     border-radius: 50%;
 }
+
+/* =================================
+   ZUNO | TWIN FLAME THRUSTERS
+================================= */
+
+.zuno-thrusters {
+    position: absolute;
+    left: 27%;
+    top: 65%;
+    width: 46%;
+    height: 35%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.zuno-thruster {
+    position: relative;
+    width: 23%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.zuno-thruster::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 32%;
+    border-radius: 40%;
+    background: linear-gradient(90deg, #999, #f5f5f5, #aaa);
+    box-shadow: 0 2px 4px #0003;
+}
+
+.zuno-thruster span {
+    position: absolute;
+    top: 23%;
+    width: 75%;
+    height: 65%;
+    border-radius: 50% 50% 45% 45%;
+    background: linear-gradient(
+        to bottom,
+        #ffed78 0%,
+        #ffad32 35%,
+        #ff5722 72%,
+        #e52b20 100%
+    );
+    filter: drop-shadow(0 0 7px #ff7829);
+    transform-origin: 50% 0;
+    animation: zuno-flame 0.22s ease-in-out infinite alternate;
+}
+
+.zuno-thruster-left {
+    transform: rotate(7deg);
+}
+
+.zuno-thruster-right {
+    transform: rotate(-7deg);
+}
+
+@keyframes zuno-flame {
+    from {
+        transform: scaleY(.75) scaleX(.85);
+        opacity: .8;
+    }
+
+    to {
+        transform: scaleY(1.15) scaleX(1.08);
+        opacity: 1;
+    }
+}
+
+/* Slightly stronger flames during celebration */
+
+.zuno-scene[data-state="celebrating"] .zuno-thruster span {
+    filter: drop-shadow(0 0 11px #ff7829);
+    animation-duration: .15s;
+}
