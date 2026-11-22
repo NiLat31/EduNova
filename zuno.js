@@ -55,12 +55,48 @@ const fur = new THREE.MeshPhysicalMaterial({
 });
 
 const red = new THREE.MeshPhysicalMaterial({
-    color: 0xd91f19,
-    roughness: 0.24,
-    metalness: 0.08,
-    clearcoat: 1,
-    clearcoatRoughness: 0.16
+    color: 0xffffff,
+    roughness: 0.72,
+    metalness: 0.02,
+    clearcoat: 0.18,
+    clearcoatRoughness: 0.5
 });
+/* Soft woven fabric texture */
+
+const fabricCanvas = document.createElement("canvas");
+fabricCanvas.width = 512;
+fabricCanvas.height = 512;
+
+const fabricCtx = fabricCanvas.getContext("2d");
+
+fabricCtx.fillStyle = "#d91f19";
+fabricCtx.fillRect(0, 0, 512, 512);
+
+for (let i = 0; i < 512; i += 4) {
+    fabricCtx.strokeStyle = "rgba(255,255,255,0.055)";
+    fabricCtx.lineWidth = 1;
+
+    fabricCtx.beginPath();
+    fabricCtx.moveTo(i, 0);
+    fabricCtx.lineTo(i, 512);
+    fabricCtx.stroke();
+
+    fabricCtx.strokeStyle = "rgba(70,0,0,0.08)";
+    fabricCtx.beginPath();
+    fabricCtx.moveTo(0, i);
+    fabricCtx.lineTo(512, i);
+    fabricCtx.stroke();
+}
+
+const fabricTexture = new THREE.CanvasTexture(fabricCanvas);
+fabricTexture.wrapS = THREE.RepeatWrapping;
+fabricTexture.wrapT = THREE.RepeatWrapping;
+fabricTexture.repeat.set(2, 2);
+
+red.map = fabricTexture;
+red.bumpMap = fabricTexture;
+red.bumpScale = 0.025;
+red.needsUpdate = true;
 
 const redSide = new THREE.MeshStandardMaterial({
     color: 0x99130f,
@@ -321,34 +357,73 @@ pouch.add(badgeInner);
 /* Pouch position: foreground */
 
 pouch.position.set(0, -0.06, 0.55);
-/* ZUNO name on the pouch */
+/* =====================================
+   ZUNO | PREMIUM GOLD NAMEPLATE
+===================================== */
 
 const nameCanvas = document.createElement("canvas");
-nameCanvas.width = 512;
-nameCanvas.height = 128;
+nameCanvas.width = 1024;
+nameCanvas.height = 256;
 
 const ctx = nameCanvas.getContext("2d");
-ctx.clearRect(0, 0, 512, 128);
-ctx.font = "bold 76px Georgia";
+
+ctx.clearRect(0, 0, 1024, 256);
+
+// Elegant gold lettering
+ctx.font = "bold 150px Georgia";
 ctx.textAlign = "center";
 ctx.textBaseline = "middle";
-ctx.fillStyle = "#f3d18b";
-ctx.fillText("ZUNO", 256, 64);
+
+ctx.shadowColor = "#8b541d";
+ctx.shadowBlur = 8;
+ctx.fillStyle = "#ffe5a5";
+ctx.fillText("ZUNO", 512, 128);
 
 const nameTexture = new THREE.CanvasTexture(nameCanvas);
 nameTexture.colorSpace = THREE.SRGBColorSpace;
 
-const namePlate = new THREE.Mesh(
-    new THREE.PlaneGeometry(0.62, 0.155),
+// Rounded 3D nameplate
+const plateShape = new THREE.Shape();
+const w = 0.55;
+const h = 0.18;
+const r = 0.09;
+
+plateShape.moveTo(-w + r, -h);
+plateShape.lineTo(w - r, -h);
+plateShape.quadraticCurveTo(w, -h, w, -h + r);
+plateShape.lineTo(w, h - r);
+plateShape.quadraticCurveTo(w, h, w - r, h);
+plateShape.lineTo(-w + r, h);
+plateShape.quadraticCurveTo(-w, h, -w, h - r);
+plateShape.lineTo(-w, -h + r);
+plateShape.quadraticCurveTo(-w, -h, -w + r, -h);
+
+const plateGeometry = new THREE.ExtrudeGeometry(
+    plateShape,
+    {
+        depth: 0.045,
+        bevelEnabled: true,
+        bevelSegments: 4,
+        bevelSize: 0.018,
+        bevelThickness: 0.018
+    }
+);
+
+const plate = new THREE.Mesh(plateGeometry, gold);
+plate.position.set(0, -0.55, 0.59);
+pouch.add(plate);
+
+const nameText = new THREE.Mesh(
+    new THREE.PlaneGeometry(0.92, 0.23),
     new THREE.MeshBasicMaterial({
         map: nameTexture,
-        transparent: true
+        transparent: true,
+        depthWrite: false
     })
 );
 
-namePlate.position.set(0, -0.43, 0.62);
-pouch.add(namePlate);
-
+nameText.position.set(0, -0.55, 0.66);
+pouch.add(nameText);
 /* Keep character behind pouch */
 
 zuno.position.set(0, -1.18, 0);
@@ -439,10 +514,19 @@ function animate() {
         zuno.position.y = -1.18 + riseProgress * 1.2;
 
         // Gentle greeting movement
-        if (riseProgress > 0.95) {
-            head.rotation.z = Math.sin(t * 2.5) * 0.035;
-            hands[1].rotation.z = Math.sin(t * 4) * 0.35;
-        }
+       if (riseProgress > 0.95) {
+    // Friendly head movement
+    head.rotation.z = Math.sin(t * 2.5) * 0.035;
+
+    // Raise the right hand
+    hands[1].position.y = 0.34;
+
+    // Rotate the hand back and forth
+    hands[1].rotation.z = Math.sin(t * 7) * 0.65;
+} else {
+    hands[1].position.y = 0.035;
+    hands[1].rotation.z = 0;
+}
     }
 
     // Natural blinking
