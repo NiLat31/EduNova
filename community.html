@@ -1230,6 +1230,7 @@ async function initializeCommunity() {
         }
 
         await loadFeed();
+subscribeToCommunityPosts();
 
     } catch (error) {
         console.error("Community initialization failed:", error);
@@ -1745,6 +1746,37 @@ element("logoutButton").addEventListener("click", async event => {
 
     location.replace("index.html");
 });
+
+/* =========================================
+   REAL-TIME COMMUNITY UPDATES
+========================================= */
+
+let communityChannel = null;
+
+function subscribeToCommunityPosts() {
+    if (communityChannel) {
+        return;
+    }
+
+    communityChannel = supabaseClient
+        .channel("community-posts-live")
+        .on(
+            "postgres_changes",
+            {
+                event: "INSERT",
+                schema: "public",
+                table: "community_posts"
+            },
+            async payload => {
+                console.log("New community post received:", payload.new);
+
+                await loadFeed();
+            }
+        )
+        .subscribe(status => {
+            console.log("Community Realtime status:", status);
+        });
+}
 
 /* =========================================
    START
