@@ -190,9 +190,8 @@ const rightArm = createArm(1);
 
 /* Initial position */
 
-zuno.position.y = -0.05;
-zuno.scale.setScalar(0.95);
-
+zuno.position.y = 0.75;
+zuno.scale.setScalar(0.85);
 /* Resize */
 
 function resize() {
