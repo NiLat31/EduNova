@@ -76,6 +76,28 @@
     `;
 
     document.body.appendChild(robot);
+   const newspaper = document.createElement("div");
+newspaper.id = "zuno-newspaper";
+
+newspaper.innerHTML = `
+    <div class="zuno-news-header">
+        <span>EDUNOVA</span>
+        <span>NEWS</span>
+    </div>
+
+    <div class="zuno-news-content">
+        <span class="zuno-news-label">LATEST ANNOUNCEMENT</span>
+        <h3>Something new is here!</h3>
+        <p>Stay tuned for the latest updates from EduNova.</p>
+    </div>
+
+    <div class="zuno-news-footer">
+        <span>MATHEMATICS MADE CLEAR.</span>
+        <span>01</span>
+    </div>
+`;
+
+document.body.appendChild(newspaper);
 
     const scene = robot.querySelector(".zuno-scene");
 
