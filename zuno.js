@@ -86,9 +86,70 @@
         animate("pointing");
     }
 
-    function celebrate() {
-        animate("celebrating");
+   function celebrate() {
+    animate("celebrating");
+    launchConfetti();
+}
+   function launchConfetti() {
+    const colors = [
+        "#e52b20",
+        "#ffcc42",
+        "#39b86b",
+        "#4285f4",
+        "#b56bea",
+        "#ff7c42"
+    ];
+
+    const scene = robot.querySelector(".zuno-scene");
+
+    // Remove any previous confetti.
+    scene.querySelectorAll(".zuno-confetti").forEach(el => el.remove());
+
+    // Launch strips from both hands.
+    for (let hand = 0; hand < 2; hand++) {
+        for (let i = 0; i < 12; i++) {
+            const strip = document.createElement("span");
+
+            strip.className = "zuno-confetti";
+
+            const direction = hand === 0 ? -1 : 1;
+            const spread = 25 + Math.random() * 65;
+
+            strip.style.setProperty(
+                "--start-x",
+                hand === 0 ? "13%" : "87%"
+            );
+
+            strip.style.setProperty(
+                "--move-x",
+                `${direction * spread}px`
+            );
+
+            strip.style.setProperty(
+                "--move-y",
+                `${-35 - Math.random() * 75}px`
+            );
+
+            strip.style.setProperty(
+                "--rotation",
+                `${Math.random() * 720 - 360}deg`
+            );
+
+            strip.style.setProperty(
+                "--confetti-color",
+                colors[Math.floor(Math.random() * colors.length)]
+            );
+
+            strip.style.animationDelay = `${Math.random() * 0.25}s`;
+
+            scene.appendChild(strip);
+        }
     }
+
+    setTimeout(() => {
+        scene.querySelectorAll(".zuno-confetti").forEach(el => el.remove());
+    }, 1800);
+}
 
     function thank() {
         animate("thanking");
