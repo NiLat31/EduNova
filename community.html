@@ -1763,7 +1763,7 @@ function subscribeToCommunityPosts() {
         .on(
             "postgres_changes",
             {
-                event: "INSERT",
+                event: "*",
                 schema: "public",
                 table: "community_posts"
             },
