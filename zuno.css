@@ -386,3 +386,77 @@
         transform: translate(7px, -12px) rotate(-65deg);
     }
 }
+/* =================================
+   ZUNO | FACIAL EXPRESSIONS
+================================= */
+
+/* Blinking */
+
+.zuno-eye {
+    transform-origin: center;
+    animation: zuno-blink 5s infinite;
+}
+
+@keyframes zuno-blink {
+    0%, 45%, 49%, 100% {
+        transform: scaleY(1);
+    }
+
+    47% {
+        transform: scaleY(.08);
+    }
+}
+
+/* Cheeks */
+
+.zuno-cheeks {
+    position: absolute;
+    top: 59%;
+    left: 12%;
+    width: 76%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.zuno-cheeks span {
+    width: 12px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ff8585;
+    opacity: .65;
+    filter: blur(2px);
+}
+
+/* Happy expression */
+
+.zuno-scene[data-state="celebrating"] .zuno-eye,
+.zuno-scene[data-state="thanking"] .zuno-eye {
+    height: 5px;
+    border-radius: 50% 50% 0 0;
+    transform: translateY(5px);
+    animation: none;
+}
+
+.zuno-scene[data-state="celebrating"] .zuno-mouth {
+    width: 24%;
+    height: 12%;
+    left: 38%;
+    border: 2px solid white;
+    border-top: 0;
+    border-radius: 0 0 50% 50%;
+}
+
+/* Surprised expression */
+
+.zuno-scene[data-state="surprised"] .zuno-eye {
+    height: 19px;
+    animation: none;
+}
+
+.zuno-scene[data-state="surprised"] .zuno-mouth {
+    width: 9px;
+    height: 9px;
+    left: 45.5%;
+    border: 2px solid white;
+    border-radius: 50%;
+}
