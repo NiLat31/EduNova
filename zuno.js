@@ -17,6 +17,14 @@
         <div class="zuno-scene">
 
             <div class="zuno-shadow"></div>
+            <div class="zuno-thrusters">
+    <div class="zuno-thruster zuno-thruster-left">
+        <span></span>
+    </div>
+    <div class="zuno-thruster zuno-thruster-right">
+        <span></span>
+    </div>
+</div>
 
             <div class="zuno-robot">
 
