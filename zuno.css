@@ -36,9 +36,9 @@
 .zuno-robot {
     position: absolute;
     inset: 0;
+    z-index: 2;
     animation: zuno-hover 3s ease-in-out infinite;
 }
-
 /* Hovering shadow */
 
 .zuno-shadow {
