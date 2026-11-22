@@ -276,7 +276,7 @@
 }
 
 .zuno-scene[data-state="celebrating"] .zuno-robot {
-    animation: zuno-celebrate .45s ease-in-out infinite alternate;
+    animation: zuno-celebrate .65s ease-in-out 1;
 }
 
 .zuno-scene[data-state="thanking"] .zuno-robot {
@@ -289,8 +289,33 @@
 }
 
 @keyframes zuno-celebrate {
-    from { transform: translateY(0) rotate(-5deg); }
-    to { transform: translateY(-13px) rotate(5deg); }
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+
+    15% {
+        transform: translateY(-5px) rotate(-7deg);
+    }
+
+    30% {
+        transform: translateY(2px) rotate(7deg);
+    }
+
+    45% {
+        transform: translateY(-6px) rotate(-5deg);
+    }
+
+    60% {
+        transform: translateY(2px) rotate(5deg);
+    }
+
+    75% {
+        transform: translateY(-3px) rotate(-2deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0);
+    }
 }
 
 @keyframes zuno-thank {
