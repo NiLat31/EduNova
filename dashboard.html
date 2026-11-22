@@ -1924,21 +1924,27 @@ const loadingStartedAt = Date.now();
             return;
         }
 
-        const { data: student, error } = await supabaseClient
-            .from("students")
-            .select("username, email, country, detected_country, premium_access")
-            .eq("id", session.user.id)
-            .single();
+       const { data: student, error } = await supabaseClient
+    .from("students")
+    .select("username, email, country, detected_country, premium_access")
+    .eq("id", session.user.id)
+    .maybeSingle();
 
-        if (error || !student) {
-            await supabaseClient.auth.signOut();
+if (error) {
+    console.error("Student profile database error:", error);
+    showDashboardError();
+    return;
+}
 
-            localStorage.removeItem("eduNovaUsername");
-            localStorage.removeItem("eduNovaEmail");
+if (!student) {
+    console.error(
+        "Authenticated user has no student profile:",
+        session.user.id
+    );
 
-            location.replace("index.html");
-            return;
-        }
+    showDashboardError();
+    return;
+}
 currentCommunityUserId = session.user.id;
 
 await loadCommunityMembership();
