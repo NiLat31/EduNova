@@ -1,100 +1,98 @@
 
 /* ==========================================
    EDUNOVA | ZUNO
-   2.5D Character System
-   Built from scratch
+   Floating Robot Mascot
+   Fresh implementation
 ========================================== */
 
 (() => {
     "use strict";
 
-    const CONFIG = {
-        width: 170,
-        height: 190,
-        position: {
-            right: 22,
-            bottom: 20
-        }
-    };
+    if (document.getElementById("zuno-system")) return;
 
-    const root = document.createElement("div");
-    root.id = "zuno-system";
+    const robot = document.createElement("div");
+    robot.id = "zuno-system";
 
-    root.innerHTML = `
+    robot.innerHTML = `
         <div class="zuno-scene">
 
-            <div class="zuno-character">
+            <div class="zuno-shadow"></div>
+
+            <div class="zuno-robot">
+
+                <div class="zuno-antenna">
+                    <span></span>
+                </div>
+
+                <div class="zuno-ear zuno-ear-left"></div>
+                <div class="zuno-ear zuno-ear-right"></div>
+
+                <div class="zuno-arm zuno-arm-left">
+                    <div class="zuno-hand"></div>
+                </div>
+
+                <div class="zuno-arm zuno-arm-right">
+                    <div class="zuno-hand"></div>
+                </div>
 
                 <div class="zuno-body">
-                    <div class="zuno-head">
-                        <div class="zuno-hair"></div>
-                        <div class="zuno-face">
-                            <div class="zuno-eyes">
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <div class="zuno-smile"></div>
+
+                    <div class="zuno-shell-highlight"></div>
+
+                    <div class="zuno-face">
+
+                        <div class="zuno-eyes">
+                            <span class="zuno-eye"></span>
+                            <span class="zuno-eye"></span>
                         </div>
+
+                        <div class="zuno-mouth"></div>
+
                     </div>
 
-                    <div class="zuno-torso"></div>
+                    <div class="zuno-chest">
+                        <span>EN</span>
+                    </div>
 
-                    <div class="zuno-arm zuno-arm-left"></div>
-                    <div class="zuno-arm zuno-arm-right"></div>
                 </div>
 
-                <div class="zuno-pouch">
-                    <div class="zuno-pouch-body">
-                        <div class="zuno-pouch-stitch"></div>
-                        <div class="zuno-pouch-name">ZUNO</div>
-                    </div>
-
-                    <div class="zuno-zipper">
-                        <div class="zuno-zip-track"></div>
-                        <div class="zuno-zip-pull"></div>
-                    </div>
-                </div>
+                <div class="zuno-side-light"></div>
 
             </div>
+
         </div>
     `;
 
-    root.style.setProperty("--zuno-width", `${CONFIG.width}px`);
-    root.style.setProperty("--zuno-height", `${CONFIG.height}px`);
-    root.style.setProperty("--zuno-right", `${CONFIG.position.right}px`);
-    root.style.setProperty("--zuno-bottom", `${CONFIG.position.bottom}px`);
+    document.body.appendChild(robot);
 
-    document.body.appendChild(root);
+    const scene = robot.querySelector(".zuno-scene");
 
-    const scene = root.querySelector(".zuno-scene");
-
-    function setAnimation(name) {
-        scene.dataset.state = name;
+    function animate(state) {
+        scene.dataset.state = state;
     }
 
     function show() {
-        root.classList.add("zuno-visible");
-        setAnimation("greeting");
+        robot.classList.add("zuno-visible");
+        animate("greeting");
     }
 
     function hide() {
-        setAnimation("sleeping");
-
-        root.classList.remove("zuno-visible");
+        animate("sleeping");
+        robot.classList.remove("zuno-visible");
     }
 
     function announce() {
         show();
-        setAnimation("pointing");
+        animate("pointing");
     }
 
     function celebrate() {
-        setAnimation("celebrating");
+        animate("celebrating");
     }
 
     function thank() {
-        setAnimation("thanking");
-        window.setTimeout(hide, 1600);
+        animate("thanking");
+        setTimeout(hide, 1800);
     }
 
     window.Zuno = {
