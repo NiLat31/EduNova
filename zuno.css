@@ -554,3 +554,72 @@
     filter: drop-shadow(0 0 11px #ff7829);
     animation-duration: .15s;
 }
+/* =================================
+   ZUNO | EDUNOVA NEWS BULLETIN
+================================= */
+
+#zuno-newspaper {
+    position: fixed;
+    right: 180px;
+    bottom: 65px;
+    width: 260px;
+    padding: 16px;
+    background: #ffffff;
+    color: #171717;
+    border-radius: 12px;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 12px 35px #00000020;
+    z-index: 8999;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.zuno-news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #e52b20;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.zuno-news-header span:last-child {
+    color: #e52b20;
+}
+
+.zuno-news-content {
+    padding: 15px 0;
+}
+
+.zuno-news-label {
+    color: #e52b20;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.zuno-news-content h3 {
+    margin: 8px 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    line-height: 1.25;
+}
+
+.zuno-news-content p {
+    margin: 0;
+    color: #666;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.zuno-news-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid #eeeeee;
+    color: #999;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .7px;
+}
