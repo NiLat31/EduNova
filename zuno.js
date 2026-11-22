@@ -218,7 +218,7 @@ function animate() {
     const time = clock.getElapsedTime();
 
     // Gentle floating
-    zuno.position.y = -0.05 + Math.sin(time * 1.5) * 0.045;
+    zuno.position.y = 0.75 + Math.sin(time * 1.5) * 0.025;
 
     // Small head movement
     head.rotation.y = Math.sin(time * 0.8) * 0.06;
