@@ -1,51 +1,273 @@
 
-/* =====================================
+/* ==========================================
    EDUNOVA | ZUNO
-   Compact Mascot Interface
-===================================== */
+   Fresh 2.5D visual foundation
+========================================== */
 
 #zuno-system {
     position: fixed;
-    right: 22px;
-    bottom: 20px;
-    width: 150px;
-    height: 160px;
+    right: var(--zuno-right, 22px);
+    bottom: var(--zuno-bottom, 20px);
+    width: var(--zuno-width, 170px);
+    height: var(--zuno-height, 190px);
     z-index: 9000;
-    display: none;
-   visibility: hidden;
-    pointer-events: none;
+
     opacity: 0;
-    transform: translateY(18px) scale(.92);
-       transition: opacity .35s ease,
-                transform .4s ease,
-                visibility .35s ease;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(18px) scale(.94);
+    transition:
+        opacity .4s ease,
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        visibility .4s ease;
 }
 
 #zuno-system.zuno-visible {
-    display: block;
-   visibility: visible;
     opacity: 1;
+    visibility: visible;
     transform: translateY(0) scale(1);
 }
 
-#zuno-character {
+.zuno-scene {
+    position: relative;
     width: 100%;
     height: 100%;
-    position: relative;
-    pointer-events: none;
+    overflow: visible;
+    perspective: 900px;
 }
 
-#zuno-character canvas {
-    display: block;
+.zuno-character {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+}
+
+/* Character */
+
+.zuno-body {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+.zuno-head {
+    position: absolute;
+    width: 57%;
+    height: 46%;
+    top: 7%;
+    left: 21.5%;
+    border-radius: 48% 48% 43% 43%;
+    background: linear-gradient(145deg, #ffffff, #e9e9eb);
+    box-shadow:
+        inset -5px -7px 12px #c9c9cc,
+        inset 5px 5px 12px #ffffff,
+        0 5px 12px #00000018;
+    transform-origin: 50% 90%;
+}
+
+.zuno-hair {
+    position: absolute;
+    top: -8%;
+    left: 43%;
+    width: 17%;
+    height: 18%;
+    border-radius: 80% 10% 80% 10%;
+    background: #f5f5f5;
+    transform: rotate(-25deg);
+    box-shadow: 1px 2px 3px #00000020;
+}
+
+.zuno-face {
+    position: absolute;
+    inset: 0;
+}
+
+.zuno-eyes {
+    position: absolute;
+    top: 43%;
+    left: 22%;
+    width: 56%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.zuno-eyes span {
+    width: 15%;
+    aspect-ratio: .75;
+    background: #171719;
+    border-radius: 50%;
+    box-shadow: inset 2px 1px 2px #ffffff55;
+}
+
+.zuno-smile {
+    position: absolute;
+    width: 20%;
+    height: 10%;
+    top: 65%;
+    left: 40%;
+    border-bottom: 2.5px solid #333;
+    border-radius: 0 0 50% 50%;
+}
+
+.zuno-torso {
+    position: absolute;
+    width: 48%;
+    height: 39%;
+    top: 49%;
+    left: 26%;
+    border-radius: 45% 45% 35% 35%;
+    background: linear-gradient(140deg, #fff, #dedee1);
+    box-shadow: inset -5px -5px 10px #c9c9cc;
+}
+
+.zuno-arm {
+    position: absolute;
+    width: 15%;
+    height: 30%;
+    top: 52%;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #dedee1, #fff);
+    transform-origin: 50% 15%;
+}
+
+.zuno-arm-left {
+    left: 17%;
+    transform: rotate(22deg);
+}
+
+.zuno-arm-right {
+    right: 17%;
+    transform: rotate(-22deg);
+}
+
+/* Pouch */
+
+.zuno-pouch {
+    position: absolute;
+    z-index: 4;
+    left: 7%;
+    bottom: 0;
+    width: 86%;
+    height: 47%;
+}
+
+.zuno-pouch-body {
+    position: absolute;
+    inset: 0;
+    border-radius: 20% 20% 17% 17%;
+    background: linear-gradient(145deg, #f13b30, #c91419);
+    box-shadow:
+        inset 5px 5px 9px #ff777044,
+        inset -7px -8px 12px #85000055,
+        0 8px 15px #00000025;
+    overflow: hidden;
+}
+
+.zuno-pouch-stitch {
+    position: absolute;
+    inset: 7%;
+    border: 1px dashed #ffb2a080;
+    border-radius: 16%;
+}
+
+.zuno-pouch-name {
+    position: absolute;
+    top: 39%;
     width: 100%;
-    height: 100%;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-weight: 900;
+    font-size: 19px;
+    letter-spacing: 2px;
+    color: #f9d77c;
+    text-shadow:
+        0 2px 1px #75430b,
+        0 -1px 1px #fff1b0;
+}
+
+.zuno-zipper {
+    position: absolute;
+    top: 0;
+    left: 9%;
+    width: 82%;
+    height: 12px;
+}
+
+.zuno-zip-track {
+    position: absolute;
+    top: 3px;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background: linear-gradient(#fff0b0, #a66b18, #f5d47d);
+}
+
+.zuno-zip-pull {
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    width: 12px;
+    height: 15px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #a66b18, #ffe7a0, #b67b20);
+}
+
+/* Animations */
+
+.zuno-scene[data-state="greeting"] .zuno-arm-right {
+    animation: zuno-wave .6s ease-in-out infinite alternate;
+}
+
+.zuno-scene[data-state="greeting"] .zuno-head {
+    animation: zuno-head-move 2s ease-in-out infinite;
+}
+
+.zuno-scene[data-state="pointing"] .zuno-arm-right {
+    transform: rotate(-75deg);
+}
+
+.zuno-scene[data-state="celebrating"] .zuno-character {
+    animation: zuno-bounce .45s ease-in-out infinite alternate;
+}
+
+.zuno-scene[data-state="thanking"] .zuno-head {
+    animation: zuno-bow .8s ease-in-out;
+}
+
+@keyframes zuno-wave {
+    from { transform: rotate(-22deg); }
+    to { transform: rotate(-85deg); }
+}
+
+@keyframes zuno-head-move {
+    0%, 100% { transform: rotate(0); }
+    50% { transform: rotate(4deg); }
+}
+
+@keyframes zuno-bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-9px); }
+}
+
+@keyframes zuno-bow {
+    0%, 100% { transform: rotate(0); }
+    45% { transform: rotate(12deg); }
 }
 
 @media (max-width: 600px) {
     #zuno-system {
-        width: 118px;
-        height: 128px;
+        width: 125px;
+        height: 145px;
         right: 12px;
         bottom: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #zuno-system,
+    #zuno-system * {
+        animation: none !important;
+        transition: none !important;
     }
 }
