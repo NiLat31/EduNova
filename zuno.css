@@ -314,3 +314,58 @@
         transition: none !important;
     }
 }
+/* =================================
+   ZUNO CELEBRATION CONFETTI
+================================= */
+
+.zuno-confetti {
+    position: absolute;
+    z-index: 20;
+    left: var(--start-x);
+    top: 55%;
+
+    width: 5px;
+    height: 11px;
+
+    border-radius: 2px;
+    background: var(--confetti-color);
+
+    pointer-events: none;
+
+    animation: zuno-confetti-flight 1.15s
+        cubic-bezier(.15,.65,.3,1) forwards;
+}
+
+@keyframes zuno-confetti-flight {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(0);
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(var(--move-x), var(--move-y))
+            rotate(var(--rotation));
+    }
+}
+
+/* Announcement pointing movement */
+
+.zuno-scene[data-state="pointing"] .zuno-arm-right {
+    animation: zuno-pointing 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes zuno-pointing {
+    from {
+        transform: translate(0, 0) rotate(-25deg);
+    }
+
+    to {
+        transform: translate(7px, -12px) rotate(-65deg);
+    }
+}
