@@ -1924,7 +1924,7 @@ const loadingStartedAt = Date.now();
             return;
         }
 
-       const { data: student, error } = await supabaseClient
+      let { data: student, error } = await supabaseClient
     .from("students")
     .select("username, email, country, detected_country, premium_access")
     .eq("id", session.user.id)
@@ -1937,13 +1937,52 @@ if (error) {
 }
 
 if (!student) {
-    console.error(
-        "Authenticated user has no student profile:",
-        session.user.id
-    );
+    console.log("Creating a new EduNova student profile...");
 
-    showDashboardError();
-    return;
+    const metadata = session.user.user_metadata || {};
+
+    // Get the student's name from Google.
+    const username =
+        metadata.username ||
+        metadata.full_name ||
+        metadata.name ||
+        metadata.given_name ||
+        session.user.email?.split("@")[0] ||
+        "Student";
+
+    // Detect the student's country if available.
+    const detectedCountry =
+        metadata.detected_country || await detectCountry();
+
+    const country =
+        metadata.country ||
+        detectedCountry ||
+        "Unknown";
+
+    const { data: newStudent, error: insertError } =
+        await supabaseClient
+            .from("students")
+            .insert({
+                id: session.user.id,
+                username: username,
+                email: session.user.email,
+                country: country,
+                detected_country: detectedCountry,
+                premium_access: false
+            })
+            .select("username, email, country, detected_country, premium_access")
+            .single();
+
+    if (insertError) {
+        console.error("Student profile creation failed:", insertError);
+
+        showDashboardError();
+        return;
+    }
+
+    student = newStudent;
+
+    console.log("EduNova student profile created successfully!");
 }
 currentCommunityUserId = session.user.id;
 
