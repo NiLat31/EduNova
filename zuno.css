@@ -12,14 +12,18 @@
     height: 160px;
     z-index: 9000;
     display: none;
+   visibility: hidden;
     pointer-events: none;
     opacity: 0;
     transform: translateY(18px) scale(.92);
-    transition: opacity .35s ease, transform .4s ease;
+       transition: opacity .35s ease,
+                transform .4s ease,
+                visibility .35s ease;
 }
 
 #zuno-system.zuno-visible {
     display: block;
+   visibility: visible;
     opacity: 1;
     transform: translateY(0) scale(1);
 }
