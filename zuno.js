@@ -310,7 +310,7 @@ pouch.position.y = -0.1;
 
 /* Character sits behind the pouch */
 
-zuno.position.set(0, 0.05, 0.45);
+zuno.position.set(0, 0.05, -0.15);
 zuno.scale.setScalar(0.92);
 
 /* Resize */
