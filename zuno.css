@@ -37,7 +37,22 @@
     position: absolute;
     inset: 0;
     z-index: 2;
-    animation: zuno-hover 3s ease-in-out infinite;
+    animation: zuno-flight 4s ease-in-out infinite;
+}
+
+@keyframes zuno-flight {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(4px, -3px) rotate(1.5deg);
+    }
+    50% {
+        transform: translate(0, -6px) rotate(0deg);
+    }
+    75% {
+        transform: translate(-4px, -3px) rotate(-1.5deg);
+    }
 }
 /* Hovering shadow */
 
