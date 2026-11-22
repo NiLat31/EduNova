@@ -1775,9 +1775,21 @@ function subscribeToCommunityPosts() {
     await loadFeed();
 }
         )
-        .subscribe(status => {
-            console.log("Community Realtime status:", status);
-        });
+        .subscribe((status, err) => {
+    console.log("Community Realtime status:", status);
+
+    if (err) {
+        console.error("Realtime subscription error:", err);
+    }
+
+    if (status === "CHANNEL_ERROR") {
+        console.error("Realtime channel error:", err);
+    }
+
+    if (status === "TIMED_OUT") {
+        console.error("Realtime connection timed out.");
+    }
+});
 }
 
 /* =========================================
