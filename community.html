@@ -1767,11 +1767,13 @@ function subscribeToCommunityPosts() {
                 schema: "public",
                 table: "community_posts"
             },
-            async payload => {
-                console.log("New community post received:", payload.new);
+           async payload => {
+    console.log("New community post received:", payload.new);
 
-                await loadFeed();
-            }
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    await loadFeed();
+}
         )
         .subscribe(status => {
             console.log("Community Realtime status:", status);
