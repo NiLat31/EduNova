@@ -105,15 +105,17 @@ document.body.appendChild(newspaper);
         scene.dataset.state = state;
     }
 
-    function show() {
-        robot.classList.add("zuno-visible");
-        animate("greeting");
-    }
+  function show() {
+    robot.classList.add("zuno-visible");
+    newspaper.classList.add("zuno-news-visible");
+    animate("greeting");
+}
 
-    function hide() {
-        animate("sleeping");
-        robot.classList.remove("zuno-visible");
-    }
+   function hide() {
+    animate("sleeping");
+    robot.classList.remove("zuno-visible");
+    newspaper.classList.remove("zuno-news-visible");
+}
 
     function announce() {
         show();
