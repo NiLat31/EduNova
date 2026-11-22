@@ -1,10 +1,10 @@
 
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
 
-/* =====================================
-   EDUNOVA | ZUNO 2.0
-   Compact Red Zipper Pouch Mascot
-===================================== */
+/* ==========================================
+   EDUNOVA | ZUNO 3.0
+   Original 3D Mascot
+========================================== */
 
 const system = document.createElement("div");
 system.id = "zuno-system";
@@ -15,12 +15,15 @@ character.id = "zuno-character";
 system.appendChild(character);
 document.body.appendChild(system);
 
-/* Scene */
+/* ---------- RENDERER ---------- */
 
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(32, 150 / 160, 0.1, 100);
-camera.position.set(0, 0, 7);
+const camera = new THREE.OrthographicCamera(
+    -1.75, 1.75, 1.87, -1.87, 0.1, 100
+);
+camera.position.set(0, 0, 9);
+camera.lookAt(0, 0, 0);
 
 const renderer = new THREE.WebGLRenderer({
     alpha: true,
@@ -30,116 +33,133 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.15;
-
+renderer.toneMappingExposure = 1.2;
 character.appendChild(renderer.domElement);
 
-/* Lighting */
+/* ---------- LIGHTING ---------- */
 
-scene.add(new THREE.AmbientLight(0xffffff, 1.8));
+scene.add(new THREE.HemisphereLight(0xfff5ed, 0x54201c, 2.1));
 
-const keyLight = new THREE.DirectionalLight(0xffffff, 3);
-keyLight.position.set(-3, 4, 6);
+const keyLight = new THREE.DirectionalLight(0xfff0df, 3.2);
+keyLight.position.set(-3, 5, 6);
 scene.add(keyLight);
 
-const softLight = new THREE.PointLight(0xff7770, 12, 10);
-softLight.position.set(3, 1, 3);
-scene.add(softLight);
+const fillLight = new THREE.PointLight(0xff7770, 2.5, 9);
+fillLight.position.set(3, 1, 4);
+scene.add(fillLight);
 
-/* Materials */
+const rimLight = new THREE.DirectionalLight(0xffc77c, 2);
+rimLight.position.set(2, 3, -3);
+scene.add(rimLight);
+
+/* ---------- MATERIALS ---------- */
 
 const fur = new THREE.MeshPhysicalMaterial({
-    color: 0xfffdfb,
-    roughness: 0.3,
-    clearcoat: 0.8
+    color: 0xfffaf6,
+    roughness: 0.48,
+    metalness: 0,
+    clearcoat: 0.28,
+    clearcoatRoughness: 0.4
 });
 
-const red = new THREE.MeshPhysicalMaterial({
-    color: 0xffffff,
-    roughness: 0.72,
-    metalness: 0.02,
-    clearcoat: 0.18,
-    clearcoatRoughness: 0.5
+const dark = new THREE.MeshPhysicalMaterial({
+    color: 0x241b1b,
+    roughness: 0.2,
+    clearcoat: 1
 });
-/* Soft woven fabric texture */
+
+const iris = new THREE.MeshPhysicalMaterial({
+    color: 0x75432b,
+    roughness: 0.22,
+    clearcoat: 1
+});
+
+const white = new THREE.MeshBasicMaterial({
+    color: 0xffffff
+});
+
+const gold = new THREE.MeshPhysicalMaterial({
+    color: 0xe8b85d,
+    metalness: 0.82,
+    roughness: 0.24,
+    clearcoat: 0.7
+});
+
+const redFabric = new THREE.MeshPhysicalMaterial({
+    color: 0xffffff,
+    roughness: 0.78,
+    metalness: 0.01,
+    clearcoat: 0.12
+});
+
+const redDark = new THREE.MeshStandardMaterial({
+    color: 0x8f1018,
+    roughness: 0.55
+});
+
+const blush = new THREE.MeshBasicMaterial({
+    color: 0xf3aaa2,
+    transparent: true,
+    opacity: 0.52
+});
+
+/* ---------- FABRIC TEXTURE ---------- */
 
 const fabricCanvas = document.createElement("canvas");
 fabricCanvas.width = 512;
 fabricCanvas.height = 512;
 
-const fabricCtx = fabricCanvas.getContext("2d");
+const fabricContext = fabricCanvas.getContext("2d");
 
-fabricCtx.fillStyle = "#d91f19";
-fabricCtx.fillRect(0, 0, 512, 512);
+fabricContext.fillStyle = "#c91d27";
+fabricContext.fillRect(0, 0, 512, 512);
 
-for (let i = 0; i < 512; i += 4) {
-    fabricCtx.strokeStyle = "rgba(255,255,255,0.055)";
-    fabricCtx.lineWidth = 1;
+for (let i = 0; i < 512; i += 3) {
+    fabricContext.strokeStyle = "rgba(255,255,255,0.07)";
+    fabricContext.lineWidth = 1;
+    fabricContext.beginPath();
+    fabricContext.moveTo(i, 0);
+    fabricContext.lineTo(i, 512);
+    fabricContext.stroke();
 
-    fabricCtx.beginPath();
-    fabricCtx.moveTo(i, 0);
-    fabricCtx.lineTo(i, 512);
-    fabricCtx.stroke();
-
-    fabricCtx.strokeStyle = "rgba(70,0,0,0.08)";
-    fabricCtx.beginPath();
-    fabricCtx.moveTo(0, i);
-    fabricCtx.lineTo(512, i);
-    fabricCtx.stroke();
+    fabricContext.strokeStyle = "rgba(60,0,0,0.09)";
+    fabricContext.beginPath();
+    fabricContext.moveTo(0, i);
+    fabricContext.lineTo(512, i);
+    fabricContext.stroke();
 }
 
 const fabricTexture = new THREE.CanvasTexture(fabricCanvas);
+fabricTexture.colorSpace = THREE.SRGBColorSpace;
 fabricTexture.wrapS = THREE.RepeatWrapping;
 fabricTexture.wrapT = THREE.RepeatWrapping;
 fabricTexture.repeat.set(2, 2);
 
-red.map = fabricTexture;
-red.bumpMap = fabricTexture;
-red.bumpScale = 0.025;
-red.needsUpdate = true;
+redFabric.map = fabricTexture;
+redFabric.bumpMap = fabricTexture;
+redFabric.bumpScale = 0.035;
 
-const redSide = new THREE.MeshStandardMaterial({
-    color: 0x99130f,
-    roughness: 0.35
-});
+/* ---------- HELPERS ---------- */
 
-const gold = new THREE.MeshStandardMaterial({
-    color: 0xe9bd70,
-    metalness: 0.85,
-    roughness: 0.2
-});
-
-const dark = new THREE.MeshPhysicalMaterial({
-    color: 0x171717,
-    roughness: 0.16,
-    clearcoat: 1
-});
-
-const shine = new THREE.MeshBasicMaterial({
-    color: 0xffffff
-});
-
-/* Helpers */
-
-function ball(parent, x, y, z, sx, sy, sz, material) {
+function sphere(parent, position, scale, material) {
     const mesh = new THREE.Mesh(
-        new THREE.SphereGeometry(1, 40, 40),
+        new THREE.SphereGeometry(1, 48, 40),
         material
     );
 
-    mesh.position.set(x, y, z);
-    mesh.scale.set(sx, sy, sz);
+    mesh.position.set(...position);
+    mesh.scale.set(...scale);
     parent.add(mesh);
     return mesh;
 }
 
-function roundedTube(parent, points, radius, material) {
+function tube(parent, points, radius, material) {
     const curve = new THREE.CatmullRomCurve3(
         points.map(p => new THREE.Vector3(...p))
     );
 
     const mesh = new THREE.Mesh(
-        new THREE.TubeGeometry(curve, 40, radius, 10, false),
+        new THREE.TubeGeometry(curve, 64, radius, 10, false),
         material
     );
 
@@ -147,330 +167,404 @@ function roundedTube(parent, points, radius, material) {
     return mesh;
 }
 
-/* Character group */
+function roundedBox(parent, position, dimensions, radius, material) {
+    const geometry = new THREE.BoxGeometry(...dimensions);
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(...position);
+    mesh.geometry = new THREE.BoxGeometry(...dimensions);
+    parent.add(mesh);
+    return mesh;
+}
+
+/* ==========================================
+   ZUNO CHARACTER
+========================================== */
 
 const zuno = new THREE.Group();
 scene.add(zuno);
 
+/* Body */
+
+const body = new THREE.Group();
+zuno.add(body);
+
+sphere(body, [0, -0.12, 0], [0.43, 0.53, 0.34], fur);
+
 /* Head */
 
 const head = new THREE.Group();
-head.position.set(0, 0.58, 0.05);
-zuno.add(head);
+head.position.set(0, 0.67, 0.08);
+body.add(head);
 
-ball(head, 0, 0, 0, 0.57, 0.55, 0.46, fur);
+sphere(head, [0, 0, 0], [0.57, 0.57, 0.48], fur);
 
-/* Sculpted hair */
+/* Ears */
+
+for (const side of [-1, 1]) {
+    sphere(
+        head,
+        [side * 0.49, -0.02, 0.02],
+        [0.13, 0.19, 0.19],
+        fur
+    );
+}
+
+/* Hair tuft */
 
 const hair = new THREE.Group();
 head.add(hair);
 
-ball(hair, -0.23, 0.43, 0, 0.20, 0.21, 0.23, fur);
-ball(hair, 0.00, 0.55, 0, 0.19, 0.25, 0.22, fur);
-ball(hair, 0.20, 0.43, 0, 0.19, 0.19, 0.22, fur);
+sphere(hair, [-0.20, 0.43, 0.00], [0.20, 0.20, 0.19], fur);
+sphere(hair, [0.00, 0.53, 0.01], [0.19, 0.25, 0.20], fur);
+sphere(hair, [0.18, 0.43, 0.00], [0.17, 0.18, 0.17], fur);
 
-const hairTip = ball(
-    hair, 0.12, 0.69, 0,
-    0.11, 0.18, 0.14, fur
+const hairTip = sphere(
+    hair,
+    [0.13, 0.68, 0.00],
+    [0.12, 0.19, 0.13],
+    fur
 );
-hairTip.rotation.z = -0.35;
+hairTip.rotation.z = -0.4;
 
 /* Eyes */
 
 const eyes = [];
 
-function makeEye(x) {
+function createEye(x) {
     const eye = new THREE.Group();
-    eye.position.set(x, 0.015, 0.405);
+    eye.position.set(x, 0.035, 0.423);
     head.add(eye);
 
-    ball(eye, 0, 0, 0, 0.105, 0.145, 0.055, dark);
-    ball(eye, -0.027, 0.045, 0.047, 0.027, 0.035, 0.014, shine);
-    ball(eye, 0.025, -0.035, 0.047, 0.012, 0.015, 0.009, shine);
+    sphere(eye, [0, 0, 0], [0.115, 0.15, 0.065], dark);
+    sphere(eye, [0, 0, 0.037], [0.087, 0.12, 0.045], iris);
+    sphere(eye, [-0.022, 0.04, 0.072], [0.033, 0.04, 0.015], white);
+    sphere(eye, [0.032, -0.035, 0.071], [0.013, 0.017, 0.009], white);
 
     eyes.push(eye);
 }
 
-makeEye(-0.205);
-makeEye(0.205);
+createEye(-0.205);
+createEye(0.205);
 
 /* Eyebrows */
 
-roundedTube(head, [
-    [-0.31, 0.22, 0.405],
-    [-0.21, 0.255, 0.42],
-    [-0.12, 0.22, 0.42]
-], 0.018, dark);
+tube(head, [
+    [-0.32, 0.25, 0.43],
+    [-0.22, 0.29, 0.45],
+    [-0.12, 0.26, 0.44]
+], 0.021, dark);
 
-roundedTube(head, [
-    [0.12, 0.22, 0.42],
-    [0.21, 0.255, 0.42],
-    [0.31, 0.22, 0.405]
-], 0.018, dark);
+tube(head, [
+    [0.12, 0.26, 0.44],
+    [0.22, 0.29, 0.45],
+    [0.32, 0.25, 0.43]
+], 0.021, dark);
 
-/* Nose and smile */
+/* Cheeks */
 
-ball(head, 0, -0.12, 0.46, 0.035, 0.028, 0.025, fur);
+sphere(head, [-0.35, -0.13, 0.34], [0.11, 0.065, 0.035], blush);
+sphere(head, [0.35, -0.13, 0.34], [0.11, 0.065, 0.035], blush);
 
-roundedTube(head, [
-    [-0.105, -0.21, 0.425],
-    [-0.05, -0.255, 0.45],
-    [0, -0.26, 0.455],
-    [0.05, -0.255, 0.45],
-    [0.105, -0.21, 0.425]
-], 0.012, dark);
+/* Nose */
 
-/* Little hands */
+sphere(head, [0, -0.105, 0.47], [0.047, 0.034, 0.035], blush);
 
+/* Smiling mouth */
+
+const mouth = sphere(
+    head,
+    [0, -0.235, 0.423],
+    [0.105, 0.09, 0.035],
+    dark
+);
+
+sphere(
+    head,
+    [0, -0.285, 0.451],
+    [0.052, 0.025, 0.012],
+    blush
+);
+
+/* Arms and hands */
+
+const arms = [];
 const hands = [];
 
 for (const side of [-1, 1]) {
-    const hand = new THREE.Group();
-    hand.position.set(side * 0.37, 0.035, 0.55);
-    zuno.add(hand);
+    const arm = new THREE.Group();
+    arm.position.set(side * 0.39, 0.28, 0.30);
+    zuno.add(arm);
 
-    ball(hand, 0, 0, 0, 0.12, 0.10, 0.09, fur);
+    const upperArm = sphere(
+        arm,
+        [side * 0.045, -0.02, 0],
+        [0.105, 0.22, 0.105],
+        fur
+    );
+
+    upperArm.rotation.z = side * -0.45;
+
+    const hand = new THREE.Group();
+    hand.position.set(side * 0.07, 0.13, 0.06);
+    arm.add(hand);
+
+    sphere(hand, [0, 0, 0], [0.13, 0.11, 0.10], fur);
 
     for (let i = 0; i < 3; i++) {
-        ball(
+        sphere(
             hand,
-            side * (-0.065 + i * 0.065),
-            -0.055,
-            0.025,
-            0.035, 0.055, 0.035,
+            [side * (-0.075 + i * 0.07), -0.07, 0.015],
+            [0.035, 0.065, 0.035],
             fur
         );
     }
 
+    arms.push(arm);
     hands.push(hand);
 }
 
-/* =====================================
-   THE NEW PUCH
-===================================== */
+/* ==========================================
+   THE EDU NOVA RED POUCH
+========================================== */
 
 const pouch = new THREE.Group();
 scene.add(pouch);
 
-/* Soft rounded pouch shape */
+/* Padded rounded silhouette */
 
-const shape = new THREE.Shape();
+const pouchShape = new THREE.Shape();
 
-shape.moveTo(-0.64, 0.13);
-shape.lineTo(0.64, 0.13);
-shape.bezierCurveTo(0.78, 0.13, 0.84, 0.02, 0.84, -0.13);
-shape.lineTo(0.84, -0.91);
-shape.bezierCurveTo(0.84, -1.13, 0.68, -1.22, 0.48, -1.22);
-shape.lineTo(-0.48, -1.22);
-shape.bezierCurveTo(-0.68, -1.22, -0.84, -1.13, -0.84, -0.91);
-shape.lineTo(-0.84, -0.13);
-shape.bezierCurveTo(-0.84, 0.02, -0.78, 0.13, -0.64, 0.13);
+pouchShape.moveTo(-0.78, 0.16);
+pouchShape.lineTo(0.78, 0.16);
+pouchShape.bezierCurveTo(0.94, 0.16, 1.02, 0.04, 1.02, -0.13);
+pouchShape.lineTo(1.02, -0.92);
+pouchShape.bezierCurveTo(1.02, -1.17, 0.83, -1.29, 0.59, -1.29);
+pouchShape.lineTo(-0.59, -1.29);
+pouchShape.bezierCurveTo(-0.83, -1.29, -1.02, -1.17, -1.02, -0.92);
+pouchShape.lineTo(-1.02, -0.13);
+pouchShape.bezierCurveTo(-1.02, 0.04, -0.94, 0.16, -0.78, 0.16);
 
-const pouchGeometry = new THREE.ExtrudeGeometry(shape, {
-    depth: 0.28,
+const pouchGeometry = new THREE.ExtrudeGeometry(pouchShape, {
+    depth: 0.38,
     bevelEnabled: true,
-    bevelSegments: 6,
-    bevelSize: 0.045,
-    bevelThickness: 0.06,
-    curveSegments: 24
+    bevelSegments: 8,
+    bevelSize: 0.075,
+    bevelThickness: 0.075,
+    curveSegments: 32
 });
 
-const pouchMesh = new THREE.Mesh(pouchGeometry, red);
-pouchMesh.position.z = 0.25;
-pouch.add(pouchMesh);
+const pouchBody = new THREE.Mesh(pouchGeometry, redFabric);
+pouchBody.position.z = 0.32;
+pouch.add(pouchBody);
 
-/* Side seam decoration */
+/* Soft lower padded panel */
 
-roundedTube(pouch, [
-    [-0.72, -0.15, 0.48],
-    [-0.76, -0.55, 0.48],
-    [-0.70, -0.98, 0.48]
+sphere(
+    pouch,
+    [0, -0.65, 0.46],
+    [0.91, 0.60, 0.17],
+    redFabric
+);
+
+/* Stitched border */
+
+tube(pouch, [
+    [-0.86, 0.02, 0.69],
+    [-0.96, -0.20, 0.69],
+    [-0.95, -0.88, 0.69],
+    [-0.78, -1.15, 0.69],
+    [0, -1.22, 0.69],
+    [0.78, -1.15, 0.69],
+    [0.95, -0.88, 0.69],
+    [0.96, -0.20, 0.69],
+    [0.86, 0.02, 0.69]
 ], 0.012, gold);
 
-roundedTube(pouch, [
-    [0.72, -0.15, 0.48],
-    [0.76, -0.55, 0.48],
-    [0.70, -0.98, 0.48]
-], 0.012, gold);
+/* Decorative side seams */
 
-/* Horizontal zipper track */
-
-roundedTube(pouch, [
-    [-0.72, 0.12, 0.49],
-    [-0.42, 0.17, 0.50],
-    [0, 0.19, 0.50],
-    [0.42, 0.17, 0.50],
-    [0.72, 0.12, 0.49]
-], 0.025, redSide);
-
-/* Gold zipper teeth */
-
-for (let i = 0; i < 25; i++) {
-    const x = -0.62 + i * 0.052;
-
-    ball(
-        pouch,
-        x,
-        0.155 + 0.035 * (1 - Math.pow(x / 0.72, 2)),
-        0.53,
-        0.012, 0.023, 0.012,
-        gold
-    );
+for (const side of [-1, 1]) {
+    tube(pouch, [
+        [side * 0.82, -0.12, 0.70],
+        [side * 0.88, -0.52, 0.70],
+        [side * 0.84, -0.91, 0.70]
+    ], 0.012, gold);
 }
 
-/* Zipper slider */
+/* ==========================================
+   ZUNO GOLD NAMEPLATE
+========================================== */
 
-const slider = new THREE.Group();
-slider.position.set(0.49, 0.18, 0.57);
-pouch.add(slider);
-
-const sliderBody = new THREE.Mesh(
-    new THREE.BoxGeometry(0.12, 0.09, 0.055),
-    gold
-);
-sliderBody.position.y = 0.015;
-slider.add(sliderBody);
-
-const sliderLoop = new THREE.Mesh(
-    new THREE.TorusGeometry(0.045, 0.012, 8, 20),
-    gold
-);
-sliderLoop.position.set(0, -0.07, 0.015);
-slider.add(sliderLoop);
-
-/* Pouch badge */
-
-const badge = new THREE.Mesh(
-    new THREE.CircleGeometry(0.14, 40),
-    gold
-);
-badge.position.set(0, -0.67, 0.57);
-pouch.add(badge);
-
-const badgeInner = new THREE.Mesh(
-    new THREE.CircleGeometry(0.115, 40),
-    redSide
-);
-badgeInner.position.set(0, -0.67, 0.58);
-pouch.add(badgeInner);
-
-/* Pouch position: foreground */
-
-pouch.position.set(0, -0.06, 0.55);
-/* =====================================
-   ZUNO | PREMIUM GOLD NAMEPLATE
-===================================== */
-
-const nameCanvas = document.createElement("canvas");
-nameCanvas.width = 1024;
-nameCanvas.height = 256;
-
-const ctx = nameCanvas.getContext("2d");
-
-ctx.clearRect(0, 0, 1024, 256);
-
-// Elegant gold lettering
-ctx.font = "bold 150px Georgia";
-ctx.textAlign = "center";
-ctx.textBaseline = "middle";
-
-ctx.shadowColor = "#8b541d";
-ctx.shadowBlur = 8;
-ctx.fillStyle = "#ffe5a5";
-ctx.fillText("ZUNO", 512, 128);
-
-const nameTexture = new THREE.CanvasTexture(nameCanvas);
-nameTexture.colorSpace = THREE.SRGBColorSpace;
-
-// Rounded 3D nameplate
 const plateShape = new THREE.Shape();
-const w = 0.55;
-const h = 0.18;
-const r = 0.09;
 
-plateShape.moveTo(-w + r, -h);
-plateShape.lineTo(w - r, -h);
-plateShape.quadraticCurveTo(w, -h, w, -h + r);
-plateShape.lineTo(w, h - r);
-plateShape.quadraticCurveTo(w, h, w - r, h);
-plateShape.lineTo(-w + r, h);
-plateShape.quadraticCurveTo(-w, h, -w, h - r);
-plateShape.lineTo(-w, -h + r);
-plateShape.quadraticCurveTo(-w, -h, -w + r, -h);
+const pw = 0.59;
+const ph = 0.19;
+const pr = 0.09;
 
-const plateGeometry = new THREE.ExtrudeGeometry(
-    plateShape,
-    {
-        depth: 0.045,
-        bevelEnabled: true,
-        bevelSegments: 4,
-        bevelSize: 0.018,
-        bevelThickness: 0.018
-    }
-);
+plateShape.moveTo(-pw + pr, -ph);
+plateShape.lineTo(pw - pr, -ph);
+plateShape.quadraticCurveTo(pw, -ph, pw, -ph + pr);
+plateShape.lineTo(pw, ph - pr);
+plateShape.quadraticCurveTo(pw, ph, pw - pr, ph);
+plateShape.lineTo(-pw + pr, ph);
+plateShape.quadraticCurveTo(-pw, ph, -pw, ph - pr);
+plateShape.lineTo(-pw, -ph + pr);
+plateShape.quadraticCurveTo(-pw, -ph, -pw + pr, -ph);
 
-const plate = new THREE.Mesh(plateGeometry, gold);
-plate.position.set(0, -0.55, 0.59);
-pouch.add(plate);
+const plateGeometry = new THREE.ExtrudeGeometry(plateShape, {
+    depth: 0.055,
+    bevelEnabled: true,
+    bevelSegments: 5,
+    bevelSize: 0.018,
+    bevelThickness: 0.02
+});
 
-const nameText = new THREE.Mesh(
-    new THREE.PlaneGeometry(0.92, 0.23),
+const namePlate = new THREE.Mesh(plateGeometry, gold);
+namePlate.position.set(0, -0.58, 0.72);
+pouch.add(namePlate);
+
+/* Gold lettering */
+
+const letteringCanvas = document.createElement("canvas");
+letteringCanvas.width = 1024;
+letteringCanvas.height = 256;
+
+const letteringContext = letteringCanvas.getContext("2d");
+
+letteringContext.clearRect(0, 0, 1024, 256);
+letteringContext.font = "bold 166px Georgia";
+letteringContext.textAlign = "center";
+letteringContext.textBaseline = "middle";
+letteringContext.fillStyle = "#fff0c1";
+letteringContext.shadowColor = "#8e571f";
+letteringContext.shadowBlur = 8;
+letteringContext.fillText("ZUNO", 512, 128);
+
+const letteringTexture = new THREE.CanvasTexture(letteringCanvas);
+letteringTexture.colorSpace = THREE.SRGBColorSpace;
+
+const lettering = new THREE.Mesh(
+    new THREE.PlaneGeometry(1.02, 0.255),
     new THREE.MeshBasicMaterial({
-        map: nameTexture,
+        map: letteringTexture,
         transparent: true,
         depthWrite: false
     })
 );
 
-nameText.position.set(0, -0.55, 0.66);
-pouch.add(nameText);
-/* Keep character behind pouch */
+lettering.position.set(0, -0.58, 0.80);
+pouch.add(lettering);
 
-zuno.position.set(0, -1.18, 0);
-zuno.scale.setScalar(0.86);
+/* ==========================================
+   GOLD ZIPPER
+========================================== */
 
-/* Camera and sizing */
+const zipperRail = [];
+
+for (const offset of [-0.035, 0.035]) {
+    zipperRail.push(
+        tube(pouch, [
+            [-0.88, 0.17 + offset, 0.76],
+            [-0.48, 0.20 + offset, 0.76],
+            [0, 0.21 + offset, 0.76],
+            [0.48, 0.20 + offset, 0.76],
+            [0.88, 0.17 + offset, 0.76]
+        ], 0.018, gold)
+    );
+}
+
+/* Zipper teeth */
+
+const teeth = [];
+
+for (let i = 0; i < 32; i++) {
+    const x = -0.82 + i * 0.053;
+
+    const y = 0.17 + 0.04 * (1 - Math.pow(x / 0.9, 2));
+
+    for (const side of [-1, 1]) {
+        const tooth = sphere(
+            pouch,
+            [x, y + side * 0.037, 0.78],
+            [0.017, 0.025, 0.018],
+            gold
+        );
+
+        teeth.push(tooth);
+    }
+}
+
+/* Zipper slider */
+
+const slider = new THREE.Group();
+slider.position.set(0.85, 0.20, 0.84);
+pouch.add(slider);
+
+const sliderBody = new THREE.Mesh(
+    new THREE.BoxGeometry(0.13, 0.095, 0.065),
+    gold
+);
+slider.add(sliderBody);
+
+const pullRing = new THREE.Mesh(
+    new THREE.TorusGeometry(0.052, 0.014, 12, 24),
+    gold
+);
+pullRing.position.set(0, -0.09, 0.02);
+slider.add(pullRing);
+
+/* Small zipper pull extension */
+
+const pull = new THREE.Mesh(
+    new THREE.CapsuleGeometry(0.025, 0.14, 4, 8),
+    gold
+);
+pull.position.set(0, -0.17, 0.02);
+pull.rotation.z = -0.2;
+slider.add(pull);
+
+/* Pouch placement */
+
+pouch.position.set(0, -0.06, 0);
+
+/* Character begins inside pouch */
+
+zuno.position.set(0, -1.55, 0);
+zuno.scale.setScalar(0.90);
+
+/* ==========================================
+   CAMERA AND RESIZING
+========================================== */
 
 function resize() {
     const width = Math.max(character.clientWidth, 1);
     const height = Math.max(character.clientHeight, 1);
 
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
+    const aspect = width / height;
 
+    camera.left = -1.75 * aspect / (150 / 160);
+    camera.right = 1.75 * aspect / (150 / 160);
+    camera.top = 1.87;
+    camera.bottom = -1.87;
+
+    camera.updateProjectionMatrix();
     renderer.setSize(width, height);
 }
 
-resize();
-
 const observer = new ResizeObserver(resize);
 observer.observe(character);
+resize();
 
-/* =====================================
-   HIDDEN UNTIL AN ANNOUNCEMENT
-===================================== */
-
-window.showZuno = function () {
-    system.classList.add("zuno-visible");
-    resize();
-};
-
-window.hideZuno = function () {
-    system.classList.remove("zuno-visible");
-};
-
-/* Animation */
-
-/* =====================================
-   ZUNO | EMERGENCE ANIMATION
-===================================== */
-
-let zunoOpened = false;
-let animationStart = 0;
+/* ==========================================
+   ZUNO ANIMATION CONTROLS
+========================================== */
 
 const clock = new THREE.Clock();
 
-function smoothStep(t) {
+let isOpen = false;
+let startTime = 0;
+
+function smooth(t) {
+    t = Math.max(0, Math.min(1, t));
     return t * t * (3 - 2 * t);
 }
 
@@ -478,17 +572,22 @@ window.showZuno = function () {
     system.classList.add("zuno-visible");
     resize();
 
-    if (!zunoOpened) {
-        zunoOpened = true;
-        animationStart = clock.getElapsedTime();
+    if (!isOpen) {
+        isOpen = true;
+        startTime = clock.getElapsedTime();
     }
 };
 
 window.hideZuno = function () {
+    isOpen = false;
     system.classList.remove("zuno-visible");
-    zunoOpened = false;
-    zuno.position.y = -1.18;
-    slider.position.x = 0.49;
+
+    zuno.position.y = -1.55;
+    slider.position.x = 0.85;
+
+    hands.forEach(hand => {
+        hand.rotation.z = 0;
+    });
 };
 
 function animate() {
@@ -496,47 +595,47 @@ function animate() {
 
     const t = clock.getElapsedTime();
 
-    if (zunoOpened) {
-        const elapsed = t - animationStart;
+    if (isOpen) {
+        const elapsed = t - startTime;
 
-        // Zipper slides open
-        const zipperProgress = smoothStep(
-            Math.min(elapsed / 1.1, 1)
-        );
+        /* Zipper movement */
 
-        slider.position.x = 0.49 - zipperProgress * 0.95;
+        const zipperProgress = smooth(elapsed / 1.15);
+        slider.position.x = 0.85 - zipperProgress * 1.7;
 
-        // Zuno slowly rises out of the pouch
-        const riseProgress = smoothStep(
-            Math.max(0, Math.min((elapsed - 0.8) / 1.8, 1))
-        );
+        /* Zuno rises after zipper opens */
 
-        zuno.position.y = -1.18 + riseProgress * 1.2;
+        const riseProgress = smooth((elapsed - 0.85) / 1.7);
+        zuno.position.y = -1.55 + riseProgress * 1.55;
 
-        // Gentle greeting movement
-       if (riseProgress > 0.95) {
-    // Friendly head movement
-    head.rotation.z = Math.sin(t * 2.5) * 0.035;
+        /* Gentle floating */
 
-    // Raise the right hand
-    hands[1].position.y = 0.34;
+        if (riseProgress >= 1) {
+            zuno.position.y += Math.sin(t * 2) * 0.025;
 
-    // Rotate the hand back and forth
-    hands[1].rotation.z = Math.sin(t * 7) * 0.65;
-} else {
-    hands[1].position.y = 0.035;
-    hands[1].rotation.z = 0;
-}
+            head.rotation.z = Math.sin(t * 2.1) * 0.025;
+            head.rotation.y = Math.sin(t * 1.1) * 0.035;
+
+            /* Right-hand wave */
+
+            arms[1].rotation.z = -0.48;
+            hands[1].rotation.z = Math.sin(t * 7) * 0.65;
+        } else {
+            arms[1].rotation.z = 0;
+            hands[1].rotation.z = 0;
+            head.rotation.z = 0;
+        }
     }
 
-    // Natural blinking
+    /* Natural blinking */
+
     const blink = Math.pow(
         Math.max(0, Math.sin(t * 0.75 + 1)),
         40
     );
 
     eyes.forEach(eye => {
-        eye.scale.y = 1 - blink * 0.9;
+        eye.scale.y = 1 - blink * 0.88;
     });
 
     renderer.render(scene, camera);
