@@ -559,6 +559,11 @@
 ================================= */
 
 #zuno-newspaper {
+   opacity: 0;
+visibility: hidden;
+transform: translateY(10px);
+transition: opacity .4s ease, transform .4s ease, visibility .4s ease;
+   
     position: fixed;
     right: 180px;
     bottom: 65px;
@@ -622,4 +627,9 @@
     font-size: 8px;
     font-weight: 700;
     letter-spacing: .7px;
+}
+#zuno-newspaper.zuno-news-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
