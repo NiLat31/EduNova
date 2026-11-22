@@ -41,13 +41,17 @@
 
                     <div class="zuno-face">
 
-                        <div class="zuno-eyes">
-                            <span class="zuno-eye"></span>
-                            <span class="zuno-eye"></span>
-                        </div>
+                       <div class="zuno-eyes">
+    <span class="zuno-eye zuno-eye-left"></span>
+    <span class="zuno-eye zuno-eye-right"></span>
+</div>
 
-                        <div class="zuno-mouth"></div>
+<div class="zuno-mouth"></div>
 
+<div class="zuno-cheeks">
+    <span></span>
+    <span></span>
+</div>
                     </div>
 
                     <div class="zuno-chest">
@@ -155,13 +159,16 @@
         animate("thanking");
         setTimeout(hide, 1800);
     }
-
+function surprise() {
+    animate("surprised");
+}
     window.Zuno = {
         show,
         hide,
         announce,
         celebrate,
-        thank
+         thank,
+       surprise
     };
 
     window.showZuno = show;
@@ -169,5 +176,6 @@
     window.announceZuno = announce;
     window.celebrateZuno = celebrate;
     window.thankZuno = thank;
+   window.surpriseZuno = surprise;
 
 })();
