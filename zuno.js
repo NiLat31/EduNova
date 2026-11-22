@@ -321,10 +321,37 @@ pouch.add(badgeInner);
 /* Pouch position: foreground */
 
 pouch.position.set(0, -0.06, 0.55);
+/* ZUNO name on the pouch */
+
+const nameCanvas = document.createElement("canvas");
+nameCanvas.width = 512;
+nameCanvas.height = 128;
+
+const ctx = nameCanvas.getContext("2d");
+ctx.clearRect(0, 0, 512, 128);
+ctx.font = "bold 76px Georgia";
+ctx.textAlign = "center";
+ctx.textBaseline = "middle";
+ctx.fillStyle = "#f3d18b";
+ctx.fillText("ZUNO", 256, 64);
+
+const nameTexture = new THREE.CanvasTexture(nameCanvas);
+nameTexture.colorSpace = THREE.SRGBColorSpace;
+
+const namePlate = new THREE.Mesh(
+    new THREE.PlaneGeometry(0.62, 0.155),
+    new THREE.MeshBasicMaterial({
+        map: nameTexture,
+        transparent: true
+    })
+);
+
+namePlate.position.set(0, -0.43, 0.62);
+pouch.add(namePlate);
 
 /* Keep character behind pouch */
 
-zuno.position.set(0, 0.02, 0);
+zuno.position.set(0, -1.18, 0);
 zuno.scale.setScalar(0.86);
 
 /* Camera and sizing */
@@ -359,17 +386,66 @@ window.hideZuno = function () {
 
 /* Animation */
 
+/* =====================================
+   ZUNO | EMERGENCE ANIMATION
+===================================== */
+
+let zunoOpened = false;
+let animationStart = 0;
+
 const clock = new THREE.Clock();
+
+function smoothStep(t) {
+    return t * t * (3 - 2 * t);
+}
+
+window.showZuno = function () {
+    system.classList.add("zuno-visible");
+    resize();
+
+    if (!zunoOpened) {
+        zunoOpened = true;
+        animationStart = clock.getElapsedTime();
+    }
+};
+
+window.hideZuno = function () {
+    system.classList.remove("zuno-visible");
+    zunoOpened = false;
+    zuno.position.y = -1.18;
+    slider.position.x = 0.49;
+};
 
 function animate() {
     requestAnimationFrame(animate);
 
     const t = clock.getElapsedTime();
 
-    zuno.position.y = 0.02 + Math.sin(t * 1.4) * 0.018;
-    head.rotation.y = Math.sin(t * 0.8) * 0.035;
-    head.rotation.z = Math.sin(t * 1.1) * 0.012;
+    if (zunoOpened) {
+        const elapsed = t - animationStart;
 
+        // Zipper slides open
+        const zipperProgress = smoothStep(
+            Math.min(elapsed / 1.1, 1)
+        );
+
+        slider.position.x = 0.49 - zipperProgress * 0.95;
+
+        // Zuno slowly rises out of the pouch
+        const riseProgress = smoothStep(
+            Math.max(0, Math.min((elapsed - 0.8) / 1.8, 1))
+        );
+
+        zuno.position.y = -1.18 + riseProgress * 1.2;
+
+        // Gentle greeting movement
+        if (riseProgress > 0.95) {
+            head.rotation.z = Math.sin(t * 2.5) * 0.035;
+            hands[1].rotation.z = Math.sin(t * 4) * 0.35;
+        }
+    }
+
+    // Natural blinking
     const blink = Math.pow(
         Math.max(0, Math.sin(t * 0.75 + 1)),
         40
