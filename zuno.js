@@ -79,23 +79,104 @@
    const newspaper = document.createElement("div");
 newspaper.id = "zuno-newspaper";
 
+
 newspaper.innerHTML = `
-    <div class="zuno-news-header">
-        <span>EDUNOVA</span>
-        <span>NEWS</span>
-    </div>
+    <!-- COMPACT NEWSPAPER -->
+    <button class="zuno-paper-preview" type="button"
+            aria-label="Open EduNova newspaper">
 
-    <div class="zuno-news-content">
-        <span class="zuno-news-label">LATEST ANNOUNCEMENT</span>
-        <h3>Something new is here!</h3>
-        <p>Stay tuned for the latest updates from EduNova.</p>
-    </div>
+        <div class="zuno-paper-mini-top">
+            <span>EN</span>
+            <span>EDITION 001</span>
+        </div>
 
-    <div class="zuno-news-footer">
-        <span>MATHEMATICS MADE CLEAR.</span>
-        <span>01</span>
+        <div class="zuno-paper-mini-masthead">
+            EDUNOVA
+        </div>
+
+        <div class="zuno-paper-mini-rule"></div>
+
+        <div class="zuno-paper-mini-category">
+            LATEST NEWS
+        </div>
+
+        <h3 class="zuno-paper-mini-title">
+            Something new is here!
+        </h3>
+
+        <p class="zuno-paper-mini-description">
+            Discover the latest from EduNova.
+        </p>
+
+        <div class="zuno-paper-mini-footer">
+            <span>MATHEMATICS MADE CLEAR.</span>
+            <span>READ →</span>
+        </div>
+    </button>
+
+    <!-- EXPANDED NEWSPAPER -->
+    <div class="zuno-paper-expanded"
+         role="dialog"
+         aria-modal="false"
+         aria-label="EduNova announcement">
+
+        <div class="zuno-paper-expanded-header">
+            <div>
+                <div class="zuno-paper-expanded-edition">
+                    THE EDUNOVA JOURNAL
+                </div>
+                <div class="zuno-paper-expanded-brand">
+                    EDUNOVA
+                </div>
+            </div>
+
+            <button class="zuno-paper-close"
+                    type="button"
+                    aria-label="Close newspaper">
+                ×
+            </button>
+        </div>
+
+        <div class="zuno-paper-expanded-rule"></div>
+
+        <article class="zuno-paper-article">
+
+            <div class="zuno-paper-article-meta">
+                <span class="zuno-paper-article-category">
+                    GENERAL UPDATE
+                </span>
+                <span class="zuno-paper-article-issue">
+                    EN-001
+                </span>
+            </div>
+
+            <h2 class="zuno-paper-article-title">
+                Something new is here!
+            </h2>
+
+            <p class="zuno-paper-article-subtitle">
+                Discover what's happening at EduNova.
+            </p>
+
+            <div class="zuno-paper-article-image"></div>
+
+            <div class="zuno-paper-article-content">
+                Stay tuned for the latest announcements,
+                improvements and learning experiences from EduNova.
+            </div>
+
+            <div class="zuno-paper-article-action"></div>
+
+        </article>
+
+        <div class="zuno-paper-expanded-footer">
+            <span>MATHEMATICS MADE CLEAR.</span>
+            <span>EDUNOVA NEWS</span>
+        </div>
+
     </div>
 `;
+
 
 document.body.appendChild(newspaper);
    // Zuno's first welcome message
