@@ -196,6 +196,37 @@ welcomeBubble2.setAttribute("role", "status");
 
 document.body.appendChild(welcomeBubble1);
 document.body.appendChild(welcomeBubble2);
+   
+// Open the newspaper
+const paperPreview = newspaper.querySelector(".zuno-paper-preview");
+
+paperPreview.addEventListener("click", () => {
+    newspaper.classList.add("zuno-news-expanded");
+});
+
+// Close the newspaper and let Zuno say goodbye
+const paperClose = newspaper.querySelector(".zuno-paper-close");
+
+paperClose.addEventListener("click", () => {
+    newspaper.classList.remove("zuno-news-expanded");
+    newspaper.classList.remove("zuno-news-visible");
+
+    welcomeBubble1.textContent = "Hope to meet you next time! 👋";
+    welcomeBubble1.classList.add("zuno-welcome-visible");
+
+    animate("celebrating");
+    launchConfetti();
+
+    setTimeout(() => {
+        welcomeBubble1.classList.remove("zuno-welcome-visible");
+        robot.classList.remove("zuno-visible");
+
+        animate("sleeping");
+
+        welcomeBubble1.textContent = "Hi! I'm Zuno! 👋";
+    }, 2500);
+});
+
 
     const scene = robot.querySelector(".zuno-scene");
 
