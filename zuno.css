@@ -979,3 +979,33 @@
 .zuno-journal-logo span {
     color: #e52b20;
 }
+/* JOURNAL MASTHEAD */
+.zuno-journal-masthead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+    flex: 1;
+}
+
+.zuno-journal-masthead .zuno-journal-logo {
+    font-size: 30px;
+    margin-bottom: 2px;
+}
+
+.zuno-journal-masthead .zuno-paper-expanded-edition {
+    font-family: "Playfair Display", serif;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #111111;
+}
+
+.zuno-journal-description {
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    color: #777777;
+}
