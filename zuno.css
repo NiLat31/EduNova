@@ -965,3 +965,17 @@
         font-size: 12px;
     }
 }
+/* EduNova Journal Logo */
+.zuno-journal-logo {
+    display: inline-block;
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    font-weight: 800;
+    color: #111111;
+    text-decoration: none;
+    letter-spacing: -1.2px;
+}
+
+.zuno-journal-logo span {
+    color: #e52b20;
+}
