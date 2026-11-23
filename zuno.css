@@ -813,6 +813,45 @@
     letter-spacing: .5px;
 }
 
+/* ==========================================
+   ANNOUNCEMENT TEMPLATE IDENTITIES
+========================================== */
+
+/* NEW FEATURE */
+#zuno-newspaper[data-type="feature"]
+.zuno-paper-article-category {
+    background: #fff0ee;
+    color: #e52b20;
+}
+
+/* IMPORTANT NOTICE */
+#zuno-newspaper[data-type="notice"]
+.zuno-paper-article-category {
+    background: #fff4dc;
+    color: #a66b00;
+}
+
+/* ACHIEVEMENT */
+#zuno-newspaper[data-type="achievement"]
+.zuno-paper-article-category {
+    background: #eaf7ee;
+    color: #248348;
+}
+
+/* GENERAL UPDATE */
+#zuno-newspaper[data-type="update"]
+.zuno-paper-article-category {
+    background: #edf2ff;
+    color: #365bb5;
+}
+
+/* UPCOMING EVENT */
+#zuno-newspaper[data-type="event"]
+.zuno-paper-article-category {
+    background: #f3edff;
+    color: #7544b5;
+}
+
 /* EXPANDED STATE */
 
 #zuno-newspaper.zuno-news-expanded {
