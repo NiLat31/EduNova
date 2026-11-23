@@ -1009,3 +1009,90 @@
     letter-spacing: 1.8px;
     color: #777777;
 }
+/* JOURNAL HEADLINE */
+.zuno-paper-article-title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 29px;
+    line-height: 1.12;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    color: #111111;
+    margin: 12px 0 9px;
+}
+
+.zuno-paper-article-subtitle {
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #666666;
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
+.zuno-paper-article-category {
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    color: #e52b20;
+    text-transform: uppercase;
+}
+
+.zuno-paper-article-issue {
+    font-size: 8px;
+    font-weight: 700;
+    color: #777777;
+    letter-spacing: 0.8px;
+}
+/* NEWSPAPER ARTICLE LAYOUT */
+.zuno-paper-article {
+    padding: 4px 0 12px;
+}
+
+.zuno-paper-article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.zuno-paper-article-image {
+    width: 100%;
+    min-height: 145px;
+    margin: 16px 0;
+    background-color: #f1f1f1;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid #e5e5e5;
+}
+
+.zuno-paper-article-content {
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    line-height: 1.85;
+    color: #333333;
+    text-align: justify;
+}
+
+.zuno-paper-article-action {
+    margin-top: 16px;
+}
+/* NEWSPAPER FOOTER */
+.zuno-paper-expanded-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0 4px;
+    margin-top: 18px;
+    border-top: 2px solid #111111;
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #555555;
+}
+
+.zuno-paper-expanded-footer span:last-child {
+    color: #e52b20;
+}
