@@ -1927,7 +1927,7 @@ const loadingStartedAt = Date.now();
 
       let { data: student, error } = await supabaseClient
     .from("students")
-    .select("username, email, country, detected_country, premium_access")
+   .select("username, email, country, detected_country, premium_access, zuno_intro_seen")
     .eq("id", session.user.id)
     .maybeSingle();
 
@@ -1971,7 +1971,7 @@ if (!student) {
                 detected_country: detectedCountry,
                 premium_access: false
             })
-            .select("username, email, country, detected_country, premium_access")
+           .select("username, email, country, detected_country, premium_access, zuno_intro_seen")
             .single();
 
     if (insertError) {
@@ -2031,7 +2031,42 @@ if(detectedCountry){
     const elapsed = Date.now() - loadingStartedAt;
     const remaining = Math.max(0, 1500 - elapsed);
 
-    setTimeout(hideLoading, remaining);
+   setTimeout(() => {
+    hideLoading();
+
+    // Show Zuno's introduction only once per student
+    if (
+        typeof window.welcomeZuno === "function" &&
+        student &&
+        student.zuno_intro_seen !== true
+    ) {
+        (async () => {
+            try {
+                await window.welcomeZuno();
+
+                const { error: introError } =
+                    await supabaseClient
+                        .from("students")
+                        .update({ zuno_intro_seen: true })
+                        .eq("id", session.user.id);
+
+                if (introError) {
+                    console.error(
+                        "Could not save Zuno's introduction status:",
+                        introError
+                    );
+                }
+
+            } catch (introError) {
+                console.error(
+                    "Zuno's introduction failed:",
+                    introError
+                );
+            }
+        })();
+    }
+
+}, remaining);
 }
 }
 
