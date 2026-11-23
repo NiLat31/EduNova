@@ -897,3 +897,71 @@
 }
 
 }
+
+/* ==========================================
+   ZUNO | WELCOME AND FAREWELL MESSAGES
+========================================== */
+
+.zuno-welcome-bubble {
+    position: fixed;
+    right: 180px;
+    bottom: 85px;
+    width: 255px;
+    box-sizing: border-box;
+    padding: 15px 18px;
+
+    background: #ffffff;
+    color: #202020;
+
+    border: 1px solid #eeeeee;
+    border-left: 4px solid #e52b20;
+    border-radius: 14px;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    line-height: 1.65;
+    font-weight: 500;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(.97);
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        visibility .35s ease;
+
+    z-index: 10002;
+    pointer-events: none;
+}
+
+.zuno-welcome-bubble::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    bottom: 22px;
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border-right: 1px solid #eeeeee;
+    border-top: 1px solid #eeeeee;
+    transform: rotate(45deg);
+}
+
+.zuno-welcome-bubble.zuno-welcome-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+@media (max-width: 600px) {
+    .zuno-welcome-bubble {
+        right: 125px;
+        bottom: 75px;
+        width: min(225px, calc(100vw - 145px));
+        padding: 12px 14px;
+        font-size: 12px;
+    }
+}
