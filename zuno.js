@@ -208,8 +208,8 @@ function renderAnnouncement(announcement) {
         template.label;
 
     newspaper.querySelector(".zuno-paper-mini-title").textContent =
-        announcement.title;
-
+    "Something new has happened!";
+   
     // Official newspaper
     newspaper.querySelector(".zuno-paper-article-category").textContent =
         template.label;
@@ -333,6 +333,16 @@ welcomeBubble1.style.zIndex = "10002";
         animate("pointing");
     }
 
+function showAnnouncement(announcement) {
+    renderAnnouncement(announcement);
+
+    robot.classList.add("zuno-visible");
+    newspaper.classList.add("zuno-news-visible");
+    newspaper.classList.remove("zuno-news-expanded");
+
+    animate("pointing");
+}
+
    function celebrate() {
     animate("celebrating");
     launchConfetti();
@@ -439,6 +449,7 @@ function surprise() {
     show,
     hide,
     announce,
+    showAnnouncement,
     celebrate,
     thank,
     surprise,
@@ -446,6 +457,7 @@ function surprise() {
 };
 
     window.showZuno = show;
+   window.showZunoAnnouncement = showAnnouncement;
     window.hideZuno = hide;
     window.announceZuno = announce;
     window.celebrateZuno = celebrate;
