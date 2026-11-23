@@ -589,87 +589,96 @@
     transform: translateY(0) scale(1);
 }
 
-/* COMPACT PREVIEW */
+
+/* COMPACT ANNOUNCEMENT CARD */
 
 .zuno-paper-preview {
+    position: relative;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 10px;
-    border: 1px solid #dedede;
-    border-top: 4px solid #e52b20;
-    border-radius: 5px;
-    background: #fff;
+    box-sizing: border-box;
+    padding: 13px;
+    overflow: hidden;
+
+    border: 1px solid #eeeeee;
+    border-left: 4px solid #e52b20;
+    border-radius: 12px;
+
+    background: #ffffff;
     color: #171717;
     text-align: left;
+
+    box-shadow: 0 12px 32px rgba(0,0,0,.15);
     cursor: pointer;
-    box-shadow: 0 12px 32px rgba(0,0,0,.16);
-    transition: transform .25s ease, box-shadow .25s ease;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
 }
 
 .zuno-paper-preview:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(0,0,0,.2);
+    box-shadow: 0 16px 36px rgba(0,0,0,.19);
 }
 
-.zuno-paper-mini-top,
-.zuno-paper-mini-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 7px;
-    font-weight: 700;
-    letter-spacing: .5px;
-}
-
-.zuno-paper-mini-top span:first-child {
-    color: #e52b20;
-    font-size: 11px;
-    font-weight: 900;
-}
-
-.zuno-paper-mini-masthead {
-    margin-top: 9px;
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 900;
-    letter-spacing: -1px;
-}
-
-.zuno-paper-mini-rule {
-    height: 2px;
-    margin: 5px 0 8px;
+.zuno-notification-dot {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
     background: #e52b20;
+    box-shadow: 0 0 0 4px #fff0ee;
 }
 
-.zuno-paper-mini-category {
+.zuno-preview-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
+    border-radius: 9px;
+    background: #fff0ee;
     color: #e52b20;
-    font-size: 7px;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.zuno-preview-label {
+    color: #e52b20;
+    font-size: 8px;
     font-weight: 800;
-    letter-spacing: .8px;
+    letter-spacing: 1px;
 }
 
 .zuno-paper-mini-title {
-    margin: 5px 0 3px;
+    margin: 7px 0 0;
     font-family: 'Playfair Display', serif;
-    font-size: 12px;
-    line-height: 1.2;
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 700;
 }
 
-.zuno-paper-mini-description {
-    margin: 0;
-    color: #777;
-    font-size: 8px;
-    line-height: 1.4;
-}
-
-.zuno-paper-mini-footer {
+.zuno-preview-open {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     margin-top: auto;
-    padding-top: 7px;
-    border-top: 1px solid #e8e8e8;
-    color: #777;
-    font-size: 6px;
+    padding-top: 10px;
+    color: #e52b20;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.zuno-preview-open span {
+    font-size: 13px;
 }
 
 /* EXPANDED ARTICLE */
