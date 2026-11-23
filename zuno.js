@@ -76,6 +76,31 @@
     `;
 
     document.body.appendChild(robot);
+   
+// EduNova announcement template definitions
+const announcementTemplates = {
+    feature: {
+        label: "NEW FEATURE",
+        className: "feature"
+    },
+    notice: {
+        label: "IMPORTANT NOTICE",
+        className: "notice"
+    },
+    achievement: {
+        label: "ACHIEVEMENT",
+        className: "achievement"
+    },
+    update: {
+        label: "GENERAL UPDATE",
+        className: "update"
+    },
+    event: {
+        label: "UPCOMING EVENT",
+        className: "event"
+    }
+};
+
    const newspaper = document.createElement("div");
 newspaper.id = "zuno-newspaper";
 
@@ -167,6 +192,74 @@ newspaper.innerHTML = `
 
 
 document.body.appendChild(newspaper);
+   
+// Render an announcement using its selected template
+function renderAnnouncement(announcement) {
+
+    const template =
+        announcementTemplates[announcement.type] ||
+        announcementTemplates.update;
+
+    // Apply the announcement category
+    newspaper.dataset.type = template.className;
+
+    // Small announcement card
+    newspaper.querySelector(".zuno-preview-label").textContent =
+        template.label;
+
+    newspaper.querySelector(".zuno-paper-mini-title").textContent =
+        announcement.title;
+
+    // Official newspaper
+    newspaper.querySelector(".zuno-paper-article-category").textContent =
+        template.label;
+
+    newspaper.querySelector(".zuno-paper-article-title").textContent =
+        announcement.title;
+
+    newspaper.querySelector(".zuno-paper-article-subtitle").textContent =
+        announcement.subtitle || "";
+
+    newspaper.querySelector(".zuno-paper-article-content").textContent =
+        announcement.content || "";
+
+    newspaper.querySelector(".zuno-paper-article-issue").textContent =
+        announcement.issue || "EN-001";
+
+    // Optional article image
+    const articleImage =
+        newspaper.querySelector(".zuno-paper-article-image");
+
+    if (announcement.image) {
+        articleImage.style.backgroundImage =
+            `url("${announcement.image}")`;
+        articleImage.style.display = "block";
+    } else {
+        articleImage.style.display = "none";
+        articleImage.style.backgroundImage = "none";
+    }
+
+    // Optional action link
+    const actionContainer =
+        newspaper.querySelector(".zuno-paper-article-action");
+
+    actionContainer.replaceChildren();
+
+    if (announcement.action_text && announcement.action_url) {
+        const link = document.createElement("a");
+
+        link.textContent = announcement.action_text;
+        link.href = announcement.action_url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+
+        actionContainer.appendChild(link);
+    }
+}
+
+// Make the renderer available for future announcements
+window.setZunoAnnouncement = renderAnnouncement;
+
    // Zuno's first welcome message
 const welcomeBubble1 = document.createElement("div");
 welcomeBubble1.id = "zuno-welcome-bubble-1";
