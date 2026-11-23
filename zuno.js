@@ -98,6 +98,23 @@ newspaper.innerHTML = `
 `;
 
 document.body.appendChild(newspaper);
+   // Zuno's first welcome message
+const welcomeBubble1 = document.createElement("div");
+welcomeBubble1.id = "zuno-welcome-bubble-1";
+welcomeBubble1.className = "zuno-welcome-bubble";
+welcomeBubble1.textContent = "Hi! I'm Zuno! 👋";
+welcomeBubble1.setAttribute("role", "status");
+
+// Zuno's second welcome message
+const welcomeBubble2 = document.createElement("div");
+welcomeBubble2.id = "zuno-welcome-bubble-2";
+welcomeBubble2.className = "zuno-welcome-bubble";
+welcomeBubble2.textContent =
+    "I'll keep you informed whenever EduNova has news or an important update!";
+welcomeBubble2.setAttribute("role", "status");
+
+document.body.appendChild(welcomeBubble1);
+document.body.appendChild(welcomeBubble2);
 
     const scene = robot.querySelector(".zuno-scene");
 
