@@ -208,17 +208,48 @@ document.body.appendChild(welcomeBubble2);
         animate("thanking");
         setTimeout(hide, 1800);
     }
+   function welcome() {
+    return new Promise(resolve => {
+        robot.classList.add("zuno-visible");
+
+        // Keep the announcement newspaper hidden
+        newspaper.classList.remove("zuno-news-visible");
+
+        // Show the first message
+        welcomeBubble1.classList.add("zuno-welcome-visible");
+        welcomeBubble2.classList.remove("zuno-welcome-visible");
+
+        animate("greeting");
+
+        setTimeout(() => {
+            // Replace the first message with the second
+            welcomeBubble1.classList.remove("zuno-welcome-visible");
+            welcomeBubble2.classList.add("zuno-welcome-visible");
+
+            setTimeout(() => {
+                // Finish the introduction
+                welcomeBubble2.classList.remove("zuno-welcome-visible");
+                robot.classList.remove("zuno-visible");
+
+                animate("sleeping");
+                resolve();
+            }, 4500);
+
+        }, 2500);
+    });
+}
 function surprise() {
     animate("surprised");
 }
     window.Zuno = {
-        show,
-        hide,
-        announce,
-        celebrate,
-         thank,
-       surprise
-    };
+    show,
+    hide,
+    announce,
+    celebrate,
+    thank,
+    surprise,
+    welcome
+};
 
     window.showZuno = show;
     window.hideZuno = hide;
@@ -226,5 +257,6 @@ function surprise() {
     window.celebrateZuno = celebrate;
     window.thankZuno = thank;
    window.surpriseZuno = surprise;
+   window.welcomeZuno = welcome;
 
 })();
