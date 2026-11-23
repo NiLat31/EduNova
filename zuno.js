@@ -288,25 +288,41 @@ paperPreview.addEventListener("click", () => {
 // Close the newspaper and let Zuno say goodbye
 const paperClose = newspaper.querySelector(".zuno-paper-close");
 
+
 paperClose.addEventListener("click", () => {
+
+    // Close the newspaper
     newspaper.classList.remove("zuno-news-expanded");
     newspaper.classList.remove("zuno-news-visible");
 
+    // Prepare Zuno's farewell
     welcomeBubble1.textContent = "See you next time! 👋";
-welcomeBubble1.style.zIndex = "10002";
+    welcomeBubble1.style.zIndex = "10002";
+    welcomeBubble1.style.display = "block";
+
+    // Keep Zuno visible during the farewell
+    robot.classList.add("zuno-visible");
+
+    // Show the message
     welcomeBubble1.classList.add("zuno-welcome-visible");
 
+    // Celebrate!
     animate("celebrating");
     launchConfetti();
 
+    // Give the farewell enough time
     setTimeout(() => {
         welcomeBubble1.classList.remove("zuno-welcome-visible");
-        robot.classList.remove("zuno-visible");
 
+        robot.classList.remove("zuno-visible");
         animate("sleeping");
 
+        // Restore the original greeting
         welcomeBubble1.textContent = "Hi! I'm Zuno! 👋";
-    }, 3500);
+        welcomeBubble1.style.display = "";
+        welcomeBubble1.style.zIndex = "";
+    }, 4000);
+
 });
 
 
