@@ -133,22 +133,29 @@ newspaper.innerHTML = `
          aria-modal="false"
          aria-label="EduNova announcement">
 
-        <div class="zuno-paper-expanded-header">
-            <div>
-                <div class="zuno-paper-expanded-edition">
-                    THE EDUNOVA JOURNAL
-                </div>
-                <a class="zuno-journal-logo" href="index.html" aria-label="EduNova home">
-    Edu<span>Nova</span>
-</a>
-            </div>
+<div class="zuno-paper-expanded-header">
+    <div class="zuno-journal-masthead">
 
-            <button class="zuno-paper-close"
-                    type="button"
-                    aria-label="Close newspaper">
-                ×
-            </button>
+        <a class="zuno-journal-logo" href="index.html" aria-label="EduNova home">
+            Edu<span>Nova</span>
+        </a>
+
+        <div class="zuno-paper-expanded-edition">
+            THE EDUNOVA JOURNAL
         </div>
+
+        <div class="zuno-journal-description">
+            THE OFFICIAL EDU NOVA NEWS EDITION
+        </div>
+
+    </div>
+
+    <button class="zuno-paper-close"
+            type="button"
+            aria-label="Close newspaper">
+        ×
+    </button>
+</div>
 
         <div class="zuno-paper-expanded-rule"></div>
 
