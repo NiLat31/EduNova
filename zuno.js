@@ -158,6 +158,11 @@ newspaper.innerHTML = `
 </div>
 
         <div class="zuno-paper-expanded-rule"></div>
+        <div class="zuno-journal-publication">
+    <span>EDUNOVA OFFICIAL PUBLICATION</span>
+    <span class="zuno-journal-date">NOVEMBER 2026</span>
+    <span>VOL. 01 · NO. 001</span>
+</div>
 
         <article class="zuno-paper-article">
 
