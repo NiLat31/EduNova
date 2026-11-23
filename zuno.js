@@ -81,38 +81,26 @@ newspaper.id = "zuno-newspaper";
 
 
 newspaper.innerHTML = `
-    <!-- COMPACT NEWSPAPER -->
-    <button class="zuno-paper-preview" type="button"
-            aria-label="Open EduNova newspaper">
+ 
+<!-- COMPACT ANNOUNCEMENT CARD -->
+<button class="zuno-paper-preview" type="button"
+        aria-label="Open EduNova announcement">
 
-        <div class="zuno-paper-mini-top">
-            <span>EN</span>
-            <span>EDITION 001</span>
-        </div>
+    <span class="zuno-notification-dot"></span>
 
-        <div class="zuno-paper-mini-masthead">
-            EDUNOVA
-        </div>
+    <div class="zuno-preview-icon">EN</div>
 
-        <div class="zuno-paper-mini-rule"></div>
+    <span class="zuno-preview-label">EDUNOVA UPDATE</span>
 
-        <div class="zuno-paper-mini-category">
-            LATEST NEWS
-        </div>
+    <h3 class="zuno-paper-mini-title">
+        Something new has happened!
+    </h3>
 
-        <h3 class="zuno-paper-mini-title">
-            Something new is here!
-        </h3>
+    <span class="zuno-preview-open">
+        Discover more <span>↗</span>
+    </span>
 
-        <p class="zuno-paper-mini-description">
-            Discover the latest from EduNova.
-        </p>
-
-        <div class="zuno-paper-mini-footer">
-            <span>MATHEMATICS MADE CLEAR.</span>
-            <span>READ →</span>
-        </div>
-    </button>
+</button>
 
     <!-- EXPANDED NEWSPAPER -->
     <div class="zuno-paper-expanded"
@@ -211,7 +199,8 @@ paperClose.addEventListener("click", () => {
     newspaper.classList.remove("zuno-news-expanded");
     newspaper.classList.remove("zuno-news-visible");
 
-    welcomeBubble1.textContent = "Hope to meet you next time! 👋";
+    welcomeBubble1.textContent = "See you next time! 👋";
+welcomeBubble1.style.zIndex = "10002";
     welcomeBubble1.classList.add("zuno-welcome-visible");
 
     animate("celebrating");
@@ -224,7 +213,7 @@ paperClose.addEventListener("click", () => {
         animate("sleeping");
 
         welcomeBubble1.textContent = "Hi! I'm Zuno! 👋";
-    }, 2500);
+    }, 3500);
 });
 
 
