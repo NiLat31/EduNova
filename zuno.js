@@ -138,9 +138,9 @@ newspaper.innerHTML = `
                 <div class="zuno-paper-expanded-edition">
                     THE EDUNOVA JOURNAL
                 </div>
-                <div class="zuno-paper-expanded-brand">
-                    EDUNOVA
-                </div>
+                <a class="zuno-journal-logo" href="index.html" aria-label="EduNova home">
+    Edu<span>Nova</span>
+</a>
             </div>
 
             <button class="zuno-paper-close"
