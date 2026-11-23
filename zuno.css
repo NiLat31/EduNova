@@ -558,151 +558,294 @@
    ZUNO | EDUNOVA NEWS BULLETIN
 ================================= */
 
+
+/* ==========================================
+   EDUNOVA | ZUNO NEWSPAPER
+========================================== */
+
 #zuno-newspaper {
-   opacity: 0;
-visibility: hidden;
-transform: translateY(10px);
-transition: opacity .4s ease, transform .4s ease, visibility .4s ease;
-   
     position: fixed;
     right: 180px;
     bottom: 65px;
-    width: 260px;
-    padding: 16px;
-    background: #ffffff;
-    color: #171717;
-    border-radius: 12px;
-    border: 1px solid #e8e8e8;
-    box-shadow: 0 12px 35px #00000020;
+    width: 126px;
+    height: 155px;
+    box-sizing: border-box;
     z-index: 8999;
     font-family: 'DM Sans', sans-serif;
-}
-
-.zuno-news-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 10px;
-    border-bottom: 3px solid #e52b20;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-.zuno-news-header span:last-child {
-    color: #e52b20;
-}
-
-.zuno-news-content {
-    padding: 15px 0;
-}
-
-.zuno-news-label {
-    color: #e52b20;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-.zuno-news-content h3 {
-    margin: 8px 0;
-    font-family: 'Playfair Display', serif;
-    font-size: 21px;
-    line-height: 1.25;
-}
-
-.zuno-news-content p {
-    margin: 0;
-    color: #666;
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-.zuno-news-footer {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 10px;
-    border-top: 1px solid #eeeeee;
-    color: #999;
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: .7px;
-}
-#zuno-newspaper.zuno-news-visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-/* ==========================================
-   ZUNO | WELCOME SPEECH BUBBLES
-========================================== */
-
-.zuno-welcome-bubble {
-    position: fixed;
-    right: 180px;
-    bottom: 85px;
-    width: 255px;
-    box-sizing: border-box;
-    padding: 15px 18px;
-
-    background: #ffffff;
-    color: #202020;
-
-    border: 1px solid #eeeeee;
-    border-left: 4px solid #e52b20;
-    border-radius: 14px;
-
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
-
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    line-height: 1.65;
-    font-weight: 500;
-
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px) scale(0.97);
-
+    transform: translateY(12px) scale(.96);
     transition:
-        opacity 0.35s ease,
-        transform 0.35s ease,
-        visibility 0.35s ease;
-
-    z-index: 9001;
-    pointer-events: none;
+        width .45s ease,
+        height .45s ease,
+        opacity .35s ease,
+        transform .4s ease,
+        visibility .35s ease;
 }
 
-/* Small speech pointer */
-.zuno-welcome-bubble::after {
-    content: "";
-    position: absolute;
-    right: -8px;
-    bottom: 22px;
-
-    width: 14px;
-    height: 14px;
-
-    background: #ffffff;
-    border-right: 1px solid #eeeeee;
-    border-top: 1px solid #eeeeee;
-
-    transform: rotate(45deg);
-}
-
-/* Visible state */
-.zuno-welcome-bubble.zuno-welcome-visible {
+#zuno-newspaper.zuno-news-visible {
     opacity: 1;
     visibility: visible;
     transform: translateY(0) scale(1);
 }
 
-/* Mobile positioning */
-@media (max-width: 600px) {
-    .zuno-welcome-bubble {
-        right: 125px;
-        bottom: 75px;
-        width: min(225px, calc(100vw - 145px));
-        padding: 12px 14px;
-        font-size: 12px;
+/* COMPACT PREVIEW */
+
+.zuno-paper-preview {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #dedede;
+    border-top: 4px solid #e52b20;
+    border-radius: 5px;
+    background: #fff;
+    color: #171717;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 12px 32px rgba(0,0,0,.16);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.zuno-paper-preview:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0,0,0,.2);
+}
+
+.zuno-paper-mini-top,
+.zuno-paper-mini-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+.zuno-paper-mini-top span:first-child {
+    color: #e52b20;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.zuno-paper-mini-masthead {
+    margin-top: 9px;
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.zuno-paper-mini-rule {
+    height: 2px;
+    margin: 5px 0 8px;
+    background: #e52b20;
+}
+
+.zuno-paper-mini-category {
+    color: #e52b20;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: .8px;
+}
+
+.zuno-paper-mini-title {
+    margin: 5px 0 3px;
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.zuno-paper-mini-description {
+    margin: 0;
+    color: #777;
+    font-size: 8px;
+    line-height: 1.4;
+}
+
+.zuno-paper-mini-footer {
+    margin-top: auto;
+    padding-top: 7px;
+    border-top: 1px solid #e8e8e8;
+    color: #777;
+    font-size: 6px;
+}
+
+/* EXPANDED ARTICLE */
+
+.zuno-paper-expanded {
+    display: none;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    padding: 22px;
+    border: 1px solid #e6e6e6;
+    border-top: 5px solid #e52b20;
+    border-radius: 9px;
+    background: #fff;
+    color: #171717;
+    box-shadow: 0 18px 55px rgba(0,0,0,.2);
+}
+
+.zuno-paper-expanded-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.zuno-paper-expanded-edition {
+    color: #888;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.zuno-paper-expanded-brand {
+    margin-top: 3px;
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+}
+
+.zuno-paper-close {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 50%;
+    background: #f3f3f3;
+    color: #333;
+    font-size: 23px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease;
+}
+
+.zuno-paper-close:hover {
+    background: #e52b20;
+    color: #fff;
+}
+
+.zuno-paper-expanded-rule {
+    height: 2px;
+    margin: 13px 0 20px;
+    background: #e52b20;
+}
+
+.zuno-paper-article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.zuno-paper-article-category {
+    padding: 5px 8px;
+    border-radius: 3px;
+    background: #fff0ee;
+    color: #e52b20;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .7px;
+}
+
+.zuno-paper-article-issue {
+    color: #999;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.zuno-paper-article-title {
+    margin: 17px 0 7px;
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    line-height: 1.2;
+}
+
+.zuno-paper-article-subtitle {
+    margin: 0 0 17px;
+    color: #777;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.zuno-paper-article-image {
+    display: none;
+    width: 100%;
+    min-height: 150px;
+    margin: 15px 0;
+    border-radius: 6px;
+    background: #f3f3f3 center / cover no-repeat;
+}
+
+.zuno-paper-article-content {
+    color: #444;
+    font-size: 13px;
+    line-height: 1.85;
+    white-space: pre-line;
+}
+
+.zuno-paper-article-action {
+    margin-top: 20px;
+}
+
+.zuno-paper-expanded-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 28px;
+    padding-top: 12px;
+    border-top: 1px solid #e8e8e8;
+    color: #999;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+/* EXPANDED STATE */
+
+#zuno-newspaper.zuno-news-expanded {
+    width: 360px;
+    height: min(470px, calc(100vh - 100px));
+}
+
+#zuno-newspaper.zuno-news-expanded .zuno-paper-preview {
+    display: none;
+}
+
+#zuno-newspaper.zuno-news-expanded .zuno-paper-expanded {
+    display: block;
+    animation: zuno-paper-open .35s ease both;
+}
+
+@keyframes zuno-paper-open {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
     }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    #zuno-newspaper {
+        right: 145px;
+        bottom: 65px;
+    }
+
+    #zuno-newspaper.zuno-news-expanded {
+        right: 12px;
+        bottom: 190px;
+        width: calc(100vw - 24px);
+        max-width: 360px;
+        height: min(470px, calc(100vh - 220px));
+    }
+}
+
 }
