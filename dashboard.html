@@ -1914,22 +1914,27 @@ const loadingStartedAt = Date.now();
     }
 }
     async function checkSession() {
+            let student = null;
+    let session = null;
     try {
-        const {
-            data: { session },
-            error: sessionError
-        } = await supabaseClient.auth.getSession();
+       const {
+    data: sessionData,
+    error: sessionError
+} = await supabaseClient.auth.getSession();
+
+session = sessionData.session;
 
         if (sessionError || !session) {
             location.replace("index.html");
             return;
         }
 
-      let { data: student, error } = await supabaseClient
+     const { data: fetchedStudent, error } = await supabaseClient
     .from("students")
    .select("username, email, country, detected_country, premium_access, zuno_intro_seen")
     .eq("id", session.user.id)
     .maybeSingle();
+        student = fetchedStudent;
 
 if (error) {
     console.error("Student profile database error:", error);
