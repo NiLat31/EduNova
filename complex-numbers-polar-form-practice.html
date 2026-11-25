@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09090b">
+<meta name="description" content="Practice polar and exponential forms of complex numbers with graduated questions and fully worked solutions.">
+<title>EduNova | Polar Form Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{--bg:#f7f7f8;--paper:#fff;--ink:#171717;--muted:#77777f;--dark:#09090b;--line:#e8e5e2;--accent:#b85c38;--accent2:#d97745;--soft:#f8eee9;--green:#239b62}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:95px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+.topbar{height:70px;background:rgba(9,9,11,.97);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 5.5%;position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.08)}
+.brand{font-family:"Playfair Display",serif;font-weight:800;font-size:26px;letter-spacing:-1px}.brand span{color:var(--accent2)}
+.top-meta{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#bbb;font-weight:700}
+main{max-width:1050px;margin:auto;padding:42px 28px 80px}
+.hero{background:var(--dark);color:#fff;border-radius:23px;padding:42px clamp(25px,5vw,55px);margin-bottom:32px;position:relative;overflow:hidden}
+.hero:after{content:"r e^{iθ}";position:absolute;right:5%;top:50%;transform:translateY(-50%);font-family:"Playfair Display",serif;font-size:clamp(35px,6vw,76px);color:rgba(217,119,69,.17);font-style:italic;white-space:nowrap}
+.eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#e5a17f;font-weight:800}
+h1,h2{font-family:"Playfair Display",serif}h1{font-size:clamp(38px,5vw,58px);line-height:1.1;margin:12px 0}h1 span{color:#df895f}
+.hero p{color:#c5c3c4;max-width:620px;margin:0;font-size:14px;position:relative;z-index:1}
+.intro{background:#fff;border:1px solid var(--line);border-radius:15px;padding:19px 22px;margin:0 0 30px;color:#5e5d64;font-size:13px}
+.question{background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px 27px;margin:20px 0;box-shadow:0 8px 25px rgba(20,18,16,.03)}
+.q-head{display:flex;align-items:center;gap:13px;margin-bottom:15px}
+.q-num{width:36px;height:36px;flex:0 0 36px;border-radius:11px;background:var(--soft);color:var(--accent);display:grid;place-items:center;font-weight:800;font-size:13px}
+.q-head h2{font-size:22px;margin:0;line-height:1.2}
+.level{margin-left:auto;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8582;font-weight:800;white-space:nowrap}
+.question p{margin:8px 0}
+.parts{padding-left:24px;margin:12px 0}
+.parts li{padding:5px 0 5px 5px}
+.instruction{font-size:12px;color:#777;margin-top:12px}
+details{margin-top:20px;border:1px solid #eadbd3;border-radius:13px;overflow:hidden;background:#fffdfc}
+summary{cursor:pointer;list-style:none;padding:14px 17px;color:var(--accent);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"＋";font-size:18px;font-weight:500}
+details[open] summary:after{content:"−"}
+.work{border-top:1px solid #f0e5df;padding:18px 20px 20px;background:#fff}
+.work h3{font-size:15px;margin:20px 0 8px;color:#302d2b}
+.work h3:first-child{margin-top:0}
+.work p{font-size:13px;color:#55545a;margin:8px 0}
+.stepbox{background:#fcf8f5;border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;margin:10px 0;overflow-x:auto}
+.stepbox .mjx-container{margin:4px 0!important}
+.final{background:#edf8f1;border:1px solid #d4eddd;border-radius:10px;padding:12px 15px;margin:12px 0;color:#176b43}
+.final strong{font-size:10px;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:5px}
+.note{background:#f5f5f6;border-radius:10px;padding:12px 15px;font-size:12px;color:#626168;margin:12px 0}
+.footer{border-top:1px solid var(--line);padding:25px 0 8px;display:flex;justify-content:space-between;gap:15px;align-items:center;color:#89868c;font-size:11px;margin-top:45px}
+.footer-brand{font-family:"Playfair Display",serif;font-size:20px;font-weight:800;color:#222}.footer-brand span{color:var(--accent)}
+.footer-links{display:flex;gap:17px}
+@media(max-width:620px){.topbar{height:62px;padding:0 18px}.brand{font-size:23px}.top-meta{font-size:8px}.hero{padding:32px 24px}.hero:after{opacity:.5;right:0;top:82%}main{padding:23px 15px 55px}.question{padding:19px 17px}.q-head h2{font-size:19px}.level{font-size:8px}.work{padding:15px 13px}.footer{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">Edu<span>Nova</span></a>
+  <div class="top-meta">Chapter 09 · Complex Numbers</div>
+</header>
+<main>
+<section class="hero">
+  <div class="eyebrow">Topic 05 · Practice</div>
+  <h1>Polar Form <span>Practice</span></h1>
+  <p>Build fluency, connect different representations, and tackle problems where the angle is the real test. Try each question before opening its worked solution.</p>
+</section>
+
+<div class="intro">
+  <strong>Before you begin:</strong> Unless a question says otherwise, give arguments in the principal interval
+  \((-\pi,\pi]\). Remember that this interval includes \(\pi\), but excludes \(-\pi\). Give exact answers where possible.
+</div>
+
+<section class="question" id="q1">
+  <div class="q-head"><span class="q-num">01</span><h2>Changing the representation</h2><span class="level">Foundation</span></div>
+  <p>For each complex number below:</p>
+  <ol class="parts" type="a">
+    <li>Find its modulus.</li>
+    <li>Find its principal argument.</li>
+    <li>Write it in polar form.</li>
+    <li>Write it in exponential form.</li>
+  </ol>
+  <ol class="parts" type="a">
+    <li>\(z_1=1+\sqrt3\,i\)</li>
+    <li>\(z_2=-\sqrt3+i\)</li>
+    <li>\(z_3=-2-2i\)</li>
+    <li>\(z_4=5-5\sqrt3\,i\)</li>
+  </ol>
+  <details><summary>Show your work and answers</summary><div class="work">
+    <h3>(a) \(z_1=1+\sqrt3\,i\)</h3>
+    <p><strong>Step 1: Identify the coordinates.</strong> Compare \(z=x+iy\) with \(1+\sqrt3 i\).</p>
+    <div class="stepbox">\[x=1,\qquad y=\sqrt3\]</div>
+    <p><strong>Step 2: Find the modulus.</strong></p>
+    <div class="stepbox">\[r=\sqrt{x^2+y^2}\]</div>
+    <div class="stepbox">\[r=\sqrt{1^2+(\sqrt3)^2}=\sqrt{1+3}=\sqrt4=2\]</div>
+    <p><strong>Step 3: Find the quadrant and argument.</strong> Both coordinates are positive, so the point is in Quadrant I.</p>
+    <div class="stepbox">\[\tan\theta=\frac{y}{x}=\frac{\sqrt3}{1}=\sqrt3\]</div>
+    <div class="stepbox">\[\theta=\frac{\pi}{3}\]</div>
+    <p><strong>Step 4: Write both forms.</strong></p>
+    <div class="final"><strong>Polar form</strong>\[z_1=2\left(\cos\frac{\pi}{3}+i\sin\frac{\pi}{3}\right)\]<strong>Exponential form</strong>\[z_1=2e^{i\pi/3}\]</div>
+
+    <h3>(b) \(z_2=-\sqrt3+i\)</h3>
+    <p><strong>Step 1: Identify the coordinates.</strong></p><div class="stepbox">\[x=-\sqrt3,\qquad y=1\]</div>
+    <p><strong>Step 2: Find the modulus.</strong></p><div class="stepbox">\[r=\sqrt{(-\sqrt3)^2+1^2}=\sqrt{3+1}=2\]</div>
+    <p><strong>Step 3: Find the quadrant.</strong> The real part is negative and the imaginary part is positive, so the point is in Quadrant II.</p>
+    <div class="stepbox">\[\tan\alpha=\left|\frac{y}{x}\right|=\frac{1}{\sqrt3}\]</div>
+    <div class="stepbox">\[\alpha=\frac{\pi}{6}\]</div>
+    <div class="stepbox">\[\theta=\pi-\alpha=\pi-\frac{\pi}{6}=\frac{5\pi}{6}\]</div>
+    <div class="final"><strong>Polar form</strong>\[z_2=2\left(\cos\frac{5\pi}{6}+i\sin\frac{5\pi}{6}\right)\]<strong>Exponential form</strong>\[z_2=2e^{i5\pi/6}\]</div>
+
+    <h3>(c) \(z_3=-2-2i\)</h3>
+    <p><strong>Step 1: Identify the coordinates.</strong></p><div class="stepbox">\[x=-2,\qquad y=-2\]</div>
+    <p><strong>Step 2: Find the modulus.</strong></p><div class="stepbox">\[r=\sqrt{(-2)^2+(-2)^2}=\sqrt{4+4}=\sqrt8=2\sqrt2\]</div>
+    <p><strong>Step 3: Find the quadrant and reference angle.</strong> Both coordinates are negative, so the point is in Quadrant III. The reference angle is \(\pi/4\).</p>
+    <div class="stepbox">\[\theta=-\pi+\frac{\pi}{4}=-\frac{3\pi}{4}\]</div>
+    <p>This is in the required interval \((-\pi,\pi]\).</p>
+    <div class="final"><strong>Polar form</strong>\[z_3=2\sqrt2\left(\cos\left(-\frac{3\pi}{4}\right)+i\sin\left(-\frac{3\pi}{4}\right)\right)\]<strong>Exponential form</strong>\[z_3=2\sqrt2e^{-i3\pi/4}\]</div>
+
+    <h3>(d) \(z_4=5-5\sqrt3\,i\)</h3>
+    <p><strong>Step 1: Identify the coordinates.</strong></p><div class="stepbox">\[x=5,\qquad y=-5\sqrt3\]</div>
+    <p><strong>Step 2: Find the modulus.</strong></p><div class="stepbox">\[r=\sqrt{5^2+(-5\sqrt3)^2}=\sqrt{25+75}=\sqrt{100}=10\]</div>
+    <p><strong>Step 3: Find the quadrant and argument.</strong> The point is in Quadrant IV.</p>
+    <div class="stepbox">\[\tan\alpha=\left|\frac{-5\sqrt3}{5}\right|=\sqrt3\quad\Rightarrow\quad\alpha=\frac{\pi}{3}\]</div>
+    <div class="stepbox">\[\theta=-\alpha=-\frac{\pi}{3}\]</div>
+    <div class="final"><strong>Polar form</strong>\[z_4=10\left(\cos\left(-\frac{\pi}{3}\right)+i\sin\left(-\frac{\pi}{3}\right)\right)\]<strong>Exponential form</strong>\[z_4=10e^{-i\pi/3}\]</div>
+  </div></details>
+</section>
+
+<section class="question" id="q2">
+  <div class="q-head"><span class="q-num">02</span><h2>Reading polar form backwards</h2><span class="level">Foundation</span></div>
+  <p>Each complex number is given in polar or exponential form. For each one:</p>
+  <ol class="parts" type="a">
+    <li>State its modulus and argument.</li>
+    <li>Convert it into the form \(x+iy\).</li>
+    <li>State the quadrant of its Argand point, where applicable.</li>
+  </ol>
+  <ol class="parts" type="a">
+    <li>\(w_1=6\left(\cos\frac{5\pi}{6}+i\sin\frac{5\pi}{6}\right)\)</li>
+    <li>\(w_2=4e^{-i\pi/4}\)</li>
+    <li>\(w_3=3e^{i7\pi/4}\)</li>
+  </ol>
+  <details><summary>Show your work and answers</summary><div class="work">
+    <h3>(a) \(w_1=6(\cos\frac{5\pi}{6}+i\sin\frac{5\pi}{6})\)</h3>
+    <p>The modulus is the number outside the brackets, and the argument is the angle inside.</p>
+    <div class="stepbox">\[r=6,\qquad\theta=\frac{5\pi}{6}\]</div>
+    <p>Use \(x=r\cos\theta\) and \(y=r\sin\theta\).</p>
+    <div class="stepbox">\[x=6\cos\frac{5\pi}{6}=6\left(-\frac{\sqrt3}{2}\right)=-3\sqrt3\]</div>
+    <div class="stepbox">\[y=6\sin\frac{5\pi}{6}=6\left(\frac12\right)=3\]</div>
+    <div class="final"><strong>Answer</strong>\[w_1=-3\sqrt3+3i\]</div>
+    <p>The real part is negative and the imaginary part is positive, so the point is in Quadrant II.</p>
+
+    <h3>(b) \(w_2=4e^{-i\pi/4}\)</h3>
+    <p>First rewrite the exponential form as polar form using \(e^{i\theta}=\cos\theta+i\sin\theta\).</p>
+    <div class="stepbox">\[w_2=4\left(\cos\left(-\frac{\pi}{4}\right)+i\sin\left(-\frac{\pi}{4}\right)\right)\]</div>
+    <p>Now calculate the real part.</p>
+    <div class="stepbox">\[x=4\cos\left(-\frac{\pi}{4}\right)=4\left(\frac{\sqrt2}{2}\right)=2\sqrt2\]</div>
+    <p>Then calculate the imaginary coefficient.</p>
+    <div class="stepbox">\[y=4\sin\left(-\frac{\pi}{4}\right)=4\left(-\frac{\sqrt2}{2}\right)=-2\sqrt2\]</div>
+    <div class="final"><strong>Answer</strong>\[w_2=2\sqrt2-2\sqrt2\,i\]</div>
+    <p>The point is in Quadrant IV. Its modulus is \(4\), and its argument is \(-\pi/4\).</p>
+
+    <h3>(c) \(w_3=3e^{i7\pi/4}\)</h3>
+    <p>The modulus is \(3\). The displayed angle \(7\pi/4\) is greater than \(\pi\), so convert it to the principal interval by subtracting \(2\pi\).</p>
+    <div class="stepbox">\[\theta=\frac{7\pi}{4}-2\pi=\frac{7\pi}{4}-\frac{8\pi}{4}=-\frac{\pi}{4}\]</div>
+    <p>Now convert to Cartesian form.</p>
+    <div class="stepbox">\[x=3\cos\left(-\frac{\pi}{4}\right)=\frac{3\sqrt2}{2}\]</div>
+    <div class="stepbox">\[y=3\sin\left(-\frac{\pi}{4}\right)=-\frac{3\sqrt2}{2}\]</div>
+    <div class="final"><strong>Answer</strong>\[w_3=\frac{3\sqrt2}{2}-\frac{3\sqrt2}{2}i\]</div>
+    <p>The point is in Quadrant IV. Its principal argument is \(-\pi/4\), not \(7\pi/4\).</p>
+  </div></details>
+</section>
+
+<section class="question" id="q3">
+  <div class="q-head"><span class="q-num">03</span><h2>Products and quotients</h2><span class="level">Core application</span></div>
+  <p>Let</p>
+  <div class="stepbox">\[z_1=3\left(\cos\frac{5\pi}{6}+i\sin\frac{5\pi}{6}\right),\qquad z_2=2\left(\cos\frac{2\pi}{3}+i\sin\frac{2\pi}{3}\right).\]</div>
+  <ol class="parts" type="a">
+    <li>Find \(z_1z_2\) in polar form, giving its argument in \((-\pi,\pi]\).</li>
+    <li>Find \(\dfrac{z_1}{z_2}\) in polar form, giving its argument in \((-\pi,\pi]\).</li>
+    <li>Explain why the product and quotient have different modulus calculations.</li>
+  </ol>
+  <details><summary>Show your work and answers</summary><div class="work">
+    <h3>(a) Find \(z_1z_2\)</h3>
+    <p><strong>Step 1: Multiply the moduli.</strong></p><div class="stepbox">\[r=3\times2=6\]</div>
+    <p><strong>Step 2: Add the arguments.</strong></p><div class="stepbox">\[\theta=\frac{5\pi}{6}+\frac{2\pi}{3}\]</div>
+    <p>Use a common denominator of \(6\).</p><div class="stepbox">\[\theta=\frac{5\pi}{6}+\frac{4\pi}{6}=\frac{9\pi}{6}=\frac{3\pi}{2}\]</div>
+    <p><strong>Step 3: Adjust to the principal interval.</strong> Since \(3\pi/2>\pi\), subtract \(2\pi\).</p><div class="stepbox">\[\theta=\frac{3\pi}{2}-2\pi=\frac{3\pi}{2}-\frac{4\pi}{2}=-\frac{\pi}{2}\]</div>
+    <div class="final"><strong>Answer</strong>\[z_1z_2=6\left(\cos\left(-\frac{\pi}{2}\right)+i\sin\left(-\frac{\pi}{2}\right)\right)=6e^{-i\pi/2}\]</div>
+
+    <h3>(b) Find \(\dfrac{z_1}{z_2}\)</h3>
+    <p><strong>Step 1: Divide the moduli.</strong></p><div class="stepbox">\[r=\frac{3}{2}\]</div>
+    <p><strong>Step 2: Subtract the arguments in numerator-minus-denominator order.</strong></p><div class="stepbox">\[\theta=\frac{5\pi}{6}-\frac{2\pi}{3}\]</div>
+    <div class="stepbox">\[\theta=\frac{5\pi}{6}-\frac{4\pi}{6}=\frac{\pi}{6}\]</div>
+    <p><strong>Step 3: Check the interval.</strong> Since \(-\pi<\pi/6\leq\pi\), no adjustment is needed.</p>
+    <div class="final"><strong>Answer</strong>\[\frac{z_1}{z_2}=\frac32\left(\cos\frac{\pi}{6}+i\sin\frac{\pi}{6}\right)=\frac32e^{i\pi/6}\]</div>
+
+    <h3>(c) Explain the modulus rules</h3>
+    <p>When multiplying, the lengths scale together, so the new modulus is the product \(r_1r_2\). When dividing, one length is scaled by the reciprocal of the other, so the new modulus is the quotient \(r_1/r_2\). The denominator must be non-zero.</p>
+  </div></details>
+</section>
+
+<section class="question" id="q4">
+  <div class="q-head"><span class="q-num">04</span><h2>Working directly with exponential form</h2><span class="level">Core application</span></div>
+  <p>Given</p>
+  <div class="stepbox">\[a=4e^{i7\pi/6},\qquad b=3e^{i5\pi/4},\]</div>
+  <ol class="parts" type="a">
+    <li>Find \(ab\) in exponential form with its argument in \((-\pi,\pi]\).</li>
+    <li>Find \(a/b\) in exponential form with its argument in \((-\pi,\pi]\).</li>
+    <li>Convert your answer to part (b) into polar form.</li>
+  </ol>
+  <details><summary>Show your work and answers</summary><div class="work">
+    <h3>(a) Find \(ab\)</h3>
+    <p>Write the multiplication rule for exponential form: multiply the coefficients and add the angles.</p>
+    <div class="stepbox">\[ab=(4\times3)e^{i(7\pi/6+5\pi/4)}\]</div>
+    <p>Calculate the coefficient.</p><div class="stepbox">\[4\times3=12\]</div>
+    <p>Find a common denominator of \(12\) for the angle.</p><div class="stepbox">\[\frac{7\pi}{6}+\frac{5\pi}{4}=\frac{14\pi}{12}+\frac{15\pi}{12}=\frac{29\pi}{12}\]</div>
+    <p>The angle is greater than \(\pi\), so subtract \(2\pi=24\pi/12\).</p><div class="stepbox">\[\frac{29\pi}{12}-\frac{24\pi}{12}=\frac{5\pi}{12}\]</div>
+    <div class="final"><strong>Answer</strong>\[ab=12e^{i5\pi/12}\]</div>
+
+    <h3>(b) Find \(a/b\)</h3>
+    <p>Divide the coefficients and subtract the denominator's angle from the numerator's angle.</p>
+    <div class="stepbox">\[\frac ab=\frac43e^{i(7\pi/6-5\pi/4)}\]</div>
+    <p>Use denominator \(12\) to subtract the angles.</p>
+    <div class="stepbox">\[\frac{7\pi}{6}-\frac{5\pi}{4}=\frac{14\pi}{12}-\frac{15\pi}{12}=-\frac{\pi}{12}\]</div>
+    <p>The angle is already in the required interval.</p>
+    <div class="final"><strong>Answer</strong>\[\frac ab=\frac43e^{-i\pi/12}\]</div>
+
+    <h3>(c) Convert to polar form</h3>
+    <p>Replace \(e^{i\theta}\) with \(\cos\theta+i\sin\theta\), keeping the same modulus and angle.</p>
+    <div class="final"><strong>Answer</strong>\[\frac ab=\frac43\left(\cos\left(-\frac{\pi}{12}\right)+i\sin\left(-\frac{\pi}{12}\right)\right)\]</div>
+  </div></details>
+</section>
+
+<section class="question" id="q5">
+  <div class="q-head"><span class="q-num">05</span><h2>Recovering an unknown angle</h2><span class="level">Reasoning</span></div>
+  <p>Two non-zero complex numbers have the forms</p>
+  <div class="stepbox">\[u=5e^{i\alpha},\qquad v=2e^{-i\pi/3},\qquad -\pi<\alpha\leq\pi.\]</div>
+  <p>It is known that the principal argument of \(uv\) is \(\pi/4\).</p>
+  <ol class="parts" type="a">
+    <li>Write an equation involving \(\alpha\) before adjusting the angle.</li>
+    <li>Find the possible values of \(\alpha\) in the stated interval.</li>
+    <li>Find \(u\) in exponential form.</li>
+    <li>Find the modulus of \(uv\).</li>
+  </ol>
+  <details><summary>Show your work and answers</summary><div class="work">
+    <h3>(a) Form the angle equation</h3>
+    <p>When two complex numbers are multiplied, their arguments are added.</p>
+    <div class="stepbox">\[\arg(uv)=\alpha+\left(-\frac{\pi}{3}\right)=\alpha-\frac{\pi}{3}\]</div>
+    <p>The principal argument is given as \(\pi/4\). However, the unadjusted sum may differ from it by a whole multiple of \(2\pi\).</p>
+    <div class="stepbox">\[\alpha-\frac{\pi}{3}=\frac{\pi}{4}+2k\pi,\qquad k\in\mathbb Z\]</div>
+    <h3>(b) Find \(\alpha\)</h3>
+    <p>Add \(\pi/3\) to both sides.</p>
+    <div class="stepbox">\[\alpha=\frac{\pi}{4}+\frac{\pi}{3}+2k\pi\]</div>
+    <p>Use denominator \(12\).</p><div class="stepbox">\[\alpha=\frac{3\pi}{12}+\frac{4\pi}{12}+2k\pi=\frac{7\pi}{12}+2k\pi\]</div>
+    <p>Now use \(-\pi<\alpha\leq\pi\). The value with \(k=0\) is \(7\pi/12\), which lies in this interval. Any other integer value of \(k\) moves the angle outside it.</p>
+    <div class="final"><strong>Answer</strong>\[\alpha=\frac{7\pi}{12}\]</div>
+    <h3>(c) Write \(u\)</h3>
+    <p>Substitute the value of \(\alpha\) into the given expression.</p>
+    <div class="final"><strong>Answer</strong>\[u=5e^{i7\pi/12}\]</div>
+    <h3>(d) Find the modulus of \(uv\)</h3>
+    <p>Multiply the moduli.</p>
+    <div class="stepbox">\[|uv|=|u||v|=5\times2=10\]</div>
+    <div class="final"><strong>Answer</strong>\[|uv|=10\]</div>
+  </div></details>
+</section>
+
+<section class="question" id="q6">
+  <div class="q-head"><span class="q-num">06</span><h2>The principal-argument boundary</h2><span class="level">Careful reasoning</span></div>
+  <p>For each angle below:</p>
+  <ol class="parts" type="a">
+    <li>Convert it to an equivalent angle in \((-\pi,\pi]\).</li>
+    <li>State exactly how many multiples of \(2\pi\) you added or subtracted.</li>
+  </ol>
+  <ol class="parts" type="a">
+    <li>\(\dfrac{11\pi}{6}\)</li>
+    <li>\(-\dfrac{7\pi}{4}\)</li>
+    <li>\(\dfrac{13\pi}{3}\)</li>
+    <li>\(-\pi\)</li>
+    <li>\(\dfrac{17\pi}{2}\)</li>
+  </ol>
+  <details><summary>Show your work and answers</summary><div class="work">
+    <h3>(a) \(11\pi/6\)</h3><p>This is greater than \(\pi=6\pi/6\). Subtract \(2\pi=12\pi/6\).</p><div class="stepbox">\[\frac{11\pi}{6}-2\pi=\frac{11\pi}{6}-\frac{12\pi}{6}=-\frac{\pi}{6}\]</div><div class="final"><strong>Answer</strong>\(-\pi/6\), subtract \(2\pi\) once.</div>
+    <h3>(b) \(-7\pi/4\)</h3><p>This is less than \(-\pi=-4\pi/4\). Add \(2\pi=8\pi/4\).</p><div class="stepbox">\[-\frac{7\pi}{4}+2\pi=-\frac{7\pi}{4}+\frac{8\pi}{4}=\frac{\pi}{4}\]</div><div class="final"><strong>Answer</strong>\(\pi/4\), add \(2\pi\) once.</div>
+    <h3>(c) \(13\pi/3\)</h3><p>Subtract \(2\pi=6\pi/3\) once.</p><div class="stepbox">\[\frac{13\pi}{3}-\frac{6\pi}{3}=\frac{7\pi}{3}\]</div><p>The result is still greater than \(\pi\), so subtract \(2\pi\) again.</p><div class="stepbox">\[\frac{7\pi}{3}-\frac{6\pi}{3}=\frac{\pi}{3}\]</div><div class="final"><strong>Answer</strong>\(\pi/3\), subtract \(2\pi\) twice.</div>
+    <h3>(d) \(-\pi\)</h3><p>The interval is \((-\pi,\pi]\). The left endpoint is excluded, so \(-\pi\) is not allowed. Add \(2\pi\).</p><div class="stepbox">\[-\pi+2\pi=\pi\]</div><div class="final"><strong>Answer</strong>\(\pi\), add \(2\pi\) once.</div>
+    <h3>(e) \(17\pi/2\)</h3><p>Subtract \(2\pi=4\pi/2\) repeatedly until the result is in the interval.</p><div class="stepbox">\[\frac{17\pi}{2}-\frac{4\pi}{2}=\frac{13\pi}{2}\]</div><div class="stepbox">\[\frac{13\pi}{2}-\frac{4\pi}{2}=\frac{9\pi}{2}\]</div><div class="stepbox">\[\frac{9\pi}{2}-\frac{4\pi}{2}=\frac{5\pi}{2}\]</div><div class="stepbox">\[\frac{5\pi}{2}-\frac{4\pi}{2}=\frac{\pi}{2}\]</div><div class="final"><strong>Answer</strong>\(\pi/2\), subtract \(2\pi\) four times.</div>
+    <div class="note"><strong>Important endpoint detail:</strong> For the interval \((-\pi,\pi]\), an angle equal to \(-\pi\) must be changed to \(\pi\). Do not leave it as \(-\pi\).</div>
+  </div></details>
+</section>
+
+<section class="question" id="q7">
+  <div class="q-head"><span class="q-num">07</span><h2>One result, two routes</h2><span class="level">Multi-step challenge</span></div>
+  <p>Let</p>
+  <div class="stepbox">\[p=2\sqrt2\left(\cos\left(-\frac{3\pi}{4}\right)+i\sin\left(-\frac{3\pi}{4}\right)\right),\qquad q=4e^{i5\pi/6}.\]</div>
+  <ol class="parts" type="a">
+    <li>Write \(p\) in exponential form.</li>
+    <li>Find \(pq\) in exponential form, with its argument in \((-\pi,\pi]\).</li>
+    <li>Convert \(pq\) into the form \(x+iy\).</li>
+    <li>Check your Cartesian answer by multiplying the Cartesian forms of \(p\) and \(q\).</li>
+  </ol>
+  <details><summary>Show your work and answers</summary><div class="work">
+    <h3>(a) Write \(p\) in exponential form</h3>
+    <p>Use \(r(\cos\theta+i\sin\theta)=re^{i\theta}\). The modulus and angle stay unchanged.</p>
+    <div class="final"><strong>Answer</strong>\[p=2\sqrt2e^{-i3\pi/4}\]</div>
+    <h3>(b) Find \(pq\)</h3>
+    <p>Multiply the moduli.</p><div class="stepbox">\[r=2\sqrt2\times4=8\sqrt2\]</div>
+    <p>Add the arguments.</p><div class="stepbox">\[\theta=-\frac{3\pi}{4}+\frac{5\pi}{6}\]</div>
+    <p>Use denominator \(12\).</p><div class="stepbox">\[\theta=-\frac{9\pi}{12}+\frac{10\pi}{12}=\frac{\pi}{12}\]</div>
+    <p>The angle is already in the principal interval.</p>
+    <div class="final"><strong>Answer</strong>\[pq=8\sqrt2e^{i\pi/12}\]</div>
+    <h3>(c) Convert \(pq\) into Cartesian form</h3>
+    <p>Use the exact values of \(\cos(\pi/12)\) and \(\sin(\pi/12)\).</p>
+    <div class="stepbox">\[\cos\frac{\pi}{12}=\frac{\sqrt6+\sqrt2}{4},\qquad \sin\frac{\pi}{12}=\frac{\sqrt6-\sqrt2}{4}\]</div>
+    <p>The real part is the modulus multiplied by the cosine.</p>
+    <div class="stepbox">\[x=8\sqrt2\left(\frac{\sqrt6+\sqrt2}{4}\right)\]</div>
+    <div class="stepbox">\[x=2\sqrt2(\sqrt6+\sqrt2)=2\sqrt{12}+4=4\sqrt3+4\]</div>
+    <p>The imaginary coefficient is the modulus multiplied by the sine.</p>
+    <div class="stepbox">\[y=8\sqrt2\left(\frac{\sqrt6-\sqrt2}{4}\right)\]</div>
+    <div class="stepbox">\[y=2\sqrt2(\sqrt6-\sqrt2)=2\sqrt{12}-4=4\sqrt3-4\]</div>
+    <div class="final"><strong>Answer</strong>\[pq=(4+4\sqrt3)+(4\sqrt3-4)i\]</div>
+    <h3>(d) Verify by Cartesian multiplication</h3>
+    <p>First convert \(p\). Since \(\cos(-3\pi/4)=-\sqrt2/2\) and \(\sin(-3\pi/4)=-\sqrt2/2\):</p>
+    <div class="stepbox">\[p=2\sqrt2\left(-\frac{\sqrt2}{2}-i\frac{\sqrt2}{2}\right)=-2-2i\]</div>
+    <p>Now convert \(q\). Its angle is \(5\pi/6\).</p>
+    <div class="stepbox">\[q=4\left(-\frac{\sqrt3}{2}+i\frac12\right)=-2\sqrt3+2i\]</div>
+    <p>Multiply the Cartesian expressions using distributivity.</p>
+    <div class="stepbox">\[pq=(-2-2i)(-2\sqrt3+2i)\]</div>
+    <div class="stepbox">\[=4\sqrt3-4i+4\sqrt3\,i-4i^2\]</div>
+    <p>Since \(i^2=-1\), the last term becomes \(+4\).</p>
+    <div class="stepbox">\[=4\sqrt3+4+(-4+4\sqrt3)i\]</div>
+    <div class="final"><strong>Verification</strong>\[pq=(4+4\sqrt3)+(4\sqrt3-4)i\]</div>
+    <p>This matches the answer obtained by multiplying in polar form.</p>
+  </div></details>
+</section>
+
+<section class="question" id="q8">
+  <div class="q-head"><span class="q-num">08</span><h2>Investigating a condition</h2><span class="level">Extension</span></div>
+  <p>A non-zero complex number \(z\) has modulus \(r\) and principal argument \(\theta\), where \(-\pi<\theta\leq\pi\). Another non-zero complex number \(w\) has modulus \(s\) and principal argument \(\phi\).</p>
+  <p>It is given that</p>
+  <div class="stepbox">\[|zw|=24,\qquad \left|\frac zw\right|=\frac32.\]</div>
+  <ol class="parts" type="a">
+    <li>Form two equations involving \(r\) and \(s\).</li>
+    <li>Solve the equations to find \(r\) and \(s\).</li>
+    <li>Given that the principal argument of \(zw\) is \(-\pi/5\), and \(\phi=\pi/4\), find \(\theta\) in the principal interval.</li>
+    <li>Write \(z\) in exponential form.</li>
+  </ol>
+  <details><summary>Show your work and answers</summary><div class="work">
+    <h3>(a) Form the equations</h3>
+    <p>The modulus of a product is the product of the moduli.</p><div class="stepbox">\[rs=24\qquad\text{(1)}\]</div>
+    <p>The modulus of a quotient is the quotient of the moduli.</p><div class="stepbox">\[\frac rs=\frac32\qquad\text{(2)}\]</div>
+    <h3>(b) Solve for \(r\) and \(s\)</h3>
+    <p>Rearrange equation (2) to make \(r\) the subject.</p><div class="stepbox">\[r=\frac32s\]</div>
+    <p>Substitute this expression into equation (1).</p><div class="stepbox">\[\left(\frac32s\right)s=24\]</div>
+    <div class="stepbox">\[\frac32s^2=24\]</div>
+    <p>Multiply both sides by \(2/3\).</p><div class="stepbox">\[s^2=24\times\frac23=16\]</div>
+    <p>Therefore \(s=\pm4\), but a modulus cannot be negative. So \(s=4\).</p>
+    <div class="stepbox">\[r=\frac32\times4=6\]</div>
+    <div class="final"><strong>Answer</strong>\[r=6,\qquad s=4\]</div>
+    <h3>(c) Find \(\theta\)</h3>
+    <p>The argument of a product is the sum of the arguments, up to a multiple of \(2\pi\).</p>
+    <div class="stepbox">\[\theta+\phi=-\frac{\pi}{5}+2k\pi\]</div>
+    <p>Substitute \(\phi=\pi/4\).</p><div class="stepbox">\[\theta+\frac{\pi}{4}=-\frac{\pi}{5}+2k\pi\]</div>
+    <p>Subtract \(\pi/4\) from both sides.</p><div class="stepbox">\[\theta=-\frac{\pi}{5}-\frac{\pi}{4}+2k\pi\]</div>
+    <p>Use denominator \(20\).</p><div class="stepbox">\[\theta=-\frac{4\pi}{20}-\frac{5\pi}{20}+2k\pi=-\frac{9\pi}{20}+2k\pi\]</div>
+    <p>For \(k=0\), this lies in \((-\pi,\pi]\). Other integer values move it outside the interval.</p>
+    <div class="final"><strong>Answer</strong>\[\theta=-\frac{9\pi}{20}\]</div>
+    <h3>(d) Write \(z\) in exponential form</h3>
+    <p>We found that the modulus of \(z\) is \(r=6\), and its principal argument is \(\theta=-9\pi/20\). Substitute these into \(z=re^{i\theta}\).</p>
+    <div class="final"><strong>Answer</strong>\[z=6e^{-i9\pi/20}\]</div>
+  </div></details>
+</section>
+
+  
+<section class="question" id="q9">
+  <div class="q-head">
+    <span class="q-num">09</span>
+    <h2>The Hidden Relationship</h2>
+    <span class="level">Challenge</span>
+  </div>
+
+  <p>Two non-zero complex numbers \(z\) and \(w\) satisfy</p>
+
+  <div class="stepbox">
+    \[|z|=|w|=2\]
+    \[z+w=2\sqrt2\]
+  </div>
+
+  <p>Given that \(z\) and \(w\) are distinct:</p>
+
+  <ol class="parts" type="a">
+    <li>Determine the Cartesian forms of \(z\) and \(w\).</li>
+    <li>Express both numbers in polar form, giving their arguments in the principal interval \(-\pi<\theta\leq\pi\).</li>
+    <li>Without directly calculating their Cartesian forms again, determine \(zw\) and \(\dfrac zw\). Give both answers in polar form.</li>
+    <li>Hence determine \(\dfrac{z+w}{zw}\), expressing your answer in Cartesian form.</li>
+    <li>A student claims that because \(|z|=|w|\), it follows that \(\arg(z)=\arg(w)\). Explain precisely why this reasoning is incorrect.</li>
+  </ol>
+
+  <details>
+    <summary>Show your work and answers</summary>
+    <div class="work">
+
+      <h3>(a) Determine the Cartesian forms</h3>
+
+      <p>Let</p>
+      <div class="stepbox">
+        \[z=a+bi,\qquad w=c+di\]
+      </div>
+
+      <p>Using the given condition \(z+w=2\sqrt2\):</p>
+      <div class="stepbox">
+        \[(a+bi)+(c+di)=2\sqrt2\]
+      </div>
+
+      <p>Collect the real and imaginary parts.</p>
+      <div class="stepbox">
+        \[(a+c)+(b+d)i=2\sqrt2+0i\]
+      </div>
+
+      <p>Equating real parts and imaginary parts separately gives:</p>
+      <div class="stepbox">
+        \[a+c=2\sqrt2\tag{1}\]
+        \[b+d=0\tag{2}\]
+      </div>
+
+      <p>Rearrange equation (2).</p>
+      <div class="stepbox">
+        \[d=-b\]
+      </div>
+
+      <p>Since both complex numbers have modulus 2, use the modulus formula.</p>
+      <div class="stepbox">
+        \[a^2+b^2=2^2\]
+        \[a^2+b^2=4\tag{3}\]
+      </div>
+
+      <div class="stepbox">
+        \[c^2+d^2=2^2\]
+        \[c^2+d^2=4\tag{4}\]
+      </div>
+
+      <p>Substitute \(d=-b\) into equation (4).</p>
+      <div class="stepbox">
+        \[c^2+(-b)^2=4\]
+        \[c^2+b^2=4\tag{5}\]
+      </div>
+
+      <p>Subtract equation (5) from equation (3).</p>
+      <div class="stepbox">
+        \[a^2+b^2-(c^2+b^2)=4-4\]
+        \[a^2-c^2=0\]
+      </div>
+
+      <p>Factorise using the difference of two squares.</p>
+      <div class="stepbox">
+        \[(a-c)(a+c)=0\]
+      </div>
+
+      <p>From equation (1), \(a+c=2\sqrt2\), which is non-zero. Therefore:</p>
+      <div class="stepbox">
+        \[a-c=0\]
+        \[a=c\]
+      </div>
+
+      <p>Substitute \(c=a\) into equation (1).</p>
+      <div class="stepbox">
+        \[a+a=2\sqrt2\]
+        \[2a=2\sqrt2\]
+        \[a=\frac{2\sqrt2}{2}\]
+        \[a=\sqrt2\]
+      </div>
+
+      <p>Since \(a=c\):</p>
+      <div class="stepbox">
+        \[a=c=\sqrt2\]
+      </div>
+
+      <p>Substitute \(a=\sqrt2\) into equation (3).</p>
+      <div class="stepbox">
+        \[(\sqrt2)^2+b^2=4\]
+        \[2+b^2=4\]
+        \[b^2=4-2\]
+        \[b^2=2\]
+        \[b=\pm\sqrt2\]
+      </div>
+
+      <p>Recall that \(d=-b\). Therefore, the imaginary parts must have opposite signs.</p>
+
+      <div class="stepbox">
+        \[
+        \boxed{z=\sqrt2+\sqrt2i}
+        \]
+        \[
+        \boxed{w=\sqrt2-\sqrt2i}
+        \]
+      </div>
+
+      <p>The two values may be interchanged.</p>
+
+      <div class="final">
+        <strong>Answer</strong>
+        \[
+        z=\sqrt2+\sqrt2i,\qquad
+        w=\sqrt2-\sqrt2i
+        \]
+        or vice versa.
+      </div>
+
+      <h3>(b) Express both numbers in polar form</h3>
+
+      <p>First, consider \(z=\sqrt2+\sqrt2i\).</p>
+
+      <p>Calculate its modulus.</p>
+      <div class="stepbox">
+        \[r=\sqrt{x^2+y^2}\]
+        \[r=\sqrt{(\sqrt2)^2+(\sqrt2)^2}\]
+        \[r=\sqrt{2+2}\]
+        \[r=\sqrt4\]
+        \[r=2\]
+      </div>
+
+      <p>Calculate its argument using the tangent ratio.</p>
+      <div class="stepbox">
+        \[\tan\theta=\frac{y}{x}\]
+        \[\tan\theta=\frac{\sqrt2}{\sqrt2}\]
+        \[\tan\theta=1\]
+        \[\theta=\frac{\pi}{4}\]
+      </div>
+
+      <p>Both coordinates are positive, so the number lies in the first quadrant.</p>
+
+      <div class="stepbox">
+        \[
+        \boxed{
+        z=2\left(\cos\frac{\pi}{4}
+        +i\sin\frac{\pi}{4}\right)
+        }
+        \]
+      </div>
+
+      <p>Now consider \(w=\sqrt2-\sqrt2i\).</p>
+
+      <p>Calculate its modulus.</p>
+      <div class="stepbox">
+        \[s=\sqrt{x^2+y^2}\]
+        \[s=\sqrt{(\sqrt2)^2+(-\sqrt2)^2}\]
+        \[s=\sqrt{2+2}\]
+        \[s=2\]
+      </div>
+
+      <p>Calculate its argument.</p>
+      <div class="stepbox">
+        \[\tan\phi=\frac{y}{x}\]
+        \[\tan\phi=\frac{-\sqrt2}{\sqrt2}\]
+        \[\tan\phi=-1\]
+        \[\phi=-\frac{\pi}{4}\]
+      </div>
+
+      <p>The real part is positive and the imaginary part is negative, so the number lies in the fourth quadrant.</p>
+
+      <div class="stepbox">
+        \[
+        \boxed{
+        w=2\left(\cos\left(-\frac{\pi}{4}\right)
+        +i\sin\left(-\frac{\pi}{4}\right)\right)
+        }
+        \]
+      </div>
+
+      <div class="final">
+        <strong>Answer</strong>
+        \[
+        z=2\operatorname{cis}\frac{\pi}{4}
+        \]
+        \[
+        w=2\operatorname{cis}\left(-\frac{\pi}{4}\right)
+        \]
+      </div>
+
+      <h3>(c) Determine \(zw\) and \(\dfrac zw\)</h3>
+
+      <p><strong>First: Multiplication</strong></p>
+
+      <p>When multiplying complex numbers in polar form, multiply the moduli and add the arguments.</p>
+
+      <div class="stepbox">
+        \[|zw|=2\times2\]
+        \[|zw|=4\]
+      </div>
+
+      <p>Add the arguments.</p>
+      <div class="stepbox">
+        \[
+        \arg(zw)=\frac{\pi}{4}
+        +\left(-\frac{\pi}{4}\right)
+        \]
+        \[
+        =\frac{\pi}{4}-\frac{\pi}{4}
+        \]
+        \[
+        =0
+        \]
+      </div>
+
+      <div class="final">
+        <strong>Answer</strong>
+        \[
+        \boxed{zw=4(\cos0+i\sin0)}
+        \]
+      </div>
+
+      <p><strong>Second: Division</strong></p>
+
+      <p>When dividing complex numbers in polar form, divide the moduli and subtract the arguments.</p>
+
+      <div class="stepbox">
+        \[
+        \left|\frac zw\right|=\frac22
+        \]
+        \[
+        =1
+        \]
+      </div>
+
+      <p>Subtract the arguments.</p>
+      <div class="stepbox">
+        \[
+        \arg\left(\frac zw\right)
+        =\frac{\pi}{4}-\left(-\frac{\pi}{4}\right)
+        \]
+        \[
+        =\frac{\pi}{4}+\frac{\pi}{4}
+        \]
+        \[
+        =\frac{2\pi}{4}
+        \]
+        \[
+        =\frac{\pi}{2}
+        \]
+      </div>
+
+      <div class="final">
+        <strong>Answer</strong>
+        \[
+        \boxed{
+        \frac zw=\cos\frac{\pi}{2}
+        +i\sin\frac{\pi}{2}
+        }
+        \]
+      </div>
+
+      <h3>(d) Express the result in Cartesian form</h3>
+
+      <p>We are given that:</p>
+      <div class="stepbox">
+        \[z+w=2\sqrt2\]
+      </div>
+
+      <p>From part (c), we found that:</p>
+      <div class="stepbox">
+        \[zw=4\]
+      </div>
+
+      <p>Substitute these values into the required expression.</p>
+      <div class="stepbox">
+        \[
+        \frac{z+w}{zw}=\frac{2\sqrt2}{4}
+        \]
+        \[
+        =\frac{2\sqrt2}{2\times2}
+        \]
+        \[
+        =\frac{\sqrt2}{2}
+        \]
+      </div>
+
+      <p>Since the result is real, its imaginary part is zero.</p>
+
+      <div class="final">
+        <strong>Answer</strong>
+        \[
+        \boxed{
+        \frac{z+w}{zw}=\frac{\sqrt2}{2}+0i
+        }
+        \]
+      </div>
+
+      <h3>(e) Explain the student's mistake</h3>
+
+      <p>The modulus represents the distance of a complex number from the origin, whereas the argument represents its direction from the positive real axis.</p>
+
+      <p>Two complex numbers can have the same distance from the origin but point in different directions.</p>
+
+      <p>In this question:</p>
+      <div class="stepbox">
+        \[|z|=|w|=2\]
+        \[
+        \arg(z)=\frac{\pi}{4}
+        \]
+        \[
+        \arg(w)=-\frac{\pi}{4}
+        \]
+      </div>
+
+      <p>The moduli are equal, but the arguments are different.</p>
+
+      <div class="final">
+        <strong>Conclusion</strong>
+        \[
+        \boxed{
+        |z|=|w|\not\Rightarrow
+        \arg(z)=\arg(w)
+        }
+        \]
+      </div>
+
+    </div>
+  </details>
+</section>
+
+<footer class="footer">
+  <div><div class="footer-brand">Edu<span>Nova</span></div><div>Mathematics made clear.</div></div>
+  <div class="footer-links"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div>
+  <div>© 2026 EduNova. All rights reserved.</div>
+</footer>
+</main>
+<script>
+window.addEventListener("load",()=>{if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();});
+document.querySelectorAll("details").forEach(item=>item.addEventListener("toggle",()=>{if(item.open&&window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([item]);}));
+</script>
+
+  <script src="premium-access.js"></script>
+</body>
+</html>
