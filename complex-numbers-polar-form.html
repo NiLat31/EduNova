@@ -288,6 +288,36 @@ main{padding:0 22px 60px}.hero-art{right:-5%;opacity:.6;width:45%}.hero-copy{max
     <section class="content-section" id="conversion">
       <div class="section-head"><span class="section-no">02</span><h2>From Cartesian to polar form</h2></div>
       <p class="lead">Start with \(z=x+iy\). The horizontal coordinate is \(x\), and the vertical coordinate is \(y\). Trigonometry connects these coordinates to the modulus and argument.</p>
+     
+<div class="panel">
+  <h3>Where do these formulas come from?</h3>
+  <p>Look at the right-angled triangle formed by the point, its horizontal and vertical coordinates, and the origin. The hypotenuse is the modulus \(r\), and the angle at the origin is \(\theta\).</p>
+
+  <p><strong>1. Deriving the horizontal coordinate (\(x\))</strong></p>
+  <p>Using the trigonometric ratio for cosine:</p>
+  <div class="formula">\[\cos\theta=\frac{\text{Adjacent}}{\text{Hypotenuse}}\]</div>
+  <p>In our triangle, the adjacent side is \(x\), and the hypotenuse is \(r\):</p>
+  <div class="formula">\[\cos\theta=\frac{x}{r}\]</div>
+  <p>Multiplying both sides by \(r\), we obtain:</p>
+  <div class="formula">\[\boxed{x=r\cos\theta}\]</div>
+
+  <div class="divider"></div>
+
+  <p><strong>2. Deriving the vertical coordinate (\(y\))</strong></p>
+  <p>Using the trigonometric ratio for sine:</p>
+  <div class="formula">\[\sin\theta=\frac{\text{Opposite}}{\text{Hypotenuse}}\]</div>
+  <p>In our triangle, the opposite side is \(y\), and the hypotenuse is \(r\):</p>
+  <div class="formula">\[\sin\theta=\frac{y}{r}\]</div>
+  <p>Multiplying both sides by \(r\), we obtain:</p>
+  <div class="formula">\[\boxed{y=r\sin\theta}\]</div>
+
+  <div class="note">
+    <strong>Remember the difference:</strong><br>
+    \(x\) is the adjacent side, so we use cosine.<br>
+    \(y\) is the opposite side, so we use sine.
+  </div>
+</div>
+
       <div class="two-col">
         <div class="mini-card"><div class="tag">Horizontal component</div><div class="formula">\[x=r\cos\theta\]</div><p>Cosine gives the horizontal part of the radius.</p></div>
         <div class="mini-card"><div class="tag">Vertical component</div><div class="formula">\[y=r\sin\theta\]</div><p>Sine gives the vertical part of the radius.</p></div>
