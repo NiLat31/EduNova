@@ -107,6 +107,82 @@ p{margin:0 0 15px}
 .formula .mjx-container{margin:0!important}
 .note{background:#f5f5f6;border-radius:12px;padding:15px 18px;color:#5f5e65;font-size:13px;margin:17px 0}
 .note strong{color:#333}
+  /* REMARK BOX */
+.remark-box{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 145px;
+  gap:20px;
+  align-items:center;
+  margin:30px 0;
+  padding:27px 28px;
+  border:2px solid #171717;
+  border-radius:18px;
+  background:radial-gradient(ellipse at 48% 50%,#ffe1dc 0%,#fbd0c9 48%,#f7b9b1 100%);
+  box-shadow:inset 0 0 0 3px #e52b20,0 10px 28px rgba(0,0,0,.07);
+  overflow:hidden;
+}
+.remark-content{position:relative;z-index:2}
+.remark-heading{
+  display:inline-block;background:#171717;color:#fff;
+  padding:5px 15px;border-radius:5px;font-size:11px;
+  font-weight:800;letter-spacing:2px;margin-bottom:18px;
+}
+.remark-item{padding:15px 0;border-bottom:1px solid rgba(184,45,35,.25)}
+.remark-item:last-child{border-bottom:0;padding-bottom:0}
+.remark-item h3{
+  color:#9d2924;font-family:"Playfair Display",serif;
+  font-size:19px;margin:0 0 9px;
+}
+.remark-item p{color:#393033;font-size:13px;margin:8px 0}
+.remark-formula{
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(184,45,35,.2);
+  border-radius:10px;padding:12px;margin:12px 0;
+  text-align:center;overflow-x:auto;
+}
+.remark-diagram{
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(184,45,35,.2);
+  border-radius:12px;padding:12px;margin:13px 0;text-align:center;
+}
+.remark-diagram svg{width:100%;max-width:290px;height:auto}
+.remark-lantern{
+  position:relative;z-index:2;display:grid;
+  place-items:center;min-height:190px;
+}
+.lantern-icon{
+  font-size:88px;line-height:1;
+  filter:drop-shadow(0 0 8px rgba(255,130,35,.35));
+  animation:lanternGlow 4s ease-in-out infinite;
+}
+.lantern-caption{
+  color:#8d3029;font-size:10px;font-weight:800;
+  letter-spacing:1.5px;text-transform:uppercase;
+  margin-top:15px;text-align:center;
+}
+.lantern-dot{
+  position:absolute;width:5px;height:5px;border-radius:50%;
+  background:#fff;box-shadow:0 0 10px #ff704d,0 0 20px #ff704d;
+  animation:dotFloat 3s ease-in-out infinite;
+}
+.lantern-dot:nth-child(1){top:20%;left:12%}
+.lantern-dot:nth-child(2){top:32%;right:8%;animation-delay:1.2s}
+.lantern-dot:nth-child(3){bottom:23%;left:18%;animation-delay:1.8s}
+.lantern-dot:nth-child(4){bottom:15%;right:15%;animation-delay:2.3s}
+@keyframes lanternGlow{
+  0%,100%{filter:drop-shadow(0 0 5px rgba(255,130,35,.25));opacity:.65;transform:scale(.96)}
+  50%{filter:drop-shadow(0 0 13px #ff8b36) drop-shadow(0 0 28px rgba(255,100,30,.85));opacity:1;transform:scale(1.06)}
+}
+@keyframes dotFloat{
+  0%,100%{transform:translateY(0) scale(.6);opacity:.25}
+  50%{transform:translateY(-13px) scale(1.3);opacity:1}
+}
+@media(max-width:700px){
+  .remark-box{grid-template-columns:1fr;padding:21px}
+  .remark-lantern{min-height:100px;grid-row:1}
+  .lantern-icon{font-size:65px}
+  .lantern-caption{margin-top:5px}
+}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:17px}
 .mini-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:21px}
 .mini-card .tag{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);font-weight:800}
@@ -423,6 +499,138 @@ main{padding:0 22px 60px}.hero-art{right:-5%;opacity:.6;width:45%}.hero-copy{max
       <div class="note">Division by zero is not defined, so the denominator’s modulus must not be zero.</div>
     </section>
 
+    <div class="remark-box">
+  <div class="remark-content">
+
+    <div class="remark-heading">REMARK</div>
+
+    <div class="remark-item">
+      <h3>1. The principal argument</h3>
+
+      <p>
+        The principal argument must lie in the interval:
+      </p>
+
+      <div class="remark-formula">
+        \[
+        -\pi < \theta \leq \pi
+        \]
+      </div>
+
+      <p>
+        If your calculated angle is greater than \(\pi\), subtract
+        \(2\pi\). If it is less than or equal to \(-\pi\), add
+        \(2\pi\). Repeat if necessary until the angle lies in
+        the required interval.
+      </p>
+    </div>
+
+    <div class="remark-item">
+      <h3>2. Negative angles and the unit circle</h3>
+
+      <p>
+        On the unit circle, changing \(\theta\) to \(-\theta\)
+        reflects the point across the horizontal axis. The
+        horizontal coordinate stays the same, while the vertical
+        coordinate changes sign.
+      </p>
+
+      <div class="remark-diagram">
+        <svg viewBox="0 0 300 220" role="img" aria-label="Unit circle showing the reflection of an angle across the horizontal axis">
+          <circle cx="145" cy="110" r="82" fill="none" stroke="#b85c38" stroke-width="2"/>
+          <path d="M35 110H265 M145 15V205" stroke="#777" stroke-width="1.3"/>
+          <path d="M145 110L216 69" stroke="#b85c38" stroke-width="2.5"/>
+          <path d="M145 110L216 151" stroke="#d97745" stroke-width="2.5"/>
+          <path d="M216 69V151" stroke="#9d2924" stroke-dasharray="4 4" stroke-width="1.5"/>
+          <circle cx="216" cy="69" r="4" fill="#b85c38"/>
+          <circle cx="216" cy="151" r="4" fill="#d97745"/>
+          <path d="M145 110L216 69" stroke="#b85c38" stroke-width="2.5"/>
+          <g fill="#393033" font-size="11" font-family="DM Sans">
+            <text x="225" y="66">P(θ)</text>
+            <text x="225" y="157">P(−θ)</text>
+            <text x="268" y="105">x</text>
+            <text x="153" y="18">y</text>
+            <text x="151" y="123">O</text>
+            <text x="178" y="85">θ</text>
+            <text x="178" y="140">−θ</text>
+          </g>
+        </svg>
+      </div>
+
+      <p>
+        Therefore, we obtain the two important identities:
+      </p>
+
+      <div class="remark-formula">
+        \[
+        \boxed{\cos(-\theta)=\cos\theta}
+        \]
+        \[
+        \boxed{\sin(-\theta)=-\sin\theta}
+        \]
+      </div>
+
+      <p>
+        <strong>Example:</strong> Express
+        \(z=2\sqrt3-2i\) in polar and exponential forms.
+      </p>
+
+      <p>
+        Its modulus is \(4\), and its principal argument is
+        \(-\frac{\pi}{6}\).
+      </p>
+
+      <p>
+        Apply the identities to use the positive reference angle:
+      </p>
+
+      <div class="remark-formula">
+        \[
+        \cos\left(-\frac{\pi}{6}\right)
+        =\cos\frac{\pi}{6}
+        \]
+        \[
+        \sin\left(-\frac{\pi}{6}\right)
+        =-\sin\frac{\pi}{6}
+        \]
+      </div>
+
+      <p><strong>Polar form:</strong></p>
+
+      <div class="remark-formula">
+        \[
+        \boxed{
+        z=4\left(
+        \cos\frac{\pi}{6}
+        -i\sin\frac{\pi}{6}
+        \right)
+        }
+        \]
+      </div>
+
+      <p><strong>Exponential form:</strong></p>
+
+      <div class="remark-formula">
+        \[
+        \boxed{z=4e^{-i\pi/6}}
+        \]
+      </div>
+    </div>
+
+  </div>
+
+  <div class="remark-lantern" aria-hidden="true">
+    <span class="lantern-dot"></span>
+    <span class="lantern-dot"></span>
+    <span class="lantern-dot"></span>
+    <span class="lantern-dot"></span>
+
+    <div>
+      <div class="lantern-icon">🏮</div>
+      <div class="lantern-caption">Remember this</div>
+    </div>
+  </div>
+</div>
     <section class="content-section" id="recap">
       <div class="section-head"><span class="section-no">06</span><h2>The whole lesson in a minute</h2></div>
       <div class="panel summary-list">
